@@ -16,13 +16,14 @@ mysql = MySQL(app)
 @app.route("/")
 def index():
     cur = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-    cur.execute("SELECT id, surname, forename, serial FROM company_roll")
+    cur.execute(
+        "SELECT id, surname, forename, serial, marital_status.marital_status_en FROM tunneller LEFT JOIN marital_status ON tunneller.marital_status_fk=marital_status.marital_status_id")
     rv = cur.fetchall()
     tunnellers = []
     content = {}
     for result in rv:
         content = {'id': result['id'], 'forename': result['forename'],
-                   'surname': result['surname'], 'serial': result['serial']}
+                   'surname': result['surname'], 'serial': result['serial'], 'marital_status': result['marital_status_en']}
         tunnellers.append(content)
         content = {}
     return jsonify(tunnellers)
