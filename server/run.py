@@ -13,23 +13,31 @@ app.config["MYSQL_CURSORCLASS"] = "DictCursor"
 mysql = MySQL(app)
 
 
-@app.route("/api/nz-tunnellers/")
+@app.route("/nz-tunnellers-api/")
 def index():
-    cur = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-    cur.execute(
-        "SELECT id, surname, forename, serial, marital_status.marital_status_en, religion.religion_en FROM tunneller LEFT JOIN marital_status ON tunneller.marital_status_fk=marital_status.marital_status_id LEFT JOIN religion ON tunneller.religion_fk=religion.religion_id ORDER by id ASC")
-    rv = cur.fetchall()
+    cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+    sql = 'SELECT id, surname, forename, serial, birth_country_fk, birth_country.country_en AS birth_country_en, mother_name, mother_origin_fk, mother_origin.country_en AS mother_origin_en, father_name, father_origin_fk, father_origin.country_en AS father_origin_en, marital_status.marital_status_en, religion.religion_en FROM tunneller t JOIN country birth_country ON t.birth_country_fk=birth_country.country_id JOIN country mother_origin ON t.mother_origin_fk=mother_origin.country_id JOIN country father_origin ON t.father_origin_fk=father_origin.country_id LEFT JOIN marital_status ON t.marital_status_fk=marital_status.marital_status_id LEFT JOIN religion ON t.religion_fk=religion.religion_id'
+
+    cursor.execute(sql)
+    result = cursor.fetchall()
     tunnellers = []
     content = {}
-    for result in rv:
+    for data in result:
         content = {
-            'id': result['id'],
-            'forename': result['forename'],
-            'surname': result['surname'],
-            'serial': result['serial'],
+            'id': data['id'],
+            'forename': data['forename'],
+            'surname': data['surname'],
+            'serial': data['serial'],
+            'birth_country': data['birth_country_en'],
+            'parents': {
+                'mother_name': data['mother_name'],
+                'mother_origin': data['mother_origin_en'],
+                'father_name': data['father_name'],
+                'father_origin': data['father_origin_en']
+            },
             'pre-war': {
-                'religion': result['religion_en'],
-                'marital_status': result['marital_status_en']
+                'religion': data['religion_en'],
+                'marital_status': data['marital_status_en']
             }
         }
         tunnellers.append(content)
