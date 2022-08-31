@@ -1,7 +1,11 @@
-def map_tunneller(id, extended_result):
-    tunneller = []
-    for data in extended_result:
-        content = {
+def map_tunneller(response):
+    tunneller = None
+    for data in response:
+        tunneller = {
+            'id': data['id'],
+            'forename': data['forename'],
+            'surname': data['surname'],
+            'serial': data['serial'],
             'birth_country': data['birth_country_en'],
             'parents': {
                 'mother_name': data['mother_name'],
@@ -14,5 +18,4 @@ def map_tunneller(id, extended_result):
                 'marital_status': data['marital_status_en']
             }
         }
-        tunneller.append(content)
     return tunneller
