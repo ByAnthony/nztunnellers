@@ -49,20 +49,7 @@ def tunnellers():
 @app.route("/tunnellers/<id>")
 def show(id):
     sql = f'''
-        SELECT id,
-            surname,
-            forename,
-            serial,
-            birth_country_fk,
-            birth_country.country_en AS birth_country_en,
-            mother_name,
-            mother_origin_fk,
-            mother_origin.country_en AS mother_origin_en,
-            father_name,
-            father_origin_fk,
-            father_origin.country_en AS father_origin_en,
-            marital_status.marital_status_en,
-            religion.religion_en
+        SELECT id, surname, forename, serial, birth_country_fk, birth_country.country_en AS birth_country_en, mother_name, mother_origin_fk, mother_origin.country_en AS mother_origin_en, father_name, father_origin_fk, father_origin.country_en AS father_origin_en, marital_status.marital_status_en, religion.religion_en
 
         FROM tunneller t
 
