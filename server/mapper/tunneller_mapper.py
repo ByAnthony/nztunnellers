@@ -29,10 +29,16 @@ def map_tunneller(response):
                 'embarkation_unit': {
                     'embarkation_unit': data['embarkation_unit_en'],
                     'training': {
-                        'training_start': format_date(data['training_start']),
-                        'training_location': data['training_location'],
-                        'training_location_type': data['training_location_type_en']
+                        'start': format_date(data['training_start']),
+                        'location': data['training_location'],
+                        'location_type': data['training_location_type_en']
                     },
+                    'transport_uk': {
+                        'id': data['transport_uk_ref'],
+                        'vessel': data['transport_uk_vessel'],
+                        'start': format_date(data['transport_uk_start']),
+                        'origin': data['transport_uk_origin']
+                    }
                 },
             },
             'sources': {
