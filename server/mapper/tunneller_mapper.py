@@ -1,4 +1,7 @@
 import datetime
+from mapper.parent_mapper import map_parent
+from mapper.date_mapper import map_birth, format_year
+from mapper.nz_archives_mapper import map_nz_archives
 
 
 def map_tunneller(response):
@@ -35,26 +38,3 @@ def map_tunneller(response):
             }
         }
     return tunneller
-
-
-def map_parent(name, origin):
-    return {'name': name, 'origin': origin}
-
-
-def map_birth(year, country):
-    return {'year': year, 'country': country}
-
-
-def map_nz_archives(ref_1, url_1, ref_2, url_2):
-    if (ref_2 is not None and url_2 is not None):
-        return [
-            {'ref': ref_1, 'url': url_1},
-            {'ref': ref_2, 'url': url_2}
-        ]
-    return [
-        {'ref': ref_1, 'url': url_1}
-    ]
-
-
-def format_year(date):
-    return date.strftime('%Y')
