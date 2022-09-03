@@ -20,14 +20,17 @@ def map_tunneller(response):
             },
             'pre_war': {
                 'birth': map_birth(data['birth_date'], data['birth_country_en']),
-                'religion': data['religion_en'],
-                'marital_status': data['marital_status_en']
+                'nz_resident_in_month': {},
+                'marital_status': data['marital_status_en'],
+                'religion': data['religion_en']
             },
             'military_life': {
                 'serial': data['serial'],
                 'rank': data['rank_en'],
                 'embarkation_unit': {
                     'embarkation_unit': data['embarkation_unit_en'],
+                    'section': data['section_en'],
+                    'attached_corps': data['attached_corps_en'],
                     'training': {
                         'start': format_date(data['training_start']),
                         'location': data['training_location'],
@@ -36,8 +39,10 @@ def map_tunneller(response):
                     'transport_uk': {
                         'id': data['transport_uk_ref'],
                         'vessel': data['transport_uk_vessel'],
-                        'start': format_date(data['transport_uk_start']),
-                        'origin': data['transport_uk_origin']
+                        'departure': format_date(data['transport_uk_start']),
+                        'from': data['transport_uk_origin'],
+                        'arrival': format_date(data['transport_uk_end']),
+                        'to': data['transport_uk_destination'],
                     }
                 },
             },
