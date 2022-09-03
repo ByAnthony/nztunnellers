@@ -1,6 +1,6 @@
-import datetime
+from mapper.date_mapper import format_date
 from mapper.parent_mapper import map_parent
-from mapper.date_mapper import map_birth, format_year, format_date
+from mapper.birth_mapper import map_birth
 from mapper.nz_archives_mapper import map_nz_archives
 
 
