@@ -1,9 +1,9 @@
 from flask import Flask, jsonify
 from flask_mysqldb import MySQL
-import repositories.tunnellers_repository as tunnellers_repository
+import repositories.roll_repository as tunnellers_repository
 import repositories.tunneller_repository as tunneller_repository
-from mapper.mapper_tunnellers import map_tunnellers
-from mapper.mapper_tunneller import map_tunneller
+from mapper.roll_mapper import map_roll
+from mapper.tunneller_mapper import map_tunneller
 
 
 app = Flask(__name__)
@@ -20,14 +20,14 @@ app.config["MYSQL_CURSORCLASS"] = "DictCursor"
 mysql = MySQL(app)
 
 
-@app.route("/tunnellers/", methods=["GET"])
-def tunnellers():
+@app.route("/roll/", methods=["GET"])
+def roll():
     tunnellers = tunnellers_repository.select_all(mysql)
-    return jsonify(map_tunnellers(tunnellers))
+    return jsonify(map_roll(tunnellers))
 
 
-@app.route("/tunnellers/<id>", methods=["GET"])
-def show(id):
+@app.route("/roll/<id>", methods=["GET"])
+def tunneller(id):
     tunneller = tunneller_repository.show(id, mysql)
     return jsonify(map_tunneller(tunneller))
 

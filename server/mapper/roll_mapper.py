@@ -1,4 +1,4 @@
-def map_tunnellers(response):
+def map_roll(response):
     tunnellers = []
     for data in response:
         content = {
