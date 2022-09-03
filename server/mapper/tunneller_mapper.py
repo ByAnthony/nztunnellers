@@ -19,7 +19,7 @@ def map_tunneller(response):
                 'father': map_parent(data['father_name'], data['father_origin_en'])
             },
             'pre_war': {
-                'birth': map_birth(format_year(data['birth_date']), data['birth_country_en']),
+                'birth': map_birth(data['birth_date'], data['birth_country_en']),
                 'religion': data['religion_en'],
                 'marital_status': data['marital_status_en']
             },
