@@ -40,7 +40,7 @@ def map_tunneller(response):
                 'enlistment': {
                     'date': assert_non_nullish_date(data['enlistment_date']),
                     'military_district': data['military_district_name'],
-                    'posted_to_tunnellers': assert_non_nullish_date(data['posted_date']),
+                    'posted_to_date': assert_non_nullish_date(data['posted_date']),
                     'posted_from': data['posted_from_corps_en']
                 },
                 'embarkation_unit': {
