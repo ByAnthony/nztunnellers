@@ -6,12 +6,12 @@ def assert_non_nullish_date(date):
         return format_date(date)
 
 
-def format_year(date):
-    return date.strftime('%Y')
+def format_year(string):
+    return string[0:4]
 
 
-def format_month_day(date):
-    return date.strftime('%m-%d')
+def format_month_day(string):
+    return string[5:10]
 
 
 def format_date(date):
