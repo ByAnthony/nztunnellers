@@ -1,4 +1,4 @@
-from mapper.date_mapper import assert_non_nullish_date
+from mapper.date_mapper import assert_non_nullish_date_and_format
 from mapper.parent_mapper import map_parent
 from mapper.birth_mapper import map_birth
 from mapper.nz_archives_mapper import map_nz_archives
@@ -39,9 +39,9 @@ def map_tunneller(response):
                 'serial': data['serial'],
                 'rank': data['rank_en'],
                 'enlistment': {
-                    'date': assert_non_nullish_date(data['enlistment_date']),
+                    'date': assert_non_nullish_date_and_format(data['enlistment_date']),
                     'military_district': data['military_district_name'],
-                    'posted_to_date': assert_non_nullish_date(data['posted_date']),
+                    'posted_to_date': assert_non_nullish_date_and_format(data['posted_date']),
                     'posted_from': data['posted_from_corps_en']
                 },
                 'embarkation_unit': {
@@ -49,16 +49,16 @@ def map_tunneller(response):
                     'section': data['section_en'],
                     'attached_corps': data['attached_corps_en'],
                     'training': {
-                        'start': assert_non_nullish_date(data['training_start']),
+                        'start': assert_non_nullish_date_and_format(data['training_start']),
                         'location': data['training_location'],
                         'location_type': data['training_location_type_en']
                     },
                     'transport_uk': {
                         'id': data['transport_uk_ref'],
                         'vessel': data['transport_uk_vessel'],
-                        'departure': assert_non_nullish_date(data['transport_uk_start']),
+                        'departure': assert_non_nullish_date_and_format(data['transport_uk_start']),
                         'from': data['transport_uk_origin'],
-                        'arrival': assert_non_nullish_date(data['transport_uk_end']),
+                        'arrival': assert_non_nullish_date_and_format(data['transport_uk_end']),
                         'to': data['transport_uk_destination'],
                     }
                 },
