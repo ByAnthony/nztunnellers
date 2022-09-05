@@ -2,6 +2,7 @@ from mapper.date_mapper import assert_non_nullish_date
 from mapper.parent_mapper import map_parent
 from mapper.birth_mapper import map_birth
 from mapper.nz_archives_mapper import map_nz_archives
+from mapper.london_gazette_mapper import map_london_gazette
 
 
 def map_tunneller(response):
@@ -70,6 +71,7 @@ def map_tunneller(response):
                     'roll': data['nominal_roll_number'],
                     'page': data['nominal_roll_page']
                 },
+                'london_gazette': map_london_gazette(data['london_gazette_date_1'], data['london_gazette_page_1'], data['london_gazette_date_2'], data['london_gazette_page_2'], data['london_gazette_date_3'], data['london_gazette_page_3'], data['london_gazette_date_4'], data['london_gazette_page_4'])
             }
         }
     return tunneller
