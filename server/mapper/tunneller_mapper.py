@@ -5,10 +5,10 @@ from mapper.nz_archives_mapper import map_nz_archives
 from mapper.london_gazette_mapper import map_london_gazette
 
 
-def map_tunneller(response):
-    tunneller = None
-    for data in response:
-        tunneller = {
+def map_tunneller(tunneller, london_gazette):
+    profile = None
+    for data in tunneller:
+        profile = {
             'id': data['id'],
             'name': {
                 'forename': data['forename'],
@@ -71,7 +71,7 @@ def map_tunneller(response):
                     'roll': data['nominal_roll_number'],
                     'page': data['nominal_roll_page']
                 },
-                'london_gazette': map_london_gazette(data['london_gazette_date'], data['london_gazette_page'])
+                'london_gazette': map_london_gazette(london_gazette)
             }
         }
-    return tunneller
+    return profile

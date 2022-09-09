@@ -28,8 +28,8 @@ def roll():
 
 @app.route("/roll/<id>", methods=["GET"])
 def tunneller(id):
-    tunneller = tunneller_repository.show(id, mysql)
-    return jsonify(map_tunneller(tunneller))
+    tunneller, london_gazette = tunneller_repository.show(id, mysql)
+    return jsonify(map_tunneller(tunneller, london_gazette))
 
 
 if __name__ == '__main__':
