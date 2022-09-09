@@ -71,7 +71,7 @@ def map_tunneller(response):
                     'roll': data['nominal_roll_number'],
                     'page': data['nominal_roll_page']
                 },
-                'london_gazette': map_london_gazette(data['london_gazette_date_1'], data['london_gazette_page_1'], data['london_gazette_date_2'], data['london_gazette_page_2'], data['london_gazette_date_3'], data['london_gazette_page_3'], data['london_gazette_date_4'], data['london_gazette_page_4'])
+                'london_gazette': map_london_gazette(data['london_gazette_date'], data['london_gazette_page'])
             }
         }
     return tunneller
