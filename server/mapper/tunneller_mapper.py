@@ -1,4 +1,4 @@
-from mapper.date_mapper import assert_non_nullish_date_and_format
+from mapper.date.date_mapper import assert_non_nullish_date_and_format
 from mapper.parent_mapper import map_parent
 from mapper.birth_mapper import map_birth
 from mapper.nz_archives_mapper import map_nz_archives

@@ -1,13 +1,6 @@
-from mapper.date_mapper import assert_non_nullish_date_and_format
+from mapper.date.date_mapper import assert_non_nullish_date_and_format
 
 
 def map_london_gazette(london_gazette):
-    return [{'date': row['london_gazette_date'],
+    return [{'date': assert_non_nullish_date_and_format(row['london_gazette_date']),
             'page': row['london_gazette_page']} for row in london_gazette]
-
-    # list = []
-    # for row in london_gazette:
-    #     values = {'date': row['london_gazette_date'],
-    #               'page': row['london_gazette_page']}
-    #     list.append(values)
-    # return list

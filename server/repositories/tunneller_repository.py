@@ -2,7 +2,7 @@ from db.run_sql import run_sql
 
 
 def show(id, mysql):
-    sql = f'''
+    tunneller_sql = f'''
         SELECT id, surname, forename, aka, serial, rank_fk, rank_en, embarkation_unit.embarkation_unit_en, training.training_start, training.training_location, training_location_type.training_location_type_en, transport_uk.transport_uk_ref, transport_uk.transport_uk_vessel, transport_uk.transport_uk_start, transport_uk.transport_uk_origin, transport_uk.transport_uk_end, transport_uk.transport_uk_destination, section.section_en, attached_corps.corps_en AS attached_corps_en, birth_date, birth_country.country_en AS birth_country_en, mother_name, mother_origin.country_en AS mother_origin_en, father_name, father_origin.country_en AS father_origin_en, nz_resident_in_month, marital_status.marital_status_en, wife_name, occupation.occupation_en, religion.religion_en, enlistment_date, military_district_name, posted_date, posted_from_corps.corps_en AS posted_from_corps_en, nz_archives_ref_1, nz_archives_url_1, nz_archives_ref_2, nz_archives_url_2, awmm_cenotaph, nominal_roll.nominal_roll_volume, nominal_roll.nominal_roll_number, nominal_roll.nominal_roll_page 
 
         FROM tunneller t
@@ -29,8 +29,9 @@ def show(id, mysql):
         ORDER BY surname, forename
     '''
     values = [id]
-    result = run_sql(sql, mysql, values)
+    tunneller_result = run_sql(tunneller_sql, mysql, values)
+
     london_gazette_sql = 'SELECT london_gazette_date, london_gazette_page FROM london_gazette_join JOIN london_gazette ON london_gazette.london_gazette_id=london_gazette_join.london_gazette_lg_id WHERE london_gazette_join.london_gazette_t_id=%s'
     london_gazette_result = run_sql(london_gazette_sql, mysql, values)
-    print(result, london_gazette_result)
-    return result, london_gazette_result
+
+    return tunneller_result, london_gazette_result
