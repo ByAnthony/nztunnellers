@@ -14,6 +14,7 @@ The New Zealand Tunnellers Web App is dedicated to the men of the New Zealand Tu
 The project uses:
 
 * Python 3;
+* Pytest
 * Flask;
 * Flask_MySQLdb;
 * MySQL.
