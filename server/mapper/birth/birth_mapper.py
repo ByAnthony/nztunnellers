@@ -7,9 +7,6 @@ def map_birth(date, country):
     if (non_nullish_date is not None):
         year = format_year(non_nullish_date)
         month_day = format_month_day(non_nullish_date)
-
-        if (month_day != '00-00'):
-            return {'month_day': month_day, 'year': year, 'country': country}
-
+        return {'month_day': month_day, 'year': year, 'country': country}
     else:
         return {'month_day': None, 'year': None, 'country': country}
