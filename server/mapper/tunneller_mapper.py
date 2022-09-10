@@ -1,8 +1,8 @@
 from mapper.date.date_mapper import assert_non_nullish_date_and_format
-from mapper.parent_mapper import map_parent
-from mapper.birth_mapper import map_birth
-from mapper.nz_archives_mapper import map_nz_archives
-from mapper.london_gazette_mapper import map_london_gazette
+from mapper.parent.parent_mapper import map_parent
+from mapper.birth.birth_mapper import map_birth
+from mapper.nz_archives.nz_archives_mapper import map_nz_archives
+from mapper.london_gazette.london_gazette_mapper import map_london_gazette
 
 
 def map_tunneller(tunneller, london_gazette):
