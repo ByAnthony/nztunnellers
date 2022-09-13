@@ -20,7 +20,7 @@ def map_tunneller(tunneller, london_gazette):
                 'father': map_parent(data['father_name'], data['father_origin_en'])
             },
             'pre_war': {
-                'birth': map_birth(data['birth_date'], data['birth_country_en']),
+                'birth': map_birth(data['birth_date'], data['birth_year'], data['birth_country_en']),
                 'migrate_to_nz': {
                     'nz_resident': data['nz_resident_in_month']
                 },
