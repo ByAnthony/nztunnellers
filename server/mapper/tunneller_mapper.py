@@ -3,6 +3,7 @@ from .parent.parent_mapper import map_parent
 from .birth.birth_mapper import map_birth
 from .nz_archives.nz_archives_mapper import map_nz_archives
 from .london_gazette.london_gazette_mapper import map_london_gazette
+from .image.image_mapper import map_image
 
 
 def map_tunneller(tunneller, nz_archives, london_gazette):
@@ -72,6 +73,7 @@ def map_tunneller(tunneller, nz_archives, london_gazette):
                     'page': data['nominal_roll_page']
                 },
                 'london_gazette': map_london_gazette(london_gazette)
-            }
+            },
+            'image': map_image(data['image'], data['image_family'], data['image_auckland_libraries'])
         }
     return profile
