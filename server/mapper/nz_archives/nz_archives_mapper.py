@@ -1,9 +1,3 @@
-def map_nz_archives(ref_1, url_1, ref_2, url_2):
-    if (ref_2 is not None and url_2 is not None):
-        return [
-            {'ref': ref_1, 'url': url_1},
-            {'ref': ref_2, 'url': url_2}
-        ]
-    return [
-        {'ref': ref_1, 'url': url_1}
-    ]
+def map_nz_archives(nz_archives):
+    return [{'reference': row['nz_archives_ref'],
+            'url': row['nz_archives_url']} for row in nz_archives]

@@ -5,7 +5,7 @@ from .nz_archives.nz_archives_mapper import map_nz_archives
 from .london_gazette.london_gazette_mapper import map_london_gazette
 
 
-def map_tunneller(tunneller, london_gazette):
+def map_tunneller(tunneller, nz_archives, london_gazette):
     profile = None
     for data in tunneller:
         profile = {
@@ -64,7 +64,7 @@ def map_tunneller(tunneller, london_gazette):
                 },
             },
             'sources': {
-                'nz_archives': map_nz_archives(data['nz_archives_ref_1'], data['nz_archives_url_1'], data['nz_archives_ref_2'], data['nz_archives_url_2']),
+                'nz_archives': map_nz_archives(nz_archives),
                 'awmm_cenotaph': data['awmm_cenotaph'],
                 'nominal_roll': {
                     'volume': data['nominal_roll_volume'],
