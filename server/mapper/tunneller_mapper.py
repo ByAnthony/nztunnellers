@@ -38,7 +38,7 @@ def map_tunneller(tunneller, nz_archives, london_gazette):
             },
             'military_life': {
                 'serial': data['serial'],
-                'rank': data['rank_en'],
+                'rank': data['rank'],
                 'enlistment': {
                     'date': assert_non_nullish_date_and_format(data['enlistment_date']),
                     'military_district': data['military_district_name'],
@@ -74,6 +74,6 @@ def map_tunneller(tunneller, nz_archives, london_gazette):
                 },
                 'london_gazette': map_london_gazette(london_gazette)
             },
-            'image': map_image(data['image'], data['image_family'], data['image_auckland_libraries'])
+            'image': map_image(data['image'], data['image_family'], data['image_auckland_libraries'], data['image_awmm_ref'], data['image_awmm_title'])
         }
     return profile

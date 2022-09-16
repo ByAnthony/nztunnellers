@@ -6,3 +6,6 @@ install-dev: install
 
 test-server:
 	pytest -v ./server
+
+dev:
+	DEV=True python server/run.py
