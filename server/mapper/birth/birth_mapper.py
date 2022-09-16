@@ -1,8 +1,6 @@
-from ..date.date_mapper import format_date, format_day, format_month, format_year
+from ..date.date_mapper import assert_non_nullish_date_and_format
 
 
 def map_birth(date, year, country):
-    if (date is not None):
-        formatted_birth_date = format_date(date)
-        return {'date': formatted_birth_date, 'year': None, 'country': country}
-    return {'date': None, 'year': year, 'country': country}
+    formatted_birth_date = assert_non_nullish_date_and_format(date)
+    return {'date': formatted_birth_date, 'year': year, 'country': country}

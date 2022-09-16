@@ -13,15 +13,3 @@ def test_if_date_is_none_and_then_return_none():
 
 def test_format_date_to_return_Y_m_d():
     assert date_mapper.format_date(date(1886, 1, 26)) == '1886-01-26'
-
-
-def test_format_date_to_return_year():
-    assert date_mapper.format_year('1886-01-26') == '1886'
-
-
-def test_format_date_to_return_month():
-    assert date_mapper.format_month('1886-01-26') == '01'
-
-
-def test_format_date_to_return_day():
-    assert date_mapper.format_day('1886-01-26') == '26'

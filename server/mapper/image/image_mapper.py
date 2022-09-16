@@ -10,5 +10,5 @@ def map_awmm(ref, title):
 
 
 def map_family(family):
-    if (family is not None):
+    if family is not None:
         return '{} family'.format(family)
