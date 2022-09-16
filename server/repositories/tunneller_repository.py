@@ -1,5 +1,6 @@
 from db.run_sql import run_sql
 
+
 rank_col = {'en': 'rank_en', 'fr': 'rank_fr'}
 
 
