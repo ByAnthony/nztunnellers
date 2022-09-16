@@ -25,19 +25,15 @@ app.config["MYSQL_CURSORCLASS"] = "DictCursor"
 mysql = MySQL(app)
 
 
-lang = request.args.get('lang', 'en')
-
-
 @app.route("/roll/", methods=["GET"])
 def roll():
-    if lang not in ['en', 'fr']:
-        return 'Unknown language', 400
     tunnellers = tunnellers_repository.select_all(mysql)
     return jsonify(map_roll(tunnellers))
 
 
 @app.route("/roll/<id>", methods=["GET"])
 def tunneller(id):
+    lang = request.args.get('lang', 'en')
     if lang not in ['en', 'fr']:
         return 'Unknown language', 400
     tunneller, nz_archives, london_gazette = tunneller_repository.show(
