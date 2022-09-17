@@ -36,9 +36,9 @@ def tunneller(id):
     lang = request.args.get('lang', 'en')
     if lang not in ['en', 'fr']:
         return 'Unknown language', 400
-    tunneller, nz_archives, london_gazette = tunneller_repository.show(
+    tunneller, nz_archives, london_gazette, image_source = tunneller_repository.show(
         id, lang, mysql)
-    return jsonify(map_tunneller(tunneller, nz_archives, london_gazette))
+    return jsonify(map_tunneller(tunneller, nz_archives, london_gazette, image_source))
 
 
 if __name__ == '__main__':

@@ -3,10 +3,10 @@ from .parent.parent_mapper import map_parent
 from .birth.birth_mapper import map_birth
 from .nz_archives.nz_archives_mapper import map_nz_archives
 from .london_gazette.london_gazette_mapper import map_london_gazette
-from .image.image_mapper import map_image
+from .image_source.image_source_mapper import map_image_source
 
 
-def map_tunneller(tunneller, nz_archives, london_gazette):
+def map_tunneller(tunneller, nz_archives, london_gazette, image_source):
     profile = None
     for data in tunneller:
         profile = {
@@ -74,6 +74,6 @@ def map_tunneller(tunneller, nz_archives, london_gazette):
                 },
                 'london_gazette': map_london_gazette(london_gazette)
             },
-            'image': map_image(data['image'], data['image_family'], data['image_auckland_libraries'], data['image_awmm_ref'], data['image_awmm_title'])
+            'image': {'file': data['image'], 'source': map_image_source(image_source)}
         }
     return profile
