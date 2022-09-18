@@ -6,7 +6,7 @@ from .london_gazette.london_gazette_mapper import map_london_gazette
 from .image_source.image_source_mapper import map_image_source
 
 
-def map_tunneller(tunneller, nz_archives, london_gazette, image_source):
+def map_tunneller(tunneller, nz_archives, london_gazette, image_source, image_authors):
     profile = None
     for data in tunneller:
         profile = {
@@ -20,13 +20,13 @@ def map_tunneller(tunneller, nz_archives, london_gazette, image_source):
                 'mother': map_parent(data['mother_name'], data['mother_origin_en']),
                 'father': map_parent(data['father_name'], data['father_origin_en'])
             },
-            'pre_war': {
+            'preWar': {
                 'birth': map_birth(data['birth_date'], data['birth_year'], data['birth_country_en']),
-                'migrate_to_nz': {
-                    'nz_resident': data['nz_resident_in_month']
+                'migrateToNewZealand': {
+                    'newZealandResident': data['nz_resident_in_month']
                 },
-                'civil_life': {
-                    'marital_status': {
+                'civilLife': {
+                    'maritalStatus': {
                         'status': data['marital_status_en'],
                         'wife': data['wife_name']
                     },
@@ -36,25 +36,25 @@ def map_tunneller(tunneller, nz_archives, london_gazette, image_source):
                     }
                 }
             },
-            'military_life': {
+            'militaryLife': {
                 'serial': data['serial'],
                 'rank': data['rank'],
                 'enlistment': {
                     'date': assert_non_nullish_date_and_format(data['enlistment_date']),
-                    'military_district': data['military_district_name'],
-                    'posted_to_date': assert_non_nullish_date_and_format(data['posted_date']),
-                    'posted_from': data['posted_from_corps_en']
+                    'militaryDistrict': data['military_district_name'],
+                    'postedToDate': assert_non_nullish_date_and_format(data['posted_date']),
+                    'postedFrom': data['posted_from_corps_en']
                 },
-                'embarkation_unit': {
-                    'embarkation_unit': data['embarkation_unit_en'],
+                'embarkationUnit': {
+                    'embarkationUnit': data['embarkation_unit_en'],
                     'section': data['section_en'],
-                    'attached_corps': data['attached_corps_en'],
+                    'attachedCorps': data['attached_corps_en'],
                     'training': {
                         'start': assert_non_nullish_date_and_format(data['training_start']),
                         'location': data['training_location'],
-                        'location_type': data['training_location_type_en']
+                        'locationType': data['training_location_type_en']
                     },
-                    'transport_uk': {
+                    'transportUnitedKindgom': {
                         'id': data['transport_uk_ref'],
                         'vessel': data['transport_uk_vessel'],
                         'departure': assert_non_nullish_date_and_format(data['transport_uk_start']),
@@ -65,15 +65,15 @@ def map_tunneller(tunneller, nz_archives, london_gazette, image_source):
                 },
             },
             'sources': {
-                'nz_archives': map_nz_archives(nz_archives),
-                'awmm_cenotaph': data['awmm_cenotaph'],
-                'nominal_roll': {
+                'newZealandArchives': map_nz_archives(nz_archives),
+                'awmmCenotaph': data['awmm_cenotaph'],
+                'nominalRoll': {
                     'volume': data['nominal_roll_volume'],
                     'roll': data['nominal_roll_number'],
                     'page': data['nominal_roll_page']
                 },
-                'london_gazette': map_london_gazette(london_gazette)
+                'londonGazette': map_london_gazette(london_gazette)
             },
-            'image': {'file': data['image'], 'source': map_image_source(image_source)}
+            'image': {'file': data['image'], 'source': map_image_source(image_source, image_authors)}
         }
     return profile
