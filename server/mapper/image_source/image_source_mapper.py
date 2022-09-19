@@ -8,7 +8,6 @@ def map_authors(authors):
 
 def map_image_source(image_source, image_source_book_authors):
     source = None
-    print(image_source)
     for row in image_source:
         source = {
             'aucklandLibraries': row['image_source_auckland_libraries'],
