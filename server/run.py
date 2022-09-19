@@ -35,7 +35,7 @@ def roll():
 def tunneller(id):
     lang = request.args.get('lang', 'en')
     if lang not in ['en', 'fr']:
-        return 'Unknown language', 400
+        return 'Language not supported', 400
     tunneller, nz_archives, london_gazette, image_source, image_source_book_authors = tunneller_repository.show(
         id, lang, mysql)
     return jsonify(map_tunneller(tunneller, nz_archives, london_gazette, image_source, image_source_book_authors))
