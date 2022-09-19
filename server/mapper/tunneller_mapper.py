@@ -6,7 +6,7 @@ from .london_gazette.london_gazette_mapper import map_london_gazette
 from .image_source.image_source_mapper import map_image_source
 
 
-def map_tunneller(tunneller, nz_archives, london_gazette, image_source, image_authors):
+def map_tunneller(tunneller, nz_archives, london_gazette, image_source, image_source_book_authors):
     profile = None
     for data in tunneller:
         profile = {
@@ -74,6 +74,6 @@ def map_tunneller(tunneller, nz_archives, london_gazette, image_source, image_au
                 },
                 'londonGazette': map_london_gazette(london_gazette)
             },
-            'image': {'file': data['image'], 'source': map_image_source(image_source, image_authors)}
+            'image': {'file': data['image'], 'source': map_image_source(image_source, image_source_book_authors)}
         }
     return profile

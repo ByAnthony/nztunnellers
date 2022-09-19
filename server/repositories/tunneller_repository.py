@@ -53,25 +53,21 @@ def show(id, lang, mysql):
         WHERE tunneller.id=%s'''
     image_source_result = run_sql(image_source_sql, mysql, values)
 
-    image_book_id_sql = f'''
+    image_source_book_id_sql = f'''
         SELECT book_id
         FROM image_source
         LEFT JOIN book ON book.book_id=image_source.image_source_book_fk
         WHERE image_source.image_source_t_id=%s'''
-    image_book_id_result = run_sql(
-        image_book_id_sql, mysql, values)
+    image_source_book_id_result = run_sql(
+        image_source_book_id_sql, mysql, values)
 
-    def formatted_book_id(image_book_id_result):
-        if image_book_id_result != ():
-            book_id_value = image_book_id_result[0]
-            book_id = book_id_value.get('book_id')
-            formatted_book_id = [str(book_id)]
-            return formatted_book_id
-        else:
-            return ['']
+    def get_image_source_book_authors(image_source_book_id_result):
+        if image_source_book_id_result != ():
+            formatted_book_id = [
+                str(image_source_book_id_result[0].get('book_id'))]
+            image_authors_sql = 'SELECT author_forename, author_surname FROM author_book_join JOIN author ON author.author_id=author_book_join.author_book_a_id WHERE author_book_join.author_book_b_id=%s'
+            image_authors_result = run_sql(
+                image_authors_sql, mysql, formatted_book_id)
+            return image_authors_result
 
-    image_authors_sql = 'SELECT author_forename, author_surname FROM author_book_join JOIN author ON author.author_id=author_book_join.author_book_a_id WHERE author_book_join.author_book_b_id=%s'
-    image_authors_result = run_sql(
-        image_authors_sql, mysql, formatted_book_id(image_book_id_result))
-
-    return tunneller_result, nz_archives_result, london_gazette_result, image_source_result, image_authors_result
+    return tunneller_result, nz_archives_result, london_gazette_result, image_source_result, get_image_source_book_authors(image_source_book_id_result)

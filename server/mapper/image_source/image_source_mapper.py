@@ -6,14 +6,15 @@ def map_authors(authors):
             'surname': row['author_surname']} for row in authors]
 
 
-def map_image_source(image_source, image_authors):
+def map_image_source(image_source, image_source_book_authors):
     source = None
+    print(image_source)
     for row in image_source:
         source = {
             'aucklandLibraries': row['image_source_auckland_libraries'],
-            'archive': {'location': row['archives_name'], 'reference': row['archives_ref']},
+            'archives': {'location': row['archives_name'], 'reference': row['archives_ref']},
             'family': row['family_name'],
             'newspaper': {'name': row['newspaper_name'], 'date': assert_non_nullish_date_and_format(row['newspaper_date'])},
-            'book': {'author': map_authors(image_authors), 'title': row['book_title'], 'town': row['book_town'], 'publisher': row['book_publisher'], 'year': row['book_year'], 'page': row['book_page']}
+            'book': {'authors': map_authors(image_source_book_authors), 'title': row['book_title'], 'town': row['book_town'], 'publisher': row['book_publisher'], 'year': row['book_year'], 'page': row['book_page']}
         }
     return source

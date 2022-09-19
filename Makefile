@@ -5,7 +5,7 @@ install-dev: install
 	pip install -r requirements-dev.txt
 
 test-server:
-	pytest -v ./server
+	pytest -vv ./server
 
 dev:
 	DEV=true python server/run.py
