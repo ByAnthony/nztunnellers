@@ -37,6 +37,15 @@ def show(id, lang, mysql):
     values = [id]
     tunneller_result = run_sql(tunneller_sql, mysql, values)
 
+    medals_sql = f'''
+        SELECT medal_name_en, medal_citation_en, country_en
+        FROM medal_join 
+        JOIN medal ON medal.medal_id=medal_m_id 
+        LEFT JOIN medal_citation ON medal_citation.medal_citation_id=medal_c_id
+        LEFT JOIN country ON country.country_id=medal_m_c_id
+        WHERE medal_join.medal_t_id=%s'''
+    medals_result = run_sql(medals_sql, mysql, values)
+
     nz_archives_sql = 'SELECT nz_archives_ref, nz_archives_url FROM nz_archives LEFT JOIN tunneller ON tunneller.id=nz_archives.nz_archives_t_id WHERE tunneller.id=%s'
     nz_archives_result = run_sql(nz_archives_sql, mysql, values)
 
@@ -45,9 +54,9 @@ def show(id, lang, mysql):
 
     image_source_book_id_sql = f'''
         SELECT book_id
-        FROM image_source
-        LEFT JOIN book ON book.book_id=image_source.image_source_book_fk
-        WHERE image_source.image_source_t_id=%s'''
+        FROM tunneller
+        LEFT JOIN book ON book.book_id=tunneller.image_source_book_fk
+        WHERE id=%s'''
     image_source_book_id_result = run_sql(
         image_source_book_id_sql, mysql, values)
 
@@ -61,4 +70,4 @@ def show(id, lang, mysql):
             return image_authors_result
         return []
 
-    return tunneller_result, nz_archives_result, london_gazette_result, get_image_source_book_authors(image_source_book_id_result)
+    return tunneller_result, medals_result, nz_archives_result, london_gazette_result, get_image_source_book_authors(image_source_book_id_result)

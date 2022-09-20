@@ -1,4 +1,3 @@
-from datetime import date
 from . import image_source_book_authors_mapper
 
 author_1 = {'author_forename': 'Arthur Conan', 'author_surname': 'Doyle'}
