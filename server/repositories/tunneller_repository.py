@@ -1,27 +1,24 @@
 from db.run_sql import run_sql
-
-
-rank_col = {'en': 'rank_en', 'fr': 'rank_fr'}
-embarkation_unit_col = {'en': 'embarkation_unit.embarkation_unit_en',
-                        'fr': 'embarkation_unit.embarkation_unit_fr'}
-birth_country_col = {'en': 'birth_country.country_en',
-                     'fr': 'birth_country.country_fr'}
-mother_origin_col = {'en': 'mother_origin.country_en',
-                     'fr': 'mother_origin.country_fr'}
-father_origin_col = {'en': 'father_origin.country_en',
-                     'fr': 'father_origin.country_fr'}
-marital_status_col = {'en': 'marital_status.marital_status_en',
-                      'fr': 'marital_status.marital_status_fr'}
-occupation_col = {'en': 'occupation.occupation_en',
-                  'fr': 'occupation.occupation_fr'}
-religion_col = {'en': 'religion.religion_en', 'fr': 'religion.religion_fr'}
-posted_from_corps_col = {
-    'en': 'posted_from_corps.corps_en', 'fr': 'posted_from_corps.corps_fr'}
+from .translations.translations import rank_col
+from .translations.translations import embarkation_unit_col
+from .translations.translations import training_location_type_col
+from .translations.translations import section_col
+from .translations.translations import attached_corps_col
+from .translations.translations import country_col
+from .translations.translations import birth_country_col
+from .translations.translations import mother_origin_col
+from .translations.translations import father_origin_col
+from .translations.translations import marital_status_col
+from .translations.translations import occupation_col
+from .translations.translations import religion_col
+from .translations.translations import posted_from_corps_col
+from .translations.translations import medal_name_col
+from .translations.translations import medal_citation_col
 
 
 def show(id, lang, mysql):
     tunneller_sql = f'''
-        SELECT id, surname, forename, aka, serial, {rank_col[lang]} AS rank, {embarkation_unit_col[lang]} AS embarkation_unit, training.training_start, training.training_location, training_location_type.training_location_type_en, transport_uk.transport_uk_ref, transport_uk.transport_uk_vessel, transport_uk.transport_uk_start, transport_uk.transport_uk_origin, transport_uk.transport_uk_end, transport_uk.transport_uk_destination, section.section_en, attached_corps.corps_en AS attached_corps_en, birth_date, birth_year, {birth_country_col[lang]} AS birth_country, mother_name, {mother_origin_col[lang]} AS mother_origin, father_name, {father_origin_col[lang]} AS father_origin, nz_resident_in_month, {marital_status_col[lang]} AS marital_status, wife_name, {occupation_col[lang]} AS occupation, {religion_col[lang]} AS religion, enlistment_date, military_district_name, posted_date, {posted_from_corps_col[lang]} AS posted_from_corps, awmm_cenotaph, nominal_roll.nominal_roll_volume, nominal_roll.nominal_roll_number, nominal_roll.nominal_roll_page, image, image_source_auckland_libraries, archives_name, archives_ref, family_name, newspaper_name, newspaper_date, book_title, book_town, book_publisher, book_year, book_page
+        SELECT id, surname, forename, aka, serial, {rank_col[lang]} AS rank, {embarkation_unit_col[lang]} AS embarkation_unit, training.training_start, training.training_location, {training_location_type_col[lang]} AS training_location_type, transport_uk.transport_uk_ref, transport_uk.transport_uk_vessel, transport_uk.transport_uk_start, transport_uk.transport_uk_origin, transport_uk.transport_uk_end, transport_uk.transport_uk_destination, {section_col[lang]} AS section, {attached_corps_col[lang]} AS attached_corps, birth_date, birth_year, {birth_country_col[lang]} AS birth_country, mother_name, {mother_origin_col[lang]} AS mother_origin, father_name, {father_origin_col[lang]} AS father_origin, nz_resident_in_month, {marital_status_col[lang]} AS marital_status, wife_name, {occupation_col[lang]} AS occupation, {religion_col[lang]} AS religion, enlistment_date, military_district_name, posted_date, {posted_from_corps_col[lang]} AS posted_from_corps, awmm_cenotaph, nominal_roll.nominal_roll_volume, nominal_roll.nominal_roll_number, nominal_roll.nominal_roll_page, image, image_source_auckland_libraries, archives_name, archives_ref, family_name, newspaper_name, newspaper_date, book_title, book_town, book_publisher, book_year, book_page
 
         FROM tunneller t
 
@@ -53,7 +50,7 @@ def show(id, lang, mysql):
     tunneller_result = run_sql(tunneller_sql, mysql, values)
 
     medals_sql = f'''
-        SELECT medal_name_en, medal_citation_en, country_en
+        SELECT {medal_name_col[lang]} AS medal_name, {medal_citation_col[lang]} AS medal_citation, {country_col[lang]} AS country
         FROM medal_join 
         JOIN medal ON medal.medal_id=medal_m_id 
         LEFT JOIN medal_citation ON medal_citation.medal_citation_id=medal_c_id

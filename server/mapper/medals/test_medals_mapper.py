@@ -1,10 +1,10 @@
 from . import medals_mapper
 
 
-british_war_medal = {'medal_name_en': 'British War Medal',
-                     'medal_citation_en': 'For bravery', 'country_en': 'United Kingdom'}
-victory_medal = {'medal_name_en': 'Victory Medal',
-                 'medal_citation_en': None, 'country_en': 'United Kingdom'}
+british_war_medal = {'medal_name': 'British War Medal',
+                     'medal_citation': 'For bravery', 'country': 'United Kingdom'}
+victory_medal = {'medal_name': 'Victory Medal',
+                 'medal_citation': None, 'country': 'United Kingdom'}
 
 
 def test_map_medals():

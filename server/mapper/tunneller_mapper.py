@@ -48,12 +48,12 @@ def map_tunneller(tunneller, medals, nz_archives, london_gazette, image_source_b
                 },
                 'embarkationUnit': {
                     'embarkationUnit': data['embarkation_unit'],
-                    'section': data['section_en'],
-                    'attachedCorps': data['attached_corps_en'],
+                    'section': data['section'],
+                    'attachedCorps': data['attached_corps'],
                     'training': {
                         'start': assert_non_nullish_date_and_format(data['training_start']),
                         'location': data['training_location'],
-                        'locationType': data['training_location_type_en']
+                        'locationType': data['training_location_type']
                     },
                     'transportUnitedKindgom': {
                         'id': data['transport_uk_ref'],
