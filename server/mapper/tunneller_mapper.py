@@ -18,22 +18,22 @@ def map_tunneller(tunneller, medals, nz_archives, london_gazette, image_source_b
                 'aka': data['aka']
             },
             'parents': {
-                'mother': map_parent(data['mother_name'], data['mother_origin_en']),
-                'father': map_parent(data['father_name'], data['father_origin_en'])
+                'mother': map_parent(data['mother_name'], data['mother_origin']),
+                'father': map_parent(data['father_name'], data['father_origin'])
             },
             'preWar': {
-                'birth': map_birth(data['birth_date'], data['birth_year'], data['birth_country_en']),
+                'birth': map_birth(data['birth_date'], data['birth_year'], data['birth_country']),
                 'migrateToNewZealand': {
                     'newZealandResident': data['nz_resident_in_month']
                 },
                 'civilLife': {
                     'maritalStatus': {
-                        'status': data['marital_status_en'],
+                        'status': data['marital_status'],
                         'wife': data['wife_name']
                     },
-                    'religion': data['religion_en'],
+                    'religion': data['religion'],
                     'occupation': {
-                        'name': data['occupation_en']
+                        'name': data['occupation']
                     }
                 }
             },
@@ -44,10 +44,10 @@ def map_tunneller(tunneller, medals, nz_archives, london_gazette, image_source_b
                     'date': assert_non_nullish_date_and_format(data['enlistment_date']),
                     'militaryDistrict': data['military_district_name'],
                     'postedToDate': assert_non_nullish_date_and_format(data['posted_date']),
-                    'postedFrom': data['posted_from_corps_en']
+                    'postedFrom': data['posted_from_corps']
                 },
                 'embarkationUnit': {
-                    'embarkationUnit': data['embarkation_unit_en'],
+                    'embarkationUnit': data['embarkation_unit'],
                     'section': data['section_en'],
                     'attachedCorps': data['attached_corps_en'],
                     'training': {
