@@ -3,7 +3,7 @@ from .parent.parent_mapper import map_parent
 from .birth.birth_mapper import map_birth
 from .nz_archives.nz_archives_mapper import map_nz_archives
 from .london_gazette.london_gazette_mapper import map_london_gazette
-from .image_source.image_source_mapper import map_authors
+from .image_source_book_authors.image_source_book_authors_mapper import map_authors
 
 
 def map_tunneller(tunneller, nz_archives, london_gazette, image_source_book_authors):
