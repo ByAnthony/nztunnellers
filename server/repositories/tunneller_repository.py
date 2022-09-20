@@ -6,7 +6,7 @@ rank_col = {'en': 'rank_en', 'fr': 'rank_fr'}
 
 def show(id, lang, mysql):
     tunneller_sql = f'''
-        SELECT id, surname, forename, aka, serial, {rank_col[lang]} AS rank, embarkation_unit.embarkation_unit_en, training.training_start, training.training_location, training_location_type.training_location_type_en, transport_uk.transport_uk_ref, transport_uk.transport_uk_vessel, transport_uk.transport_uk_start, transport_uk.transport_uk_origin, transport_uk.transport_uk_end, transport_uk.transport_uk_destination, section.section_en, attached_corps.corps_en AS attached_corps_en, birth_date, birth_year, birth_country.country_en AS birth_country_en, mother_name, mother_origin.country_en AS mother_origin_en, father_name, father_origin.country_en AS father_origin_en, nz_resident_in_month, marital_status.marital_status_en, wife_name, occupation.occupation_en, religion.religion_en, enlistment_date, military_district_name, posted_date, posted_from_corps.corps_en AS posted_from_corps_en, awmm_cenotaph, nominal_roll.nominal_roll_volume, nominal_roll.nominal_roll_number, nominal_roll.nominal_roll_page, image
+        SELECT id, surname, forename, aka, serial, {rank_col[lang]} AS rank, embarkation_unit.embarkation_unit_en, training.training_start, training.training_location, training_location_type.training_location_type_en, transport_uk.transport_uk_ref, transport_uk.transport_uk_vessel, transport_uk.transport_uk_start, transport_uk.transport_uk_origin, transport_uk.transport_uk_end, transport_uk.transport_uk_destination, section.section_en, attached_corps.corps_en AS attached_corps_en, birth_date, birth_year, birth_country.country_en AS birth_country_en, mother_name, mother_origin.country_en AS mother_origin_en, father_name, father_origin.country_en AS father_origin_en, nz_resident_in_month, marital_status.marital_status_en, wife_name, occupation.occupation_en, religion.religion_en, enlistment_date, military_district_name, posted_date, posted_from_corps.corps_en AS posted_from_corps_en, awmm_cenotaph, nominal_roll.nominal_roll_volume, nominal_roll.nominal_roll_number, nominal_roll.nominal_roll_page, image, image_source_auckland_libraries, archives_name, archives_ref, family_name, newspaper_name, newspaper_date, book_title, book_town, book_publisher, book_year, book_page
 
         FROM tunneller t
 
@@ -26,6 +26,12 @@ def show(id, lang, mysql):
         LEFT JOIN military_district ON t.military_district_fk=military_district.military_district_id
         LEFT JOIN corps posted_from_corps ON t.posted_corps_fk=posted_from_corps.corps_id
         LEFT JOIN nominal_roll ON t.nominal_roll_fk=nominal_roll.nominal_roll_id
+        LEFT JOIN archives ON archives.archives_id=t.image_source_archives_fk
+        LEFT JOIN archives_name ON archives_name.archives_name_id=archives.archives_name_fk
+        LEFT JOIN family ON family.family_id=t.image_source_family_fk
+        LEFT JOIN newspaper ON newspaper.newspaper_id=t.image_source_newspaper_fk
+        LEFT JOIN newspaper_name ON newspaper_name.newspaper_name_id=newspaper.newspaper_name_fk
+        LEFT JOIN book ON book.book_id=t.image_source_book_fk
 
         WHERE id=%s'''
     values = [id]
@@ -36,22 +42,6 @@ def show(id, lang, mysql):
 
     london_gazette_sql = 'SELECT london_gazette_date, london_gazette_page FROM london_gazette_join JOIN london_gazette ON london_gazette.london_gazette_id=london_gazette_join.london_gazette_lg_id WHERE london_gazette_join.london_gazette_t_id=%s'
     london_gazette_result = run_sql(london_gazette_sql, mysql, values)
-
-    image_source_sql = f'''
-        SELECT image_source_auckland_libraries, archives_name, archives_ref, family_name, newspaper_name, newspaper_date, book_title, book_town, book_publisher, book_year, book_page
-
-        FROM image_source
-
-        LEFT JOIN tunneller ON tunneller.id=image_source.image_source_t_id
-        LEFT JOIN archives ON archives.archives_id=image_source.image_source_archives_fk
-        LEFT JOIN archives_name ON archives_name.archives_name_id=archives.archives_name_fk
-        LEFT JOIN family ON family.family_id=image_source.image_source_family_fk
-        LEFT JOIN newspaper ON newspaper.newspaper_id=image_source.image_source_newspaper_fk
-        LEFT JOIN newspaper_name ON newspaper_name.newspaper_name_id=newspaper.newspaper_name_fk
-        LEFT JOIN book ON book.book_id=image_source.image_source_book_fk
-
-        WHERE tunneller.id=%s'''
-    image_source_result = run_sql(image_source_sql, mysql, values)
 
     image_source_book_id_sql = f'''
         SELECT book_id
@@ -69,5 +59,6 @@ def show(id, lang, mysql):
             image_authors_result = run_sql(
                 image_authors_sql, mysql, formatted_book_id)
             return image_authors_result
+        return []
 
-    return tunneller_result, nz_archives_result, london_gazette_result, image_source_result, get_image_source_book_authors(image_source_book_id_result)
+    return tunneller_result, nz_archives_result, london_gazette_result, get_image_source_book_authors(image_source_book_id_result)

@@ -3,10 +3,10 @@ from .parent.parent_mapper import map_parent
 from .birth.birth_mapper import map_birth
 from .nz_archives.nz_archives_mapper import map_nz_archives
 from .london_gazette.london_gazette_mapper import map_london_gazette
-from .image_source.image_source_mapper import map_image_source
+from .image_source.image_source_mapper import map_authors
 
 
-def map_tunneller(tunneller, nz_archives, london_gazette, image_source, image_source_book_authors):
+def map_tunneller(tunneller, nz_archives, london_gazette, image_source_book_authors):
     profile = None
     for data in tunneller:
         profile = {
@@ -74,6 +74,12 @@ def map_tunneller(tunneller, nz_archives, london_gazette, image_source, image_so
                 },
                 'londonGazette': map_london_gazette(london_gazette)
             },
-            'image': {'file': data['image'], 'source': map_image_source(image_source, image_source_book_authors)}
+            'image': {'file': data['image'], 'source': {
+                'aucklandLibraries': data['image_source_auckland_libraries'],
+                'archives': {'location': data['archives_name'], 'reference': data['archives_ref']},
+                'family': data['family_name'],
+                'newspaper': {'name': data['newspaper_name'], 'date': assert_non_nullish_date_and_format(data['newspaper_date'])},
+                'book': {'authors': map_authors(image_source_book_authors), 'title': data['book_title'], 'town': data['book_town'], 'publisher': data['book_publisher'], 'year': data['book_year'], 'page': data['book_page']}
+            }}
         }
     return profile
