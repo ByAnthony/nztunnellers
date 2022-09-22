@@ -18,7 +18,7 @@ from .translations.translations import medal_citation_col
 
 def show(id, lang, mysql):
     tunneller_sql = f'''
-        SELECT id, surname, forename, aka, serial, {rank_col[lang]} AS rank, {embarkation_unit_col[lang]} AS embarkation_unit, training.training_start, training.training_location, {training_location_type_col[lang]} AS training_location_type, transport_uk.transport_uk_ref, transport_uk.transport_uk_vessel, transport_uk.transport_uk_start, transport_uk.transport_uk_origin, transport_uk.transport_uk_end, transport_uk.transport_uk_destination, {section_col[lang]} AS section, {attached_corps_col[lang]} AS attached_corps, birth_date, birth_year, {birth_country_col[lang]} AS birth_country, mother_name, {mother_origin_col[lang]} AS mother_origin, father_name, {father_origin_col[lang]} AS father_origin, nz_resident_in_month, {marital_status_col[lang]} AS marital_status, wife_name, {occupation_col[lang]} AS occupation, {religion_col[lang]} AS religion, enlistment_date, military_district_name, posted_date, {posted_from_corps_col[lang]} AS posted_from_corps, awmm_cenotaph, nominal_roll.nominal_roll_volume, nominal_roll.nominal_roll_number, nominal_roll.nominal_roll_page, image, image_source_auckland_libraries, archives_name, archives_ref, family_name, newspaper_name, newspaper_date, book_title, book_town, book_publisher, book_year, book_page
+        SELECT id, surname, forename, aka, serial, {rank_col[lang]} AS rank, {embarkation_unit_col[lang]} AS embarkation_unit, training.training_start, training.training_location, {training_location_type_col[lang]} AS training_location_type, transport_uk.transport_uk_ref, transport_uk.transport_uk_vessel, transport_uk.transport_uk_start, transport_uk.transport_uk_origin, transport_uk.transport_uk_end, transport_uk.transport_uk_destination, {section_col[lang]} AS section, {attached_corps_col[lang]} AS attached_corps, birth_date, birth_year, {birth_country_col[lang]} AS birth_country, mother_name, {mother_origin_col[lang]} AS mother_origin, father_name, {father_origin_col[lang]} AS father_origin, nz_resident_in_month, {marital_status_col[lang]} AS marital_status, wife_name, {occupation_col[lang]} AS occupation, last_employer_name, {religion_col[lang]} AS religion, enlistment_date, military_district_name, posted_date, {posted_from_corps_col[lang]} AS posted_from_corps, awmm_cenotaph, nominal_roll.nominal_roll_volume, nominal_roll.nominal_roll_number, nominal_roll.nominal_roll_page, image, image_source_auckland_libraries, archives_name, archives_ref, family_name, newspaper_name, newspaper_date, book_title, book_town, book_publisher, book_year, book_page
 
         FROM tunneller t
 
@@ -34,6 +34,7 @@ def show(id, lang, mysql):
         LEFT JOIN country father_origin ON t.father_origin_fk=father_origin.country_id
         LEFT JOIN marital_status ON t.marital_status_fk=marital_status.marital_status_id
         LEFT JOIN occupation ON t.occupation_fk=occupation.occupation_id
+        LEFT JOIN last_employer ON t.last_employer_fk=last_employer.last_employer_id
         LEFT JOIN religion ON t.religion_fk=religion.religion_id
         LEFT JOIN military_district ON t.military_district_fk=military_district.military_district_id
         LEFT JOIN corps posted_from_corps ON t.posted_corps_fk=posted_from_corps.corps_id
