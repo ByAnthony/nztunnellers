@@ -32,6 +32,7 @@ def map_tunneller(tunneller, medals, nz_archives, london_gazette, image_source_b
                         'wife': data['wife_name']
                     },
                     'religion': data['religion'],
+                    'residence': data['town_name'],
                     'occupation': {
                         'name': data['occupation'],
                         'last_employer': data['last_employer_name']
