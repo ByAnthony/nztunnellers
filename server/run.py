@@ -38,7 +38,7 @@ def tunneller(id):
         return 'Language not supported', 400
     tunneller, army_experience, medals, nz_archives, london_gazette, image_source_book_authors = tunneller_repository.show(
         id, lang, mysql)
-    return jsonify(map_tunneller(tunneller, army_experience, medals, nz_archives, london_gazette, image_source_book_authors))
+    return jsonify(map_tunneller(tunneller, army_experience, medals, nz_archives, london_gazette, image_source_book_authors, lang))
 
 
 if __name__ == '__main__':

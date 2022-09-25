@@ -9,7 +9,7 @@ from .london_gazette.london_gazette_mapper import map_london_gazette
 from .image_source_book_authors.image_source_book_authors_mapper import map_authors
 
 
-def map_tunneller(tunneller, army_experience, medals, nz_archives, london_gazette, image_source_book_authors):
+def map_tunneller(tunneller, army_experience, medals, nz_archives, london_gazette, image_source_book_authors, lang):
     profile = None
     for data in tunneller:
         profile = {
@@ -26,7 +26,7 @@ def map_tunneller(tunneller, army_experience, medals, nz_archives, london_gazett
             'preWar': {
                 'birth': map_birth(data['birth_date'], data['birth_year'], data['birth_country']),
                 'migrateToNewZealand': {
-                    'newZealandResident': month_year_mapper(data['nz_resident_in_month'])
+                    'newZealandResident': month_year_mapper(data['nz_resident_in_month'], lang)
                 },
                 'civilLife': {
                     'maritalStatus': {
@@ -40,7 +40,7 @@ def map_tunneller(tunneller, army_experience, medals, nz_archives, london_gazett
                         'last_employer': data['last_employer_name']
                     }
                 },
-                'armyExperience': map_army_experience(army_experience)
+                'armyExperience': map_army_experience(army_experience, lang)
             },
             'militaryLife': {
                 'serial': data['serial'],
