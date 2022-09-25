@@ -12,6 +12,7 @@ from .translations.translations import marital_status_col
 from .translations.translations import occupation_col
 from .translations.translations import religion_col
 from .translations.translations import posted_from_corps_col
+from .translations.translations import conflict_col
 from .translations.translations import medal_name_col
 from .translations.translations import medal_citation_col
 
@@ -51,6 +52,15 @@ def show(id, lang, mysql):
     values = [id]
     tunneller_result = run_sql(tunneller_sql, mysql, values)
 
+    army_experience_sql = f'''
+        SELECT army_experience_name, {country_col[lang]} AS country, {conflict_col[lang]} AS conflict_name, army_experience_in_month
+        FROM army_experience_join
+        LEFT JOIN army_experience ON army_experience.army_experience_id=army_experience_join.army_experience_c_id
+        LEFT JOIN country ON country.country_id=army_experience_join.army_experience_c_c_id
+        LEFT JOIN conflict ON conflict.conflict_id=army_experience_join.army_experience_w_id
+        WHERE army_experience_join.army_experience_t_id=%s'''
+    army_experience_result = run_sql(army_experience_sql, mysql, values)
+
     medals_sql = f'''
         SELECT {medal_name_col[lang]} AS medal_name, {medal_citation_col[lang]} AS medal_citation, {country_col[lang]} AS country
         FROM medal_join 
@@ -84,4 +94,4 @@ def show(id, lang, mysql):
             return image_authors_result
         return []
 
-    return tunneller_result, medals_result, nz_archives_result, london_gazette_result, get_image_source_book_authors(image_source_book_id_result)
+    return tunneller_result, army_experience_result, medals_result, nz_archives_result, london_gazette_result, get_image_source_book_authors(image_source_book_id_result)

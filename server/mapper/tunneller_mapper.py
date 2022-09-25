@@ -1,13 +1,15 @@
 from .date.date_mapper import assert_non_nullish_date_and_format
+from .month_year.month_year_mapper import month_year_mapper
 from .parent.parent_mapper import map_parent
 from .birth.birth_mapper import map_birth
+from .army_experience.army_experience_mapper import map_army_experience
 from .medals.medals_mapper import map_medals
 from .nz_archives.nz_archives_mapper import map_nz_archives
 from .london_gazette.london_gazette_mapper import map_london_gazette
 from .image_source_book_authors.image_source_book_authors_mapper import map_authors
 
 
-def map_tunneller(tunneller, medals, nz_archives, london_gazette, image_source_book_authors):
+def map_tunneller(tunneller, army_experience, medals, nz_archives, london_gazette, image_source_book_authors):
     profile = None
     for data in tunneller:
         profile = {
@@ -24,7 +26,7 @@ def map_tunneller(tunneller, medals, nz_archives, london_gazette, image_source_b
             'preWar': {
                 'birth': map_birth(data['birth_date'], data['birth_year'], data['birth_country']),
                 'migrateToNewZealand': {
-                    'newZealandResident': data['nz_resident_in_month']
+                    'newZealandResident': month_year_mapper(data['nz_resident_in_month'])
                 },
                 'civilLife': {
                     'maritalStatus': {
@@ -37,7 +39,8 @@ def map_tunneller(tunneller, medals, nz_archives, london_gazette, image_source_b
                         'name': data['occupation'],
                         'last_employer': data['last_employer_name']
                     }
-                }
+                },
+                'armyExperience': map_army_experience(army_experience)
             },
             'militaryLife': {
                 'serial': data['serial'],

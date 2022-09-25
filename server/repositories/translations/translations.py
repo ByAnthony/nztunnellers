@@ -30,6 +30,8 @@ occupation_col = {'en': 'occupation.occupation_en',
 
 religion_col = {'en': 'religion.religion_en', 'fr': 'religion.religion_fr'}
 
+conflict_col = {'en': 'conflict_name_en', 'fr': 'conflict_name_fr'}
+
 posted_from_corps_col = {
     'en': 'posted_from_corps.corps_en', 'fr': 'posted_from_corps.corps_fr'}
 
