@@ -5,6 +5,7 @@ from .birth.birth_mapper import map_birth
 from .army_experience.army_experience_mapper import map_army_experience
 from .medals.medals_mapper import map_medals
 from .nz_archives.nz_archives_mapper import map_nz_archives
+from .nominal_roll.nominal_roll_mapper import convert_nominal_roll
 from .london_gazette.london_gazette_mapper import map_london_gazette
 from .image_source_book_authors.image_source_book_authors_mapper import map_authors
 
@@ -74,11 +75,7 @@ def map_tunneller(tunneller, army_experience, medals, nz_archives, london_gazett
             'sources': {
                 'newZealandArchives': map_nz_archives(nz_archives),
                 'awmmCenotaph': '{}{}'.format('https://www.aucklandmuseum.com/war-memorial/online-cenotaph/record/', data['awmm_cenotaph']),
-                'nominalRoll': {
-                    'volume': data['nominal_roll_volume'],
-                    'roll': data['nominal_roll_number'],
-                    'page': data['nominal_roll_page']
-                },
+                'nominalRoll': convert_nominal_roll(data['nominal_roll_volume'], data['nominal_roll_number'], data['nominal_roll_page'], lang),
                 'londonGazette': map_london_gazette(london_gazette)
             },
             'image': {'file': data['image'], 'source': {
