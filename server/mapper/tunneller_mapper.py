@@ -73,7 +73,7 @@ def map_tunneller(tunneller, army_experience, medals, nz_archives, london_gazett
             },
             'sources': {
                 'newZealandArchives': map_nz_archives(nz_archives),
-                'awmmCenotaph': data['awmm_cenotaph'],
+                'awmmCenotaph': '{}{}'.format('https://www.aucklandmuseum.com/war-memorial/online-cenotaph/record/', data['awmm_cenotaph']),
                 'nominalRoll': {
                     'volume': data['nominal_roll_volume'],
                     'roll': data['nominal_roll_number'],
