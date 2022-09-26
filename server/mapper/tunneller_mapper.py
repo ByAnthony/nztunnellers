@@ -82,7 +82,7 @@ def map_tunneller(tunneller, army_experience, medals, nz_archives, london_gazett
                 'londonGazette': map_london_gazette(london_gazette)
             },
             'image': {'file': data['image'], 'source': {
-                'aucklandLibraries': data['image_source_auckland_libraries'],
+                'aucklandLibraries': '{}{}{}'.format('https://digitalnz.org/records?text=', data['image_source_auckland_libraries'], '&tab=Images#'),
                 'archives': {'location': data['archives_name'], 'reference': data['archives_ref']},
                 'family': data['family_name'],
                 'newspaper': {'name': data['newspaper_name'], 'date': assert_non_nullish_date_and_format(data['newspaper_date'])},
