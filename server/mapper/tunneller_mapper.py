@@ -1,5 +1,5 @@
 from .date.date_mapper import assert_non_nullish_date_and_format
-from .month_year.month_year_mapper import month_year_mapper
+from .month_year.month_year_mapper import convert_month_year
 from .parent.parent_mapper import map_parent
 from .birth.birth_mapper import map_birth
 from .army_experience.army_experience_mapper import map_army_experience
@@ -26,7 +26,7 @@ def map_tunneller(tunneller, army_experience, medals, nz_archives, london_gazett
             'preWar': {
                 'birth': map_birth(data['birth_date'], data['birth_year'], data['birth_country']),
                 'migrateToNewZealand': {
-                    'newZealandResident': month_year_mapper(data['nz_resident_in_month'], lang)
+                    'newZealandResident': convert_month_year(data['nz_resident_in_month'], lang)
                 },
                 'civilLife': {
                     'maritalStatus': {

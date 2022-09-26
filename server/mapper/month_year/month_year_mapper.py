@@ -1,12 +1,17 @@
-month_col = {'en': 'months', 'fr': 'mois'}
-year_col = {'en': 'years', 'fr': 'ans'}
+mois = 'mois'
+
+month_col = {'en': 'month', 'fr': mois}
+months_col = {'en': 'months', 'fr': mois}
+years_col = {'en': 'years', 'fr': 'ans'}
 
 
-def month_year_mapper(month, lang):
+def convert_month_year(month, lang):
     if month is not None:
-        if int(month) < int(24):
+        if int(month) == 1:
             return '{} {}'.format(month, month_col[lang])
+        if int(month) > int(1) and int(month) < int(24):
+            return '{} {}'.format(month, months_col[lang])
         if int(month) >= int(24):
             result = int(month) // int(12)
-            return '{} {}'.format(result, year_col[lang])
+            return '{} {}'.format(result, years_col[lang])
     return None
