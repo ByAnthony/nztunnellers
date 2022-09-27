@@ -10,6 +10,12 @@ from .london_gazette.london_gazette_mapper import map_london_gazette
 from .image_source_book_authors.image_source_book_authors_mapper import map_authors
 
 
+def translate_transport_ref(transport_reference, lang):
+    if lang == 'fr' and transport_reference == 'S.S. Ruapehu 18 December 1915':
+        return 'S.S. Ruapehu 18 décembre 1915'
+    return transport_reference
+
+
 def map_tunneller(tunneller, army_experience, medals, nz_archives, london_gazette, image_source_book_authors, lang):
     profile = None
     for data in tunneller:
@@ -62,7 +68,7 @@ def map_tunneller(tunneller, army_experience, medals, nz_archives, london_gazett
                         'locationType': data['training_location_type']
                     },
                     'transportUnitedKindgom': {
-                        'id': data['transport_uk_ref'],
+                        'id': translate_transport_ref(data['transport_uk_ref'], lang),
                         'vessel': data['transport_uk_vessel'],
                         'departure': assert_non_nullish_date_and_format(data['transport_uk_start']),
                         'from': data['transport_uk_origin'],
