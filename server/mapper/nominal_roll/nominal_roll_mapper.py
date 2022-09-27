@@ -1,9 +1,9 @@
 def convert_nominal_roll(volume, roll, page, lang):
 
     no_break_space = '\N{NO-BREAK SPACE}'
-    title_1916 = {'en': 'Nominal Rolls of New Zealand Expeditionary Force',
+    title_1919 = {'en': 'Nominal Rolls of New Zealand Expeditionary Force',
                   'fr': 'Liste nominative du corps expéditionnaire néo-zélandais'}
-    title_1919 = {'en': 'Nominal Roll of New Zealand Expeditionary Force, 1915. New Zealand Engineers Tunnelling Company',
+    title_1916 = {'en': 'Nominal Roll of New Zealand Expeditionary Force, 1915. New Zealand Engineers Tunnelling Company',
                   'fr': 'Liste nominative du corps expéditionnaire néo-zélandais, 1915. Compagnie de tunneliers'}
     roll_number_col = {'en': 'Roll No.', 'fr': 'Liste n\N{DEGREE SIGN}'}
 
