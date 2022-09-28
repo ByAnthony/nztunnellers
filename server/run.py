@@ -1,10 +1,11 @@
 from flask import Flask, jsonify, request
 from flask_mysqldb import MySQL
+from mapper.roll_mapper import map_roll
+from mapper.tunneller_mapper import map_tunneller
+
 import os
 import repositories.roll_repository as tunnellers_repository
 import repositories.tunneller_repository as tunneller_repository
-from mapper.roll_mapper import map_roll
-from mapper.tunneller_mapper import map_tunneller
 
 
 app = Flask(__name__)
