@@ -1,4 +1,4 @@
-from ..month_year.month_year_mapper import convert_month_year
+from ..converter.month_year_converter import convert_month_year
 
 
 def map_army_experience(experience, lang):

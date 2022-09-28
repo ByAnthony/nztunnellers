@@ -1,4 +1,4 @@
-from ..date.date_mapper import assert_non_nullish_date_and_format
+from ..formatter.date_formatter import assert_non_nullish_date_and_format
 
 
 def map_london_gazette(london_gazette):

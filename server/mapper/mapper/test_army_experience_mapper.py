@@ -1,5 +1,5 @@
 from . import army_experience_mapper
-from ..month_year import month_year_mapper
+from ..converter import month_year_converter
 
 
 country_col = {'en': 'New Zealand', 'fr': 'Nouvelle-Zélande'}
@@ -18,11 +18,11 @@ def test_map_army_experience_in_english():
         {'unit': 'Garrison Artillery Volunteers',
             'country': country_col['en'],
             'conflict': None,
-            'duration': month_year_mapper.convert_month_year(12, 'en')},
+            'duration': month_year_converter.convert_month_year(12, 'en')},
         {'unit': None,
          'country': None,
          'conflict': 'South African War',
-         'duration': month_year_mapper.convert_month_year(250, 'en')}]
+         'duration': month_year_converter.convert_month_year(250, 'en')}]
 
 
 def test_map_army_experience_in_french():
@@ -30,4 +30,4 @@ def test_map_army_experience_in_french():
         {'unit': 'National Reserve',
          'country': country_col['fr'],
          'conflict': 'Guerre d\'Afrique du Sud',
-         'duration': month_year_mapper.convert_month_year(50, 'fr')}]
+         'duration': month_year_converter.convert_month_year(50, 'fr')}]

@@ -1,4 +1,4 @@
-def convert_nominal_roll(volume, roll, page, lang):
+def format_nominal_roll(volume, roll, page, lang):
 
     no_break_space = '\N{NO-BREAK SPACE}'
     title_1919 = {'en': 'Nominal Rolls of New Zealand Expeditionary Force',

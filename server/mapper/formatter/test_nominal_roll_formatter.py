@@ -1,4 +1,4 @@
-from . import nominal_roll_mapper
+from . import nominal_roll_formatter
 
 
 volume = 'III'
@@ -18,7 +18,7 @@ title_1916 = {'en': 'Nominal Roll of New Zealand Expeditionary Force, 1915. New 
 
 
 def test_if_volume_and_roll_are_not_none_and_lang_en_returns_nominal_roll():
-    assert nominal_roll_mapper.convert_nominal_roll(volume, roll, page, en) == {
+    assert nominal_roll_formatter.format_nominal_roll(volume, roll, page, en) == {
         'title': title_1919[en],
         'town': 'Wellington',
         'publisher': 'Government Printer',
@@ -29,7 +29,7 @@ def test_if_volume_and_roll_are_not_none_and_lang_en_returns_nominal_roll():
 
 
 def test_if_volume_and_roll_are_not_none_and_lang_fr_returns_nominal_roll():
-    assert nominal_roll_mapper.convert_nominal_roll(volume, roll, page, fr) == {
+    assert nominal_roll_formatter.format_nominal_roll(volume, roll, page, fr) == {
         'title': title_1919[fr],
         'town': 'Wellington',
         'publisher': 'Government Printer',
@@ -40,7 +40,7 @@ def test_if_volume_and_roll_are_not_none_and_lang_fr_returns_nominal_roll():
 
 
 def test_if_volume_and_roll_are_none_and_lang_en_returns_nominal_roll():
-    assert nominal_roll_mapper.convert_nominal_roll(None, None, page, en) == {
+    assert nominal_roll_formatter.format_nominal_roll(None, None, page, en) == {
         'title': title_1916[en],
         'town': 'Wellington',
         'publisher': 'Government Printer',
@@ -49,7 +49,7 @@ def test_if_volume_and_roll_are_none_and_lang_en_returns_nominal_roll():
 
 
 def test_if_volume_and_roll_are_none_and_lang_fr_returns_nominal_roll():
-    assert nominal_roll_mapper.convert_nominal_roll(None, None, page, fr) == {
+    assert nominal_roll_formatter.format_nominal_roll(None, None, page, fr) == {
         'title': title_1916[fr],
         'town': 'Wellington',
         'publisher': 'Government Printer',

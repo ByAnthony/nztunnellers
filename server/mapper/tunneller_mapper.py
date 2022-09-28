@@ -1,19 +1,17 @@
-from .date.date_mapper import assert_non_nullish_date_and_format
-from .month_year.month_year_mapper import convert_month_year
-from .parent.parent_mapper import map_parent
-from .birth.birth_mapper import map_birth
-from .army_experience.army_experience_mapper import map_army_experience
-from .medals.medals_mapper import map_medals
-from .nz_archives.nz_archives_mapper import map_nz_archives
-from .nominal_roll.nominal_roll_mapper import convert_nominal_roll
-from .london_gazette.london_gazette_mapper import map_london_gazette
-from .image_source_book_authors.image_source_book_authors_mapper import map_authors
-
-
-def translate_transport_ref(transport_reference, lang):
-    if lang == 'fr' and transport_reference == 'S.S. Ruapehu 18 December 1915':
-        return 'S.S. Ruapehu 18 décembre 1915'
-    return transport_reference
+from .formatter.date_formatter import assert_non_nullish_date_and_format
+from .converter.month_year_converter import convert_month_year
+from .formatter.auckland_libraries_link_formatter import format_auckland_libraries_link
+from .formatter.parent_formatter import format_parent
+from .formatter.birth_formatter import format_birth
+from .mapper.army_experience_mapper import map_army_experience
+from .mapper.medals_mapper import map_medals
+from .mapper.nz_archives_mapper import map_nz_archives
+from .formatter.nominal_roll_formatter import format_nominal_roll
+from .mapper.london_gazette_mapper import map_london_gazette
+from .mapper.image_source_book_authors_mapper import map_authors
+from .translator.family_translator import translate_family
+from .translator.superscript_translator import translate_superscript
+from .translator.transport_ref_translator import translate_transport_ref
 
 
 def map_tunneller(tunneller, army_experience, medals, nz_archives, london_gazette, image_source_book_authors, lang):
@@ -27,11 +25,11 @@ def map_tunneller(tunneller, army_experience, medals, nz_archives, london_gazett
                 'aka': data['aka']
             },
             'parents': {
-                'mother': map_parent(data['mother_name'], data['mother_origin']),
-                'father': map_parent(data['father_name'], data['father_origin'])
+                'mother': format_parent(data['mother_name'], data['mother_origin']),
+                'father': format_parent(data['father_name'], data['father_origin'])
             },
             'preWar': {
-                'birth': map_birth(data['birth_date'], data['birth_year'], data['birth_country']),
+                'birth': format_birth(data['birth_date'], data['birth_year'], data['birth_country']),
                 'migrateToNewZealand': {
                     'newZealandResident': convert_month_year(data['nz_resident_in_month'], lang)
                 },
@@ -59,8 +57,8 @@ def map_tunneller(tunneller, army_experience, medals, nz_archives, london_gazett
                     'postedFrom': data['posted_from_corps']
                 },
                 'embarkationUnit': {
-                    'embarkationUnit': data['embarkation_unit'],
-                    'section': data['section'],
+                    'embarkationUnit': translate_superscript(data['embarkation_unit'], lang),
+                    'section': translate_superscript(data['section'], lang),
                     'attachedCorps': data['attached_corps'],
                     'training': {
                         'start': assert_non_nullish_date_and_format(data['training_start']),
@@ -81,13 +79,13 @@ def map_tunneller(tunneller, army_experience, medals, nz_archives, london_gazett
             'sources': {
                 'newZealandArchives': map_nz_archives(nz_archives),
                 'awmmCenotaph': '{}{}'.format('https://www.aucklandmuseum.com/war-memorial/online-cenotaph/record/', data['awmm_cenotaph']),
-                'nominalRoll': convert_nominal_roll(data['nominal_roll_volume'], data['nominal_roll_number'], data['nominal_roll_page'], lang),
+                'nominalRoll': format_nominal_roll(data['nominal_roll_volume'], data['nominal_roll_number'], data['nominal_roll_page'], lang),
                 'londonGazette': map_london_gazette(london_gazette)
             },
             'image': {'file': data['image'], 'source': {
-                'aucklandLibraries': '{}{}{}'.format('https://digitalnz.org/records?text=', data['image_source_auckland_libraries'], '&tab=Images#'),
+                'aucklandLibraries': format_auckland_libraries_link(data['image_source_auckland_libraries']),
                 'archives': {'location': data['archives_name'], 'reference': data['archives_ref']},
-                'family': data['family_name'],
+                'family': translate_family(data['family_name'], lang),
                 'newspaper': {'name': data['newspaper_name'], 'date': assert_non_nullish_date_and_format(data['newspaper_date'])},
                 'book': {'authors': map_authors(image_source_book_authors), 'title': data['book_title'], 'town': data['book_town'], 'publisher': data['book_publisher'], 'year': data['book_year'], 'page': data['book_page']}
             }}
