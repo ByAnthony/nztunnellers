@@ -1,4 +1,4 @@
-from . import nz_archives_mapper
+from ....mapper.mapper import nz_archives_mapper
 
 actual_ref_1 = {'nz_archives_ref': 'AABK 18805 W5520 1/0006561',
                 'nz_archives_url': '22280535'}

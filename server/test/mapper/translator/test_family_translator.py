@@ -1,4 +1,4 @@
-from . import family_translator
+from ....mapper.translator import family_translator
 
 
 family = 'Williamson'

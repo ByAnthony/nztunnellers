@@ -1,4 +1,4 @@
-from . import nominal_roll_formatter
+from ....mapper.formatter import nominal_roll_formatter
 
 
 volume = 'III'

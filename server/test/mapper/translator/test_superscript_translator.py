@@ -1,4 +1,4 @@
-from . import superscript_translator
+from ....mapper.translator import superscript_translator
 
 
 def test_if_lang_fr_and_string_contains_re_returns_superscript_re():
@@ -19,3 +19,13 @@ def test_if_lang_fr_and_string_contains_er_returns_superscript_e():
 def test_if_lang_en_returns_string():
     assert superscript_translator.translate_superscript(
         '2nd Reinforcement', 'en') == '2nd Reinforcement'
+
+
+def test_if_string_is_none_returns_none():
+    assert superscript_translator.translate_superscript(
+        None, 'en') == None
+
+
+def test_if_string_is_none_returns_none():
+    assert superscript_translator.translate_superscript(
+        None, 'fr') == None

@@ -1,4 +1,4 @@
-from . import parent_formatter
+from ....mapper.formatter import parent_formatter
 
 
 def test_map_parent():

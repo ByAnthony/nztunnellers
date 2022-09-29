@@ -1,4 +1,4 @@
-from . import auckland_libraries_link_formatter
+from ....mapper.formatter import auckland_libraries_link_formatter
 
 
 image_source = 'H-31 67829'

@@ -1,5 +1,5 @@
 from datetime import date
-from . import london_gazette_mapper
+from ....mapper.mapper import london_gazette_mapper
 
 
 london_gazette_list = ({'london_gazette_date': date(1917, 12, 28), 'london_gazette_page': '13575'}, {

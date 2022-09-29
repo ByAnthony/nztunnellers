@@ -1,5 +1,5 @@
 from datetime import date
-from . import date_formatter
+from ....mapper.formatter import date_formatter
 
 
 def test_if_date_is_not_none_and_then_format_date():

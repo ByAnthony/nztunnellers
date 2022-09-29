@@ -1,5 +1,5 @@
-from . import army_experience_mapper
-from ..converter import month_year_converter
+from ....mapper.mapper import army_experience_mapper
+from ....mapper.converter import month_year_converter
 
 
 country_col = {'en': 'New Zealand', 'fr': 'Nouvelle-Zélande'}
