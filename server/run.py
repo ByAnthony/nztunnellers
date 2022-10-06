@@ -1,9 +1,9 @@
 from flask import Flask, jsonify, request
 from flask_mysqldb import MySQL
-from mapper.roll_mapper import map_roll
 from mapper.tunneller_mapper import map_tunneller
 
 import os
+import json
 import repositories.roll_repository as tunnellers_repository
 import repositories.tunneller_repository as tunneller_repository
 
@@ -29,7 +29,9 @@ mysql = MySQL(app)
 @app.route("/roll/", methods=["GET"])
 def roll():
     tunnellers = tunnellers_repository.select_all(mysql)
-    return jsonify(map_roll(tunnellers))
+    roll = json.dumps(
+        [tunneller.__dict__ for tunneller in tunnellers], indent=4)
+    return roll
 
 
 @app.route("/roll/<id>", methods=["GET"])
