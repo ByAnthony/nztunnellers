@@ -1,4 +1,5 @@
 from db.run_sql import run_sql
+from models.tunneller import Tunneller
 from .translations.translations import attached_corps_col
 from .translations.translations import birth_country_col
 from .translations.translations import conflict_col
@@ -18,8 +19,10 @@ from .translations.translations import training_location_type_col
 
 
 def show(id, lang, mysql):
+
+    # profile = None
     tunneller_sql = f'''
-        SELECT id, surname, forename, aka, serial, {rank_col[lang]} AS rank, {embarkation_unit_col[lang]} AS embarkation_unit, training.training_start, training.training_location, {training_location_type_col[lang]} AS training_location_type, transport_uk.transport_uk_ref, transport_uk.transport_uk_vessel, transport_uk.transport_uk_start, transport_uk.transport_uk_origin, transport_uk.transport_uk_end, transport_uk.transport_uk_destination, {section_col[lang]} AS section, {attached_corps_col[lang]} AS attached_corps, birth_date, birth_year, {birth_country_col[lang]} AS birth_country, mother_name, {mother_origin_col[lang]} AS mother_origin, father_name, {father_origin_col[lang]} AS father_origin, nz_resident_in_month, {marital_status_col[lang]} AS marital_status, wife_name, {occupation_col[lang]} AS occupation, last_employer_name, town_name, {religion_col[lang]} AS religion, enlistment_date, military_district_name, posted_date, {posted_from_corps_col[lang]} AS posted_from_corps, awmm_cenotaph, nominal_roll.nominal_roll_volume, nominal_roll.nominal_roll_number, nominal_roll.nominal_roll_page, image, image_source_auckland_libraries, archives_name, archives_ref, family_name, newspaper_name, newspaper_date, book_title, book_town, book_publisher, book_year, book_page
+        SELECT id, forename, surname, aka, serial, {rank_col[lang]} AS rank, {embarkation_unit_col[lang]} AS embarkation_unit, training.training_start, training.training_location, {training_location_type_col[lang]} AS training_location_type, transport_uk.transport_uk_ref, transport_uk.transport_uk_vessel, transport_uk.transport_uk_start, transport_uk.transport_uk_origin, transport_uk.transport_uk_end, transport_uk.transport_uk_destination, {section_col[lang]} AS section, {attached_corps_col[lang]} AS attached_corps, birth_date, birth_year, {birth_country_col[lang]} AS birth_country, mother_name, {mother_origin_col[lang]} AS mother_origin, father_name, {father_origin_col[lang]} AS father_origin, nz_resident_in_month, {marital_status_col[lang]} AS marital_status, wife_name, {occupation_col[lang]} AS occupation, last_employer_name, town_name, {religion_col[lang]} AS religion, enlistment_date, military_district_name, posted_date, {posted_from_corps_col[lang]} AS posted_from_corps, awmm_cenotaph, nominal_roll.nominal_roll_volume, nominal_roll.nominal_roll_number, nominal_roll.nominal_roll_page, image, image_source_auckland_libraries, archives_name, archives_ref, family_name, newspaper_name, newspaper_date, book_title, book_town, book_publisher, book_year, book_page
 
         FROM tunneller t
 
@@ -95,3 +98,8 @@ def show(id, lang, mysql):
         return []
 
     return tunneller_result, army_experience_result, medals_result, nz_archives_result, london_gazette_result, get_image_source_book_authors(image_source_book_id_result)
+
+    # if tunneller_result is not None:
+    #     tunneller = Tunneller(tunneller_result['id'], tunneller_result['forename'], tunneller_result['surname'],
+    #                           tunneller_result['aka'], tunneller_result['serial'], tunneller_result['rank'], tunneller_result['embarkation_unit'])
+    # return tunneller

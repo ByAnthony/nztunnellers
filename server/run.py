@@ -42,6 +42,9 @@ def tunneller(id):
     tunneller, army_experience, medals, nz_archives, london_gazette, image_source_book_authors = tunneller_repository.show(
         id, lang, mysql)
     return jsonify(map_tunneller(tunneller, army_experience, medals, nz_archives, london_gazette, image_source_book_authors, lang))
+    # tunneller = tunneller_repository.show(id, lang, mysql)
+    # profile = json.dumps(tunneller.__dict__, indent=4)
+    # return profile
 
 
 if __name__ == '__main__':

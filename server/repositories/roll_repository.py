@@ -13,7 +13,7 @@ def select_all(mysql):
     results = run_sql(sql, mysql)
 
     for row in results:
-        tunneller = Roll(row['id'], row['forename'],
-                         row['surname'], row['serial'])
+        name = Roll.get_name(row['forename'], row['surname'])
+        tunneller = Roll(row['id'], name, row['serial'])
         roll.append(tunneller)
     return roll
