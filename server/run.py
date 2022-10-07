@@ -1,6 +1,5 @@
 from flask import Flask, request
 from flask_mysqldb import MySQL
-# from mapper.tunneller_mapper import map_tunneller
 
 import os
 import json
@@ -39,9 +38,6 @@ def tunneller(id):
     lang = request.args.get('lang', 'en')
     if lang not in ['en', 'fr']:
         return 'Language not supported', 400
-    # tunneller, army_experience, medals, nz_archives, london_gazette, image_source_book_authors = tunneller_repository.show(
-    #     id, lang, mysql)
-    # return jsonify(map_tunneller(tunneller, army_experience, medals, nz_archives, london_gazette, image_source_book_authors, lang))
     tunneller = tunneller_repository.show(id, lang, mysql)
     profile = json.dumps(tunneller.__dict__, indent=4)
     return profile

@@ -102,16 +102,17 @@ def show(id, lang, mysql):
 
         name = Tunneller.get_name(
             tunneller_result['forename'],
-            tunneller_result['surname']
-        )
+            tunneller_result['surname'])
 
         birth_date = Tunneller.get_birth_date(
             tunneller_result['birth_date']
         )
+
         birth_year = Tunneller.get_birth_year(
             tunneller_result['birth_year'],
             birth_date
         )
+
         birth_country = Tunneller.get_birth_country(
             tunneller_result['birth_country']
         )
@@ -126,6 +127,7 @@ def show(id, lang, mysql):
             tunneller_result['mother_name'],
             tunneller_result['mother_origin']
         )
+
         father = Tunneller.get_parent(
             tunneller_result['father_name'],
             tunneller_result['father_origin']
