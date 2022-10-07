@@ -104,7 +104,7 @@ def show(id, lang, mysql):
 
         name = Tunneller.get_name(
             tunneller_result['forename'], tunneller_result['surname'])
-        origins = Tunneller.get_origins(tunneller_result['birth_date'], tunneller_result['birth_year'], tunneller_result['birth_country'],
+        origins = Tunneller.get_origins(tunneller_result['birth_year'], tunneller_result['birth_date'], tunneller_result['birth_country'],
                                         tunneller_result['mother_name'], tunneller_result['mother_origin'], tunneller_result['father_name'], tunneller_result['father_origin'])
 
         tunneller = Tunneller(
