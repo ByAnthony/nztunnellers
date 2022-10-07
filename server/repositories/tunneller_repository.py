@@ -20,7 +20,7 @@ from .translations.translations import training_location_type_col
 
 def show(id, lang, mysql):
 
-    profile = None
+    tunneller = None
 
     tunneller_sql = f'''
         SELECT id, forename, surname, aka, serial, {rank_col[lang]} AS rank, {embarkation_unit_col[lang]} AS embarkation_unit, training.training_start, training.training_location, {training_location_type_col[lang]} AS training_location_type, transport_uk.transport_uk_ref, transport_uk.transport_uk_vessel, transport_uk.transport_uk_start, transport_uk.transport_uk_origin, transport_uk.transport_uk_end, transport_uk.transport_uk_destination, {section_col[lang]} AS section, {attached_corps_col[lang]} AS attached_corps, birth_date, birth_year, {birth_country_col[lang]} AS birth_country, mother_name, {mother_origin_col[lang]} AS mother_origin, father_name, {father_origin_col[lang]} AS father_origin, nz_resident_in_month, {marital_status_col[lang]} AS marital_status, wife_name, {occupation_col[lang]} AS occupation, last_employer_name, town_name, {religion_col[lang]} AS religion, enlistment_date, military_district_name, posted_date, {posted_from_corps_col[lang]} AS posted_from_corps, awmm_cenotaph, nominal_roll.nominal_roll_volume, nominal_roll.nominal_roll_number, nominal_roll.nominal_roll_page, image, image_source_auckland_libraries, archives_name, archives_ref, family_name, newspaper_name, newspaper_date, book_title, book_town, book_publisher, book_year, book_page
@@ -98,21 +98,126 @@ def show(id, lang, mysql):
             return image_authors_result
         return []
 
-    # return tunneller_result, army_experience_result, medals_result, nz_archives_result, london_gazette_result, get_image_source_book_authors(image_source_book_id_result)
-
     if tunneller_result is not None:
 
         name = Tunneller.get_name(
-            tunneller_result['forename'], tunneller_result['surname'])
-        birth = Tunneller.get_birth(
-            tunneller_result['birth_year'], tunneller_result['birth_date'], tunneller_result['birth_country'])
+            tunneller_result['forename'],
+            tunneller_result['surname']
+        )
+
+        birth_date = Tunneller.get_birth_date(
+            tunneller_result['birth_date']
+        )
+        birth_year = Tunneller.get_birth_year(
+            tunneller_result['birth_year'],
+            birth_date
+        )
+        birth_country = Tunneller.get_birth_country(
+            tunneller_result['birth_country']
+        )
+
+        birth_info = Tunneller.get_birth_info(
+            birth_year,
+            birth_date,
+            birth_country
+        )
+
         mother = Tunneller.get_parent(
-            tunneller_result['mother_name'], tunneller_result['mother_origin'])
+            tunneller_result['mother_name'],
+            tunneller_result['mother_origin']
+        )
         father = Tunneller.get_parent(
-            tunneller_result['father_name'], tunneller_result['father_origin'])
+            tunneller_result['father_name'],
+            tunneller_result['father_origin']
+        )
+
+        nz_resident = Tunneller.get_nz_resident(
+            tunneller_result['nz_resident_in_month'],
+            lang
+        )
+
         origins = Tunneller.get_origins(
-            birth, mother, father)
+            birth_info,
+            mother,
+            father,
+            nz_resident
+        )
+
+        marital_status = Tunneller.get_marital_status(
+            tunneller_result['marital_status'],
+            tunneller_result['wife_name']
+        )
+
+        occupation = Tunneller.get_occupation(
+            tunneller_result['occupation'],
+            tunneller_result['last_employer_name']
+        )
+
+        residence = Tunneller.get_residence(
+            tunneller_result['town_name']
+        )
+
+        religion = Tunneller.get_religion(
+            tunneller_result['religion']
+        )
+
+        army_experience = Tunneller.get_army_experience(
+            army_experience_result,
+            lang
+        )
+
+        pre_war_life = Tunneller.get_pre_war_life(
+            marital_status,
+            occupation,
+            residence,
+            religion,
+            army_experience
+        )
+
+        enlistment_date = Tunneller.get_enlistment_date(
+            tunneller_result['enlistment_date']
+        )
+
+        military_district = Tunneller.get_military_district(
+            tunneller_result['military_district_name']
+        )
+
+        alias = Tunneller.get_alias(
+            tunneller_result['aka']
+        )
+
+        posted_date = Tunneller.get_posted_date(
+            tunneller_result['posted_date']
+        )
+
+        posted_from = Tunneller.get_posted_from(
+            tunneller_result['posted_from_corps']
+        )
+
+        rank = Tunneller.get_rank(
+            tunneller_result['rank']
+        )
+
+        enlistment = Tunneller.get_enlistment(
+            enlistment_date,
+            military_district,
+            alias,
+            posted_date,
+            posted_from,
+            rank
+        )
+
+        military_life = Tunneller.get_military_life(
+            enlistment
+        )
 
         tunneller = Tunneller(
-            tunneller_result['id'], tunneller_result['serial'], name, origins)
+            tunneller_result['id'],
+            tunneller_result['serial'],
+            name,
+            origins,
+            pre_war_life,
+            military_life
+        )
+
     return tunneller

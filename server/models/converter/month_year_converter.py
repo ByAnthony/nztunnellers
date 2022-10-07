@@ -1,10 +1,18 @@
 def convert_month_year(month, lang):
 
     mois = 'mois'
-
-    month_col = {'en': 'month', 'fr': mois}
-    months_col = {'en': 'months', 'fr': mois}
-    years_col = {'en': 'years', 'fr': 'ans'}
+    month_col = {
+        'en': 'month',
+        'fr': mois
+    }
+    months_col = {
+        'en': 'months',
+        'fr': mois
+    }
+    years_col = {
+        'en': 'years',
+        'fr': 'ans'
+    }
 
     if month is not None:
         if int(month) == 1:

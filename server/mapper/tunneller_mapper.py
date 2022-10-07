@@ -1,55 +1,5 @@
-# from .converter.month_year_converter import convert_month_year
-# from .formatter.auckland_libraries_link_formatter import format_auckland_libraries_link
-# # from .formatter.birth_formatter import format_birth
-# from ..models.formatter.date_formatter import assert_non_nullish_date_and_format
-# from .formatter.nominal_roll_formatter import format_nominal_roll
-# from .formatter.parent_formatter import format_parent
-# from .mapper.army_experience_mapper import map_army_experience
-# from .mapper.image_source_book_authors_mapper import map_authors
-# from .mapper.london_gazette_mapper import map_london_gazette
-# from .mapper.medals_mapper import map_medals
-# from .mapper.nz_archives_mapper import map_nz_archives
-# from .translator.family_translator import translate_family
-# from .translator.superscript_translator import translate_superscript
-# from .translator.transport_ref_translator import translate_transport_ref
-
-
-# def map_tunneller(tunneller, army_experience, medals, nz_archives, london_gazette, image_source_book_authors, lang):
-#     profile = None
-#     for data in tunneller:
 #         profile = {
-#             'id': data['id'],
-#             'name': {
-#                 'forename': data['forename'],
-#                 'surname': data['surname'],
-#                 'aka': data['aka']
-#             },
-#             'parents': {
-#                 'mother': format_parent(data['mother_name'], data['mother_origin']),
-#                 'father': format_parent(data['father_name'], data['father_origin'])
-#             },
-#             'preWar': {
-#                 'birth': format_birth(data['birth_date'], data['birth_year'], data['birth_country']),
-#                 'migrateToNewZealand': {
-#                     'newZealandResident': convert_month_year(data['nz_resident_in_month'], lang)
-#                 },
-#                 'civilLife': {
-#                     'maritalStatus': {
-#                         'status': data['marital_status'],
-#                         'wife': data['wife_name']
-#                     },
-#                     'religion': data['religion'],
-#                     'residence': data['town_name'],
-#                     'occupation': {
-#                         'name': data['occupation'],
-#                         'last_employer': data['last_employer_name']
-#                     }
-#                 },
-#                 'armyExperience': map_army_experience(army_experience, lang)
-#             },
 #             'militaryLife': {
-#                 'serial': data['serial'],
-#                 'rank': data['rank'],
 #                 'enlistment': {
 #                     'date': assert_non_nullish_date_and_format(data['enlistment_date']),
 #                     'militaryDistrict': data['military_district_name'],
@@ -90,4 +40,3 @@
 #                 'book': {'authors': map_authors(image_source_book_authors), 'title': data['book_title'], 'town': data['book_town'], 'publisher': data['book_publisher'], 'year': data['book_year'], 'page': data['book_page']}
 #             }}
 #         }
-#     return profile
