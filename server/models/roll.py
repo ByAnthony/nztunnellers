@@ -4,7 +4,7 @@ from dataclasses import dataclass
 @dataclass
 class Roll():
     id: int
-    name: str
+    name: dict
     serial: str
 
     def get_name(forename: str, surname: str):
