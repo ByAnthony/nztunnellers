@@ -2,25 +2,45 @@ from dataclasses import dataclass
 from datetime import date
 from .roll import Roll
 
-from .formatter.birth_formatter import format_birth
-from .formatter.parent_formatter import format_parent
+from .formatter.date_formatter import assert_non_nullish_date_and_format, format_year
 
 
 @dataclass
 class Tunneller(Roll):
     origins: dict
 
+    def get_birth(birth_year, birth_date, birth_country):
+
+        formatted_birth_date = assert_non_nullish_date_and_format(birth_date)
+
+        def get_birth_year(birth_year, formatted_birth_date):
+            if birth_year is not None:
+                return birth_year
+            else:
+                formatted_year = format_year(formatted_birth_date)
+                return formatted_year
+
+        return {
+            'year': get_birth_year(birth_year, formatted_birth_date),
+            'date': formatted_birth_date,
+            'country': birth_country
+        }
+
+    def get_parent(name, origin_country):
+        return {
+            'name': name,
+            'origin': origin_country
+        }
+
     def get_origins(
-        birth_year: date.year,
-        birth_date: date,
-        birth_country: str,
-        mother: str,
-        mother_origin: str,
-        father: str,
-        father_origin: str
+        birth: dict,
+        mother: dict,
+        father: dict
     ):
         return {
-            'birth': format_birth(birth_year, birth_date, birth_country),
-            'parents': {'mother': format_parent(mother, mother_origin),
-                        'father': format_parent(father, father_origin)}
+            'birth': birth,
+            'parents': {
+                'mother': mother,
+                'father': father
+            }
         }
