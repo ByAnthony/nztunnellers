@@ -81,7 +81,7 @@ class Tunneller(Roll):
     def get_religion(religion: str):
         return religion
 
-    def get_army_experience(experience: list[dict], lang: str):
+    def get_army_experience(experience: tuple, lang: str):
         return map_army_experience(experience, lang)
 
     def get_pre_war_life(
@@ -169,13 +169,13 @@ class Tunneller(Roll):
             'to': arrival_port
         }
 
-    def get_medals(medals: list):
+    def get_medals(medals: tuple):
         return map_medals(medals)
 
     def get_military_life(
         enlistment: dict,
         transport_uk: dict,
-        medals: list
+        medals: list[dict]
     ):
         return {
             'enlistment': enlistment,
