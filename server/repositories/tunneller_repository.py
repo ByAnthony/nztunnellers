@@ -20,7 +20,8 @@ from .translations.translations import training_location_type_col
 
 def show(id, lang, mysql):
 
-    # profile = None
+    profile = None
+
     tunneller_sql = f'''
         SELECT id, forename, surname, aka, serial, {rank_col[lang]} AS rank, {embarkation_unit_col[lang]} AS embarkation_unit, training.training_start, training.training_location, {training_location_type_col[lang]} AS training_location_type, transport_uk.transport_uk_ref, transport_uk.transport_uk_vessel, transport_uk.transport_uk_start, transport_uk.transport_uk_origin, transport_uk.transport_uk_end, transport_uk.transport_uk_destination, {section_col[lang]} AS section, {attached_corps_col[lang]} AS attached_corps, birth_date, birth_year, {birth_country_col[lang]} AS birth_country, mother_name, {mother_origin_col[lang]} AS mother_origin, father_name, {father_origin_col[lang]} AS father_origin, nz_resident_in_month, {marital_status_col[lang]} AS marital_status, wife_name, {occupation_col[lang]} AS occupation, last_employer_name, town_name, {religion_col[lang]} AS religion, enlistment_date, military_district_name, posted_date, {posted_from_corps_col[lang]} AS posted_from_corps, awmm_cenotaph, nominal_roll.nominal_roll_volume, nominal_roll.nominal_roll_number, nominal_roll.nominal_roll_page, image, image_source_auckland_libraries, archives_name, archives_ref, family_name, newspaper_name, newspaper_date, book_title, book_town, book_publisher, book_year, book_page
 
@@ -53,7 +54,7 @@ def show(id, lang, mysql):
 
         WHERE id=%s'''
     values = [id]
-    tunneller_result = run_sql(tunneller_sql, mysql, values)
+    tunneller_result = run_sql(tunneller_sql, mysql, values)[0]
 
     army_experience_sql = f'''
         SELECT army_experience_name, {country_col[lang]} AS country, {conflict_col[lang]} AS conflict_name, army_experience_in_month
@@ -97,9 +98,15 @@ def show(id, lang, mysql):
             return image_authors_result
         return []
 
-    return tunneller_result, army_experience_result, medals_result, nz_archives_result, london_gazette_result, get_image_source_book_authors(image_source_book_id_result)
+    # return tunneller_result, army_experience_result, medals_result, nz_archives_result, london_gazette_result, get_image_source_book_authors(image_source_book_id_result)
 
-    # if tunneller_result is not None:
-    #     tunneller = Tunneller(tunneller_result['id'], tunneller_result['forename'], tunneller_result['surname'],
-    #                           tunneller_result['aka'], tunneller_result['serial'], tunneller_result['rank'], tunneller_result['embarkation_unit'])
-    # return tunneller
+    if tunneller_result is not None:
+
+        name = Tunneller.get_name(
+            tunneller_result['forename'], tunneller_result['surname'])
+        origins = Tunneller.get_origins(tunneller_result['birth_date'], tunneller_result['birth_year'], tunneller_result['birth_country'],
+                                        tunneller_result['mother_name'], tunneller_result['mother_origin'], tunneller_result['father_name'], tunneller_result['father_origin'])
+
+        tunneller = Tunneller(
+            tunneller_result['id'], tunneller_result['serial'], name, origins)
+    return tunneller
