@@ -1,11 +1,5 @@
 #         profile = {
 #             'militaryLife': {
-#                 'enlistment': {
-#                     'date': assert_non_nullish_date_and_format(data['enlistment_date']),
-#                     'militaryDistrict': data['military_district_name'],
-#                     'postedToDate': assert_non_nullish_date_and_format(data['posted_date']),
-#                     'postedFrom': data['posted_from_corps']
-#                 },
 #                 'embarkationUnit': {
 #                     'embarkationUnit': translate_superscript(data['embarkation_unit'], lang),
 #                     'section': translate_superscript(data['section'], lang),
@@ -15,16 +9,7 @@
 #                         'location': data['training_location'],
 #                         'locationType': data['training_location_type']
 #                     },
-#                     'transportUnitedKindgom': {
-#                         'id': translate_transport_ref(data['transport_uk_ref'], lang),
-#                         'vessel': data['transport_uk_vessel'],
-#                         'departure': assert_non_nullish_date_and_format(data['transport_uk_start']),
-#                         'from': data['transport_uk_origin'],
-#                         'arrival': assert_non_nullish_date_and_format(data['transport_uk_end']),
-#                         'to': data['transport_uk_destination'],
-#                     }
 #                 },
-#                 'medals': map_medals(medals)
 #             },
 #             'sources': {
 #                 'newZealandArchives': map_nz_archives(nz_archives),

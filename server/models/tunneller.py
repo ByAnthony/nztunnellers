@@ -1,12 +1,12 @@
+import re
 from dataclasses import dataclass
 from datetime import date
-import re
-
-from .mapper.army_experience_mapper import map_army_experience
 from .roll import Roll
-
-from .formatter.date_formatter import assert_non_nullish_date_and_format, format_year
 from .converter.month_year_converter import convert_month_year
+from .formatter.date_formatter import assert_non_nullish_date_and_format, format_year
+from .mapper.army_experience_mapper import map_army_experience
+from .mapper.medals_mapper import map_medals
+from .translator.transport_ref_translator import translate_transport_ref
 
 
 @dataclass
@@ -134,9 +134,51 @@ class Tunneller(Roll):
             'rank': rank
         }
 
-    def get_military_life(
-        enlistment: dict
+    def get_transport_reference_uk(transport_reference: str, lang: str):
+        return translate_transport_ref(transport_reference, lang)
+
+    def get_vessel_uk(vessel: str):
+        return vessel
+
+    def get_departure_uk_date(departure_date: date):
+        return assert_non_nullish_date_and_format(departure_date)
+
+    def get_departure_uk_port(departure_port: str):
+        return departure_port
+
+    def get_arrival_uk_date(arrival_date: date):
+        return assert_non_nullish_date_and_format(arrival_date)
+
+    def get_arrival_uk_port(arrival_port: str):
+        return arrival_port
+
+    def get_transport_uk(
+        transport_reference: str,
+        vessel: str,
+        departure_date: str,
+        departure_port: str,
+        arrival_date: str,
+        arrival_port: str
     ):
         return {
-            'enlistment': enlistment
+            'transport_reference': transport_reference,
+            'vessel': vessel,
+            'departure_date': departure_date,
+            'from': departure_port,
+            'arrival_date': arrival_date,
+            'to': arrival_port
+        }
+
+    def get_medals(medals: list):
+        return map_medals(medals)
+
+    def get_military_life(
+        enlistment: dict,
+        transport_uk: dict,
+        medals: list
+    ):
+        return {
+            'enlistment': enlistment,
+            'transport_uk': transport_uk,
+            'medals': medals
         }

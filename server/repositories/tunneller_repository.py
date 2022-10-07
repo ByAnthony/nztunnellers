@@ -207,8 +207,47 @@ def show(id, lang, mysql):
             rank
         )
 
+        transport_reference_uk = Tunneller.get_transport_reference_uk(
+            tunneller_result['transport_uk_ref'], lang
+        )
+
+        vessel_uk = Tunneller.get_vessel_uk(
+            tunneller_result['transport_uk_vessel']
+        )
+
+        departure_uk_date = Tunneller.get_departure_uk_date(
+            tunneller_result['transport_uk_start']
+        )
+
+        departure_uk_port = Tunneller.get_departure_uk_port(
+            tunneller_result['transport_uk_origin']
+        )
+
+        arrival_uk_date = Tunneller.get_arrival_uk_date(
+            tunneller_result['transport_uk_end']
+        )
+
+        arrival_uk_port = Tunneller.get_arrival_uk_port(
+            tunneller_result['transport_uk_destination']
+        )
+
+        transport_uk = Tunneller.get_transport_uk(
+            transport_reference_uk,
+            vessel_uk,
+            departure_uk_date,
+            departure_uk_port,
+            arrival_uk_date,
+            arrival_uk_port
+        )
+
+        medals = Tunneller.get_medals(
+            medals_result
+        )
+
         military_life = Tunneller.get_military_life(
-            enlistment
+            enlistment,
+            transport_uk,
+            medals
         )
 
         tunneller = Tunneller(
