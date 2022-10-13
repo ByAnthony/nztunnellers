@@ -104,20 +104,20 @@ def show(id, lang, mysql):
             tunneller_result['forename'],
             tunneller_result['surname'])
 
-        birth_date = Tunneller.get_birth_date(
+        birth_date = Tunneller.get_date(
             tunneller_result['birth_date']
         )
 
-        birth_year = Tunneller.get_birth_year(
+        birth_year = Tunneller.get_year(
             tunneller_result['birth_year'],
             birth_date
         )
 
-        birth_country = Tunneller.get_birth_country(
+        birth_country = Tunneller.get_country(
             tunneller_result['birth_country']
         )
 
-        birth_info = Tunneller.get_birth_info(
+        birth_info = Tunneller.get_birth(
             birth_year,
             birth_date,
             birth_country
@@ -155,7 +155,7 @@ def show(id, lang, mysql):
             tunneller_result['last_employer_name']
         )
 
-        residence = Tunneller.get_residence(
+        residence = Tunneller.get_town(
             tunneller_result['town_name']
         )
 
@@ -176,7 +176,7 @@ def show(id, lang, mysql):
             army_experience
         )
 
-        enlistment_date = Tunneller.get_enlistment_date(
+        enlistment_date = Tunneller.get_date(
             tunneller_result['enlistment_date']
         )
 
@@ -188,7 +188,7 @@ def show(id, lang, mysql):
             tunneller_result['aka']
         )
 
-        posted_date = Tunneller.get_posted_date(
+        posted_date = Tunneller.get_date(
             tunneller_result['posted_date']
         )
 
@@ -217,19 +217,19 @@ def show(id, lang, mysql):
             tunneller_result['transport_uk_vessel']
         )
 
-        departure_uk_date = Tunneller.get_departure_uk_date(
+        departure_uk_date = Tunneller.get_date(
             tunneller_result['transport_uk_start']
         )
 
-        departure_uk_port = Tunneller.get_departure_uk_port(
+        departure_uk_port = Tunneller.get_town(
             tunneller_result['transport_uk_origin']
         )
 
-        arrival_uk_date = Tunneller.get_arrival_uk_date(
+        arrival_uk_date = Tunneller.get_date(
             tunneller_result['transport_uk_end']
         )
 
-        arrival_uk_port = Tunneller.get_arrival_uk_port(
+        arrival_uk_port = Tunneller.get_town(
             tunneller_result['transport_uk_destination']
         )
 
@@ -242,6 +242,24 @@ def show(id, lang, mysql):
             arrival_uk_port
         )
 
+        embarkation_unit_name = Tunneller.get_embarkation_unit_name(
+            tunneller_result['embarkation_unit'], lang
+        )
+
+        section = Tunneller.get_section(
+            tunneller_result['section'], lang
+        )
+
+        attached_corps = Tunneller.get_attached_corps(
+            tunneller_result['attached_corps']
+        )
+
+        embarkation_unit = Tunneller.get_embarkation_unit(
+            embarkation_unit_name,
+            section,
+            attached_corps
+        )
+
         medals = Tunneller.get_medals(
             medals_result
         )
@@ -249,6 +267,7 @@ def show(id, lang, mysql):
         military_life = Tunneller.get_military_life(
             enlistment,
             transport_uk,
+            embarkation_unit,
             medals
         )
 

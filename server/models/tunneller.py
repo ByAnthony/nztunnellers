@@ -1,12 +1,14 @@
 import re
 from dataclasses import dataclass
 from datetime import date
+
 from .roll import Roll
 from .converter.month_year_converter import convert_month_year
 from .formatter.date_formatter import assert_non_nullish_date_and_format, format_year
 from .mapper.army_experience_mapper import map_army_experience
 from .mapper.medals_mapper import map_medals
 from .translator.transport_ref_translator import translate_transport_ref
+from .translator.superscript_translator import translate_superscript
 
 
 @dataclass
@@ -15,20 +17,23 @@ class Tunneller(Roll):
     pre_war_life: dict
     military_life: dict
 
-    def get_birth_year(birth_year: str, formatted_birth_date: str):
-        if birth_year is not None:
-            return birth_year
+    def get_year(year: str, formatted_date: str):
+        if year is not None:
+            return year
         else:
-            formatted_year = format_year(formatted_birth_date)
+            formatted_year = format_year(formatted_date)
             return formatted_year
 
-    def get_birth_date(birth_date: date):
-        return assert_non_nullish_date_and_format(birth_date)
+    def get_date(date: date):
+        return assert_non_nullish_date_and_format(date)
 
-    def get_birth_country(birth_country: str):
-        return birth_country
+    def get_country(country: str):
+        return country
 
-    def get_birth_info(
+    def get_town(town: str):
+        return town
+
+    def get_birth(
         birth_year: str,
         birth_date: str,
         birth_country: str
@@ -75,9 +80,6 @@ class Tunneller(Roll):
             'employer': employer
         }
 
-    def get_residence(town: str):
-        return town
-
     def get_religion(religion: str):
         return religion
 
@@ -99,17 +101,11 @@ class Tunneller(Roll):
             'army_experience': army_experience
         }
 
-    def get_enlistment_date(enlistment_date: date):
-        return assert_non_nullish_date_and_format(enlistment_date)
-
     def get_alias(alias: str):
         return alias
 
     def get_military_district(military_district: str):
         return military_district
-
-    def get_posted_date(posted_date: date):
-        return assert_non_nullish_date_and_format(posted_date)
 
     def get_posted_from(posted_from: str):
         return posted_from
@@ -140,18 +136,6 @@ class Tunneller(Roll):
     def get_vessel_uk(vessel: str):
         return vessel
 
-    def get_departure_uk_date(departure_date: date):
-        return assert_non_nullish_date_and_format(departure_date)
-
-    def get_departure_uk_port(departure_port: str):
-        return departure_port
-
-    def get_arrival_uk_date(arrival_date: date):
-        return assert_non_nullish_date_and_format(arrival_date)
-
-    def get_arrival_uk_port(arrival_port: str):
-        return arrival_port
-
     def get_transport_uk(
         transport_reference: str,
         vessel: str,
@@ -169,16 +153,38 @@ class Tunneller(Roll):
             'to': arrival_port
         }
 
+    def get_embarkation_unit_name(embarkation_unit_name: str, lang: str):
+        return translate_superscript(embarkation_unit_name, lang)
+
+    def get_section(section: str, lang: str):
+        return translate_superscript(section, lang)
+
+    def get_attached_corps(attached_corps: str):
+        return attached_corps
+
+    def get_embarkation_unit(
+        embarkation_unit_name: str,
+        section: str,
+        attached_corps: str
+    ):
+        return {
+            'embarkation_unit_name': embarkation_unit_name,
+            'section': section,
+            'attached_corps': attached_corps
+        }
+
     def get_medals(medals: tuple):
         return map_medals(medals)
 
     def get_military_life(
         enlistment: dict,
         transport_uk: dict,
+        embarkation_unit: dict,
         medals: list[dict]
     ):
         return {
             'enlistment': enlistment,
             'transport_uk': transport_uk,
+            'embarkation_unit': embarkation_unit,
             'medals': medals
         }
