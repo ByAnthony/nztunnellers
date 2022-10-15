@@ -1,4 +1,4 @@
-def translate_superscript(string, lang):
+def translate_superscript(string: str, lang: str) -> str:
     if string is not None:
         if lang == 'fr':
             if 're ' in string:

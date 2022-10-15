@@ -1,4 +1,4 @@
-def convert_month_year(month, lang):
+def convert_month_year(month: str, lang: str) -> str or None:
 
     mois = 'mois'
     month_col = {
