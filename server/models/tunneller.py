@@ -188,5 +188,3 @@ class Tunneller(Roll):
 
     def get_town(town: str) -> str:
         return town
-
-    # test
