@@ -13,8 +13,6 @@ The New Zealand Tunnellers Web App is dedicated to a special military unit who f
 
 The project uses:
 
-* React;
-* Python 3;
-* Pytest
+* Pytest;
 * Flask;
 * Flask_MySQLdb.
