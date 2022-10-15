@@ -7,5 +7,5 @@ class Roll():
     serial: str
     name: dict
 
-    def get_name(forename: str, surname: str):
+    def get_name(forename: str, surname: str) -> dict:
         return {'forename': forename, 'surname': surname}
