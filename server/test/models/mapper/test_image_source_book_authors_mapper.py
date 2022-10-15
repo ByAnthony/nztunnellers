@@ -1,4 +1,4 @@
-from ....mapper.mapper import image_source_book_authors_mapper
+from ....models.mapper import image_source_book_authors_mapper
 
 author_1 = {'author_forename': 'Arthur Conan', 'author_surname': 'Doyle'}
 author_2 = {'author_forename': 'Mary', 'author_surname': 'Shelley'}

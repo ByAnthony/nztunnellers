@@ -1,4 +1,4 @@
-from ....mapper.mapper import medals_mapper
+from ....models.mapper import medals_mapper
 
 
 british_war_medal = {'medal_name': 'British War Medal',
