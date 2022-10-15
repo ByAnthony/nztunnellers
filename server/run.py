@@ -44,7 +44,4 @@ def tunneller(id):
 
 
 if __name__ == '__main__':
-    if os.environ.get('DEV') == 'true':
-        app.run(debug=True)
-    else:
-        app.run()
+    app.run(debug=True)
