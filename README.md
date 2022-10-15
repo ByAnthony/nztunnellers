@@ -9,7 +9,7 @@
 
 The New Zealand Tunnellers Web App is dedicated to the men of the New Zealand Tunnelling Company who fought beneath the no man's land during the First World War.
 
-## Technologies
+## Dependencies
 
 The project uses:
 
