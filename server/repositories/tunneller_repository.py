@@ -23,7 +23,7 @@ def show(id, lang, mysql):
     tunneller = None
 
     tunneller_sql = f'''
-        SELECT id, forename, surname, aka, serial, {rank_col[lang]} AS rank, {embarkation_unit_col[lang]} AS embarkation_unit, training.training_start, training.training_location, {training_location_type_col[lang]} AS training_location_type, transport_uk.transport_uk_ref, transport_uk.transport_uk_vessel, transport_uk.transport_uk_start, transport_uk.transport_uk_origin, transport_uk.transport_uk_end, transport_uk.transport_uk_destination, {section_col[lang]} AS section, {attached_corps_col[lang]} AS attached_corps, birth_date, birth_year, {birth_country_col[lang]} AS birth_country, mother_name, {mother_origin_col[lang]} AS mother_origin, father_name, {father_origin_col[lang]} AS father_origin, nz_resident_in_month, {marital_status_col[lang]} AS marital_status, wife_name, {occupation_col[lang]} AS occupation, last_employer_name, town_name, {religion_col[lang]} AS religion, enlistment_date, military_district_name, posted_date, {posted_from_corps_col[lang]} AS posted_from_corps, awmm_cenotaph, nominal_roll.nominal_roll_volume, nominal_roll.nominal_roll_number, nominal_roll.nominal_roll_page, image, image_source_auckland_libraries, archives_name, archives_ref, family_name, newspaper_name, newspaper_date, book_title, book_town, book_publisher, book_year, book_page
+        SELECT id, forename, surname, aka, serial, {rank_col[lang]} AS rank, {embarkation_unit_col[lang]} AS embarkation_unit, training.training_start, training.training_location, {training_location_type_col[lang]} AS training_location_type, transport_uk.transport_uk_ref, transport_uk.transport_uk_vessel, transport_uk.transport_uk_start, transport_uk.transport_uk_origin, transport_uk.transport_uk_end, transport_uk.transport_uk_destination, {section_col[lang]} AS section, {attached_corps_col[lang]} AS attached_corps, birth_date, birth_year, {birth_country_col[lang]} AS birth_country, mother_name, {mother_origin_col[lang]} AS mother_origin, father_name, {father_origin_col[lang]} AS father_origin, nz_resident_in_month, {marital_status_col[lang]} AS marital_status, wife_name, {occupation_col[lang]} AS occupation, last_employer_name, town_name, {religion_col[lang]} AS religion, enlistment_date, military_district_name, posted_date, {posted_from_corps_col[lang]} AS posted_from_corps, has_deserted, awmm_cenotaph, nominal_roll.nominal_roll_volume, nominal_roll.nominal_roll_number, nominal_roll.nominal_roll_page, image, image_source_auckland_libraries, archives_name, archives_ref, family_name, newspaper_name, newspaper_date, book_title, book_town, book_publisher, book_year, book_page
 
         FROM tunneller t
 
@@ -131,8 +131,10 @@ def show(id, lang, mysql):
             tunneller_result['section'], lang), Tunneller.get_attached_corps(tunneller_result['attached_corps']), training)
         transport_uk = Tunneller.get_transport_uk(Tunneller.get_transport_reference_uk(tunneller_result['transport_uk_ref'], lang), Tunneller.get_vessel_uk(tunneller_result['transport_uk_vessel']), Tunneller.get_date(
             tunneller_result['transport_uk_start']), Tunneller.get_town(tunneller_result['transport_uk_origin']), Tunneller.get_date(tunneller_result['transport_uk_end']), Tunneller.get_town(tunneller_result['transport_uk_destination']))
+        end_of_service = Tunneller.get_end_of_service(
+            Tunneller.get_end_of_service_as_deserter(tunneller_result['has_deserted'], lang))
         military_years = Tunneller.get_military_years(
-            enlistment, embarkation_unit, transport_uk, Tunneller.get_medals(medals_result))
+            enlistment, embarkation_unit, transport_uk, end_of_service, Tunneller.get_medals(medals_result))
 
         image_source_archives = Tunneller.get_image_source_archives(
             tunneller_result['archives_name'], tunneller_result['archives_ref'])

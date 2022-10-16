@@ -13,6 +13,7 @@ from .mapper.london_gazette_mapper import map_london_gazette
 from .mapper.medals_mapper import map_medals
 from .mapper.nz_archives_mapper import map_nz_archives
 from .translator.family_translator import translate_family
+from .translator.has_deserted_translator import translate_has_deserted
 from .translator.superscript_translator import translate_superscript
 from .translator.transport_ref_translator import translate_transport_ref
 
@@ -66,8 +67,8 @@ class Tunneller(Roll):
     def get_army_experience(experience: tuple, lang: str) -> dict:
         return map_army_experience(experience, lang)
 
-    def get_military_years(enlistment: dict, embarkation_unit: dict, transport_uk: dict, medals: list[dict]) -> dict:
-        return {'enlistment': enlistment, 'embarkation_unit': embarkation_unit, 'transport_uk': transport_uk, 'medals': medals}
+    def get_military_years(enlistment: dict, embarkation_unit: dict, transport_uk: dict, end_of_service: dict, medals: list[dict]) -> dict:
+        return {'enlistment': enlistment, 'embarkation_unit': embarkation_unit, 'transport_uk': transport_uk, 'end_of_service': end_of_service, 'medals': medals}
 
     def get_enlistment(enlistment_date: date, military_district: str, alias: str, transferred_to_tunnellers: dict, rank: str) -> dict:
         return {'enlistment_date': enlistment_date, 'military_district': military_district, 'alias': alias, 'transferred_to_tunnellers': transferred_to_tunnellers, 'rank': rank}
@@ -118,6 +119,14 @@ class Tunneller(Roll):
 
     def get_vessel_uk(vessel: str) -> str:
         return vessel
+
+    def get_end_of_service(has_deserted: str or None) -> dict:
+        if has_deserted is not None:
+            return {'deserter': {'text': has_deserted}}
+        return {'deserter': None}
+
+    def get_end_of_service_as_deserter(value: bool or None, lang: str) -> str or None:
+        return translate_has_deserted(value, lang)
 
     def get_medals(medals: tuple) -> list[dict]:
         return map_medals(medals)
