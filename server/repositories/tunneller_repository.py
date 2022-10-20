@@ -1,5 +1,11 @@
 from db.run_sql import run_sql
+from models.name import Name
 from models.tunneller import Tunneller
+
+from models.origins import Origins
+from models.birth_details import BirthDetails
+from models.parents import Parents
+from models.parent import Parent
 from .translations.translations import attached_corps_col
 from .translations.translations import birth_country_col
 from .translations.translations import conflict_col
@@ -87,19 +93,22 @@ def show(id, lang, mysql):
 
     if tunneller_result is not None:
 
-        birth_details = Tunneller.get_birth_details(
-            tunneller_result['birth_year'], tunneller_result['birth_date'], tunneller_result['birth_country'])
-        parents = Tunneller.get_parents(Tunneller.get_parent(tunneller_result['mother_name'], tunneller_result['mother_origin']), Tunneller.get_parent(
-            tunneller_result['father_name'], tunneller_result['father_origin']))
-        origins = Tunneller.get_origins(birth_details, parents, Tunneller.get_nz_resident(
-            tunneller_result['nz_resident_in_month'], lang))
+        origins = Origins.get_origins(BirthDetails.get_birth_details(tunneller_result['birth_year'], tunneller_result['birth_date'], tunneller_result['birth_country']), Parents.get_parents(
+            Parent.get_parent(tunneller_result['mother_name'], tunneller_result['mother_origin']), Parent.get_parent(tunneller_result['father_name'], tunneller_result['father_origin'])), Origins.get_nz_resident(tunneller_result['nz_resident_in_month'], lang))
 
-        employment = Tunneller.get_employment(
-            tunneller_result['occupation'], tunneller_result['employer'])
-        army_experience = Tunneller.get_army_experience(
-            army_experience_result, lang)
-        pre_war_years = Tunneller.get_pre_war_years(
-            tunneller_result['marital_status'], tunneller_result['wife_name'], employment, tunneller_result['residence'], tunneller_result['religion'], army_experience)
+        # birth_details = Tunneller.get_birth_details(
+        #     tunneller_result['birth_year'], tunneller_result['birth_date'], tunneller_result['birth_country'])
+        # parents = Tunneller.get_parents(Tunneller.get_parent(tunneller_result['mother_name'], tunneller_result['mother_origin']), Tunneller.get_parent(
+        #     tunneller_result['father_name'], tunneller_result['father_origin']))
+        # origins = Tunneller.get_origins(birth_details, parents, Tunneller.get_nz_resident(
+        #     tunneller_result['nz_resident_in_month'], lang))
+
+        # employment = Tunneller.get_employment(
+        #     tunneller_result['occupation'], tunneller_result['employer'])
+        # army_experience = Tunneller.get_army_experience(
+        #     army_experience_result, lang)
+        # pre_war_years = Tunneller.get_pre_war_years(
+        #     tunneller_result['marital_status'], tunneller_result['wife_name'], employment, tunneller_result['residence'], tunneller_result['religion'], army_experience)
 
         # transferred_to_tunnellers = Tunneller.get_transferred_to_tunnellers(Tunneller.get_date(
         #     tunneller_result['posted_date']), Tunneller.get_posted_from(tunneller_result['posted_from_corps']))
@@ -130,7 +139,7 @@ def show(id, lang, mysql):
         # sources = Tunneller.get_sources(Tunneller.get_nz_archives(nz_archives_result), Tunneller.get_awmm(tunneller_result['awmm_cenotaph']), Tunneller.get_nominal_roll(
         #     tunneller_result['nominal_roll_volume'], tunneller_result['nominal_roll_number'], tunneller_result['nominal_roll_page'], lang), Tunneller.get_london_gazette(london_gazette_result))
 
-        tunneller = Tunneller(Tunneller.get_id(tunneller_result['id']), Tunneller.get_serial(
-            tunneller_result['serial']), Tunneller.get_name(tunneller_result['forename'], tunneller_result['surname']), origins, pre_war_years)
+        tunneller = Tunneller(tunneller_result['id'], tunneller_result['serial'], Name.get_name(
+            tunneller_result['forename'], tunneller_result['surname']), origins)
 
     return tunneller

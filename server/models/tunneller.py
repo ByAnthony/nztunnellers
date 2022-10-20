@@ -1,9 +1,8 @@
 import re
 from dataclasses import dataclass
-from datetime import date
-
 
 from .roll import Roll
+from .origins import Origins
 from .converter.month_year_converter import convert_month_year
 from .formatter.date_formatter import format_date, format_year
 from .formatter.nominal_roll_formatter import format_nominal_roll
@@ -18,98 +17,78 @@ from .translator.superscript_translator import translate_superscript
 from .translator.transport_ref_translator import translate_transport_ref
 
 
-def get_year(year: str or None, formatted_date: str) -> str:
-    if year is not None:
-        return year
-    else:
-        formatted_year = format_year(formatted_date)
-        return formatted_year
-
-
-def get_country(country: str or None) -> str:
-    if country is not None:
-        return country
-
-
-def get_town(town: str or None) -> str:
-    if town is not None:
-        return town
-
-
-def get_name(name: str or None) -> str:
-    if name is not None:
-        return name
-
-
 @dataclass
 class Tunneller(Roll):
-    origins: dict[dict[str, str, str],
-                  dict[dict[str, str], dict[str, str]], str]
-    pre_war_years: dict[str, str, dict[str, str],
-                        str, str, list[dict[str, str, str, str]]]
+    origins: Origins
+
+    # pre_war_years: dict[str, str, dict[str, str],
+    #                     str, str, list[dict[str, str, str, str]]]
     # military_years: dict
     # image: dict or None
     # sources: dict
 
-    def get_origins(birth_details: dict[str, str, str], parents: dict[dict[str, str], dict[str, str]], in_nz_length: str) -> dict[dict[str, str, str], dict[dict[str, str], dict[str, str]], str]:
-        return {'birth': birth_details, 'parents': parents, 'in_nz_length': in_nz_length}
+    # def get_origins(birth_details: dict[str, str, str], parents: dict[dict[str, str], dict[str, str]], in_nz_length: str) -> dict[dict[str, str, str], dict[dict[str, str], dict[str, str]], str]:
+    #     return {'birth': birth_details, 'parents': parents, 'in_nz_length': in_nz_length}
 
-    def get_birth_details(year: str or None, date: date or None, country: str or None) -> dict[str, str, str]:
-        birth_date = format_date(date)
-        birth_year = get_year(year, birth_date)
-        birth_country = get_country(country)
-        return {'year': birth_year, 'date': birth_date, 'country': birth_country}
+    # def get_birth_details(year: str or None, date: date or None, country: str or None) -> dict[str, str, str]:
+    #     birth_date = format_date(date)
+    #     birth_year = get_year(year, birth_date)
+    #     birth_country = get_country(country)
+    #     return {'year': birth_year, 'date': birth_date, 'country': birth_country}
 
-    def get_parents(mother: dict[str, str], father: dict[str, str]) -> dict[dict[str, str], dict[str, str]]:
-        return {'mother': mother, 'father': father}
+    # def get_parents(mother: dict[str, str], father: dict[str, str]) -> dict[dict[str, str], dict[str, str]]:
+    #     return {'mother': mother, 'father': father}
 
-    def get_parent(name: str or None, country: str or None) -> dict[str, str]:
-        parent_name = get_name(name)
-        origin_country = get_country(country)
-        return {'name': parent_name, 'origin': origin_country}
+    # def get_parent(name: str or None, country: str or None) -> dict[str, str]:
+    #     parent_name = get_name(name)
+    #     origin_country = get_country(country)
+    #     return {'name': parent_name, 'origin': origin_country}
 
-    def get_nz_resident(in_nz_in_month: str or None, lang: str) -> str:
-        if in_nz_in_month is not None:
-            return convert_month_year(in_nz_in_month, lang)
+    # def get_nz_resident(in_nz_in_month: str or None, lang: str) -> str:
+    #     if in_nz_in_month is not None:
+    #         return convert_month_year(in_nz_in_month, lang)
 
-    def get_pre_war_years(marital_status: str or None, wife: str or None, employment: dict[str, str], residence: str or None, religion: str or None, army_experience: list[dict[str, str, str, str]]) -> dict[str, str, dict[str, str], str, str, list[dict[str, str, str, str]]]:
-        def get_marital_status(status: str or None) -> str:
-            if status is not None:
-                return status
+    # def get_pre_war_years(marital_status: Optional[str], wife: str or None, employment: dict[str, str], residence: str or None, religion: str or None, army_experience: list[dict[str, str, str, str]]) -> dict[str, str, dict[str, str], str, str, list[dict[str, str, str, str]]]:
+    #     def get_marital_status(status: str or None) -> str:
+    #         if status is not None:
+    #             return status
 
-        def get_religion(religion: str or None) -> str:
-            if religion is not None:
-                return religion
-        return {'marital_status': get_marital_status(marital_status), 'wife': get_name(wife), 'employment': employment, 'residence': get_town(residence), 'religion': get_religion(religion), 'army_experience': army_experience}
+    #     def get_religion(religion: str or None) -> str:
+    #         if religion is not None:
+    #             return religion
+    #     return {'marital_status': get_marital_status(marital_status), 'wife': get_name(wife), 'employment': employment, 'residence': get_town(residence), 'religion': get_religion(religion), 'army_experience': army_experience}
 
-    def get_employment(occupation: str, employer: str or None) -> dict[str, str]:
-        def get_occupation(occupation: str) -> str:
-            return occupation
+    # def get_employment(occupation: str, employer: str or None) -> dict[str, str]:
+    #     def get_occupation(occupation: str) -> str:
+    #         return occupation
 
-        def get_employer(employer: str or None) -> str:
-            if employer is not None:
-                return employer
-        return {'occupation': get_occupation(occupation), 'employer': get_employer(employer)}
+    #     def get_employer(employer: str or None) -> str:
+    #         if employer is not None:
+    #             return employer
+    #     return {'occupation': get_occupation(occupation), 'employer': get_employer(employer)}
 
-    def get_army_experience(experience: tuple, lang: str) -> list[dict[str, str, str, str]]:
-        return map_army_experience(experience, lang)
+    # def get_army_experience(experience: tuple, lang: str) -> list[dict[str, str, str, str]]:
+    #     return map_army_experience(experience, lang)
 
     # def get_military_years(enlistment: dict, embarkation_unit: dict, transport_uk: dict, transport_nz: dict, end_of_service: dict, medals: list[dict]) -> dict:
     #     return {'enlistment': enlistment, 'embarkation_unit': embarkation_unit, 'transport_uk': transport_uk, 'transport_nz': transport_nz, 'end_of_service': end_of_service, 'medals': medals}
 
-    # def get_enlistment(enlistment_date: date, military_district: str, alias: str, transferred_to_tunnellers: dict, rank: str) -> dict:
-    #     return {'enlistment_date': enlistment_date, 'military_district': military_district, 'alias': alias, 'transferred_to_tunnellers': transferred_to_tunnellers, 'rank': rank}
+    # def get_military_years(enlistment: dict) -> dict:
+    #     return {'enlistment': enlistment}
 
-    # def get_military_district(military_district: str) -> str:
-    #     return military_district
+    # def get_enlistment(enlistment_date: date or None, military_district: str or None, alias: str or None, transferred_to_tunnellers: dict[str, str], rank: str) -> dict:
+    #     def get_military_district(military_district: str or None) -> str:
+    #         if military_district is not None:
+    #             return military_district
 
-    # def get_alias(alias: str) -> str:
-    #     return alias
+    #     def get_alias(alias: str or None) -> str:
+    #         if alias is not None:
+    #             return alias
+    #     return {'enlistment_date': format_date(enlistment_date), 'military_district': get_military_district(military_district), 'alias': get_alias(alias), 'transferred_to_tunnellers': transferred_to_tunnellers, 'rank': rank}
 
-    # def get_transferred_to_tunnellers(posted_date: date, posted_from: str) -> dict or None:
+    # def get_transferred_to_tunnellers(posted_date: date or None, posted_from: str or None) -> dict[str, str]:
     #     if posted_date and posted_from is not None:
     #         return {'posted_date': posted_date, 'posted_from': posted_from}
-    #     return None
 
     # def get_posted_from(posted_from: str):
     #     return posted_from
