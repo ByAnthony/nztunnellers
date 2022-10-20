@@ -4,7 +4,7 @@ from .parent import Parent
 
 
 @dataclass
-class Parents:
+class Parents(Parent):
     mother: Parent
     father: Parent
 

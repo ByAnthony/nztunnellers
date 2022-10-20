@@ -1,65 +1,23 @@
 import re
 from dataclasses import dataclass
-from .roll import Roll
-from .origins import Origins
-from .pre_war_years import PreWarYear
+
+from models.roll import Roll
+from models.origins import Origins
+from models.pre_war_years import PreWarYear
+from models.military_years import MilitaryYears
 
 
 @dataclass
 class Tunneller(Roll):
     origins: Origins
     pre_war_years: PreWarYear
+    military_years: MilitaryYears
 
-    # military_years: dict
     # image: dict or None
     # sources: dict
 
     # def get_military_years(enlistment: dict, embarkation_unit: dict, transport_uk: dict, transport_nz: dict, end_of_service: dict, medals: list[dict]) -> dict:
-    #     return {'enlistment': enlistment, 'embarkation_unit': embarkation_unit, 'transport_uk': transport_uk, 'transport_nz': transport_nz, 'end_of_service': end_of_service, 'medals': medals}
-
-    # def get_military_years(enlistment: dict) -> dict:
-    #     return {'enlistment': enlistment}
-
-    # def get_enlistment(enlistment_date: date or None, military_district: str or None, alias: str or None, transferred_to_tunnellers: dict[str, str], rank: str) -> dict:
-    #     def get_military_district(military_district: str or None) -> str:
-    #         if military_district is not None:
-    #             return military_district
-
-    #     def get_alias(alias: str or None) -> str:
-    #         if alias is not None:
-    #             return alias
-    #     return {'enlistment_date': format_date(enlistment_date), 'military_district': get_military_district(military_district), 'alias': get_alias(alias), 'transferred_to_tunnellers': transferred_to_tunnellers, 'rank': rank}
-
-    # def get_transferred_to_tunnellers(posted_date: date or None, posted_from: str or None) -> dict[str, str]:
-    #     if posted_date and posted_from is not None:
-    #         return {'posted_date': posted_date, 'posted_from': posted_from}
-
-    # def get_posted_from(posted_from: str):
-    #     return posted_from
-
-    # def get_rank(rank: str) -> str:
-    #     return rank
-
-    # def get_embarkation_unit(detachment: str, section: str, attached_corps: str, training: dict) -> dict:
-    #     return {'detachment': detachment, 'section': section, 'attached_corps': attached_corps, 'training': training}
-
-    # def get_detachment(detachment: str, lang: str):
-    #     return translate_superscript(detachment, lang)
-
-    # def get_section(section: str, lang: str) -> str:
-    #     return translate_superscript(section, lang)
-
-    # def get_attached_corps(attached_corps: str) -> str:
-    #     return attached_corps
-
-    # def get_training(start: date, location: str, location_type: str) -> dict:
-    #     return {'start': start, 'location': location, 'location_type': location_type}
-
-    # def get_training_location(location: str) -> str:
-    #     return location
-
-    # def get_training_location_type(type: str) -> str:
-    #     return type
+    #     return {'enlistment': enlistment, 'embarkation_unit': embarkation_unit, 'transport_uk': transport_uk, 'transport_nz': transport_nz, 'end_of_service': end_of_service, 'medals': medals
 
     # def get_transport(transport_reference: str, vessel: str, departure_date: str, departure_port: str, arrival_date: str, arrival_port: str) -> dict:
     #     if vessel and departure_date is not None:

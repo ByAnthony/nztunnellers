@@ -1,4 +1,4 @@
-from ....models.translator import superscript_translator
+from ....models.helpers import superscript_translator
 
 
 def test_if_lang_fr_and_string_contains_re_returns_superscript_re():

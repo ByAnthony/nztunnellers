@@ -5,7 +5,7 @@ from models.army_experience_list import ArmyExperienceList
 
 
 @dataclass
-class PreWarYear:
+class PreWarYear(Employment, ArmyExperienceList):
     marital_status: Optional[str]
     wife: Optional[str]
     employment: Employment
