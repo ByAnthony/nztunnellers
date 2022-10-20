@@ -5,7 +5,7 @@ from models.transferred_to_tunnellers import TransferredToTunnellers
 
 
 @dataclass
-class Enlistment(TransferredToTunnellers):
+class Enlistment:
     enlistment_date: Optional[str]
     military_district: Optional[str]
     alias: Optional[str]

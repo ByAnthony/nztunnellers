@@ -6,7 +6,7 @@ from .helpers.month_year_converter import convert_month_year
 
 
 @dataclass
-class Origins(BirthDetails, Parents):
+class Origins:
     birth_details: BirthDetails
     parents: Parents
     in_nz_length: Optional[str]

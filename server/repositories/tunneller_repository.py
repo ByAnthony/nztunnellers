@@ -11,6 +11,8 @@ from models.army_experience_list import ArmyExperienceList
 from models.military_years import MilitaryYears
 from models.enlistment import Enlistment
 from models.transferred_to_tunnellers import TransferredToTunnellers
+from models.embarkation_unit import EmbarkationUnit
+from models.training import Training
 from .translations.translations import attached_corps_col
 from .translations.translations import birth_country_col
 from .translations.translations import conflict_col
@@ -106,15 +108,15 @@ def show(id, lang, mysql):
 
     if tunneller_result is not None:
 
-        origins = Origins.get_origins(Origins.get_birth_details(tunneller_result['birth_year'], tunneller_result['birth_date'], tunneller_result['birth_country']), Origins.get_parents(
-            Origins.get_parent(tunneller_result['mother_name'], tunneller_result['mother_origin']), Origins.get_parent(tunneller_result['father_name'], tunneller_result['father_origin'])), Origins.get_nz_resident(tunneller_result['nz_resident_in_month'], lang))
+        origins = Origins.get_origins(BirthDetails.get_birth_details(tunneller_result['birth_year'], tunneller_result['birth_date'], tunneller_result['birth_country']), Parents.get_parents(
+            Parent.get_parent(tunneller_result['mother_name'], tunneller_result['mother_origin']), Parent.get_parent(tunneller_result['father_name'], tunneller_result['father_origin'])), Origins.get_nz_resident(tunneller_result['nz_resident_in_month'], lang))
 
-        pre_war_years = PreWarYear.get_pre_war_years(tunneller_result['marital_status'], tunneller_result['wife_name'], PreWarYear.get_employment(
-            tunneller_result['occupation'], tunneller_result['employer']), tunneller_result['residence'], tunneller_result['religion'], PreWarYear.map_army_experience(army_experience_result, lang))
+        pre_war_years = PreWarYear.get_pre_war_years(tunneller_result['marital_status'], tunneller_result['wife_name'], Employment.get_employment(
+            tunneller_result['occupation'], tunneller_result['employer']), tunneller_result['residence'], tunneller_result['religion'], ArmyExperienceList.map_army_experience(army_experience_result, lang))
 
         military_years = MilitaryYears.get_military_years(
-            MilitaryYears.get_enlistment(tunneller_result['enlistment_date'], tunneller_result['military_district_name'], tunneller_result['aka'], MilitaryYears.get_transferred_to_tunnellers(
-                tunneller_result['posted_date'], tunneller_result['posted_from_corps']), tunneller_result['rank']), MilitaryYears.get_embarkation_unit(MilitaryYears.get_detachment(tunneller_result['embarkation_unit'], lang), MilitaryYears.get_section(tunneller_result['section'], lang), tunneller_result['attached_corps'], MilitaryYears.get_training(tunneller_result['training_start'], tunneller_result['training_location'], tunneller_result['training_location_type'])))
+            Enlistment.get_enlistment(tunneller_result['enlistment_date'], tunneller_result['military_district_name'], tunneller_result['aka'], TransferredToTunnellers.get_transferred_to_tunnellers(
+                tunneller_result['posted_date'], tunneller_result['posted_from_corps']), tunneller_result['rank']), EmbarkationUnit.get_embarkation_unit(EmbarkationUnit.get_detachment(tunneller_result['embarkation_unit'], lang), EmbarkationUnit.get_section(tunneller_result['section'], lang), tunneller_result['attached_corps'], Training.get_training(tunneller_result['training_start'], tunneller_result['training_location'], tunneller_result['training_location_type'])))
 
         # military_years = MilitaryYears.get_military_years(Enlistment.get_enlistment(tunneller_result['enlistment_date'], tunneller_result['military_district_name'], tunneller_result[
         #     'aka'], TransferredToTunnellers.get_transferred_to_tunnellers(tunneller_result['posted_date'], tunneller_result['posted_from_corps']), tunneller_result['rank']))

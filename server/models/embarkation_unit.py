@@ -5,7 +5,7 @@ from models.training import Training
 
 
 @dataclass
-class EmbarkationUnit(Training):
+class EmbarkationUnit:
     detachment: str
     section: Optional[str]
     attached_corps: Optional[str]
