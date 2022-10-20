@@ -1,74 +1,18 @@
 import re
 from dataclasses import dataclass
-
 from .roll import Roll
 from .origins import Origins
-from .converter.month_year_converter import convert_month_year
-from .formatter.date_formatter import format_date, format_year
-from .formatter.nominal_roll_formatter import format_nominal_roll
-from .mapper.army_experience_mapper import map_army_experience
-from .mapper.image_source_book_authors_mapper import map_authors
-from .mapper.london_gazette_mapper import map_london_gazette
-from .mapper.medals_mapper import map_medals
-from .mapper.nz_archives_mapper import map_nz_archives
-from .translator.family_translator import translate_family
-from .translator.has_deserted_translator import translate_has_deserted
-from .translator.superscript_translator import translate_superscript
-from .translator.transport_ref_translator import translate_transport_ref
+from .pre_war_years import PreWarYear
 
 
 @dataclass
 class Tunneller(Roll):
     origins: Origins
+    pre_war_years: PreWarYear
 
-    # pre_war_years: dict[str, str, dict[str, str],
-    #                     str, str, list[dict[str, str, str, str]]]
     # military_years: dict
     # image: dict or None
     # sources: dict
-
-    # def get_origins(birth_details: dict[str, str, str], parents: dict[dict[str, str], dict[str, str]], in_nz_length: str) -> dict[dict[str, str, str], dict[dict[str, str], dict[str, str]], str]:
-    #     return {'birth': birth_details, 'parents': parents, 'in_nz_length': in_nz_length}
-
-    # def get_birth_details(year: str or None, date: date or None, country: str or None) -> dict[str, str, str]:
-    #     birth_date = format_date(date)
-    #     birth_year = get_year(year, birth_date)
-    #     birth_country = get_country(country)
-    #     return {'year': birth_year, 'date': birth_date, 'country': birth_country}
-
-    # def get_parents(mother: dict[str, str], father: dict[str, str]) -> dict[dict[str, str], dict[str, str]]:
-    #     return {'mother': mother, 'father': father}
-
-    # def get_parent(name: str or None, country: str or None) -> dict[str, str]:
-    #     parent_name = get_name(name)
-    #     origin_country = get_country(country)
-    #     return {'name': parent_name, 'origin': origin_country}
-
-    # def get_nz_resident(in_nz_in_month: str or None, lang: str) -> str:
-    #     if in_nz_in_month is not None:
-    #         return convert_month_year(in_nz_in_month, lang)
-
-    # def get_pre_war_years(marital_status: Optional[str], wife: str or None, employment: dict[str, str], residence: str or None, religion: str or None, army_experience: list[dict[str, str, str, str]]) -> dict[str, str, dict[str, str], str, str, list[dict[str, str, str, str]]]:
-    #     def get_marital_status(status: str or None) -> str:
-    #         if status is not None:
-    #             return status
-
-    #     def get_religion(religion: str or None) -> str:
-    #         if religion is not None:
-    #             return religion
-    #     return {'marital_status': get_marital_status(marital_status), 'wife': get_name(wife), 'employment': employment, 'residence': get_town(residence), 'religion': get_religion(religion), 'army_experience': army_experience}
-
-    # def get_employment(occupation: str, employer: str or None) -> dict[str, str]:
-    #     def get_occupation(occupation: str) -> str:
-    #         return occupation
-
-    #     def get_employer(employer: str or None) -> str:
-    #         if employer is not None:
-    #             return employer
-    #     return {'occupation': get_occupation(occupation), 'employer': get_employer(employer)}
-
-    # def get_army_experience(experience: tuple, lang: str) -> list[dict[str, str, str, str]]:
-    #     return map_army_experience(experience, lang)
 
     # def get_military_years(enlistment: dict, embarkation_unit: dict, transport_uk: dict, transport_nz: dict, end_of_service: dict, medals: list[dict]) -> dict:
     #     return {'enlistment': enlistment, 'embarkation_unit': embarkation_unit, 'transport_uk': transport_uk, 'transport_nz': transport_nz, 'end_of_service': end_of_service, 'medals': medals}

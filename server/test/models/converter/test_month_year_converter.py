@@ -1,4 +1,4 @@
-from ....models.converter import month_year_converter
+from ....models.helpers import month_year_converter
 
 
 def test_if_month_is_none_and_lang_en_returns_none():
