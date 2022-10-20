@@ -1,7 +1,7 @@
 from ..converter.month_year_converter import convert_month_year
 
 
-def map_army_experience(experience: str, lang: str) -> list[dict]:
+def map_army_experience(experience: tuple, lang: str) -> list[dict[str, str, str, str]]:
     return [
         {
             'unit': row['army_experience_name'],

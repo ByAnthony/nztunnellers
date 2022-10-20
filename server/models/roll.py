@@ -13,5 +13,5 @@ class Roll():
     def get_serial(serial: str) -> str:
         return serial
 
-    def get_name(forename: str, surname: str) -> dict:
+    def get_name(forename: str, surname: str) -> dict[str, str]:
         return {'forename': forename, 'surname': surname}
