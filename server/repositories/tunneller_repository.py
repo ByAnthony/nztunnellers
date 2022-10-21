@@ -7,7 +7,7 @@ from models.parents import Parents
 from models.parent import Parent
 from models.pre_war_years import PreWarYear
 from models.employment import Employment
-from models.army_experience_list import ArmyExperiences
+from models.army_experiences import ArmyExperiences
 from models.military_years import MilitaryYears
 from models.enlistment import Enlistment
 from models.transferred_to_tunnellers import TransferredToTunnellers

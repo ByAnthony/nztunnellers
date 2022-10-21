@@ -5,7 +5,7 @@ from models.helpers.month_year_converter import convert_month_year
 
 @dataclass
 class ArmyExperience:
-    unit: str
+    unit: Optional[str]
     country: Optional[str]
     conflict: Optional[str]
     duration: Optional[str]
