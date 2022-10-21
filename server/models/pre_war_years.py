@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from typing import Optional
 from models.employment import Employment
-from models.army_experiences import ArmyExperiences
+from models.army_experiences import ArmyExperience
 
 
 @dataclass
@@ -11,4 +11,4 @@ class PreWarYear:
     employment: Employment
     residence: Optional[str]
     religion: Optional[str]
-    army_experience: ArmyExperiences
+    army_experience: tuple[ArmyExperience]

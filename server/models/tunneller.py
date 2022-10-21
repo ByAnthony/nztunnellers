@@ -1,6 +1,6 @@
 import re
-from dataclasses import dataclass
 
+from dataclasses import dataclass
 from models.roll import Roll
 from models.origins import Origins
 from models.pre_war_years import PreWarYear

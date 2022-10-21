@@ -1,8 +1,27 @@
+import time
+from datetime import date
 from typing import Optional
 
 
-def convert_month_year(month: Optional[str], lang: str) -> Optional[str]:
+def get_year(year: Optional[str], formatted_date: str) -> str:
+    if year is not None:
+        return year
+    else:
+        formatted_year = format_year(formatted_date)
+        return formatted_year
 
+
+def format_date(date: Optional[date]) -> str:
+    if date is not None:
+        return date.strftime('%Y-%m-%d')
+
+
+def format_year(date: str) -> str:
+    if date is not None:
+        return date[0:4]
+
+
+def convert_month_year(month: Optional[int], lang: str) -> Optional[str]:
     mois = 'mois'
     month_col = {
         'en': 'month',

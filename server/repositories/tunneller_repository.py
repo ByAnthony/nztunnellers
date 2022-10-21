@@ -1,4 +1,6 @@
+from dataclasses import asdict
 from db.run_sql import run_sql
+from dacite import from_dict
 from models.name import Name
 from models.tunneller import Tunneller
 from models.origins import Origins
@@ -7,14 +9,21 @@ from models.parents import Parents
 from models.parent import Parent
 from models.pre_war_years import PreWarYear
 from models.employment import Employment
-from models.army_experiences import ArmyExperiences
 from models.military_years import MilitaryYears
 from models.enlistment import Enlistment
 from models.transferred_to_tunnellers import TransferredToTunnellers
 from models.embarkation_unit import EmbarkationUnit
 from models.training import Training
 from models.transport import Transport
-from models.medals import Medals
+from models.helpers.formatter_date import format_date, get_year
+from models.helpers.formatter_parent import get_parent
+from models.helpers.formatter_nz_resident import get_nz_resident
+from models.helpers.mapper_army_experience import map_army_experience
+from models.helpers.formatter_transferred_to_tunnellers import get_transferred_to_tunnellers
+from models.helpers.formatter_embarkation_unit import get_detachment, get_section
+from models.helpers.formatter_training import get_training
+from models.helpers.formatter_transport import get_transport_reference
+from models.helpers.mapper_medals import map_medals
 from .translations.translations import attached_corps_col
 from .translations.translations import birth_country_col
 from .translations.translations import conflict_col
@@ -131,15 +140,68 @@ def show(id, lang, mysql):
         # sources = Tunneller.get_sources(Tunneller.get_nz_archives(nz_archives_result), Tunneller.get_awmm(tunneller_result['awmm_cenotaph']), Tunneller.get_nominal_roll(
         #     tunneller_result['nominal_roll_volume'], tunneller_result['nominal_roll_number'], tunneller_result['nominal_roll_page'], lang), Tunneller.get_london_gazette(london_gazette_result))
 
-        tunneller = Tunneller(
-            tunneller_result['id'],
-            tunneller_result['serial'],
-            Name(tunneller_result['forename'], tunneller_result['surname']),
-            Origins(BirthDetails.get_birth_details(tunneller_result['birth_year'], tunneller_result['birth_date'], tunneller_result['birth_country']), Parents(Parent.get_parent(
-                tunneller_result['mother_name'], tunneller_result['mother_origin']), Parent.get_parent(tunneller_result['father_name'], tunneller_result['father_origin'])), Origins.get_nz_resident(tunneller_result['nz_resident_in_month'], lang)),
-            PreWarYear(tunneller_result['marital_status'], tunneller_result['wife_name'], Employment(tunneller_result['occupation'], tunneller_result['employer']),
-                       tunneller_result['residence'], tunneller_result['religion'], ArmyExperiences.map_army_experience(army_experience_result, lang)),
-            MilitaryYears(Enlistment.get_enlistment(tunneller_result['enlistment_date'], tunneller_result['military_district_name'], tunneller_result['aka'], TransferredToTunnellers.get_transferred_to_tunnellers(
-                tunneller_result['posted_date'], tunneller_result['posted_from_corps']), tunneller_result['rank']), EmbarkationUnit.get_embarkation_unit(EmbarkationUnit.get_detachment(tunneller_result['embarkation_unit'], lang), EmbarkationUnit.get_section(tunneller_result['section'], lang), tunneller_result['attached_corps'], Training.get_training(tunneller_result['training_start'], tunneller_result['training_location'], tunneller_result['training_location_type'])), Transport.get_transport(Transport.get_transport_reference(tunneller_result['transport_uk_ref'], lang), tunneller_result['transport_uk_vessel'], tunneller_result['transport_uk_start'], tunneller_result['transport_uk_origin'], tunneller_result['transport_uk_end'], tunneller_result['transport_uk_destination']), Medals.map_medals(medals_result)))
+        data = {
+            'id': tunneller_result['id'],
+            'serial': tunneller_result['serial'],
+            'name': {'forename': tunneller_result['forename'], 'surname': tunneller_result['surname']},
+            'origins': {
+                'birth': {
+                    'year': get_year(tunneller_result['birth_year'], format_date(tunneller_result['birth_date'])),
+                    'date': format_date(tunneller_result['birth_date'])
+                },
+                'parents': {
+                    'mother': get_parent(tunneller_result['mother_name'], tunneller_result['mother_origin']),
+                    'father': get_parent(tunneller_result['father_name'], tunneller_result['father_origin'])
+                },
+                'nz_resident_in_month': get_nz_resident(tunneller_result['nz_resident_in_month'], lang)
+            },
+            'pre_war_years': {
+                'marital_status': tunneller_result['marital_status'],
+                'wife': tunneller_result['wife_name'],
+                'employment': {
+                    'occupation': tunneller_result['occupation'],
+                    'employer': tunneller_result['employer']
+                },
+                'residence': tunneller_result['residence'],
+                'religion': tunneller_result['religion'],
+                'army_experience': map_army_experience(army_experience_result, lang)
+            },
+            'military_years': {
+                'enlistment': {
+                    'enlistment_date': format_date(tunneller_result['enlistment_date']),
+                    'military_district': tunneller_result['military_district_name'],
+                    'alias': tunneller_result['aka'],
+                    'transferred_to_tunnellers': get_transferred_to_tunnellers(format_date(tunneller_result['posted_date']), tunneller_result['posted_from_corps']),
+                    'rank': tunneller_result['rank']
+                },
+                'embarkation_unit': {
+                    'detachment': get_detachment(tunneller_result['embarkation_unit'], lang),
+                    'section': get_section(tunneller_result['section'], lang),
+                    'attached_corps': tunneller_result['attached_corps'],
+                    'training': get_training(tunneller_result['training_start'], tunneller_result['training_location'], tunneller_result['training_location_type'])
+                },
+                'transport_uk': {
+                    'transport_reference': get_transport_reference(tunneller_result['transport_uk_ref'], lang),
+                    'vessel': tunneller_result['transport_uk_vessel'],
+                    'departure_date': format_date(tunneller_result['transport_uk_start']),
+                    'from': tunneller_result['transport_uk_origin'],
+                    'arrival_date': format_date(tunneller_result['transport_uk_end']),
+                    'to': tunneller_result['transport_uk_destination']
+                },
+                'medals': map_medals(medals_result)
+            }
+        }
+        tunneller = from_dict(data_class=Tunneller, data=data)
+
+        # tunneller = asdict(Tunneller(
+        #     tunneller_result['id'],
+        #     tunneller_result['serial'],
+        #     Name(tunneller_result['forename'], tunneller_result['surname']),
+        #     Origins(BirthDetails.get_birth_details(tunneller_result['birth_year'], tunneller_result['birth_date'], tunneller_result['birth_country']), Parents(Parent.get_parent(
+        #         tunneller_result['mother_name'], tunneller_result['mother_origin']), Parent.get_parent(tunneller_result['father_name'], tunneller_result['father_origin'])), Origins.get_nz_resident(tunneller_result['nz_resident_in_month'], lang)),
+        #     PreWarYear(tunneller_result['marital_status'], tunneller_result['wife_name'], Employment(tunneller_result['occupation'], tunneller_result['employer']),
+        #                tunneller_result['residence'], tunneller_result['religion'], army_experience_result),
+        #     MilitaryYears(Enlistment.get_enlistment(tunneller_result['enlistment_date'], tunneller_result['military_district_name'], tunneller_result['aka'], TransferredToTunnellers.get_transferred_to_tunnellers(
+        #         tunneller_result['posted_date'], tunneller_result['posted_from_corps']), tunneller_result['rank']), EmbarkationUnit.get_embarkation_unit(EmbarkationUnit.get_detachment(tunneller_result['embarkation_unit'], lang), EmbarkationUnit.get_section(tunneller_result['section'], lang), tunneller_result['attached_corps'], Training.get_training(tunneller_result['training_start'], tunneller_result['training_location'], tunneller_result['training_location_type'])), Transport.get_transport(Transport.get_transport_reference(tunneller_result['transport_uk_ref'], lang), tunneller_result['transport_uk_vessel'], tunneller_result['transport_uk_start'], tunneller_result['transport_uk_origin'], tunneller_result['transport_uk_end'], tunneller_result['transport_uk_destination']), medals_result)))
 
     return tunneller
