@@ -77,7 +77,9 @@ def show(id, lang, mysql):
 
     medals_sql = f'''
         SELECT {medal_name_col[lang]} AS medal_name, {medal_citation_col[lang]} AS medal_citation, {country_col[lang]} AS country
+
         FROM medal_join
+
         JOIN medal ON medal.medal_id=medal_m_id
         LEFT JOIN medal_citation ON medal_citation.medal_citation_id=medal_c_id
         LEFT JOIN country ON country.country_id=medal_m_c_id
@@ -93,7 +95,9 @@ def show(id, lang, mysql):
 
     image_source_book_id_sql = f'''
         SELECT book_id
+
         FROM tunneller
+        
         LEFT JOIN book ON book.book_id=tunneller.image_source_book_fk
         WHERE id=%s
     '''
