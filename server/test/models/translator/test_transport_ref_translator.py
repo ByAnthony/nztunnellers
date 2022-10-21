@@ -1,4 +1,4 @@
-from ....models.translator import transport_ref_translator
+from ....models.helpers import transport_ref_translator
 
 
 transport_ruapehu = 'S.S. Ruapehu 18 December 1915'

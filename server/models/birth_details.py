@@ -6,9 +6,9 @@ from .helpers.date_formatter import format_date, get_year
 
 @dataclass
 class BirthDetails:
-    birth_year: Optional[str]
-    birth_date: Optional[str]
-    birth_country: Optional[str]
+    year: Optional[str]
+    date: Optional[str]
+    country: Optional[str]
 
     def get_birth_details(year: Optional[str], date: Optional[date], country: Optional[str]) -> dict[Optional[str], Optional[str], Optional[str]]:
         birth_date = format_date(date)

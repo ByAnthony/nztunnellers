@@ -14,7 +14,7 @@ def select_all(mysql):
     results = run_sql(sql, mysql)
 
     for row in results:
-        tunneller = Roll(row['id'], row['serial'], Name.get_name(
+        tunneller = Roll(row['id'], row['serial'], Name(
             row['forename'], row['surname']))
         roll.append(tunneller)
     return roll

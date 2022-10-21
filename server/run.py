@@ -1,3 +1,4 @@
+from dataclasses import asdict
 from flask import Flask, request
 from flask_mysqldb import MySQL
 
@@ -29,7 +30,7 @@ mysql = MySQL(app)
 def roll():
     tunnellers = tunnellers_repository.select_all(mysql)
     roll = json.dumps(
-        [tunneller.__dict__ for tunneller in tunnellers], indent=4)
+        [asdict(tunneller) for tunneller in tunnellers], default=str, indent=4)
     return roll
 
 
@@ -39,7 +40,7 @@ def tunneller(id):
     if lang not in ['en', 'fr']:
         return 'Language not supported', 400
     tunneller = tunneller_repository.show(id, lang, mysql)
-    profile = json.dumps(tunneller.__dict__, indent=4)
+    profile = json.dumps(asdict(tunneller), default=str, indent=4)
     return profile
 
 
