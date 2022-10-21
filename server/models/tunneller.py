@@ -1,3 +1,5 @@
+import dataclasses
+import json
 import re
 
 from dataclasses import dataclass
@@ -12,6 +14,13 @@ class Tunneller(Roll):
     origins: Origins
     pre_war_years: PreWarYear
     military_years: MilitaryYears
+
+
+class JSONEncoder(json.JSONEncoder):
+    def default(self, o):
+        if dataclasses.is_dataclass(o):
+            return dataclasses.asdict(o)
+        return super().default(o)
 
     # image: dict or None
     # sources: dict

@@ -11,4 +11,4 @@ class PreWarYear:
     employment: Employment
     residence: Optional[str]
     religion: Optional[str]
-    army_experience: tuple[ArmyExperience]
+    army_experience: list[ArmyExperience]

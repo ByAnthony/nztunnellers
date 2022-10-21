@@ -1,20 +1,6 @@
-from dataclasses import asdict
 from db.run_sql import run_sql
 from dacite import from_dict
-from models.name import Name
 from models.tunneller import Tunneller
-from models.origins import Origins
-from models.birth_details import BirthDetails
-from models.parents import Parents
-from models.parent import Parent
-from models.pre_war_years import PreWarYear
-from models.employment import Employment
-from models.military_years import MilitaryYears
-from models.enlistment import Enlistment
-from models.transferred_to_tunnellers import TransferredToTunnellers
-from models.embarkation_unit import EmbarkationUnit
-from models.training import Training
-from models.transport import Transport
 from models.helpers.formatter_date import format_date, get_year
 from models.helpers.formatter_parent import get_parent
 from models.helpers.formatter_nz_resident import get_nz_resident
@@ -147,7 +133,8 @@ def show(id, lang, mysql):
             'origins': {
                 'birth': {
                     'year': get_year(tunneller_result['birth_year'], format_date(tunneller_result['birth_date'])),
-                    'date': format_date(tunneller_result['birth_date'])
+                    'date': format_date(tunneller_result['birth_date']),
+                    'country': tunneller_result['birth_country']
                 },
                 'parents': {
                     'mother': get_parent(tunneller_result['mother_name'], tunneller_result['mother_origin']),
@@ -184,24 +171,13 @@ def show(id, lang, mysql):
                     'transport_reference': get_transport_reference(tunneller_result['transport_uk_ref'], lang),
                     'vessel': tunneller_result['transport_uk_vessel'],
                     'departure_date': format_date(tunneller_result['transport_uk_start']),
-                    'from': tunneller_result['transport_uk_origin'],
+                    'departure_port': tunneller_result['transport_uk_origin'],
                     'arrival_date': format_date(tunneller_result['transport_uk_end']),
-                    'to': tunneller_result['transport_uk_destination']
+                    'arrival_port': tunneller_result['transport_uk_destination']
                 },
                 'medals': map_medals(medals_result)
             }
         }
         tunneller = from_dict(data_class=Tunneller, data=data)
-
-        # tunneller = asdict(Tunneller(
-        #     tunneller_result['id'],
-        #     tunneller_result['serial'],
-        #     Name(tunneller_result['forename'], tunneller_result['surname']),
-        #     Origins(BirthDetails.get_birth_details(tunneller_result['birth_year'], tunneller_result['birth_date'], tunneller_result['birth_country']), Parents(Parent.get_parent(
-        #         tunneller_result['mother_name'], tunneller_result['mother_origin']), Parent.get_parent(tunneller_result['father_name'], tunneller_result['father_origin'])), Origins.get_nz_resident(tunneller_result['nz_resident_in_month'], lang)),
-        #     PreWarYear(tunneller_result['marital_status'], tunneller_result['wife_name'], Employment(tunneller_result['occupation'], tunneller_result['employer']),
-        #                tunneller_result['residence'], tunneller_result['religion'], army_experience_result),
-        #     MilitaryYears(Enlistment.get_enlistment(tunneller_result['enlistment_date'], tunneller_result['military_district_name'], tunneller_result['aka'], TransferredToTunnellers.get_transferred_to_tunnellers(
-        #         tunneller_result['posted_date'], tunneller_result['posted_from_corps']), tunneller_result['rank']), EmbarkationUnit.get_embarkation_unit(EmbarkationUnit.get_detachment(tunneller_result['embarkation_unit'], lang), EmbarkationUnit.get_section(tunneller_result['section'], lang), tunneller_result['attached_corps'], Training.get_training(tunneller_result['training_start'], tunneller_result['training_location'], tunneller_result['training_location_type'])), Transport.get_transport(Transport.get_transport_reference(tunneller_result['transport_uk_ref'], lang), tunneller_result['transport_uk_vessel'], tunneller_result['transport_uk_start'], tunneller_result['transport_uk_origin'], tunneller_result['transport_uk_end'], tunneller_result['transport_uk_destination']), medals_result)))
 
     return tunneller

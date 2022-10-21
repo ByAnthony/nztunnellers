@@ -1,5 +1,6 @@
 from flask import Flask, request
 from flask_mysqldb import MySQL
+from models.tunneller import JSONEncoder
 
 import os
 import json
@@ -39,7 +40,7 @@ def tunneller(id):
     if lang not in ['en', 'fr']:
         return 'Language not supported', 400
     tunneller = tunneller_repository.show(id, lang, mysql)
-    profile = json.dumps(tunneller, default=str, indent=4)
+    profile = json.dumps(tunneller, cls=JSONEncoder, indent=4)
     return profile
 
 

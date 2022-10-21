@@ -5,5 +5,5 @@ from .parent import Parent
 
 @dataclass
 class Parents:
-    mother: Parent
-    father: Parent
+    mother: Optional[Parent]
+    father: Optional[Parent]
