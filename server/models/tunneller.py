@@ -16,25 +16,6 @@ class Tunneller(Roll):
     # image: dict or None
     # sources: dict
 
-    # def get_military_years(enlistment: dict, embarkation_unit: dict, transport_uk: dict, transport_nz: dict, end_of_service: dict, medals: list[dict]) -> dict:
-    #     return {'enlistment': enlistment, 'embarkation_unit': embarkation_unit, 'transport_uk': transport_uk, 'transport_nz': transport_nz, 'end_of_service': end_of_service, 'medals': medals
-
-    # def get_transport(transport_reference: str, vessel: str, departure_date: str, departure_port: str, arrival_date: str, arrival_port: str) -> dict:
-    #     if vessel and departure_date is not None:
-    #         return {'transport_reference': transport_reference, 'vessel': vessel, 'departure_date': departure_date, 'from': departure_port, 'arrival_date': arrival_date, 'to': arrival_port}
-    #     return None
-
-    # def get_transport_reference(transport_reference: str, lang: str) -> str:
-    #     return translate_transport_ref(transport_reference, lang)
-
-    # def get_vessel(vessel: str) -> str:
-    #     return vessel
-
-    # def get_end_of_service(has_deserted: str or None) -> dict:
-    #     if has_deserted is not None:
-    #         return {'deserter': {'text': has_deserted}}
-    #     return {'deserter': None}
-
     # def get_end_of_service_as_deserter(value: bool or None, lang: str) -> str or None:
     #     return translate_has_deserted(value, lang)
 
