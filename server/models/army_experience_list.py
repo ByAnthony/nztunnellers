@@ -3,9 +3,19 @@ from typing import Optional
 from models.helpers.month_year_converter import convert_month_year
 
 
-class ArmyExperienceList:
+@dataclass
+class ArmyExperience:
+    unit: str
+    country: Optional[str]
+    conflict: Optional[str]
+    duration: Optional[str]
 
-    def map_army_experience(experience: tuple, lang: str) -> list[Optional[dict[Optional[str], Optional[str], Optional[str], Optional[str]]]]:
+
+@dataclass
+class ArmyExperiences:
+    experiences: list[ArmyExperience]
+
+    def map_army_experience(experiences, lang: str) -> list[ArmyExperience]:
         return [
             {
                 'unit': row['army_experience_name'],
@@ -13,5 +23,5 @@ class ArmyExperienceList:
                 'conflict': row['conflict_name'],
                 'duration': convert_month_year(row['army_experience_in_month'], lang)
             }
-            for row in experience
+            for row in experiences
         ]

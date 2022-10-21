@@ -7,9 +7,9 @@ def select_all(mysql):
 
     roll = []
     sql = f'''
-        SELECT id, surname, forename, serial
+        SELECT t.id, t.surname, t.forename, t.serial
         FROM tunneller t
-        ORDER BY surname, forename
+        ORDER BY t.surname, t.forename
     '''
     results = run_sql(sql, mysql)
 
