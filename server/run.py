@@ -30,7 +30,7 @@ mysql = MySQL(app)
 def roll():
     tunnellers = tunnellers_repository.select_all(mysql)
     roll = json.dumps(
-        [tunneller for tunneller in tunnellers], default=str, indent=4)
+        [tunneller for tunneller in tunnellers], indent=4)
     return roll
 
 
