@@ -1,6 +1,5 @@
 import dataclasses
 import json
-import re
 
 from dataclasses import dataclass
 from models.roll import Roll

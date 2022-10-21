@@ -1,4 +1,7 @@
-def translate_family(family: str, lang: str) -> str or None:
+from typing import Optional
+
+
+def translate_family(family: str, lang: str) -> Optional[str]:
     if family is not None:
         if lang == 'en':
             return '{} {}'.format(family, 'family')

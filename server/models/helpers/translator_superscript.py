@@ -1,4 +1,7 @@
-def translate_superscript(string: str, lang: str) -> str:
+from typing import Optional
+
+
+def translate_superscript(string: Optional[str], lang: str) -> Optional[str]:
     if string is not None:
         if lang == 'fr':
             if 're ' in string:
@@ -10,4 +13,4 @@ def translate_superscript(string: str, lang: str) -> str:
             if 'e ' in string:
                 return string.replace(
                     'e ', '\N{MODIFIER LETTER SMALL E}\N{NO-BREAK SPACE}')
-    return string
+        return string
