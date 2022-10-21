@@ -117,9 +117,6 @@ def show(id, lang, mysql):
 
     if tunneller_result is not None:
 
-        # military_years = Tunneller.get_military_years(
-        #     enlistment, embarkation_unit, None, None, end_of_service, Tunneller.get_medals(medals_result))
-
         # image_source_archives = Tunneller.get_image_source_archives(
         #     tunneller_result['archives_name'], tunneller_result['archives_ref'])
         # image_source_newspaper = Tunneller.get_image_source_newspaper(

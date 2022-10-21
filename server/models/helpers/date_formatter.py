@@ -1,8 +1,9 @@
 import time
 from datetime import date
+from typing import Optional
 
 
-def get_year(year: str or None, formatted_date: str) -> str:
+def get_year(year: Optional[str], formatted_date: str) -> str:
     if year is not None:
         return year
     else:
@@ -10,7 +11,7 @@ def get_year(year: str or None, formatted_date: str) -> str:
         return formatted_year
 
 
-def format_date(date: date or None) -> str:
+def format_date(date: Optional[date]) -> str:
     if date is not None:
         return date.strftime('%Y-%m-%d')
 

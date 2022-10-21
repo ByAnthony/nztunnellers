@@ -16,12 +16,6 @@ class Tunneller(Roll):
     # image: dict or None
     # sources: dict
 
-    # def get_end_of_service_as_deserter(value: bool or None, lang: str) -> str or None:
-    #     return translate_has_deserted(value, lang)
-
-    # def get_medals(medals: tuple) -> list[dict]:
-    #     return map_medals(medals)
-
     # def get_image(url: str, source: dict) -> dict or None:
     #     if url is not None:
     #         return {'url': url, 'source': source}

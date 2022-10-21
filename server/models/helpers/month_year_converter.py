@@ -1,4 +1,7 @@
-def convert_month_year(month: str, lang: str) -> str or None:
+from typing import Optional
+
+
+def convert_month_year(month: Optional[str], lang: str) -> Optional[str]:
 
     mois = 'mois'
     month_col = {
