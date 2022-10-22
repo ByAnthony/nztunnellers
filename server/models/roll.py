@@ -1,5 +1,10 @@
 from dataclasses import dataclass
-from .name import Name
+
+
+@dataclass
+class Name:
+    forename: str
+    surname: str
 
 
 @dataclass

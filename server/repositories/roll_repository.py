@@ -1,7 +1,6 @@
 from dataclasses import asdict
 from db.run_sql import run_sql
-from models.roll import Roll
-from models.name import Name
+from models.roll import Roll, Name
 
 
 def select_all(mysql):
