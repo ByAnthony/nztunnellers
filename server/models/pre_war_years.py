@@ -23,4 +23,4 @@ class PreWarYear:
     employment: Employment
     residence: Optional[str]
     religion: Optional[str]
-    army_experience: list[ArmyExperience]
+    army_experience: list[Optional[ArmyExperience]]

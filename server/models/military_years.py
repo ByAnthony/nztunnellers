@@ -54,4 +54,4 @@ class MilitaryYears:
     enlistment: Enlistment
     embarkation_unit: EmbarkationUnit
     transport_uk: Transport
-    medals: list[Medal]
+    medals: list[Optional[Medal]]
