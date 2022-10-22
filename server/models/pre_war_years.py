@@ -1,7 +1,19 @@
 from dataclasses import dataclass
 from typing import Optional
-from models.employment import Employment
-from models.army_experiences import ArmyExperience
+
+
+@dataclass()
+class ArmyExperience:
+    unit: Optional[str]
+    country: Optional[str]
+    conflict: Optional[str]
+    duration: Optional[str]
+
+
+@dataclass
+class Employment:
+    occupation: str
+    employer: Optional[str]
 
 
 @dataclass
