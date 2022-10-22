@@ -1,4 +1,4 @@
-from models.army_experiences import ArmyExperience
+from models.pre_war_years import ArmyExperience
 from models.helpers.formatter_date import convert_month_year
 
 

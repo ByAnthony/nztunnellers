@@ -1,4 +1,4 @@
-from models.medals import Medal
+from models.military_years import Medal
 
 
 def map_medals(medals: tuple) -> list[Medal]:
