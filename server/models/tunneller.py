@@ -6,6 +6,7 @@ from models.roll import Roll
 from models.origins import Origins
 from models.pre_war_years import PreWarYear
 from models.military_years import MilitaryYears
+from models.sources import Sources
 
 
 @dataclass
@@ -14,7 +15,7 @@ class Tunneller(Roll):
     pre_war_years: PreWarYear
     military_years: MilitaryYears
     # image: Image
-    # sources: Sources
+    sources: Sources
 
 
 class JSONEncoder(json.JSONEncoder):
