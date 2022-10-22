@@ -169,7 +169,7 @@ def show(id, lang, mysql):
                     'detachment': get_detachment(tunneller_result['embarkation_unit'], lang),
                     'section': get_section(tunneller_result['section'], lang),
                     'attached_corps': tunneller_result['attached_corps'],
-                    'training': get_training(tunneller_result['training_start'], tunneller_result['training_location'], tunneller_result['training_location_type'])
+                    'training': get_training(format_date(tunneller_result['training_start']), tunneller_result['training_location'], tunneller_result['training_location_type'])
                 },
                 'transport_uk': {
                     'transport_reference': get_transport_reference(tunneller_result['transport_uk_ref'], lang),

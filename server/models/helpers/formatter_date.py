@@ -10,7 +10,6 @@ def get_year(year: Optional[str], formatted_date: Optional[str]) -> Optional[str
             formatted_year = format_year(formatted_date)
             return formatted_year
         return None
-    return None
 
 
 def format_date(date: Optional[date]) -> Optional[str]:
