@@ -1,33 +1,12 @@
 from db.run_sql import run_sql
 from dacite import from_dict
 from models.tunneller import Tunneller
-from models.helpers.formatter_date import format_date, get_year
-from models.helpers.formatter_parent import get_parent
-from models.helpers.formatter_nz_resident import get_nz_resident
-from models.helpers.mapper_army_experience import map_army_experience
-from models.helpers.formatter_transferred_to_tunnellers import get_transferred_to_tunnellers
-from models.helpers.formatter_embarkation_unit import get_detachment, get_section
-from models.helpers.formatter_training import get_training
-from models.helpers.formatter_transport import get_transport_reference
-from models.helpers.mapper_medals import map_medals
-from models.helpers.mapper_nz_archives import map_nz_archives
-from models.helpers.formatter_sources import get_awmm
-from .translations.translations import attached_corps_col
-from .translations.translations import birth_country_col
-from .translations.translations import conflict_col
-from .translations.translations import country_col
-from .translations.translations import embarkation_unit_col
-from .translations.translations import father_origin_col
-from .translations.translations import marital_status_col
-from .translations.translations import medal_citation_col
-from .translations.translations import medal_name_col
-from .translations.translations import mother_origin_col
-from .translations.translations import occupation_col
-from .translations.translations import posted_from_corps_col
-from .translations.translations import rank_col
-from .translations.translations import religion_col
-from .translations.translations import section_col
-from .translations.translations import training_location_type_col
+from models.helpers.date_helpers import format_date, get_year
+from models.helpers.origins_helpers import get_parent, get_nz_resident
+from models.helpers.pre_war_years_helpers import map_army_experience
+from models.helpers.military_years_helpers import get_transferred_to_tunnellers, get_detachment, get_section, get_training, get_transport_reference, map_medals
+from models.helpers.sources_helpers import map_nz_archives, get_awmm
+from .translations.translations import attached_corps_col, birth_country_col, conflict_col, country_col, embarkation_unit_col, father_origin_col, marital_status_col, medal_citation_col, medal_name_col, mother_origin_col, occupation_col, posted_from_corps_col, rank_col, religion_col, section_col, training_location_type_col
 
 
 def show(id, lang, mysql):

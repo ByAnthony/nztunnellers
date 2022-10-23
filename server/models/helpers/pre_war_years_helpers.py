@@ -1,5 +1,5 @@
 from models.pre_war_years import ArmyExperience
-from models.helpers.formatter_date import convert_month_year
+from models.helpers.date_helpers import convert_month_year
 
 
 def map_army_experience(experiences: tuple, lang: str) -> list[ArmyExperience]:

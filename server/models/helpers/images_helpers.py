@@ -45,3 +45,8 @@ def get_image_source_book(authors: tuple, title: str, town: str, publisher: str,
     if title is not None:
         return {'author': map_authors(authors), 'title': title, 'town': town, 'publisher': publisher, 'year': year, 'page': page}
     return None
+
+
+def map_authors(authors: tuple) -> list[dict]:
+    return [{'forename': row['author_forename'],
+            'surname': row['author_surname']} for row in authors]
