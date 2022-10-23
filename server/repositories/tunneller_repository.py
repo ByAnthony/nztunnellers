@@ -6,6 +6,7 @@ from models.helpers.origins_helpers import get_parent, get_nz_resident
 from models.helpers.pre_war_years_helpers import map_army_experience
 from models.helpers.military_years_helpers import get_transferred_to_tunnellers, get_detachment, get_section, get_training, get_transport_reference, map_medals
 from models.helpers.sources_helpers import map_nz_archives, get_awmm, get_nominal_roll, map_london_gazette
+from models.helpers.images_helpers import get_image_url, get_image_source_auckland_libraries, get_image_source_archives, get_image_source_family, get_image_source_newspaper, get_image_source_book
 from .translations.translations import attached_corps_col, birth_country_col, conflict_col, country_col, embarkation_unit_col, father_origin_col, marital_status_col, medal_citation_col, medal_name_col, mother_origin_col, occupation_col, posted_from_corps_col, rank_col, religion_col, section_col, training_location_type_col
 
 
@@ -14,7 +15,7 @@ def show(id, lang, mysql):
     tunneller = []
 
     tunneller_sql = f'''
-        SELECT t.id, t.forename, t.surname, t.aka, t.serial, t.birth_date, t.birth_year, t.birth_country_fk, {birth_country_col[lang]} AS birth_country, t.mother_name, t.mother_origin_fk, {mother_origin_col[lang]} AS mother_origin, t.father_name, t.father_origin_fk, {father_origin_col[lang]} AS father_origin, nz_resident_in_month, t.marital_status_fk, {marital_status_col[lang]} AS marital_status, t.wife_name, t.occupation_fk, {occupation_col[lang]} AS occupation, t.last_employer_fk, employer.last_employer_name AS employer, t.town_fk, residence.town_name AS residence, t.religion_fk, {religion_col[lang]} AS religion, t.enlistment_date, t.military_district_fk, military_district.military_district_name, t.aka, t.posted_date, t.posted_corps_fk, {posted_from_corps_col[lang]} AS posted_from_corps, t.rank_fk, {rank_col[lang]} AS rank, t.embarkation_unit_fk, {embarkation_unit_col[lang]} AS embarkation_unit, t.section_fk, {section_col[lang]} AS section, t.attached_corps_fk, {attached_corps_col[lang]} AS attached_corps, embarkation_unit.training_fk, training.training_start, training.training_location, {training_location_type_col[lang]} AS training_location_type, embarkation_unit.transport_uk_fk, transport.transport_ref_fk, transport_uk_ref.transport_ref_name AS transport_uk_ref, transport.transport_vessel_fk, transport_uk_vessel.transport_vessel_name AS transport_uk_vessel, transport.transport_start AS transport_uk_start, transport.transport_origin AS transport_uk_origin, transport.transport_end AS transport_uk_end, transport.transport_destination AS transport_uk_destination, awmm_cenotaph, t.nominal_roll_fk, nominal_roll.nominal_roll_volume, nominal_roll.nominal_roll_number, nominal_roll.nominal_roll_page
+        SELECT t.id, t.forename, t.surname, t.aka, t.serial, t.birth_date, t.birth_year, t.birth_country_fk, {birth_country_col[lang]} AS birth_country, t.mother_name, t.mother_origin_fk, {mother_origin_col[lang]} AS mother_origin, t.father_name, t.father_origin_fk, {father_origin_col[lang]} AS father_origin, nz_resident_in_month, t.marital_status_fk, {marital_status_col[lang]} AS marital_status, t.wife_name, t.occupation_fk, {occupation_col[lang]} AS occupation, t.last_employer_fk, employer.last_employer_name AS employer, t.town_fk, residence.town_name AS residence, t.religion_fk, {religion_col[lang]} AS religion, t.enlistment_date, t.military_district_fk, military_district.military_district_name, t.aka, t.posted_date, t.posted_corps_fk, {posted_from_corps_col[lang]} AS posted_from_corps, t.rank_fk, {rank_col[lang]} AS rank, t.embarkation_unit_fk, {embarkation_unit_col[lang]} AS embarkation_unit, t.section_fk, {section_col[lang]} AS section, t.attached_corps_fk, {attached_corps_col[lang]} AS attached_corps, embarkation_unit.training_fk, training.training_start, training.training_location, {training_location_type_col[lang]} AS training_location_type, embarkation_unit.transport_uk_fk, transport.transport_ref_fk, transport_uk_ref.transport_ref_name AS transport_uk_ref, transport.transport_vessel_fk, transport_uk_vessel.transport_vessel_name AS transport_uk_vessel, transport.transport_start AS transport_uk_start, transport.transport_origin AS transport_uk_origin, transport.transport_end AS transport_uk_end, transport.transport_destination AS transport_uk_destination, image, image_source_auckland_libraries, t.image_source_archives_fk, archives.archives_name_fk, archives_name.archives_name, archives.archives_ref, t.image_source_family_fk, family.family_name, t.image_source_newspaper_fk, newspaper.newspaper_name_fk, newspaper_name.newspaper_name, newspaper.newspaper_date, t.image_source_book_fk, book.book_title, book.book_town, book.book_publisher, book.book_year, book.book_page, awmm_cenotaph, t.nominal_roll_fk, nominal_roll.nominal_roll_volume, nominal_roll.nominal_roll_number, nominal_roll.nominal_roll_page
 
         FROM tunneller t
 
@@ -38,6 +39,12 @@ def show(id, lang, mysql):
         LEFT JOIN transport_ref transport_uk_ref ON transport.transport_ref_fk=transport_uk_ref.transport_ref_id
         LEFT JOIN transport_vessel transport_uk_vessel ON transport.transport_vessel_fk=transport_uk_vessel.transport_vessel_id
         LEFT JOIN nominal_roll ON t.nominal_roll_fk=nominal_roll.nominal_roll_id
+        LEFT JOIN archives ON archives.archives_id=t.image_source_archives_fk
+        LEFT JOIN archives_name ON archives_name.archives_name_id=archives.archives_name_fk
+        LEFT JOIN family ON family.family_id=t.image_source_family_fk
+        LEFT JOIN newspaper ON newspaper.newspaper_id=t.image_source_newspaper_fk
+        LEFT JOIN newspaper_name ON newspaper_name.newspaper_name_id=newspaper.newspaper_name_fk
+        LEFT JOIN book ON book.book_id=t.image_source_book_fk
 
         WHERE t.id=%s
     '''
@@ -75,14 +82,7 @@ def show(id, lang, mysql):
     london_gazette_sql = 'SELECT london_gazette_date, london_gazette_page FROM london_gazette_join JOIN london_gazette ON london_gazette.london_gazette_id=london_gazette_join.london_gazette_lg_id WHERE london_gazette_join.london_gazette_t_id=%s'
     london_gazette_result = run_sql(london_gazette_sql, mysql, values)
 
-    image_source_book_id_sql = f'''
-        SELECT book_id
-
-        FROM tunneller
-        
-        LEFT JOIN book ON book.book_id=tunneller.image_source_book_fk
-        WHERE id=%s
-    '''
+    image_source_book_id_sql = 'SELECT book.book_id FROM book LEFT JOIN tunneller ON tunneller.image_source_book_fk=book.book_id WHERE id=%s'
     image_source_book_id_result = run_sql(
         image_source_book_id_sql, mysql, values)
 
@@ -97,17 +97,6 @@ def show(id, lang, mysql):
         return []
 
     if tunneller_result is not None:
-
-        # image_source_archives = Tunneller.get_image_source_archives(
-        #     tunneller_result['archives_name'], tunneller_result['archives_ref'])
-        # image_source_newspaper = Tunneller.get_image_source_newspaper(
-        #     tunneller_result['newspaper_name'], Tunneller.get_date(tunneller_result['newspaper_date']))
-        # image_source_book = Tunneller.get_image_source_book(get_image_source_book_authors(
-        #     image_source_book_id_result), tunneller_result['book_title'], tunneller_result['book_town'], tunneller_result['book_publisher'], tunneller_result['book_year'], tunneller_result['book_page'])
-        # image_source = Tunneller.get_image_source(Tunneller.get_image_source_auckland_libraries(
-        #     tunneller_result['image_source_auckland_libraries']), image_source_archives, Tunneller.get_image_source_family(tunneller_result['family_name'], lang), image_source_newspaper, image_source_book)
-        # image = Tunneller.get_image(Tunneller.get_image_url(
-        #     tunneller_result['image']), image_source)
 
         data = {
             'id': tunneller_result['id'],
@@ -160,6 +149,16 @@ def show(id, lang, mysql):
                 },
                 'medals': map_medals(medals_result)
             },
+            'image': {
+                'url': get_image_url(tunneller_result['image']),
+                'source': {
+                    'auckland_libraries': get_image_source_auckland_libraries(tunneller_result['image_source_auckland_libraries']),
+                    'archives': get_image_source_archives(tunneller_result['archives_name'], tunneller_result['archives_ref']),
+                    'family': get_image_source_family(tunneller_result['family_name'], lang),
+                    'newspaper': get_image_source_newspaper(tunneller_result['newspaper_name'], format_date(tunneller_result['newspaper_date'])),
+                    'book': get_image_source_book(get_image_source_book_authors(image_source_book_id_result), tunneller_result['book_title'], tunneller_result['book_town'], tunneller_result['book_publisher'], tunneller_result['book_year'], tunneller_result['book_page'])
+                }
+            },
             'sources': {
                 'nz_archives': map_nz_archives(nz_archives_result),
                 'awmm_cenotaph': {'reference': get_awmm(tunneller_result['awmm_cenotaph'])},
@@ -167,6 +166,7 @@ def show(id, lang, mysql):
                 'london_gazette': map_london_gazette(london_gazette_result)
             }
         }
+
         tunneller = from_dict(data_class=Tunneller, data=data)
 
     return tunneller

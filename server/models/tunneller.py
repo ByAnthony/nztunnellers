@@ -2,10 +2,12 @@ import dataclasses
 import json
 
 from dataclasses import dataclass
+from typing import Optional
 from models.roll import Roll
 from models.origins import Origins
 from models.pre_war_years import PreWarYear
 from models.military_years import MilitaryYears
+from models.image import Image
 from models.sources import Sources
 
 
@@ -14,7 +16,7 @@ class Tunneller(Roll):
     origins: Origins
     pre_war_years: PreWarYear
     military_years: MilitaryYears
-    # image: Image
+    image: Image
     sources: Sources
 
 
