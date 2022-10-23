@@ -34,5 +34,5 @@ class NewZealandArchives:
 class Sources:
     nz_archives: list[NewZealandArchives]
     awmm_cenotaph: Cenotaph
-    # nominal_roll: NominalRoll
-    # london_gazette: list[Optional[LondonGazette]]
+    nominal_roll: NominalRoll
+    london_gazette: list[Optional[LondonGazette]]

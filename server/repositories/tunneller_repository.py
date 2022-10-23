@@ -5,7 +5,7 @@ from models.helpers.date_helpers import format_date, get_year
 from models.helpers.origins_helpers import get_parent, get_nz_resident
 from models.helpers.pre_war_years_helpers import map_army_experience
 from models.helpers.military_years_helpers import get_transferred_to_tunnellers, get_detachment, get_section, get_training, get_transport_reference, map_medals
-from models.helpers.sources_helpers import map_nz_archives, get_awmm
+from models.helpers.sources_helpers import map_nz_archives, get_awmm, get_nominal_roll, map_london_gazette
 from .translations.translations import attached_corps_col, birth_country_col, conflict_col, country_col, embarkation_unit_col, father_origin_col, marital_status_col, medal_citation_col, medal_name_col, mother_origin_col, occupation_col, posted_from_corps_col, rank_col, religion_col, section_col, training_location_type_col
 
 
@@ -14,7 +14,7 @@ def show(id, lang, mysql):
     tunneller = []
 
     tunneller_sql = f'''
-        SELECT t.id, t.forename, t.surname, t.aka, t.serial, t.birth_date, t.birth_year, t.birth_country_fk, {birth_country_col[lang]} AS birth_country, t.mother_name, t.mother_origin_fk, {mother_origin_col[lang]} AS mother_origin, t.father_name, t.father_origin_fk, {father_origin_col[lang]} AS father_origin, nz_resident_in_month, t.marital_status_fk, {marital_status_col[lang]} AS marital_status, t.wife_name, t.occupation_fk, {occupation_col[lang]} AS occupation, t.last_employer_fk, employer.last_employer_name AS employer, t.town_fk, residence.town_name AS residence, t.religion_fk, {religion_col[lang]} AS religion, t.enlistment_date, t.military_district_fk, military_district.military_district_name, t.aka, t.posted_date, t.posted_corps_fk, {posted_from_corps_col[lang]} AS posted_from_corps, t.rank_fk, {rank_col[lang]} AS rank, t.embarkation_unit_fk, {embarkation_unit_col[lang]} AS embarkation_unit, t.section_fk, {section_col[lang]} AS section, t.attached_corps_fk, {attached_corps_col[lang]} AS attached_corps, embarkation_unit.training_fk, training.training_start, training.training_location, {training_location_type_col[lang]} AS training_location_type, embarkation_unit.transport_uk_fk, transport.transport_ref_fk, transport_uk_ref.transport_ref_name AS transport_uk_ref, transport.transport_vessel_fk, transport_uk_vessel.transport_vessel_name AS transport_uk_vessel, transport.transport_start AS transport_uk_start, transport.transport_origin AS transport_uk_origin, transport.transport_end AS transport_uk_end, transport.transport_destination AS transport_uk_destination, awmm_cenotaph
+        SELECT t.id, t.forename, t.surname, t.aka, t.serial, t.birth_date, t.birth_year, t.birth_country_fk, {birth_country_col[lang]} AS birth_country, t.mother_name, t.mother_origin_fk, {mother_origin_col[lang]} AS mother_origin, t.father_name, t.father_origin_fk, {father_origin_col[lang]} AS father_origin, nz_resident_in_month, t.marital_status_fk, {marital_status_col[lang]} AS marital_status, t.wife_name, t.occupation_fk, {occupation_col[lang]} AS occupation, t.last_employer_fk, employer.last_employer_name AS employer, t.town_fk, residence.town_name AS residence, t.religion_fk, {religion_col[lang]} AS religion, t.enlistment_date, t.military_district_fk, military_district.military_district_name, t.aka, t.posted_date, t.posted_corps_fk, {posted_from_corps_col[lang]} AS posted_from_corps, t.rank_fk, {rank_col[lang]} AS rank, t.embarkation_unit_fk, {embarkation_unit_col[lang]} AS embarkation_unit, t.section_fk, {section_col[lang]} AS section, t.attached_corps_fk, {attached_corps_col[lang]} AS attached_corps, embarkation_unit.training_fk, training.training_start, training.training_location, {training_location_type_col[lang]} AS training_location_type, embarkation_unit.transport_uk_fk, transport.transport_ref_fk, transport_uk_ref.transport_ref_name AS transport_uk_ref, transport.transport_vessel_fk, transport_uk_vessel.transport_vessel_name AS transport_uk_vessel, transport.transport_start AS transport_uk_start, transport.transport_origin AS transport_uk_origin, transport.transport_end AS transport_uk_end, transport.transport_destination AS transport_uk_destination, awmm_cenotaph, t.nominal_roll_fk, nominal_roll.nominal_roll_volume, nominal_roll.nominal_roll_number, nominal_roll.nominal_roll_page
 
         FROM tunneller t
 
@@ -37,6 +37,7 @@ def show(id, lang, mysql):
         LEFT JOIN transport ON embarkation_unit.transport_uk_fk=transport.transport_id
         LEFT JOIN transport_ref transport_uk_ref ON transport.transport_ref_fk=transport_uk_ref.transport_ref_id
         LEFT JOIN transport_vessel transport_uk_vessel ON transport.transport_vessel_fk=transport_uk_vessel.transport_vessel_id
+        LEFT JOIN nominal_roll ON t.nominal_roll_fk=nominal_roll.nominal_roll_id
 
         WHERE t.id=%s
     '''
@@ -108,9 +109,6 @@ def show(id, lang, mysql):
         # image = Tunneller.get_image(Tunneller.get_image_url(
         #     tunneller_result['image']), image_source)
 
-        # sources = Tunneller.get_sources(Tunneller.get_nz_archives(nz_archives_result), Tunneller.get_awmm(tunneller_result['awmm_cenotaph']), Tunneller.get_nominal_roll(
-        #     tunneller_result['nominal_roll_volume'], tunneller_result['nominal_roll_number'], tunneller_result['nominal_roll_page'], lang), Tunneller.get_london_gazette(london_gazette_result))
-
         data = {
             'id': tunneller_result['id'],
             'serial': tunneller_result['serial'],
@@ -164,7 +162,9 @@ def show(id, lang, mysql):
             },
             'sources': {
                 'nz_archives': map_nz_archives(nz_archives_result),
-                'awmm_cenotaph': {'reference': get_awmm(tunneller_result['awmm_cenotaph'])}
+                'awmm_cenotaph': {'reference': get_awmm(tunneller_result['awmm_cenotaph'])},
+                'nominal_roll': get_nominal_roll(tunneller_result['nominal_roll_volume'], tunneller_result['nominal_roll_number'], tunneller_result['nominal_roll_page'], lang),
+                'london_gazette': map_london_gazette(london_gazette_result)
             }
         }
         tunneller = from_dict(data_class=Tunneller, data=data)
