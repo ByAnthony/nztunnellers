@@ -6,7 +6,7 @@ from models.helpers.origins_helpers import get_parent, get_nz_resident
 from models.helpers.pre_war_years_helpers import map_army_experience
 from models.helpers.military_years_helpers import get_transferred_to_tunnellers, get_detachment, get_section, get_training, get_transport_reference, map_medals
 from models.helpers.sources_helpers import map_nz_archives, get_awmm, get_nominal_roll, map_london_gazette
-from models.helpers.images_helpers import get_image_url, get_image_source_auckland_libraries, get_image_source_archives, get_image_source_family, get_image_source_newspaper, get_image_source_book
+from models.helpers.images_helpers import get_image, get_image_url, get_image_source, get_image_source_auckland_libraries, get_image_source_archives, get_image_source_family, get_image_source_newspaper, get_image_source_book
 from .translations.translations import attached_corps_col, birth_country_col, conflict_col, country_col, embarkation_unit_col, father_origin_col, marital_status_col, medal_citation_col, medal_name_col, mother_origin_col, occupation_col, posted_from_corps_col, rank_col, religion_col, section_col, training_location_type_col
 
 
@@ -149,16 +149,7 @@ def show(id, lang, mysql):
                 },
                 'medals': map_medals(medals_result)
             },
-            'image': {
-                'url': get_image_url(tunneller_result['image']),
-                'source': {
-                    'auckland_libraries': get_image_source_auckland_libraries(tunneller_result['image_source_auckland_libraries']),
-                    'archives': get_image_source_archives(tunneller_result['archives_name'], tunneller_result['archives_ref']),
-                    'family': get_image_source_family(tunneller_result['family_name'], lang),
-                    'newspaper': get_image_source_newspaper(tunneller_result['newspaper_name'], format_date(tunneller_result['newspaper_date'])),
-                    'book': get_image_source_book(get_image_source_book_authors(image_source_book_id_result), tunneller_result['book_title'], tunneller_result['book_town'], tunneller_result['book_publisher'], tunneller_result['book_year'], tunneller_result['book_page'])
-                }
-            },
+            'image': get_image(get_image_url(tunneller_result['image']), get_image_source(get_image_source_auckland_libraries(tunneller_result['image_source_auckland_libraries']), get_image_source_archives(tunneller_result['archives_name'], tunneller_result['archives_ref']), get_image_source_family(tunneller_result['family_name'], lang), get_image_source_newspaper(tunneller_result['newspaper_name'], format_date(tunneller_result['newspaper_date'])), get_image_source_book(get_image_source_book_authors(image_source_book_id_result), tunneller_result['book_title'], tunneller_result['book_town'], tunneller_result['book_publisher'], tunneller_result['book_year'], tunneller_result['book_page']))),
             'sources': {
                 'nz_archives': map_nz_archives(nz_archives_result),
                 'awmm_cenotaph': {'reference': get_awmm(tunneller_result['awmm_cenotaph'])},
