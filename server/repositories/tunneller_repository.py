@@ -52,11 +52,11 @@ def show(id, lang, mysql):
     tunneller_result = run_sql(tunneller_sql, mysql, values)[0]
 
     army_experience_sql = f'''
-        SELECT army_experience_name, {country_col[lang]} AS country, {conflict_col[lang]} AS conflict_name, army_experience_in_month
+        SELECT army_experience.army_experience_name, {country_col[lang]} AS country, {conflict_col[lang]} AS conflict_name, army_experience_join.army_experience_in_month
 
-        FROM army_experience_join
+        FROM army_experience
 
-        LEFT JOIN army_experience ON army_experience.army_experience_id=army_experience_join.army_experience_c_id
+        LEFT JOIN army_experience_join ON army_experience_join.army_experience_c_id=army_experience.army_experience_id
         LEFT JOIN country ON country.country_id=army_experience_join.army_experience_c_c_id
         LEFT JOIN conflict ON conflict.conflict_id=army_experience_join.army_experience_w_id
 
@@ -67,9 +67,9 @@ def show(id, lang, mysql):
     medals_sql = f'''
         SELECT {medal_name_col[lang]} AS medal_name, {medal_citation_col[lang]} AS medal_citation, {country_col[lang]} AS country
 
-        FROM medal_join
+        FROM medal
 
-        JOIN medal ON medal.medal_id=medal_m_id
+        JOIN medal_join ON medal_join.medal_m_id=medal.medal_id
         LEFT JOIN medal_citation ON medal_citation.medal_citation_id=medal_c_id
         LEFT JOIN country ON country.country_id=medal_m_c_id
         
