@@ -72,14 +72,15 @@ def show(id, lang, mysql):
         JOIN medal ON medal.medal_id=medal_m_id
         LEFT JOIN medal_citation ON medal_citation.medal_citation_id=medal_c_id
         LEFT JOIN country ON country.country_id=medal_m_c_id
+        
         WHERE medal_join.medal_t_id=%s
     '''
     medals_result = run_sql(medals_sql, mysql, values)
 
-    nz_archives_sql = 'SELECT nz_archives_ref, nz_archives_url FROM nz_archives LEFT JOIN tunneller ON tunneller.id=nz_archives.nz_archives_t_id WHERE tunneller.id=%s'
+    nz_archives_sql = 'SELECT nz_archives.nz_archives_ref, nz_archives.nz_archives_url FROM nz_archives LEFT JOIN tunneller ON tunneller.id=nz_archives.nz_archives_t_id WHERE tunneller.id=%s'
     nz_archives_result = run_sql(nz_archives_sql, mysql, values)
 
-    london_gazette_sql = 'SELECT london_gazette_date, london_gazette_page FROM london_gazette_join JOIN london_gazette ON london_gazette.london_gazette_id=london_gazette_join.london_gazette_lg_id WHERE london_gazette_join.london_gazette_t_id=%s'
+    london_gazette_sql = 'SELECT london_gazette.london_gazette_date, london_gazette.london_gazette_page FROM london_gazette JOIN london_gazette_join ON london_gazette_join.london_gazette_lg_id=london_gazette.london_gazette_id WHERE london_gazette_join.london_gazette_t_id=%s'
     london_gazette_result = run_sql(london_gazette_sql, mysql, values)
 
     image_source_book_id_sql = 'SELECT book.book_id FROM book LEFT JOIN tunneller ON tunneller.image_source_book_fk=book.book_id WHERE id=%s'
@@ -90,7 +91,7 @@ def show(id, lang, mysql):
         if image_source_book_id_result != ():
             formatted_book_id = [
                 str(image_source_book_id_result[0].get('book_id'))]
-            image_authors_sql = 'SELECT author_forename, author_surname FROM author_book_join JOIN author ON author.author_id=author_book_join.author_book_a_id WHERE author_book_join.author_book_b_id=%s'
+            image_authors_sql = 'SELECT author.author_forename, author.author_surname FROM author JOIN author_book_join ON author_book_join.author_book_a_id=author.author_id WHERE author_book_join.author_book_b_id=%s'
             image_authors_result = run_sql(
                 image_authors_sql, mysql, formatted_book_id)
             return image_authors_result
