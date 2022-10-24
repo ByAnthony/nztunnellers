@@ -1,5 +1,4 @@
 from datetime import date
-import locale
 from typing import Optional
 
 

@@ -11,7 +11,7 @@ class Medal:
 
 @dataclass
 class Transport:
-    transport_reference: str
+    reference: str
     vessel: str
     departure_year: str
     departure_date: str

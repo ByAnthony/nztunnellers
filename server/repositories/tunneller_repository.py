@@ -142,7 +142,7 @@ def show(id, lang, mysql):
                     'training': get_training(format_year(format_date(tunneller_result['training_start'])), format_to_day_and_month(tunneller_result['training_start'], lang), tunneller_result['training_location'], tunneller_result['training_location_type'])
                 },
                 'transport_uk': {
-                    'transport_reference': get_transport_reference(tunneller_result['transport_uk_ref'], lang),
+                    'reference': get_transport_reference(tunneller_result['transport_uk_ref'], lang),
                     'vessel': tunneller_result['transport_uk_vessel'],
                     'departure_year': format_year(format_date(tunneller_result['transport_uk_start'])),
                     'departure_date': format_to_day_and_month(tunneller_result['transport_uk_start'], lang),
