@@ -33,10 +33,8 @@ def find_day(date: str) -> str:
 
 
 def format_to_day_and_month(date: Optional[date], lang) -> Optional[str]:
-    months = {'1': 'January', '2': 'Feburary', '3': 'March', '4': 'April', '5': 'May', '6': 'June',
-              '7': 'July', '8': 'August', '9': 'September', '10': 'October', '11': 'November', '12': 'December'}
-    mois = {'1': 'janvier', '2': 'février', '3': 'mars', '4': 'avril', '5': 'mai', '6': 'juin',
-            '7': 'juillet', '8': 'août', '9': 'septembre', '10': 'octobre', '11': 'novembre', '12': 'décembre'}
+    months = {'1': {'en': 'January', 'fr': 'janvier'}, '2': {'en': 'Feburary', 'fr': 'février'}, '3': {'en': 'March', 'fr': 'mars'}, '4': {'en': 'April', 'fr': 'avril'}, '5': {'en': 'May', 'fr': 'mai'}, '6': {'en': 'June', 'fr': 'juin'},
+              '7': {'en': 'July', 'fr': 'juillet'}, '8': {'en': 'August', 'fr': 'août'}, '9': {'en': 'September', 'fr': 'septembre'}, '10': {'en': 'October', 'fr': 'octobre'}, '11': {'en': 'November', 'fr': 'novembre'}, '12': {'en': 'December', 'fr': 'décembre'}}
 
     if date is not None:
         formatted_date = format_date(date)
@@ -44,10 +42,8 @@ def format_to_day_and_month(date: Optional[date], lang) -> Optional[str]:
         day = find_day(formatted_date).lstrip('0')
         no_break_space = '\N{NO-BREAK SPACE}'
 
-        if lang == 'en':
-            return '{}{}{}'.format(day, no_break_space, months.get(month))
-        elif lang == 'fr':
-            return '{}{}{}'.format(day, no_break_space, mois.get(month))
+        if lang is not None:
+            return '{}{}{}'.format(day, no_break_space, months.get(month).get(lang))
     else:
         return None
 
