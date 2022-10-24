@@ -46,9 +46,9 @@ class TransferredToTunnellers:
 
 @dataclass
 class Enlistment:
-    enlistment_year: Optional[str]
-    enlistment_date: Optional[str]
-    military_district: Optional[str]
+    year: Optional[str]
+    date: Optional[str]
+    district: Optional[str]
     alias: Optional[str]
     transferred_to_tunnellers: Optional[TransferredToTunnellers]
     rank: str

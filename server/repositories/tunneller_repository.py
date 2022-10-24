@@ -106,7 +106,7 @@ def show(id, lang, mysql):
             'origins': {
                 'birth': {
                     'year': get_birth_year(tunneller_result['birth_year'], format_date(tunneller_result['birth_date'])),
-                    'date': format_date(tunneller_result['birth_date']),
+                    'date': format_to_day_month_and_year(tunneller_result['birth_date'], lang),
                     'country': tunneller_result['birth_country']
                 },
                 'parents': {
@@ -128,9 +128,9 @@ def show(id, lang, mysql):
             },
             'military_years': {
                 'enlistment': {
-                    'enlistment_year': format_year(format_date(tunneller_result['enlistment_date'])),
-                    'enlistment_date': format_to_day_and_month(tunneller_result['enlistment_date'], lang),
-                    'military_district': tunneller_result['military_district_name'],
+                    'year': format_year(format_date(tunneller_result['enlistment_date'])),
+                    'date': format_to_day_and_month(tunneller_result['enlistment_date'], lang),
+                    'district': tunneller_result['military_district_name'],
                     'alias': tunneller_result['aka'],
                     'transferred_to_tunnellers': get_transferred_to_tunnellers(format_year(format_date(tunneller_result['posted_date'])), format_to_day_and_month(tunneller_result['posted_date'], lang), tunneller_result['posted_from_corps']),
                     'rank': tunneller_result['rank']
