@@ -15,7 +15,7 @@ class ImageBook:
     town: str
     publisher: str
     year: str
-    page: Optional[int]
+    page: Optional[str]
 
 
 @dataclass

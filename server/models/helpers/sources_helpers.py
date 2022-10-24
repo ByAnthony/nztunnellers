@@ -29,7 +29,7 @@ def get_nominal_roll(volume: str, roll: str, page: str, lang: str) -> NominalRol
                 'publisher': 'Government Printer',
                 'date': '1914-1919',
                 'volume': 'Volume{}{}'.format(no_break_space, volume),
-                'roll': '{}{}{}'.format(roll_number_col[lang], no_break_space, roll),
+                'roll': '{}{}'.format(roll_number_col[lang], roll),
                 'page': 'p.{}{}'.format(no_break_space, page)}
     else:
         return {'title': title_1916[lang],

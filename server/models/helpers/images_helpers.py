@@ -26,7 +26,7 @@ def get_image_source_auckland_libraries(reference: Optional[str]) -> Optional[st
 
 
 def get_image_source_archives(location: Optional[str], reference: Optional[str]) -> Optional[ImageArchives]:
-    if location and reference is not None:
+    if location is not None and reference is not None:
         return {'location': location, 'reference': reference}
     return None
 
@@ -38,14 +38,20 @@ def get_image_source_family(family: Optional[str], lang: str) -> Optional[str]:
 
 
 def get_image_source_newspaper(name: Optional[str], date: Optional[str]) -> Optional[ImageNewspaper]:
-    if name and date is not None:
+    if name is not None and date is not None:
         return {'name': name, 'date': date}
     return None
 
 
 def get_image_source_book(authors: list, title: Optional[str], town: Optional[str], publisher: Optional[str], year: Optional[str], page: Optional[str]) -> Optional[ImageBook]:
+    def get_page(page: Optional[str]):
+        if page is not None:
+            no_break_space = '\N{NO-BREAK SPACE}'
+            return 'p.{}{}'.format(no_break_space, page)
+        return None
+
     if title is not None:
-        return {'authors': map_authors(authors), 'title': title, 'town': town, 'publisher': publisher, 'year': year, 'page': page}
+        return {'authors': map_authors(authors), 'title': title, 'town': town, 'publisher': publisher, 'year': year, 'page': get_page(page)}
     return None
 
 

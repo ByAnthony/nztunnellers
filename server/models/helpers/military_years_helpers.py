@@ -1,6 +1,5 @@
 from typing import Optional
 from models.helpers.translator_helpers import translate_superscript, translate_transport_ref
-from models.military_years import Medal
 
 
 def get_transferred_to_tunnellers(posted_date: Optional[str], posted_from: Optional[str]) -> Optional[dict[Optional[str], Optional[str]]]:
@@ -25,5 +24,5 @@ def get_transport_reference(transport_reference: str, lang: str) -> str:
     return translate_transport_ref(transport_reference, lang)
 
 
-def map_medals(medals: list) -> list[Optional[Medal]]:
+def map_medals(medals: list) -> list[Optional[dict[str, Optional[str], str]]]:
     return [{'name': row['medal_name'], 'citation': row['medal_citation'], 'country': row['country']} for row in medals]
