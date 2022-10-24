@@ -1,6 +1,6 @@
 from typing import Optional
 from models.sources import NewZealandArchives
-from models.helpers.date_helpers import format_date
+from models.helpers.date_helpers import format_to_day_month_and_year
 from models.sources import NominalRoll
 from models.sources import LondonGazette
 
@@ -39,5 +39,5 @@ def get_nominal_roll(volume: str, roll: str, page: str, lang: str) -> NominalRol
                 'page': 'p.{}{}'.format(no_break_space, page)}
 
 
-def map_london_gazette(london_gazette: list) -> list[Optional[LondonGazette]]:
-    return [{'date': format_date(row['london_gazette_date']), 'page': row['london_gazette_page']} for row in london_gazette]
+def map_london_gazette(london_gazette: list, lang: str) -> list[Optional[LondonGazette]]:
+    return [{'date': format_to_day_month_and_year(row['london_gazette_date'], lang), 'page': row['london_gazette_page']} for row in london_gazette]

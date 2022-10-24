@@ -1,7 +1,7 @@
 from db.run_sql import run_sql
 from dacite import from_dict
 from models.tunneller import Tunneller
-from models.helpers.date_helpers import format_date, get_year
+from models.helpers.date_helpers import format_date, get_birth_year, format_year, format_to_day_and_month, format_to_day_month_and_year
 from models.helpers.origins_helpers import get_parent, get_nz_resident
 from models.helpers.pre_war_years_helpers import map_army_experience
 from models.helpers.military_years_helpers import get_transferred_to_tunnellers, get_detachment, get_section, get_training, get_transport_reference, map_medals
@@ -105,7 +105,7 @@ def show(id, lang, mysql):
             'name': {'forename': tunneller_result['forename'], 'surname': tunneller_result['surname']},
             'origins': {
                 'birth': {
-                    'year': get_year(tunneller_result['birth_year'], format_date(tunneller_result['birth_date'])),
+                    'year': get_birth_year(tunneller_result['birth_year'], format_date(tunneller_result['birth_date'])),
                     'date': format_date(tunneller_result['birth_date']),
                     'country': tunneller_result['birth_country']
                 },
@@ -128,34 +128,37 @@ def show(id, lang, mysql):
             },
             'military_years': {
                 'enlistment': {
-                    'enlistment_date': format_date(tunneller_result['enlistment_date']),
+                    'enlistment_year': format_year(format_date(tunneller_result['enlistment_date'])),
+                    'enlistment_date': format_to_day_and_month(tunneller_result['enlistment_date'], lang),
                     'military_district': tunneller_result['military_district_name'],
                     'alias': tunneller_result['aka'],
-                    'transferred_to_tunnellers': get_transferred_to_tunnellers(format_date(tunneller_result['posted_date']), tunneller_result['posted_from_corps']),
+                    'transferred_to_tunnellers': get_transferred_to_tunnellers(format_year(format_date(tunneller_result['posted_date'])), format_to_day_and_month(tunneller_result['posted_date'], lang), tunneller_result['posted_from_corps']),
                     'rank': tunneller_result['rank']
                 },
                 'embarkation_unit': {
                     'detachment': get_detachment(tunneller_result['embarkation_unit'], lang),
                     'section': get_section(tunneller_result['section'], lang),
                     'attached_corps': tunneller_result['attached_corps'],
-                    'training': get_training(format_date(tunneller_result['training_start']), tunneller_result['training_location'], tunneller_result['training_location_type'])
+                    'training': get_training(format_year(format_date(tunneller_result['training_start'])), format_to_day_and_month(tunneller_result['training_start'], lang), tunneller_result['training_location'], tunneller_result['training_location_type'])
                 },
                 'transport_uk': {
                     'transport_reference': get_transport_reference(tunneller_result['transport_uk_ref'], lang),
                     'vessel': tunneller_result['transport_uk_vessel'],
-                    'departure_date': format_date(tunneller_result['transport_uk_start']),
+                    'departure_year': format_year(format_date(tunneller_result['transport_uk_start'])),
+                    'departure_date': format_to_day_and_month(tunneller_result['transport_uk_start'], lang),
                     'departure_port': tunneller_result['transport_uk_origin'],
-                    'arrival_date': format_date(tunneller_result['transport_uk_end']),
+                    'arrival_year': format_year(format_date(tunneller_result['transport_uk_end'])),
+                    'arrival_date': format_to_day_and_month(tunneller_result['transport_uk_end'], lang),
                     'arrival_port': tunneller_result['transport_uk_destination']
                 },
                 'medals': map_medals(medals_result)
             },
-            'image': get_image(get_image_url(tunneller_result['image']), get_image_source(get_image_source_auckland_libraries(tunneller_result['image_source_auckland_libraries']), get_image_source_archives(tunneller_result['archives_name'], tunneller_result['archives_ref']), get_image_source_family(tunneller_result['family_name'], lang), get_image_source_newspaper(tunneller_result['newspaper_name'], format_date(tunneller_result['newspaper_date'])), get_image_source_book(get_image_source_book_authors(image_source_book_id_result), tunneller_result['book_title'], tunneller_result['book_town'], tunneller_result['book_publisher'], tunneller_result['book_year'], tunneller_result['book_page']))),
+            'image': get_image(get_image_url(tunneller_result['image']), get_image_source(get_image_source_auckland_libraries(tunneller_result['image_source_auckland_libraries']), get_image_source_archives(tunneller_result['archives_name'], tunneller_result['archives_ref']), get_image_source_family(tunneller_result['family_name'], lang), get_image_source_newspaper(tunneller_result['newspaper_name'], format_to_day_month_and_year(tunneller_result['newspaper_date'], lang)), get_image_source_book(get_image_source_book_authors(image_source_book_id_result), tunneller_result['book_title'], tunneller_result['book_town'], tunneller_result['book_publisher'], tunneller_result['book_year'], tunneller_result['book_page']))),
             'sources': {
                 'nz_archives': map_nz_archives(nz_archives_result),
                 'awmm_cenotaph': {'reference': get_awmm(tunneller_result['awmm_cenotaph'])},
                 'nominal_roll': get_nominal_roll(tunneller_result['nominal_roll_volume'], tunneller_result['nominal_roll_number'], tunneller_result['nominal_roll_page'], lang),
-                'london_gazette': map_london_gazette(london_gazette_result)
+                'london_gazette': map_london_gazette(london_gazette_result, lang)
             }
         }
 
