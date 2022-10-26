@@ -4,7 +4,7 @@ from typing import Optional
 
 @dataclass
 class Parent:
-    name: str
+    name: Optional[str] = None
     origin: Optional[str] = None
 
 

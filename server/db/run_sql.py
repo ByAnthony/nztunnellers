@@ -1,7 +1,8 @@
-from flask_mysqldb import MySQLdb
+from typing import Optional
+from flask_mysqldb import MySQL, MySQLdb
 
 
-def run_sql(sql, mysql, values=None):
+def run_sql(sql: str, mysql: MySQL, values: Optional[list[int]]):
     conn = None
     results = []
     try:

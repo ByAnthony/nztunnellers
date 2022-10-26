@@ -35,7 +35,7 @@ def roll():
 
 
 @app.route('/roll/<id>', methods=['GET'])
-def tunneller(id):
+def tunneller(id: int):
     lang = request.args.get('lang', 'en')
     if lang not in ['en', 'fr']:
         return 'Language not supported', 400

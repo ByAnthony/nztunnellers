@@ -3,7 +3,7 @@ from models.helpers.date_helpers import convert_month_year
 from models.origins import Parent
 
 
-def get_parent(name: str, origin: Optional[str]) -> Parent:
+def get_parent(name: Optional[str], origin: Optional[str]) -> Optional[Parent]:
     if name is not None:
         return Parent(name, origin)
 

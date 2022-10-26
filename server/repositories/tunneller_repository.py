@@ -1,10 +1,12 @@
+from typing import Optional
+from flask_mysqldb import MySQL
 from db.run_sql import run_sql
 from dacite import from_dict
 from models.tunneller import Tunneller
 from models.pre_war_years import ArmyExperience
-from models.image import ImageBookAuthors
-from models.sources import LondonGazette, NewZealandArchives
 from models.military_years import Medal
+from models.sources import NewZealandArchives, LondonGazette
+from models.image import ImageBookAuthors
 from models.helpers.date_helpers import format_date, get_birth_year, format_year, format_to_day_and_month, format_to_day_month_and_year
 from models.helpers.origins_helpers import get_parent, get_nz_resident
 from models.helpers.pre_war_years_helpers import map_army_experience
@@ -14,9 +16,7 @@ from models.helpers.images_helpers import get_image, get_image_url, get_image_so
 from .translations.translations import attached_corps_col, birth_country_col, conflict_col, country_col, embarkation_unit_col, father_origin_col, marital_status_col, medal_citation_col, medal_name_col, mother_origin_col, occupation_col, posted_from_corps_col, rank_col, religion_col, section_col, training_location_type_col
 
 
-def show(id: int, lang: str, mysql) -> Tunneller:
-
-    tunneller = []
+def show(id: int, lang: str, mysql: MySQL) -> Tunneller:
 
     tunneller_sql = f'''
         SELECT t.id, t.forename, t.surname, t.aka, t.serial, t.birth_date, t.birth_year, t.birth_country_fk, {birth_country_col[lang]} AS birth_country, t.mother_name, t.mother_origin_fk, {mother_origin_col[lang]} AS mother_origin, t.father_name, t.father_origin_fk, {father_origin_col[lang]} AS father_origin, nz_resident_in_month, t.marital_status_fk, {marital_status_col[lang]} AS marital_status, t.wife_name, t.occupation_fk, {occupation_col[lang]} AS occupation, t.last_employer_fk, employer.last_employer_name AS employer, t.town_fk, residence.town_name AS residence, t.religion_fk, {religion_col[lang]} AS religion, t.enlistment_date, t.military_district_fk, military_district.military_district_name, t.aka, t.posted_date, t.posted_corps_fk, {posted_from_corps_col[lang]} AS posted_from_corps, t.rank_fk, {rank_col[lang]} AS rank, t.embarkation_unit_fk, {embarkation_unit_col[lang]} AS embarkation_unit, t.section_fk, {section_col[lang]} AS section, t.attached_corps_fk, {attached_corps_col[lang]} AS attached_corps, embarkation_unit.training_fk, training.training_start, training.training_location, {training_location_type_col[lang]} AS training_location_type, embarkation_unit.transport_uk_fk, transport.transport_ref_fk, transport_uk_ref.transport_ref_name AS transport_uk_ref, transport.transport_vessel_fk, transport_uk_vessel.transport_vessel_name AS transport_uk_vessel, transport.transport_start AS transport_uk_start, transport.transport_origin AS transport_uk_origin, transport.transport_end AS transport_uk_end, transport.transport_destination AS transport_uk_destination, image, image_source_auckland_libraries, t.image_source_archives_fk, archives.archives_name_fk, archives_name.archives_name, archives.archives_ref, t.image_source_family_fk, family.family_name, t.image_source_newspaper_fk, newspaper.newspaper_name_fk, newspaper_name.newspaper_name, newspaper.newspaper_date, t.image_source_book_fk, book.book_title, book.book_town, book.book_publisher, book.book_year, book.book_page, awmm_cenotaph, t.nominal_roll_fk, nominal_roll.nominal_roll_volume, nominal_roll.nominal_roll_number, nominal_roll.nominal_roll_page
@@ -53,8 +53,7 @@ def show(id: int, lang: str, mysql) -> Tunneller:
         WHERE t.id=%s
     '''
     values = [id]
-    tunneller_result: tuple[Tunneller] = run_sql(
-        tunneller_sql, mysql, values)[0]
+    tunneller_result: Tunneller = run_sql(tunneller_sql, mysql, values)[0]
 
     army_experience_sql = f'''
         SELECT army_experience.army_experience_name, {country_col[lang]} AS country, {conflict_col[lang]} AS conflict_name, army_experience_join.army_experience_in_month
@@ -67,7 +66,7 @@ def show(id: int, lang: str, mysql) -> Tunneller:
 
         WHERE army_experience_join.army_experience_t_id=%s
     '''
-    army_experience_result: tuple[ArmyExperience] = run_sql(
+    army_experience_result: list[ArmyExperience] = run_sql(
         army_experience_sql, mysql, values)
 
     medals_sql = f'''
@@ -78,29 +77,29 @@ def show(id: int, lang: str, mysql) -> Tunneller:
         JOIN medal_join ON medal_join.medal_m_id=medal.medal_id
         LEFT JOIN medal_citation ON medal_citation.medal_citation_id=medal_c_id
         LEFT JOIN country ON country.country_id=medal_m_c_id
-        
+
         WHERE medal_join.medal_t_id=%s
     '''
-    medals_result: tuple[Medal] = run_sql(medals_sql, mysql, values)
+    medals_result: list[Medal] = run_sql(medals_sql, mysql, values)
 
     nz_archives_sql = 'SELECT nz_archives.nz_archives_ref, nz_archives.nz_archives_url FROM nz_archives LEFT JOIN tunneller ON tunneller.id=nz_archives.nz_archives_t_id WHERE tunneller.id=%s'
-    nz_archives_result: tuple[NewZealandArchives] = run_sql(
+    nz_archives_result: list[NewZealandArchives] = run_sql(
         nz_archives_sql, mysql, values)
 
     london_gazette_sql = 'SELECT london_gazette.london_gazette_date, london_gazette.london_gazette_page FROM london_gazette JOIN london_gazette_join ON london_gazette_join.london_gazette_lg_id=london_gazette.london_gazette_id WHERE london_gazette_join.london_gazette_t_id=%s'
-    london_gazette_result: tuple[LondonGazette] = run_sql(
+    london_gazette_result: list[LondonGazette] = run_sql(
         london_gazette_sql, mysql, values)
 
     image_source_book_id_sql = 'SELECT book.book_id FROM book LEFT JOIN tunneller ON tunneller.image_source_book_fk=book.book_id WHERE id=%s'
-    image_source_book_id_result: tuple[int] = run_sql(
+    image_source_book_id_result: list[dict[str, int]] = run_sql(
         image_source_book_id_sql, mysql, values)
 
-    def get_image_source_book_authors(image_source_book_id_result: tuple[ImageBookAuthors]):
+    def get_image_source_book_authors(image_source_book_id_result: tuple[dict[str, int]]) -> list[ImageBookAuthors]:
         if image_source_book_id_result != ():
-            formatted_book_id = [
-                str(image_source_book_id_result[0].get('book_id'))]
+            formatted_book_id: list[int] = [
+                image_source_book_id_result[0].get('book_id')]
             image_authors_sql = 'SELECT author.author_forename, author.author_surname FROM author JOIN author_book_join ON author_book_join.author_book_a_id=author.author_id WHERE author_book_join.author_book_b_id=%s'
-            image_authors_result = run_sql(
+            image_authors_result: list[ImageBookAuthors] = run_sql(
                 image_authors_sql, mysql, formatted_book_id)
             return image_authors_result
         return []
@@ -170,6 +169,6 @@ def show(id: int, lang: str, mysql) -> Tunneller:
             'image': get_image(get_image_url(tunneller_result['image']), get_image_source(get_image_source_auckland_libraries(tunneller_result['image_source_auckland_libraries']), get_image_source_archives(tunneller_result['archives_name'], tunneller_result['archives_ref']), get_image_source_family(tunneller_result['family_name'], lang), get_image_source_newspaper(tunneller_result['newspaper_name'], format_to_day_month_and_year(tunneller_result['newspaper_date'], lang)), get_image_source_book(get_image_source_book_authors(image_source_book_id_result), tunneller_result['book_title'], tunneller_result['book_town'], tunneller_result['book_publisher'], tunneller_result['book_year'], tunneller_result['book_page'])))
         }
 
-        tunneller = from_dict(data_class=Tunneller, data=data)
+        tunneller: Tunneller = from_dict(data_class=Tunneller, data=data)
 
     return tunneller
