@@ -130,12 +130,12 @@ def show(id: int, lang: str, mysql) -> Tunneller:
             },
             'military_years': {
                 'enlistment': {
+                    'rank': tunneller_result['rank'],
                     'year': format_year(format_date(tunneller_result['enlistment_date'])),
                     'date': format_to_day_and_month(tunneller_result['enlistment_date'], lang),
                     'district': tunneller_result['military_district_name'],
                     'alias': tunneller_result['aka'],
-                    'transferred_to_tunnellers': get_transferred_to_tunnellers(format_year(format_date(tunneller_result['posted_date'])), format_to_day_and_month(tunneller_result['posted_date'], lang), tunneller_result['posted_from_corps']),
-                    'rank': tunneller_result['rank']
+                    'transferred_to_tunnellers': get_transferred_to_tunnellers(format_year(format_date(tunneller_result['posted_date'])), format_to_day_and_month(tunneller_result['posted_date'], lang), tunneller_result['posted_from_corps'])
                 },
                 'embarkation_unit': {
                     'training': get_training(format_year(format_date(tunneller_result['training_start'])), format_to_day_and_month(tunneller_result['training_start'], lang), tunneller_result['training_location'], tunneller_result['training_location_type']),

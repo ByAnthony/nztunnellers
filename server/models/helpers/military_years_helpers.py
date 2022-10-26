@@ -28,4 +28,4 @@ def get_transport_reference(transport_reference: str, lang: str) -> str:
 
 
 def map_medals(medals: tuple[Medal]) -> list[Medal]:
-    return [Medal(medal['medal_name'], medal['medal_citation'], medal['country']) for medal in medals]
+    return [Medal(medal['medal_name'], medal['country'], medal['medal_citation']) for medal in medals]

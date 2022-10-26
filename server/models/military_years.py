@@ -4,9 +4,9 @@ from typing import Optional
 
 @dataclass
 class Medal:
-    name: Optional[str] = None
+    name: str
+    country: str
     citation: Optional[str] = None
-    country: Optional[str] = None
 
 
 @dataclass
@@ -39,9 +39,9 @@ class EmbarkationUnit:
 
 @dataclass
 class TransferredToTunnellers:
-    posted_year: Optional[str]
-    posted_date: Optional[str]
-    posted_from: Optional[str]
+    posted_year: str
+    posted_date: str
+    posted_from: str
 
 
 @dataclass
