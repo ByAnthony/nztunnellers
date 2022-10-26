@@ -50,16 +50,17 @@ def format_to_day_month_and_year(date: date, lang: str) -> str:
 
 
 def convert_month_year(month: int, lang: str) -> str:
-    mois = 'mois'
-    month_col = {'en': 'month', 'fr': mois}
-    months_col = {'en': 'months', 'fr': mois}
-    years_col = {'en': 'years', 'fr': 'ans'}
-    no_break_space = '\N{NO-BREAK SPACE}'
+    if month is not None:
+        mois = 'mois'
+        month_col = {'en': 'month', 'fr': mois}
+        months_col = {'en': 'months', 'fr': mois}
+        years_col = {'en': 'years', 'fr': 'ans'}
+        no_break_space = '\N{NO-BREAK SPACE}'
 
-    if int(month) == 1:
-        return '{}{}{}'.format(month, no_break_space, month_col[lang])
-    elif int(month) > int(1) and int(month) < int(24):
-        return '{}{}{}'.format(month, no_break_space, months_col[lang])
-    else:
-        result = int(month) // int(12)
-        return '{}{}{}'.format(result, no_break_space, years_col[lang])
+        if int(month) == 1:
+            return '{}{}{}'.format(month, no_break_space, month_col[lang])
+        elif int(month) > int(1) and int(month) < int(24):
+            return '{}{}{}'.format(month, no_break_space, months_col[lang])
+        else:
+            result = int(month) // int(12)
+            return '{}{}{}'.format(result, no_break_space, years_col[lang])

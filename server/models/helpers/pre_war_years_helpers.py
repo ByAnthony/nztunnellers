@@ -1,6 +1,6 @@
-from typing import Optional
 from models.helpers.date_helpers import convert_month_year
+from models.pre_war_years import ArmyExperience
 
 
-def map_army_experience(experiences: list, lang: str) -> list[Optional[dict[str, Optional[str], Optional[str], Optional[str]]]]:
-    return [{'unit': row['army_experience_name'], 'country': row['country'], 'conflict': row['conflict_name'], 'duration': convert_month_year(row['army_experience_in_month'], lang)} for row in experiences]
+def map_army_experience(experiences: list[ArmyExperience], lang: str) -> list[ArmyExperience]:
+    return [ArmyExperience(experience['army_experience_name'], experience['country'], experience['conflict_name'], convert_month_year(experience['army_experience_in_month'], lang)) for experience in experiences]

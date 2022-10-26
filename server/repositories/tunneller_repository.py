@@ -10,7 +10,7 @@ from models.helpers.images_helpers import get_image, get_image_url, get_image_so
 from .translations.translations import attached_corps_col, birth_country_col, conflict_col, country_col, embarkation_unit_col, father_origin_col, marital_status_col, medal_citation_col, medal_name_col, mother_origin_col, occupation_col, posted_from_corps_col, rank_col, religion_col, section_col, training_location_type_col
 
 
-def show(id, lang, mysql):
+def show(id: int, lang: str, mysql) -> Tunneller:
 
     tunneller = []
 
@@ -116,15 +116,15 @@ def show(id, lang, mysql):
                 'nz_resident_in_month': get_nz_resident(tunneller_result['nz_resident_in_month'], lang)
             },
             'pre_war_years': {
-                'marital_status': tunneller_result['marital_status'],
-                'wife': tunneller_result['wife_name'],
+                'army_experience': map_army_experience(army_experience_result, lang),
                 'employment': {
                     'occupation': tunneller_result['occupation'],
                     'employer': tunneller_result['employer']
                 },
                 'residence': tunneller_result['residence'],
+                'marital_status': tunneller_result['marital_status'],
+                'wife': tunneller_result['wife_name'],
                 'religion': tunneller_result['religion'],
-                'army_experience': map_army_experience(army_experience_result, lang)
             },
             'military_years': {
                 'enlistment': {
