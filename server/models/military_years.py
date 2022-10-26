@@ -4,9 +4,9 @@ from typing import Optional
 
 @dataclass
 class Medal:
-    name: Optional[str]
-    citation: Optional[str]
-    country: Optional[str]
+    name: Optional[str] = None
+    citation: Optional[str] = None
+    country: Optional[str] = None
 
 
 @dataclass
@@ -15,10 +15,10 @@ class Transport:
     vessel: str
     departure_year: str
     departure_date: str
-    departure_port: Optional[str]
-    arrival_year: Optional[str]
-    arrival_date: Optional[str]
-    arrival_port: Optional[str]
+    departure_port: Optional[str] = None
+    arrival_year: Optional[str] = None
+    arrival_date: Optional[str] = None
+    arrival_port: Optional[str] = None
 
 
 @dataclass
@@ -31,10 +31,10 @@ class Training:
 
 @dataclass
 class EmbarkationUnit:
-    detachment: str
-    section: Optional[str]
-    attached_corps: Optional[str]
     training: Training
+    detachment: str
+    section: Optional[str] = None
+    attached_corps: Optional[str] = None
 
 
 @dataclass
@@ -46,12 +46,12 @@ class TransferredToTunnellers:
 
 @dataclass
 class Enlistment:
-    year: Optional[str]
-    date: Optional[str]
-    district: Optional[str]
-    alias: Optional[str]
-    transferred_to_tunnellers: Optional[TransferredToTunnellers]
     rank: str
+    year: Optional[str] = None
+    date: Optional[str] = None
+    district: Optional[str] = None
+    alias: Optional[str] = None
+    transferred_to_tunnellers: Optional[TransferredToTunnellers] = None
 
 
 @dataclass
@@ -59,4 +59,4 @@ class MilitaryYears:
     enlistment: Enlistment
     embarkation_unit: EmbarkationUnit
     transport_uk: Transport
-    medals: list[Optional[Medal]]
+    medals: list[Medal]

@@ -1,6 +1,7 @@
 from db.run_sql import run_sql
 from dacite import from_dict
 from models.tunneller import Tunneller
+from models.pre_war_years import ArmyExperience
 from models.helpers.date_helpers import format_date, get_birth_year, format_year, format_to_day_and_month, format_to_day_month_and_year
 from models.helpers.origins_helpers import get_parent, get_nz_resident
 from models.helpers.pre_war_years_helpers import map_army_experience
@@ -62,7 +63,8 @@ def show(id: int, lang: str, mysql) -> Tunneller:
 
         WHERE army_experience_join.army_experience_t_id=%s
     '''
-    army_experience_result = run_sql(army_experience_sql, mysql, values)
+    army_experience_result: tuple[ArmyExperience] = run_sql(
+        army_experience_sql, mysql, values)
 
     medals_sql = f'''
         SELECT {medal_name_col[lang]} AS medal_name, {medal_citation_col[lang]} AS medal_citation, {country_col[lang]} AS country
@@ -136,10 +138,10 @@ def show(id: int, lang: str, mysql) -> Tunneller:
                     'rank': tunneller_result['rank']
                 },
                 'embarkation_unit': {
+                    'training': get_training(format_year(format_date(tunneller_result['training_start'])), format_to_day_and_month(tunneller_result['training_start'], lang), tunneller_result['training_location'], tunneller_result['training_location_type']),
                     'detachment': get_detachment(tunneller_result['embarkation_unit'], lang),
                     'section': get_section(tunneller_result['section'], lang),
-                    'attached_corps': tunneller_result['attached_corps'],
-                    'training': get_training(format_year(format_date(tunneller_result['training_start'])), format_to_day_and_month(tunneller_result['training_start'], lang), tunneller_result['training_location'], tunneller_result['training_location_type'])
+                    'attached_corps': tunneller_result['attached_corps']
                 },
                 'transport_uk': {
                     'reference': get_transport_reference(tunneller_result['transport_uk_ref'], lang),
