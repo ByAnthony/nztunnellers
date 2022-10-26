@@ -9,7 +9,7 @@ def get_training(start_year: str, start_date: str, location: str, location_type:
     return Training(start_year, start_date, location, location_type)
 
 
-def get_transferred_to_tunnellers(posted_year: Optional[str], posted_date: Optional[str], posted_from: Optional[str]) -> Optional[TransferredToTunnellers]:
+def get_transferred_to_tunnellers(posted_year: str, posted_date: str, posted_from: str) -> Optional[TransferredToTunnellers]:
     if posted_date and posted_from is not None:
         return TransferredToTunnellers(posted_year, posted_date, posted_from)
     return None
@@ -19,7 +19,7 @@ def get_detachment(detachment: str, lang: str) -> Optional[str]:
     return translate_superscript(detachment, lang)
 
 
-def get_section(section: Optional[str], lang: str) -> Optional[str]:
+def get_section(section: str, lang: str) -> Optional[str]:
     return translate_superscript(section, lang)
 
 

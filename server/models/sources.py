@@ -14,9 +14,9 @@ class NominalRoll:
     town: str
     publisher: str
     date: str
-    volume: Optional[str]
-    roll: Optional[str]
     page: str
+    volume: Optional[str] = None
+    roll: Optional[str] = None
 
 
 @dataclass

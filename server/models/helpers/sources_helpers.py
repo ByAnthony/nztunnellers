@@ -1,13 +1,14 @@
-from typing import Optional
 from models.sources import NewZealandArchives
 from models.helpers.date_helpers import format_to_day_month_and_year
-from models.sources import NominalRoll
-from models.sources import LondonGazette
+from models.sources import NominalRoll, LondonGazette
 
 
-def map_nz_archives(nz_archives: list) -> list[NewZealandArchives]:
-    link = 'https://collections.archives.govt.nz/web/arena/search#/item/aims-archive/R'
-    return [{'reference': row['nz_archives_ref'], 'url': '{}{}'.format(link, row['nz_archives_url'])} for row in nz_archives]
+def map_nz_archives(nz_archives: tuple[NewZealandArchives]) -> list[NewZealandArchives]:
+    def get_url(online_ref: str) -> str:
+        link = 'https://collections.archives.govt.nz/web/arena/search#/item/aims-archive/R'
+        return '{}{}'.format(link, online_ref)
+
+    return [NewZealandArchives(archives['nz_archives_ref'], get_url(archives['nz_archives_url'])) for archives in nz_archives]
 
 
 def get_awmm(reference: str) -> str:
@@ -24,20 +25,10 @@ def get_nominal_roll(volume: str, roll: str, page: str, lang: str) -> NominalRol
     roll_number_col = {'en': 'Roll No.', 'fr': 'Liste n\N{DEGREE SIGN}'}
 
     if volume and roll is not None:
-        return {'title': title_1919[lang],
-                'town': 'Wellington',
-                'publisher': 'Government Printer',
-                'date': '1914-1919',
-                'volume': 'Volume{}{}'.format(no_break_space, volume),
-                'roll': '{}{}'.format(roll_number_col[lang], roll),
-                'page': 'p.{}{}'.format(no_break_space, page)}
+        return NominalRoll(title_1919[lang], 'Wellington', 'Government Printer', '1914-1919', 'p.{}{}'.format(no_break_space, page), 'Volume{}{}'.format(no_break_space, volume), '{}{}'.format(roll_number_col[lang], roll))
     else:
-        return {'title': title_1916[lang],
-                'town': 'Wellington',
-                'publisher': 'Government Printer',
-                'date': '1916',
-                'page': 'p.{}{}'.format(no_break_space, page)}
+        return NominalRoll(title_1916[lang], 'Wellington', 'Government Printer', '1916', 'p.{}{}'.format(no_break_space, page))
 
 
-def map_london_gazette(london_gazette: list, lang: str) -> list[Optional[LondonGazette]]:
-    return [{'date': format_to_day_month_and_year(row['london_gazette_date'], lang), 'page': row['london_gazette_page']} for row in london_gazette]
+def map_london_gazette(london_gazette: tuple[LondonGazette], lang: str) -> list[LondonGazette]:
+    return [LondonGazette(format_to_day_month_and_year(gazette['london_gazette_date'], lang), gazette['london_gazette_page']) for gazette in london_gazette]

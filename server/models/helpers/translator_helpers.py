@@ -1,7 +1,7 @@
 from typing import Optional
 
 
-def translate_superscript(string: Optional[str], lang: str) -> Optional[str]:
+def translate_superscript(string: str, lang: str) -> Optional[str]:
     if string is not None:
         if lang == 'fr':
             if 're ' in string:
