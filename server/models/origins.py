@@ -4,25 +4,25 @@ from typing import Optional
 
 @dataclass
 class Parent:
-    name: Optional[str]
-    origin: Optional[str]
+    name: str
+    origin: Optional[str] = None
 
 
 @dataclass
 class Parents:
-    mother: Optional[Parent]
-    father: Optional[Parent]
+    mother: Optional[Parent] = None
+    father: Optional[Parent] = None
 
 
 @dataclass
 class BirthDetails:
-    year: Optional[str]
-    date: Optional[str]
-    country: Optional[str]
+    year: str
+    date: Optional[str] = None
+    country: Optional[str] = None
 
 
 @dataclass
 class Origins:
     birth: BirthDetails
     parents: Parents
-    in_nz_length: Optional[str]
+    in_nz_length: Optional[str] = None

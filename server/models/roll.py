@@ -8,7 +8,7 @@ class Name:
 
 
 @dataclass
-class Roll():
+class Roll:
     id: int
     serial: str
     name: Name
