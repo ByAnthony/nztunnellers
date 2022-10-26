@@ -16,8 +16,8 @@ class Tunneller(Roll):
     origins: Origins
     pre_war_years: PreWarYear
     military_years: MilitaryYears
-    image: Optional[Image]
     sources: Sources
+    image: Optional[Image] = None
 
 
 class JSONEncoder(json.JSONEncoder):

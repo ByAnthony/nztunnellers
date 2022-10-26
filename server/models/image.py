@@ -32,14 +32,14 @@ class ImageArchives:
 
 @dataclass
 class Source:
-    auckland_libraries: Optional[str]
-    archives: Optional[ImageArchives]
-    family: Optional[str]
-    newspaper: Optional[ImageNewspaper]
-    book: Optional[ImageBook]
+    auckland_libraries: Optional[str] = None
+    archives: Optional[ImageArchives] = None
+    family: Optional[str] = None
+    newspaper: Optional[ImageNewspaper] = None
+    book: Optional[ImageBook] = None
 
 
 @dataclass
 class Image:
-    url: Optional[str]
-    source: Optional[Source]
+    url: str
+    source: Optional[Source] = None

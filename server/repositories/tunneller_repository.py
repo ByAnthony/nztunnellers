@@ -2,6 +2,9 @@ from db.run_sql import run_sql
 from dacite import from_dict
 from models.tunneller import Tunneller
 from models.pre_war_years import ArmyExperience
+from models.image import ImageBookAuthors
+from models.sources import LondonGazette, NewZealandArchives
+from models.military_years import Medal
 from models.helpers.date_helpers import format_date, get_birth_year, format_year, format_to_day_and_month, format_to_day_month_and_year
 from models.helpers.origins_helpers import get_parent, get_nz_resident
 from models.helpers.pre_war_years_helpers import map_army_experience
@@ -50,7 +53,8 @@ def show(id: int, lang: str, mysql) -> Tunneller:
         WHERE t.id=%s
     '''
     values = [id]
-    tunneller_result = run_sql(tunneller_sql, mysql, values)[0]
+    tunneller_result: tuple[Tunneller] = run_sql(
+        tunneller_sql, mysql, values)[0]
 
     army_experience_sql = f'''
         SELECT army_experience.army_experience_name, {country_col[lang]} AS country, {conflict_col[lang]} AS conflict_name, army_experience_join.army_experience_in_month
@@ -77,19 +81,21 @@ def show(id: int, lang: str, mysql) -> Tunneller:
         
         WHERE medal_join.medal_t_id=%s
     '''
-    medals_result = run_sql(medals_sql, mysql, values)
+    medals_result: tuple[Medal] = run_sql(medals_sql, mysql, values)
 
     nz_archives_sql = 'SELECT nz_archives.nz_archives_ref, nz_archives.nz_archives_url FROM nz_archives LEFT JOIN tunneller ON tunneller.id=nz_archives.nz_archives_t_id WHERE tunneller.id=%s'
-    nz_archives_result = run_sql(nz_archives_sql, mysql, values)
+    nz_archives_result: tuple[NewZealandArchives] = run_sql(
+        nz_archives_sql, mysql, values)
 
     london_gazette_sql = 'SELECT london_gazette.london_gazette_date, london_gazette.london_gazette_page FROM london_gazette JOIN london_gazette_join ON london_gazette_join.london_gazette_lg_id=london_gazette.london_gazette_id WHERE london_gazette_join.london_gazette_t_id=%s'
-    london_gazette_result = run_sql(london_gazette_sql, mysql, values)
+    london_gazette_result: tuple[LondonGazette] = run_sql(
+        london_gazette_sql, mysql, values)
 
     image_source_book_id_sql = 'SELECT book.book_id FROM book LEFT JOIN tunneller ON tunneller.image_source_book_fk=book.book_id WHERE id=%s'
-    image_source_book_id_result = run_sql(
+    image_source_book_id_result: tuple[int] = run_sql(
         image_source_book_id_sql, mysql, values)
 
-    def get_image_source_book_authors(image_source_book_id_result):
+    def get_image_source_book_authors(image_source_book_id_result: tuple[ImageBookAuthors]):
         if image_source_book_id_result != ():
             formatted_book_id = [
                 str(image_source_book_id_result[0].get('book_id'))]
@@ -155,13 +161,13 @@ def show(id: int, lang: str, mysql) -> Tunneller:
                 },
                 'medals': map_medals(medals_result)
             },
-            'image': get_image(get_image_url(tunneller_result['image']), get_image_source(get_image_source_auckland_libraries(tunneller_result['image_source_auckland_libraries']), get_image_source_archives(tunneller_result['archives_name'], tunneller_result['archives_ref']), get_image_source_family(tunneller_result['family_name'], lang), get_image_source_newspaper(tunneller_result['newspaper_name'], format_to_day_month_and_year(tunneller_result['newspaper_date'], lang)), get_image_source_book(get_image_source_book_authors(image_source_book_id_result), tunneller_result['book_title'], tunneller_result['book_town'], tunneller_result['book_publisher'], tunneller_result['book_year'], tunneller_result['book_page']))),
             'sources': {
                 'nz_archives': map_nz_archives(nz_archives_result),
                 'awmm_cenotaph': {'reference': get_awmm(tunneller_result['awmm_cenotaph'])},
                 'nominal_roll': get_nominal_roll(tunneller_result['nominal_roll_volume'], tunneller_result['nominal_roll_number'], tunneller_result['nominal_roll_page'], lang),
                 'london_gazette': map_london_gazette(london_gazette_result, lang)
-            }
+            },
+            'image': get_image(get_image_url(tunneller_result['image']), get_image_source(get_image_source_auckland_libraries(tunneller_result['image_source_auckland_libraries']), get_image_source_archives(tunneller_result['archives_name'], tunneller_result['archives_ref']), get_image_source_family(tunneller_result['family_name'], lang), get_image_source_newspaper(tunneller_result['newspaper_name'], format_to_day_month_and_year(tunneller_result['newspaper_date'], lang)), get_image_source_book(get_image_source_book_authors(image_source_book_id_result), tunneller_result['book_title'], tunneller_result['book_town'], tunneller_result['book_publisher'], tunneller_result['book_year'], tunneller_result['book_page'])))
         }
 
         tunneller = from_dict(data_class=Tunneller, data=data)
