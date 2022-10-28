@@ -1,10 +1,11 @@
+from typing import Any
 from flask_mysqldb import MySQL
 from dataclasses import asdict
 from db.run_sql import run_sql
 from models.roll import Roll, Name
 
 
-def select_all(mysql: MySQL) -> list[Roll]:
+def select_all(mysql: MySQL) -> list[dict[str, Any]]:
 
     sql: str = f'''
         SELECT t.id, t.surname, t.forename, t.serial
@@ -13,6 +14,6 @@ def select_all(mysql: MySQL) -> list[Roll]:
     '''
     results: list[Roll] = run_sql(sql, mysql, None)
 
-    tunnellers = [asdict(Roll(row['id'], row['serial'], Name(
+    tunnellers: list[dict[str, Any]] = [asdict(Roll(row['id'], row['serial'], Name(
         row['forename'], row['surname']))) for row in results]
     return tunnellers

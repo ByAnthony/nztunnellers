@@ -20,11 +20,6 @@ class NominalRoll:
 
 
 @dataclass
-class Cenotaph:
-    reference: str
-
-
-@dataclass
 class NewZealandArchives:
     reference: str
     url: str
@@ -33,6 +28,6 @@ class NewZealandArchives:
 @dataclass
 class Sources:
     nz_archives: list[NewZealandArchives]
-    awmm_cenotaph: Cenotaph
+    awmm_cenotaph: str
     nominal_roll: NominalRoll
     london_gazette: list[LondonGazette]

@@ -32,10 +32,9 @@ def find_day(date: str) -> str:
 
 
 def format_to_day_and_month(date: date, lang: str) -> str:
-    months = {'1': {'en': 'January', 'fr': 'janvier'}, '2': {'en': 'February', 'fr': 'février'}, '3': {'en': 'March', 'fr': 'mars'}, '4': {'en': 'April', 'fr': 'avril'}, '5': {'en': 'May', 'fr': 'mai'}, '6': {'en': 'June', 'fr': 'juin'},
-              '7': {'en': 'July', 'fr': 'juillet'}, '8': {'en': 'August', 'fr': 'août'}, '9': {'en': 'September', 'fr': 'septembre'}, '10': {'en': 'October', 'fr': 'octobre'}, '11': {'en': 'November', 'fr': 'novembre'}, '12': {'en': 'December', 'fr': 'décembre'}}
-
     if date is not None:
+        months = {'1': {'en': 'January', 'fr': 'janvier'}, '2': {'en': 'February', 'fr': 'février'}, '3': {'en': 'March', 'fr': 'mars'}, '4': {'en': 'April', 'fr': 'avril'}, '5': {'en': 'May', 'fr': 'mai'}, '6': {'en': 'June', 'fr': 'juin'},
+                  '7': {'en': 'July', 'fr': 'juillet'}, '8': {'en': 'August', 'fr': 'août'}, '9': {'en': 'September', 'fr': 'septembre'}, '10': {'en': 'October', 'fr': 'octobre'}, '11': {'en': 'November', 'fr': 'novembre'}, '12': {'en': 'December', 'fr': 'décembre'}}
         formatted_date = format_date(date)
         month = find_month(formatted_date).lstrip('0')
         day = find_day(formatted_date).lstrip('0')

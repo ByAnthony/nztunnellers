@@ -44,6 +44,10 @@ def get_image_source_newspaper(name: str, date: str) -> Optional[ImageNewspaper]
     return None
 
 
+def map_authors(authors: tuple[ImageBookAuthors]) -> list[ImageBookAuthors]:
+    return [ImageBookAuthors(author['author_forename'], author['author_surname']) for author in authors]
+
+
 def get_image_source_book(authors: tuple[ImageBookAuthors], title: Optional[str], town: Optional[str], publisher: Optional[str], year: Optional[str], page: Optional[str]) -> Optional[ImageBook]:
     def get_page(page: Optional[str]) -> Optional[str]:
         if page is not None:
@@ -54,7 +58,3 @@ def get_image_source_book(authors: tuple[ImageBookAuthors], title: Optional[str]
     if title is not None and town is not None and publisher is not None and year is not None:
         return ImageBook(map_authors(authors), title, town, publisher, year, get_page(page))
     return None
-
-
-def map_authors(authors: tuple[ImageBookAuthors]) -> list[ImageBookAuthors]:
-    return [ImageBookAuthors(author['author_forename'], author['author_surname']) for author in authors]
