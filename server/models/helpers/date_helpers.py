@@ -40,7 +40,7 @@ def format_to_day_and_month(date: date, lang: str) -> str:
         day = find_day(formatted_date).lstrip('0')
         no_break_space = '\N{NO-BREAK SPACE}'
 
-        return '{}{}{}'.format(day, no_break_space, months.get(month).get(lang))
+        return '{}{}{}'.format(day, no_break_space, months[month][lang])
 
 
 def format_to_day_month_and_year(date: date, lang: str) -> str:

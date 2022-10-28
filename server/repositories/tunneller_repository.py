@@ -106,7 +106,7 @@ def show(id: int, lang: str, mysql: MySQL) -> Tunneller:
 
     if tunneller_result is not None:
 
-        data: dict[Any, Tunneller] = {
+        data = {
             'id': tunneller_result['id'],
             'serial': tunneller_result['serial'],
             'name': {'forename': tunneller_result['forename'], 'surname': tunneller_result['surname']},
