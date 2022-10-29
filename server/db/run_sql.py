@@ -1,4 +1,6 @@
+# -*- coding: utf-8 -*-
 from typing import Any, Optional
+
 from flask_mysqldb import MySQL, MySQLdb
 
 

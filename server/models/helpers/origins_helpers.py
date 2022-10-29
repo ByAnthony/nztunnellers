@@ -1,4 +1,6 @@
+# -*- coding: utf-8 -*-
 from typing import Optional
+
 from models.helpers.date_helpers import convert_month_year
 from models.origins import Parent
 

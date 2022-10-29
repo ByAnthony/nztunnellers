@@ -1,24 +1,26 @@
+# -*- coding: utf-8 -*-
 from ....models.mapper import medals_mapper
 
-
-british_war_medal = {'medal_name': 'British War Medal',
-                     'medal_citation': 'For bravery', 'country': 'United Kingdom'}
-victory_medal = {'medal_name': 'Victory Medal',
-                 'medal_citation': None, 'country': 'United Kingdom'}
+british_war_medal = {
+    "medal_name": "British War Medal",
+    "medal_citation": "For bravery",
+    "country": "United Kingdom",
+}
+victory_medal = {
+    "medal_name": "Victory Medal",
+    "medal_citation": None,
+    "country": "United Kingdom",
+}
 
 
 def test_map_medals():
     assert medals_mapper.map_medals((british_war_medal, victory_medal)) == [
         {
-            "citation":	"For bravery",
+            "citation": "For bravery",
             "country": "United Kingdom",
-            "name": "British War Medal"
+            "name": "British War Medal",
         },
-        {
-            "citation":	None,
-            "country": "United Kingdom",
-            "name": "Victory Medal"
-        }
+        {"citation": None, "country": "United Kingdom", "name": "Victory Medal"},
     ]
 
 
