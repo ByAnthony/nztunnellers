@@ -5,6 +5,7 @@ repos:
   # Identify invalid files
   - id: check-yaml
   - id: check-json
+  - id: check-toml
   # git checks
   - id: check-merge-conflict
   - id: check-added-large-files
