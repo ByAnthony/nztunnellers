@@ -2,7 +2,7 @@
 from typing import Optional
 
 
-def translate_superscript(string: str, lang: str) -> Optional[str]:
+def translate_superscript(string: Optional[str], lang: str) -> Optional[str]:
     if string is not None:
         if lang == "fr":
             if "re " in string:
@@ -20,6 +20,7 @@ def translate_superscript(string: str, lang: str) -> Optional[str]:
                     "e ", "\N{MODIFIER LETTER SMALL E}\N{NO-BREAK SPACE}"
                 )
         return string
+    return None
 
 
 def translate_transport_ref(transport_reference: str, lang: str) -> str:
@@ -29,7 +30,7 @@ def translate_transport_ref(transport_reference: str, lang: str) -> str:
     return transport_reference
 
 
-def translate_family(family: str, lang: str) -> Optional[str]:
+def translate_family(family: Optional[str], lang: str) -> Optional[str]:
     if family is not None:
         if lang == "en":
             return "{} {}".format(family, "family")

@@ -11,7 +11,7 @@ from models.helpers.date_helpers import (
     format_year,
     get_birth_year,
 )
-from models.helpers.images_helpers import (
+from models.helpers.image_helpers import (
     get_image,
     get_image_source,
     get_image_source_archives,

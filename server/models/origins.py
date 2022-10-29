@@ -17,7 +17,7 @@ class Parents:
 
 @dataclass
 class BirthDetails:
-    year: str
+    year: Optional[str] = None
     date: Optional[str] = None
     country: Optional[str] = None
 

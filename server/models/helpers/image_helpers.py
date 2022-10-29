@@ -15,7 +15,6 @@ from models.image import (
 def get_image(url: str, source: Optional[Source]) -> Optional[Image]:
     if url is not None:
         return Image(url, source)
-    return None
 
 
 # To do: refactor when images are hosted
@@ -60,7 +59,6 @@ def get_image_source_archives(
 def get_image_source_family(family: str, lang: str) -> Optional[str]:
     if family is not None:
         return translate_family(family, lang)
-    return None
 
 
 def get_image_source_newspaper(name: str, date: str) -> Optional[ImageNewspaper]:
