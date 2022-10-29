@@ -20,7 +20,6 @@ repos:
   - id: mixed-line-ending
   - id: trailing-whitespace
     args: [--markdown-linebreak-ext=md]
-  - id: check-executables-have-shebangs
   - id: end-of-file-fixer
 
 - repo: https://github.com/PyCQA/isort
