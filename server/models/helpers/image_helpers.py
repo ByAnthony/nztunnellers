@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 from typing import Optional
 
-from models.helpers.translator_helpers import translate_family
-from models.image import (
+from ..helpers.translator_helpers import translate_family
+from ..image import (
     Image,
     ImageArchives,
     ImageBook,

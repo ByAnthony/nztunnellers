@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
-from typing import Optional
+from typing import Optional, Union
 
-from models.helpers.translator_helpers import (
+from ..helpers.translator_helpers import (
     translate_superscript,
     translate_transport_ref,
 )
-from models.military_years import Medal, Training, TransferredToTunnellers
+from ..military_years import Medal, Training, TransferredToTunnellers
 
 
 def get_training(

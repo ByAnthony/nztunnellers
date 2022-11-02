@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
-from models.helpers.date_helpers import format_to_day_month_and_year
-from models.sources import LondonGazette, NewZealandArchives, NominalRoll
+from ..helpers.date_helpers import format_to_day_month_and_year
+from ..sources import LondonGazette, NewZealandArchives, NominalRoll
 
 
 def map_nz_archives(nz_archives: tuple[NewZealandArchives]) -> list[NewZealandArchives]:

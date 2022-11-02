@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
-from models.helpers.date_helpers import convert_month_year
-from models.pre_war_years import ArmyExperience
+from ..helpers.date_helpers import convert_month_year
+from ..pre_war_years import ArmyExperience
 
 
 def map_army_experience(
