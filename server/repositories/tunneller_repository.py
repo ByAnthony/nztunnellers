@@ -4,14 +4,14 @@ from typing import Any
 from dacite import from_dict
 from db.run_sql import run_sql
 from flask_mysqldb import MySQL
-from ..models.helpers.date_helpers import (
+from models.helpers.date_helpers import (
     format_date,
     format_to_day_and_month,
     format_to_day_month_and_year,
     format_year,
     get_birth_year,
 )
-from ..models.helpers.image_helpers import (
+from models.helpers.image_helpers import (
     get_image,
     get_image_source,
     get_image_source_archives,
@@ -21,7 +21,7 @@ from ..models.helpers.image_helpers import (
     get_image_source_newspaper,
     get_image_url,
 )
-from ..models.helpers.military_years_helpers import (
+from models.helpers.military_years_helpers import (
     get_detachment,
     get_section,
     get_training,
@@ -29,19 +29,19 @@ from ..models.helpers.military_years_helpers import (
     get_transport_reference,
     map_medals,
 )
-from ..models.helpers.origins_helpers import get_nz_resident, get_parent
-from ..models.helpers.pre_war_years_helpers import map_army_experience
-from ..models.helpers.sources_helpers import (
+from models.helpers.origins_helpers import get_nz_resident, get_parent
+from models.helpers.pre_war_years_helpers import map_army_experience
+from models.helpers.sources_helpers import (
     get_awmm,
     get_nominal_roll,
     map_london_gazette,
     map_nz_archives,
 )
-from ..models.image import ImageBookAuthors
-from ..models.military_years import Medal
-from ..models.pre_war_years import ArmyExperience
-from ..models.sources import LondonGazette, NewZealandArchives
-from ..models.tunneller import Tunneller
+from models.image import ImageBookAuthors
+from models.military_years import Medal
+from models.pre_war_years import ArmyExperience
+from models.sources import LondonGazette, NewZealandArchives
+from models.tunneller import Tunneller
 
 from .translations.translations import (
     attached_corps_col,
@@ -103,7 +103,7 @@ def show(id: int, lang: str, mysql: MySQL) -> Tunneller:
     tunneller_result: Tunneller = run_sql(tunneller_sql, mysql, values)[0]
 
     army_experience_sql = f"""
-        SELECT army_experience.army_experience_name, {country_col[lang]} AS country, {conflict_col[lang]} AS conflict_name, army_experience_join.army_experience_in_month
+        SELECT army_experience.army_experience_name AS unit, {country_col[lang]} AS country, {conflict_col[lang]} AS conflict, army_experience_join.army_experience_in_month AS duration
 
         FROM army_experience
 
@@ -118,7 +118,7 @@ def show(id: int, lang: str, mysql: MySQL) -> Tunneller:
     )
 
     medals_sql = f"""
-        SELECT {medal_name_col[lang]} AS medal_name, {medal_citation_col[lang]} AS medal_citation, {country_col[lang]} AS country
+        SELECT {medal_name_col[lang]} AS name, {country_col[lang]} AS country, {medal_citation_col[lang]} AS citation
 
         FROM medal
 

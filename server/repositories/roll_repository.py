@@ -4,7 +4,7 @@ from typing import Any
 
 from db.run_sql import run_sql
 from flask_mysqldb import MySQL
-from ..models.roll import Name, Roll
+from models.roll import Name, Roll
 
 
 def select_all(mysql: MySQL) -> list[dict[str, Any]]:

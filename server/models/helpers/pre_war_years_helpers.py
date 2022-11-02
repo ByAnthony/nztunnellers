@@ -8,10 +8,10 @@ def map_army_experience(
 ) -> list[ArmyExperience]:
     return [
         ArmyExperience(
-            experience["army_experience_name"],
+            experience["unit"],
             experience["country"],
-            experience["conflict_name"],
-            convert_month_year(experience["army_experience_in_month"], lang),
+            experience["conflict"],
+            convert_month_year(experience["duration"], lang),
         )
         for experience in experiences
     ]
