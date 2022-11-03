@@ -8,6 +8,9 @@ class LondonGazette:
     date: str
     page: str
 
+    def __getitem__(self, key):
+        return getattr(self, key)
+
 
 @dataclass
 class NominalRoll:
@@ -24,6 +27,9 @@ class NominalRoll:
 class NewZealandArchives:
     reference: str
     url: str
+
+    def __getitem__(self, key):
+        return getattr(self, key)
 
 
 @dataclass

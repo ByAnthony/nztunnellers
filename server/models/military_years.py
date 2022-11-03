@@ -9,6 +9,9 @@ class Medal:
     country: str
     citation: Optional[str] = None
 
+    def __getitem__(self, key):
+        return getattr(self, key)
+
 
 @dataclass
 class Transport:

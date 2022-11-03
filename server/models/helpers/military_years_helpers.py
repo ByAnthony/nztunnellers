@@ -36,5 +36,7 @@ def get_transport_reference(transport_reference: str, lang: str) -> str:
     return translate_transport_ref(transport_reference, lang)
 
 
-def map_medals(medals: tuple[Medal]) -> list[Medal]:
-    return [medal for medal in medals]
+def map_medals(medals: list[Medal]) -> list[Medal]:
+    return [
+        Medal(medal["name"], medal["country"], medal["citation"]) for medal in medals
+    ]

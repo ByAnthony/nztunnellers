@@ -3,7 +3,7 @@ from ..helpers.date_helpers import format_to_day_month_and_year
 from ..sources import LondonGazette, NewZealandArchives, NominalRoll
 
 
-def map_nz_archives(nz_archives: tuple[NewZealandArchives]) -> list[NewZealandArchives]:
+def map_nz_archives(nz_archives: list[NewZealandArchives]) -> list[NewZealandArchives]:
     def get_url(online_ref: str) -> str:
         link = (
             "https://collections.archives.govt.nz/web/arena/search#/item/aims-archive/R"
@@ -11,9 +11,7 @@ def map_nz_archives(nz_archives: tuple[NewZealandArchives]) -> list[NewZealandAr
         return "{}{}".format(link, online_ref)
 
     return [
-        NewZealandArchives(
-            archives["nz_archives_ref"], get_url(archives["nz_archives_url"])
-        )
+        NewZealandArchives(archives["reference"], get_url(archives["url"]))
         for archives in nz_archives
     ]
 
@@ -58,7 +56,7 @@ def get_nominal_roll(volume: str, roll: str, page: str, lang: str) -> NominalRol
 
 
 def map_london_gazette(
-    london_gazette: tuple[LondonGazette], lang: str
+    london_gazette: list[LondonGazette], lang: str
 ) -> list[LondonGazette]:
     return [
         LondonGazette(

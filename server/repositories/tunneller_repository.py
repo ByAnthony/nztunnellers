@@ -130,7 +130,7 @@ def show(id: int, lang: str, mysql: MySQL) -> Tunneller:
     """
     medals_result: list[Medal] = run_sql(medals_sql, mysql, values)
 
-    nz_archives_sql = "SELECT nz_archives.nz_archives_ref, nz_archives.nz_archives_url FROM nz_archives LEFT JOIN tunneller ON tunneller.id=nz_archives.nz_archives_t_id WHERE tunneller.id=%s"
+    nz_archives_sql = "SELECT nz_archives.nz_archives_ref AS reference, nz_archives.nz_archives_url AS url FROM nz_archives LEFT JOIN tunneller ON tunneller.id=nz_archives.nz_archives_t_id WHERE tunneller.id=%s"
     nz_archives_result: list[NewZealandArchives] = run_sql(
         nz_archives_sql, mysql, values
     )
