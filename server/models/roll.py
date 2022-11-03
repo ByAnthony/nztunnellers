@@ -14,5 +14,5 @@ class Roll:
     serial: str
     name: Name
 
-    def __getitem__(self, key):
+    def __getitem__(self, key: str):
         return getattr(self, key)

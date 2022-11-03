@@ -2,11 +2,11 @@
 import json
 import os
 
-import repositories.roll_repository as tunnellers_repository
-import repositories.tunneller_repository as tunneller_repository
+import server.repositories.roll_repository as tunnellers_repository
+import server.repositories.tunneller_repository as tunneller_repository
 from flask import Flask, request
 from flask_mysqldb import MySQL
-from models.tunneller import JSONEncoder
+from server.models.tunneller import JSONEncoder
 
 app = Flask(__name__)
 

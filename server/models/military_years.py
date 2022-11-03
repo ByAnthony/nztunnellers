@@ -9,7 +9,7 @@ class Medal:
     country: str
     citation: Optional[str] = None
 
-    def __getitem__(self, key):
+    def __getitem__(self, key: str):
         return getattr(self, key)
 
 

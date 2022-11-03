@@ -4,6 +4,7 @@ import json
 from dataclasses import dataclass
 from typing import Optional
 
+
 from .image import Image
 from .military_years import MilitaryYears
 from .origins import Origins
@@ -20,12 +21,12 @@ class Tunneller(Roll):
     sources: Sources
     image: Optional[Image] = None
 
-    def __getitem__(self, key):
+    def __getitem__(self, key: str):
         return getattr(self, key)
 
 
 class JSONEncoder(json.JSONEncoder):
-    def default(self, o: Roll or Tunneller):
+    def default(self, o):
         if dataclasses.is_dataclass(o):
             return dataclasses.asdict(o)
         return super().default(o)

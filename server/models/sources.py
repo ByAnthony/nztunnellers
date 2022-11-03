@@ -8,7 +8,7 @@ class LondonGazette:
     date: str
     page: str
 
-    def __getitem__(self, key):
+    def __getitem__(self, key: str):
         return getattr(self, key)
 
 
@@ -28,7 +28,7 @@ class NewZealandArchives:
     reference: str
     url: str
 
-    def __getitem__(self, key):
+    def __getitem__(self, key: str):
         return getattr(self, key)
 
 
