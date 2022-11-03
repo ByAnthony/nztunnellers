@@ -2,7 +2,7 @@
 import dataclasses
 import json
 from dataclasses import dataclass
-from typing import Optional
+from typing import Any, Optional
 
 
 from .image import Image
@@ -26,7 +26,7 @@ class Tunneller(Roll):
 
 
 class JSONEncoder(json.JSONEncoder):
-    def default(self, o):
+    def default(self, o: Any):
         if dataclasses.is_dataclass(o):
             return dataclasses.asdict(o)
         return super().default(o)
