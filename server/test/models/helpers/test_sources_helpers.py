@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from server.models.sources import NewZealandArchives
-from server.models.helpers.sources_helpers import map_nz_archives
+from server.models.helpers.sources_helpers import map_nz_archives, get_awmm
 
 
 actual_nz_archives_1 = NewZealandArchives("AABK 18805 W5520 1/0006561", "22280535")
@@ -30,3 +30,10 @@ def test_map_nz_archives_if_archives_has_two_records():
 
 def test_do_not_map_nz_archives_if_archives_has_no_record():
     assert map_nz_archives([]) == []
+
+
+def test_get_awmm():
+    assert (
+        get_awmm("fake_reference")
+        == "https://www.aucklandmuseum.com/war-memorial/online-cenotaph/record/fake_reference"
+    )
