@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from server.models.helpers.translator_helpers import (
+from ....models.helpers.translator_helpers import (
     translate_superscript,
     translate_transport_ref,
     translate_family,
