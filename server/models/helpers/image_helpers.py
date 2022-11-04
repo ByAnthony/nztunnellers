@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from typing import Optional
 
-from ..helpers.translator_helpers import translate_family
+from .translator_helpers import translate_family
 from ..image import (
     Image,
     ImageArchives,

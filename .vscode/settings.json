@@ -1,5 +1,3 @@
 {
-    "python.analysis.extraPaths": [
-        "./server/mapper"
-    ]
+  "python.analysis.extraPaths": ["./server/"]
 }
