@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from typing import Optional, Union
+from typing import Optional
 
 from ..helpers.translator_helpers import (
     translate_superscript,
