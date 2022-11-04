@@ -62,9 +62,7 @@ from .translations.translations import (
 )
 
 
-def show(id: int, lang: str, mysql: MySQL) -> list[Optional[Tunneller]]:
-
-    tunneller: list[Optional[Tunneller]] = []
+def show(id: int, lang: str, mysql: MySQL) -> Tunneller:
 
     tunneller_sql = f"""
         SELECT t.id, t.forename, t.surname, t.aka, t.serial, t.birth_date, t.birth_year, {birth_country_col[lang]} AS birth_country, t.mother_name, {mother_origin_col[lang]} AS mother_origin, t.father_name, {father_origin_col[lang]} AS father_origin, nz_resident_in_month, {marital_status_col[lang]} AS marital_status, t.wife_name, {occupation_col[lang]} AS occupation, employer.last_employer_name AS employer, residence.town_name AS residence, {religion_col[lang]} AS religion, t.enlistment_date, military_district.military_district_name, t.aka, t.posted_date, {posted_from_corps_col[lang]} AS posted_from_corps, {rank_col[lang]} AS rank, {embarkation_unit_col[lang]} AS embarkation_unit, {section_col[lang]} AS section, {attached_corps_col[lang]} AS attached_corps, training.training_start, training.training_location, {training_location_type_col[lang]} AS training_location_type, transport_uk_ref.transport_ref_name AS transport_uk_ref, transport.transport_vessel_fk, transport_uk_vessel.transport_vessel_name AS transport_uk_vessel, transport.transport_start AS transport_uk_start, transport.transport_origin AS transport_uk_origin, transport.transport_end AS transport_uk_end, transport.transport_destination AS transport_uk_destination, image, image_source_auckland_libraries, archives_name.archives_name, archives.archives_ref, family.family_name, newspaper_name.newspaper_name, newspaper.newspaper_date, book.book_title, book.book_town, book.book_publisher, book.book_year, book.book_page, awmm_cenotaph, nominal_roll.nominal_roll_volume, nominal_roll.nominal_roll_number, nominal_roll.nominal_roll_page
