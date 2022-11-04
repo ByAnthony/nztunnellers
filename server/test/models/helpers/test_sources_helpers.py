@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
-from server.models.sources import NewZealandArchives, NominalRoll
-from server.models.helpers.sources_helpers import (
+from ....models.sources import NewZealandArchives, NominalRoll
+from ....models.helpers.sources_helpers import (
     map_nz_archives,
     get_awmm,
     get_nominal_roll,
