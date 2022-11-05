@@ -63,7 +63,7 @@ title_1916 = {
 }
 
 
-def test_if_volume_and_roll_are_not_none_and_lang_en_returns_nominal_roll():
+def test_get_nominal_roll_if_volume_and_roll_are_not_none_and_lang_is_en():
     assert get_nominal_roll(volume, roll, page, en) == NominalRoll(
         title_1919[en],
         "Wellington",

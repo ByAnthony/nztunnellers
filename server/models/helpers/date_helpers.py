@@ -1,38 +1,32 @@
 # -*- coding: utf-8 -*-
-from datetime import date
 from typing import Optional
 
 
-def get_birth_year(year: Optional[str], formatted_date: str) -> str:
+def format_date_to_birth_year(year: Optional[str], formatted_date: str) -> str:
     if year is not None:
         return year
     else:
         if formatted_date is not None:
-            formatted_year = format_year(formatted_date)
+            formatted_year = format_date_to_year(formatted_date)
             return formatted_year
 
 
-def format_date(date: date) -> str:
-    if date is not None:
-        return date.strftime("%Y-%m-%d")
-
-
-def format_year(date: str) -> str:
+def format_date_to_year(date: str) -> str:
     if date is not None:
         return date[0:4]
 
 
-def find_month(date: str) -> str:
+def format_date_to_month(date: str) -> str:
     if date is not None:
         return date[5:7]
 
 
-def find_day(date: str) -> str:
+def format_date_to_day(date: str) -> str:
     if date is not None:
         return date[8:10]
 
 
-def format_to_day_and_month(date: date, lang: str) -> str:
+def format_date_to_day_and_month(date: str, lang: str) -> str:
     if date is not None:
         months = {
             "1": {"en": "January", "fr": "janvier"},
@@ -48,18 +42,17 @@ def format_to_day_and_month(date: date, lang: str) -> str:
             "11": {"en": "November", "fr": "novembre"},
             "12": {"en": "December", "fr": "décembre"},
         }
-        formatted_date = format_date(date)
-        month = find_month(formatted_date).lstrip("0")
-        day = find_day(formatted_date).lstrip("0")
+        month = format_date_to_month(date).lstrip("0")
+        day = format_date_to_day(date).lstrip("0")
         no_break_space = "\N{NO-BREAK SPACE}"
 
         return "{}{}{}".format(day, no_break_space, months[month][lang])
 
 
-def format_to_day_month_and_year(date: date, lang: str) -> str:
+def format_date_to_day_month_and_year(date: str, lang: str) -> str:
     if date is not None:
         return "{} {}".format(
-            format_to_day_and_month(date, lang), format_year(format_date(date))
+            format_date_to_day_and_month(date, lang), format_date_to_year(date)
         )
 
 

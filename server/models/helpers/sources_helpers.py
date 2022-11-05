@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from ..helpers.date_helpers import format_to_day_month_and_year
+from ..helpers.date_helpers import format_date_to_day_month_and_year
 from ..sources import LondonGazette, NewZealandArchives, NominalRoll
 
 
@@ -60,7 +60,7 @@ def map_london_gazette(
 ) -> list[LondonGazette]:
     return [
         LondonGazette(
-            format_to_day_month_and_year(gazette["london_gazette_date"], lang),
+            format_date_to_day_month_and_year(gazette["london_gazette_date"], lang),
             gazette["london_gazette_page"],
         )
         for gazette in london_gazette

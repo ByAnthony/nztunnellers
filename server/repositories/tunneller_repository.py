@@ -1,16 +1,14 @@
 # -*- coding: utf-8 -*-
-from typing import Optional
 from dacite import from_dict
 from db.run_sql import run_sql
 from flask_mysqldb import MySQL
-from models.helpers.date_helpers import (
-    format_date,
-    format_to_day_and_month,
-    format_to_day_month_and_year,
-    format_year,
-    get_birth_year,
+from ..models.helpers.date_helpers import (
+    format_date_to_birth_year,
+    format_date_to_year,
+    format_date_to_day_month_and_year,
+    format_date_to_day_and_month,
 )
-from models.helpers.image_helpers import (
+from ..models.helpers.image_helpers import (
     get_image,
     get_image_source,
     get_image_source_archives,
@@ -20,7 +18,7 @@ from models.helpers.image_helpers import (
     get_image_source_newspaper,
     get_image_url,
 )
-from models.helpers.military_years_helpers import (
+from ..models.helpers.military_years_helpers import (
     get_detachment,
     get_section,
     get_training,
@@ -28,19 +26,19 @@ from models.helpers.military_years_helpers import (
     get_transport_reference,
     map_medals,
 )
-from models.helpers.origins_helpers import get_nz_resident, get_parent
-from models.helpers.pre_war_years_helpers import map_army_experience
-from models.helpers.sources_helpers import (
+from ..models.helpers.origins_helpers import get_nz_resident, get_parent
+from ..models.helpers.pre_war_years_helpers import map_army_experience
+from ..models.helpers.sources_helpers import (
     get_awmm,
     get_nominal_roll,
     map_london_gazette,
     map_nz_archives,
 )
-from models.image import ImageBookAuthors
-from models.military_years import Medal
-from models.pre_war_years import ArmyExperience
-from models.sources import LondonGazette, NewZealandArchives
-from models.tunneller import Tunneller
+from ..models.image import ImageBookAuthors
+from ..models.military_years import Medal
+from ..models.pre_war_years import ArmyExperience
+from ..models.sources import LondonGazette, NewZealandArchives
+from ..models.tunneller import Tunneller
 
 from .translations.translations import (
     attached_corps_col,
@@ -65,7 +63,7 @@ from .translations.translations import (
 def show(id: int, lang: str, mysql: MySQL) -> Tunneller:
 
     tunneller_sql = f"""
-        SELECT t.id, t.forename, t.surname, t.aka, t.serial, t.birth_date, t.birth_year, {birth_country_col[lang]} AS birth_country, t.mother_name, {mother_origin_col[lang]} AS mother_origin, t.father_name, {father_origin_col[lang]} AS father_origin, nz_resident_in_month, {marital_status_col[lang]} AS marital_status, t.wife_name, {occupation_col[lang]} AS occupation, employer.last_employer_name AS employer, residence.town_name AS residence, {religion_col[lang]} AS religion, t.enlistment_date, military_district.military_district_name, t.aka, t.posted_date, {posted_from_corps_col[lang]} AS posted_from_corps, {rank_col[lang]} AS rank, {embarkation_unit_col[lang]} AS embarkation_unit, {section_col[lang]} AS section, {attached_corps_col[lang]} AS attached_corps, training.training_start, training.training_location, {training_location_type_col[lang]} AS training_location_type, transport_uk_ref.transport_ref_name AS transport_uk_ref, transport.transport_vessel_fk, transport_uk_vessel.transport_vessel_name AS transport_uk_vessel, transport.transport_start AS transport_uk_start, transport.transport_origin AS transport_uk_origin, transport.transport_end AS transport_uk_end, transport.transport_destination AS transport_uk_destination, image, image_source_auckland_libraries, archives_name.archives_name, archives.archives_ref, family.family_name, newspaper_name.newspaper_name, newspaper.newspaper_date, book.book_title, book.book_town, book.book_publisher, book.book_year, book.book_page, awmm_cenotaph, nominal_roll.nominal_roll_volume, nominal_roll.nominal_roll_number, nominal_roll.nominal_roll_page
+        SELECT t.id, t.forename, t.surname, t.aka, t.serial, DATE_FORMAT(t.birth_date, '%%Y-%%m-%%d') AS birth_date, DATE_FORMAT(t.birth_year, '%%Y-%%m-%%d') AS birth_year, {birth_country_col[lang]} AS birth_country, t.mother_name, {mother_origin_col[lang]} AS mother_origin, t.father_name, {father_origin_col[lang]} AS father_origin, nz_resident_in_month, {marital_status_col[lang]} AS marital_status, t.wife_name, {occupation_col[lang]} AS occupation, employer.last_employer_name AS employer, residence.town_name AS residence, {religion_col[lang]} AS religion, DATE_FORMAT(t.enlistment_date, '%%Y-%%m-%%d') AS enlistment_date, military_district.military_district_name, t.aka, DATE_FORMAT(t.posted_date, '%%Y-%%m-%%d') AS posted_date, {posted_from_corps_col[lang]} AS posted_from_corps, {rank_col[lang]} AS rank, {embarkation_unit_col[lang]} AS embarkation_unit, {section_col[lang]} AS section, {attached_corps_col[lang]} AS attached_corps, DATE_FORMAT(training.training_start, '%%Y-%%m-%%d') AS training_start, training.training_location, {training_location_type_col[lang]} AS training_location_type, transport_uk_ref.transport_ref_name AS transport_uk_ref, transport.transport_vessel_fk, transport_uk_vessel.transport_vessel_name AS transport_uk_vessel, DATE_FORMAT(transport.transport_start, '%%Y-%%m-%%d') AS transport_uk_start, transport.transport_origin AS transport_uk_origin, DATE_FORMAT(transport.transport_end, '%%Y-%%m-%%d') AS transport_uk_end, transport.transport_destination AS transport_uk_destination, image, image_source_auckland_libraries, archives_name.archives_name, archives.archives_ref, family.family_name, newspaper_name.newspaper_name, DATE_FORMAT(newspaper.newspaper_date, '%%Y-%%m-%%d') AS newspaper_date, book.book_title, book.book_town, book.book_publisher, book.book_year, book.book_page, awmm_cenotaph, nominal_roll.nominal_roll_volume, nominal_roll.nominal_roll_number, nominal_roll.nominal_roll_page
 
         FROM tunneller t
 
@@ -134,7 +132,7 @@ def show(id: int, lang: str, mysql: MySQL) -> Tunneller:
         nz_archives_sql, mysql, values
     )
 
-    london_gazette_sql = "SELECT london_gazette.london_gazette_date, london_gazette.london_gazette_page FROM london_gazette JOIN london_gazette_join ON london_gazette_join.london_gazette_lg_id=london_gazette.london_gazette_id WHERE london_gazette_join.london_gazette_t_id=%s"
+    london_gazette_sql = "SELECT DATE_FORMAT(london_gazette.london_gazette_date, '%%Y-%%m-%%d') AS london_gazette_date, london_gazette.london_gazette_page FROM london_gazette JOIN london_gazette_join ON london_gazette_join.london_gazette_lg_id=london_gazette.london_gazette_id WHERE london_gazette_join.london_gazette_t_id=%s"
     london_gazette_result: list[LondonGazette] = run_sql(
         london_gazette_sql, mysql, values
     )
@@ -165,11 +163,11 @@ def show(id: int, lang: str, mysql: MySQL) -> Tunneller:
             },
             "origins": {
                 "birth": {
-                    "year": get_birth_year(
+                    "year": format_date_to_birth_year(
                         tunneller_result["birth_year"],
-                        format_year(format_date(tunneller_result["birth_date"])),
+                        format_date_to_year(tunneller_result["birth_date"]),
                     ),
-                    "date": format_to_day_month_and_year(
+                    "date": format_date_to_day_month_and_year(
                         tunneller_result["birth_date"], lang
                     ),
                     "country": tunneller_result["birth_country"],
@@ -202,24 +200,24 @@ def show(id: int, lang: str, mysql: MySQL) -> Tunneller:
             "military_years": {
                 "enlistment": {
                     "rank": tunneller_result["rank"],
-                    "year": format_year(
-                        format_date(tunneller_result["enlistment_date"])
-                    ),
-                    "date": format_to_day_and_month(
+                    "year": format_date_to_year(tunneller_result["enlistment_date"]),
+                    "date": format_date_to_day_and_month(
                         tunneller_result["enlistment_date"], lang
                     ),
                     "district": tunneller_result["military_district_name"],
                     "alias": tunneller_result["aka"],
                     "transferred_to_tunnellers": get_transferred_to_tunnellers(
-                        format_year(format_date(tunneller_result["posted_date"])),
-                        format_to_day_and_month(tunneller_result["posted_date"], lang),
+                        format_date_to_year(tunneller_result["posted_date"]),
+                        format_date_to_day_and_month(
+                            tunneller_result["posted_date"], lang
+                        ),
                         tunneller_result["posted_from_corps"],
                     ),
                 },
                 "embarkation_unit": {
                     "training": get_training(
-                        format_year(format_date(tunneller_result["training_start"])),
-                        format_to_day_and_month(
+                        format_date_to_year(tunneller_result["training_start"]),
+                        format_date_to_day_and_month(
                             tunneller_result["training_start"], lang
                         ),
                         tunneller_result["training_location"],
@@ -236,17 +234,17 @@ def show(id: int, lang: str, mysql: MySQL) -> Tunneller:
                         tunneller_result["transport_uk_ref"], lang
                     ),
                     "vessel": tunneller_result["transport_uk_vessel"],
-                    "departure_year": format_year(
-                        format_date(tunneller_result["transport_uk_start"])
+                    "departure_year": format_date_to_year(
+                        tunneller_result["transport_uk_start"]
                     ),
-                    "departure_date": format_to_day_and_month(
+                    "departure_date": format_date_to_day_and_month(
                         tunneller_result["transport_uk_start"], lang
                     ),
                     "departure_port": tunneller_result["transport_uk_origin"],
-                    "arrival_year": format_year(
-                        format_date(tunneller_result["transport_uk_end"])
+                    "arrival_year": format_date_to_year(
+                        tunneller_result["transport_uk_end"]
                     ),
-                    "arrival_date": format_to_day_and_month(
+                    "arrival_date": format_date_to_day_and_month(
                         tunneller_result["transport_uk_end"], lang
                     ),
                     "arrival_port": tunneller_result["transport_uk_destination"],
@@ -277,7 +275,7 @@ def show(id: int, lang: str, mysql: MySQL) -> Tunneller:
                     get_image_source_family(tunneller_result["family_name"], lang),
                     get_image_source_newspaper(
                         tunneller_result["newspaper_name"],
-                        format_to_day_month_and_year(
+                        format_date_to_day_month_and_year(
                             tunneller_result["newspaper_date"], lang
                         ),
                     ),
@@ -293,6 +291,6 @@ def show(id: int, lang: str, mysql: MySQL) -> Tunneller:
             ),
         }
 
-        tunneller = from_dict(data_class=Tunneller, data=data)
+        tunneller: Tunneller = from_dict(data_class=Tunneller, data=data)
 
         return tunneller
