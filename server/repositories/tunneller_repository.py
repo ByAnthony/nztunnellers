@@ -2,13 +2,13 @@
 from dacite import from_dict
 from db.run_sql import run_sql
 from flask_mysqldb import MySQL
-from models.helpers.date_helpers import (
+from ..models.helpers.date_helpers import (
     format_date_to_birth_year,
     format_date_to_year,
     format_date_to_day_month_and_year,
     format_date_to_day_and_month,
 )
-from models.helpers.image_helpers import (
+from ..models.helpers.image_helpers import (
     get_image,
     get_image_source,
     get_image_source_archives,
@@ -18,7 +18,7 @@ from models.helpers.image_helpers import (
     get_image_source_newspaper,
     get_image_url,
 )
-from models.helpers.military_years_helpers import (
+from ..models.helpers.military_years_helpers import (
     get_detachment,
     get_section,
     get_training,
@@ -26,19 +26,19 @@ from models.helpers.military_years_helpers import (
     get_transport_reference,
     map_medals,
 )
-from models.helpers.origins_helpers import get_nz_resident, get_parent
-from models.helpers.pre_war_years_helpers import map_army_experience
-from models.helpers.sources_helpers import (
+from ..models.helpers.origins_helpers import get_nz_resident, get_parent
+from ..models.helpers.pre_war_years_helpers import map_army_experience
+from ..models.helpers.sources_helpers import (
     get_awmm,
     get_nominal_roll,
     map_london_gazette,
     map_nz_archives,
 )
-from models.image import ImageBookAuthors
-from models.military_years import Medal
-from models.pre_war_years import ArmyExperience
-from models.sources import LondonGazette, NewZealandArchives
-from models.tunneller import Tunneller
+from ..models.image import ImageBookAuthors
+from ..models.military_years import Medal
+from ..models.pre_war_years import ArmyExperience
+from ..models.sources import LondonGazette, NewZealandArchives
+from ..models.tunneller import Tunneller
 
 from .translations.translations import (
     attached_corps_col,
@@ -132,7 +132,7 @@ def show(id: int, lang: str, mysql: MySQL) -> Tunneller:
         nz_archives_sql, mysql, values
     )
 
-    london_gazette_sql = "SELECT DATE_FORMAT(london_gazette.london_gazette_date, '%%Y-%%m-%%d') AS london_gazette_date, london_gazette.london_gazette_page FROM london_gazette JOIN london_gazette_join ON london_gazette_join.london_gazette_lg_id=london_gazette.london_gazette_id WHERE london_gazette_join.london_gazette_t_id=%s"
+    london_gazette_sql = "SELECT DATE_FORMAT(london_gazette.london_gazette_date, '%%Y-%%m-%%d') AS date, london_gazette.london_gazette_page AS page FROM london_gazette JOIN london_gazette_join ON london_gazette_join.london_gazette_lg_id=london_gazette.london_gazette_id WHERE london_gazette_join.london_gazette_t_id=%s"
     london_gazette_result: list[LondonGazette] = run_sql(
         london_gazette_sql, mysql, values
     )

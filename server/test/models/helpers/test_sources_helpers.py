@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
-from ....models.sources import NewZealandArchives, NominalRoll
+from ....models.helpers.date_helpers import format_date_to_day_month_and_year
+from ....models.sources import LondonGazette, NewZealandArchives, NominalRoll
 from ....models.helpers.sources_helpers import (
     map_nz_archives,
     get_awmm,
     get_nominal_roll,
+    map_london_gazette,
 )
 
 
@@ -105,3 +107,16 @@ def test_get_nominal_roll_if_volume_and_roll_are_not_none_and_lang_is_en():
 #         "date": "1916",
 #         "page": "p.{}{}".format(no_break_space, page),
 #     }
+
+
+london_gazette_list = [
+    LondonGazette("1917-12-28", "13575"),
+    LondonGazette("1918-01-01", "29"),
+]
+
+
+def test_map_london_gazette_if_london_gazette_is_not_none_and_lang_is_en():
+    assert map_london_gazette(london_gazette_list, en) == [
+        LondonGazette(format_date_to_day_month_and_year("1917-12-28", "en"), "13575"),
+        LondonGazette(format_date_to_day_month_and_year("1918-01-01", "en"), "29"),
+    ]

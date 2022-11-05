@@ -60,8 +60,8 @@ def map_london_gazette(
 ) -> list[LondonGazette]:
     return [
         LondonGazette(
-            format_date_to_day_month_and_year(gazette["london_gazette_date"], lang),
-            gazette["london_gazette_page"],
+            format_date_to_day_month_and_year(gazette["date"], lang),
+            gazette["page"],
         )
         for gazette in london_gazette
     ]
