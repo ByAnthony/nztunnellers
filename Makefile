@@ -8,4 +8,4 @@ test-server:
 	pytest -vv ./server
 
 dev:
-	DEV=true python server/run.py
+	DEV=true python -m server.run
