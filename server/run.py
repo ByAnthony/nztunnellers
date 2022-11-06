@@ -2,8 +2,8 @@
 import json
 import os
 
-from .repositories import roll_repository as tunnellers_repository
-from .repositories import tunneller_repository as tunneller_repository
+from .repositories import roll_repository
+from .repositories import tunneller_repository
 from flask import Flask, request
 from flask_mysqldb import MySQL
 from .models.tunneller import JSONEncoder
@@ -28,7 +28,7 @@ mysql = MySQL(app)
 
 @app.route("/roll/", methods=["GET"])
 def roll():
-    tunnellers = tunnellers_repository.select_all(mysql)
+    tunnellers = roll_repository.select_all(mysql)
     roll = json.dumps([tunneller for tunneller in tunnellers], indent=4)
     return roll
 
