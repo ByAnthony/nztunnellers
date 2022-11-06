@@ -77,36 +77,36 @@ def test_get_nominal_roll_if_volume_and_roll_are_not_none_and_lang_is_en():
     )
 
 
-# def test_if_volume_and_roll_are_not_none_and_lang_fr_returns_nominal_roll():
-#     assert get_nominal_roll(volume, roll, page, fr) == {
-#         "title": title_1919[fr],
-#         "town": "Wellington",
-#         "publisher": "Government Printer",
-#         "date": "1914-1919",
-#         "volume": "Volume{}{}".format(no_break_space, volume),
-#         "roll": "{}{}{}".format(roll_number_col[fr], no_break_space, roll),
-#         "page": "p.{}{}".format(no_break_space, page),
-#     }
+def test_get_nominal_roll_if_volume_and_roll_are_not_none_and_lang_is_fr():
+    assert get_nominal_roll(volume, roll, page, fr) == NominalRoll(
+        title_1919[fr],
+        "Wellington",
+        "Government Printer",
+        "1914-1919",
+        "p.{}{}".format(no_break_space, page),
+        "Volume{}{}".format(no_break_space, volume),
+        "{}{}".format(roll_number_col[fr], roll),
+    )
 
 
-# def test_if_volume_and_roll_are_none_and_lang_en_returns_nominal_roll():
-#     assert get_nominal_roll(None, None, page, en) == {
-#         "title": title_1916[en],
-#         "town": "Wellington",
-#         "publisher": "Government Printer",
-#         "date": "1916",
-#         "page": "p.{}{}".format(no_break_space, page),
-#     }
+def test_get_nominal_roll_if_volume_and_roll_are_none_and_lang_en():
+    assert get_nominal_roll(None, None, page, en) == NominalRoll(
+        title_1916[en],
+        "Wellington",
+        "Government Printer",
+        "1916",
+        "p.{}{}".format(no_break_space, page),
+    )
 
 
-# def test_if_volume_and_roll_are_none_and_lang_fr_returns_nominal_roll():
-#     assert get_nominal_roll(None, None, page, fr) == {
-#         "title": title_1916[fr],
-#         "town": "Wellington",
-#         "publisher": "Government Printer",
-#         "date": "1916",
-#         "page": "p.{}{}".format(no_break_space, page),
-#     }
+def test_get_nominal_roll_if_volume_and_roll_are_none_and_lang_fr():
+    assert get_nominal_roll(None, None, page, fr) == NominalRoll(
+        title_1916[fr],
+        "Wellington",
+        "Government Printer",
+        "1916",
+        "p.{}{}".format(no_break_space, page),
+    )
 
 
 london_gazette_list = [
@@ -116,7 +116,22 @@ london_gazette_list = [
 
 
 def test_map_london_gazette_if_london_gazette_is_not_none_and_lang_is_en():
-    assert map_london_gazette(london_gazette_list, en) == [
+    assert map_london_gazette(london_gazette_list, "en") == [
         LondonGazette(format_date_to_day_month_and_year("1917-12-28", "en"), "13575"),
         LondonGazette(format_date_to_day_month_and_year("1918-01-01", "en"), "29"),
     ]
+
+
+def test_map_london_gazette_if_london_gazette_is_not_none_and_lang_is_fr():
+    assert map_london_gazette(london_gazette_list, "fr") == [
+        LondonGazette(format_date_to_day_month_and_year("1917-12-28", "fr"), "13575"),
+        LondonGazette(format_date_to_day_month_and_year("1918-01-01", "fr"), "29"),
+    ]
+
+
+def test_map_london_gazette_if_london_gazette_is_none_and_lang_en():
+    assert map_london_gazette([], "en") == []
+
+
+def test_map_london_gazette_if_london_gazette_is_none_and_lang_fr():
+    assert map_london_gazette([], "fr") == []

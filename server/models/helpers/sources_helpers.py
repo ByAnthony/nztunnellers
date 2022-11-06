@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from typing import Optional
 from ..helpers.date_helpers import format_date_to_day_month_and_year
 from ..sources import LondonGazette, NewZealandArchives, NominalRoll
 
@@ -22,7 +23,9 @@ def get_awmm(reference: str) -> str:
     )
 
 
-def get_nominal_roll(volume: str, roll: str, page: str, lang: str) -> NominalRoll:
+def get_nominal_roll(
+    volume: Optional[str], roll: Optional[str], page: str, lang: str
+) -> NominalRoll:
 
     no_break_space = "\N{NO-BREAK SPACE}"
     title_1919 = {
