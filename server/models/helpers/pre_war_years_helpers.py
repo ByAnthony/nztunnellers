@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from ..helpers.date_helpers import convert_month_year
+from .date_helpers import convert_month_year
 from ..pre_war_years import ArmyExperience
 
 

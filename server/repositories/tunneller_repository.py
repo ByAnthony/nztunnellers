@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from dacite import from_dict
-from db.run_sql import run_sql
+from ..db.run_sql import run_sql
 from flask_mysqldb import MySQL
 from ..models.helpers.date_helpers import (
     format_date_to_birth_year,

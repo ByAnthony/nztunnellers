@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from typing import Optional
-from ..helpers.date_helpers import format_date_to_day_month_and_year
+from .date_helpers import format_date_to_day_month_and_year
 from ..sources import LondonGazette, NewZealandArchives, NominalRoll
 
 

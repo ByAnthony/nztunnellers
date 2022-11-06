@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from typing import Optional
 
-from ..helpers.translator_helpers import (
+from .translator_helpers import (
     translate_superscript,
     translate_transport_ref,
 )
