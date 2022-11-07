@@ -9,11 +9,7 @@ from ..models.roll import Name, Roll
 
 def select_all(mysql: MySQL) -> list[dict[str, Any]]:
 
-    sql: str = f"""
-        SELECT t.id, t.surname, t.forename, t.serial
-        FROM tunneller t
-        ORDER BY t.surname, t.forename
-    """
+    sql: str = "SELECT t.id, t.surname, t.forename, t.serial FROM tunneller t ORDER BY t.surname, t.forename"
     results: list[Roll] = run_sql(sql, mysql, None)
 
     tunnellers: list[dict[str, Any]] = [

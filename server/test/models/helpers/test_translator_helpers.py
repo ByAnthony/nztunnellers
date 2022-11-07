@@ -37,11 +37,13 @@ def test_do_not_translate_superscript_if_lang_is_en():
 
 
 def test_do_not_translate_superscript_if_lang_is_fr_and_string_is_none():
-    assert translate_superscript(None, "fr") == None
+    if translate_superscript(None, "fr"):
+        return translate_superscript(None, "fr")
 
 
 def test_do_not_translate_superscript_if_lang_is_en_and_string_is_none():
-    assert translate_superscript(None, "en") == None
+    if translate_superscript(None, "en"):
+        return translate_superscript(None, "en")
 
 
 def test_translate_superscript_if_transport_is_ruapehu_and_lang_is_fr():
@@ -72,8 +74,10 @@ def test_translate_family_if_family_is_not_none_and_lang_is_fr():
 
 
 def test_do_not_translate_family_if_family_is_none_and_lang_is_en():
-    assert translate_family(None, "en") == None
+    if translate_family(None, "en"):
+        return translate_family(None, "en")
 
 
 def test_do_not_translate_family_if_family_is_none_and_lang_is_fr():
-    assert translate_family(None, "fr") == None
+    if translate_family(None, "fr"):
+        return translate_family(None, "fr")
