@@ -13,7 +13,9 @@ The New Zealand Tunnellers Web App is dedicated to a special military unit who f
 
 The project uses:
 
+* black;
 * dacite;
+* flake8;
 * flask;
 * flask_MySQLdb;
 * mypy;
