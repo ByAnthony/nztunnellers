@@ -62,8 +62,56 @@ from .translations.translations import (
 
 def show(id: int, lang: str, mysql: MySQL) -> Tunneller:
 
-    tunneller_sql = f"""
-        SELECT t.id, t.forename, t.surname, t.aka, t.serial, DATE_FORMAT(t.birth_date, '%%Y-%%m-%%d') AS birth_date, DATE_FORMAT(t.birth_year, '%%Y-%%m-%%d') AS birth_year, {birth_country_col[lang]} AS birth_country, t.mother_name, {mother_origin_col[lang]} AS mother_origin, t.father_name, {father_origin_col[lang]} AS father_origin, CONVERT(t.nz_resident_in_month, char) AS nz_resident_in_month, {marital_status_col[lang]} AS marital_status, t.wife_name, {occupation_col[lang]} AS occupation, employer.last_employer_name AS employer, residence.town_name AS residence, {religion_col[lang]} AS religion, DATE_FORMAT(t.enlistment_date, '%%Y-%%m-%%d') AS enlistment_date, military_district.military_district_name, t.aka, DATE_FORMAT(t.posted_date, '%%Y-%%m-%%d') AS posted_date, {posted_from_corps_col[lang]} AS posted_from_corps, {rank_col[lang]} AS rank, {embarkation_unit_col[lang]} AS embarkation_unit, {section_col[lang]} AS section, {attached_corps_col[lang]} AS attached_corps, DATE_FORMAT(training.training_start, '%%Y-%%m-%%d') AS training_start, training.training_location, {training_location_type_col[lang]} AS training_location_type, transport_uk_ref.transport_ref_name AS transport_uk_ref, transport.transport_vessel_fk, transport_uk_vessel.transport_vessel_name AS transport_uk_vessel, DATE_FORMAT(transport.transport_start, '%%Y-%%m-%%d') AS transport_uk_start, transport.transport_origin AS transport_uk_origin, DATE_FORMAT(transport.transport_end, '%%Y-%%m-%%d') AS transport_uk_end, transport.transport_destination AS transport_uk_destination, image, image_source_auckland_libraries, archives_name.archives_name, archives.archives_ref, family.family_name, newspaper_name.newspaper_name, DATE_FORMAT(newspaper.newspaper_date, '%%Y-%%m-%%d') AS newspaper_date, book.book_title, book.book_town, book.book_publisher, book.book_year, book.book_page, awmm_cenotaph, nominal_roll.nominal_roll_volume, nominal_roll.nominal_roll_number, nominal_roll.nominal_roll_page
+    tunneller_sql = f"""SELECT t.id,
+        t.forename,
+        t.surname,
+        t.aka,
+        t.serial,
+        DATE_FORMAT(t.birth_date, '%%Y-%%m-%%d') AS birth_date,
+        DATE_FORMAT(t.birth_year, '%%Y-%%m-%%d') AS birth_year,
+        {birth_country_col[lang]} AS birth_country,
+        t.mother_name,
+        {mother_origin_col[lang]} AS mother_origin,
+        t.father_name, {father_origin_col[lang]} AS father_origin,
+        CONVERT(t.nz_resident_in_month, char) AS nz_resident_in_month,
+        {marital_status_col[lang]} AS marital_status,
+        t.wife_name, {occupation_col[lang]} AS occupation,
+        employer.last_employer_name AS employer,
+        residence.town_name AS residence,
+        {religion_col[lang]} AS religion,
+        DATE_FORMAT(t.enlistment_date, '%%Y-%%m-%%d') AS enlistment_date,
+        military_district.military_district_name,
+        t.aka,
+        DATE_FORMAT(t.posted_date, '%%Y-%%m-%%d') AS posted_date,
+        {posted_from_corps_col[lang]} AS posted_from_corps,
+        {rank_col[lang]} AS rank,
+        {embarkation_unit_col[lang]} AS embarkation_unit,
+        {section_col[lang]} AS section,
+        {attached_corps_col[lang]} AS attached_corps,
+        DATE_FORMAT(training.training_start, '%%Y-%%m-%%d') AS training_start,
+        training.training_location, {training_location_type_col[lang]} AS training_location_type,
+        transport_uk_ref.transport_ref_name AS transport_uk_ref,
+        transport.transport_vessel_fk,
+        transport_uk_vessel.transport_vessel_name AS transport_uk_vessel,
+        DATE_FORMAT(transport.transport_start, '%%Y-%%m-%%d') AS transport_uk_start,
+        transport.transport_origin AS transport_uk_origin,
+        DATE_FORMAT(transport.transport_end, '%%Y-%%m-%%d') AS transport_uk_end,
+        transport.transport_destination AS transport_uk_destination,
+        image,
+        image_source_auckland_libraries,
+        archives_name.archives_name,
+        archives.archives_ref,
+        family.family_name, newspaper_name.newspaper_name,
+        DATE_FORMAT(newspaper.newspaper_date, '%%Y-%%m-%%d') AS newspaper_date,
+        book.book_title,
+        book.book_town,
+        book.book_publisher,
+        book.book_year,
+        book.book_page,
+        awmm_cenotaph,
+        nominal_roll.nominal_roll_volume,
+        nominal_roll.nominal_roll_number,
+        nominal_roll.nominal_roll_page
 
         FROM tunneller t
 
@@ -82,10 +130,12 @@ def show(id: int, lang: str, mysql: MySQL) -> Tunneller:
         LEFT JOIN section ON t.section_fk = section.section_id
         LEFT JOIN corps attached_corps ON t.attached_corps_fk=attached_corps.corps_id
         LEFT JOIN training ON embarkation_unit.training_fk=training.training_id
-        LEFT JOIN training_location_type ON training.training_location_type=training_location_type.training_location_type_id
+        LEFT JOIN training_location_type
+        ON training.training_location_type=training_location_type.training_location_type_id
         LEFT JOIN transport ON embarkation_unit.transport_uk_fk=transport.transport_id
         LEFT JOIN transport_ref transport_uk_ref ON transport.transport_ref_fk=transport_uk_ref.transport_ref_id
-        LEFT JOIN transport_vessel transport_uk_vessel ON transport.transport_vessel_fk=transport_uk_vessel.transport_vessel_id
+        LEFT JOIN transport_vessel transport_uk_vessel
+        ON transport.transport_vessel_fk=transport_uk_vessel.transport_vessel_id
         LEFT JOIN nominal_roll ON t.nominal_roll_fk=nominal_roll.nominal_roll_id
         LEFT JOIN archives ON archives.archives_id=t.image_source_archives_fk
         LEFT JOIN archives_name ON archives_name.archives_name_id=archives.archives_name_fk
@@ -94,13 +144,12 @@ def show(id: int, lang: str, mysql: MySQL) -> Tunneller:
         LEFT JOIN newspaper_name ON newspaper_name.newspaper_name_id=newspaper.newspaper_name_fk
         LEFT JOIN book ON book.book_id=t.image_source_book_fk
 
-        WHERE t.id=%s
-    """
+        WHERE t.id=%s"""
     values = [id]
     tunneller_result: Tunneller = run_sql(tunneller_sql, mysql, values)[0]
 
-    army_experience_sql = f"""
-        SELECT army_experience.army_experience_name AS unit, {country_col[lang]} AS country, {conflict_col[lang]} AS conflict, CONVERT(army_experience_join.army_experience_in_month, char) AS duration
+    army_experience_sql = f"""SELECT army_experience.army_experience_name AS unit, {country_col[lang]} AS country,
+        {conflict_col[lang]} AS conflict, CONVERT(army_experience_join.army_experience_in_month, char) AS duration
 
         FROM army_experience
 
@@ -108,14 +157,13 @@ def show(id: int, lang: str, mysql: MySQL) -> Tunneller:
         LEFT JOIN country ON country.country_id=army_experience_join.army_experience_c_c_id
         LEFT JOIN conflict ON conflict.conflict_id=army_experience_join.army_experience_w_id
 
-        WHERE army_experience_join.army_experience_t_id=%s
-    """
+        WHERE army_experience_join.army_experience_t_id=%s"""
     army_experience_result: list[ArmyExperience] = run_sql(
         army_experience_sql, mysql, values
     )
 
-    medals_sql = f"""
-        SELECT {medal_name_col[lang]} AS name, {country_col[lang]} AS country, {medal_citation_col[lang]} AS citation
+    medals_sql = f"""SELECT {medal_name_col[lang]} AS name, {country_col[lang]} AS country,
+        {medal_citation_col[lang]} AS citation
 
         FROM medal
 
@@ -123,22 +171,27 @@ def show(id: int, lang: str, mysql: MySQL) -> Tunneller:
         LEFT JOIN medal_citation ON medal_citation.medal_citation_id=medal_c_id
         LEFT JOIN country ON country.country_id=medal_m_c_id
 
-        WHERE medal_join.medal_t_id=%s
-    """
+        WHERE medal_join.medal_t_id=%s"""
     medals_result: list[Medal] = run_sql(medals_sql, mysql, values)
 
-    nz_archives_sql = "SELECT nz_archives.nz_archives_ref AS reference, nz_archives.nz_archives_url AS url FROM nz_archives LEFT JOIN tunneller ON tunneller.id=nz_archives.nz_archives_t_id WHERE tunneller.id=%s"
+    nz_archives_sql = """SELECT nz_archives.nz_archives_ref AS reference, nz_archives.nz_archives_url AS url
+        FROM nz_archives
+        LEFT JOIN tunneller ON tunneller.id=nz_archives.nz_archives_t_id
+        WHERE tunneller.id=%s"""
     nz_archives_result: list[NewZealandArchives] = run_sql(
         nz_archives_sql, mysql, values
     )
 
-    london_gazette_sql = "SELECT DATE_FORMAT(london_gazette.london_gazette_date, '%%Y-%%m-%%d') AS date, london_gazette.london_gazette_page AS page FROM london_gazette JOIN london_gazette_join ON london_gazette_join.london_gazette_lg_id=london_gazette.london_gazette_id WHERE london_gazette_join.london_gazette_t_id=%s"
+    london_gazette_sql = """SELECT DATE_FORMAT(london_gazette.london_gazette_date, '%%Y-%%m-%%d') AS date,
+        london_gazette.london_gazette_page AS page
+        FROM london_gazette
+        JOIN london_gazette_join ON london_gazette_join.london_gazette_lg_id=london_gazette.london_gazette_id
+        WHERE london_gazette_join.london_gazette_t_id=%s"""
     london_gazette_result: list[LondonGazette] = run_sql(
         london_gazette_sql, mysql, values
     )
 
-    book_authors_sql = f"""
-        SELECT book.book_id, author.author_forename, author.author_surname
+    book_authors_sql = """SELECT book.book_id, author.author_forename, author.author_surname
 
         FROM author_book_join
 
@@ -146,8 +199,7 @@ def show(id: int, lang: str, mysql: MySQL) -> Tunneller:
         LEFT JOIN book ON author_book_join.author_book_b_id=book.book_id
         LEFT JOIN tunneller ON book.book_id=tunneller.image_source_book_fk
 
-        WHERE tunneller.id=%s
-    """
+        WHERE tunneller.id=%s"""
     book_authors_result: list[ImageBookAuthors] = run_sql(
         book_authors_sql, mysql, values
     )
