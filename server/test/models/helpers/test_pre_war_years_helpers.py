@@ -38,13 +38,13 @@ def test_map_army_experience_if_army_experience_is_in_en():
             "Garrison Artillery Volunteers",
             country_col["en"],
             None,
-            convert_month_year(12, "en"),
+            convert_month_year("12", "en"),
         ),
         ArmyExperience(
             None,
             None,
             conflict_col["en"],
-            convert_month_year(250, "en"),
+            convert_month_year("250", "en"),
         ),
     ]
 
@@ -55,7 +55,7 @@ def test_map_army_experience_if_army_experience_is_in_fr():
             "National Reserve",
             country_col["fr"],
             conflict_col["fr"],
-            convert_month_year(50, "fr"),
+            convert_month_year("50", "fr"),
         )
     ]
 

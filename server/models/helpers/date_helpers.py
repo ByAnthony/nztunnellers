@@ -56,7 +56,7 @@ def format_date_to_day_month_and_year(date: str, lang: str) -> str:
         )
 
 
-def convert_month_year(month: int, lang: str) -> str:
+def convert_month_year(month: str, lang: str) -> str:
     if month is not None:
         mois = "mois"
         month_col = {"en": "month", "fr": mois}

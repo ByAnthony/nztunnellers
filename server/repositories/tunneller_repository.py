@@ -63,7 +63,7 @@ from .translations.translations import (
 def show(id: int, lang: str, mysql: MySQL) -> Tunneller:
 
     tunneller_sql = f"""
-        SELECT t.id, t.forename, t.surname, t.aka, t.serial, DATE_FORMAT(t.birth_date, '%%Y-%%m-%%d') AS birth_date, DATE_FORMAT(t.birth_year, '%%Y-%%m-%%d') AS birth_year, {birth_country_col[lang]} AS birth_country, t.mother_name, {mother_origin_col[lang]} AS mother_origin, t.father_name, {father_origin_col[lang]} AS father_origin, nz_resident_in_month, {marital_status_col[lang]} AS marital_status, t.wife_name, {occupation_col[lang]} AS occupation, employer.last_employer_name AS employer, residence.town_name AS residence, {religion_col[lang]} AS religion, DATE_FORMAT(t.enlistment_date, '%%Y-%%m-%%d') AS enlistment_date, military_district.military_district_name, t.aka, DATE_FORMAT(t.posted_date, '%%Y-%%m-%%d') AS posted_date, {posted_from_corps_col[lang]} AS posted_from_corps, {rank_col[lang]} AS rank, {embarkation_unit_col[lang]} AS embarkation_unit, {section_col[lang]} AS section, {attached_corps_col[lang]} AS attached_corps, DATE_FORMAT(training.training_start, '%%Y-%%m-%%d') AS training_start, training.training_location, {training_location_type_col[lang]} AS training_location_type, transport_uk_ref.transport_ref_name AS transport_uk_ref, transport.transport_vessel_fk, transport_uk_vessel.transport_vessel_name AS transport_uk_vessel, DATE_FORMAT(transport.transport_start, '%%Y-%%m-%%d') AS transport_uk_start, transport.transport_origin AS transport_uk_origin, DATE_FORMAT(transport.transport_end, '%%Y-%%m-%%d') AS transport_uk_end, transport.transport_destination AS transport_uk_destination, image, image_source_auckland_libraries, archives_name.archives_name, archives.archives_ref, family.family_name, newspaper_name.newspaper_name, DATE_FORMAT(newspaper.newspaper_date, '%%Y-%%m-%%d') AS newspaper_date, book.book_title, book.book_town, book.book_publisher, book.book_year, book.book_page, awmm_cenotaph, nominal_roll.nominal_roll_volume, nominal_roll.nominal_roll_number, nominal_roll.nominal_roll_page
+        SELECT t.id, t.forename, t.surname, t.aka, t.serial, DATE_FORMAT(t.birth_date, '%%Y-%%m-%%d') AS birth_date, DATE_FORMAT(t.birth_year, '%%Y-%%m-%%d') AS birth_year, {birth_country_col[lang]} AS birth_country, t.mother_name, {mother_origin_col[lang]} AS mother_origin, t.father_name, {father_origin_col[lang]} AS father_origin, CONVERT(t.nz_resident_in_month, char) AS nz_resident_in_month, {marital_status_col[lang]} AS marital_status, t.wife_name, {occupation_col[lang]} AS occupation, employer.last_employer_name AS employer, residence.town_name AS residence, {religion_col[lang]} AS religion, DATE_FORMAT(t.enlistment_date, '%%Y-%%m-%%d') AS enlistment_date, military_district.military_district_name, t.aka, DATE_FORMAT(t.posted_date, '%%Y-%%m-%%d') AS posted_date, {posted_from_corps_col[lang]} AS posted_from_corps, {rank_col[lang]} AS rank, {embarkation_unit_col[lang]} AS embarkation_unit, {section_col[lang]} AS section, {attached_corps_col[lang]} AS attached_corps, DATE_FORMAT(training.training_start, '%%Y-%%m-%%d') AS training_start, training.training_location, {training_location_type_col[lang]} AS training_location_type, transport_uk_ref.transport_ref_name AS transport_uk_ref, transport.transport_vessel_fk, transport_uk_vessel.transport_vessel_name AS transport_uk_vessel, DATE_FORMAT(transport.transport_start, '%%Y-%%m-%%d') AS transport_uk_start, transport.transport_origin AS transport_uk_origin, DATE_FORMAT(transport.transport_end, '%%Y-%%m-%%d') AS transport_uk_end, transport.transport_destination AS transport_uk_destination, image, image_source_auckland_libraries, archives_name.archives_name, archives.archives_ref, family.family_name, newspaper_name.newspaper_name, DATE_FORMAT(newspaper.newspaper_date, '%%Y-%%m-%%d') AS newspaper_date, book.book_title, book.book_town, book.book_publisher, book.book_year, book.book_page, awmm_cenotaph, nominal_roll.nominal_roll_volume, nominal_roll.nominal_roll_number, nominal_roll.nominal_roll_page
 
         FROM tunneller t
 
@@ -100,7 +100,7 @@ def show(id: int, lang: str, mysql: MySQL) -> Tunneller:
     tunneller_result: Tunneller = run_sql(tunneller_sql, mysql, values)[0]
 
     army_experience_sql = f"""
-        SELECT army_experience.army_experience_name AS unit, {country_col[lang]} AS country, {conflict_col[lang]} AS conflict, army_experience_join.army_experience_in_month AS duration
+        SELECT army_experience.army_experience_name AS unit, {country_col[lang]} AS country, {conflict_col[lang]} AS conflict, CONVERT(army_experience_join.army_experience_in_month, char) AS duration
 
         FROM army_experience
 
@@ -182,7 +182,7 @@ def show(id: int, lang: str, mysql: MySQL) -> Tunneller:
                         tunneller_result["father_origin"],
                     ),
                 },
-                "nz_resident_in_month": get_nz_resident(
+                "in_nz_length": get_nz_resident(
                     tunneller_result["nz_resident_in_month"], lang
                 ),
             },
