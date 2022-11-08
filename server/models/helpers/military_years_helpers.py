@@ -9,9 +9,14 @@ from ..military_years import Medal, Training, TransferredToTunnellers
 
 
 def get_training(
-    start_year: str, start_date: str, location: str, location_type: str
-) -> Training:
-    return Training(start_year, start_date, location, location_type)
+    start_year: Optional[str],
+    start_date: Optional[str],
+    location: str,
+    location_type: str,
+) -> Optional[Training]:
+    if start_year is not None and start_date is not None:
+        return Training(start_year, start_date, location, location_type)
+    return None
 
 
 def get_transferred_to_tunnellers(
