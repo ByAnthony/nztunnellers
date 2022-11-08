@@ -10,10 +10,14 @@ from ....models.helpers.military_years_helpers import (
 )
 
 
-def test_get_training():
+def test_get_training_if_training_exists():
     assert get_training("1917", "26 January", "Wellington", "Camp") == Training(
         "1917", "26 January", "Wellington", "Camp"
     )
+
+
+def test_do_not_get_training_if_training_does_not_exist():
+    assert get_training(None, None, "Wellington", "Camp") is None
 
 
 def test_get_transferred_to_tunnellers_if_details_exist():
