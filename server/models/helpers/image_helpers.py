@@ -69,8 +69,7 @@ def get_image_source_newspaper(name: str, date: str) -> Optional[ImageNewspaper]
 
 def map_authors(authors: list[ImageBookAuthors]) -> list[ImageBookAuthors]:
     return [
-        ImageBookAuthors(author["author_forename"], author["author_surname"])
-        for author in authors
+        ImageBookAuthors(author["forename"], author["surname"]) for author in authors
     ]
 
 

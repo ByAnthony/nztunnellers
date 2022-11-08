@@ -191,7 +191,7 @@ def show(id: int, lang: str, mysql: MySQL) -> Tunneller:
         london_gazette_sql, mysql, values
     )
 
-    book_authors_sql = """SELECT book.book_id, author.author_forename, author.author_surname
+    book_authors_sql = """SELECT book.book_id, author.author_forename AS forename, author.author_surname AS surname
 
         FROM author_book_join
 
