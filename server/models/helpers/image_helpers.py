@@ -12,14 +12,17 @@ from ..image import (
 )
 
 
-def get_image(url: str, source: Optional[Source]) -> Optional[Image]:
+def get_image(url: Optional[str], source: Optional[Source]) -> Optional[Image]:
     if url is not None:
         return Image(url, source)
+    return None
 
 
-# To do: refactor when images are hosted
-def get_image_url(url: str) -> str:
-    return url
+# TODO: refactor when images are hosted
+def get_image_url(url: Optional[str]) -> Optional[str]:
+    if url is not None:
+        return url
+    return None
 
 
 def get_image_source(
@@ -56,12 +59,15 @@ def get_image_source_archives(
     return None
 
 
-def get_image_source_family(family: str, lang: str) -> Optional[str]:
+def get_image_source_family(family: Optional[str], lang: str) -> Optional[str]:
     if family is not None:
         return translate_family(family, lang)
+    return None
 
 
-def get_image_source_newspaper(name: str, date: str) -> Optional[ImageNewspaper]:
+def get_image_source_newspaper(
+    name: Optional[str], date: Optional[str]
+) -> Optional[ImageNewspaper]:
     if name is not None and date is not None:
         return ImageNewspaper(name, date)
     return None
