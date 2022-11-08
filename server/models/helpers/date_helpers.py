@@ -62,11 +62,12 @@ def format_date_to_day_and_month(date: Optional[str], lang: str) -> Optional[str
     return None
 
 
-def format_date_to_day_month_and_year(date: str, lang: str) -> str:
+def format_date_to_day_month_and_year(date: Optional[str], lang: str) -> Optional[str]:
     if date is not None:
         return "{} {}".format(
             format_date_to_day_and_month(date, lang), format_date_to_year(date)
         )
+    return None
 
 
 def convert_month_year(month: Optional[str], lang: str) -> Optional[str]:
