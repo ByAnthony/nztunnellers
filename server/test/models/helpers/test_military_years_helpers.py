@@ -10,6 +10,11 @@ from ....models.helpers.military_years_helpers import (
     map_medals,
 )
 
+ruapehu = "S.S. Ruapehu 18 December 1915"
+tahiti = "HMNZT Tahiti"
+hospital_ship = "Hospital Ship"
+troop_ship = "Troop Ship"
+
 
 def test_get_training_if_training_exists():
     assert get_training("1917", "26 January", "Wellington", "Camp") == Training(
@@ -76,25 +81,35 @@ def test_do_not_get_section_if_section_is_none_and_lang_is_fr():
 
 
 def test_get_transport_reference_if_transport_is_ruapehu_and_lang_is_en():
-    assert (
-        get_transport_reference("S.S. Ruapehu 18 December 1915", "en")
-        == "S.S. Ruapehu 18 December 1915"
-    )
+    assert get_transport_reference(ruapehu, "en") == ruapehu
 
 
 def test_get_transport_reference_if_transport_is_ruapehu_and_lang_is_fr():
-    assert (
-        get_transport_reference("S.S. Ruapehu 18 December 1915", "fr")
-        == "S.S. Ruapehu 18 décembre 1915"
-    )
+    assert get_transport_reference(ruapehu, "fr") == "S.S. Ruapehu 18 décembre 1915"
+
+
+def test_get_transport_reference_if_transport_is_hospital_ship_and_lang_is_en():
+    assert get_transport_reference(hospital_ship, "en") == hospital_ship
+
+
+def test_get_transport_reference_if_transport_is_hospital_ship_and_lang_is_fr():
+    assert get_transport_reference(hospital_ship, "fr") == "Navire-hôpital"
+
+
+def test_get_transport_reference_if_transport_is_troop_ship_and_lang_is_en():
+    assert get_transport_reference(troop_ship, "en") == troop_ship
+
+
+def test_get_transport_reference_if_transport_is_troop_ship_and_lang_is_fr():
+    assert get_transport_reference(troop_ship, "fr") == "Navire de transport de troupes"
 
 
 def test_get_transport_reference_if_transport_is_not_ruapehu_and_lang_is_en():
-    assert get_transport_reference("HMNZT Tahiti", "en") == "HMNZT Tahiti"
+    assert get_transport_reference(tahiti, "en") == tahiti
 
 
 def test_get_transport_reference_if_transport_is_not_ruapehu_and_lang_is_fr():
-    assert get_transport_reference("HMNZT Tahiti", "fr") == "HMNZT Tahiti"
+    assert get_transport_reference(tahiti, "fr") == tahiti
 
 
 def test_get_deserter_if_has_deserted_is_true():
