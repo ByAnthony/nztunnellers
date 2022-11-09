@@ -44,8 +44,6 @@ def get_transport_reference(transport_reference: str, lang: str) -> str:
 def get_deserter(has_deserted: Optional[int]) -> bool:
     if has_deserted == 1:
         return True
-    if has_deserted is None:
-        return False
     return False
 
 
