@@ -24,8 +24,8 @@ class Demobilization:
 class Transport:
     reference: str
     vessel: str
-    departure_year: str
-    departure_date: str
+    departure_year: Optional[str] = None
+    departure_date: Optional[str] = None
     departure_port: Optional[str] = None
     arrival_year: Optional[str] = None
     arrival_date: Optional[str] = None
@@ -36,7 +36,7 @@ class Transport:
 class EndOfService:
     deserter: bool
     # death_war: Optional[Death] = None
-    # transport_nz: Optional[Transport] = None
+    transport_nz: Optional[Transport] = None
     # demobilization: Optional[Demobilization] = None
 
 

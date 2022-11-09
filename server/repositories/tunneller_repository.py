@@ -24,6 +24,7 @@ from ..models.helpers.military_years_helpers import (
     get_section,
     get_training,
     get_transferred_to_tunnellers,
+    get_transport_nz,
     get_transport_reference,
     map_medals,
 )
@@ -98,6 +99,12 @@ def show(id: int, lang: str, mysql: MySQL) -> Tunneller:
         DATE_FORMAT(transport_uk.transport_end, '%%Y-%%m-%%d') AS transport_uk_end,
         transport_uk.transport_destination AS transport_uk_destination,
         has_deserted,
+        transport_nz_ref.transport_ref_name AS transport_nz_ref,
+        transport_nz_vessel.transport_vessel_name AS transport_nz_vessel,
+        DATE_FORMAT(transport_nz.transport_start, '%%Y-%%m-%%d') AS transport_nz_start,
+        transport_nz.transport_origin AS transport_nz_origin,
+        DATE_FORMAT(transport_nz.transport_end, '%%Y-%%m-%%d') AS transport_nz_end,
+        transport_nz.transport_destination AS transport_nz_destination,
         image,
         image_source_auckland_libraries,
         archives_name.archives_name,
@@ -137,6 +144,10 @@ def show(id: int, lang: str, mysql: MySQL) -> Tunneller:
         LEFT JOIN transport_ref transport_uk_ref ON transport_uk.transport_ref_fk=transport_uk_ref.transport_ref_id
         LEFT JOIN transport_vessel transport_uk_vessel
         ON transport_uk.transport_vessel_fk=transport_uk_vessel.transport_vessel_id
+        LEFT JOIN transport transport_nz ON t.transport_nz_fk=transport_nz.transport_id
+        LEFT JOIN transport_ref transport_nz_ref ON transport_nz.transport_ref_fk=transport_nz_ref.transport_ref_id
+        LEFT JOIN transport_vessel transport_nz_vessel
+        ON transport_nz.transport_vessel_fk=transport_nz_vessel.transport_vessel_id
         LEFT JOIN nominal_roll ON t.nominal_roll_fk=nominal_roll.nominal_roll_id
         LEFT JOIN archives ON archives.archives_id=t.image_source_archives_fk
         LEFT JOIN archives_name ON archives_name.archives_name_id=archives.archives_name_fk
@@ -303,7 +314,23 @@ def show(id: int, lang: str, mysql: MySQL) -> Tunneller:
                     "arrival_port": tunneller_result["transport_uk_destination"],
                 },
                 "end_of_service": {
-                    "deserter": get_deserter(tunneller_result["has_deserted"])
+                    "deserter": get_deserter(tunneller_result["has_deserted"]),
+                    "transport_nz": get_transport_nz(
+                        get_transport_reference(
+                            tunneller_result["transport_nz_ref"], lang
+                        ),
+                        tunneller_result["transport_nz_vessel"],
+                        format_date_to_year(tunneller_result["transport_nz_start"]),
+                        format_date_to_day_and_month(
+                            tunneller_result["transport_nz_start"], lang
+                        ),
+                        tunneller_result["transport_nz_origin"],
+                        format_date_to_year(tunneller_result["transport_nz_end"]),
+                        format_date_to_day_and_month(
+                            tunneller_result["transport_nz_end"], lang
+                        ),
+                        tunneller_result["transport_nz_destination"],
+                    ),
                 },
                 "medals": map_medals(medals_result),
             },

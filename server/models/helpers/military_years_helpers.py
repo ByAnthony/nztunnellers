@@ -5,7 +5,7 @@ from .translator_helpers import (
     translate_superscript,
     translate_transport_ref,
 )
-from ..military_years import Medal, Training, TransferredToTunnellers
+from ..military_years import Medal, Training, TransferredToTunnellers, Transport
 
 
 def get_training(
@@ -45,6 +45,35 @@ def get_deserter(has_deserted: Optional[int]) -> bool:
     if has_deserted == 1:
         return True
     return False
+
+
+def get_transport_nz(
+    transport_reference: str,
+    vessel: str,
+    departure_year: Optional[str],
+    departure_date: Optional[str],
+    departure_port: Optional[str],
+    arrival_year: Optional[str],
+    arrival_date: Optional[str],
+    arrival_port: Optional[str],
+) -> Optional[Transport]:
+    if (
+        transport_reference is not None
+        and vessel is not None
+        and departure_year is not None
+        and departure_date is not None
+    ):
+        return Transport(
+            transport_reference,
+            vessel,
+            departure_year,
+            departure_date,
+            departure_port,
+            arrival_year,
+            arrival_date,
+            arrival_port,
+        )
+    return None
 
 
 def map_medals(medals: list[Medal]) -> list[Medal]:
