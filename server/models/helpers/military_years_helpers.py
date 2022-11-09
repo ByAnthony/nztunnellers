@@ -41,6 +41,14 @@ def get_transport_reference(transport_reference: str, lang: str) -> str:
     return translate_transport_ref(transport_reference, lang)
 
 
+def get_deserter(has_deserted: Optional[int]) -> bool:
+    if has_deserted == 1:
+        return True
+    if has_deserted is None:
+        return False
+    return False
+
+
 def map_medals(medals: list[Medal]) -> list[Medal]:
     return [
         Medal(medal["name"], medal["country"], medal["citation"]) for medal in medals

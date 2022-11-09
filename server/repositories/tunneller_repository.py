@@ -19,6 +19,7 @@ from ..models.helpers.image_helpers import (
     get_image_url,
 )
 from ..models.helpers.military_years_helpers import (
+    get_deserter,
     get_detachment,
     get_section,
     get_training,
@@ -97,6 +98,7 @@ def show(id: int, lang: str, mysql: MySQL) -> Tunneller:
         transport.transport_origin AS transport_uk_origin,
         DATE_FORMAT(transport.transport_end, '%%Y-%%m-%%d') AS transport_uk_end,
         transport.transport_destination AS transport_uk_destination,
+        has_deserted,
         image,
         image_source_auckland_libraries,
         archives_name.archives_name,
@@ -300,6 +302,9 @@ def show(id: int, lang: str, mysql: MySQL) -> Tunneller:
                         tunneller_result["transport_uk_end"], lang
                     ),
                     "arrival_port": tunneller_result["transport_uk_destination"],
+                },
+                "end_of_service": {
+                    "deserter": get_deserter(tunneller_result["has_deserted"])
                 },
                 "medals": map_medals(medals_result),
             },

@@ -14,6 +14,13 @@ class Medal:
 
 
 @dataclass
+class Demobilization:
+    year: str
+    date: str
+    country: str
+
+
+@dataclass
 class Transport:
     reference: str
     vessel: str
@@ -23,6 +30,14 @@ class Transport:
     arrival_year: Optional[str] = None
     arrival_date: Optional[str] = None
     arrival_port: Optional[str] = None
+
+
+@dataclass
+class EndOfService:
+    deserter: bool
+    # death_war: Optional[Death] = None
+    # transport_nz: Optional[Transport] = None
+    # demobilization: Optional[Demobilization] = None
 
 
 @dataclass
@@ -63,4 +78,5 @@ class MilitaryYears:
     enlistment: Enlistment
     embarkation_unit: EmbarkationUnit
     transport_uk: Transport
+    end_of_service: EndOfService
     medals: list[Medal]

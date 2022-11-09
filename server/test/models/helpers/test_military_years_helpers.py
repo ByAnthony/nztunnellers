@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from ....models.military_years import Medal, Training, TransferredToTunnellers
 from ....models.helpers.military_years_helpers import (
+    get_deserter,
     get_detachment,
     get_section,
     get_training,
@@ -94,6 +95,18 @@ def test_get_transport_reference_if_transport_is_not_ruapehu_and_lang_is_en():
 
 def test_get_transport_reference_if_transport_is_not_ruapehu_and_lang_is_fr():
     assert get_transport_reference("HMNZT Tahiti", "fr") == "HMNZT Tahiti"
+
+
+def test_get_deserter_if_has_deserted_is_true():
+    assert get_deserter(1) is True
+
+
+def test_get_deserter_if_has_deserted_is_false():
+    assert get_deserter(0) is False
+
+
+def test_get_deserter_if_has_deserted_is_none():
+    assert get_deserter(None) is False
 
 
 british_war_medal = Medal("British War Medal", "United Kingdom", "For bravery")
