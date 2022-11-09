@@ -92,12 +92,11 @@ def show(id: int, lang: str, mysql: MySQL) -> Tunneller:
         DATE_FORMAT(training.training_start, '%%Y-%%m-%%d') AS training_start,
         training.training_location, {training_location_type_col[lang]} AS training_location_type,
         transport_uk_ref.transport_ref_name AS transport_uk_ref,
-        transport.transport_vessel_fk,
         transport_uk_vessel.transport_vessel_name AS transport_uk_vessel,
-        DATE_FORMAT(transport.transport_start, '%%Y-%%m-%%d') AS transport_uk_start,
-        transport.transport_origin AS transport_uk_origin,
-        DATE_FORMAT(transport.transport_end, '%%Y-%%m-%%d') AS transport_uk_end,
-        transport.transport_destination AS transport_uk_destination,
+        DATE_FORMAT(transport_uk.transport_start, '%%Y-%%m-%%d') AS transport_uk_start,
+        transport_uk.transport_origin AS transport_uk_origin,
+        DATE_FORMAT(transport_uk.transport_end, '%%Y-%%m-%%d') AS transport_uk_end,
+        transport_uk.transport_destination AS transport_uk_destination,
         has_deserted,
         image,
         image_source_auckland_libraries,
@@ -134,10 +133,10 @@ def show(id: int, lang: str, mysql: MySQL) -> Tunneller:
         LEFT JOIN training ON embarkation_unit.training_fk=training.training_id
         LEFT JOIN training_location_type
         ON training.training_location_type=training_location_type.training_location_type_id
-        LEFT JOIN transport ON embarkation_unit.transport_uk_fk=transport.transport_id
-        LEFT JOIN transport_ref transport_uk_ref ON transport.transport_ref_fk=transport_uk_ref.transport_ref_id
+        LEFT JOIN transport transport_uk ON embarkation_unit.transport_uk_fk=transport_uk.transport_id
+        LEFT JOIN transport_ref transport_uk_ref ON transport_uk.transport_ref_fk=transport_uk_ref.transport_ref_id
         LEFT JOIN transport_vessel transport_uk_vessel
-        ON transport.transport_vessel_fk=transport_uk_vessel.transport_vessel_id
+        ON transport_uk.transport_vessel_fk=transport_uk_vessel.transport_vessel_id
         LEFT JOIN nominal_roll ON t.nominal_roll_fk=nominal_roll.nominal_roll_id
         LEFT JOIN archives ON archives.archives_id=t.image_source_archives_fk
         LEFT JOIN archives_name ON archives_name.archives_name_id=archives.archives_name_fk
