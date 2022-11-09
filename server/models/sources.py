@@ -5,8 +5,8 @@ from typing import Optional
 
 @dataclass
 class LondonGazette:
+    page: str
     date: Optional[str] = None
-    page: Optional[str] = None
 
     def __getitem__(self, key: str):
         return getattr(self, key)

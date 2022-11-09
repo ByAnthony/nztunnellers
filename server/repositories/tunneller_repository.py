@@ -184,8 +184,8 @@ def show(id: int, lang: str, mysql: MySQL) -> Tunneller:
         nz_archives_sql, mysql, values
     )
 
-    london_gazette_sql = """SELECT DATE_FORMAT(london_gazette.london_gazette_date, '%%Y-%%m-%%d') AS date,
-        london_gazette.london_gazette_page AS page
+    london_gazette_sql = """SELECT london_gazette.london_gazette_page AS page,
+        DATE_FORMAT(london_gazette.london_gazette_date, '%%Y-%%m-%%d') AS date
         FROM london_gazette
         JOIN london_gazette_join ON london_gazette_join.london_gazette_lg_id=london_gazette.london_gazette_id
         WHERE london_gazette_join.london_gazette_t_id=%s"""
