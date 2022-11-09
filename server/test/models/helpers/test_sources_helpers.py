@@ -110,22 +110,22 @@ def test_get_nominal_roll_if_volume_and_roll_are_none_and_lang_fr():
 
 
 london_gazette_list = [
-    LondonGazette("1917-12-28", "13575"),
-    LondonGazette("1918-01-01", "29"),
+    LondonGazette("13575", "1917-12-28"),
+    LondonGazette("29", "1918-01-01"),
 ]
 
 
 def test_map_london_gazette_if_london_gazette_is_not_none_and_lang_is_en():
     assert map_london_gazette(london_gazette_list, "en") == [
-        LondonGazette(format_date_to_day_month_and_year("1917-12-28", "en"), "13575"),
-        LondonGazette(format_date_to_day_month_and_year("1918-01-01", "en"), "29"),
+        LondonGazette("13575", format_date_to_day_month_and_year("1917-12-28", "en")),
+        LondonGazette("29", format_date_to_day_month_and_year("1918-01-01", "en")),
     ]
 
 
 def test_map_london_gazette_if_london_gazette_is_not_none_and_lang_is_fr():
     assert map_london_gazette(london_gazette_list, "fr") == [
-        LondonGazette(format_date_to_day_month_and_year("1917-12-28", "fr"), "13575"),
-        LondonGazette(format_date_to_day_month_and_year("1918-01-01", "fr"), "29"),
+        LondonGazette("13575", format_date_to_day_month_and_year("1917-12-28", "fr")),
+        LondonGazette("29", format_date_to_day_month_and_year("1918-01-01", "fr")),
     ]
 
 

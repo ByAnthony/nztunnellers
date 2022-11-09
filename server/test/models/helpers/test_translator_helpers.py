@@ -7,6 +7,8 @@ from ....models.helpers.translator_helpers import (
 
 
 transport_ruapehu = "S.S. Ruapehu 18 December 1915"
+hospital_ship = "Hospital Ship"
+troop_ship = "Troop Ship"
 transport_hmnzs = "HMNZS 96"
 family = "Williamson"
 
@@ -44,6 +46,10 @@ def test_do_not_translate_superscript_if_lang_is_en_and_string_is_none():
     assert translate_superscript(None, "en") is None
 
 
+def test_do_not_translate_transport_ref_if_transport_is_ruapehu_and_lang_is_en():
+    assert translate_transport_ref(transport_ruapehu, "en") == transport_ruapehu
+
+
 def test_translate_superscript_if_transport_is_ruapehu_and_lang_is_fr():
     assert (
         translate_transport_ref(transport_ruapehu, "fr")
@@ -51,12 +57,24 @@ def test_translate_superscript_if_transport_is_ruapehu_and_lang_is_fr():
     )
 
 
+def test_do_not_translate_transport_ref_if_transport_is_hospital_ship_and_lang_is_en():
+    assert translate_transport_ref(hospital_ship, "en") == hospital_ship
+
+
+def test_translate_superscript_if_transport_is_hospital_ship_and_lang_is_fr():
+    assert translate_transport_ref(hospital_ship, "fr") == "Navire-hôpital"
+
+
+def test_do_not_translate_transport_ref_if_transport_is_troop_ship_and_lang_is_en():
+    assert translate_transport_ref(troop_ship, "en") == troop_ship
+
+
+def test_translate_superscript_if_transport_is_troop_ship_and_lang_is_fr():
+    assert translate_transport_ref(troop_ship, "fr") == "Navire de transport de troupes"
+
+
 def test_do_not_translate_transport_ref_if_transport_is_not_ruapehu_and_lang_is_fr():
     assert translate_transport_ref(transport_hmnzs, "fr") == transport_hmnzs
-
-
-def test_do_not_translate_transport_ref_if_transport_is_ruapehu_and_lang_is_en():
-    assert translate_transport_ref(transport_ruapehu, "en") == transport_ruapehu
 
 
 def test_do_not_translate_transport_ref_if_transport_is_not_ruapehu_and_lang_is_en():
