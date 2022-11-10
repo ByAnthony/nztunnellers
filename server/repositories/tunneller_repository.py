@@ -19,8 +19,10 @@ from ..models.helpers.image_helpers import (
     get_image_url,
 )
 from ..models.helpers.military_years_helpers import (
-    get_deserter,
+    get_boolean,
     get_detachment,
+    get_end_of_service,
+    get_end_of_service_country,
     get_section,
     get_training,
     get_transferred_to_tunnellers,
@@ -105,6 +107,8 @@ def show(id: int, lang: str, mysql: MySQL) -> Tunneller:
         transport_nz.transport_origin AS transport_nz_origin,
         DATE_FORMAT(transport_nz.transport_end, '%%Y-%%m-%%d') AS transport_nz_end,
         transport_nz.transport_destination AS transport_nz_destination,
+        DATE_FORMAT(t.service_end, '%%Y-%%m-%%d') AS demobilization_date,
+        t.discharge_uk,
         image,
         image_source_auckland_libraries,
         archives_name.archives_name,
@@ -314,7 +318,7 @@ def show(id: int, lang: str, mysql: MySQL) -> Tunneller:
                     "arrival_port": tunneller_result["transport_uk_destination"],
                 },
                 "end_of_service": {
-                    "deserter": get_deserter(tunneller_result["has_deserted"]),
+                    "deserter": get_boolean(tunneller_result["has_deserted"]),
                     "transport_nz": get_transport_nz(
                         get_transport_reference(
                             tunneller_result["transport_nz_ref"], lang
@@ -330,6 +334,15 @@ def show(id: int, lang: str, mysql: MySQL) -> Tunneller:
                             tunneller_result["transport_nz_end"], lang
                         ),
                         tunneller_result["transport_nz_destination"],
+                    ),
+                    "demobilization": get_end_of_service(
+                        format_date_to_year(tunneller_result["demobilization_date"]),
+                        format_date_to_day_and_month(
+                            tunneller_result["demobilization_date"], lang
+                        ),
+                        get_end_of_service_country(
+                            tunneller_result["discharge_uk"], lang
+                        ),
                     ),
                 },
                 "medals": map_medals(medals_result),

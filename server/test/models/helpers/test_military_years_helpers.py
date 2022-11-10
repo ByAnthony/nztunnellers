@@ -1,8 +1,15 @@
 # -*- coding: utf-8 -*-
-from ....models.military_years import Medal, Training, TransferredToTunnellers
+from ....models.military_years import (
+    Demobilization,
+    Medal,
+    Training,
+    TransferredToTunnellers,
+)
 from ....models.helpers.military_years_helpers import (
-    get_deserter,
+    get_boolean,
     get_detachment,
+    get_end_of_service,
+    get_end_of_service_country,
     get_section,
     get_training,
     get_transferred_to_tunnellers,
@@ -113,15 +120,42 @@ def test_get_transport_reference_if_transport_is_not_ruapehu_and_lang_is_fr():
 
 
 def test_get_deserter_if_has_deserted_is_true():
-    assert get_deserter(1) is True
+    assert get_boolean(1) is True
 
 
 def test_get_deserter_if_has_deserted_is_false():
-    assert get_deserter(0) is False
+    assert get_boolean(0) is False
 
 
 def test_get_deserter_if_has_deserted_is_none():
-    assert get_deserter(None) is False
+    assert get_boolean(None) is False
+
+
+def test_get_end_of_service_country_if_discharge_uk_is_true_and_lang_is_en():
+    assert get_end_of_service_country(True, "en") == "United Kingdom"
+
+
+def test_get_end_of_service_country_if_discharge_uk_is_true_and_lang_is_fr():
+    assert get_end_of_service_country(True, "fr") == "Royaume-Uni"
+
+
+def test_get_end_of_service_country_if_discharge_uk_is_false_and_lang_is_en():
+    assert get_end_of_service_country(False, "en") == "New Zealand"
+
+
+def test_get_end_of_service_country_if_discharge_uk_is_false_and_lang_is_fr():
+    assert get_end_of_service_country(False, "fr") == "Nouvelle-Zélande"
+
+
+demobilization = Demobilization("1919", "1919-01-26", "New Zealand")
+
+
+def test_get_end_of_service_if_data_exists():
+    assert get_end_of_service("1919", "1919-01-26", "New Zealand") == demobilization
+
+
+def test_do_not_get_end_of_service_if_data_exists():
+    assert get_end_of_service(None, None, "New Zealand") is None
 
 
 british_war_medal = Medal("British War Medal", "United Kingdom", "For bravery")

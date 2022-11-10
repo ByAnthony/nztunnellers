@@ -5,7 +5,13 @@ from .translator_helpers import (
     translate_superscript,
     translate_transport_ref,
 )
-from ..military_years import Medal, Training, TransferredToTunnellers, Transport
+from ..military_years import (
+    Demobilization,
+    Medal,
+    Training,
+    TransferredToTunnellers,
+    Transport,
+)
 
 
 def get_training(
@@ -41,12 +47,6 @@ def get_transport_reference(transport_reference: str, lang: str) -> str:
     return translate_transport_ref(transport_reference, lang)
 
 
-def get_deserter(has_deserted: Optional[int]) -> bool:
-    if has_deserted == 1:
-        return True
-    return False
-
-
 def get_transport_nz(
     transport_reference: str,
     vessel: str,
@@ -74,6 +74,31 @@ def get_transport_nz(
             arrival_port,
         )
     return None
+
+
+def get_boolean(data: Optional[int]) -> bool:
+    if data == 1:
+        return True
+    return False
+
+
+def get_end_of_service(
+    service_end_year: Optional[str], service_end_date: Optional[str], country: str
+) -> Optional[Demobilization]:
+    if service_end_year is not None and service_end_date is not None:
+        return Demobilization(service_end_year, service_end_date, country)
+    return None
+
+
+def get_end_of_service_country(discharge_uk: Optional[int], lang: str) -> str:
+    if get_boolean(discharge_uk) is True:
+        if lang == "en":
+            return "United Kingdom"
+        return "Royaume-Uni"
+    else:
+        if lang == "en":
+            return "New Zealand"
+        return "Nouvelle-Zélande"
 
 
 def map_medals(medals: list[Medal]) -> list[Medal]:
