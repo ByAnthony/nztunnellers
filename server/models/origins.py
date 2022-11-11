@@ -2,6 +2,8 @@
 from dataclasses import dataclass
 from typing import Optional
 
+from .military_years import Date
+
 
 @dataclass
 class Parent:
@@ -17,8 +19,7 @@ class Parents:
 
 @dataclass
 class BirthDetails:
-    year: Optional[str] = None
-    date: Optional[str] = None
+    date: Optional[Date] = None
     country: Optional[str] = None
 
 

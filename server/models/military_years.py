@@ -4,6 +4,12 @@ from typing import Optional
 
 
 @dataclass
+class Date:
+    year: Optional[str]
+    day_month: Optional[str]
+
+
+@dataclass
 class Medal:
     name: str
     country: str
@@ -15,8 +21,7 @@ class Medal:
 
 @dataclass
 class Demobilization:
-    year: str
-    date: str
+    date: Date
     country: str
 
 
@@ -24,11 +29,9 @@ class Demobilization:
 class Transport:
     reference: str
     vessel: str
-    departure_year: str
-    departure_date: str
+    departure_date: Date
     departure_port: Optional[str] = None
-    arrival_year: Optional[str] = None
-    arrival_date: Optional[str] = None
+    arrival_date: Optional[Date] = None
     arrival_port: Optional[str] = None
 
 
@@ -49,8 +52,7 @@ class Transferred:
 
 @dataclass
 class Training:
-    start_year: str
-    start_date: str
+    date: Date
     location: str
     location_type: str
 
@@ -65,16 +67,14 @@ class EmbarkationUnit:
 
 @dataclass
 class TransferredToTunnellers:
-    posted_year: str
-    posted_date: str
+    date: Date
     posted_from: str
 
 
 @dataclass
 class Enlistment:
     rank: str
-    year: Optional[str] = None
-    date: Optional[str] = None
+    date: Date
     district: Optional[str] = None
     alias: Optional[str] = None
     transferred_to_tunnellers: Optional[TransferredToTunnellers] = None

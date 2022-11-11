@@ -3,10 +3,9 @@ from dacite import from_dict
 from ..db.run_sql import run_sql
 from flask_mysqldb import MySQL
 from ..models.helpers.date_helpers import (
-    format_date_to_birth_year,
-    format_date_to_year,
     format_date_to_day_month_and_year,
-    format_date_to_day_and_month,
+    get_birth_date,
+    get_date,
 )
 from ..models.helpers.image_helpers import (
     get_image,
@@ -231,12 +230,10 @@ def show(id: int, lang: str, mysql: MySQL) -> Tunneller:
             },
             "origins": {
                 "birth": {
-                    "year": format_date_to_birth_year(
+                    "date": get_birth_date(
                         tunneller_result["birth_year"],
-                        format_date_to_year(tunneller_result["birth_date"]),
-                    ),
-                    "date": format_date_to_day_month_and_year(
-                        tunneller_result["birth_date"], lang
+                        tunneller_result["birth_date"],
+                        lang,
                     ),
                     "country": tunneller_result["birth_country"],
                 },
@@ -268,26 +265,17 @@ def show(id: int, lang: str, mysql: MySQL) -> Tunneller:
             "military_years": {
                 "enlistment": {
                     "rank": tunneller_result["rank"],
-                    "year": format_date_to_year(tunneller_result["enlistment_date"]),
-                    "date": format_date_to_day_and_month(
-                        tunneller_result["enlistment_date"], lang
-                    ),
+                    "date": get_date(tunneller_result["enlistment_date"], lang),
                     "district": tunneller_result["military_district_name"],
                     "alias": tunneller_result["aka"],
                     "transferred_to_tunnellers": get_transferred_to_tunnellers(
-                        format_date_to_year(tunneller_result["posted_date"]),
-                        format_date_to_day_and_month(
-                            tunneller_result["posted_date"], lang
-                        ),
+                        get_date(tunneller_result["posted_date"], lang),
                         tunneller_result["posted_from_corps"],
                     ),
                 },
                 "embarkation_unit": {
                     "training": get_training(
-                        format_date_to_year(tunneller_result["training_start"]),
-                        format_date_to_day_and_month(
-                            tunneller_result["training_start"], lang
-                        ),
+                        get_date(tunneller_result["training_start"], lang),
                         tunneller_result["training_location"],
                         tunneller_result["training_location_type"],
                     ),
@@ -302,17 +290,11 @@ def show(id: int, lang: str, mysql: MySQL) -> Tunneller:
                         tunneller_result["transport_uk_ref"], lang
                     ),
                     "vessel": tunneller_result["transport_uk_vessel"],
-                    "departure_year": format_date_to_year(
-                        tunneller_result["transport_uk_start"]
-                    ),
-                    "departure_date": format_date_to_day_and_month(
+                    "departure_date": get_date(
                         tunneller_result["transport_uk_start"], lang
                     ),
                     "departure_port": tunneller_result["transport_uk_origin"],
-                    "arrival_year": format_date_to_year(
-                        tunneller_result["transport_uk_end"]
-                    ),
-                    "arrival_date": format_date_to_day_and_month(
+                    "arrival_date": get_date(
                         tunneller_result["transport_uk_end"], lang
                     ),
                     "arrival_port": tunneller_result["transport_uk_destination"],
@@ -324,22 +306,13 @@ def show(id: int, lang: str, mysql: MySQL) -> Tunneller:
                             tunneller_result["transport_nz_ref"], lang
                         ),
                         tunneller_result["transport_nz_vessel"],
-                        format_date_to_year(tunneller_result["transport_nz_start"]),
-                        format_date_to_day_and_month(
-                            tunneller_result["transport_nz_start"], lang
-                        ),
+                        get_date(tunneller_result["transport_nz_start"], lang),
                         tunneller_result["transport_nz_origin"],
-                        format_date_to_year(tunneller_result["transport_nz_end"]),
-                        format_date_to_day_and_month(
-                            tunneller_result["transport_nz_end"], lang
-                        ),
+                        get_date(tunneller_result["transport_nz_end"], lang),
                         tunneller_result["transport_nz_destination"],
                     ),
                     "demobilization": get_end_of_service(
-                        format_date_to_year(tunneller_result["demobilization_date"]),
-                        format_date_to_day_and_month(
-                            tunneller_result["demobilization_date"], lang
-                        ),
+                        get_date(tunneller_result["demobilization_date"], lang),
                         get_end_of_service_country(
                             tunneller_result["discharge_uk"], lang
                         ),

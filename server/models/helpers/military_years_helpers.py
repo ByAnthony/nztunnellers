@@ -6,6 +6,7 @@ from .translator_helpers import (
     translate_transport_ref,
 )
 from ..military_years import (
+    Date,
     Demobilization,
     Medal,
     Training,
@@ -15,21 +16,20 @@ from ..military_years import (
 
 
 def get_training(
-    start_year: Optional[str],
-    start_date: Optional[str],
+    date: Date,
     location: str,
     location_type: str,
 ) -> Optional[Training]:
-    if start_year is not None and start_date is not None:
-        return Training(start_year, start_date, location, location_type)
+    if date is not None:
+        return Training(date, location, location_type)
     return None
 
 
 def get_transferred_to_tunnellers(
-    posted_year: Optional[str], posted_date: Optional[str], posted_from: Optional[str]
+    date: Date, posted_from: Optional[str]
 ) -> Optional[TransferredToTunnellers]:
-    if posted_year is not None and posted_date is not None and posted_from is not None:
-        return TransferredToTunnellers(posted_year, posted_date, posted_from)
+    if date is not None and posted_from is not None:
+        return TransferredToTunnellers(date, posted_from)
     return None
 
 
@@ -50,26 +50,21 @@ def get_transport_reference(transport_reference: str, lang: str) -> str:
 def get_transport_nz(
     transport_reference: str,
     vessel: str,
-    departure_year: Optional[str],
-    departure_date: Optional[str],
+    departure_date: Optional[Date],
     departure_port: Optional[str],
-    arrival_year: Optional[str],
-    arrival_date: Optional[str],
+    arrival_date: Optional[Date],
     arrival_port: Optional[str],
 ) -> Optional[Transport]:
     if (
         transport_reference is not None
         and vessel is not None
-        and departure_year is not None
         and departure_date is not None
     ):
         return Transport(
             transport_reference,
             vessel,
-            departure_year,
             departure_date,
             departure_port,
-            arrival_year,
             arrival_date,
             arrival_port,
         )
@@ -82,11 +77,9 @@ def get_boolean(data: Optional[int]) -> bool:
     return False
 
 
-def get_end_of_service(
-    service_end_year: Optional[str], service_end_date: Optional[str], country: str
-) -> Optional[Demobilization]:
-    if service_end_year is not None and service_end_date is not None:
-        return Demobilization(service_end_year, service_end_date, country)
+def get_end_of_service(date: Optional[Date], country: str) -> Optional[Demobilization]:
+    if date is not None:
+        return Demobilization(date, country)
     return None
 
 

@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 from typing import Optional
 
+from ..military_years import Date
+
 
 def format_date_to_birth_year(
     year: Optional[str], formatted_date: Optional[str]
@@ -68,6 +70,16 @@ def format_date_to_day_month_and_year(date: Optional[str], lang: str) -> Optiona
             format_date_to_day_and_month(date, lang), format_date_to_year(date)
         )
     return None
+
+
+def get_birth_date(year: Optional[str], date: Optional[str], lang: str) -> Date:
+    return Date(
+        format_date_to_birth_year(year, date), format_date_to_day_and_month(date, lang)
+    )
+
+
+def get_date(date: Optional[str], lang: str) -> Date:
+    return Date(format_date_to_year(date), format_date_to_day_and_month(date, lang))
 
 
 def convert_month_year(month: Optional[str], lang: str) -> Optional[str]:
