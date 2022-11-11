@@ -10,10 +10,26 @@ class Date:
 
 
 @dataclass
+class Transferred:
+    year: str
+    date: str
+    unit: str
+
+
+@dataclass
 class Medal:
     name: str
     country: str
     citation: Optional[str] = None
+
+    def __getitem__(self, key: str):
+        return getattr(self, key)
+
+
+@dataclass
+class FrontEvents:
+    date: Date
+    event: str
 
     def __getitem__(self, key: str):
         return getattr(self, key)
@@ -41,13 +57,6 @@ class EndOfService:
     # death_war: Optional[Death] = None
     transport_nz: Optional[Transport] = None
     demobilization: Optional[Demobilization] = None
-
-
-@dataclass
-class Transferred:
-    year: str
-    date: str
-    unit: str
 
 
 @dataclass
@@ -85,6 +94,7 @@ class MilitaryYears:
     enlistment: Enlistment
     embarkation_unit: EmbarkationUnit
     transport_uk: Transport
+    # front_events: list[FrontEvents]
     end_of_service: EndOfService
     medals: list[Medal]
     # transferred: Optional[Transferred] = None
