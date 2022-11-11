@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from ....models.military_years import Date
 from ....models.helpers.date_helpers import (
     convert_month_year,
     format_date_to_birth_year,
@@ -7,6 +8,8 @@ from ....models.helpers.date_helpers import (
     format_date_to_day_month_and_year,
     format_date_to_month,
     format_date_to_year,
+    get_birth_date,
+    get_date,
 )
 
 no_break_space = "\N{NO-BREAK SPACE}"
@@ -86,6 +89,38 @@ def test_do_not_format_date_to_day_month_and_year_if_lang_is_en():
 
 def test_do_not_format_date_to_day_month_and_year_if_lang_is_fr():
     assert format_date_to_day_month_and_year(None, "fr") is None
+
+
+year = "1988"
+date = "1988-05-04"
+
+
+def test_get_birth_date_if_year_is_none_and_lang_is_en():
+    assert get_birth_date(None, date, "en") == Date(
+        "1988", "4{}May".format(no_break_space)
+    )
+
+
+def test_get_birth_date_if_year_is_none_and_lang_is_fr():
+    assert get_birth_date(None, date, "fr") == Date(
+        "1988", "4{}mai".format(no_break_space)
+    )
+
+
+def test_get_birth_date_if_year_is_not_none_and_lang_is_en():
+    assert get_birth_date(year, None, "en") == Date("1988", None)
+
+
+def test_get_birth_date_if_year_is_not_none_and_lang_is_fr():
+    assert get_birth_date(year, None, "fr") == Date("1988", None)
+
+
+def test_get_date_if_lang_is_en():
+    assert get_date(date, "en") == Date("1988", "4{}May".format(no_break_space))
+
+
+def test_get_date_if_lang_is_fr():
+    assert get_date(date, "fr") == Date("1988", "4{}mai".format(no_break_space))
 
 
 def test_convert_month_year_if_month_is_equal_to_1_and_lang_en():
