@@ -123,6 +123,14 @@ def test_get_date_if_lang_is_fr():
     assert get_date(date, "fr") == Date("1988", "4{}mai".format(no_break_space))
 
 
+def test_do_not_get_date_if_date_is_none_and_lang_is_en():
+    assert get_date(None, "en") is None
+
+
+def test_do_not_get_date_if_date_is_none_and_lang_is_fr():
+    assert get_date(None, "fr") is None
+
+
 def test_convert_month_year_if_month_is_equal_to_1_and_lang_en():
     assert convert_month_year("1", "en") == "1{}month".format(no_break_space)
 
