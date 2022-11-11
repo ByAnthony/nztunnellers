@@ -10,6 +10,7 @@ from ..military_years import (
     Demobilization,
     Medal,
     Training,
+    Transferred,
     TransferredToTunnellers,
     Transport,
 )
@@ -75,6 +76,14 @@ def get_boolean(data: Optional[int]) -> bool:
     if data == 1:
         return True
     return False
+
+
+def get_transferred_to(
+    date: Optional[Date], unit: Optional[str]
+) -> Optional[Transferred]:
+    if date is not None and unit is not None:
+        return Transferred(date, unit)
+    return None
 
 
 def get_end_of_service(date: Optional[Date], country: str) -> Optional[Demobilization]:

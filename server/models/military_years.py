@@ -11,8 +11,7 @@ class Date:
 
 @dataclass
 class Transferred:
-    year: str
-    date: str
+    date: Date
     unit: str
 
 
@@ -54,6 +53,7 @@ class Transport:
 @dataclass
 class EndOfService:
     deserter: bool
+    transferred: Optional[Transferred] = None
     # death_war: Optional[Death] = None
     transport_nz: Optional[Transport] = None
     demobilization: Optional[Demobilization] = None
@@ -97,4 +97,3 @@ class MilitaryYears:
     # front_events: list[FrontEvents]
     end_of_service: EndOfService
     medals: list[Medal]
-    # transferred: Optional[Transferred] = None

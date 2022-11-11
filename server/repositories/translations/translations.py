@@ -60,3 +60,9 @@ training_location_type_col = {
     "en": "training_location_type.training_location_type_en",
     "fr": "training_location_type.training_location_type_fr",
 }
+
+
+transferred_to_col = {
+    "en": "transferred_to.transferred_to_en",
+    "fr": "transferred_to.transferred_to_fr",
+}

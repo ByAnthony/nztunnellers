@@ -24,6 +24,7 @@ from ..models.helpers.military_years_helpers import (
     get_end_of_service_country,
     get_section,
     get_training,
+    get_transferred_to,
     get_transferred_to_tunnellers,
     get_transport_nz,
     get_transport_reference,
@@ -60,6 +61,7 @@ from .translations.translations import (
     religion_col,
     section_col,
     training_location_type_col,
+    transferred_to_col,
 )
 
 
@@ -92,7 +94,8 @@ def show(id: int, lang: str, mysql: MySQL) -> Tunneller:
         {section_col[lang]} AS section,
         {attached_corps_col[lang]} AS attached_corps,
         DATE_FORMAT(training.training_start, '%%Y-%%m-%%d') AS training_start,
-        training.training_location, {training_location_type_col[lang]} AS training_location_type,
+        training.training_location,
+        {training_location_type_col[lang]} AS training_location_type,
         transport_uk_ref.transport_ref_name AS transport_uk_ref,
         transport_uk_vessel.transport_vessel_name AS transport_uk_vessel,
         DATE_FORMAT(transport_uk.transport_start, '%%Y-%%m-%%d') AS transport_uk_start,
@@ -100,6 +103,8 @@ def show(id: int, lang: str, mysql: MySQL) -> Tunneller:
         DATE_FORMAT(transport_uk.transport_end, '%%Y-%%m-%%d') AS transport_uk_end,
         transport_uk.transport_destination AS transport_uk_destination,
         has_deserted,
+        DATE_FORMAT(transferred.transferred_date, '%%Y-%%m-%%d') AS transferred_to_date,
+        {transferred_to_col[lang]} AS transferred_to_unit,
         transport_nz_ref.transport_ref_name AS transport_nz_ref,
         transport_nz_vessel.transport_vessel_name AS transport_nz_vessel,
         DATE_FORMAT(transport_nz.transport_start, '%%Y-%%m-%%d') AS transport_nz_start,
@@ -147,6 +152,8 @@ def show(id: int, lang: str, mysql: MySQL) -> Tunneller:
         LEFT JOIN transport_ref transport_uk_ref ON transport_uk.transport_ref_fk=transport_uk_ref.transport_ref_id
         LEFT JOIN transport_vessel transport_uk_vessel
         ON transport_uk.transport_vessel_fk=transport_uk_vessel.transport_vessel_id
+        LEFT JOIN transferred ON transferred.transferred_id=t.transferred_fk
+        LEFT JOIN transferred_to ON transferred_to.transferred_to_id=transferred.transferred_to_fk
         LEFT JOIN transport transport_nz ON t.transport_nz_fk=transport_nz.transport_id
         LEFT JOIN transport_ref transport_nz_ref ON transport_nz.transport_ref_fk=transport_nz_ref.transport_ref_id
         LEFT JOIN transport_vessel transport_nz_vessel
@@ -301,6 +308,10 @@ def show(id: int, lang: str, mysql: MySQL) -> Tunneller:
                 },
                 "end_of_service": {
                     "deserter": get_boolean(tunneller_result["has_deserted"]),
+                    "transferred": get_transferred_to(
+                        get_date(tunneller_result["transferred_to_date"], lang),
+                        tunneller_result["transferred_to_unit"],
+                    ),
                     "transport_nz": get_transport_nz(
                         get_transport_reference(
                             tunneller_result["transport_nz_ref"], lang

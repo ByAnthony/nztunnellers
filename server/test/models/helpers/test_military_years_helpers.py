@@ -4,6 +4,7 @@ from ....models.military_years import (
     Demobilization,
     Medal,
     Training,
+    Transferred,
     TransferredToTunnellers,
 )
 from ....models.helpers.military_years_helpers import (
@@ -13,6 +14,7 @@ from ....models.helpers.military_years_helpers import (
     get_end_of_service_country,
     get_section,
     get_training,
+    get_transferred_to,
     get_transferred_to_tunnellers,
     get_transport_reference,
     map_medals,
@@ -146,6 +148,16 @@ def test_get_end_of_service_country_if_discharge_uk_is_false_and_lang_is_en():
 
 def test_get_end_of_service_country_if_discharge_uk_is_false_and_lang_is_fr():
     assert get_end_of_service_country(False, "fr") == "Nouvelle-Zélande"
+
+
+def test_get_transferred_to_if_data_exists():
+    assert get_transferred_to(Date("1962", "1962-09-27"), "NZ Infantry") == Transferred(
+        Date("1962", "1962-09-27"), "NZ Infantry"
+    )
+
+
+def test_do_not_get_transferred_to_if_data_is_none():
+    assert get_transferred_to(None, None) is None
 
 
 demobilization = Demobilization(Date("1919", "1919-01-26"), "New Zealand")
