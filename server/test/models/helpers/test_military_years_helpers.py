@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from ....models.military_years import (
+    Date,
     Demobilization,
     Medal,
     Training,
@@ -24,23 +25,23 @@ troop_ship = "Troop Ship"
 
 
 def test_get_training_if_training_exists():
-    assert get_training("1917", "26 January", "Wellington", "Camp") == Training(
-        "1917", "26 January", "Wellington", "Camp"
+    assert get_training(Date("1917", "26 January"), "Wellington", "Camp") == Training(
+        Date("1917", "26 January"), "Wellington", "Camp"
     )
 
 
 def test_do_not_get_training_if_training_does_not_exist():
-    assert get_training(None, None, "Wellington", "Camp") is None
+    assert get_training(None, "Wellington", "Camp") is None
 
 
 def test_get_transferred_to_tunnellers_if_details_exist():
     assert get_transferred_to_tunnellers(
-        "1918", "4 May", "Infantry"
-    ) == TransferredToTunnellers("1918", "4 May", "Infantry")
+        Date("1918", "4 May"), "Infantry"
+    ) == TransferredToTunnellers(Date("1918", "4 May"), "Infantry")
 
 
 def test_do_not_get_transferred_to_tunnellers_if_details_do_not_exist():
-    assert get_transferred_to_tunnellers(None, None, None) is None
+    assert get_transferred_to_tunnellers(None, None) is None
 
 
 def test_get_detachment_if_lang_is_en():
@@ -147,15 +148,17 @@ def test_get_end_of_service_country_if_discharge_uk_is_false_and_lang_is_fr():
     assert get_end_of_service_country(False, "fr") == "Nouvelle-Zélande"
 
 
-demobilization = Demobilization("1919", "1919-01-26", "New Zealand")
+demobilization = Demobilization(Date("1919", "1919-01-26"), "New Zealand")
 
 
 def test_get_end_of_service_if_data_exists():
-    assert get_end_of_service("1919", "1919-01-26", "New Zealand") == demobilization
+    assert (
+        get_end_of_service(Date("1919", "1919-01-26"), "New Zealand") == demobilization
+    )
 
 
 def test_do_not_get_end_of_service_if_data_exists():
-    assert get_end_of_service(None, None, "New Zealand") is None
+    assert get_end_of_service(None, "New Zealand") is None
 
 
 british_war_medal = Medal("British War Medal", "United Kingdom", "For bravery")

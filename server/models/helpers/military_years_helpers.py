@@ -16,7 +16,7 @@ from ..military_years import (
 
 
 def get_training(
-    date: Date,
+    date: Optional[Date],
     location: str,
     location_type: str,
 ) -> Optional[Training]:
@@ -26,7 +26,7 @@ def get_training(
 
 
 def get_transferred_to_tunnellers(
-    date: Date, posted_from: Optional[str]
+    date: Optional[Date], posted_from: Optional[str]
 ) -> Optional[TransferredToTunnellers]:
     if date is not None and posted_from is not None:
         return TransferredToTunnellers(date, posted_from)
