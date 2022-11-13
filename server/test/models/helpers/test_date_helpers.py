@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from ....models.military_years import Date
+from ....models.date import Date
 from ....models.helpers.date_helpers import (
     convert_month_year,
     format_date_to_birth_year,

@@ -19,6 +19,7 @@ from ..models.helpers.image_helpers import (
 )
 from ..models.helpers.military_years_helpers import (
     get_boolean,
+    get_death_war,
     get_detachment,
     get_end_of_service,
     get_end_of_service_country,
@@ -105,6 +106,9 @@ def show(id: int, lang: str, mysql: MySQL) -> Tunneller:
         has_deserted,
         DATE_FORMAT(transferred.transferred_date, '%%Y-%%m-%%d') AS transferred_to_date,
         {transferred_to_col[lang]} AS transferred_to_unit,
+        t.death_type_fk AS death_type,
+        DATE_FORMAT(t.death_date, '%%Y-%%m-%%d') AS death_date,
+        DATE_FORMAT(t.death_year, '%%Y-%%m-%%d') AS death_year,
         transport_nz_ref.transport_ref_name AS transport_nz_ref,
         transport_nz_vessel.transport_vessel_name AS transport_nz_vessel,
         DATE_FORMAT(transport_nz.transport_start, '%%Y-%%m-%%d') AS transport_nz_start,
@@ -311,6 +315,14 @@ def show(id: int, lang: str, mysql: MySQL) -> Tunneller:
                     "transferred": get_transferred_to(
                         get_date(tunneller_result["transferred_to_date"], lang),
                         tunneller_result["transferred_to_unit"],
+                    ),
+                    "death_war": get_death_war(
+                        tunneller_result["death_type"],
+                        get_birth_date(
+                            tunneller_result["death_year"],
+                            tunneller_result["death_date"],
+                            lang,
+                        ),
                     ),
                     "transport_nz": get_transport_nz(
                         get_transport_reference(

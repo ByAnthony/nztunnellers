@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from typing import Optional
 
-from ..military_years import Date
+from ..date import Date
 
 
 def format_date_to_birth_year(

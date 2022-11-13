@@ -1,12 +1,15 @@
 # -*- coding: utf-8 -*-
 from typing import Optional
 
+from ..date import Date
+
+from ..death import Death
+
 from .translator_helpers import (
     translate_superscript,
     translate_transport_ref,
 )
 from ..military_years import (
-    Date,
     Demobilization,
     Medal,
     Training,
@@ -84,6 +87,13 @@ def get_transferred_to(
     if date is not None and unit is not None:
         return Transferred(date, unit)
     return None
+
+
+def get_death_war(death_type: Optional[int], date: Optional[Date]) -> Optional[Death]:
+    if death_type == 1:
+        return Death(date)
+    else:
+        return None
 
 
 def get_end_of_service(date: Optional[Date], country: str) -> Optional[Demobilization]:

@@ -2,7 +2,7 @@
 from dataclasses import dataclass
 from typing import Optional
 
-from .military_years import Date
+from .date import Date
 
 
 @dataclass

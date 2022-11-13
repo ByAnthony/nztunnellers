@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
+from ....models.date import Date
 from ....models.military_years import (
-    Date,
     Demobilization,
     Medal,
     Training,

@@ -2,11 +2,8 @@
 from dataclasses import dataclass
 from typing import Optional
 
-
-@dataclass
-class Date:
-    year: Optional[str]
-    day_month: Optional[str]
+from .date import Date
+from .death import Death
 
 
 @dataclass
@@ -54,7 +51,7 @@ class Transport:
 class EndOfService:
     deserter: bool
     transferred: Optional[Transferred] = None
-    # death_war: Optional[Death] = None
+    death_war: Optional[Death] = None
     transport_nz: Optional[Transport] = None
     demobilization: Optional[Demobilization] = None
 
