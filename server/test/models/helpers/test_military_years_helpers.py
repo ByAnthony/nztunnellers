@@ -169,7 +169,7 @@ def test_get_end_of_service_if_data_exists():
     )
 
 
-def test_do_not_get_end_of_service_if_data_exists():
+def test_do_not_get_end_of_service_if_data_is_none():
     assert get_end_of_service(None, "New Zealand") is None
 
 

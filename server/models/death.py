@@ -2,6 +2,8 @@
 from dataclasses import dataclass
 from typing import Optional
 
+from .military_years import Date
+
 
 @dataclass
 class Cemetery:
@@ -19,8 +21,7 @@ class DeathCause:
 
 @dataclass
 class Death:
-    year: str
-    date: str
+    date: Date
     location: Optional[str] = None
     country: Optional[str] = None
     cause: Optional[DeathCause] = None
