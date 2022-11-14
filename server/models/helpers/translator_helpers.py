@@ -1,24 +1,26 @@
 # -*- coding: utf-8 -*-
+import re
 from typing import Optional
 
 
 def translate_superscript(string: Optional[str], lang: str) -> Optional[str]:
     if string is not None:
         if lang == "fr":
+            number = "".join(re.findall(r"\d+", string))
+            no_break_space = "\N{NO-BREAK SPACE}"
+            superscript_re = "\N{MODIFIER LETTER SMALL R}\N{MODIFIER LETTER SMALL E}"
+            superscript_er = "\N{MODIFIER LETTER SMALL E}\N{MODIFIER LETTER SMALL R}"
+            superscript_e = "\N{MODIFIER LETTER SMALL E}"
+
             if "re " in string:
-                return string.replace(
-                    "re ",
-                    "\N{MODIFIER LETTER SMALL R}\N{MODIFIER LETTER SMALL E}\N{NO-BREAK SPACE}",
-                )
+                replace = "{}{}{}".format(number, superscript_re, no_break_space)
+                return re.sub("[0-9]re ", replace, string)
             if "er " in string:
-                return string.replace(
-                    "er ",
-                    "\N{MODIFIER LETTER SMALL E}\N{MODIFIER LETTER SMALL R}\N{NO-BREAK SPACE}",
-                )
+                replace = "{}{}{}".format(number, superscript_er, no_break_space)
+                return re.sub("[0-9]er ", replace, string)
             if "e " in string:
-                return string.replace(
-                    "e ", "\N{MODIFIER LETTER SMALL E}\N{NO-BREAK SPACE}"
-                )
+                replace = "{}{}{}".format(number, superscript_e, no_break_space)
+                return re.sub("[0-9]e ", replace, string)
         return string
     return None
 

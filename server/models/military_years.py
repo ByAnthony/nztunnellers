@@ -80,7 +80,7 @@ class TransferredToTunnellers:
 @dataclass
 class Enlistment:
     rank: str
-    date: Date
+    date: Optional[Date] = None
     district: Optional[str] = None
     alias: Optional[str] = None
     transferred_to_tunnellers: Optional[TransferredToTunnellers] = None

@@ -1,10 +1,9 @@
 # -*- coding: utf-8 -*-
 from typing import Optional
 
+from .date_helpers import get_date
 from ..date import Date
-
 from ..death import Death
-
 from .translator_helpers import (
     translate_superscript,
     translate_transport_ref,
@@ -82,10 +81,14 @@ def get_boolean(data: Optional[int]) -> bool:
 
 
 def get_transferred_to(
-    date: Optional[Date], unit: Optional[str]
+    date: Optional[str], unit: Optional[str], lang: str
 ) -> Optional[Transferred]:
-    if date is not None and unit is not None:
-        return Transferred(date, unit)
+    formatted_date = get_date(date, lang)
+    formatted_unit = translate_superscript(unit, lang)
+
+    if formatted_date is not None and formatted_unit is not None:
+        return Transferred(formatted_date, formatted_unit)
+
     return None
 
 

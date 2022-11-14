@@ -313,8 +313,9 @@ def show(id: int, lang: str, mysql: MySQL) -> Tunneller:
                 "end_of_service": {
                     "deserter": get_boolean(tunneller_result["has_deserted"]),
                     "transferred": get_transferred_to(
-                        get_date(tunneller_result["transferred_to_date"], lang),
+                        tunneller_result["transferred_to_date"],
                         tunneller_result["transferred_to_unit"],
+                        lang,
                     ),
                     "death_war": get_death_war(
                         tunneller_result["death_type"],
