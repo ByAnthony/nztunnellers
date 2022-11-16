@@ -6,26 +6,47 @@ from typing import Optional
 def translate_superscript(string: Optional[str], lang: str) -> Optional[str]:
     if string is not None:
         if lang == "fr":
+
+            superscript = {
+                "re ": "\N{MODIFIER LETTER SMALL R}\N{MODIFIER LETTER SMALL E}",
+                "er ": "\N{MODIFIER LETTER SMALL E}\N{MODIFIER LETTER SMALL R}",
+                "e ": "\N{MODIFIER LETTER SMALL E}",
+                None: None,
+            }
             no_break_space = "\N{NO-BREAK SPACE}"
+            patterns = ["(?<=1)re ", "(?<=1)er ", "(?<=[0-9])e "]
 
-            if re.search("(?<=[0-9])re ", string):
-                superscript_re = (
-                    "\N{MODIFIER LETTER SMALL R}\N{MODIFIER LETTER SMALL E}"
-                )
-                replace = "{}{}".format(superscript_re, no_break_space)
-                return re.sub("(?<=[0-9])re ", replace, string)
+            def find_superscript(patterns: list[str], text: str) -> Optional[str]:
+                for pattern in patterns:
+                    result = re.search(pattern, text)
+                    if result is not None:
+                        return result.group()
+                return None
 
-            elif re.search("(?<=[0-9])er ", string):
-                superscript_er = (
-                    "\N{MODIFIER LETTER SMALL E}\N{MODIFIER LETTER SMALL R}"
-                )
-                replace = "{}{}".format(superscript_er, no_break_space)
-                return re.sub("(?<=[0-9])er ", replace, string)
+            replace = "{}{}".format(
+                superscript[find_superscript(patterns, string)], no_break_space
+            )
 
-            elif re.search("(?<=[0-9])e ", string):
-                superscript_e = "\N{MODIFIER LETTER SMALL E}"
-                replace = "{}{}".format(superscript_e, no_break_space)
-                return re.sub("(?<=[0-9])e ", replace, string)
+            def find_pattern(patterns: list[str], text: Optional[str]) -> str:
+                if text is not None:
+                    for pattern in patterns:
+                        if re.search(pattern, text) is not None:
+                            return pattern
+                return "None"
+
+            return re.sub(find_pattern(patterns, string), replace, string)
+
+            # if re.search("(?<=1)re ", string):
+            #     replace = "{}{}".format(superscript["re "], no_break_space)
+            #     return re.sub("(?<=1)re ", replace, string)
+
+            # elif re.search("(?<=1)er ", string):
+            #     replace = "{}{}".format(superscript["er "], no_break_space)
+            #     return re.sub("(?<=1)er ", replace, string)
+
+            # elif re.search("(?<=[0-9])e ", string):
+            #     replace = "{}{}".format(superscript["e "], no_break_space)
+            #     return re.sub("(?<=[0-9])e ", replace, string)
 
         return string
     return None
