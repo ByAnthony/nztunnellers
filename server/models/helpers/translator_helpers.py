@@ -36,18 +36,6 @@ def translate_superscript(string: Optional[str], lang: str) -> Optional[str]:
 
             return re.sub(find_pattern(patterns, string), replace, string)
 
-            # if re.search("(?<=1)re ", string):
-            #     replace = "{}{}".format(superscript["re "], no_break_space)
-            #     return re.sub("(?<=1)re ", replace, string)
-
-            # elif re.search("(?<=1)er ", string):
-            #     replace = "{}{}".format(superscript["er "], no_break_space)
-            #     return re.sub("(?<=1)er ", replace, string)
-
-            # elif re.search("(?<=[0-9])e ", string):
-            #     replace = "{}{}".format(superscript["e "], no_break_space)
-            #     return re.sub("(?<=[0-9])e ", replace, string)
-
         return string
     return None
 
