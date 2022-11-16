@@ -6,21 +6,27 @@ from typing import Optional
 def translate_superscript(string: Optional[str], lang: str) -> Optional[str]:
     if string is not None:
         if lang == "fr":
-            number = "".join(re.findall(r"\d+", string))
             no_break_space = "\N{NO-BREAK SPACE}"
-            superscript_re = "\N{MODIFIER LETTER SMALL R}\N{MODIFIER LETTER SMALL E}"
-            superscript_er = "\N{MODIFIER LETTER SMALL E}\N{MODIFIER LETTER SMALL R}"
-            superscript_e = "\N{MODIFIER LETTER SMALL E}"
 
-            if "re " in string:
-                replace = "{}{}{}".format(number, superscript_re, no_break_space)
-                return re.sub("[0-9]re ", replace, string)
-            if "er " in string:
-                replace = "{}{}{}".format(number, superscript_er, no_break_space)
-                return re.sub("[0-9]er ", replace, string)
-            if "e " in string:
-                replace = "{}{}{}".format(number, superscript_e, no_break_space)
-                return re.sub("[0-9]e ", replace, string)
+            if re.search("(?<=[0-9])re ", string):
+                superscript_re = (
+                    "\N{MODIFIER LETTER SMALL R}\N{MODIFIER LETTER SMALL E}"
+                )
+                replace = "{}{}".format(superscript_re, no_break_space)
+                return re.sub("(?<=[0-9])re ", replace, string)
+
+            elif re.search("(?<=[0-9])er ", string):
+                superscript_er = (
+                    "\N{MODIFIER LETTER SMALL E}\N{MODIFIER LETTER SMALL R}"
+                )
+                replace = "{}{}".format(superscript_er, no_break_space)
+                return re.sub("(?<=[0-9])er ", replace, string)
+
+            elif re.search("(?<=[0-9])e ", string):
+                superscript_e = "\N{MODIFIER LETTER SMALL E}"
+                replace = "{}{}".format(superscript_e, no_break_space)
+                return re.sub("(?<=[0-9])e ", replace, string)
+
         return string
     return None
 
