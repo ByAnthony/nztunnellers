@@ -51,6 +51,13 @@ def translate_transport_ref(transport_reference: str, lang: str) -> str:
     return transport_reference
 
 
+def translate_town(town: Optional[str], lang: str) -> Optional[str]:
+    if town is not None:
+        if lang == "fr" and town == "London":
+            return "Londres"
+    return town
+
+
 def translate_family(family: Optional[str], lang: str) -> Optional[str]:
     if family is not None:
         if lang == "en":

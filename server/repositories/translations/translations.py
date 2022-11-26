@@ -66,3 +66,13 @@ transferred_to_col = {
     "en": "transferred_to.transferred_to_en",
     "fr": "transferred_to.transferred_to_fr",
 }
+
+death_location_col = {
+    "en": "death_location.death_location_en",
+    "fr": "death_location.death_location_fr",
+}
+
+death_country_col = {
+    "en": "death_country.country_en",
+    "fr": "death_country.country_fr",
+}

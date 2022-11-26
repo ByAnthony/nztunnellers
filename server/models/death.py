@@ -20,9 +20,15 @@ class DeathCause:
 
 
 @dataclass
+class DeathPlace:
+    location: Optional[str] = None
+    town: Optional[str] = None
+    country: Optional[str] = None
+
+
+@dataclass
 class Death:
     date: Optional[Date] = None
-    # location: Optional[str] = None
-    # country: Optional[str] = None
+    place: Optional[DeathPlace] = None
     # cause: Optional[DeathCause] = None
     # cemetery: Optional[Cemetery] = None
