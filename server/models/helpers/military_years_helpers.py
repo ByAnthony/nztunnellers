@@ -102,10 +102,8 @@ def get_death_war(
 
 def get_death_place(
     location: Optional[str], town: Optional[str], country: Optional[str]
-) -> Optional[DeathPlace]:
-    if location is not None and town is not None and country is not None:
-        return DeathPlace(location, town, country)
-    return None
+) -> DeathPlace:
+    return DeathPlace(location, town, country)
 
 
 def get_end_of_service(date: Optional[Date], country: str) -> Optional[Demobilization]:
