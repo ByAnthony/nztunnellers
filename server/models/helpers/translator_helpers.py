@@ -23,16 +23,16 @@ def translate_superscript(string: Optional[str], lang: str) -> Optional[str]:
                         return result.group()
                 return None
 
-            replace = "{}{}".format(
-                superscript[find_superscript(patterns, string)], no_break_space
-            )
-
             def find_pattern(patterns: list[str], text: Optional[str]) -> str:
                 if text is not None:
                     for pattern in patterns:
                         if re.search(pattern, text) is not None:
                             return pattern
                 return "None"
+
+            replace = "{}{}".format(
+                superscript[find_superscript(patterns, string)], no_break_space
+            )
 
             return re.sub(find_pattern(patterns, string), replace, string)
 
