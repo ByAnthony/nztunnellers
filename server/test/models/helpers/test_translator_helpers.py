@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from ....models.helpers.translator_helpers import (
     translate_superscript,
+    translate_town,
     translate_transport_ref,
     translate_family,
 )
@@ -10,6 +11,7 @@ transport_ruapehu = "S.S. Ruapehu 18 December 1915"
 hospital_ship = "Hospital Ship"
 troop_ship = "Troop Ship"
 transport_hmnzs = "HMNZS 96"
+town = "London"
 family = "Williamson"
 
 
@@ -79,6 +81,22 @@ def test_do_not_translate_transport_ref_if_transport_is_not_ruapehu_and_lang_is_
 
 def test_do_not_translate_transport_ref_if_transport_is_not_ruapehu_and_lang_is_en():
     assert translate_transport_ref(transport_hmnzs, "en") == transport_hmnzs
+
+
+def test_translate_town_if_town_is_london_and_lang_is_fr():
+    assert translate_town(town, "fr") == "Londres"
+
+
+def test_do_not_translate_town_if_town_is_london_and_lang_is_en():
+    assert translate_town(town, "en") == "London"
+
+
+def test_do_not_translate_town_if_town_is_not_london_and_lang_is_fr():
+    assert translate_town("Arras", "fr") == "Arras"
+
+
+def test_do_not_translate_town_if_town_is_not_london_and_lang_is_en():
+    assert translate_town("Glasgow", "fr") == "Glasgow"
 
 
 def test_translate_family_if_family_is_not_none_and_lang_is_en():
