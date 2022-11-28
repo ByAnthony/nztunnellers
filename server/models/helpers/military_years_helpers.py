@@ -3,7 +3,7 @@ from typing import Optional
 
 from .date_helpers import get_date
 from ..date import Date
-from ..death import Death, DeathPlace
+from ..death import Death, DeathCause, DeathPlace
 from .translator_helpers import (
     translate_superscript,
     translate_transport_ref,
@@ -93,10 +93,13 @@ def get_transferred_to(
 
 
 def get_death_war(
-    death_type: Optional[int], date: Optional[Date], place: Optional[DeathPlace]
+    death_type: Optional[int],
+    date: Optional[Date],
+    place: Optional[DeathPlace],
+    cause: Optional[DeathCause],
 ) -> Optional[Death]:
     if death_type == 1:
-        return Death(date, place)
+        return Death(date, place, cause)
     return None
 
 

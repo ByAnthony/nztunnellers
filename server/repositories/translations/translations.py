@@ -76,3 +76,8 @@ death_country_col = {
     "en": "death_country.country_en",
     "fr": "death_country.country_fr",
 }
+
+death_cause_col = {
+    "en": "death_cause.death_cause_en",
+    "fr": "death_cause.death_cause_fr",
+}

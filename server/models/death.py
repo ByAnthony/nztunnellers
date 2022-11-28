@@ -16,7 +16,7 @@ class Cemetery:
 @dataclass
 class DeathCause:
     type: Optional[str] = None
-    circumstances: Optional[str] = None
+    # circumstances: Optional[str] = None
 
 
 @dataclass
@@ -30,5 +30,5 @@ class DeathPlace:
 class Death:
     date: Optional[Date] = None
     place: Optional[DeathPlace] = None
-    # cause: Optional[DeathCause] = None
+    cause: Optional[DeathCause] = None
     # cemetery: Optional[Cemetery] = None
