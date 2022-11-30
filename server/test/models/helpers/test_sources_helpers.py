@@ -23,26 +23,29 @@ expected_ref_2 = NewZealandArchives(
 )
 
 
-def test_map_nz_archives_if_archives_has_one_record():
-    assert map_nz_archives([actual_nz_archives_1]) == [expected_ref_1]
+class TestMapNzArchives:
+    class TestMapNzArchivesIf:
+        def test_map_nz_archives_if_archives_has_one_record(self):
+            assert map_nz_archives([actual_nz_archives_1]) == [expected_ref_1]
+
+        def test_map_nz_archives_if_archives_has_two_records(self):
+            assert map_nz_archives([actual_nz_archives_1, actual_nz_archives_2]) == [
+                expected_ref_1,
+                expected_ref_2,
+            ]
 
 
-def test_map_nz_archives_if_archives_has_two_records():
-    assert map_nz_archives([actual_nz_archives_1, actual_nz_archives_2]) == [
-        expected_ref_1,
-        expected_ref_2,
-    ]
+class TestDoNotMapNzArchivesIf:
+    def test_do_not_map_nz_archives_if_archives_has_no_record(self):
+        assert map_nz_archives([]) == []
 
 
-def test_do_not_map_nz_archives_if_archives_has_no_record():
-    assert map_nz_archives([]) == []
-
-
-def test_get_awmm():
-    assert (
-        get_awmm("fake_reference")
-        == "https://www.aucklandmuseum.com/war-memorial/online-cenotaph/record/fake_reference"
-    )
+class TestGetAwmm:
+    def test_get_awmm(self):
+        assert (
+            get_awmm("fake_reference")
+            == "https://www.aucklandmuseum.com/war-memorial/online-cenotaph/record/fake_reference"
+        )
 
 
 volume = "III"
@@ -65,48 +68,46 @@ title_1916 = {
 }
 
 
-def test_get_nominal_roll_if_volume_and_roll_are_not_none_and_lang_is_en():
-    assert get_nominal_roll(volume, roll, page, en) == NominalRoll(
-        title_1919[en],
-        "Wellington",
-        "Government Printer",
-        "1914-1919",
-        "p.{}{}".format(no_break_space, page),
-        "Volume{}{}".format(no_break_space, volume),
-        "{}{}".format(roll_number_col[en], roll),
-    )
+class TestGetNominalRoll:
+    def test_if_volume_and_roll_are_not_none_and_lang_is_en(self):
+        assert get_nominal_roll(volume, roll, page, en) == NominalRoll(
+            title_1919[en],
+            "Wellington",
+            "Government Printer",
+            "1914-1919",
+            "p.{}{}".format(no_break_space, page),
+            "Volume{}{}".format(no_break_space, volume),
+            "{}{}".format(roll_number_col[en], roll),
+        )
 
+    def test_if_volume_and_roll_are_not_none_and_lang_is_fr(self):
+        assert get_nominal_roll(volume, roll, page, fr) == NominalRoll(
+            title_1919[fr],
+            "Wellington",
+            "Government Printer",
+            "1914-1919",
+            "p.{}{}".format(no_break_space, page),
+            "Volume{}{}".format(no_break_space, volume),
+            "{}{}".format(roll_number_col[fr], roll),
+        )
 
-def test_get_nominal_roll_if_volume_and_roll_are_not_none_and_lang_is_fr():
-    assert get_nominal_roll(volume, roll, page, fr) == NominalRoll(
-        title_1919[fr],
-        "Wellington",
-        "Government Printer",
-        "1914-1919",
-        "p.{}{}".format(no_break_space, page),
-        "Volume{}{}".format(no_break_space, volume),
-        "{}{}".format(roll_number_col[fr], roll),
-    )
+    def test_if_volume_and_roll_are_none_and_lang_en(self):
+        assert get_nominal_roll(None, None, page, en) == NominalRoll(
+            title_1916[en],
+            "Wellington",
+            "Government Printer",
+            "1916",
+            "p.{}{}".format(no_break_space, page),
+        )
 
-
-def test_get_nominal_roll_if_volume_and_roll_are_none_and_lang_en():
-    assert get_nominal_roll(None, None, page, en) == NominalRoll(
-        title_1916[en],
-        "Wellington",
-        "Government Printer",
-        "1916",
-        "p.{}{}".format(no_break_space, page),
-    )
-
-
-def test_get_nominal_roll_if_volume_and_roll_are_none_and_lang_fr():
-    assert get_nominal_roll(None, None, page, fr) == NominalRoll(
-        title_1916[fr],
-        "Wellington",
-        "Government Printer",
-        "1916",
-        "p.{}{}".format(no_break_space, page),
-    )
+    def test_if_volume_and_roll_are_none_and_lang_fr(self):
+        assert get_nominal_roll(None, None, page, fr) == NominalRoll(
+            title_1916[fr],
+            "Wellington",
+            "Government Printer",
+            "1916",
+            "p.{}{}".format(no_break_space, page),
+        )
 
 
 london_gazette_list = [
@@ -115,23 +116,31 @@ london_gazette_list = [
 ]
 
 
-def test_map_london_gazette_if_london_gazette_is_not_none_and_lang_is_en():
-    assert map_london_gazette(london_gazette_list, "en") == [
-        LondonGazette("13575", format_date_to_day_month_and_year("1917-12-28", "en")),
-        LondonGazette("29", format_date_to_day_month_and_year("1918-01-01", "en")),
-    ]
+class TestMapLondonGazette:
+    class TestMapLondonGazetteIf:
+        def test_london_gazette_is_not_none_and_lang_is_en(self):
+            assert map_london_gazette(london_gazette_list, "en") == [
+                LondonGazette(
+                    "13575", format_date_to_day_month_and_year("1917-12-28", "en")
+                ),
+                LondonGazette(
+                    "29", format_date_to_day_month_and_year("1918-01-01", "en")
+                ),
+            ]
 
+        def test_london_gazette_is_not_none_and_lang_is_fr(self):
+            assert map_london_gazette(london_gazette_list, "fr") == [
+                LondonGazette(
+                    "13575", format_date_to_day_month_and_year("1917-12-28", "fr")
+                ),
+                LondonGazette(
+                    "29", format_date_to_day_month_and_year("1918-01-01", "fr")
+                ),
+            ]
 
-def test_map_london_gazette_if_london_gazette_is_not_none_and_lang_is_fr():
-    assert map_london_gazette(london_gazette_list, "fr") == [
-        LondonGazette("13575", format_date_to_day_month_and_year("1917-12-28", "fr")),
-        LondonGazette("29", format_date_to_day_month_and_year("1918-01-01", "fr")),
-    ]
+    class TestDoNotMapLondonGazetteIf:
+        def test_london_gazette_is_none_and_lang_en(self):
+            assert map_london_gazette([], "en") == []
 
-
-def test_map_london_gazette_if_london_gazette_is_none_and_lang_en():
-    assert map_london_gazette([], "en") == []
-
-
-def test_map_london_gazette_if_london_gazette_is_none_and_lang_fr():
-    assert map_london_gazette([], "fr") == []
+        def test_london_gazette_is_none_and_lang_fr(self):
+            assert map_london_gazette([], "fr") == []
