@@ -3,7 +3,7 @@ from typing import Optional
 
 from .date_helpers import get_date
 from ..date import Date
-from ..death import Death, DeathCause, DeathPlace
+from ..death import Cemetery, Death, DeathCause, DeathPlace
 from .translator_helpers import (
     translate_superscript,
     translate_transport_ref,
@@ -97,9 +97,10 @@ def get_death_war(
     date: Optional[Date],
     place: Optional[DeathPlace],
     cause: Optional[DeathCause],
+    cemetery: Optional[Cemetery],
 ) -> Optional[Death]:
     if death_type == 1:
-        return Death(date, place, cause)
+        return Death(date, place, cause, cemetery)
     return None
 
 
@@ -107,6 +108,14 @@ def get_death_place(
     location: Optional[str], town: Optional[str], country: Optional[str]
 ) -> DeathPlace:
     return DeathPlace(location, town, country)
+
+
+def get_cemetery(
+    name: Optional[str], location: str, country: str, grave: Optional[str]
+) -> Optional[Cemetery]:
+    if name is not None:
+        return Cemetery(name, location, country, grave)
+    return None
 
 
 def get_end_of_service(date: Optional[Date], country: str) -> Optional[Demobilization]:

@@ -81,3 +81,13 @@ death_cause_col = {
     "en": "death_cause.death_cause_en",
     "fr": "death_cause.death_cause_fr",
 }
+
+cemetery_col = {
+    "en": "cemetery.cemetery_name_en",
+    "fr": "cemetery.cemetery_name_fr",
+}
+
+cemetery_country_col = {
+    "en": "cemetery_country.country_en",
+    "fr": "cemetery_country.country_fr",
+}

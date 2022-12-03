@@ -10,7 +10,7 @@ class Cemetery:
     name: str
     location: str
     country: str
-    grave_reference: str
+    grave_reference: Optional[str]
 
 
 @dataclass
@@ -31,4 +31,4 @@ class Death:
     date: Optional[Date] = None
     place: Optional[DeathPlace] = None
     cause: Optional[DeathCause] = None
-    # cemetery: Optional[Cemetery] = None
+    cemetery: Optional[Cemetery] = None

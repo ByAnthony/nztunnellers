@@ -20,6 +20,7 @@ from ..models.helpers.image_helpers import (
 )
 from ..models.helpers.military_years_helpers import (
     get_boolean,
+    get_cemetery,
     get_death_place,
     get_death_war,
     get_detachment,
@@ -68,6 +69,8 @@ from .translations.translations import (
     death_location_col,
     death_country_col,
     death_cause_col,
+    cemetery_col,
+    cemetery_country_col,
 )
 
 
@@ -118,6 +121,10 @@ def show(id: int, lang: str, mysql: MySQL) -> Tunneller:
         death_town.town_name AS death_town,
         {death_country_col[lang]} AS death_country,
         {death_cause_col[lang]} AS death_cause,
+        {cemetery_col[lang]} AS cemetery,
+        cemetery_town.town_name AS cemetery_town,
+        {cemetery_country_col[lang]} AS cemetery_country,
+        t.grave_reference AS grave,
         transport_nz_ref.transport_ref_name AS transport_nz_ref,
         transport_nz_vessel.transport_vessel_name AS transport_nz_vessel,
         DATE_FORMAT(transport_nz.transport_start, '%%Y-%%m-%%d') AS transport_nz_start,
@@ -171,6 +178,9 @@ def show(id: int, lang: str, mysql: MySQL) -> Tunneller:
         LEFT JOIN town death_town ON t.death_town_fk=death_town.town_id
         LEFT JOIN country death_country ON death_town.town_country_fk=death_country.country_id
         LEFT JOIN death_cause ON t.death_cause_fk=death_cause.death_cause_id
+        LEFT JOIN cemetery ON t.cemetery_fk=cemetery.cemetery_id
+        LEFT JOIN town cemetery_town ON cemetery.cemetery_town_fk=cemetery_town.town_id
+        LEFT JOIN country cemetery_country ON cemetery_town.town_country_fk=cemetery_country.country_id
         LEFT JOIN transport transport_nz ON t.transport_nz_fk=transport_nz.transport_id
         LEFT JOIN transport_ref transport_nz_ref ON transport_nz.transport_ref_fk=transport_nz_ref.transport_ref_id
         LEFT JOIN transport_vessel transport_nz_vessel
@@ -343,6 +353,12 @@ def show(id: int, lang: str, mysql: MySQL) -> Tunneller:
                             tunneller_result["death_country"],
                         ),
                         tunneller_result["death_cause"],
+                        get_cemetery(
+                            tunneller_result["cemetery"],
+                            tunneller_result["cemetery_town"],
+                            tunneller_result["cemetery_country"],
+                            tunneller_result["grave"],
+                        ),
                     ),
                     "transport_nz": get_transport_nz(
                         get_transport_reference(
