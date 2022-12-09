@@ -91,3 +91,8 @@ cemetery_country_col = {
     "en": "cemetery_country.country_en",
     "fr": "cemetery_country.country_fr",
 }
+
+death_circumstances_col = {
+    "en": "death_circumstances.death_circumstances_en",
+    "fr": "death_circumstances.death_circumstances_fr",
+}

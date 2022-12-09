@@ -110,6 +110,16 @@ def get_death_place(
     return DeathPlace(location, town, country)
 
 
+def get_death_circumstances(
+    cause: Optional[str], circumstances: Optional[str]
+) -> Optional[DeathCause]:
+    if cause is not None and circumstances is not None:
+        return DeathCause(cause, circumstances)
+    elif cause is not None and circumstances is None:
+        return DeathCause(cause, None)
+    return None
+
+
 def get_cemetery(
     name: Optional[str], location: str, country: str, grave: Optional[str]
 ) -> Optional[Cemetery]:

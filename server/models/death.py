@@ -15,8 +15,8 @@ class Cemetery:
 
 @dataclass
 class DeathCause:
-    death_type: Optional[str] = None
-    # death_circumstances: Optional[str] = None
+    type: Optional[str] = None
+    circumstances: Optional[str] = None
 
 
 @dataclass
