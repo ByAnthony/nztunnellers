@@ -4,10 +4,10 @@ import json
 from dataclasses import dataclass
 from typing import Any, Optional
 
-
 from .image import Image
 from .military_years import MilitaryYears
 from .origins import Origins
+from .post_service_years import PostServiceYears
 from .pre_war_years import PreWarYear
 from .roll import Roll
 from .sources import Sources
@@ -18,6 +18,7 @@ class Tunneller(Roll):
     origins: Origins
     pre_war_years: PreWarYear
     military_years: MilitaryYears
+    post_service_years: PostServiceYears
     sources: Sources
     image: Optional[Image] = None
 

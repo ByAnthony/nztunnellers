@@ -4,5 +4,5 @@ from .death import Death
 
 
 @dataclass
-class PostWarYears:
+class PostServiceYears:
     death: Death
