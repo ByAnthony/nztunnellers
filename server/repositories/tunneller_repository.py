@@ -386,6 +386,7 @@ def show(id: int, lang: str, mysql: MySQL) -> Tunneller:
                 },
                 "medals": map_medals(medals_result),
             },
+            "post_service_years": {},
             "sources": {
                 "nz_archives": map_nz_archives(nz_archives_result),
                 "awmm_cenotaph": get_awmm(tunneller_result["awmm_cenotaph"]),
