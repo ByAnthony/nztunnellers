@@ -10,7 +10,7 @@ class Cemetery:
     name: str
     location: str
     country: str
-    grave_reference: Optional[str]
+    grave_reference: Optional[str] = None
 
 
 @dataclass

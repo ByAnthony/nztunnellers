@@ -93,20 +93,22 @@ def get_transferred_to(
 
 
 def get_death_war(
-    death_type: Optional[int],
+    death_type: Optional[str],
     date: Optional[Date],
     place: Optional[DeathPlace],
     cause: Optional[DeathCause],
     cemetery: Optional[Cemetery],
 ) -> Optional[Death]:
-    if death_type == 1:
+    if death_type == "War":
         return Death(date, place, cause, cemetery)
     return None
 
 
 def get_death_place(
     location: Optional[str], town: Optional[str], country: Optional[str]
-) -> DeathPlace:
+) -> Optional[DeathPlace]:
+    if location is None and town is None and country is None:
+        return None
     return DeathPlace(location, town, country)
 
 

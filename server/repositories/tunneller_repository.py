@@ -117,7 +117,7 @@ def show(id: int, lang: str, mysql: MySQL) -> Tunneller:
         has_deserted,
         DATE_FORMAT(transferred.transferred_date, '%%Y-%%m-%%d') AS transferred_to_date,
         {transferred_to_col[lang]} AS transferred_to_unit,
-        t.death_type_fk AS death_type,
+        death_type.death_type_en AS death_type,
         DATE_FORMAT(t.death_date, '%%Y-%%m-%%d') AS death_date,
         DATE_FORMAT(t.death_year, '%%Y-%%m-%%d') AS death_year,
         {death_location_col[lang]} AS death_location,
@@ -178,6 +178,7 @@ def show(id: int, lang: str, mysql: MySQL) -> Tunneller:
         ON transport_uk.transport_vessel_fk=transport_uk_vessel.transport_vessel_id
         LEFT JOIN transferred ON transferred.transferred_id=t.transferred_fk
         LEFT JOIN transferred_to ON transferred_to.transferred_to_id=transferred.transferred_to_fk
+        LEFT JOIN death_type ON t.death_type_fk=death_type.death_type_id
         LEFT JOIN death_location ON t.death_location_fk=death_location.death_location_id
         LEFT JOIN town death_town ON t.death_town_fk=death_town.town_id
         LEFT JOIN country death_country ON death_town.town_country_fk=death_country.country_id
