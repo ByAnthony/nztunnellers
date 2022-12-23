@@ -47,3 +47,15 @@ class TestGetDeathWar:
             Cemetery("Cemetery Name", "Auckland", "New Zealand", "Gr. Ref"),
             False,
         )
+
+    def test_if_death_data_does_not_exist(self):
+        assert (
+            get_death(
+                None,
+                None,
+                None,
+                None,
+                None,
+            )
+            is None
+        )
