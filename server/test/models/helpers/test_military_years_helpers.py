@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from ....models.death import Cemetery, Death, DeathCause, DeathPlace
 from ....models.date import Date
 from ....models.military_years import (
     Demobilization,
@@ -9,6 +10,10 @@ from ....models.military_years import (
 )
 from ....models.helpers.military_years_helpers import (
     get_boolean,
+    get_cemetery,
+    get_death_circumstances,
+    get_death_place,
+    get_death_war,
     get_detachment,
     get_end_of_service,
     get_end_of_service_country,
@@ -133,20 +138,6 @@ class TestGetDeserter:
         assert get_boolean(None) is False
 
 
-class TestGetEndOfServiceCountry:
-    def test_if_discharge_uk_is_true_and_lang_is_en(self):
-        assert get_end_of_service_country(True, "en") == "United Kingdom"
-
-    def test_if_discharge_uk_is_true_and_lang_is_fr(self):
-        assert get_end_of_service_country(True, "fr") == "Royaume-Uni"
-
-    def test_if_discharge_uk_is_false_and_lang_is_en(self):
-        assert get_end_of_service_country(False, "en") == "New Zealand"
-
-    def test_if_discharge_uk_is_false_and_lang_is_fr(self):
-        assert get_end_of_service_country(False, "fr") == "Nouvelle-Zélande"
-
-
 class TestGetTransferredTo:
     def test_if_data_exists(self):
         assert get_transferred_to("1962-09-27", "NZ Infantry", "en") == Transferred(
@@ -176,6 +167,98 @@ class TestGetEndOfService:
 
     def test_if_data_is_none(self):
         assert get_end_of_service(None, "New Zealand") is None
+
+
+class TestGetEndOfServiceCountry:
+    def test_if_discharge_uk_is_true_and_lang_is_en(self):
+        assert get_end_of_service_country(True, "en") == "United Kingdom"
+
+    def test_if_discharge_uk_is_true_and_lang_is_fr(self):
+        assert get_end_of_service_country(True, "fr") == "Royaume-Uni"
+
+    def test_if_discharge_uk_is_false_and_lang_is_en(self):
+        assert get_end_of_service_country(False, "en") == "New Zealand"
+
+    def test_if_discharge_uk_is_false_and_lang_is_fr(self):
+        assert get_end_of_service_country(False, "fr") == "Nouvelle-Zélande"
+
+
+class TestGetDeathWar:
+    def test_if_death_is_death_war(self):
+        assert get_death_war(
+            "War",
+            Date("1918", "09-12"),
+            DeathPlace("Battlefield", "Arras", "France"),
+            DeathCause("Killed in Action", "In the performance of his duty"),
+            Cemetery("Cemetery Name", "Auckland", "New Zealand", "Gr. Ref"),
+        ) == Death(
+            Date("1918", "09-12"),
+            DeathPlace("Battlefield", "Arras", "France"),
+            DeathCause("Killed in Action", "In the performance of his duty"),
+            Cemetery("Cemetery Name", "Auckland", "New Zealand", "Gr. Ref"),
+        )
+
+    def test_if_death_is_not_death_war(self):
+        assert (
+            get_death_war(
+                "War injury",
+                Date("1918", "09-12"),
+                DeathPlace("Battlefield", "Arras", "France"),
+                DeathCause("Killed in Action", "In the performance of his duty"),
+                Cemetery("Cemetery Name", "Auckland", "New Zealand", "Gr. Ref"),
+            )
+            is None
+        )
+
+
+class TestGetDeathPlace:
+    def test_if_death_place_exists(self):
+        assert get_death_place("Battlefield", "Arras", "France") == DeathPlace(
+            "Battlefield", "Arras", "France"
+        )
+
+    def test_if_location_does_not_exist(self):
+        assert get_death_place(None, "Arras", "France") == DeathPlace(
+            None, "Arras", "France"
+        )
+
+    def test_if_town_does_not_exist(self):
+        assert get_death_place("Battlefield", None, "France") == DeathPlace(
+            "Battlefield", None, "France"
+        )
+
+    def test_if_country_does_not_exist(self):
+        assert get_death_place("Battlefield", "Arras", None) == DeathPlace(
+            "Battlefield", "Arras", None
+        )
+
+    def test_if_death_place_does_not_exist(self):
+        assert get_death_place(None, None, None) is None
+
+
+class TestGetDeathCircumstances:
+    def test_if_cause_and_circumstances_exist(self):
+        assert get_death_circumstances(
+            "Killed in Action", "In the performance of his duty"
+        ) == DeathCause("Killed in Action", "In the performance of his duty")
+
+    def test_if_cause_does_not_exist_and_circumstances_exist(self):
+        assert get_death_circumstances("Killed in Action", None) == DeathCause(
+            "Killed in Action", None
+        )
+
+    def test_if_cause_and_circumstances_do_not_exist(self):
+        assert get_death_circumstances(None, None) is None
+
+
+class TestGetCemetery:
+    def test_if_cemetery_data_exits(self):
+        assert get_cemetery(
+            "Cemetery Name", "Auckland", "New Zealand", "Gr. Ref"
+        ) == Cemetery("Cemetery Name", "Auckland", "New Zealand", "Gr. Ref")
+
+    def test_if_cemetery_name_does_not_exit(self):
+        assert get_cemetery(None, "Auckland", "New Zealand", "Gr. Ref") is None
 
 
 british_war_medal = Medal("British War Medal", "United Kingdom", "For bravery")
