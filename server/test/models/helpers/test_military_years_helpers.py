@@ -201,7 +201,7 @@ class TestGetDeathWar:
     def test_if_death_is_not_death_war(self):
         assert (
             get_death_war(
-                "War injury",
+                "War injuries",
                 Date("1918", "09-12"),
                 DeathPlace("Battlefield", "Arras", "France"),
                 DeathCause("Killed in Action", "In the performance of his duty"),
