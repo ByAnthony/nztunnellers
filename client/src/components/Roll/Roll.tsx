@@ -15,7 +15,6 @@ type Name = {
 
 export const Roll = ({ tunnellers }: Props) => {
 
-
     const tunnellersList = tunnellers.map((tunneller: Tunneller, index: number) => {
         return (
             <div key={index}>
