@@ -17,6 +17,7 @@ The project uses:
 * dacite;
 * flake8;
 * flask;
+* flask_cors;
 * flask_MySQLdb;
 * mypy;
 * pre-commit;
