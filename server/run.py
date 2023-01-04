@@ -2,6 +2,7 @@
 import json
 import os
 
+from flask_cors import CORS
 from .repositories import roll_repository
 from .repositories import tunneller_repository
 from flask import Flask, request
@@ -9,6 +10,9 @@ from flask_mysqldb import MySQL
 from .models.tunneller import JSONEncoder
 
 app = Flask(__name__)
+Cors = CORS(app)
+CORS(app, resources={r"/": {"origins": ""}}, CORS_SUPPORTS_CREDENTIALS=True)
+app.config["CORS_HEADERS"] = "Content-Type"
 
 
 if os.environ.get("DEV") == "true":
