@@ -7,7 +7,7 @@ const RollContainer = () => {
     const [tunnellers, setAllTunnellers] = useState([]);
 
     useEffect(() => {
-        RollService.getRoll()
+        RollService.getRollSortedByAlphabet()
         .then(tunnellers => setAllTunnellers(tunnellers))
     }, []);
 
@@ -15,6 +15,6 @@ const RollContainer = () => {
        <Roll tunnellers={tunnellers} />
     );
 
-}
+};
 
 export default RollContainer;
