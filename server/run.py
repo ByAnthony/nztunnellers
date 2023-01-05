@@ -33,7 +33,7 @@ mysql = MySQL(app)
 @app.route("/roll/", methods=["GET"])
 def roll():
     tunnellers = roll_repository.select_all(mysql)
-    roll = json.dumps([tunneller for tunneller in tunnellers], indent=4)
+    roll = json.dumps(tunnellers, cls=JSONEncoder, indent=4)
     return roll
 
 
