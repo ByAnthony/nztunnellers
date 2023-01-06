@@ -2,7 +2,7 @@ const baseURL = "http://localhost:5000/roll/";
 
 export const RollService = {
 
-    getCompanyRollSortedByAlphabet(){
+    getRollSortedByAlphabet(){
         return fetch(baseURL)
         .then(res => res.json());
     }

@@ -1,6 +1,6 @@
-import STYLES from './CompanyRoll.module.css';
+import STYLES from './Roll.module.css';
 
-type Roll = {
+type Tunnellers = {
     [key: string]: Record<string, Tunneller[]> | never[];
 };
 
@@ -15,7 +15,7 @@ type Name = {
     surname: string;
 };
 
-export const CompanyRoll = ({ roll }: Roll) => {
+export const Roll = ({ tunnellers }: Tunnellers) => {
 
     const displayTunnellerInfo = (listOfTunnellers: Tunneller[]) => listOfTunnellers.map((tunneller) => {
         return (
@@ -26,7 +26,7 @@ export const CompanyRoll = ({ roll }: Roll) => {
         );
     });
 
-    const companyRoll = Object.entries(roll).map(([key, listOfTunnellers]) => (
+    const companyRoll = Object.entries(tunnellers).map(([key, listOfTunnellers]) => (
         <div className={STYLES.roll} key={key}>
             <h2>{key}</h2>
             {displayTunnellerInfo(listOfTunnellers)}
