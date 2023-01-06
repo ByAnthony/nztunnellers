@@ -1,14 +1,14 @@
 import {useState, useEffect} from 'react';
-import RollService from '../../services/RollService';
+import {RollService} from '../../services/CompanyRollService';
 import {CompanyRoll} from '../../components/CompanyRoll/CompanyRoll';
 
-const RollContainer = () => {
+export const CompanyRollContainer = () => {
 
     const [roll, setAllRoll] = useState([]);
 
     useEffect(() => {
-        RollService.getRollSortedByAlphabet()
-        .then(roll => setAllRoll(roll))
+        RollService.getCompanyRollSortedByAlphabet()
+        .then(roll => setAllRoll(roll));
     }, []);
 
     return(
@@ -16,5 +16,3 @@ const RollContainer = () => {
     );
 
 };
-
-export default RollContainer;

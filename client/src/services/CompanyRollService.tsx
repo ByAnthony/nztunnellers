@@ -1,10 +1,10 @@
 const baseURL = "http://localhost:5000/roll/";
 
-const RollService = {
+export const RollService = {
 
-    getRollSortedByAlphabet(){
+    getCompanyRollSortedByAlphabet(){
         return fetch(baseURL)
-        .then(res => res.json())
+        .then(res => res.json());
     }
 
     // getTunneller(id){
@@ -13,5 +13,3 @@ const RollService = {
     // }
 
 };
-
-export default RollService;

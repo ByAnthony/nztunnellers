@@ -2,7 +2,7 @@ import STYLES from './CompanyRoll.module.css';
 
 type Roll = {
     [key: string]: Record<string, Tunneller[]> | never[];
-}
+};
 
 type Tunneller = {
     id: number;
@@ -24,7 +24,7 @@ export const CompanyRoll = ({ roll }: Roll) => {
                 <p>{tunneller.serial}</p>
             </div>
         );
-    })
+    });
 
     const companyRoll = Object.entries(roll).map(([key, listOfTunnellers]) => (
         <div className={STYLES.roll} key={key}>
