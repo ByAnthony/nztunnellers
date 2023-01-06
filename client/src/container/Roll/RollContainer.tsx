@@ -1,18 +1,18 @@
 import {useState, useEffect} from 'react';
 import RollService from '../../services/RollService';
-import {Roll} from '../../components/Roll/Roll';
+import {CompanyRoll} from '../../components/CompanyRoll/CompanyRoll';
 
 const RollContainer = () => {
 
-    const [tunnellers, setAllTunnellers] = useState([]);
+    const [roll, setAllRoll] = useState([]);
 
     useEffect(() => {
         RollService.getRollSortedByAlphabet()
-        .then(tunnellers => setAllTunnellers(tunnellers))
+        .then(roll => setAllRoll(roll))
     }, []);
 
     return(
-       <Roll tunnellers={tunnellers} />
+       <CompanyRoll roll={roll} />
     );
 
 };
