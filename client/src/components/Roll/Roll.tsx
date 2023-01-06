@@ -17,10 +17,17 @@ type Name = {
 
 export const Roll = ({ tunnellers }: Tunnellers) => {
 
+    const setSurnameToUpperCase = (surname: string) => {
+        if (surname.startsWith("Mc")) {
+            return "Mc" + surname.slice(2).toUpperCase();
+        };
+        return surname.toUpperCase();
+    };
+
     const displayTunnellerInfo = (listOfTunnellers: Tunneller[]) => listOfTunnellers.map((tunneller) => {
         return (
             <div className={STYLES.tunneller} key={tunneller.id}>
-                <h3 className={STYLES.surname}>{tunneller.name.surname}</h3>
+                <h3 className={STYLES.surname}>{setSurnameToUpperCase(tunneller.name.surname)}</h3>
                 <h4 className={STYLES.forename}>{tunneller.name.forename}</h4>
                 <p className={STYLES.serial}>{tunneller.serial}</p>
             </div>
