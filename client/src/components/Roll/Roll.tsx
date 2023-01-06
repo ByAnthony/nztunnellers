@@ -19,24 +19,29 @@ export const Roll = ({ tunnellers }: Tunnellers) => {
 
     const displayTunnellerInfo = (listOfTunnellers: Tunneller[]) => listOfTunnellers.map((tunneller) => {
         return (
-            <div key={tunneller.id}>
-                <h3>{tunneller.name.forename} {tunneller.name.surname}</h3>
-                <p>{tunneller.serial}</p>
+            <div className={STYLES.tunneller} key={tunneller.id}>
+                <h3 className={STYLES.surname}>{tunneller.name.surname}</h3>
+                <h4 className={STYLES.forename}>{tunneller.name.forename}</h4>
+                <p className={STYLES.serial}>{tunneller.serial}</p>
             </div>
         );
     });
 
     const companyRoll = Object.entries(tunnellers).map(([key, listOfTunnellers]) => (
-        <div className={STYLES.roll} key={key}>
-            <h2>{key}</h2>
-            {displayTunnellerInfo(listOfTunnellers)}
+        <div id={`letter-${key}`} key={key}>
+            <div className={STYLES['letter-container']}>
+                <h3 className={STYLES['letter-title']} key={key}>{key}</h3>
+            </div>
+            <div className={STYLES['tunneller-group']}>
+                {displayTunnellerInfo(listOfTunnellers)}
+            </div>
         </div>
     ));
 
     return(
-        <>
+        <div className={STYLES.roll}>
           {companyRoll}
-        </>
+        </div>
     );
 
 };

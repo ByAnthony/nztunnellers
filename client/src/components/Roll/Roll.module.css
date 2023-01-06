@@ -1,3 +1,89 @@
 .roll {
+  margin: 0 auto;
+  width: 75%;
+}
+
+.letter-container {
+  width: 150px;
+  border-radius: 5px;
+  background-color: rgb(173,161,120);
+}
+
+.letter-title {
+  padding-top: 15px;
+  font-size: 125px;
+  font-stretch: 85%;
+  font-weight: 700;
+  color: rgb(24,26,27);
   text-align: center;
+
+  /* Mobile
+  margin: 100px 0;
+  font-size: 125px;
+  font-stretch: 85%;
+  font-weight: 700;
+  */
+}
+
+.tunneller-group {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.tunneller {
+  margin: 75px 0;
+  text-align: left;
+  flex-basis: 50%;
+}
+
+.surname {
+  margin: 0;
+  font-size: 50px;
+  font-stretch: 85%;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+
+  /* Mobile
+  margin: 0;
+  font-size: 30px;
+  font-stretch: 85%;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  */
+}
+
+.forename {
+  margin: 0;
+  font-size: 35px;
+  font-weight: 300;
+  font-stretch: 85%;
+  letter-spacing: 1px;
+
+  /* Mobile
+  margin: 0;
+  font-size: 25px;
+  font-weight: 300;
+  font-stretch: 85%;
+  letter-spacing: 1px;
+  */
+}
+
+.serial {
+  margin-top: 25px;
+  font-size: 20px;
+  font-stretch: 85%;
+  font-weight: 200;
+  letter-spacing: 2px;
+
+  /* Mobile
+  margin-top: 15px;
+  font-size: 16px;
+  font-stretch: 85%;
+  font-weight: 200;
+  letter-spacing: 2px;
+  */
 }
