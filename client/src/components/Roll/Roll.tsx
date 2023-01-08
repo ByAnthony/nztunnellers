@@ -18,10 +18,7 @@ type Name = {
 export const Roll = ({ tunnellers }: Tunnellers) => {
 
     const setSurnameToUpperCase = (surname: string) => {
-        if (surname.startsWith("Mc")) {
-            return "Mc" + surname.slice(2).toUpperCase();
-        };
-        return surname.toUpperCase();
+        return (surname.startsWith("Mc")) ? "Mc" + surname.slice(2).toUpperCase() : surname.toUpperCase();
     };
 
     const displayTunnellerInfo = (listOfTunnellers: Tunneller[]) => listOfTunnellers.map((tunneller) => {
