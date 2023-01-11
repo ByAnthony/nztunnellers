@@ -1,0 +1,33 @@
+.alphabet {
+    margin: 0 auto;
+    width: 75%;
+}
+
+.button-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 50px);
+    column-gap: 50px;
+    row-gap: 25px;
+    margin: 75px 0;
+    width: 100%;
+}
+
+button {
+    padding: 10px 0 7px 0;
+    font-family: 'Mona Sans';
+    font-size: 30px;
+    font-stretch: 85%;
+    font-weight: 600;
+    color: rgb(173,161,120);
+    text-align: center;
+    text-decoration: none;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    color: rgb(24,26,27);
+    background-color: rgb(173,161,120);
+    border-radius: 3px;
+}

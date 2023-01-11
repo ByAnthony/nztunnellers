@@ -1,7 +1,8 @@
 import STYLES from './Roll.module.css';
 
 type Tunnellers = {
-    [key: string]: Record<string, Tunneller[]> | never[];
+    tunnellers: Record<string, Tunneller[]> | never[];
+    filterByLetter: string;
 };
 
 type Tunneller = {
@@ -15,7 +16,7 @@ type Name = {
     surname: string;
 };
 
-export const Roll = ({ tunnellers }: Tunnellers) => {
+export const Roll = ({ tunnellers, filterByLetter }: Tunnellers) => {
 
     const setSurnameToUpperCase = (surname: string) => {
         return (surname.startsWith("Mc")) ? "Mc" + surname.slice(2).toUpperCase() : surname.toUpperCase();
@@ -31,16 +32,23 @@ export const Roll = ({ tunnellers }: Tunnellers) => {
         );
     });
 
-    const companyRoll = Object.entries(tunnellers).map(([key, listOfTunnellers]) => (
-        <div id={`letter-${key}`} key={key}>
-            <div className={STYLES['letter-container']}>
-                <h3 className={STYLES['letter-title']} key={key}>{key}</h3>
+    const tunnellersList = Object.entries(tunnellers);
+
+    const isFilteredByLetter = (letter: string) => {
+        return letter === '' ? tunnellersList : tunnellersList.filter((key) => key.includes(letter))
+    }
+
+    const companyRoll = isFilteredByLetter(filterByLetter)
+        .map(([key, listOfTunnellers]) => (
+            <div id={`letter-${key}`} key={key}>
+                <div className={STYLES['letter-container']}>
+                    <h3 className={STYLES['letter-title']} key={key}>{key}</h3>
+                </div>
+                <div className={STYLES['tunneller-group']}>
+                    {displayTunnellerInfo(listOfTunnellers)}
+                </div>
             </div>
-            <div className={STYLES['tunneller-group']}>
-                {displayTunnellerInfo(listOfTunnellers)}
-            </div>
-        </div>
-    ));
+        ));
 
     return(
         <div className={STYLES.roll}>
