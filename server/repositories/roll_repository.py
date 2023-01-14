@@ -15,22 +15,13 @@ def select_all(mysql: MySQL) -> dict[list[dict[Roll, Any]], Any]:
     alphabet: dict[list[dict[Roll, Any]], Any] = dict()
     for row in results:
         character = row["surname"][:1].upper()
+        tunneller = asdict(
+            Roll(row["id"], row["serial"], Name(row["forename"], row["surname"]))
+        )
         if character in alphabet:
-            alphabet[character].append(
-                asdict(
-                    Roll(
-                        row["id"], row["serial"], Name(row["forename"], row["surname"])
-                    )
-                )
-            )
+            alphabet[character].append(tunneller)
         else:
             alphabet[character] = list()
-            alphabet[character].append(
-                asdict(
-                    Roll(
-                        row["id"], row["serial"], Name(row["forename"], row["surname"])
-                    )
-                )
-            )
+            alphabet[character].append(tunneller)
 
     return alphabet
