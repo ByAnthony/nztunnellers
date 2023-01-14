@@ -1,32 +1,43 @@
 @use "src/index.scss";
 
 .roll {
-  @include index.page-setup;
+  @include index.component-setup;
 }
 
 .letter-container {
-  width: 150px;
+  width: 75px;
   border-radius: 5px;
-  background-color: rgb(173, 161, 120);
+  background-color: index.$contrast-color;
+
+  @include index.tablet {
+    width: 112px;
+  }
+
+  @include index.desktop {
+    width: 150px;
+  }
 }
 
 .letter-title {
-  padding-top: 15px;
-  font-size: 125px;
+  padding: 12px 0 5px 0;
+  font-size: 50px;
   font-stretch: 85%;
   font-weight: 700;
-  color: rgb(24, 26, 27);
+  color: index.$main-color;
   text-align: center;
 
-  /* Mobile
-  margin: 100px 0;
-  font-size: 125px;
-  font-stretch: 85%;
-  font-weight: 700;
-  */
+  @include index.tablet {
+    padding: 13px 0 3px 0;
+    font-size: 88px;
+  }
+
+  @include index.desktop {
+    padding: 10px 0 0 0;
+    font-size: 125px;
+  }
 }
 
-.tunneller-group {
+.tunnellers-container {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;

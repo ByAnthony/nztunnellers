@@ -44,7 +44,7 @@ export const Roll = ({ tunnellers, filterByLetter }: Tunnellers) => {
                 <div className={STYLES['letter-container']}>
                     <h3 className={STYLES['letter-title']} key={key}>{key}</h3>
                 </div>
-                <div className={STYLES['tunneller-group']}>
+                <div className={STYLES['tunnellers-container']}>
                     {displayTunnellerInfo(listOfTunnellers)}
                 </div>
             </div>

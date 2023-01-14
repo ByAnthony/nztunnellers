@@ -1,10 +1,10 @@
 @use "src/index.scss";
 
-.alphabet {
-  @include index.page-setup;
+.alphabet-container {
+  @include index.component-setup;
 }
 
-.letter-container {
+.alphabet {
   width: 100%;
   margin: 75px 0;
   display: grid;
@@ -23,7 +23,7 @@
   }
 }
 
-.letter {
+.alphabet-letter {
   padding: 10px 0 5px 0;
   font-family: index.$main-font;
   font-size: 16px;
