@@ -20,6 +20,7 @@ export const RollContainer = () => {
     return(
         <>
             <div className={STYLES['alphabet-container']}>
+                <h1>Company Roll</h1>
                 <div className={STYLES['alphabet']}>
                     {letters.map(letter => <button key={letter} className={STYLES['alphabet-letter']} onClick={() => setFilterByLetter(letter)}>{letter}</button>)}
                     <button key='All' className={STYLES['alphabet-letter']} onClick={() => setFilterByLetter('')}>All</button>

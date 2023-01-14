@@ -52,7 +52,9 @@
 .tunneller {
   flex: 100%;
   padding: 25px 25px 22px 25px;
+  font-stretch: 85%;
   color: index.$tertiary-color;
+  letter-spacing: 1px;
   text-align: left;
   border: 1px solid index.$secondary-color;
   border-radius: index.$border-radius;
@@ -76,9 +78,7 @@
 .surname {
   margin: 0;
   font-size: 30px;
-  font-stretch: 85%;
   font-weight: 700;
-  letter-spacing: 1px;
 
   @include index.tablet {
     font-size: 40px;
@@ -93,8 +93,6 @@
   margin: 0;
   font-size: 22px;
   font-weight: 300;
-  font-stretch: 85%;
-  letter-spacing: 1px;
 
   @include index.tablet {
     font-size: 28px;
@@ -108,7 +106,6 @@
 .serial {
   margin: 15px 0 0 0;
   font-size: 16px;
-  font-stretch: 85%;
   font-weight: 200;
   letter-spacing: 2px;
 
