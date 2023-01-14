@@ -1,0 +1,40 @@
+@font-face {
+  font-family: "Mona Sans";
+  src: url("./fonts/Mona-Sans.woff2") format("woff2 supports variations"),
+    url("./fonts/Mona-Sans.woff2") format("woff2-variations");
+  font-weight: 200 900;
+  font-stretch: 75% 125%;
+}
+
+$mobile: 32rem;
+
+$desktop: 64rem;
+
+@mixin tablet {
+  @media screen and (min-width: $mobile) and (max-width: $desktop) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media screen and (min-width: $desktop) {
+    @content;
+  }
+}
+
+@mixin page-setup {
+  margin: 0 auto;
+  width: 75%;
+}
+
+$main-font: "Mona Sans";
+
+$main-color: rgb(24, 26, 27);
+$contrast-color: rgb(173, 161, 120);
+
+body {
+  max-width: 100%;
+  font-family: $main-font;
+  color: $contrast-color;
+  background-color: $main-color;
+}

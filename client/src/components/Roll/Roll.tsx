@@ -1,4 +1,4 @@
-import STYLES from './Roll.module.css';
+import STYLES from './Roll.module.scss';
 
 type Tunnellers = {
     tunnellers: Record<string, Tunneller[]> | never[];

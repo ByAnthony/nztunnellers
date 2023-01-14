@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HomeContainer } from "../Home/HomeContainer";
 import { RollContainer } from "../Roll/RollContainer";
-import "./App.css";
+import "./App.scss";
 
 export const App = () => {
   return (
