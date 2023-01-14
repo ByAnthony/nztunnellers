@@ -29,7 +29,7 @@
   font-size: 16px;
   font-stretch: 85%;
   font-weight: 600;
-  color: index.$contrast-color;
+  color: index.$tertiary-color;
   text-align: center;
   text-decoration: none;
   background-color: transparent;
@@ -37,8 +37,8 @@
   cursor: pointer;
 
   &:hover {
-    color: index.$main-color;
-    background-color: index.$contrast-color;
+    color: index.$primary-color;
+    background-color: index.$tertiary-color;
     border-radius: 3px;
   }
 

@@ -5,9 +5,10 @@
 }
 
 .letter-container {
+  margin: 75px 0;
   width: 75px;
-  border-radius: 5px;
-  background-color: index.$contrast-color;
+  border-radius: index.$border-radius;
+  background-color: index.$tertiary-color;
 
   @include index.tablet {
     width: 112px;
@@ -23,7 +24,7 @@
   font-size: 50px;
   font-stretch: 85%;
   font-weight: 700;
-  color: index.$main-color;
+  color: index.$primary-color;
   text-align: center;
 
   @include index.tablet {
@@ -32,69 +33,92 @@
   }
 
   @include index.desktop {
-    padding: 10px 0 0 0;
+    padding: 16px 0 0 0;
     font-size: 125px;
   }
 }
 
 .tunnellers-container {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  width: 100%;
+  flex-direction: column;
+  gap: 50px;
+
+  @include index.desktop {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 .tunneller {
-  margin: 75px 0;
+  flex: 100%;
+  padding: 25px 25px 22px 25px;
+  color: index.$tertiary-color;
   text-align: left;
-  flex-basis: 50%;
+  border: 1px solid index.$secondary-color;
+  border-radius: index.$border-radius;
+  text-decoration: none;
+  transition: border-color 0.9s ease-in-out, border-color 0.9s ease-in-out;
+
+  @include index.tablet {
+    padding: 30px 30px 27px 30px;
+  }
+
+  @include index.desktop {
+    padding: 40px 40px 35px 40px;
+    flex: 50%;
+  }
+
+  &:hover {
+    border: 1px solid index.$tertiary-color;
+  }
 }
 
 .surname {
-  margin: 0;
-  font-size: 50px;
-  font-stretch: 85%;
-  font-weight: 700;
-  letter-spacing: 1px;
-
-  /* Mobile
   margin: 0;
   font-size: 30px;
   font-stretch: 85%;
   font-weight: 700;
   letter-spacing: 1px;
-  text-transform: uppercase;
-  */
+
+  @include index.tablet {
+    font-size: 40px;
+  }
+
+  @include index.desktop {
+    font-size: 50px;
+  }
 }
 
 .forename {
   margin: 0;
-  font-size: 35px;
+  font-size: 22px;
   font-weight: 300;
   font-stretch: 85%;
   letter-spacing: 1px;
 
-  /* Mobile
-  margin: 0;
-  font-size: 25px;
-  font-weight: 300;
-  font-stretch: 85%;
-  letter-spacing: 1px;
-  */
+  @include index.tablet {
+    font-size: 28px;
+  }
+
+  @include index.desktop {
+    font-size: 35px;
+  }
 }
 
 .serial {
-  margin-top: 25px;
-  font-size: 20px;
-  font-stretch: 85%;
-  font-weight: 200;
-  letter-spacing: 2px;
-
-  /* Mobile
-  margin-top: 15px;
+  margin: 15px 0 0 0;
   font-size: 16px;
   font-stretch: 85%;
   font-weight: 200;
   letter-spacing: 2px;
-  */
+
+  @include index.tablet {
+    margin-top: 20px;
+    font-size: 18px;
+  }
+
+  @include index.desktop {
+    margin-top: 25px;
+    font-size: 20px;
+  }
 }

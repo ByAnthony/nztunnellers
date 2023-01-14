@@ -29,12 +29,15 @@ $desktop: 64rem;
 
 $main-font: "Mona Sans";
 
-$main-color: rgb(24, 26, 27);
-$contrast-color: rgb(173, 161, 120);
+$primary-color: rgb(24, 26, 27);
+$secondary-color: rgb(44, 46, 47);
+$tertiary-color: rgb(173, 161, 120);
+
+$border-radius: 10px;
 
 body {
   max-width: 100%;
   font-family: $main-font;
-  color: $contrast-color;
-  background-color: $main-color;
+  color: $tertiary-color;
+  background-color: $primary-color;
 }

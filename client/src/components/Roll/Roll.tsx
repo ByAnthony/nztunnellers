@@ -24,11 +24,11 @@ export const Roll = ({ tunnellers, filterByLetter }: Tunnellers) => {
 
     const displayTunnellerInfo = (listOfTunnellers: Tunneller[]) => listOfTunnellers.map((tunneller) => {
         return (
-            <div className={STYLES.tunneller} key={tunneller.id}>
-                <h3 className={STYLES.surname}>{setSurnameToUpperCase(tunneller.name.surname)}</h3>
-                <h4 className={STYLES.forename}>{tunneller.name.forename}</h4>
+            <a href='./' className={STYLES.tunneller} key={tunneller.id}>
+                <p className={STYLES.surname}>{setSurnameToUpperCase(tunneller.name.surname)}</p>
+                <p className={STYLES.forename}>{tunneller.name.forename}</p>
                 <p className={STYLES.serial}>{tunneller.serial}</p>
-            </div>
+            </a>
         );
     });
 
@@ -42,7 +42,7 @@ export const Roll = ({ tunnellers, filterByLetter }: Tunnellers) => {
         .map(([key, listOfTunnellers]) => (
             <div id={`letter-${key}`} key={key}>
                 <div className={STYLES['letter-container']}>
-                    <h3 className={STYLES['letter-title']} key={key}>{key}</h3>
+                    <h2 className={STYLES['letter-title']} key={key}>{key}</h2>
                 </div>
                 <div className={STYLES['tunnellers-container']}>
                     {displayTunnellerInfo(listOfTunnellers)}
