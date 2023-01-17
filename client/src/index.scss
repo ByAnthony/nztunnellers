@@ -37,9 +37,18 @@ $border-radius: 10px;
 
 body {
   max-width: 100%;
+  margin: 75px 0;
   font-family: $main-font;
   color: $tertiary-color;
   background-color: $primary-color;
+
+  @include tablet {
+    margin: 100px 0;
+  }
+
+  @include desktop {
+    margin: 150px 0;
+  }
 }
 
 h1 {
