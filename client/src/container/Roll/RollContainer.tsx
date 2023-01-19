@@ -1,4 +1,4 @@
-import { useState, useEffect, SetStateAction } from 'react';
+import { useState, useEffect } from 'react';
 import { RollService } from '../../services/RollService';
 import { Roll } from '../../components/Roll/Roll';
 import STYLES from './RollContainer.module.scss';
