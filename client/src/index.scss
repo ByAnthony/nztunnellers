@@ -1,7 +1,7 @@
 @font-face {
-  font-family: "Mona Sans";
-  src: url("./fonts/Mona-Sans.woff2") format("woff2 supports variations"),
-    url("./fonts/Mona-Sans.woff2") format("woff2-variations");
+  font-family: 'Mona Sans';
+  src: url('./fonts/Mona-Sans.woff2') format('woff2 supports variations'),
+    url('./fonts/Mona-Sans.woff2') format('woff2-variations');
   font-weight: 200 900;
   font-stretch: 75% 125%;
 }
@@ -27,7 +27,7 @@ $desktop: 64rem;
   width: 75%;
 }
 
-$main-font: "Mona Sans";
+$main-font: 'Mona Sans';
 
 $primary-color: rgb(24, 26, 27);
 $secondary-color: rgb(44, 46, 47);
@@ -58,6 +58,7 @@ h1 {
   font-weight: 700;
   letter-spacing: -1px;
   line-height: 32px;
+  text-align: left;
   text-transform: uppercase;
 
   @include tablet {

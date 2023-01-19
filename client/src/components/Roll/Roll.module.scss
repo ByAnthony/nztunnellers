@@ -1,4 +1,4 @@
-@use "src/index.scss";
+@use 'src/index.scss';
 
 .roll {
   @include index.component-setup;
@@ -46,76 +46,5 @@
   @include index.desktop {
     display: grid;
     grid-template-columns: 1fr 1fr;
-  }
-}
-
-.tunneller {
-  flex: 100%;
-  padding: 25px 25px 22px 25px;
-  font-stretch: 85%;
-  color: index.$tertiary-color;
-  letter-spacing: 1px;
-  text-align: left;
-  border: 1px solid index.$secondary-color;
-  border-radius: index.$border-radius;
-  text-decoration: none;
-  transition: border-color 0.9s ease-in-out, border-color 0.9s ease-in-out;
-
-  @include index.tablet {
-    padding: 30px 30px 27px 30px;
-  }
-
-  @include index.desktop {
-    padding: 40px 40px 35px 40px;
-    flex: 50%;
-  }
-
-  &:hover {
-    border: 1px solid index.$tertiary-color;
-  }
-}
-
-.surname {
-  margin: 0;
-  font-size: 30px;
-  font-weight: 700;
-
-  @include index.tablet {
-    font-size: 40px;
-  }
-
-  @include index.desktop {
-    font-size: 50px;
-  }
-}
-
-.forename {
-  margin: 0;
-  font-size: 22px;
-  font-weight: 300;
-
-  @include index.tablet {
-    font-size: 28px;
-  }
-
-  @include index.desktop {
-    font-size: 35px;
-  }
-}
-
-.serial {
-  margin: 15px 0 0 0;
-  font-size: 16px;
-  font-weight: 200;
-  letter-spacing: 2px;
-
-  @include index.tablet {
-    margin-top: 20px;
-    font-size: 18px;
-  }
-
-  @include index.desktop {
-    margin-top: 25px;
-    font-size: 20px;
   }
 }

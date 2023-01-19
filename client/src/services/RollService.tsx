@@ -5,11 +5,11 @@ export const RollService = {
     getRollSortedByAlphabet(){
         return fetch(baseURL)
         .then(res => res.json());
-    }
+    },
 
-    // getTunneller(id){
-    //     return fetch(baseURL + id)
-    //     .then(res => res.json())
-    // }
+    getTunneller(id: number){
+        return fetch(baseURL + id)
+        .then(res => res.json())
+    }
 
 };
