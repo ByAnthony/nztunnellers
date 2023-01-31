@@ -11,5 +11,4 @@ export const RollService = {
         return fetch(baseURL + id)
         .then(res => res.json())
     }
-
 };

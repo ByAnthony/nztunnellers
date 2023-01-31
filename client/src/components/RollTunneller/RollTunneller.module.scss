@@ -4,12 +4,10 @@
   flex: 100%;
   padding: 25px 25px 22px 25px;
   font-stretch: 85%;
-  color: index.$tertiary-color;
   letter-spacing: 1px;
   text-align: left;
   border: 1px solid index.$secondary-color;
   border-radius: index.$border-radius;
-  text-decoration: none;
   transition: border-color 0.9s ease-in-out, border-color 0.9s ease-in-out;
   list-style: none;
   cursor: pointer;
@@ -28,6 +26,11 @@
   }
 }
 
+.tunneller a {
+  color: index.$tertiary-color;
+  text-decoration: none;
+}
+
 .surname {
   margin: 0;
   font-size: 30px;
@@ -38,7 +41,7 @@
   }
 
   @include index.desktop {
-    font-size: 50px;
+    font-size: 45px;
   }
 }
 
@@ -52,7 +55,7 @@
   }
 
   @include index.desktop {
-    font-size: 35px;
+    font-size: 30px;
   }
 }
 
@@ -69,6 +72,6 @@
 
   @include index.desktop {
     margin-top: 25px;
-    font-size: 20px;
+    font-size: 18px;
   }
 }

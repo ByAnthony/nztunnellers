@@ -5,10 +5,9 @@ import STYLES from './Roll.module.scss';
 type Tunnellers = {
     tunnellers: Record<string, Tunneller[]> | never[];
     filterByLetter: string;
-    onTunnellerSelected: (tunneller: Tunneller) => void;
 };
 
-export const Roll = ({ tunnellers, filterByLetter, onTunnellerSelected }: Tunnellers) => {
+export const Roll = ({ tunnellers, filterByLetter }: Tunnellers) => {
 
     const tunnellersList = Object.entries(tunnellers);
 
@@ -23,7 +22,7 @@ export const Roll = ({ tunnellers, filterByLetter, onTunnellerSelected }: Tunnel
                     <h2 className={STYLES['letter-title']} key={key}>{key}</h2>
                 </div>
                 <div className={STYLES['tunnellers-container']}>
-                    <RollTunneller listOfTunnellers={listOfTunnellers} onTunnellerSelected={onTunnellerSelected}/>
+                    <RollTunneller listOfTunnellers={listOfTunnellers} />
                 </div>
             </div>
         ));

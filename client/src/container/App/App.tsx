@@ -1,16 +1,18 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { HomeContainer } from "../Home/HomeContainer";
-import { RollContainer } from "../Roll/RollContainer";
-import "./App.scss";
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HomeContainer } from '../Home/HomeContainer';
+import { RollContainer } from '../Roll/RollContainer';
+import './App.scss';
+import { TunnellerProfile } from '../../components/TunnellerProfile/TunnellerProfile';
 
-export const App = () => {
+export function App() {
   return (
     <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<HomeContainer />}/>
-          <Route path="/roll" element={<RollContainer />}/>
-          {/* <Route component={ErrorPage}/> */}
-        </Routes>
+      <Routes>
+        <Route path="/" element={<HomeContainer />} />
+        <Route path="/roll" element={<RollContainer />} />
+        <Route path="/roll/:id" element={<TunnellerProfile />} />
+        {/* <Route component={ErrorPage}/> */}
+      </Routes>
     </BrowserRouter>
   );
-};
+}

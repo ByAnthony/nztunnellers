@@ -1,4 +1,4 @@
-@use "src/index.scss";
+@use 'src/index.scss';
 
 .alphabet-container {
   @include index.component-setup;
@@ -20,7 +20,7 @@
 
   @include index.desktop {
     margin: 100px 0;
-    grid-template-columns: repeat(auto-fill, 55px);
+    grid-template-columns: repeat(auto-fill, 50px);
     grid-gap: 30px;
   }
 }
@@ -49,6 +49,6 @@
   }
 
   @include index.desktop {
-    font-size: 36px;
+    font-size: 30px;
   }
 }
