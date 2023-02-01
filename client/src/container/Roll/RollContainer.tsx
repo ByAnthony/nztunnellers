@@ -1,18 +1,19 @@
-import { useState, useEffect } from 'react';
-import { RollService } from '../../services/RollService';
+import { useState } from 'react';
 import { Roll } from '../../components/Roll/Roll';
 import STYLES from './RollContainer.module.scss';
+import { useSelector } from 'react-redux';
 
 export const RollContainer = () => {
 
-    const [tunnellers, setAllTunnellers] = useState([]);
+    // const [tunnellers, setAllTunnellers] = useState([]);
     const [filterByLetter, setFilterByLetter] = useState('');
 
-    useEffect(() => {
-        RollService.getRollSortedByAlphabet()
-        .then(tunnellers => setAllTunnellers(tunnellers));
-    }, []);
+    // useEffect(() => {
+    //     RollService.getRollSortedByAlphabet()
+    //     .then(tunnellers => setAllTunnellers(tunnellers));
+    // }, []);
 
+    const tunnellers = useSelector((state: any) => state.roll.value)
     const letters = Object.keys(tunnellers);
 
     return(
