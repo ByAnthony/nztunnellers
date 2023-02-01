@@ -6,15 +6,15 @@ import { TunnellerProfile } from '../../components/TunnellerProfile/TunnellerPro
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { getRoll } from '../../redux/actions/getRoll';
+import { AppDispatch } from '../../redux/store';
 
 
 export function App() {
 
-  const dispatch = useDispatch();
+  const dispatch: AppDispatch = useDispatch()
 
   useEffect(() => {
-      getRoll().then((result) =>
-      dispatch({ type: "roll", payload: result }))
+      dispatch(getRoll())
   }, [dispatch]);
 
   return (
