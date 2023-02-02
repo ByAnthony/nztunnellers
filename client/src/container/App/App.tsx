@@ -3,26 +3,21 @@ import { HomeContainer } from '../Home/HomeContainer';
 import { RollContainer } from '../Roll/RollContainer';
 import './App.scss';
 import { TunnellerProfile } from '../../components/TunnellerProfile/TunnellerProfile';
-import { useDispatch } from 'react-redux';
-import { useEffect } from 'react';
-import { getRoll } from '../../redux/actions/getRoll';
-import { AppDispatch } from '../../redux/store';
-
 
 export function App() {
 
-  const dispatch: AppDispatch = useDispatch()
+  // const dispatch: AppDispatch = useDispatch()
 
-  useEffect(() => {
-      dispatch(getRoll())
-  }, [dispatch]);
+  // useEffect(() => {
+  //     dispatch(getRoll())
+  // }, [dispatch]);
 
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<HomeContainer />} />
         <Route path="/roll" element={<RollContainer />} />
-        <Route path="/roll/:id" element={<TunnellerProfile />} />
+        {/* <Route path="/roll/:id" element={<TunnellerProfile />} /> */}
         {/* <Route component={ErrorPage}/> */}
       </Routes>
     </BrowserRouter>

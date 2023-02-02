@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Roll } from '../../components/Roll/Roll';
 import STYLES from './RollContainer.module.scss';
-import { useSelector } from 'react-redux';
+import { useGetAllTunnellersQuery } from '../../redux/slices/rollSlice';
 
 export const RollContainer = () => {
 
@@ -13,8 +13,10 @@ export const RollContainer = () => {
     //     .then(tunnellers => setAllTunnellers(tunnellers));
     // }, []);
 
-    const tunnellers = useSelector((state: any) => state.roll.value)
-    const letters = Object.keys(tunnellers);
+    // const tunnellers = useSelector((state: RootState) => state.roll);
+    const tunnellers = useGetAllTunnellersQuery();
+    const ListTunnellers = tunnellers.data;
+    const letters = ListTunnellers === undefined ? [] : Object.keys(ListTunnellers);
 
     return(
         <>
@@ -25,7 +27,7 @@ export const RollContainer = () => {
                     <button key='All' className={STYLES['alphabet-letter']} onClick={() => setFilterByLetter('')}>All</button>
                 </div>
             </div>
-            <Roll tunnellers={tunnellers} filterByLetter={filterByLetter} />
+            {/* <Roll filterByLetter={filterByLetter} /> */}
         </>
     );
 
