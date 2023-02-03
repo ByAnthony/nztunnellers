@@ -5,18 +5,11 @@ import { useGetAllTunnellersQuery } from '../../redux/slices/rollSlice';
 
 export const RollContainer = () => {
 
-    // const [tunnellers, setAllTunnellers] = useState([]);
     const [filterByLetter, setFilterByLetter] = useState('');
 
-    // useEffect(() => {
-    //     RollService.getRollSortedByAlphabet()
-    //     .then(tunnellers => setAllTunnellers(tunnellers));
-    // }, []);
-
-    // const tunnellers = useSelector((state: RootState) => state.roll);
-    const tunnellers = useGetAllTunnellersQuery();
-    const ListTunnellers = tunnellers.data;
-    const letters = ListTunnellers === undefined ? [] : Object.keys(ListTunnellers);
+    const roll = useGetAllTunnellersQuery();
+    const tunnellers = roll.data === undefined ? [] : roll.data;
+    const letters = Object.keys(tunnellers);
 
     return(
         <>
@@ -27,8 +20,7 @@ export const RollContainer = () => {
                     <button key='All' className={STYLES['alphabet-letter']} onClick={() => setFilterByLetter('')}>All</button>
                 </div>
             </div>
-            {/* <Roll filterByLetter={filterByLetter} /> */}
+            <Roll tunnellers={tunnellers} filterByLetter={filterByLetter} />
         </>
     );
-
 };

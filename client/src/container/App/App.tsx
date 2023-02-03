@@ -6,12 +6,6 @@ import { TunnellerProfile } from '../../components/TunnellerProfile/TunnellerPro
 
 export function App() {
 
-  // const dispatch: AppDispatch = useDispatch()
-
-  // useEffect(() => {
-  //     dispatch(getRoll())
-  // }, [dispatch]);
-
   return (
     <BrowserRouter>
       <Routes>

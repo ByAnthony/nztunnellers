@@ -21,22 +21,3 @@ export const tunnellersApi = createApi({
 });
 
 export const { useGetAllTunnellersQuery, useGetTunnellersByIdQuery } = tunnellersApi;
-
-
-// const initialState: InitialState = {
-//   value: {},
-// };
-
-// export const rollSlice = createSlice({
-//   name: UpdateRollAction,
-//   initialState: initialState,
-//   reducers: {
-//     getRoll: (state, action: PayloadAction<Record<string, Array<Tunneller>>>) => {
-//       state.value = action.payload;
-//     },
-//   },
-// });
-
-// export const { getRoll } = rollSlice.actions;
-
-// export default rollSlice.reducer;
