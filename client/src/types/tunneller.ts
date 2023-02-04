@@ -1,33 +1,8 @@
-import { RollInfo } from "./roll";
-
-export type Tunneller = RollInfo & {
-    origins: Origins,
-    preWarYears: PreWayYears,
-    militaryYears: MilitaryYears,
-    postServiceYears: PostServiceYears,
-    sources: Sources,
-    image: Image | undefined,
-}
+import { RollInfo } from './roll';
 
 type Date = {
     year: string | undefined,
     dayMonth: string | undefined,
-}
-
-type Origins = {
-    birth: Birth,
-    parents: Parents,
-    inNzLength: string,
-}
-
-type Birth = {
-    date: Date,
-    country: string | undefined,
-}
-
-type Parents = {
-    mother: Parent | undefined,
-    father: Parent | undefined,
 }
 
 type Parent = {
@@ -35,13 +10,20 @@ type Parent = {
     origin: string | undefined,
 }
 
-type PreWayYears = {
-    armyExperience: ArmyExperience[] | [],
-    employment: Employment
-    residence: string | undefined;
-    maritalStatus: string | undefined,
-    wife: string | undefined,
-    religion: string | undefined,
+type Parents = {
+    mother: Parent | undefined,
+    father: Parent | undefined,
+}
+
+type Birth = {
+    date: Date,
+    country: string | undefined,
+}
+
+type Origins = {
+    birth: Birth,
+    parents: Parents,
+    inNzLength: string,
 }
 
 type ArmyExperience = {
@@ -56,12 +38,18 @@ type Employment = {
     employer: string | undefined,
 }
 
-type MilitaryYears = {
-    enlistment: Enlistment,
-    embarkationUnit: EmbarkationUnit,
-    transportUk: Transport,
-    endOfService: EndOfService,
-    medals: Medal[] | [],
+type PreWayYears = {
+    armyExperience: ArmyExperience[] | [],
+    employment: Employment
+    residence: string | undefined;
+    maritalStatus: string | undefined,
+    wife: string | undefined,
+    religion: string | undefined,
+}
+
+type Transferred = {
+    date: Date,
+    postedFrom: string,
 }
 
 type Enlistment = {
@@ -72,9 +60,10 @@ type Enlistment = {
     transferredToTunnellers: Transferred | undefined,
 }
 
-type Transferred = {
+type Training = {
     date: Date,
-    postedFrom: string,
+    location: string,
+    locationType: string,
 }
 
 type EmbarkationUnit = {
@@ -84,12 +73,6 @@ type EmbarkationUnit = {
     attachedCorps: string | undefined,
 }
 
-type Training = {
-    date: Date,
-    location: string,
-    locationType: string,
-}
-
 type Transport = {
     reference: string | undefined,
     vessel: string,
@@ -97,21 +80,6 @@ type Transport = {
     departurePort: string | undefined,
     arrivalDate: Date | undefined,
     arrivalPort: string | undefined,
-}
-
-type EndOfService = {
-    deserter: boolean,
-    transferred: Transferred | undefined,
-    deathWar: Death | undefined,
-    transportNz: Transport | undefined,
-    demobilization: Demobilization | undefined,
-}
-
-type Death = {
-    date: Date,
-    place: DeathPlace | undefined,
-    cause: DeathCause | undefined,
-    cemetery: Cemetery | undefined,
 }
 
 type DeathPlace = {
@@ -132,9 +100,24 @@ type Cemetery = {
     graveReference: string,
 }
 
+type Death = {
+    date: Date,
+    place: DeathPlace | undefined,
+    cause: DeathCause | undefined,
+    cemetery: Cemetery | undefined,
+}
+
 type Demobilization = {
     date: Date,
     country: string | undefined,
+}
+
+type EndOfService = {
+    deserter: boolean,
+    transferred: Transferred | undefined,
+    deathWar: Death | undefined,
+    transportNz: Transport | undefined,
+    demobilization: Demobilization | undefined,
 }
 
 type Medal = {
@@ -143,24 +126,31 @@ type Medal = {
     citation: string | undefined,
 }
 
-type PostServiceYears = {
-    death: PostWarDeath,
+type MilitaryYears = {
+    enlistment: Enlistment,
+    embarkationUnit: EmbarkationUnit,
+    transportUk: Transport,
+    endOfService: EndOfService,
+    medals: Medal[] | [],
 }
 
 type PostWarDeath = Death & {
     deathWarInjury: boolean,
 }
 
-type Sources = {
-    nzArchives: NzArchives[],
-    awwmCenotaph: string,
-    nominalRoll: NominalRoll,
-    londonGazette: LondonGazette[] | [],
+type PostServiceYears = {
+    death: PostWarDeath,
 }
 
 type NzArchives = {
     reference: string,
     url: string,
+}
+
+type Book = {
+    title: string,
+    town: string,
+    publisher: string,
 }
 
 type NominalRoll = Book & {
@@ -175,17 +165,11 @@ type LondonGazette = {
     date: string,
 }
 
-type Image = {
-    url: string,
-    source: ImageSource,
-}
-
-type ImageSource = {
-    aucklandLibraries: string | undefined,
-    archives: ImageArchives | undefined,
-    family: string | undefined,
-    newspaper: ImageNewspaper | undefined,
-    book: ImageBook | undefined,
+type Sources = {
+    nzArchives: NzArchives[],
+    awwmCenotaph: string,
+    nominalRoll: NominalRoll,
+    londonGazette: LondonGazette[] | [],
 }
 
 type ImageArchives = {
@@ -198,19 +182,35 @@ type ImageNewspaper = {
     date: string,
 }
 
+type ImageBookAuthor = {
+    forename: string,
+    surname: string,
+}
+
 type ImageBook = Book & {
     authors: ImageBookAuthor[],
     year: string,
     page: string | undefined,
 }
 
-type ImageBookAuthor = {
-    forename: string,
-    surname: string,
+type ImageSource = {
+    aucklandLibraries: string | undefined,
+    archives: ImageArchives | undefined,
+    family: string | undefined,
+    newspaper: ImageNewspaper | undefined,
+    book: ImageBook | undefined,
 }
 
-type Book = {
-    title: string,
-    town: string,
-    publisher: string,
+type Image = {
+    url: string,
+    source: ImageSource,
+}
+
+export type Tunneller = RollInfo & {
+    origins: Origins,
+    preWarYears: PreWayYears,
+    militaryYears: MilitaryYears,
+    postServiceYears: PostServiceYears,
+    sources: Sources,
+    image: Image | undefined,
 }

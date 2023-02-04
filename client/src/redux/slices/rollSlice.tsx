@@ -1,6 +1,6 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { RollInfo } from "../../types/roll";
-import { Tunneller } from "../../types/tunneller";
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { RollInfo } from '../../types/roll';
+import { Tunneller } from '../../types/tunneller';
 
 export const tunnellersApi = createApi({
   reducerPath: 'tunnellersApi',
@@ -15,8 +15,8 @@ export const tunnellersApi = createApi({
     }),
     getTunnellerById: builder.query<Tunneller, number>({
       query: (id: number) => `roll/${id}`,
-      })
-    })
-  });
+    }),
+  }),
+});
 
 export const { useGetAllTunnellersQuery, useGetTunnellerByIdQuery } = tunnellersApi;
