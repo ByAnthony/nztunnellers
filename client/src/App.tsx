@@ -1,8 +1,8 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { HomeContainer } from '../Home/HomeContainer';
-import { RollContainer } from '../Roll/RollContainer';
 import './App.scss';
-import { TunnellerProfile } from '../../components/TunnellerProfile/TunnellerProfile';
+import { HomeContainer } from './containers/Home/HomeContainer';
+import { RollContainer } from './containers/Roll/RollContainer';
+import { ProfileContainer } from './containers/Profile/ProfileContainer';
 
 export function App() {
 
@@ -11,7 +11,7 @@ export function App() {
       <Routes>
         <Route path="/" element={<HomeContainer />} />
         <Route path="/roll" element={<RollContainer />} />
-        {/* <Route path="/roll/:id" element={<TunnellerProfile />} /> */}
+        <Route path="/roll/:id" element={<ProfileContainer />} />
         {/* <Route component={ErrorPage}/> */}
       </Routes>
     </BrowserRouter>

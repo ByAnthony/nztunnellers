@@ -12,12 +12,10 @@ export const tunnellersApi = createApi({
         url: 'roll/',
       }),
     }),
-    getTunnellersById: builder.query<Tunneller, void>({
-      query: (id) => ({
-        url: `roll/${id}`,
+    getTunnellerById: builder.query<Tunneller, number>({
+      query: id => `roll/${id}`,
       })
     })
-  })
-});
+  });
 
-export const { useGetAllTunnellersQuery, useGetTunnellersByIdQuery } = tunnellersApi;
+export const { useGetAllTunnellersQuery, useGetTunnellerByIdQuery } = tunnellersApi;

@@ -8,7 +8,7 @@ export const RollContainer = () => {
     const [filterByLetter, setFilterByLetter] = useState('');
 
     const roll = useGetAllTunnellersQuery();
-    const tunnellers = roll.data === undefined ? [] : roll.data;
+    const tunnellers = (roll.data === undefined ? [] : roll.data);
     const letters = Object.keys(tunnellers);
 
     return(
