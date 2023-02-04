@@ -1,5 +1,5 @@
-import { useParams } from "react-router-dom";
 import { useGetTunnellerByIdQuery } from "../../redux/slices/rollSlice";
+import { useParams } from "react-router-dom";
 
 export const ProfileContainer = () => {
 

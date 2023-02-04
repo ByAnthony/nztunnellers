@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
-import { Tunneller } from '../../types';
 import STYLES from './RollTunneller.module.scss';
+import { Tunneller } from '../../types';
 
 type listOfTunnellers = {
     listOfTunnellers: Tunneller[];

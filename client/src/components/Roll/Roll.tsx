@@ -1,6 +1,6 @@
-import { Tunneller } from '../../types';
 import { RollTunneller } from '../RollTunneller/RollTunneller';
 import STYLES from './Roll.module.scss';
+import { Tunneller } from '../../types';
 
 type Tunnellers = {
     tunnellers: Record<string, Tunneller[]> | never[];
