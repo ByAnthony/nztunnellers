@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { Tunneller } from "../../types";
+import { RollInfo } from "../../types/roll";
+import { Tunneller } from "../../types/tunneller";
 
 export const tunnellersApi = createApi({
   reducerPath: 'tunnellersApi',
@@ -7,13 +8,13 @@ export const tunnellersApi = createApi({
     baseUrl: 'http://localhost:5000/',
   }),
   endpoints: (builder) => ({
-    getAllTunnellers: builder.query<Record<string, Array<Tunneller>>, void>({
+    getAllTunnellers: builder.query<Record<string, Array<RollInfo>>, void>({
       query: () => ({
         url: 'roll/',
       }),
     }),
     getTunnellerById: builder.query<Tunneller, number>({
-      query: id => `roll/${id}`,
+      query: (id: number) => `roll/${id}`,
       })
     })
   });

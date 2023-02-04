@@ -1,13 +1,13 @@
+import { RollInfo } from '../../types/roll';
 import { RollTunneller } from '../RollTunneller/RollTunneller';
 import STYLES from './Roll.module.scss';
-import { Tunneller } from '../../types';
 
-type Tunnellers = {
-    tunnellers: Record<string, Tunneller[]> | never[];
+type RollWithFilter = {
+    tunnellers: Record<string, RollInfo[]> | never[];
     filterByLetter: string;
 };
 
-export const Roll = ({ tunnellers, filterByLetter }: Tunnellers) => {
+export const Roll = ({ tunnellers, filterByLetter }: RollWithFilter) => {
 
     const tunnellersList = Object.entries(tunnellers);
 

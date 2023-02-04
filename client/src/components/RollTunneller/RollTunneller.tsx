@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
+import { RollInfo } from '../../types/roll';
 import STYLES from './RollTunneller.module.scss';
-import { Tunneller } from '../../types';
 
 type listOfTunnellers = {
-    listOfTunnellers: Tunneller[];
+    listOfTunnellers: RollInfo[];
 }
 
 export const RollTunneller = ({ listOfTunnellers }: listOfTunnellers) => {

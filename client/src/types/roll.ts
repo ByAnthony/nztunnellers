@@ -1,10 +1,10 @@
-export type Tunneller = {
+export type RollInfo = {
     id: number;
     serial: string;
     name: Name;
 };
 
-export type Name = {
+type Name = {
     forename: string;
     surname: string;
 };
