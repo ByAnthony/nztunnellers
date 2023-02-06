@@ -28,7 +28,7 @@
 .alphabet-letter {
   padding: 10px 0 5px 0;
   font-family: index.$main-font;
-  font-size: 16px;
+  font-size: 1rem;
   font-stretch: 85%;
   font-weight: 600;
   color: index.$tertiary-color;
@@ -45,10 +45,10 @@
   }
 
   @include index.tablet {
-    font-size: 26px;
+    font-size: 1.625rem;
   }
 
   @include index.desktop {
-    font-size: 30px;
+    font-size: 1.875rem;
   }
 }

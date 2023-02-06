@@ -22,7 +22,7 @@
 
 .letter-title {
   padding: 12px 0 5px 0;
-  font-size: 50px;
+  font-size: 3.125rem;
   font-stretch: 85%;
   font-weight: 700;
   color: index.$primary-color;
@@ -30,12 +30,12 @@
 
   @include index.tablet {
     padding: 13px 0 3px 0;
-    font-size: 88px;
+    font-size: 5.5rem;
   }
 
   @include index.desktop {
     padding: 16px 0 6px 0;
-    font-size: 100px;
+    font-size: 6.25rem;
   }
 }
 
