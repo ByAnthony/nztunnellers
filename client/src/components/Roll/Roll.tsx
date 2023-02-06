@@ -7,7 +7,7 @@ type RollWithFilter = {
     filterByLetter: string;
 };
 
-export const Roll = ({ tunnellers, filterByLetter }: RollWithFilter) => {
+export function Roll({ tunnellers, filterByLetter }: RollWithFilter) {
   const tunnellersList = Object.entries(tunnellers);
 
   const isFilteredByLetter = (letter: string) => (letter === '' ? tunnellersList : tunnellersList.filter((key) => key.includes(letter)));
@@ -26,7 +26,7 @@ export const Roll = ({ tunnellers, filterByLetter }: RollWithFilter) => {
 
   return (
     <div className={STYLES.roll}>
-      {companyRoll}
+      { companyRoll }
     </div>
   );
-};
+}
