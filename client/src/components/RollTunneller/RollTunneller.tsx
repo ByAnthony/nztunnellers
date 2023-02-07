@@ -1,15 +1,15 @@
 import { Link } from 'react-router-dom';
-import { RollInfo } from '../../types/roll';
+import { Details } from '../../types/roll';
 import STYLES from './RollTunneller.module.scss';
 
 type Roll = {
-    listOfTunnellers: RollInfo[];
+    listOfTunnellers: Details[];
 }
 
 export function RollTunneller({ listOfTunnellers }: Roll) {
   return (
     <>
-      {listOfTunnellers.map((tunneller) => (
+      {listOfTunnellers.map((tunneller: Details) => (
         <li className={STYLES.tunneller} key={tunneller.id}>
           <Link to={`/roll/${tunneller.id}`}>
             <p className={STYLES.surname}>{tunneller.name.surname}</p>

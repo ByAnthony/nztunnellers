@@ -1,9 +1,9 @@
-import { RollInfo } from '../../types/roll';
+import { Details } from '../../types/roll';
 import { RollTunneller } from '../RollTunneller/RollTunneller';
 import STYLES from './Roll.module.scss';
 
 type RollWithFilter = {
-    tunnellers: Record<string, RollInfo[]> | never[];
+    tunnellers: Record<string, Details[]> | never[];
     filterByLetter: string;
 };
 

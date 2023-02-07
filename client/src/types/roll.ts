@@ -3,7 +3,7 @@ type Name = {
     surname: string;
 }
 
-export type RollInfo = {
+export type Details = {
     id: number;
     serial: string;
     name: Name;
