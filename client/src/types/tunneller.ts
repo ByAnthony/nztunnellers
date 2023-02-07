@@ -1,4 +1,4 @@
-import { RollInfo } from './roll';
+import { Details } from './roll';
 
 type Date = {
     year: string | undefined,
@@ -206,7 +206,7 @@ type Image = {
     source: ImageSource,
 }
 
-export type Tunneller = RollInfo & {
+export type Profile = Details & {
     origins: Origins,
     preWarYears: PreWayYears,
     militaryYears: MilitaryYears,
