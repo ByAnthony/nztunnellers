@@ -10,13 +10,13 @@ export function RollDetails({ listOfTunnellers }: Roll) {
   return (
     <>
       {listOfTunnellers.map((tunneller: Details) => (
-        <li className={STYLES.tunneller} key={tunneller.id}>
-          <Link to={`/roll/${tunneller.id}`}>
+        <Link to={`/roll/${tunneller.id}`} key={tunneller.id}>
+          <div className={STYLES.tunneller}>
             <p className={STYLES.surname}>{tunneller.name.surname}</p>
             <p className={STYLES.forename}>{tunneller.name.forename}</p>
             <p className={STYLES.serial}>{tunneller.serial}</p>
-          </Link>
-        </li>
+          </div>
+        </Link>
       ))}
     </>
   );

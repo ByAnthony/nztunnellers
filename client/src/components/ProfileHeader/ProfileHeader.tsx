@@ -9,8 +9,10 @@ type Props = {
 export function ProfileHeader({ serial, name }: Props) {
   return (
     <div className={STYLES.header}>
-      <p className={STYLES.surname}>{ name?.surname }</p>
-      <p className={STYLES.forename}>{ name?.forename }</p>
+      <h1>
+        <span className={STYLES.surname}>{ name?.surname }</span>
+        <span className={STYLES.forename}>{ name?.forename }</span>
+      </h1>
       <p className={STYLES.serial}>{ serial }</p>
     </div>
   );

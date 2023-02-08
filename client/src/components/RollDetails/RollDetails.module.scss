@@ -1,5 +1,10 @@
 @use 'src/index.scss';
 
+a {
+  color: index.$tertiary-color;
+  text-decoration: none;
+}
+
 .tunneller {
   flex: 100%;
   padding: 25px 25px 22px 25px;
@@ -24,11 +29,6 @@
   &:hover {
     border: 1px solid index.$tertiary-color;
   }
-}
-
-.tunneller a {
-  color: index.$tertiary-color;
-  text-decoration: none;
 }
 
 .surname {
