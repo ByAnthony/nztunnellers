@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from dacite import from_dict
+from ..models.helpers.name_helpers import set_surname_to_uppercase
 from ..models.helpers.post_service_years_helpers import get_death
 from ..models.helpers.translator_helpers import translate_town
 from ..db.run_sql import run_sql
@@ -266,7 +267,7 @@ def show(id: int, lang: str, mysql: MySQL) -> Tunneller:
             "serial": tunneller_result["serial"],
             "name": {
                 "forename": tunneller_result["forename"],
-                "surname": tunneller_result["surname"],
+                "surname": set_surname_to_uppercase(tunneller_result["surname"]),
             },
             "origins": {
                 "birth": {

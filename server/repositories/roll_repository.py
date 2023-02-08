@@ -2,6 +2,8 @@
 from dataclasses import asdict
 from typing import Any
 
+from ..models.helpers.name_helpers import set_surname_to_uppercase
+
 from ..db.run_sql import run_sql
 from flask_mysqldb import MySQL
 from ..models.roll import Name, Roll
@@ -11,11 +13,6 @@ def select_all(mysql: MySQL) -> dict[list[dict[Roll, Any]], Any]:
 
     sql: str = "SELECT t.id, t.surname, t.forename, t.serial FROM tunneller t ORDER BY t.surname, t.forename"
     results: list[Roll] = run_sql(sql, mysql, None)
-
-    def set_surname_to_uppercase(surname: str):
-        if surname.startswith("Mc"):
-            return "Mc" + surname[2:].upper()
-        return surname.upper()
 
     alphabet: dict[list[dict[Roll, Any]], Any] = dict()
 
