@@ -1,12 +1,12 @@
 import { Link } from 'react-router-dom';
 import { Details } from '../../types/roll';
-import STYLES from './RollTunneller.module.scss';
+import STYLES from './RollDetails.module.scss';
 
 type Roll = {
     listOfTunnellers: Details[];
 }
 
-export function RollTunneller({ listOfTunnellers }: Roll) {
+export function RollDetails({ listOfTunnellers }: Roll) {
   return (
     <>
       {listOfTunnellers.map((tunneller: Details) => (

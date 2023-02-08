@@ -1,5 +1,5 @@
 import { Details } from '../../types/roll';
-import { RollTunneller } from '../RollTunneller/RollTunneller';
+import { RollDetails } from '../RollDetails/RollDetails';
 import STYLES from './Roll.module.scss';
 
 type RollWithFilter = {
@@ -19,7 +19,7 @@ export function Roll({ tunnellers, filterByLetter }: RollWithFilter) {
           <h2 className={STYLES['letter-title']} key={key}>{key}</h2>
         </div>
         <div className={STYLES['tunnellers-container']}>
-          <RollTunneller listOfTunnellers={listOfTunnellers} />
+          <RollDetails listOfTunnellers={listOfTunnellers} />
         </div>
       </div>
     ));

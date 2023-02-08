@@ -1,4 +1,4 @@
-type Name = {
+export type Name = {
     forename: string;
     surname: string;
 }
