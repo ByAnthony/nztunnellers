@@ -5,11 +5,23 @@ import STYLES from './ProfileContainer.module.scss';
 
 export function ProfileContainer() {
   const { id } = useParams();
-  const { data } = useGetTunnellerByIdQuery(Number(id!));
+  const { data, isLoading, isSuccess } = useGetTunnellerByIdQuery(Number(id!));
 
-  return (
-    <div className={STYLES['profile-container']}>
-      <ProfileHeader serial={data?.serial} name={data?.name} />
-    </div>
-  );
+  if (data) {
+    return (
+      <>
+        { isLoading }
+        { isSuccess && (
+        <div className={STYLES['profile-container']}>
+          <ProfileHeader
+            serial={data.serial}
+            name={data.name}
+            birth={data.origins.birth.date.year}
+          />
+        </div>
+        )}
+      </>
+    );
+  }
+  return null;
 }

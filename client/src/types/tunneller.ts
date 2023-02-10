@@ -1,6 +1,6 @@
 import { Details } from './roll';
 
-type Date = {
+export type Date = {
     year: string | undefined,
     dayMonth: string | undefined,
 }
