@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import json
 import os
+import humps
 
 from flask_cors import CORS
 from .repositories import roll_repository
@@ -44,7 +45,9 @@ def tunneller(id: int):
         return "Language not supported", 400
     tunneller = tunneller_repository.show(id, lang, mysql)
     profile = json.dumps(tunneller, cls=JSONEncoder, indent=4)
-    return profile
+    camelized_profile: str = humps.camelize(profile)
+
+    return camelized_profile
 
 
 if __name__ == "__main__":

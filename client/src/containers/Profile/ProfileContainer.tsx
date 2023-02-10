@@ -17,6 +17,7 @@ export function ProfileContainer() {
             serial={data.serial}
             name={data.name}
             birth={data.origins.birth.date.year}
+            death={data.postServiceYears.death.date.year}
           />
         </div>
         )}

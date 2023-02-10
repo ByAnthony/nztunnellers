@@ -288,7 +288,7 @@ def show(id: int, lang: str, mysql: MySQL) -> Tunneller:
                         tunneller_result["father_origin"],
                     ),
                 },
-                "in_nz_length": get_nz_resident(
+                "inNzLength": get_nz_resident(
                     tunneller_result["nz_resident_in_month"], lang
                 ),
             },
