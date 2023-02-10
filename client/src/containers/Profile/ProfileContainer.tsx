@@ -6,6 +6,13 @@ import STYLES from './ProfileContainer.module.scss';
 export function ProfileContainer() {
   const { id } = useParams();
   const { data, isLoading, isSuccess } = useGetTunnellerByIdQuery(Number(id!));
+  function getSafe(fn: Function, defaultVal: unknown) {
+    try {
+      return fn();
+    } catch (e) {
+      return defaultVal;
+    }
+  }
 
   if (data) {
     return (
@@ -17,7 +24,7 @@ export function ProfileContainer() {
             serial={data.serial}
             name={data.name}
             birth={data.origins.birth.date.year}
-            death={data.postServiceYears.death.date.year}
+            death={getSafe(() => data.postServiceYears.death.date.year, null)}
           />
         </div>
         )}

@@ -5,7 +5,7 @@ type Props = {
     serial: string;
     name: Name;
     birth: string | undefined;
-    death: string | undefined;
+    death: string | null;
 }
 
 export function ProfileHeader({
