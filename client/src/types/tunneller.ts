@@ -1,4 +1,4 @@
-import { Details } from './roll';
+import { Name } from './roll';
 
 export type Date = {
     year: string | undefined,
@@ -206,7 +206,16 @@ type Image = {
     source: ImageSource,
 }
 
-export type Profile = Details & {
+export type Summary = {
+    serial: string,
+    name: Name,
+    birth: Date,
+    death: Date,
+}
+
+export type Profile = {
+    id: number,
+    summary: Summary,
     origins: Origins,
     preWarYears: PreWayYears,
     militaryYears: MilitaryYears,

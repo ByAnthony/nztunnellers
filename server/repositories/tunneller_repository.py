@@ -264,10 +264,22 @@ def show(id: int, lang: str, mysql: MySQL) -> Tunneller:
 
         data = {
             "id": tunneller_result["id"],
-            "serial": tunneller_result["serial"],
-            "name": {
-                "forename": tunneller_result["forename"],
-                "surname": set_surname_to_uppercase(tunneller_result["surname"]),
+            "summary": {
+                "serial": tunneller_result["serial"],
+                "name": {
+                    "forename": tunneller_result["forename"],
+                    "surname": set_surname_to_uppercase(tunneller_result["surname"]),
+                },
+                "birth": get_birth_date(
+                    tunneller_result["birth_year"],
+                    tunneller_result["birth_date"],
+                    lang,
+                ),
+                "death": get_birth_date(
+                    tunneller_result["death_year"],
+                    tunneller_result["death_date"],
+                    lang,
+                ),
             },
             "origins": {
                 "birth": {
