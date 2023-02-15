@@ -5,11 +5,18 @@ import STYLES from './ProfileContainer.module.scss';
 
 export function ProfileContainer() {
   const { id } = useParams();
-  const { data, isLoading, isSuccess } = useGetTunnellerByIdQuery(Number(id!));
+  const {
+    data, error, isLoading, isSuccess,
+  } = useGetTunnellerByIdQuery(Number(id!));
 
   if (data) {
     return (
       <>
+        {error && (
+        <div className={STYLES['profile-container']}>
+          <p>An error occured</p>
+        </div>
+        )}
         { isLoading }
         { isSuccess && (
         <div className={STYLES['profile-container']}>

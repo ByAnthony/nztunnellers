@@ -6,12 +6,19 @@ import { useGetAllTunnellersQuery } from '../../redux/slices/rollSlice';
 export function RollContainer() {
   const [filterByLetter, setFilterByLetter] = useState('');
 
-  const { data, isLoading, isSuccess } = useGetAllTunnellersQuery();
+  const {
+    data, error, isLoading, isSuccess,
+  } = useGetAllTunnellersQuery();
 
   if (data) {
     const letters = Object.keys(data);
     return (
       <>
+        {error && (
+          <div className={STYLES['alphabet-container']}>
+            <p>An error occured</p>
+          </div>
+        )}
         { isLoading }
         { isSuccess && (
         <>
