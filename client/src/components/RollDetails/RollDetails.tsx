@@ -7,6 +7,7 @@ type Roll = {
 }
 
 export function RollDetails({ listOfTunnellers }: Roll) {
+  const displayBirthDeathDates = (birth: string | undefined, death: string | undefined) => (death ? `${birth}-${death}` : `${birth}-†?`);
   return (
     <>
       {listOfTunnellers.map((tunneller: Details) => (
@@ -14,7 +15,11 @@ export function RollDetails({ listOfTunnellers }: Roll) {
           <div className={STYLES.tunneller}>
             <p className={STYLES.surname}>{tunneller.name.surname}</p>
             <p className={STYLES.forename}>{tunneller.name.forename}</p>
-            <p className={STYLES.serial}>{tunneller.serial}</p>
+            <p className={STYLES.dates}>
+              {
+                displayBirthDeathDates(tunneller.birth, tunneller.death)
+              }
+            </p>
           </div>
         </Link>
       ))}

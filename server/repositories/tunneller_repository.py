@@ -6,6 +6,7 @@ from ..models.helpers.translator_helpers import translate_town
 from ..db.run_sql import run_sql
 from flask_mysqldb import MySQL
 from ..models.helpers.date_helpers import (
+    format_date_to_birth_year,
     format_date_to_day_month_and_year,
     get_birth_date,
     get_date,
@@ -270,15 +271,13 @@ def show(id: int, lang: str, mysql: MySQL) -> Tunneller:
                     "forename": tunneller_result["forename"],
                     "surname": set_surname_to_uppercase(tunneller_result["surname"]),
                 },
-                "birth": get_birth_date(
+                "birth": format_date_to_birth_year(
                     tunneller_result["birth_year"],
                     tunneller_result["birth_date"],
-                    lang,
                 ),
-                "death": get_birth_date(
+                "death": format_date_to_birth_year(
                     tunneller_result["death_year"],
                     tunneller_result["death_date"],
-                    lang,
                 ),
             },
             "origins": {

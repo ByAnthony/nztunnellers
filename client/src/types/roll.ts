@@ -5,6 +5,7 @@ export type Name = {
 
 export type Details = {
     id: number;
-    serial: string;
     name: Name;
+    birth: string | undefined;
+    death: string | undefined;
 }
