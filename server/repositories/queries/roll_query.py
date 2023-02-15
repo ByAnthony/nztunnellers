@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-def roll_query():
+def roll_query() -> str:
     return """SELECT
         t.id
         , t.surname
@@ -9,4 +9,5 @@ def roll_query():
         , t.birth_year
         , DATE_FORMAT(t.death_date, '%Y-%m-%d') AS death_date
         , t.death_year
+
         FROM tunneller t ORDER BY t.surname, t.forename"""
