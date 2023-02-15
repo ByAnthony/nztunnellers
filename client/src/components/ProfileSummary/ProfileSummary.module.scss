@@ -35,19 +35,19 @@
   }
 }
 
-.serial {
+.dates {
   margin: 15px 0 0 0;
-  font-size: 1.125rem;
-  font-weight: 200;
+  font-size: 1.5rem;
+  font-weight: 300;
   letter-spacing: 2px;
 
   @include index.tablet {
     margin-top: 20px;
-    font-size: 1.25rem;
+    font-size: 1.625rem;
   }
 
   @include index.desktop {
     margin-top: 25px;
-    font-size: 1.375rem;
+    font-size: 1.75rem;
   }
 }

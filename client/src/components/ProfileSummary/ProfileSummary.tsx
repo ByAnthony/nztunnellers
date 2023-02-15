@@ -12,15 +12,10 @@ export function ProfileSummary({ summary }: Props) {
         <span className={STYLES.surname}>{ summary.name.surname }</span>
         <span className={STYLES.forename}>{ summary.name.forename }</span>
       </h1>
-      <p className={STYLES.serial}>{ summary.serial }</p>
-      <p className={STYLES.serial}>
-        Born:
-        {' '}
+      {/* <p className={STYLES.serial}>{ summary.serial }</p> */}
+      <p className={STYLES.dates}>
         { summary.birth.year }
-      </p>
-      <p className={STYLES.serial}>
-        Died:
-        {' '}
+        {' - '}
         { summary.death.year }
       </p>
     </div>
