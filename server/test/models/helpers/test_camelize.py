@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
-import re
+from ....models.helpers.camelize import underscore_to_camel
 
 
-under_pat = re.compile(r"_([a-z])")
-
-
-def underscore_to_camel(name: str):
-    return under_pat.sub(lambda x: x.group(1).upper(), name)
+class TestUnderscoreToCamel:
+    def test_underscore_to_camel(self):
+        assert (
+            underscore_to_camel("{ pre_war_origin: { embarkation_unit: Main Body } }")
+            == "{ preWarOrigin: { embarkationUnit: Main Body } }"
+        )
