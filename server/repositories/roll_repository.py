@@ -35,7 +35,6 @@ def select_all(mysql: MySQL) -> dict[list[dict[Roll, Any]], Any]:
                 ),
             )
         )
-        print(row["birth_year"])
         if character in alphabet:
             alphabet[character].append(tunneller)
         else:

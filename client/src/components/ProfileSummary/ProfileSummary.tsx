@@ -6,17 +6,15 @@ type Props = {
 }
 
 export function ProfileSummary({ summary }: Props) {
+  const displayBirthDeathDates = (birth: string | undefined, death: string | undefined) => (death ? `${birth}-${death}` : `${birth}-†?`);
   return (
     <div className={STYLES.header}>
       <h1>
         <span className={STYLES.surname}>{ summary.name.surname }</span>
         <span className={STYLES.forename}>{ summary.name.forename }</span>
       </h1>
-      {/* <p className={STYLES.serial}>{ summary.serial }</p> */}
       <p className={STYLES.dates}>
-        { summary.birth.year }
-        {' - '}
-        { summary.death.year }
+        { displayBirthDeathDates(summary.birth, summary.death) }
       </p>
     </div>
   );

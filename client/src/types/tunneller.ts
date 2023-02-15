@@ -53,6 +53,7 @@ type Transferred = {
 }
 
 type Enlistment = {
+    serial: string,
     rank: string,
     date: Date,
     district: string | undefined,
@@ -209,8 +210,8 @@ type Image = {
 export type Summary = {
     serial: string,
     name: Name,
-    birth: Date,
-    death: Date,
+    birth: string | undefined,
+    death: string | undefined,
 }
 
 export type Profile = {

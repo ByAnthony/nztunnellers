@@ -87,7 +87,7 @@ def show(id: int, lang: str, mysql: MySQL) -> Tunneller:
         t.aka,
         t.serial,
         DATE_FORMAT(t.birth_date, '%%Y-%%m-%%d') AS birth_date,
-        DATE_FORMAT(t.birth_year, '%%Y-%%m-%%d') AS birth_year,
+        t.birth_year,
         {birth_country_col[lang]} AS birth_country,
         t.mother_name,
         {mother_origin_col[lang]} AS mother_origin,
@@ -121,7 +121,7 @@ def show(id: int, lang: str, mysql: MySQL) -> Tunneller:
         {transferred_to_col[lang]} AS transferred_to_unit,
         death_type.death_type_en AS death_type,
         DATE_FORMAT(t.death_date, '%%Y-%%m-%%d') AS death_date,
-        DATE_FORMAT(t.death_year, '%%Y-%%m-%%d') AS death_year,
+        t.death_year,
         {death_location_col[lang]} AS death_location,
         death_town.town_name AS death_town,
         {death_country_col[lang]} AS death_country,
@@ -266,7 +266,6 @@ def show(id: int, lang: str, mysql: MySQL) -> Tunneller:
         data = {
             "id": tunneller_result["id"],
             "summary": {
-                "serial": tunneller_result["serial"],
                 "name": {
                     "forename": tunneller_result["forename"],
                     "surname": set_surname_to_uppercase(tunneller_result["surname"]),
@@ -316,6 +315,7 @@ def show(id: int, lang: str, mysql: MySQL) -> Tunneller:
             },
             "military_years": {
                 "enlistment": {
+                    "serial": tunneller_result["serial"],
                     "rank": tunneller_result["rank"],
                     "date": get_date(tunneller_result["enlistment_date"], lang),
                     "district": tunneller_result["military_district_name"],

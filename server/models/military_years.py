@@ -79,6 +79,7 @@ class TransferredToTunnellers:
 
 @dataclass
 class Enlistment:
+    serial: str
     rank: str
     date: Optional[Date] = None
     district: Optional[str] = None

@@ -16,9 +16,7 @@ export function RollDetails({ listOfTunnellers }: Roll) {
             <p className={STYLES.surname}>{tunneller.name.surname}</p>
             <p className={STYLES.forename}>{tunneller.name.forename}</p>
             <p className={STYLES.dates}>
-              {
-                displayBirthDeathDates(tunneller.birth, tunneller.death)
-              }
+              { displayBirthDeathDates(tunneller.birth, tunneller.death) }
             </p>
           </div>
         </Link>
