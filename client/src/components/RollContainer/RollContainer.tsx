@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { Roll } from '../../components/Roll/Roll';
 import STYLES from './RollContainer.module.scss';
 import { useGetAllTunnellersQuery } from '../../redux/slices/rollSlice';
+import { Roll } from '../Roll/Roll';
 
 export function RollContainer() {
   const [filterByLetter, setFilterByLetter] = useState('');

@@ -1,8 +1,8 @@
 import './App.scss';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { HomeContainer } from './containers/Home/HomeContainer';
-import { ProfileContainer } from './containers/Profile/ProfileContainer';
-import { RollContainer } from './containers/Roll/RollContainer';
+import { HomeContainer } from './components/HomeContainer/HomeContainer';
+import { RollContainer } from './components/RollContainer/RollContainer';
+import { ProfileContainer } from './components/ProfileContainer/ProfileContainer';
 
 export function App() {
   return (
