@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 from typing import Optional
 from dacite import from_dict
+from ..repositories.data.images import images
+from ..repositories.data.sources import sources
 from ..repositories.data.pre_war_years import pre_war_years
 from ..repositories.data.origins import origins
 from ..repositories.data.summary import summary
@@ -15,19 +17,8 @@ from ..models.helpers.translator_helpers import translate_town
 from ..db.run_sql import run_sql
 from flask_mysqldb import MySQL
 from ..models.helpers.date_helpers import (
-    format_date_to_day_month_and_year,
     get_birth_date,
     get_date,
-)
-from ..models.helpers.image_helpers import (
-    get_image,
-    get_image_source,
-    get_image_source_archives,
-    get_image_source_auckland_libraries,
-    get_image_source_book,
-    get_image_source_family,
-    get_image_source_newspaper,
-    get_image_url,
 )
 from ..models.helpers.military_years_helpers import (
     get_boolean,
@@ -45,12 +36,6 @@ from ..models.helpers.military_years_helpers import (
     get_transport_nz,
     get_transport_reference,
     map_medals,
-)
-from ..models.helpers.sources_helpers import (
-    get_awmm,
-    get_nominal_roll,
-    map_london_gazette,
-    map_nz_archives,
 )
 from ..models.image import ImageBookAuthors
 from ..models.military_years import Medal
@@ -209,44 +194,10 @@ def show(id: int, lang: str, mysql: MySQL) -> Optional[Tunneller]:
                     ),
                 ),
             },
-            "sources": {
-                "nz_archives": map_nz_archives(nz_archives_result),
-                "awmm_cenotaph": get_awmm(tunneller_result["awmm_cenotaph"]),
-                "nominal_roll": get_nominal_roll(
-                    tunneller_result["nominal_roll_volume"],
-                    tunneller_result["nominal_roll_number"],
-                    tunneller_result["nominal_roll_page"],
-                    lang,
-                ),
-                "london_gazette": map_london_gazette(london_gazette_result, lang),
-            },
-            "image": get_image(
-                get_image_url(tunneller_result["image"]),
-                get_image_source(
-                    get_image_source_auckland_libraries(
-                        tunneller_result["image_source_auckland_libraries"]
-                    ),
-                    get_image_source_archives(
-                        tunneller_result["archives_name"],
-                        tunneller_result["archives_ref"],
-                    ),
-                    get_image_source_family(tunneller_result["family_name"], lang),
-                    get_image_source_newspaper(
-                        tunneller_result["newspaper_name"],
-                        format_date_to_day_month_and_year(
-                            tunneller_result["newspaper_date"], lang
-                        ),
-                    ),
-                    get_image_source_book(
-                        book_authors_result,
-                        tunneller_result["book_title"],
-                        tunneller_result["book_town"],
-                        tunneller_result["book_publisher"],
-                        tunneller_result["book_year"],
-                        tunneller_result["book_page"],
-                    ),
-                ),
+            "sources": sources(
+                nz_archives_result, tunneller_result, london_gazette_result, lang
             ),
+            "image": images(tunneller_result, book_authors_result, lang),
         }
 
         tunneller: Tunneller = from_dict(data_class=Tunneller, data=data)
