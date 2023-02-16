@@ -41,7 +41,7 @@ class Demobilization:
 class Transport:
     reference: str
     vessel: str
-    departure_date: Date
+    departure_date: Optional[Date] = None
     departure_port: Optional[str] = None
     arrival_date: Optional[Date] = None
     arrival_port: Optional[str] = None
@@ -65,8 +65,8 @@ class Training:
 
 @dataclass
 class EmbarkationUnit:
-    training: Training
-    detachment: str
+    detachment: Optional[str] = None
+    training: Optional[Training] = None
     section: Optional[str] = None
     attached_corps: Optional[str] = None
 

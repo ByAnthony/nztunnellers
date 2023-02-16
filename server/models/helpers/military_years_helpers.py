@@ -58,11 +58,7 @@ def get_transport_nz(
     arrival_date: Optional[Date],
     arrival_port: Optional[str],
 ) -> Optional[Transport]:
-    if (
-        transport_reference is not None
-        and vessel is not None
-        and departure_date is not None
-    ):
+    if transport_reference and vessel and departure_date is not None:
         return Transport(
             transport_reference,
             vessel,

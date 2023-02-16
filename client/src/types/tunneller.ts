@@ -68,8 +68,8 @@ type Training = {
 }
 
 type EmbarkationUnit = {
-    training: Training,
     detachment: string,
+    training: Training,
     section: string | undefined,
     attachedCorps: string | undefined,
 }
