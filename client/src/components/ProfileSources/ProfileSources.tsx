@@ -8,7 +8,7 @@ type Props = {
 export function ProfileSources({ sources }: Props) {
   return (
     <div className={STYLES.sources}>
-      <h2>Sources</h2>
+      <h3>Sources</h3>
       <ul>
         <li>
           <p>

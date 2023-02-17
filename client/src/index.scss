@@ -1,7 +1,8 @@
 @font-face {
   font-family: 'Mona Sans';
-  src: url('./fonts/Mona-Sans.woff2') format('woff2 supports variations'),
-    url('./fonts/Mona-Sans.woff2') format('woff2-variations');
+  src: url('./fonts/MonaSans/Mona-Sans.woff2')
+      format('woff2 supports variations'),
+    url('./fonts/MonaSans/Mona-Sans.woff2') format('woff2-variations');
   font-weight: 200 900;
   font-stretch: 75% 125%;
 }
@@ -67,6 +68,27 @@ h1 {
 
   @include desktop {
     font-size: 3.75rem;
+    line-height: normal;
+  }
+}
+
+h3 {
+  font-family: $main-font;
+  font-size: 1.5rem;
+  font-stretch: 85%;
+  font-weight: 700;
+  color: $tertiary-color;
+  letter-spacing: -1px;
+  text-align: left;
+  text-transform: uppercase;
+
+  @include tablet {
+    font-size: 1.75rem;
+    line-height: normal;
+  }
+
+  @include desktop {
+    font-size: 2rem;
     line-height: normal;
   }
 }

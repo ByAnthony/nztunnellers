@@ -1,12 +1,12 @@
 @use 'src/index.scss';
 
-.header {
-  font-stretch: 85%;
-}
-
 .sources {
   margin-block-start: 100px;
-  color: index.$secondary-color;
+  font-size: 1.25rem;
+  font-stretch: 95%;
+  font-weight: 200;
+  letter-spacing: 2px;
+  color: index.$text-color;
 }
 
 .surname {
