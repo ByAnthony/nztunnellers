@@ -5,40 +5,40 @@ export type Date = {
     dayMonth: string | undefined,
 }
 
-type Parent = {
+export type Parent = {
     name: string | undefined,
     origin: string | undefined,
 }
 
-type Parents = {
+export type Parents = {
     mother: Parent | undefined,
     father: Parent | undefined,
 }
 
-type Birth = {
+export type Birth = {
     date: Date,
     country: string | undefined,
 }
 
-type Origins = {
+export type Origins = {
     birth: Birth,
     parents: Parents,
     inNzLength: string,
 }
 
-type ArmyExperience = {
+export type ArmyExperience = {
     unit: string | undefined,
     country: string | undefined,
     conflict: string | undefined,
     duration: string | undefined,
 }
 
-type Employment = {
+export type Employment = {
     occupation: string | undefined,
     employer: string | undefined,
 }
 
-type PreWayYears = {
+export type PreWayYears = {
     armyExperience: ArmyExperience[] | [],
     employment: Employment
     residence: string | undefined;
@@ -47,12 +47,12 @@ type PreWayYears = {
     religion: string | undefined,
 }
 
-type Transferred = {
+export type Transferred = {
     date: Date,
     postedFrom: string,
 }
 
-type Enlistment = {
+export type Enlistment = {
     serial: string,
     rank: string,
     date: Date,
@@ -61,20 +61,20 @@ type Enlistment = {
     transferredToTunnellers: Transferred | undefined,
 }
 
-type Training = {
+export type Training = {
     date: Date,
     location: string,
     locationType: string,
 }
 
-type EmbarkationUnit = {
+export type EmbarkationUnit = {
     detachment: string,
     training: Training,
     section: string | undefined,
     attachedCorps: string | undefined,
 }
 
-type Transport = {
+export type Transport = {
     reference: string | undefined,
     vessel: string,
     departureDate: Date
@@ -83,37 +83,37 @@ type Transport = {
     arrivalPort: string | undefined,
 }
 
-type DeathPlace = {
+export type DeathPlace = {
     location: string,
     town: string,
     country: string,
 }
 
-type DeathCause = {
+export type DeathCause = {
     type: string,
     circumstances: string,
 }
 
-type Cemetery = {
+export type Cemetery = {
     name: string,
     location: string,
     country: string,
     graveReference: string,
 }
 
-type Death = {
+export type Death = {
     date: Date,
     place: DeathPlace | undefined,
     cause: DeathCause | undefined,
     cemetery: Cemetery | undefined,
 }
 
-type Demobilization = {
+export type Demobilization = {
     date: Date,
     country: string | undefined,
 }
 
-type EndOfService = {
+export type EndOfService = {
     deserter: boolean,
     transferred: Transferred | undefined,
     deathWar: Death | undefined,
@@ -121,13 +121,13 @@ type EndOfService = {
     demobilization: Demobilization | undefined,
 }
 
-type Medal = {
+export type Medal = {
     name: string,
     country: string,
     citation: string | undefined,
 }
 
-type MilitaryYears = {
+export type MilitaryYears = {
     enlistment: Enlistment,
     embarkationUnit: EmbarkationUnit,
     transportUk: Transport,
@@ -135,20 +135,20 @@ type MilitaryYears = {
     medals: Medal[] | [],
 }
 
-type PostWarDeath = Death & {
+export type PostWarDeath = Death & {
     deathWarInjury: boolean,
 }
 
-type PostServiceYears = {
+export type PostServiceYears = {
     death: PostWarDeath,
 }
 
-type NzArchives = {
+export type NzArchives = {
     reference: string,
     url: string,
 }
 
-type Book = {
+export type Book = {
     title: string,
     town: string,
     publisher: string,
@@ -161,7 +161,7 @@ export type NominalRoll = Book & {
     roll: string | undefined,
 }
 
-type LondonGazette = {
+export type LondonGazette = {
     page: string,
     date: string,
 }
@@ -173,28 +173,28 @@ export type Sources = {
     londonGazette: LondonGazette[] | [],
 }
 
-type ImageArchives = {
+export type ImageArchives = {
     location: string,
     reference: string,
 }
 
-type ImageNewspaper = {
+export type ImageNewspaper = {
     name: string,
     date: string,
 }
 
-type ImageBookAuthor = {
+export type ImageBookAuthor = {
     forename: string,
     surname: string,
 }
 
-type ImageBook = Book & {
+export type ImageBook = Book & {
     authors: ImageBookAuthor[],
     year: string,
     page: string | undefined,
 }
 
-type ImageSource = {
+export type ImageSource = {
     aucklandLibraries: string | undefined,
     archives: ImageArchives | undefined,
     family: string | undefined,
@@ -202,7 +202,7 @@ type ImageSource = {
     book: ImageBook | undefined,
 }
 
-type Image = {
+export type Image = {
     url: string,
     source: ImageSource,
 }

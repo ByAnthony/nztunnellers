@@ -8,48 +8,11 @@ type Props = {
 export function ProfileSources({ sources }: Props) {
   const getNominalRoll = (nominalRoll: NominalRoll) => {
     if (nominalRoll.volume && nominalRoll.roll) {
-      return (
-        <p>
-          <em>{ nominalRoll.title}</em>
-          ,
-          {' '}
-          { nominalRoll.volume}
-          ,
-          {' '}
-          { nominalRoll.roll }
-          ,
-          {' '}
-          { nominalRoll.publisher}
-          ,
-          {' '}
-          { nominalRoll.town}
-          ,
-          {' '}
-          { nominalRoll.date}
-          ,
-          {' '}
-          { nominalRoll.page }
-          .
-        </p>
-      );
+      return `${nominalRoll.title}, ${nominalRoll.volume},
+      ${nominalRoll.roll}, ${nominalRoll.publisher}, ${nominalRoll.town}, ${nominalRoll.date}, ${nominalRoll.page}.`;
     }
     return (
-      <p>
-        <em>{ nominalRoll.title}</em>
-        ,
-        {' '}
-        { nominalRoll.publisher}
-        ,
-        {' '}
-        { nominalRoll.town}
-        ,
-        {' '}
-        { nominalRoll.date}
-        ,
-        {' '}
-        { nominalRoll.page }
-        .
-      </p>
+      `${nominalRoll.title}, ${nominalRoll.publisher}, ${nominalRoll.town}, ${nominalRoll.date}, ${nominalRoll.page}.`
     );
   };
 
@@ -66,7 +29,7 @@ export function ProfileSources({ sources }: Props) {
           </p>
         </li>
         <li>
-          { getNominalRoll(sources.nominalRoll) }
+          <p>{ getNominalRoll(sources.nominalRoll) }</p>
         </li>
       </ul>
     </div>
