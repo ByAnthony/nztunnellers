@@ -1,7 +1,8 @@
 import { useParams } from 'react-router-dom';
 import { useGetTunnellerByIdQuery } from '../../redux/slices/rollSlice';
-import STYLES from './ProfileContainer.module.scss';
+import { ProfileSources } from '../ProfileSources/ProfileSources';
 import { ProfileSummary } from '../ProfileSummary/ProfileSummary';
+import STYLES from './ProfileContainer.module.scss';
 
 export function ProfileContainer() {
   const { id } = useParams();
@@ -21,11 +22,7 @@ export function ProfileContainer() {
         { isSuccess && (
         <div className={STYLES['profile-container']}>
           <ProfileSummary summary={data.summary} />
-          {/* <ProfileOrigins />
-          <ProfilePreWarYears />
-          <ProfileMilitaryYears />
-          <ProfilePostServiceYears />
-          <ProfileSources /> */}
+          <ProfileSources sources={data.sources} />
         </div>
         )}
       </>

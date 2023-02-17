@@ -166,9 +166,9 @@ type LondonGazette = {
     date: string,
 }
 
-type Sources = {
+export type Sources = {
     nzArchives: NzArchives[],
-    awwmCenotaph: string,
+    awmmCenotaph: string,
     nominalRoll: NominalRoll,
     londonGazette: LondonGazette[] | [],
 }

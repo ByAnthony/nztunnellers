@@ -31,17 +31,19 @@
   font-size: 1rem;
   font-stretch: 85%;
   font-weight: 600;
-  color: index.$tertiary-color;
+  color: index.$text-color;
   text-align: center;
   text-decoration: none;
   background-color: transparent;
   border: none;
+  border-bottom: 4px solid index.$primary-color;
+  transition: color 0.9s ease-in-out, color 0.9s ease-in-out,
+    border-bottom 0.9s ease-in-out, border-bottom 0.9s ease-in-out;
   cursor: pointer;
 
   &:hover {
-    color: index.$primary-color;
-    background-color: index.$tertiary-color;
-    border-radius: 3px;
+    border-bottom: 4px solid index.$tertiary-color;
+    color: index.$tertiary-color;
   }
 
   @include index.tablet {
