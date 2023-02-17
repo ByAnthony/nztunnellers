@@ -2,58 +2,24 @@
 
 .sources {
   margin-block-start: 100px;
-  font-size: 1.25rem;
+  font-size: 1rem;
   font-stretch: 95%;
-  font-weight: 200;
-  letter-spacing: 2px;
+  font-weight: 300;
   color: index.$text-color;
-}
-
-.surname {
-  margin: 0;
-  font-size: 2.5rem;
-  font-weight: 700;
-  text-transform: none;
-
-  @include index.tablet {
-    font-size: 3.125rem;
-  }
-
-  @include index.desktop {
-    font-size: 3.75rem;
-  }
-}
-
-.forename {
-  display: block;
-  margin: 0;
-  font-size: 1.5rem;
-  font-weight: 300;
   letter-spacing: 1px;
-  text-transform: none;
-
-  @include index.tablet {
-    font-size: 2rem;
-  }
-
-  @include index.desktop {
-    font-size: 2.5rem;
-  }
 }
 
-.dates {
-  margin: 15px 0 0 0;
-  font-size: 1.25rem;
-  font-weight: 300;
-  letter-spacing: 2px;
+.sources a {
+  padding-bottom: 5px;
+  font-weight: 500;
+  border-bottom: none;
+  border-bottom: 1px solid index.$primary-color;
+  transition: color 0.9s ease-in-out, color 0.9s ease-in-out,
+    border-bottom 0.9s ease-in-out, border-bottom 0.9s ease-in-out;
 
-  @include index.tablet {
-    margin-top: 20px;
-    font-size: 1.5rem;
-  }
-
-  @include index.desktop {
-    margin-top: 25px;
-    font-size: 1.75rem;
+  &:hover {
+    padding-bottom: 5px;
+    border-bottom: 1px solid index.$tertiary-color;
+    color: index.$tertiary-color;
   }
 }

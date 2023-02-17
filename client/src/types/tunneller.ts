@@ -154,7 +154,7 @@ type Book = {
     publisher: string,
 }
 
-type NominalRoll = Book & {
+export type NominalRoll = Book & {
     date: string,
     page: string,
     volume: string | undefined,

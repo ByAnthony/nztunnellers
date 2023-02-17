@@ -1,4 +1,4 @@
-import type { Sources } from '../../types/tunneller';
+import type { NominalRoll, Sources } from '../../types/tunneller';
 import STYLES from './ProfileSources.module.scss';
 
 type Props = {
@@ -6,6 +6,53 @@ type Props = {
 }
 
 export function ProfileSources({ sources }: Props) {
+  const getNominalRoll = (nominalRoll: NominalRoll) => {
+    if (nominalRoll.volume && nominalRoll.roll) {
+      return (
+        <p>
+          <em>{ nominalRoll.title}</em>
+          ,
+          {' '}
+          { nominalRoll.volume}
+          ,
+          {' '}
+          { nominalRoll.roll }
+          ,
+          {' '}
+          { nominalRoll.publisher}
+          ,
+          {' '}
+          { nominalRoll.town}
+          ,
+          {' '}
+          { nominalRoll.date}
+          ,
+          {' '}
+          { nominalRoll.page }
+          .
+        </p>
+      );
+    }
+    return (
+      <p>
+        <em>{ nominalRoll.title}</em>
+        ,
+        {' '}
+        { nominalRoll.publisher}
+        ,
+        {' '}
+        { nominalRoll.town}
+        ,
+        {' '}
+        { nominalRoll.date}
+        ,
+        {' '}
+        { nominalRoll.page }
+        .
+      </p>
+    );
+  };
+
   return (
     <div className={STYLES.sources}>
       <h3>Sources</h3>
@@ -15,7 +62,11 @@ export function ProfileSources({ sources }: Props) {
             Auckland War Memorial Museum Tāmaki Paenga Hira:
             {' '}
             <a href={sources.awmmCenotaph} target="_blank" rel="noreferrer">Online Cenotaph He Toa Taumata Rau</a>
+            .
           </p>
+        </li>
+        <li>
+          { getNominalRoll(sources.nominalRoll) }
         </li>
       </ul>
     </div>
