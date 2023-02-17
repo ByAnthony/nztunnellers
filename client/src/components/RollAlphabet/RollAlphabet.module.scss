@@ -1,0 +1,51 @@
+@use 'src/index.scss';
+
+.roll {
+  @include index.component-setup;
+}
+
+.letter-container {
+  margin: 75px 0;
+  width: 75px;
+  border-radius: index.$border-radius;
+  background-color: index.$tertiary-color;
+
+  @include index.tablet {
+    width: 112px;
+  }
+
+  @include index.desktop {
+    margin: 100px 0;
+    width: 135px;
+  }
+}
+
+.letter-title {
+  padding: 12px 0 5px 0;
+  font-size: 3.125rem;
+  font-stretch: 85%;
+  font-weight: 700;
+  color: index.$primary-color;
+  text-align: center;
+
+  @include index.tablet {
+    padding: 13px 0 3px 0;
+    font-size: 5.5rem;
+  }
+
+  @include index.desktop {
+    padding: 16px 0 6px 0;
+    font-size: 6.25rem;
+  }
+}
+
+.tunnellers-container {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+
+  @include index.desktop {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}

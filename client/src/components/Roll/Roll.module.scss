@@ -1,51 +1,56 @@
 @use 'src/index.scss';
 
-.roll {
+.alphabet-container {
   @include index.component-setup;
 }
 
-.letter-container {
-  margin: 75px 0;
-  width: 75px;
-  border-radius: index.$border-radius;
-  background-color: index.$tertiary-color;
+.alphabet {
+  width: 100%;
+  margin: 50px 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 30px);
+  justify-content: space-between;
+  grid-gap: 20px;
 
   @include index.tablet {
-    width: 112px;
+    margin: 75px 0;
+    grid-template-columns: repeat(auto-fill, 40px);
+    grid-gap: 25px;
   }
 
   @include index.desktop {
     margin: 100px 0;
-    width: 135px;
+    grid-template-columns: repeat(auto-fill, 50px);
+    grid-gap: 30px;
   }
 }
 
-.letter-title {
-  padding: 12px 0 5px 0;
-  font-size: 3.125rem;
+.alphabet-letter {
+  padding: 10px 0 5px 0;
+  font-family: index.$main-font;
+  font-size: 1rem;
   font-stretch: 85%;
-  font-weight: 700;
-  color: index.$primary-color;
+  font-weight: 600;
+  color: index.$text-color;
   text-align: center;
+  text-decoration: none;
+  background-color: transparent;
+  border: none;
+  border-bottom: 4px solid index.$primary-color;
+  transition: color 0.9s ease-in-out, color 0.9s ease-in-out,
+    border-bottom 0.9s ease-in-out, border-bottom 0.9s ease-in-out;
+  cursor: pointer;
+
+  &:hover {
+    border-bottom: 4px solid index.$tertiary-color;
+    color: index.$tertiary-color;
+  }
 
   @include index.tablet {
-    padding: 13px 0 3px 0;
-    font-size: 5.5rem;
+    font-size: 1.625rem;
   }
 
   @include index.desktop {
-    padding: 16px 0 6px 0;
-    font-size: 6.25rem;
-  }
-}
-
-.tunnellers-container {
-  display: flex;
-  flex-direction: column;
-  gap: 50px;
-
-  @include index.desktop {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    font-size: 1.875rem;
   }
 }

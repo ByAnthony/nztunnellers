@@ -2,9 +2,9 @@ import { useParams } from 'react-router-dom';
 import { useGetTunnellerByIdQuery } from '../../redux/slices/rollSlice';
 import { ProfileSources } from '../ProfileSources/ProfileSources';
 import { ProfileSummary } from '../ProfileSummary/ProfileSummary';
-import STYLES from './ProfileContainer.module.scss';
+import STYLES from './Profile.module.scss';
 
-export function ProfileContainer() {
+export function Profile() {
   const { id } = useParams();
   const {
     data, error, isLoading, isSuccess,
