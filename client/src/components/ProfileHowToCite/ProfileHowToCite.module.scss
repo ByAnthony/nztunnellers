@@ -1,0 +1,9 @@
+@use 'src/index.scss';
+
+.howtocite {
+  margin-block-start: 100px;
+  font-size: 1rem;
+  font-stretch: 95%;
+  font-weight: 300;
+  color: index.$text-color;
+}
