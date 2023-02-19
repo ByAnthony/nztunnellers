@@ -144,9 +144,9 @@ export type PostServiceYears = {
 }
 
 export type NzArchives = {
+    ibid?: string,
     reference: string,
     url: string,
-    ibid?: string,
 }
 
 export type Book = {
@@ -163,6 +163,7 @@ export type NominalRoll = Book & {
 }
 
 export type LondonGazette = {
+    ibid?: string;
     page: string,
     date: string,
 }
