@@ -146,6 +146,7 @@ export type PostServiceYears = {
 export type NzArchives = {
     reference: string,
     url: string,
+    ibid?: string,
 }
 
 export type Book = {

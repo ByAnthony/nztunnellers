@@ -6,9 +6,9 @@
 
 .letter-container {
   margin: 75px 0;
-  width: 75px;
+  width: 60px;
   border-radius: index.$border-radius;
-  background-color: index.$tertiary-color;
+  background-color: index.$text-color;
 
   @include index.tablet {
     width: 112px;
@@ -16,26 +16,26 @@
 
   @include index.desktop {
     margin: 100px 0;
-    width: 135px;
+    width: 125px;
   }
 }
 
 .letter-title {
-  padding: 12px 0 5px 0;
-  font-size: 3.125rem;
+  padding-block-start: 6px;
+  font-size: 3rem;
   font-stretch: 85%;
   font-weight: 700;
   color: index.$primary-color;
   text-align: center;
 
   @include index.tablet {
-    padding: 13px 0 3px 0;
+    padding-block-start: 12px;
     font-size: 5.5rem;
   }
 
   @include index.desktop {
-    padding: 16px 0 6px 0;
-    font-size: 6.25rem;
+    padding-block-start: 12px;
+    font-size: 6rem;
   }
 }
 

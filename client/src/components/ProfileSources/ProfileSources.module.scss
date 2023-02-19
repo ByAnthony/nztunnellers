@@ -9,16 +9,26 @@
   letter-spacing: 1px;
 }
 
+.sources p {
+  margin: 25px 0;
+  line-height: 1.5rem;
+}
+
+.sources ul {
+  list-style: none;
+}
+
 .sources a {
-  padding-bottom: 5px;
+  padding-bottom: 3px;
   font-weight: 500;
+  color: index.$text-color;
   border-bottom: none;
-  border-bottom: 1px solid index.$primary-color;
+  border-bottom: 1px solid index.$tertiary-color;
   transition: color 0.9s ease-in-out, color 0.9s ease-in-out,
     border-bottom 0.9s ease-in-out, border-bottom 0.9s ease-in-out;
 
   &:hover {
-    padding-bottom: 5px;
+    padding-bottom: 3px;
     border-bottom: 1px solid index.$tertiary-color;
     color: index.$tertiary-color;
   }

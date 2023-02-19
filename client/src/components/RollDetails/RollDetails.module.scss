@@ -1,7 +1,7 @@
 @use 'src/index.scss';
 
 a {
-  color: index.$text-color;
+  color: index.$tertiary-color;
   text-decoration: none;
 }
 
@@ -12,9 +12,11 @@ a {
   letter-spacing: 1px;
   text-align: left;
   border: 1px solid index.$secondary-color;
+  border-bottom: 1px solid index.$secondary-color;
   border-radius: index.$border-radius;
-  transition: border-color 0.9s ease-in-out, border-color 0.9s ease-in-out,
-    color 0.9s ease-in-out, color 0.9s ease-in-out;
+  transition: border-bottom 0.9s ease-in-out, border-bottom 0.9s ease-in-out,
+    border 0.9s ease-in-out, border 0.9s ease-in-out,
+    background-color 0.9s ease-in-out, background-color 0.9s ease-in-out;
   list-style: none;
   cursor: pointer;
 
@@ -28,15 +30,16 @@ a {
   }
 
   &:hover {
-    color: index.$tertiary-color;
     border: 1px solid index.$tertiary-color;
+    border-bottom: 1px solid index.$tertiary-color;
+    background-color: index.$secondary-color;
   }
 }
 
 .surname {
   margin: 0;
   font-size: 1.875rem;
-  font-weight: 700;
+  font-weight: 600;
 
   @include index.tablet {
     font-size: 2.5rem;

@@ -4,7 +4,6 @@ from typing import Any
 
 
 from ..models.helpers.date_helpers import format_date_to_birth_year
-from ..models.helpers.name_helpers import set_surname_to_uppercase
 from ..repositories.queries.roll_query import roll_query
 
 from ..db.run_sql import run_sql
@@ -24,7 +23,7 @@ def select_all(mysql: MySQL) -> dict[list[dict[Roll, Any]], Any]:
         tunneller = asdict(
             Roll(
                 row["id"],
-                Name(row["forename"], set_surname_to_uppercase(row["surname"])),
+                Name(row["forename"], row["surname"]),
                 format_date_to_birth_year(
                     row["birth_year"],
                     row["birth_date"],

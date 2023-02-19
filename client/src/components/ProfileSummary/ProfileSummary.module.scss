@@ -6,7 +6,7 @@
 
 .surname {
   margin: 0;
-  font-size: 2.5rem;
+  font-size: 2.75rem;
   font-weight: 700;
   text-transform: none;
 
@@ -22,13 +22,13 @@
 .forename {
   display: block;
   margin: 0;
-  font-size: 1.5rem;
+  font-size: 1.85rem;
   font-weight: 300;
   letter-spacing: 1px;
   text-transform: none;
 
   @include index.tablet {
-    font-size: 2rem;
+    font-size: 2.1rem;
   }
 
   @include index.desktop {
@@ -38,13 +38,13 @@
 
 .dates {
   margin: 15px 0 0 0;
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   font-weight: 300;
   letter-spacing: 2px;
 
   @include index.tablet {
     margin-top: 20px;
-    font-size: 1.5rem;
+    font-size: 1.625rem;
   }
 
   @include index.desktop {

@@ -34,13 +34,13 @@ $secondary-color: rgb(44, 46, 47);
 $tertiary-color: rgb(153, 131, 100);
 $text-color: rgb(159, 154, 143);
 
-$border-radius: 10px;
+$border-radius: 5px;
 
 body {
   max-width: 100%;
   margin: 75px 0;
   font-family: $main-font;
-  color: $tertiary-color;
+  color: $text-color;
   background-color: $primary-color;
 
   @include tablet {
@@ -56,10 +56,9 @@ h1 {
   font-family: $main-font;
   font-size: 2.5rem;
   font-stretch: 85%;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: -1px;
   text-align: left;
-  text-transform: uppercase;
 
   @include tablet {
     font-size: 3.125rem;
@@ -72,23 +71,21 @@ h1 {
   }
 }
 
-h3 {
+h4 {
   font-family: $main-font;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-stretch: 85%;
-  font-weight: 700;
-  color: $tertiary-color;
+  font-weight: 600;
   letter-spacing: 0px;
   text-align: left;
-  text-transform: uppercase;
 
   @include tablet {
-    font-size: 1.75rem;
+    font-size: 1.5rem;
     line-height: normal;
   }
 
   @include desktop {
-    font-size: 2rem;
+    font-size: 1.75rem;
     line-height: normal;
   }
 }
