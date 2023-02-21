@@ -8,9 +8,6 @@ a {
 .tunneller {
   flex: 100%;
   padding: 25px 25px 22px 25px;
-  font-stretch: 85%;
-  letter-spacing: 1px;
-  text-align: left;
   border: 1px solid index.$secondary-color;
   border-bottom: 1px solid index.$secondary-color;
   border-radius: index.$border-radius;
@@ -34,6 +31,12 @@ a {
     border-bottom: 1px solid index.$tertiary-color;
     background-color: index.$secondary-color;
   }
+}
+
+.tunneller p {
+  font-stretch: 85%;
+  letter-spacing: 1px;
+  text-align: left;
 }
 
 .surname {
