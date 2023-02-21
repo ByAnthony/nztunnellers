@@ -1,0 +1,19 @@
+@use 'src/index.scss';
+
+.description {
+  margin-block-start: 100px;
+}
+
+.description p {
+  font-size: 1.25rem;
+  font-stretch: 95%;
+  color: index.$tertiary-color;
+
+  @include index.tablet {
+    font-size: 1.5rem;
+  }
+
+  @include index.desktop {
+    font-size: 1.75rem;
+  }
+}

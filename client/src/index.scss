@@ -24,7 +24,15 @@ $desktop: 64rem;
 
 @mixin component-setup {
   margin: 0 auto;
-  width: 75%;
+  width: 85%;
+
+  @include tablet {
+    width: 80%;
+  }
+
+  @include desktop {
+    width: 75%;
+  }
 }
 
 $main-font: 'Mona Sans';
@@ -87,5 +95,21 @@ h4 {
   @include desktop {
     font-size: 1.75rem;
     line-height: normal;
+  }
+}
+
+p {
+  font-size: 0.9rem;
+  font-stretch: 98%;
+  font-weight: 300;
+  color: $text-color;
+  line-height: 1.5;
+
+  @include tablet {
+    font-size: 1rem;
+  }
+
+  @include desktop {
+    font-size: 1.1rem;
   }
 }
