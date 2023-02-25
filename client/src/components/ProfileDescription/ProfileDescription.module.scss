@@ -1,7 +1,9 @@
 @use 'src/index.scss';
 
 .description {
-  margin-top: 100px;
+  margin-top: 50px;
+  padding-bottom: 50px;
+  border-bottom: 1px solid index.$secondary-color;
 }
 
 .description p {
