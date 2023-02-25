@@ -86,6 +86,23 @@ h1 {
 
 h2 {
   font-family: $main-font;
+  font-size: 1.75rem;
+  font-weight: 500;
+  text-align: left;
+
+  @include tablet {
+    font-size: 2.15rem;
+    line-height: normal;
+  }
+
+  @include desktop {
+    font-size: 2.5rem;
+    line-height: normal;
+  }
+}
+
+h3 {
+  font-family: $main-font;
   font-size: 1.25rem;
   font-weight: 500;
   text-align: left;
