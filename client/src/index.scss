@@ -69,7 +69,6 @@ body {
 }
 
 h1 {
-  font-family: $main-font;
   font-size: 2.5rem;
   font-weight: 600;
   text-align: left;
@@ -84,7 +83,6 @@ h1 {
 }
 
 h2 {
-  font-family: $main-font;
   font-size: 1.75rem;
   font-weight: 500;
   text-align: left;
@@ -99,7 +97,6 @@ h2 {
 }
 
 h3 {
-  font-family: $main-font;
   font-size: 1.25rem;
   font-weight: 500;
   text-align: left;
@@ -126,4 +123,8 @@ p {
   @include desktop {
     font-size: 1.1rem;
   }
+}
+
+a {
+  text-decoration: none;
 }

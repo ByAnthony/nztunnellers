@@ -21,17 +21,17 @@ export function ProfileSummary({ summary, embarkationUnit, enlistment }: Props) 
         </p>
       </div>
       <div className={STYLES.overview}>
-        <div className={STYLES.unit}>
-          <h3>Unit</h3>
-          <p>{embarkationUnit.detachment}</p>
+        <div className={STYLES['overview-group']}>
+          <p>Unit</p>
+          <p className={STYLES['overview-title']}>{embarkationUnit.detachment}</p>
         </div>
-        <div className={STYLES.unit}>
-          <h3>Rank</h3>
-          <p>{enlistment.rank}</p>
+        <div className={STYLES['overview-group']}>
+          <p>Rank</p>
+          <p className={STYLES['overview-title']}>{enlistment.rank}</p>
         </div>
-        <div className={STYLES.unit}>
-          <h3>Serial</h3>
-          <p>{enlistment.serial}</p>
+        <div className={STYLES['overview-group']}>
+          <p>Serial</p>
+          <p className={STYLES['overview-title']}>{enlistment.serial}</p>
         </div>
       </div>
     </>

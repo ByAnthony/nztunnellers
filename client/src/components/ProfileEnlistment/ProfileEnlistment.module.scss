@@ -1,12 +1,9 @@
 @use 'src/index.scss';
 
 .enlistment {
-  margin: 0;
-  margin-top: 100px;
-  padding: 25px;
-  text-align: left;
-  background-color: index.$secondary-color;
-  border-radius: index.$border-radius;
+  margin-top: 50px;
+  padding-bottom: 50px;
+  border-bottom: 1px solid index.$secondary-color;
 }
 
 th {
@@ -17,4 +14,39 @@ th {
 td {
   font-family: index.$handwriting-font;
   font-size: 1.5rem;
+}
+
+.profile-button {
+  width: 100%;
+  padding: 20px;
+  font-family: index.$main-font;
+  font-size: 1.25rem;
+  font-stretch: 85%;
+  font-weight: 600;
+  color: index.$tertiary-color;
+  text-align: left;
+  text-decoration: none;
+  letter-spacing: 1px;
+  background-color: transparent;
+  border: 1px solid index.$secondary-color;
+  border-radius: index.$border-radius;
+  border-bottom: 1px solid index.$secondary-color;
+  transition: border-bottom 0.9s ease-in-out, border-bottom 0.9s ease-in-out,
+    border 0.9s ease-in-out, border 0.9s ease-in-out,
+    background-color 0.9s ease-in-out, background-color 0.9s ease-in-out;
+  cursor: pointer;
+
+  &:hover {
+    border: 1px solid index.$tertiary-color;
+    border-bottom: 1px solid index.$tertiary-color;
+    background-color: index.$secondary-color;
+  }
+
+  @include index.tablet {
+    font-size: 1.625rem;
+  }
+
+  @include index.desktop {
+    font-size: 1.875rem;
+  }
 }
