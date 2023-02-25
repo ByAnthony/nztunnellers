@@ -84,10 +84,10 @@ h1 {
   }
 }
 
-h4 {
+h2 {
   font-family: $main-font;
   font-size: 1.25rem;
-  font-weight: 600;
+  font-weight: 500;
   text-align: left;
 
   @include tablet {

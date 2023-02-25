@@ -1,12 +1,11 @@
 @use 'src/index.scss';
 
 .description {
-  margin-block-start: 100px;
+  margin-top: 100px;
 }
 
 .description p {
-  font-size: 1.25rem;
-  color: index.$tertiary-color;
+  font-size: 1.15rem;
 
   @include index.tablet {
     font-size: 1.5rem;

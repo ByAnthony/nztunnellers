@@ -1,7 +1,9 @@
 @use 'src/index.scss';
 
 .sources {
-  margin-block-start: 100px;
+  margin-top: 50px;
+  padding-bottom: 25px;
+  border-bottom: 1px solid index.$secondary-color;
 }
 
 .sources p {

@@ -21,7 +21,7 @@
 }
 
 .letter-title {
-  padding-block-start: 6px;
+  padding-top: 6px;
   font-size: 3rem;
   font-stretch: 85%;
   font-weight: 700;
@@ -29,12 +29,12 @@
   text-align: center;
 
   @include index.tablet {
-    padding-block-start: 12px;
+    padding-top: 12px;
     font-size: 5.5rem;
   }
 
   @include index.desktop {
-    padding-block-start: 12px;
+    padding-top: 12px;
     font-size: 6rem;
   }
 }

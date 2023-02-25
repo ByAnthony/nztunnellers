@@ -38,6 +38,7 @@ export function ProfileDescription({
 
   return (
     <div className={STYLES.description}>
+      <h2>About</h2>
       <p>
         {name.forename}
         {' '}
