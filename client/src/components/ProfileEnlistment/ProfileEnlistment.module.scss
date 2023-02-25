@@ -1,0 +1,20 @@
+@use 'src/index.scss';
+
+.enlistment {
+  margin: 0;
+  margin-block-start: 100px;
+  padding: 25px;
+  text-align: left;
+  background-color: index.$secondary-color;
+  border-radius: index.$border-radius;
+}
+
+th {
+  font-family: index.$typewriter-font;
+  font-size: 1rem;
+}
+
+td {
+  font-family: index.$handwriting-font;
+  font-size: 1.5rem;
+}

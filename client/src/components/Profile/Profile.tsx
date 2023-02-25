@@ -2,6 +2,7 @@ import { useParams } from 'react-router-dom';
 import { useGetTunnellerByIdQuery } from '../../redux/slices/rollSlice';
 import { ProfileHowToCite } from '../ProfileHowToCite/ProfileHowToCite';
 import { ProfileDescription } from '../ProfileDescription/ProfileDescription';
+import { ProfileEnlistment } from '../ProfileEnlistment/ProfileEnlistment';
 import { ProfileSources } from '../ProfileSources/ProfileSources';
 import { ProfileSummary } from '../ProfileSummary/ProfileSummary';
 import STYLES from './Profile.module.scss';
@@ -30,6 +31,7 @@ export function Profile() {
             embarkation={data.militaryYears.embarkationUnit}
             transportUk={data.militaryYears.transportUk}
           />
+          <ProfileEnlistment origins={data.origins} />
           <ProfileSources sources={data.sources} />
           <ProfileHowToCite id={Number(id)} summary={data.summary} />
         </div>

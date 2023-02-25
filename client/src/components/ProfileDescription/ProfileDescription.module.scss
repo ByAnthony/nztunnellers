@@ -6,7 +6,6 @@
 
 .description p {
   font-size: 1.25rem;
-  font-stretch: 95%;
   color: index.$tertiary-color;
 
   @include index.tablet {

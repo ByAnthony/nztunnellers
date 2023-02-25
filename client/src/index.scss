@@ -7,6 +7,17 @@
   font-stretch: 75% 125%;
 }
 
+@font-face {
+  font-family: 'SpecialElite';
+  src: url('./fonts/SpecialElite/SpecialElite-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'NothingYouCouldDo';
+  src: url('./fonts/NothingYouCouldDo/NothingYouCouldDo-Regular.ttf')
+    format('truetype');
+}
+
 $mobile: 32rem;
 $desktop: 64rem;
 
@@ -24,18 +35,12 @@ $desktop: 64rem;
 
 @mixin component-setup {
   margin: 0 auto;
-  width: 85%;
-
-  @include tablet {
-    width: 80%;
-  }
-
-  @include desktop {
-    width: 75%;
-  }
+  width: 75%;
 }
 
 $main-font: 'Mona Sans';
+$typewriter-font: 'SpecialElite';
+$handwriting-font: 'NothingYouCouldDo';
 
 $primary-color: rgb(24, 26, 27);
 $secondary-color: rgb(44, 46, 47);
@@ -48,7 +53,9 @@ body {
   max-width: 100%;
   margin: 75px 0;
   font-family: $main-font;
+  font-stretch: 85%;
   color: $text-color;
+  letter-spacing: 1px;
   background-color: $primary-color;
 
   @include tablet {
@@ -63,9 +70,7 @@ body {
 h1 {
   font-family: $main-font;
   font-size: 2.5rem;
-  font-stretch: 85%;
   font-weight: 600;
-  letter-spacing: -1px;
   text-align: left;
 
   @include tablet {
@@ -82,9 +87,7 @@ h1 {
 h4 {
   font-family: $main-font;
   font-size: 1.25rem;
-  font-stretch: 85%;
   font-weight: 600;
-  letter-spacing: 0px;
   text-align: left;
 
   @include tablet {
@@ -100,7 +103,6 @@ h4 {
 
 p {
   font-size: 0.9rem;
-  font-stretch: 98%;
   font-weight: 300;
   color: $text-color;
   line-height: 1.5;
