@@ -8,7 +8,24 @@ type Props = {
 }
 
 export function ProfileSummary({ summary, embarkationUnit, enlistment }: Props) {
-  const displayBirthDeathDates = (birth: string | undefined, death: string | undefined) => (death ? `${birth}-${death}` : `${birth}-†?`);
+  const displayBirthDeathDates = (
+    birth: string | undefined,
+    death: string | undefined,
+  ) => (death ? `${birth}-${death}` : `${birth}-†?`);
+
+  const displayUnit = (
+    unit: string,
+    section: string | undefined,
+  ) => ((unit === 'Main Body')
+    ? (
+      <>
+        {unit}
+        {': '}
+        {section}
+      </>
+    )
+    : unit);
+
   return (
     <>
       <div className={STYLES.header}>
@@ -23,7 +40,9 @@ export function ProfileSummary({ summary, embarkationUnit, enlistment }: Props) 
       <div className={STYLES.overview}>
         <div className={STYLES['overview-group']}>
           <p>Unit</p>
-          <p className={STYLES['overview-title']}>{embarkationUnit.detachment}</p>
+          <p className={STYLES['overview-title']}>
+            { displayUnit(embarkationUnit.detachment, embarkationUnit.section) }
+          </p>
         </div>
         <div className={STYLES['overview-group']}>
           <p>Rank</p>

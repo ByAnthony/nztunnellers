@@ -1,23 +1,19 @@
 @use 'src/index.scss';
 
-.enlistment {
+.timeline {
   margin-top: 50px;
   padding-bottom: 50px;
-  border-bottom: 1px solid index.$secondary-color;
 }
 
-th {
-  font-family: index.$typewriter-font;
-  font-size: 1rem;
+.timeline-container {
+  padding-top: 10px;
 }
 
-td {
-  font-family: index.$handwriting-font;
-  font-size: 1.5rem;
+.timeline-event {
+  // display: flex;
 }
 
-.profile-button {
-  width: 100%;
+.timeline-card {
   padding: 20px;
   font-family: index.$main-font;
   font-size: 1.25rem;
@@ -48,5 +44,20 @@ td {
 
   @include index.desktop {
     font-size: 1.875rem;
+  }
+}
+
+.scrolling-wrapper {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+
+  &::-webkit-scrollbar {
+    display: inline-block;
+  }
+
+  .card {
+    flex: 0 0 auto;
   }
 }

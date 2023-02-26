@@ -1,8 +1,8 @@
 import { useParams } from 'react-router-dom';
 import { useGetTunnellerByIdQuery } from '../../redux/slices/rollSlice';
 import { ProfileHowToCite } from '../ProfileHowToCite/ProfileHowToCite';
-import { ProfileDescription } from '../ProfileDescription/ProfileDescription';
-import { ProfileEnlistment } from '../ProfileEnlistment/ProfileEnlistment';
+import { ProfileOverview } from '../ProfileOverview/ProfileOverview';
+import { ProfileDiary } from '../ProfileDiary/ProfileDiary';
 import { ProfileSources } from '../ProfileSources/ProfileSources';
 import { ProfileSummary } from '../ProfileSummary/ProfileSummary';
 import STYLES from './Profile.module.scss';
@@ -29,13 +29,13 @@ export function Profile() {
             embarkationUnit={data.militaryYears.embarkationUnit}
             enlistment={data.militaryYears.enlistment}
           />
-          <ProfileDescription
+          <ProfileOverview
             name={data.summary.name}
             enlistment={data.militaryYears.enlistment}
             embarkation={data.militaryYears.embarkationUnit}
             transportUk={data.militaryYears.transportUk}
           />
-          <ProfileEnlistment />
+          <ProfileDiary born={data.origins.birth} />
           <ProfileSources sources={data.sources} />
           <ProfileHowToCite id={Number(id)} summary={data.summary} />
         </div>

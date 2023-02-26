@@ -2,7 +2,7 @@ import {
   Date, EmbarkationUnit, Enlistment, Transport,
 } from '../../types/tunneller';
 import { Name } from '../../types/roll';
-import STYLES from './ProfileDescription.module.scss';
+import STYLES from './ProfileOverview.module.scss';
 
 type Props = {
     name: Name,
@@ -11,7 +11,7 @@ type Props = {
     transportUk: Transport,
 }
 
-export function ProfileDescription({
+export function ProfileOverview({
   name,
   enlistment,
   embarkation,
@@ -38,7 +38,7 @@ export function ProfileDescription({
 
   return (
     <div className={STYLES.description}>
-      <h2>About</h2>
+      <h2>Overview</h2>
       <p>
         {name.forename}
         {' '}
