@@ -35,7 +35,7 @@ export function Profile() {
             embarkation={data.militaryYears.embarkationUnit}
             transportUk={data.militaryYears.transportUk}
           />
-          <ProfileDiary born={data.origins.birth} />
+          <ProfileDiary origins={data.origins} />
           <ProfileSources sources={data.sources} />
           <ProfileHowToCite id={Number(id)} summary={data.summary} />
         </div>
