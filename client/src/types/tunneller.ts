@@ -1,50 +1,50 @@
 import { Name } from './roll';
 
 export type Date = {
-    year: string | undefined,
-    dayMonth: string | undefined,
+    year: string | null,
+    dayMonth: string | null,
 }
 
 export type Parent = {
-    name: string | undefined,
-    origin: string | undefined,
+    name: string,
+    origin: string | null,
 }
 
 export type Parents = {
-    mother: Parent | undefined,
-    father: Parent | undefined,
+    mother: Parent | null,
+    father: Parent | null,
 }
 
 export type Birth = {
     date: Date,
-    country: string | undefined,
+    country: string | null,
 }
 
 export type Origins = {
     birth: Birth,
     parents: Parents,
-    inNzLength: string,
+    inNzLength: string | null,
 }
 
 export type ArmyExperience = {
-    unit: string | undefined,
-    country: string | undefined,
-    conflict: string | undefined,
-    duration: string | undefined,
+    unit: string | null,
+    country: string | null,
+    conflict: string | null,
+    duration: string | null,
 }
 
 export type Employment = {
-    occupation: string | undefined,
-    employer: string | undefined,
+    occupation: string | null,
+    employer: string | null,
 }
 
 export type PreWayYears = {
     armyExperience: ArmyExperience[] | [],
     employment: Employment
-    residence: string | undefined;
-    maritalStatus: string | undefined,
-    wife: string | undefined,
-    religion: string | undefined,
+    residence: string | null;
+    maritalStatus: string | null,
+    wife: string | null,
+    religion: string | null,
 }
 
 export type Transferred = {
@@ -56,9 +56,9 @@ export type Enlistment = {
     serial: string,
     rank: string,
     date: Date,
-    district: string | undefined,
-    alias: string | undefined,
-    transferredToTunnellers: Transferred | undefined,
+    district: string | null,
+    alias: string | null,
+    transferredToTunnellers: Transferred | null,
 }
 
 export type Training = {
@@ -70,17 +70,17 @@ export type Training = {
 export type EmbarkationUnit = {
     detachment: string,
     training: Training,
-    section: string | undefined,
-    attachedCorps: string | undefined,
+    section: string | null,
+    attachedCorps: string | null,
 }
 
 export type Transport = {
-    reference: string | undefined,
+    reference: string | null,
     vessel: string,
     departureDate: Date
-    departurePort: string | undefined,
-    arrivalDate: Date | undefined,
-    arrivalPort: string | undefined,
+    departurePort: string | null,
+    arrivalDate: Date | null,
+    arrivalPort: string | null,
 }
 
 export type DeathPlace = {
@@ -103,28 +103,28 @@ export type Cemetery = {
 
 export type Death = {
     date: Date,
-    place: DeathPlace | undefined,
-    cause: DeathCause | undefined,
-    cemetery: Cemetery | undefined,
+    place: DeathPlace | null,
+    cause: DeathCause | null,
+    cemetery: Cemetery | null,
 }
 
 export type Demobilization = {
     date: Date,
-    country: string | undefined,
+    country: string | null,
 }
 
 export type EndOfService = {
     deserter: boolean,
-    transferred: Transferred | undefined,
-    deathWar: Death | undefined,
-    transportNz: Transport | undefined,
-    demobilization: Demobilization | undefined,
+    transferred: Transferred | null,
+    deathWar: Death | null,
+    transportNz: Transport | null,
+    demobilization: Demobilization | null,
 }
 
 export type Medal = {
     name: string,
     country: string,
-    citation: string | undefined,
+    citation: string | null,
 }
 
 export type MilitaryYears = {
@@ -158,8 +158,8 @@ export type Book = {
 export type NominalRoll = Book & {
     date: string,
     page: string,
-    volume: string | undefined,
-    roll: string | undefined,
+    volume: string | null,
+    roll: string | null,
 }
 
 export type LondonGazette = {
@@ -193,15 +193,15 @@ export type ImageBookAuthor = {
 export type ImageBook = Book & {
     authors: ImageBookAuthor[],
     year: string,
-    page: string | undefined,
+    page: string | null,
 }
 
 export type ImageSource = {
-    aucklandLibraries: string | undefined,
-    archives: ImageArchives | undefined,
-    family: string | undefined,
-    newspaper: ImageNewspaper | undefined,
-    book: ImageBook | undefined,
+    aucklandLibraries: string | null,
+    archives: ImageArchives | null,
+    family: string | null,
+    newspaper: ImageNewspaper | null,
+    book: ImageBook | null,
 }
 
 export type Image = {
@@ -212,8 +212,8 @@ export type Image = {
 export type Summary = {
     serial: string,
     name: Name,
-    birth: string | undefined,
-    death: string | undefined,
+    birth: string,
+    death: string | null,
 }
 
 export type Profile = {
@@ -224,5 +224,5 @@ export type Profile = {
     militaryYears: MilitaryYears,
     postServiceYears: PostServiceYears,
     sources: Sources,
-    image: Image | undefined,
+    image: Image | null,
 }

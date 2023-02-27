@@ -9,7 +9,7 @@ type Props = {
 const today = new Date();
 
 export function ProfileHowToCite({ id, summary }: Props) {
-  const displayBirthDeathDates = (birth: string | undefined, death: string | undefined) => (death ? `${birth}-${death}` : `${birth}-†?`);
+  const displayBirthDeathDates = (birth: string, death: string | null) => (death ? `${birth}-${death}` : `${birth}-†?`);
   return (
     <div className={STYLES.howtocite}>
       <h2>How to cite this page</h2>

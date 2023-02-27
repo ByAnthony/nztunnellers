@@ -8,7 +8,7 @@ type Props = {
 }
 
 export function ProfileDiary({ origins }: Props) {
-  const displayBirthCountry = (country: string | undefined) => (
+  const displayBirthCountry = (country: string | null) => (
     country !== null ? (
       <p>
         Born in
@@ -27,7 +27,7 @@ export function ProfileDiary({ origins }: Props) {
   const displayParents = (parents: Parents) => {
     if (parents.mother !== null || parents.father !== null) {
       const nonNullishParent = (
-        parent: Parent | undefined,
+        parent: Parent | null,
       ) => (parent !== null ? parent?.name : 'Unknown');
 
       return (

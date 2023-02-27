@@ -9,13 +9,13 @@ type Props = {
 
 export function ProfileSummary({ summary, embarkationUnit, enlistment }: Props) {
   const displayBirthDeathDates = (
-    birth: string | undefined,
-    death: string | undefined,
+    birth: string,
+    death: string | null,
   ) => (death ? `${birth}-${death}` : `${birth}-†?`);
 
   const displayUnit = (
     unit: string,
-    section: string | undefined,
+    section: string | null,
   ) => ((unit === 'Main Body')
     ? (
       <>
