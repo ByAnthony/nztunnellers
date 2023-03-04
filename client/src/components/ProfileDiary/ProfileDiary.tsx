@@ -22,6 +22,13 @@ export function ProfileDiary({ origins }: Props) {
     ) : `${birth.year}`
   );
 
+  const displayBirthInfo = (birthCountry: string | null, birthDate: Date) => (
+    <div className={STYLES['fullwidth-title-card']}>
+      { displayBirthCountry(birthCountry) }
+      { displayBirthDate(birthDate) }
+    </div>
+  );
+
   const displayParents = (parents: Parents) => {
     if (parents.mother !== null && parents.father !== null) {
       return (
@@ -66,14 +73,19 @@ export function ProfileDiary({ origins }: Props) {
     return null;
   };
 
+  const displayImmigrationYear = (inNzLength: string) => (
+    <div className={STYLES['fullwidth-title-card']}>
+      <p>Arrived in New Zealand</p>
+      { inNzLength }
+    </div>
+  );
+
   return (
     <div className={STYLES.diary}>
       <h2>Diary</h2>
-      <div className={STYLES['fullwidth-title-card']}>
-        { displayBirthCountry(origins.birth.country) }
-        { displayBirthDate(origins.birth.date) }
-      </div>
+      { displayBirthInfo(origins.birth.country, origins.birth.date) }
       { displayParents(origins.parents) }
+      { origins.inNzLength ? displayImmigrationYear(origins.inNzLength) : null }
     </div>
   );
 }

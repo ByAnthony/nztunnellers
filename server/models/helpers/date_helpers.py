@@ -84,19 +84,15 @@ def get_date(date: Optional[str], lang: str) -> Optional[Date]:
     return None
 
 
-def convert_month_year(month: Optional[str], lang: str) -> Optional[str]:
+def convert_month_year(
+    month: Optional[str], enlistment_date: Optional[str]
+) -> Optional[str]:
     if month is not None:
-        mois = "mois"
-        month_col = {"en": "month", "fr": mois}
-        months_col = {"en": "months", "fr": mois}
-        years_col = {"en": "years", "fr": "ans"}
-        no_break_space = "\N{NO-BREAK SPACE}"
-
-        if int(month) == 1:
-            return "{}{}{}".format(month, no_break_space, month_col[lang])
-        elif int(month) > int(1) and int(month) < int(24):
-            return "{}{}{}".format(month, no_break_space, months_col[lang])
-        else:
-            result = int(month) // int(12)
-            return "{}{}{}".format(result, no_break_space, years_col[lang])
+        if int(month) < 12:
+            return format_date_to_year(enlistment_date)
+        if int(month) >= 12:
+            enlistment_year = format_date_to_year(enlistment_date)
+            residence_year = int(month) / 12
+            if enlistment_year is not None:
+                return str(int(enlistment_year) - int(residence_year))
     return None

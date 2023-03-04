@@ -23,5 +23,8 @@ def origins(tunneller_result: Tunneller, lang: str) -> Origins:
                 tunneller_result["father_origin"],
             ),
         ),
-        get_nz_resident(tunneller_result["nz_resident_in_month"], lang),
+        get_nz_resident(
+            tunneller_result["nz_resident_in_month"],
+            tunneller_result["enlistment_date"],
+        ),
     )
