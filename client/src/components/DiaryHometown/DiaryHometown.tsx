@@ -1,24 +1,29 @@
 import STYLES from '../ProfileDiary/ProfileDiary.module.scss';
 
 type Props = {
-    hometown: string | null,
+  residence: string | null,
 }
 
-export function DiaryHometown({ hometown }: Props) {
+export function DiaryHometown({ residence }: Props) {
   const displayHometown = (town: string | null) => (
     town
       ? (
-        <div className={STYLES['fullwidth-main-card']}>
-          <p>Hometown</p>
-          <span>{ town }</span>
-        </div>
+        <>
+          <div className={STYLES['fullwidth-main-card']}>
+            <span>Live</span>
+          </div>
+          <div className={STYLES['fullwidth-secondary-card']}>
+            <p>Hometown</p>
+            <span>{ town }</span>
+          </div>
+        </>
       )
       : null
   );
 
   return (
     <>
-      { displayHometown(hometown) }
+      { displayHometown(residence) }
     </>
   );
 }

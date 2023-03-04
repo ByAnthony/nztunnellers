@@ -5,6 +5,7 @@ import { DiaryArrivedInNz } from '../DiaryArrivedInNz/DiaryArrivedInNz';
 import { DiaryBirth } from '../DiaryBirthInfo/DiaryBirthInfo';
 import { DiaryHometown } from '../DiaryHometown/DiaryHometown';
 import { DiaryParents } from '../DiaryParents/DiaryParents';
+import { DiaryWork } from '../DiaryWork/DiaryWork';
 import STYLES from './ProfileDiary.module.scss';
 
 type Props = {
@@ -22,7 +23,8 @@ export function ProfileDiary({
       <DiaryBirth birth={origins.birth} />
       <DiaryParents parents={origins.parents} />
       <DiaryArrivedInNz inNzLength={origins.inNzLength} />
-      <DiaryHometown hometown={preWarYears.residence} />
+      <DiaryHometown residence={preWarYears.residence} />
+      <DiaryWork employment={preWarYears.employment} />
     </div>
   );
 }

@@ -30,6 +30,23 @@
   }
 }
 
+.fullwidth-secondary-card {
+  max-width: 100%;
+  margin: 15px 0;
+  padding: 20px;
+  font-size: 1.25rem;
+  border: 1px solid index.$secondary-color;
+  border-radius: index.$border-radius;
+
+  @include index.tablet {
+    font-size: 1.625rem;
+  }
+
+  @include index.desktop {
+    font-size: 1.875rem;
+  }
+}
+
 .halfwidth-cards-container {
   margin: 15px 0;
   display: flex;
