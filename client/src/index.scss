@@ -129,7 +129,22 @@ a {
   text-decoration: none;
 }
 
-@mixin link-hover {
+@mixin text-link {
+  padding-bottom: 4px;
+  font-weight: 500;
+  color: $text-color;
+  border-bottom: 1px solid $tertiary-color;
+  transition: color 0.9s ease-in-out, color 0.9s ease-in-out,
+    border-bottom 0.9s ease-in-out, border-bottom 0.9s ease-in-out;
+
+  &:hover {
+    padding-bottom: 4px;
+    border-bottom: 1px solid $tertiary-color;
+    color: $tertiary-color;
+  }
+}
+
+@mixin button-link {
   border: 1px solid $secondary-color;
   border-radius: $border-radius;
   border-bottom: 1px solid $secondary-color;

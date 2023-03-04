@@ -37,7 +37,7 @@
   text-decoration: none;
   background-color: transparent;
 
-  @include index.link-hover;
+  @include index.button-link;
 
   @include index.tablet {
     font-size: 1.625rem;

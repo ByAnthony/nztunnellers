@@ -15,17 +15,5 @@
 }
 
 .sources a {
-  padding-bottom: 3px;
-  font-weight: 500;
-  color: index.$text-color;
-  border-bottom: none;
-  border-bottom: 1px solid index.$tertiary-color;
-  transition: color 0.9s ease-in-out, color 0.9s ease-in-out,
-    border-bottom 0.9s ease-in-out, border-bottom 0.9s ease-in-out;
-
-  &:hover {
-    padding-bottom: 3px;
-    border-bottom: 1px solid index.$tertiary-color;
-    color: index.$tertiary-color;
-  }
+  @include index.text-link;
 }

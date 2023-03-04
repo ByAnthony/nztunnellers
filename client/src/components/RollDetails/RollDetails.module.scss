@@ -4,7 +4,7 @@
   flex: 100%;
   padding: 25px 25px 22px 25px;
 
-  @include index.link-hover;
+  @include index.button-link;
 
   @include index.tablet {
     padding: 30px 30px 27px 30px;
