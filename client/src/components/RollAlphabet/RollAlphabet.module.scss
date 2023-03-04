@@ -42,10 +42,11 @@
 .tunnellers-container {
   display: flex;
   flex-direction: column;
-  gap: 50px;
+  gap: 15px;
 
   @include index.desktop {
     display: grid;
+    gap: 50px;
     grid-template-columns: 1fr 1fr;
   }
 }
