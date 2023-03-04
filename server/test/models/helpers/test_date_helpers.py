@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from ....models.date import Date
 from ....models.helpers.date_helpers import (
+    convert_immigration_year,
     convert_month_year,
     format_date_to_birth_year,
     format_date_to_day,
@@ -160,3 +161,15 @@ class TestConvertMonth:
 
         def test_month_is_none_and_lang_fr(self):
             assert convert_month_year(None, "fr") is None
+
+
+class TestConvertImmigrationYear:
+    class TestConvertImmigrationYearIf:
+        def test_residence_is_less_than_12_months_returns_enlistment_year(self):
+            assert convert_immigration_year("5", "1916-09-29") == "1916"
+
+        def test_residence_is_greater_than_12_months_returns_immigration_year(self):
+            assert convert_immigration_year("144", "1916-09-29") == "1904"
+
+        def test_residence_is_null_returns_null(self):
+            assert convert_immigration_year(None, "1916-09-29") is None
