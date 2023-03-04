@@ -1,5 +1,31 @@
 @use 'src/index.scss';
 
+.overview {
+  margin-top: index.$profile-margin-top;
+  padding-bottom: 25px;
+  border-bottom: index.$profile-border-bottom;
+}
+
+.overview-group {
+  margin: 10px 0;
+  padding: 10px 0;
+}
+
+.overview-title {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 400;
+  text-align: left;
+
+  @include index.tablet {
+    font-size: 1.5rem;
+  }
+
+  @include index.desktop {
+    font-size: 1.75rem;
+  }
+}
+
 .surname {
   margin: 0;
   font-size: 2.75rem;
@@ -44,32 +70,6 @@
 
   @include index.desktop {
     margin-top: 25px;
-    font-size: 1.75rem;
-  }
-}
-
-.overview {
-  margin-top: 50px;
-  padding-bottom: 25px;
-  border-bottom: 1px solid index.$secondary-color;
-}
-
-.overview-group {
-  margin: 10px 0;
-  padding: 10px 0;
-}
-
-.overview-title {
-  margin: 0;
-  font-size: 1.25rem;
-  font-weight: 400;
-  text-align: left;
-
-  @include index.tablet {
-    font-size: 1.5rem;
-  }
-
-  @include index.desktop {
     font-size: 1.75rem;
   }
 }

@@ -1,5 +1,5 @@
 import { Birth, Date } from '../../types/tunneller';
-import STYLES from './ProfileDiary.module.scss';
+import STYLES from '../ProfileDiary/ProfileDiary.module.scss';
 
 type Props = {
     birth: Birth,

@@ -1,4 +1,4 @@
-import STYLES from './ProfileDiary.module.scss';
+import STYLES from '../ProfileDiary/ProfileDiary.module.scss';
 
 type Props = {
     inNzLength: string | null,

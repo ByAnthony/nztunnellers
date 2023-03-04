@@ -1,9 +1,9 @@
 import {
   Origins,
 } from '../../types/tunneller';
-import { DiaryArrivedInNz } from './DiaryArrivedInNz';
-import { DiaryBirth } from './DiaryBirthInfo';
-import { DiaryParents } from './DiaryParents';
+import { DiaryArrivedInNz } from '../DiaryArrivedInNz/DiaryArrivedInNz';
+import { DiaryBirth } from '../DiaryBirthInfo/DiaryBirthInfo';
+import { DiaryParents } from '../DiaryParents/DiaryParents';
 import STYLES from './ProfileDiary.module.scss';
 
 type Props = {

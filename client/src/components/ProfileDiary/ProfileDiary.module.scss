@@ -2,7 +2,7 @@
 
 .diary {
   width: 100%;
-  margin-top: 50px;
+  margin-top: index.$profile-margin-top;
   padding-bottom: 50px;
   font-family: index.$main-font;
   font-stretch: 85%;
@@ -10,7 +10,7 @@
   color: index.$text-color;
   text-align: left;
   letter-spacing: 1px;
-  border-bottom: 1px solid index.$secondary-color;
+  border-bottom: index.$profile-border-bottom;
 }
 
 .fullwidth-main-card {

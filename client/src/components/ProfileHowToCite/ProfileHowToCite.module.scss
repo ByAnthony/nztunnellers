@@ -1,7 +1,7 @@
 @use 'src/index.scss';
 
 .howtocite {
-  margin-top: 50px;
+  margin-top: index.$profile-margin-top;
 }
 
 .howtocite p {
