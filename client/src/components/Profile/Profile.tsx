@@ -35,7 +35,10 @@ export function Profile() {
             embarkation={data.militaryYears.embarkationUnit}
             transportUk={data.militaryYears.transportUk}
           />
-          <ProfileDiary origins={data.origins} />
+          <ProfileDiary
+            origins={data.origins}
+            preWarYears={data.preWarYears}
+          />
           <ProfileSources sources={data.sources} />
           <ProfileHowToCite id={Number(id)} summary={data.summary} />
         </div>

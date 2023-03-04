@@ -3,7 +3,7 @@
 .diary {
   width: 100%;
   margin-top: index.$profile-margin-top;
-  padding-bottom: 50px;
+  padding-bottom: 40px;
   font-family: index.$main-font;
   font-stretch: 85%;
   font-weight: 600;
@@ -31,6 +31,7 @@
 }
 
 .halfwidth-cards-container {
+  margin: 15px 0;
   display: flex;
   gap: 15px;
 }

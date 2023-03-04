@@ -13,11 +13,14 @@ export function RollDetails({ listOfTunnellers }: Roll) {
       {listOfTunnellers.map((tunneller: Details) => (
         <Link to={`/roll/${tunneller.id}`} key={tunneller.id} className={STYLES['tunneller-link']}>
           <div className={STYLES.tunneller}>
-            <p className={STYLES.surname}>{tunneller.name.surname}</p>
-            <p className={STYLES.forename}>{tunneller.name.forename}</p>
-            <p className={STYLES.dates}>
-              { displayBirthDeathDates(tunneller.birth, tunneller.death) }
-            </p>
+            <div>
+              <p className={STYLES.surname}>{tunneller.name.surname}</p>
+              <p className={STYLES.forename}>{tunneller.name.forename}</p>
+              <p className={STYLES.dates}>
+                { displayBirthDeathDates(tunneller.birth, tunneller.death) }
+              </p>
+            </div>
+            <div className={STYLES.arrow}>&#10095;</div>
           </div>
         </Link>
       ))}
