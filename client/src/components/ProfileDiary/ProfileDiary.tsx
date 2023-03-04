@@ -11,9 +11,7 @@ export function ProfileDiary({ origins }: Props) {
   const displayBirthCountry = (country: string | null) => (
     country !== null ? (
       <p>
-        Born in
-        {' '}
-        {country}
+        {`Born in ${country}`}
       </p>
     ) : <p>Born</p>
   );
@@ -25,23 +23,44 @@ export function ProfileDiary({ origins }: Props) {
   );
 
   const displayParents = (parents: Parents) => {
-    if (parents.mother !== null || parents.father !== null) {
-      const nonNullishParent = (
-        parent: Parent | null,
-      ) => (parent !== null ? parent?.name : 'Unknown');
-
+    if (parents.mother !== null && parents.father !== null) {
       return (
-        <div className={STYLES['card-container']}>
-          <div className={STYLES['secondary-card']}>
-            <div className={STYLES['secondary-card-title']}><p>Mother</p></div>
-            <div>{ nonNullishParent(origins.parents.mother) }</div>
+        <>
+          <div className={STYLES['fullwidth-title-card']}>
+            Parents
           </div>
-          <div className={STYLES['secondary-card']}>
-            <div className={STYLES['secondary-card-title']}><p>Father</p></div>
-            <div>{ nonNullishParent(origins.parents.father) }</div>
+          <div className={STYLES['card-container']}>
+            <div className={STYLES['parents-card']}>
+              <div className={STYLES['parents-card-title']}><p>Mother</p></div>
+              <div>{ parents.mother.name }</div>
+            </div>
+            <div className={STYLES['parents-card']}>
+              <div className={STYLES['parents-card-title']}><p>Father</p></div>
+              <div>{ parents.father.name }</div>
+            </div>
           </div>
-        </div>
+        </>
       );
+    }
+
+    const isMotherOrFather = parents.mother ? 'Mother' : 'Father';
+
+    const displayParent = (parent: Parent) => (
+      <div className={STYLES['card-container']}>
+        <div className={STYLES['parent-title-card']}>
+          { isMotherOrFather }
+        </div>
+        <div className={STYLES['parent-card']}>
+          { parent.name }
+        </div>
+      </div>
+    );
+
+    if (parents.mother !== null && parents.father === null) {
+      return displayParent(parents.mother);
+    }
+    if (parents.mother === null && parents.father !== null) {
+      return displayParent(parents.father);
     }
     return null;
   };
@@ -49,7 +68,7 @@ export function ProfileDiary({ origins }: Props) {
   return (
     <div className={STYLES.diary}>
       <h2>Diary</h2>
-      <div className={STYLES['main-card']}>
+      <div className={STYLES['fullwidth-title-card']}>
         { displayBirthCountry(origins.birth.country) }
         { displayBirthDate(origins.birth.date) }
       </div>
