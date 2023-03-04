@@ -18,27 +18,11 @@ class TestGetParent:
 
 class TestGetNzResident:
     class TestGetNzResidentIf:
-        def test_residence_is_more_than_24_months_and_lang_is_en(self):
-            assert get_nz_resident("168", "en") == "14\N{NO-BREAK SPACE}years"
+        def test_residence_is_less_than_12_months_returns_enlistment_year(self):
+            assert get_nz_resident("5", "1916-09-29") == "1916"
 
-        def test_residence_is_more_than_24_months_and_lang_is_fr(self):
-            assert get_nz_resident("168", "fr") == "14\N{NO-BREAK SPACE}ans"
+        def test_residence_is_greater_than_12_months_returns_immigration_year(self):
+            assert get_nz_resident("144", "1916-09-29") == "1904"
 
-        def test_residence_is_between_2_and_24_months_and_lang_is_en(self):
-            assert get_nz_resident("16", "en") == "16\N{NO-BREAK SPACE}months"
-
-        def test_residence_is_between_2_and_24_months_and_lang_is_fr(self):
-            assert get_nz_resident("16", "fr") == "16\N{NO-BREAK SPACE}mois"
-
-        def test_residence_is_1_month_and_lang_is_en(self):
-            assert get_nz_resident("1", "en") == "1\N{NO-BREAK SPACE}month"
-
-        def test_residence_is_1_month_and_lang_is_fr(self):
-            assert get_nz_resident("1", "fr") == "1\N{NO-BREAK SPACE}mois"
-
-    class TestDoNotGetNzResidentIf:
-        def test_month_is_none_and_lang_is_en(self):
-            assert get_nz_resident(None, "en") is None
-
-        def test_month_is_none_and_lang_is_fr(self):
-            assert get_nz_resident(None, "fr") is None
+        def test_residence_is_null_returns_null(self):
+            assert get_nz_resident(None, "1916-09-29") is None
