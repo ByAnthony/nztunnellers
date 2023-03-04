@@ -34,7 +34,7 @@ export function DiaryParents({ parents }: Props) {
     const displayParent = (parent: Parent) => (
       <div className={STYLES['halfwidth-cards-container']}>
         <div className={STYLES['halfwidth-main-card']}>
-          Parent
+          <span>Parent</span>
         </div>
         <div className={STYLES['halfwidth-secondary-card']}>
           <div className={STYLES['halfwidth-secondary-card-title']}><p>{ isMotherOrFather }</p></div>

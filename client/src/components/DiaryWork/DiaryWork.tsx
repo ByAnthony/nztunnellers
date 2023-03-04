@@ -32,7 +32,7 @@ export function DiaryWork({ employment }: Props) {
     const displayOccupation = (occupation: string | null) => (
       <div className={STYLES['halfwidth-cards-container']}>
         <div className={STYLES['halfwidth-main-card']}>
-          Work
+          <span>Work</span>
         </div>
         <div className={STYLES['halfwidth-secondary-card']}>
           <div className={STYLES['halfwidth-secondary-card-title']}><p>Occupation</p></div>
