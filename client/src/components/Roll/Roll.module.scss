@@ -10,7 +10,8 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, 30px);
   justify-content: space-between;
-  grid-gap: 15px;
+  grid-row-gap: 15px;
+  grid-column-gap: 12px;
 
   @include index.tablet {
     margin: 75px 0;
@@ -35,19 +36,8 @@
   text-align: center;
   text-decoration: none;
   background-color: transparent;
-  border: 1px solid index.$secondary-color;
-  border-radius: index.$border-radius;
-  border-bottom: 1px solid index.$secondary-color;
-  transition: border-bottom 0.9s ease-in-out, border-bottom 0.9s ease-in-out,
-    border 0.9s ease-in-out, border 0.9s ease-in-out,
-    background-color 0.9s ease-in-out, background-color 0.9s ease-in-out;
-  cursor: pointer;
 
-  &:hover {
-    border: 1px solid index.$tertiary-color;
-    border-bottom: 1px solid index.$tertiary-color;
-    background-color: index.$secondary-color;
-  }
+  @include index.link-hover;
 
   @include index.tablet {
     font-size: 1.625rem;

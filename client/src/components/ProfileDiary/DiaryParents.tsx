@@ -12,16 +12,16 @@ export function DiaryParents({ parents }: Props) {
     if (family.mother !== null && family.father !== null) {
       return (
         <>
-          <div className={STYLES['fullwidth-card']}>
+          <div className={STYLES['fullwidth-main-card']}>
             Parents
           </div>
-          <div className={STYLES['cards-container']}>
-            <div className={STYLES['parents-card']}>
-              <div className={STYLES['parents-card-title']}><p>Mother</p></div>
+          <div className={STYLES['halfwidth-cards-container']}>
+            <div className={STYLES['halfwidth-secondary-card']}>
+              <div className={STYLES['halfwidth-secondary-card-title']}><p>Mother</p></div>
               <div><span>{ family.mother.name }</span></div>
             </div>
-            <div className={STYLES['parents-card']}>
-              <div className={STYLES['parents-card-title']}><p>Father</p></div>
+            <div className={STYLES['halfwidth-secondary-card']}>
+              <div className={STYLES['halfwidth-secondary-card-title']}><p>Father</p></div>
               <div><span>{ family.father.name }</span></div>
             </div>
           </div>
@@ -32,12 +32,12 @@ export function DiaryParents({ parents }: Props) {
     const isMotherOrFather = parents.mother ? 'Mother' : 'Father';
 
     const displayParent = (parent: Parent) => (
-      <div className={STYLES['cards-container']}>
-        <div className={STYLES['parent-title-card']}>
+      <div className={STYLES['halfwidth-cards-container']}>
+        <div className={STYLES['halfwidth-main-card']}>
           Parent
         </div>
-        <div className={STYLES['parent-card']}>
-          <div className={STYLES['parents-card-title']}><p>{ isMotherOrFather }</p></div>
+        <div className={STYLES['halfwidth-secondary-card']}>
+          <div className={STYLES['halfwidth-secondary-card-title']}><p>{ isMotherOrFather }</p></div>
           <div><span>{ parent.name }</span></div>
         </div>
       </div>

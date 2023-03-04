@@ -4,20 +4,20 @@
   width: 100%;
   margin-top: 50px;
   padding-bottom: 50px;
-  border-bottom: 1px solid index.$secondary-color;
-}
-
-.fullwidth-card {
-  max-width: 100%;
-  margin: 15px 0;
-  padding: 20px;
   font-family: index.$main-font;
-  font-size: 1.25rem;
   font-stretch: 85%;
   font-weight: 600;
   color: index.$text-color;
   text-align: left;
   letter-spacing: 1px;
+  border-bottom: 1px solid index.$secondary-color;
+}
+
+.fullwidth-main-card {
+  max-width: 100%;
+  margin: 15px 0;
+  padding: 20px;
+  font-size: 1.25rem;
   background-color: index.$secondary-color;
   border-radius: index.$border-radius;
 
@@ -30,26 +30,25 @@
   }
 }
 
-.cards-container {
+.halfwidth-cards-container {
   display: flex;
   gap: 15px;
 }
 
-.parent-title-card {
+@mixin halfwidth-card-style {
   display: flex;
   flex-flow: column wrap;
-  justify-content: flex-end;
   align-content: flex-start;
   align-items: flex-start;
   width: 50%;
   padding: 20px;
-  font-family: index.$main-font;
+}
+
+.halfwidth-main-card {
+  @include halfwidth-card-style;
+
+  justify-content: flex-end;
   font-size: 1.25rem;
-  font-stretch: 85%;
-  font-weight: 600;
-  color: index.$text-color;
-  text-align: left;
-  letter-spacing: 1px;
   background-color: index.$secondary-color;
   border-radius: index.$border-radius;
 
@@ -62,48 +61,11 @@
   }
 }
 
-.parent-card {
-  display: flex;
-  flex-flow: column wrap;
-  justify-content: center;
-  align-content: flex-start;
-  align-items: flex-start;
-  width: 50%;
-  padding: 20px;
-  font-family: index.$main-font;
-  font-size: 1.1rem;
-  font-stretch: 85%;
-  font-weight: 600;
-  color: index.$text-color;
-  text-align: left;
-  letter-spacing: 1px;
-  border: 1px solid index.$secondary-color;
-  border-radius: index.$border-radius;
+.halfwidth-secondary-card {
+  @include halfwidth-card-style;
 
-  @include index.tablet {
-    font-size: 1.475rem;
-  }
-
-  @include index.desktop {
-    font-size: 1.725rem;
-  }
-}
-
-.parents-card {
-  display: flex;
-  flex-flow: column wrap;
   justify-content: space-between;
-  align-content: flex-start;
-  align-items: flex-start;
-  width: 50%;
-  padding: 20px;
-  font-family: index.$main-font;
   font-size: 1.1rem;
-  font-stretch: 85%;
-  font-weight: 600;
-  color: index.$text-color;
-  text-align: left;
-  letter-spacing: 1px;
   border: 1px solid index.$secondary-color;
   border-radius: index.$border-radius;
 
@@ -116,6 +78,6 @@
   }
 }
 
-.parents-card-title {
+.halfwidth-secondary-card-title {
   padding-bottom: 15px;
 }

@@ -128,3 +128,19 @@ p {
 a {
   text-decoration: none;
 }
+
+@mixin link-hover {
+  border: 1px solid $secondary-color;
+  border-radius: $border-radius;
+  border-bottom: 1px solid $secondary-color;
+  transition: border-bottom 0.9s ease-in-out, border-bottom 0.9s ease-in-out,
+    border 0.9s ease-in-out, border 0.9s ease-in-out,
+    background-color 0.9s ease-in-out, background-color 0.9s ease-in-out;
+  cursor: pointer;
+
+  &:hover {
+    border: 1px solid $tertiary-color;
+    border-bottom: 1px solid $tertiary-color;
+    background-color: $secondary-color;
+  }
+}

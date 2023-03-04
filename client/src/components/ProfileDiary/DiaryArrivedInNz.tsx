@@ -6,7 +6,7 @@ type Props = {
 
 export function DiaryArrivedInNz({ inNzLength }: Props) {
   const displayImmigrationYear = (immigrationYear: string) => (
-    <div className={STYLES['fullwidth-card']}>
+    <div className={STYLES['fullwidth-main-card']}>
       <p>Arrived in New Zealand</p>
       <span>{ immigrationYear }</span>
     </div>

@@ -3,14 +3,8 @@
 .tunneller {
   flex: 100%;
   padding: 25px 25px 22px 25px;
-  border: 1px solid index.$secondary-color;
-  border-bottom: 1px solid index.$secondary-color;
-  border-radius: index.$border-radius;
-  transition: border-bottom 0.9s ease-in-out, border-bottom 0.9s ease-in-out,
-    border 0.9s ease-in-out, border 0.9s ease-in-out,
-    background-color 0.9s ease-in-out, background-color 0.9s ease-in-out;
-  list-style: none;
-  cursor: pointer;
+
+  @include index.link-hover;
 
   @include index.tablet {
     padding: 30px 30px 27px 30px;
@@ -19,12 +13,6 @@
   @include index.desktop {
     padding: 40px 40px 35px 40px;
     flex: 50%;
-  }
-
-  &:hover {
-    border: 1px solid index.$tertiary-color;
-    border-bottom: 1px solid index.$tertiary-color;
-    background-color: index.$secondary-color;
   }
 }
 
