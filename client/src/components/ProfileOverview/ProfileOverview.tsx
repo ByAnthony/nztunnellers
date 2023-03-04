@@ -40,24 +40,17 @@ export function ProfileOverview({
     <div className={STYLES.description}>
       <h2>Overview</h2>
       <p>
-        {name.forename}
-        {' '}
-        {name.surname}
-        {' '}
-        {enlistedOrPosted(
+        { `${name.forename} ${name.surname}
+        ${enlistedOrPosted(
           enlistment.date,
           enlistment.transferredToTunnellers?.date,
           enlistment.transferredToTunnellers?.postedFrom,
-        )}
-        {'. He left New Zealand with the '}
-        {embarkation.detachment}
-        {' of the Tunnelling Company, on '}
-        {yearOrFullDate(
+        )}. He left New Zealand with the ${embarkation.detachment} of the Tunnelling Company, on
+        ${yearOrFullDate(
           enlistment.date,
           enlistment.transferredToTunnellers?.date,
           transportUk.departureDate,
-        )}
-        .
+        )}.`}
       </p>
     </div>
   );
