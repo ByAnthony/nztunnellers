@@ -48,10 +48,11 @@ export function ProfileDiary({ origins }: Props) {
     const displayParent = (parent: Parent) => (
       <div className={STYLES['card-container']}>
         <div className={STYLES['parent-title-card']}>
-          { isMotherOrFather }
+          Parent
         </div>
         <div className={STYLES['parent-card']}>
-          { parent.name }
+          <div className={STYLES['parents-card-title']}><p>{ isMotherOrFather }</p></div>
+          <div>{ parent.name }</div>
         </div>
       </div>
     );
