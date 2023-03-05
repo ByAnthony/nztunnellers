@@ -1,6 +1,7 @@
 import {
   Origins, PreWayYears,
 } from '../../types/tunneller';
+import { DiaryArmyExperience } from '../DiaryArmyExperience/DiaryArmyExperience';
 import { DiaryArrivedInNz } from '../DiaryArrivedInNz/DiaryArrivedInNz';
 import { DiaryBirth } from '../DiaryBirthInfo/DiaryBirthInfo';
 import { DiaryHometown } from '../DiaryHometown/DiaryHometown';
@@ -25,8 +26,9 @@ export function ProfileDiary({
       <DiaryParents parents={origins.parents} />
       <DiaryArrivedInNz inNzLength={origins.inNzLength} />
       <DiaryHometown residence={preWarYears.residence} />
-      <DiaryLife maritalStatus={preWarYears.maritalStatus} wife={preWarYears.wife} />
       <DiaryWork employment={preWarYears.employment} />
+      <DiaryLife maritalStatus={preWarYears.maritalStatus} wife={preWarYears.wife} />
+      <DiaryArmyExperience armyExperience={preWarYears.armyExperience} />
     </div>
   );
 }
