@@ -61,7 +61,7 @@ def tunneller_query(lang: str) -> str:
         , transport_uk.transport_origin AS transport_uk_origin
         , DATE_FORMAT(transport_uk.transport_end, '%%Y-%%m-%%d') AS transport_uk_end
         , transport_uk.transport_destination AS transport_uk_destination
-        , has_deserted
+        , t.has_deserted
         , DATE_FORMAT(transferred.transferred_date, '%%Y-%%m-%%d') AS transferred_to_date
         , {transferred_to_col[lang]} AS transferred_to_unit
         , death_type.death_type_en AS death_type

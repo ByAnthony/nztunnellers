@@ -38,6 +38,8 @@ export function Profile() {
           <ProfileDiary
             origins={data.origins}
             preWarYears={data.preWarYears}
+            militaryYears={data.militaryYears}
+            postWarYears={data.postServiceYears}
           />
           <ProfileSources sources={data.sources} />
           <ProfileHowToCite id={Number(id)} summary={data.summary} />

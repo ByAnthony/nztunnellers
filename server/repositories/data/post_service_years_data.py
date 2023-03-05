@@ -5,16 +5,14 @@ from ...models.helpers.military_years_helpers import (
     get_death_circumstances,
     get_death_place,
 )
-from ...models.helpers.post_service_years_helpers import get_death
 from ...models.helpers.translator_helpers import translate_town
-from ...models.post_service_years import PostServiceYears
+from ...models.post_service_years import DeathAfterService, PostServiceYears
 from ...models.tunneller import Tunneller
 
 
 def post_service_years(tunneller_result: Tunneller, lang: str) -> PostServiceYears:
     return PostServiceYears(
-        get_death(
-            tunneller_result["death_type"],
+        DeathAfterService(
             get_birth_date(
                 tunneller_result["death_year"],
                 tunneller_result["death_date"],
@@ -35,5 +33,6 @@ def post_service_years(tunneller_result: Tunneller, lang: str) -> PostServiceYea
                 tunneller_result["cemetery_country"],
                 tunneller_result["grave"],
             ),
+            tunneller_result["death_type"],
         ),
     )
