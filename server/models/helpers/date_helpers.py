@@ -78,6 +78,16 @@ def get_birth_date(year: Optional[str], date: Optional[str], lang: str) -> Date:
     )
 
 
+def get_death_date(
+    year: Optional[str], date: Optional[str], lang: str
+) -> Optional[Date]:
+    if year is None and date is None:
+        return None
+    return Date(
+        format_date_to_birth_year(year, date), format_date_to_day_and_month(date, lang)
+    )
+
+
 def get_date(date: Optional[str], lang: str) -> Optional[Date]:
     if date is not None:
         return Date(format_date_to_year(date), format_date_to_day_and_month(date, lang))

@@ -16,6 +16,6 @@ def get_death(
 ) -> Optional[DeathAfterService]:
     if death_type == "War injuries":
         return DeathAfterService(date, place, cause, cemetery, True)
-    elif death_type == "After war":
+    if death_type == "After war":
         return DeathAfterService(date, place, cause, cemetery, False)
     return None
