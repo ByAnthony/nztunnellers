@@ -21,7 +21,7 @@ export function DiaryBirth({ birth }: Props) {
   );
 
   const displayBirthInfo = (birthCountry: string | null, birthDate: Date) => (
-    <div className={STYLES['fullwidth-secondary-card']}>
+    <div className={STYLES['fullwidth-main-card']}>
       { displayBirthCountry(birthCountry) }
       { displayBirthDate(birthDate) }
     </div>
