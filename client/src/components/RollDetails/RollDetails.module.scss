@@ -74,14 +74,15 @@
 
 .arrow {
   margin: 0;
-  font-size: 1.375rem;
+  font-size: 2rem;
+  font-weight: 200;
   color: index.$tertiary-color;
 
   @include index.tablet {
-    font-size: 1.75rem;
+    font-size: 2.5rem;
   }
 
   @include index.desktop {
-    font-size: 1.875rem;
+    font-size: 3rem;
   }
 }

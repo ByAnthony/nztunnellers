@@ -4,6 +4,7 @@ import {
 import { DiaryArrivedInNz } from '../DiaryArrivedInNz/DiaryArrivedInNz';
 import { DiaryBirth } from '../DiaryBirthInfo/DiaryBirthInfo';
 import { DiaryHometown } from '../DiaryHometown/DiaryHometown';
+import { DiaryLife } from '../DiaryLife/DiaryLife';
 import { DiaryParents } from '../DiaryParents/DiaryParents';
 import { DiaryWork } from '../DiaryWork/DiaryWork';
 import STYLES from './ProfileDiary.module.scss';
@@ -24,6 +25,7 @@ export function ProfileDiary({
       <DiaryParents parents={origins.parents} />
       <DiaryArrivedInNz inNzLength={origins.inNzLength} />
       <DiaryHometown residence={preWarYears.residence} />
+      <DiaryLife maritalStatus={preWarYears.maritalStatus} wife={preWarYears.wife} />
       <DiaryWork employment={preWarYears.employment} />
     </div>
   );

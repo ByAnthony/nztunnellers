@@ -20,7 +20,7 @@ export function RollDetails({ listOfTunnellers }: Roll) {
                 { displayBirthDeathDates(tunneller.birth, tunneller.death) }
               </p>
             </div>
-            <div className={STYLES.arrow}>&#10095;</div>
+            <div className={STYLES.arrow}>&rarr;</div>
           </div>
         </Link>
       ))}
