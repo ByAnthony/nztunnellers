@@ -2,18 +2,26 @@ import { Death, PostWarDeath } from '../../types/tunneller';
 import STYLES from '../ProfileDiary/ProfileDiary.module.scss';
 
 type Props = {
-    warDeath: Death | null,
-    afterWarDeath: PostWarDeath | null,
+  birthDate: string | null,
+  warDeath: Death | null,
+  afterWarDeath: PostWarDeath | null,
 }
 
-export function DiaryDied({ warDeath, afterWarDeath }: Props) {
-  const title = <p>Died</p>;
+export function DiaryDied({ birthDate, warDeath, afterWarDeath }: Props) {
+  const title = (birth: string | null, death: string | null) => (
+    death
+      ? <p>{`Died at the age of ${Number(death) - Number(birth)}`}</p>
+      : <p>Died</p>);
 
-  const displayDeathInfo = (diedDuringWar: Death | null, diedAfterWar: PostWarDeath | null) => {
+  const displayDeathInfo = (
+    dateOfBirth: string | null,
+    diedDuringWar: Death | null,
+    diedAfterWar: PostWarDeath | null,
+  ) => {
     if (diedDuringWar !== null && diedAfterWar === null) {
       return (
         <div className={STYLES['fullwidth-main-card']}>
-          { title }
+          { title(dateOfBirth, diedDuringWar.date.year) }
           <span>
             { diedDuringWar.date.dayMonth !== null && diedDuringWar.date.year !== null
               ? `${diedDuringWar.date.dayMonth} ${diedDuringWar.date.year}`
@@ -25,7 +33,7 @@ export function DiaryDied({ warDeath, afterWarDeath }: Props) {
     if (diedDuringWar === null && diedAfterWar !== null) {
       return (
         <div className={STYLES['fullwidth-main-card']}>
-          { title }
+          { title(dateOfBirth, diedAfterWar.date.year) }
           <span>
             { diedAfterWar.date.dayMonth !== null && diedAfterWar.date.year !== null
               ? `${diedAfterWar.date.dayMonth} ${diedAfterWar.date.year}`
@@ -39,7 +47,7 @@ export function DiaryDied({ warDeath, afterWarDeath }: Props) {
 
   return (
     <>
-      { displayDeathInfo(warDeath, afterWarDeath) }
+      { displayDeathInfo(birthDate, warDeath, afterWarDeath) }
     </>
   );
 }

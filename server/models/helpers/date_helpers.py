@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import datetime
 from typing import Optional
 
 from ..date import Date
@@ -124,3 +125,21 @@ def convert_immigration_year(
             if enlistment_year is not None:
                 return str(int(enlistment_year) - int(residence_year))
     return None
+
+
+def calculate_age_at_death_with_full_date(
+    birthdate_str: str, deathdate_str: str
+) -> int:
+    birthdate = datetime.datetime.strptime(birthdate_str, "%Y-%m-%d")
+    deathdate = datetime.datetime.strptime(deathdate_str, "%Y-%m-%d")
+    age_at_death = deathdate.year - birthdate.year
+    if deathdate.month < birthdate.month or (
+        deathdate.month == birthdate.month and deathdate.day < birthdate.day
+    ):
+        age_at_death -= 1
+    return age_at_death
+
+
+def calculate_age_at_death_with_years(birthdate_year: str, deathdate_year: str) -> int:
+    age_at_death = int(deathdate_year) - int(birthdate_year)
+    return age_at_death
