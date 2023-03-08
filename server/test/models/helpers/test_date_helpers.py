@@ -3,13 +3,13 @@ from ....models.date import Date
 from ....models.helpers.date_helpers import (
     convert_immigration_year,
     convert_month_year,
-    format_date_to_birth_year,
+    format_full_date_to_year,
     format_date_to_day,
     format_date_to_day_and_month,
     format_date_to_day_month_and_year,
     format_date_to_month,
     format_date_to_year,
-    get_birth_date,
+    format_birth_and_death_date,
     get_date,
 )
 
@@ -21,14 +21,14 @@ no_break_space = "\N{NO-BREAK SPACE}"
 class TestFormatDateBirth:
     class TestFormatDateBirthIf:
         def test_full_date_exist(self):
-            assert format_date_to_birth_year(None, "1988-05-04") == "1988"
+            assert format_full_date_to_year(None, "1988-05-04") == "1988"
 
         def test_only_year_exist(self):
-            assert format_date_to_birth_year("1988", None) == "1988"
+            assert format_full_date_to_year("1988", None) == "1988"
 
     class TestDoNotFormatDateBirthIf:
         def test_date_does_not_exist(self):
-            assert format_date_to_birth_year(None, None) is None
+            assert format_full_date_to_year(None, None) is None
 
 
 class TestFormatDateToYear:
@@ -103,20 +103,20 @@ class TestFormatDateToDayMonthAndYear:
 
 class TestGetBirthDate:
     def test_if_year_is_none_and_lang_is_en(self):
-        assert get_birth_date(None, date, "en") == Date(
+        assert format_birth_and_death_date(None, date, "en") == Date(
             "1988", "4{}May".format(no_break_space)
         )
 
     def test_if_year_is_none_and_lang_is_fr(self):
-        assert get_birth_date(None, date, "fr") == Date(
+        assert format_birth_and_death_date(None, date, "fr") == Date(
             "1988", "4{}mai".format(no_break_space)
         )
 
     def test_if_year_is_not_none_and_lang_is_en(self):
-        assert get_birth_date(year, None, "en") == Date("1988", None)
+        assert format_birth_and_death_date(year, None, "en") == Date("1988", None)
 
     def test_if_year_is_not_none_and_lang_is_fr(self):
-        assert get_birth_date(year, None, "fr") == Date("1988", None)
+        assert format_birth_and_death_date(year, None, "fr") == Date("1988", None)
 
 
 class TestGetDate:

@@ -32,3 +32,4 @@ class Death:
     place: Optional[DeathPlace] = None
     cause: Optional[DeathCause] = None
     cemetery: Optional[Cemetery] = None
+    age_at_death: Optional[int] = None

@@ -3,8 +3,9 @@ from typing import Optional
 
 from ...models.death import Death
 from ...models.helpers.translator_helpers import translate_town
-from ...models.helpers.date_helpers import get_birth_date, get_date
+from ...models.helpers.date_helpers import format_birth_and_death_date, get_date
 from ...models.helpers.military_years_helpers import (
+    get_age_at_death,
     get_boolean,
     get_cemetery,
     get_death_circumstances,
@@ -72,7 +73,7 @@ def transferred(tunneller_result: Tunneller, lang: str) -> Optional[Transferred]
 def death_war(tunneller_result: Tunneller, lang: str) -> Optional[Death]:
     return get_death_war(
         tunneller_result["death_type"],
-        get_birth_date(
+        format_birth_and_death_date(
             tunneller_result["death_year"],
             tunneller_result["death_date"],
             lang,
@@ -91,6 +92,12 @@ def death_war(tunneller_result: Tunneller, lang: str) -> Optional[Death]:
             tunneller_result["cemetery_town"],
             tunneller_result["cemetery_country"],
             tunneller_result["grave"],
+        ),
+        get_age_at_death(
+            tunneller_result["death_year"],
+            tunneller_result["death_date"],
+            tunneller_result["birth_year"],
+            tunneller_result["birth_date"],
         ),
     )
 

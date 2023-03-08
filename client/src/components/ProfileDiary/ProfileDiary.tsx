@@ -36,7 +36,6 @@ export function ProfileDiary({
       <DiaryLife maritalStatus={preWarYears.maritalStatus} wife={preWarYears.wife} />
       <DiaryArmyExperience armyExperience={preWarYears.armyExperience} />
       <DiaryDied
-        birthDate={origins.birth.date.year}
         warDeath={militaryYears.endOfService.deathWar}
         afterWarDeath={postWarYears.death}
       />

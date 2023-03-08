@@ -13,9 +13,12 @@ def get_death(
     place: Optional[DeathPlace],
     cause: Optional[DeathCause],
     cemetery: Optional[Cemetery],
+    age_at_death: Optional[int],
 ) -> Optional[DeathAfterService]:
     if death_type == "War injuries":
-        return DeathAfterService(date, place, cause, cemetery, True)
+        return DeathAfterService(date, place, cause, cemetery, age_at_death, True)
     if death_type == "After war":
-        return DeathAfterService(date, place, cause, cemetery, False)
+        return DeathAfterService(date, place, cause, cemetery, age_at_death, False)
+    if death_type is None and date is not None:
+        return DeathAfterService(date, place, cause, cemetery, age_at_death)
     return None

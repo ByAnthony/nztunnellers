@@ -1,7 +1,12 @@
 # -*- coding: utf-8 -*-
 from typing import Optional
 
-from .date_helpers import get_date
+from .date_helpers import (
+    calculate_age_at_death_with_full_date,
+    calculate_age_at_death_with_years,
+    format_date_to_year,
+    get_date,
+)
 from ..date import Date
 from ..death import Cemetery, Death, DeathCause, DeathPlace
 from .translator_helpers import (
@@ -94,9 +99,10 @@ def get_death_war(
     place: Optional[DeathPlace],
     cause: Optional[DeathCause],
     cemetery: Optional[Cemetery],
+    age_at_death: Optional[int],
 ) -> Optional[Death]:
     if death_type == "War":
-        return Death(date, place, cause, cemetery)
+        return Death(date, place, cause, cemetery, age_at_death)
     return None
 
 
@@ -123,6 +129,27 @@ def get_cemetery(
 ) -> Optional[Cemetery]:
     if name is not None:
         return Cemetery(name, location, country, grave)
+    return None
+
+
+def get_age_at_death(
+    death_year: Optional[str],
+    death_date: Optional[str],
+    birth_year: Optional[str],
+    birth_date: Optional[str],
+) -> Optional[int]:
+    if death_date is not None and birth_date is not None:
+        return calculate_age_at_death_with_full_date(birth_date, death_date)
+    if death_year is not None and birth_year is not None:
+        return calculate_age_at_death_with_years(birth_year, death_year)
+    if birth_year is not None and death_date is not None:
+        death_year = format_date_to_year(death_date)
+        if death_year is not None:
+            return calculate_age_at_death_with_years(birth_year, death_year)
+    if death_year is not None and birth_date is not None:
+        birth_year = format_date_to_year(birth_date)
+        if birth_year is not None:
+            return calculate_age_at_death_with_years(birth_year, death_year)
     return None
 
 

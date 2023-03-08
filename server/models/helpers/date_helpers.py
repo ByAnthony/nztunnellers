@@ -5,7 +5,7 @@ from typing import Optional
 from ..date import Date
 
 
-def format_date_to_birth_year(
+def format_full_date_to_year(
     year: Optional[str], formatted_date: Optional[str]
 ) -> Optional[str]:
     if year is not None:
@@ -73,19 +73,13 @@ def format_date_to_day_month_and_year(date: Optional[str], lang: str) -> Optiona
     return None
 
 
-def get_birth_date(year: Optional[str], date: Optional[str], lang: str) -> Date:
-    return Date(
-        format_date_to_birth_year(year, date), format_date_to_day_and_month(date, lang)
-    )
-
-
-def get_death_date(
+def format_birth_and_death_date(
     year: Optional[str], date: Optional[str], lang: str
 ) -> Optional[Date]:
     if year is None and date is None:
         return None
     return Date(
-        format_date_to_birth_year(year, date), format_date_to_day_and_month(date, lang)
+        format_full_date_to_year(year, date), format_date_to_day_and_month(date, lang)
     )
 
 

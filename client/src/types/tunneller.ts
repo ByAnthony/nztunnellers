@@ -106,6 +106,7 @@ export type Death = {
     place: DeathPlace | null,
     cause: DeathCause | null,
     cemetery: Cemetery | null,
+    ageAtDeath: number | null,
 }
 
 export type Demobilization = {
