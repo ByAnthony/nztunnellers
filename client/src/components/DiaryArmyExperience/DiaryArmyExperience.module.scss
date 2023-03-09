@@ -1,0 +1,29 @@
+@use 'src/index.scss';
+
+.war-service {
+  flex: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 15px 0;
+  padding: 20px;
+  font-size: 1.25rem;
+  color: index.$tertiary-color;
+
+  @include index.button-link;
+
+  @include index.tablet {
+    padding: 30px 30px 27px 30px;
+    font-size: 1.625rem;
+  }
+
+  @include index.desktop {
+    padding: 40px 40px 35px 40px;
+    flex: 50%;
+    font-size: 1.875rem;
+  }
+}
+
+.war-service p {
+  color: index.$tertiary-color;
+}

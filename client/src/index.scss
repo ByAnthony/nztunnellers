@@ -160,5 +160,20 @@ a {
   }
 }
 
+.arrow {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 200;
+  color: $tertiary-color;
+
+  @include tablet {
+    font-size: 2.5rem;
+  }
+
+  @include desktop {
+    font-size: 3rem;
+  }
+}
+
 $profile-margin-top: 50px;
 $profile-border-bottom: 1px solid $secondary-color;
