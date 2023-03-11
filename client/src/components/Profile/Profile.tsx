@@ -32,12 +32,7 @@ export function Profile() {
           <ProfileOverview
             id={data.id}
             name={data.summary.name}
-            enlistment={data.militaryYears.enlistment}
-            embarkation={data.militaryYears.embarkationUnit}
-            transportUk={data.militaryYears.transportUk}
-            transferred={data.militaryYears.endOfService.transferred}
-            deathDuringWar={data.militaryYears.endOfService.deathWar}
-            deathAfterWar={data.postServiceYears.death}
+            militaryYears={data.militaryYears}
           />
           <ProfileDiary
             origins={data.origins}
