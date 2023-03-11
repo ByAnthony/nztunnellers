@@ -2,4 +2,34 @@
 
 .profile-container {
   @include index.component-setup;
+
+  @include index.desktop {
+    display: grid;
+    gap: 25px;
+    grid-template-columns: 40% auto;
+  }
+}
+
+.sticky-card {
+  @include index.desktop {
+    position: sticky;
+    top: 125px;
+    height: 50vh;
+  }
+}
+
+.summary {
+  @include index.desktop {
+    margin-right: 50px;
+    padding: 30px 50px 5px 50px;
+    border: 1px solid index.$primary-light-color;
+    border-radius: index.$border-radius;
+    background-color: index.$primary-medium-color;
+  }
+}
+
+.diary {
+  @include index.desktop {
+    // margin-left: 800px;
+  }
 }

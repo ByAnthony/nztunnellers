@@ -24,24 +24,30 @@ export function Profile() {
         { isLoading }
         { isSuccess && (
         <div className={STYLES['profile-container']}>
-          <ProfileSummary
-            summary={data.summary}
-            embarkationUnit={data.militaryYears.embarkationUnit}
-            enlistment={data.militaryYears.enlistment}
-          />
-          <ProfileOverview
-            id={data.id}
-            name={data.summary.name}
-            militaryYears={data.militaryYears}
-          />
-          <ProfileDiary
-            origins={data.origins}
-            preWarYears={data.preWarYears}
-            militaryYears={data.militaryYears}
-            postWarYears={data.postServiceYears}
-          />
-          <ProfileSources sources={data.sources} />
-          <ProfileHowToCite id={Number(id)} summary={data.summary} />
+          <div className={STYLES['sticky-card']}>
+            <div className={STYLES.summary}>
+              <ProfileSummary
+                summary={data.summary}
+                embarkationUnit={data.militaryYears.embarkationUnit}
+                enlistment={data.militaryYears.enlistment}
+              />
+            </div>
+          </div>
+          <div className={STYLES.diary}>
+            <ProfileOverview
+              id={data.id}
+              name={data.summary.name}
+              militaryYears={data.militaryYears}
+            />
+            <ProfileDiary
+              origins={data.origins}
+              preWarYears={data.preWarYears}
+              militaryYears={data.militaryYears}
+              postWarYears={data.postServiceYears}
+            />
+            <ProfileSources sources={data.sources} />
+            <ProfileHowToCite id={Number(id)} summary={data.summary} />
+          </div>
         </div>
         )}
       </>
