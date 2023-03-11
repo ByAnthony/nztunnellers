@@ -33,7 +33,7 @@ export function Profile() {
               />
             </div>
           </div>
-          <div className={STYLES.diary}>
+          <div>
             <ProfileOverview
               id={data.id}
               name={data.summary.name}

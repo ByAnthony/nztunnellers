@@ -27,9 +27,3 @@
     background-color: index.$primary-medium-color;
   }
 }
-
-.diary {
-  @include index.desktop {
-    // margin-left: 800px;
-  }
-}
