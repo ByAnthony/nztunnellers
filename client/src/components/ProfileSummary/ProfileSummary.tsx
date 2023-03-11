@@ -16,8 +16,12 @@ export function ProfileSummary({ summary, embarkationUnit, enlistment }: Props) 
   const displayUnit = (
     unit: string,
     section: string | null,
-  ) => ((unit === 'Main Body')
-    ? `${unit}: ${section}` : unit);
+  ) => {
+    if (unit === 'Main Body' && section) {
+      return `${unit}: ${section}`;
+    }
+    return unit;
+  };
 
   return (
     <>

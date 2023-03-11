@@ -34,6 +34,8 @@ export function Profile() {
             enlistment={data.militaryYears.enlistment}
             embarkation={data.militaryYears.embarkationUnit}
             transportUk={data.militaryYears.transportUk}
+            deathDuringWar={data.militaryYears.endOfService.deathWar}
+            deathAfterWar={data.postServiceYears.death}
           />
           <ProfileDiary
             origins={data.origins}
