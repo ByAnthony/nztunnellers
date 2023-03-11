@@ -5,37 +5,37 @@
 }
 
 .letter-container {
-  margin: 75px 0;
-  width: 60px;
+  margin: 50px 0;
+  width: 50px;
   border-radius: index.$border-radius;
   background-color: index.$text-color;
 
   @include index.tablet {
-    width: 112px;
+    width: 55px;
   }
 
   @include index.desktop {
-    margin: 100px 0;
-    width: 125px;
+    margin: 75px 0;
+    width: 65px;
   }
 }
 
 .letter-title {
-  padding-top: 6px;
-  font-size: 3rem;
+  padding-top: 4px;
+  font-size: 2.5rem;
   font-stretch: 85%;
   font-weight: 700;
   color: index.$primary-color;
   text-align: center;
 
   @include index.tablet {
-    padding-top: 12px;
-    font-size: 5.5rem;
+    padding-top: 6px;
+    font-size: 2.75rem;
   }
 
   @include index.desktop {
-    padding-top: 12px;
-    font-size: 6rem;
+    padding-top: 7px;
+    font-size: 3.125rem;
   }
 }
 
@@ -46,7 +46,7 @@
 
   @include index.desktop {
     display: grid;
-    gap: 50px;
+    gap: 25px;
     grid-template-columns: 1fr 1fr;
   }
 }

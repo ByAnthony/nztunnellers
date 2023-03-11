@@ -10,24 +10,21 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, 30px);
   justify-content: space-between;
-  grid-row-gap: 15px;
-  grid-column-gap: 12px;
+  grid-gap: 15px;
 
   @include index.tablet {
-    margin: 75px 0;
-    grid-template-columns: repeat(auto-fill, 40px);
-    grid-gap: 25px;
+    grid-template-columns: repeat(auto-fill, 33px);
   }
 
   @include index.desktop {
-    margin: 100px 0;
-    grid-template-columns: repeat(auto-fill, 50px);
-    grid-gap: 30px;
+    margin: 75px 0;
+    grid-template-columns: repeat(auto-fill, 35px);
+    grid-gap: 25px;
   }
 }
 
 .alphabet-letter {
-  padding: 10px 0 5px 0;
+  padding: 8px 0 5px 0;
   font-family: index.$main-font;
   font-size: 1rem;
   font-stretch: 85%;
@@ -40,10 +37,10 @@
   @include index.button-link;
 
   @include index.tablet {
-    font-size: 1.625rem;
+    font-size: 1.125rem;
   }
 
   @include index.desktop {
-    font-size: 1.875rem;
+    font-size: 1.25rem;
   }
 }

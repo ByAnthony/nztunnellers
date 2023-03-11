@@ -7,17 +7,6 @@
   font-stretch: 75% 125%;
 }
 
-@font-face {
-  font-family: 'SpecialElite';
-  src: url('./fonts/SpecialElite/SpecialElite-Regular.ttf') format('truetype');
-}
-
-@font-face {
-  font-family: 'NothingYouCouldDo';
-  src: url('./fonts/NothingYouCouldDo/NothingYouCouldDo-Regular.ttf')
-    format('truetype');
-}
-
 $mobile: 32rem;
 $desktop: 64rem;
 
@@ -35,7 +24,11 @@ $desktop: 64rem;
 
 @mixin component-setup {
   margin: 0 auto;
-  width: 75%;
+  width: 80%;
+
+  @include desktop {
+    width: 75%;
+  }
 }
 
 $main-font: 'Mona Sans';
@@ -45,6 +38,7 @@ $handwriting-font: 'NothingYouCouldDo';
 $primary-color: rgb(24, 26, 27);
 $secondary-color: rgb(44, 46, 47);
 $tertiary-color: rgb(153, 131, 100);
+$button-background-color: rgb(29, 31, 32);
 $text-color: rgb(159, 154, 143);
 
 $border-radius: 5px;
@@ -69,16 +63,16 @@ body {
 }
 
 h1 {
-  font-size: 2.5rem;
+  font-size: 1.75rem;
   font-weight: 600;
   text-align: left;
 
   @include tablet {
-    font-size: 3.125rem;
+    font-size: 1.875rem;
   }
 
   @include desktop {
-    font-size: 3.75rem;
+    font-size: 2.125rem;
   }
 }
 
@@ -147,7 +141,7 @@ a {
 @mixin button-link {
   border: 1px solid $secondary-color;
   border-radius: $border-radius;
-  border-bottom: 1px solid $secondary-color;
+  background-color: $button-background-color;
   transition: border-bottom 0.9s ease-in-out, border-bottom 0.9s ease-in-out,
     border 0.9s ease-in-out, border 0.9s ease-in-out,
     background-color 0.9s ease-in-out, background-color 0.9s ease-in-out;
@@ -161,7 +155,7 @@ a {
 }
 
 .arrow {
-  margin: 0;
+  margin-top: 5px;
   font-size: 2rem;
   font-weight: 200;
   color: $tertiary-color;

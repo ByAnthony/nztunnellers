@@ -9,12 +9,8 @@
 
   @include index.button-link;
 
-  @include index.tablet {
-    padding: 30px 30px 27px 30px;
-  }
-
   @include index.desktop {
-    padding: 40px 40px 35px 40px;
+    padding: 30px 30px 27px 30px;
     flex: 50%;
   }
 }
@@ -26,31 +22,31 @@
 
 .surname {
   margin: 0;
-  font-size: 1.875rem;
+  font-size: 1.75rem;
   font-weight: 600;
   color: index.$tertiary-color;
 
   @include index.tablet {
-    font-size: 2.5rem;
+    font-size: 1.875rem;
   }
 
   @include index.desktop {
-    font-size: 2.8125rem;
+    font-size: 2rem;
   }
 }
 
 .forename {
   margin: 0;
-  font-size: 1.375rem;
+  font-size: 1.25rem;
   font-weight: 300;
   color: index.$tertiary-color;
 
   @include index.tablet {
-    font-size: 1.75rem;
+    font-size: 1.375rem;
   }
 
   @include index.desktop {
-    font-size: 1.875rem;
+    font-size: 1.5rem;
   }
 }
 
@@ -68,21 +64,6 @@
 
   @include index.desktop {
     margin-top: 25px;
-    font-size: 1.125rem;
-  }
-}
-
-.arrow {
-  margin: 0;
-  font-size: 2rem;
-  font-weight: 200;
-  color: index.$tertiary-color;
-
-  @include index.tablet {
-    font-size: 2.5rem;
-  }
-
-  @include index.desktop {
-    font-size: 3rem;
+    font-size: 1.25rem;
   }
 }
