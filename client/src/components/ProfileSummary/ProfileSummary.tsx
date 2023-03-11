@@ -17,14 +17,7 @@ export function ProfileSummary({ summary, embarkationUnit, enlistment }: Props) 
     unit: string,
     section: string | null,
   ) => ((unit === 'Main Body')
-    ? (
-      <>
-        {unit}
-        {': '}
-        {section}
-      </>
-    )
-    : unit);
+    ? `${unit}: ${section}` : unit);
 
   return (
     <>

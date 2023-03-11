@@ -13,64 +13,40 @@
 
 .overview-title {
   margin: 0;
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   font-weight: 400;
-  text-align: left;
 
   @include index.tablet {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
   }
 
   @include index.desktop {
-    font-size: 1.75rem;
+    font-size: 1.25rem;
   }
 }
 
 .surname {
   margin: 0;
-  font-size: 2.75rem;
-  font-weight: 700;
-  text-transform: none;
-
-  @include index.tablet {
-    font-size: 3.125rem;
-  }
-
-  @include index.desktop {
-    font-size: 3.75rem;
-  }
 }
 
 .forename {
   display: block;
   margin: 0;
-  font-size: 1.85rem;
   font-weight: 300;
-  text-transform: none;
-
-  @include index.tablet {
-    font-size: 2.1rem;
-  }
-
-  @include index.desktop {
-    font-size: 2.5rem;
-  }
 }
 
 .dates {
-  margin: 15px 0 0 0;
-  font-size: 1.5rem;
+  margin: 15px 0;
+  font-size: 1.1rem;
   font-weight: 300;
   letter-spacing: 2px;
 
   @include index.tablet {
-    margin-top: 20px;
-    font-size: 1.625rem;
+    font-size: 1.2rem;
   }
 
   @include index.desktop {
-    margin-top: 25px;
-    font-size: 1.75rem;
+    font-size: 1.3rem;
   }
 }
 

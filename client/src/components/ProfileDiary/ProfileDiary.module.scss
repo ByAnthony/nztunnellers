@@ -21,17 +21,13 @@ $padding-card-desktop: 40px 40px 35px 40px;
   margin: 15px 0;
   padding: 20px;
   font-size: 1.25rem;
-  background-color: index.$secondary-color;
+  background-color: index.$primary-medium-color;
+  border: 1px solid index.$primary-light-color;
   border-radius: index.$border-radius;
-
-  @include index.tablet {
-    padding: $padding-card-tablet;
-    font-size: 1.625rem;
-  }
 
   @include index.desktop {
     padding: $padding-card-desktop;
-    font-size: 1.875rem;
+    font-size: 1.5rem;
   }
 }
 
@@ -40,17 +36,12 @@ $padding-card-desktop: 40px 40px 35px 40px;
   margin: 15px 0;
   padding: 20px;
   font-size: 1.25rem;
-  border: 1px solid index.$secondary-color;
+  border: 1px solid index.$primary-light-color;
   border-radius: index.$border-radius;
-
-  @include index.tablet {
-    padding: $padding-card-tablet;
-    font-size: 1.625rem;
-  }
 
   @include index.desktop {
     padding: $padding-card-desktop;
-    font-size: 1.875rem;
+    font-size: 1.5rem;
   }
 }
 
@@ -74,17 +65,13 @@ $padding-card-desktop: 40px 40px 35px 40px;
 
   justify-content: flex-end;
   font-size: 1.25rem;
-  background-color: index.$secondary-color;
+  background-color: index.$primary-medium-color;
+  border: 1px solid index.$primary-light-color;
   border-radius: index.$border-radius;
-
-  @include index.tablet {
-    padding: $padding-card-tablet;
-    font-size: 1.625rem;
-  }
 
   @include index.desktop {
     padding: $padding-card-desktop;
-    font-size: 1.875rem;
+    font-size: 1.5rem;
   }
 }
 
@@ -93,17 +80,12 @@ $padding-card-desktop: 40px 40px 35px 40px;
 
   justify-content: space-between;
   font-size: 1rem;
-  border: 1px solid index.$secondary-color;
+  border: 1px solid index.$primary-light-color;
   border-radius: index.$border-radius;
-
-  @include index.tablet {
-    padding: $padding-card-tablet;
-    font-size: 1.475rem;
-  }
 
   @include index.desktop {
     padding: $padding-card-desktop;
-    font-size: 1.725rem;
+    font-size: 1.25rem;
   }
 }
 

@@ -24,10 +24,13 @@ $desktop: 64rem;
 
 @mixin component-setup {
   margin: 0 auto;
-  width: 80%;
+  width: 85%;
 
+  @include tablet {
+    width: 65%;
+  }
   @include desktop {
-    width: 75%;
+    width: 55%;
   }
 }
 
@@ -35,10 +38,10 @@ $main-font: 'Mona Sans';
 $typewriter-font: 'SpecialElite';
 $handwriting-font: 'NothingYouCouldDo';
 
-$primary-color: rgb(24, 26, 27);
-$secondary-color: rgb(44, 46, 47);
-$tertiary-color: rgb(153, 131, 100);
-$button-background-color: rgb(29, 31, 32);
+$primary-dark-color: rgb(24, 26, 27);
+$primary-medium-color: rgb(29, 31, 32);
+$primary-light-color: rgb(44, 46, 47);
+$secondary-color: rgb(153, 131, 100);
 $text-color: rgb(159, 154, 143);
 
 $border-radius: 5px;
@@ -51,7 +54,7 @@ body {
   color: $text-color;
   letter-spacing: 1px;
   line-height: normal;
-  background-color: $primary-color;
+  background-color: $primary-dark-color;
 
   @include tablet {
     margin: 100px 0;
@@ -65,7 +68,6 @@ body {
 h1 {
   font-size: 1.75rem;
   font-weight: 600;
-  text-align: left;
 
   @include tablet {
     font-size: 2rem;
@@ -77,23 +79,8 @@ h1 {
 }
 
 h2 {
-  font-size: 1.75rem;
-  font-weight: 500;
-  text-align: left;
-
-  @include tablet {
-    font-size: 2.15rem;
-  }
-
-  @include desktop {
-    font-size: 2.5rem;
-  }
-}
-
-h3 {
   font-size: 1.25rem;
-  font-weight: 500;
-  text-align: left;
+  font-weight: 600;
 
   @include tablet {
     font-size: 1.5rem;
@@ -127,38 +114,39 @@ a {
   padding-bottom: 4px;
   font-weight: 500;
   color: $text-color;
-  border-bottom: 1px solid $tertiary-color;
+  border: 1px solid $primary-medium-color;
+  border-bottom: 1px solid $primary-medium-color;
   transition: color 0.9s ease-in-out, color 0.9s ease-in-out,
     border-bottom 0.9s ease-in-out, border-bottom 0.9s ease-in-out;
 
   &:hover {
     padding-bottom: 4px;
-    border-bottom: 1px solid $tertiary-color;
-    color: $tertiary-color;
+    border-bottom: 1px solid $secondary-color;
+    color: $secondary-color;
   }
 }
 
 @mixin button-link {
-  border: 1px solid $secondary-color;
+  border: 1px solid $primary-medium-color;
   border-radius: $border-radius;
-  background-color: $button-background-color;
+  background-color: $primary-light-color;
   transition: border-bottom 0.9s ease-in-out, border-bottom 0.9s ease-in-out,
     border 0.9s ease-in-out, border 0.9s ease-in-out,
     background-color 0.9s ease-in-out, background-color 0.9s ease-in-out;
   cursor: pointer;
 
   &:hover {
-    border: 1px solid $tertiary-color;
-    border-bottom: 1px solid $tertiary-color;
-    background-color: $secondary-color;
+    border: 1px solid $secondary-color;
+    border-bottom: 1px solid $secondary-color;
+    background-color: $primary-medium-color;
   }
 }
 
 .arrow {
-  margin-top: 5px;
+  margin: 5px 0 0 10px;
   font-size: 2rem;
   font-weight: 200;
-  color: $tertiary-color;
+  color: $secondary-color;
 
   @include tablet {
     font-size: 2.5rem;
@@ -170,4 +158,4 @@ a {
 }
 
 $profile-margin-top: 50px;
-$profile-border-bottom: 1px solid $secondary-color;
+$profile-border-bottom: 1px solid $primary-light-color;

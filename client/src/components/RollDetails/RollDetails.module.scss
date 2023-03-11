@@ -24,7 +24,7 @@
   margin: 0;
   font-size: 1.75rem;
   font-weight: 600;
-  color: index.$tertiary-color;
+  color: index.$secondary-color;
 
   @include index.tablet {
     font-size: 1.875rem;
@@ -39,7 +39,7 @@
   margin: 0;
   font-size: 1.25rem;
   font-weight: 300;
-  color: index.$tertiary-color;
+  color: index.$secondary-color;
 
   @include index.tablet {
     font-size: 1.375rem;
@@ -55,7 +55,7 @@
   font-size: 1rem;
   font-weight: 200;
   letter-spacing: 2px;
-  color: index.$tertiary-color;
+  color: index.$secondary-color;
 
   @include index.tablet {
     margin-top: 20px;
