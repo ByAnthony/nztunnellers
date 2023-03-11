@@ -83,6 +83,11 @@ export type Transport = {
     arrivalPort: string | null,
 }
 
+export type TransferredTo = {
+    date: Date,
+    unit: string,
+}
+
 export type DeathPlace = {
     location: string,
     town: string,
@@ -116,7 +121,7 @@ export type Demobilization = {
 
 export type EndOfService = {
     deserter: boolean,
-    transferred: Transferred | null,
+    transferred: TransferredTo | null,
     deathWar: Death | null,
     transportNz: Transport | null,
     demobilization: Demobilization | null,

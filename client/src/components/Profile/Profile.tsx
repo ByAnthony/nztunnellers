@@ -30,10 +30,12 @@ export function Profile() {
             enlistment={data.militaryYears.enlistment}
           />
           <ProfileOverview
+            id={data.id}
             name={data.summary.name}
             enlistment={data.militaryYears.enlistment}
             embarkation={data.militaryYears.embarkationUnit}
             transportUk={data.militaryYears.transportUk}
+            transferred={data.militaryYears.endOfService.transferred}
             deathDuringWar={data.militaryYears.endOfService.deathWar}
             deathAfterWar={data.postServiceYears.death}
           />
