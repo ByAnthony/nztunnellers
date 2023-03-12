@@ -5,7 +5,7 @@ from ...repositories.translations.translations import (
 )
 
 
-def army_experience_query(lang: str):
+def army_experience_query(lang: str) -> str:
     return f"""SELECT
         army_experience.army_experience_name AS unit
         , {country_col[lang]} AS country

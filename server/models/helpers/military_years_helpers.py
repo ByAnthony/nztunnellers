@@ -15,6 +15,7 @@ from .translator_helpers import (
 )
 from ..military_years import (
     Demobilization,
+    Event,
     Medal,
     Training,
     Transferred,
@@ -168,6 +169,10 @@ def get_end_of_service_country(discharge_uk: Optional[int], lang: str) -> str:
         if lang == "en":
             return "New Zealand"
         return "Nouvelle-Zélande"
+
+
+def map_wwi_events(events: list[Event]) -> list[Event]:
+    return [Event(event["date"], event["event"]) for event in events]
 
 
 def map_medals(medals: list[Medal]) -> list[Medal]:

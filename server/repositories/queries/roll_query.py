@@ -10,4 +10,4 @@ def roll_query() -> str:
         , DATE_FORMAT(t.death_date, '%Y-%m-%d') AS death_date
         , t.death_year
 
-        FROM tunneller t ORDER BY t.surname, t.forename"""
+        FROM tunneller t ORDER BY t.surname, t.forename ASC"""

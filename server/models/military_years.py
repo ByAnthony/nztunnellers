@@ -23,8 +23,8 @@ class Medal:
 
 
 @dataclass
-class FrontEvents:
-    date: Date
+class Event:
+    date: str
     event: str
 
     def __getitem__(self, key: str):
@@ -92,6 +92,6 @@ class MilitaryYears:
     enlistment: Enlistment
     embarkation_unit: EmbarkationUnit
     transport_uk: Transport
-    # front_events: list[FrontEvents]
+    front_events: list[Event]
     end_of_service: EndOfService
     medals: list[Medal]
