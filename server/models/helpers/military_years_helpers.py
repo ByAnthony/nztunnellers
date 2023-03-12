@@ -173,9 +173,11 @@ def get_end_of_service_country(discharge_uk: Optional[int], lang: str) -> str:
 
 
 def map_wwi_events(events: list[Event], lang: str) -> list[Event]:
-    return [
-        Event(get_full_date(event["date"], lang), event["event"]) for event in events
-    ]
+    result: list[Event] = []
+    for event in events:
+        mapped_event: Event = Event(get_full_date(event["date"], lang), event["event"])
+        result.append(mapped_event)
+    return result
 
 
 def map_medals(medals: list[Medal]) -> list[Medal]:
