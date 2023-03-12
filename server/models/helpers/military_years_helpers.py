@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 from typing import Optional
 
+from ...models.tunneller import Tunneller
+
 from .date_helpers import (
     calculate_age_at_death_with_full_date,
     calculate_age_at_death_with_years,
@@ -172,8 +174,18 @@ def get_end_of_service_country(discharge_uk: Optional[int], lang: str) -> str:
         return "Nouvelle-Zélande"
 
 
-def map_wwi_events(events: list[Event], lang: str) -> list[Event]:
+def map_wwi_events(
+    events: list[Event], tunneller_result: Tunneller, lang: str
+) -> list[Event]:
     result: list[Event] = []
+
+    if tunneller_result["transport_uk_ref"] == "S.S. Ruapehu 18 December 1915":
+        training_at_falmouth_event = Event(
+            Date("1916", "3 February"),
+            "Marched in to the Company Training Camp, Falmouth",
+        )
+        result.append(training_at_falmouth_event)
+
     for event in events:
         mapped_event: Event = Event(get_full_date(event["date"], lang), event["event"])
         result.append(mapped_event)
