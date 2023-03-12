@@ -13,7 +13,7 @@
 .sticky-card {
   @include index.desktop {
     position: sticky;
-    top: 125px;
+    top: 150px;
     height: 60vh;
   }
 }

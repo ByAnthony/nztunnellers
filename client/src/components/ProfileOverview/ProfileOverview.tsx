@@ -66,9 +66,12 @@ export function ProfileOverview({
     return null;
   };
 
-  const isMichaelTobin = (idTunneller: number) => {
-    if (idTunneller === 848) {
-      return ' He was the first New Zealand soldier to died on the Western Front.';
+  const isMichaelTobin = (idTunneller: number, tunnellerName: Name) => {
+    if (idTunneller === 848
+        && tunnellerName.forename === 'Michael'
+        && tunnellerName.surname === 'Tobin'
+    ) {
+      return ' He was the first New Zealand soldier to die on the Western Front.';
     }
     return null;
   };
@@ -91,7 +94,7 @@ export function ProfileOverview({
         )}
         {isTransferred(militaryYears.endOfService.transferred)}
         {death(militaryYears.endOfService.deathWar)}
-        {isMichaelTobin(id)}
+        {isMichaelTobin(id, name)}
       </p>
     </div>
   );
