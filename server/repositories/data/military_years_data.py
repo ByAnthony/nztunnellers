@@ -3,7 +3,10 @@ from typing import Optional
 
 from ...models.death import Death
 from ...models.helpers.translator_helpers import translate_town
-from ...models.helpers.date_helpers import format_birth_and_death_date, get_date
+from ...models.helpers.date_helpers import (
+    format_birth_and_death_date,
+    get_optional_date,
+)
 from ...models.helpers.military_years_helpers import (
     get_age_at_death,
     get_boolean,
@@ -41,11 +44,11 @@ def enlistment(tunneller_result: Tunneller, lang: str) -> Enlistment:
     return Enlistment(
         tunneller_result["serial"],
         tunneller_result["rank"],
-        get_date(tunneller_result["enlistment_date"], lang),
+        get_optional_date(tunneller_result["enlistment_date"], lang),
         tunneller_result["military_district_name"],
         tunneller_result["aka"],
         get_transferred_to_tunnellers(
-            get_date(tunneller_result["posted_date"], lang),
+            get_optional_date(tunneller_result["posted_date"], lang),
             tunneller_result["posted_from_corps"],
         ),
     )
@@ -55,7 +58,7 @@ def embarkation_unit(tunneller_result: Tunneller, lang: str) -> EmbarkationUnit:
     return EmbarkationUnit(
         get_detachment(tunneller_result["embarkation_unit"], lang),
         get_training(
-            get_date(tunneller_result["training_start"], lang),
+            get_optional_date(tunneller_result["training_start"], lang),
             tunneller_result["training_location"],
             tunneller_result["training_location_type"],
         ),
@@ -106,7 +109,7 @@ def death_war(tunneller_result: Tunneller, lang: str) -> Optional[Death]:
 
 def demobilization(tunneller_result: Tunneller, lang: str) -> Optional[Demobilization]:
     return get_end_of_service(
-        get_date(tunneller_result["demobilization_date"], lang),
+        get_optional_date(tunneller_result["demobilization_date"], lang),
         get_end_of_service_country(tunneller_result["discharge_uk"], lang),
     )
 
@@ -119,9 +122,9 @@ def end_of_service(tunneller_result: Tunneller, lang: str) -> EndOfService:
         get_transport_nz(
             get_transport_reference(tunneller_result["transport_nz_ref"], lang),
             tunneller_result["transport_nz_vessel"],
-            get_date(tunneller_result["transport_nz_start"], lang),
+            get_optional_date(tunneller_result["transport_nz_start"], lang),
             tunneller_result["transport_nz_origin"],
-            get_date(tunneller_result["transport_nz_end"], lang),
+            get_optional_date(tunneller_result["transport_nz_end"], lang),
             tunneller_result["transport_nz_destination"],
         ),
         demobilization(tunneller_result, lang),
@@ -140,12 +143,12 @@ def military_years(
         Transport(
             get_transport_reference(tunneller_result["transport_uk_ref"], lang),
             tunneller_result["transport_uk_vessel"],
-            get_date(tunneller_result["transport_uk_start"], lang),
+            get_optional_date(tunneller_result["transport_uk_start"], lang),
             tunneller_result["transport_uk_origin"],
-            get_date(tunneller_result["transport_uk_end"], lang),
+            get_optional_date(tunneller_result["transport_uk_end"], lang),
             tunneller_result["transport_uk_destination"],
         ),
-        map_wwi_events(wwi_events_result),
+        map_wwi_events(wwi_events_result, lang),
         end_of_service(tunneller_result, lang),
         map_medals(medals_result),
     )

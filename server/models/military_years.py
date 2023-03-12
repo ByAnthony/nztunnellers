@@ -24,7 +24,7 @@ class Medal:
 
 @dataclass
 class Event:
-    date: str
+    date: Date
     event: str
 
     def __getitem__(self, key: str):

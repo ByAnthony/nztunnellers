@@ -5,7 +5,8 @@ from .date_helpers import (
     calculate_age_at_death_with_full_date,
     calculate_age_at_death_with_years,
     format_date_to_year,
-    get_date,
+    get_optional_date,
+    get_full_date,
 )
 from ..date import Date
 from ..death import Cemetery, Death, DeathCause, DeathPlace
@@ -85,7 +86,7 @@ def get_boolean(data: Optional[int]) -> bool:
 def get_transferred_to(
     date: Optional[str], unit: Optional[str], lang: str
 ) -> Optional[Transferred]:
-    formatted_date = get_date(date, lang)
+    formatted_date = get_optional_date(date, lang)
     formatted_unit = translate_superscript(unit, lang)
 
     if formatted_date is not None and formatted_unit is not None:
@@ -171,8 +172,10 @@ def get_end_of_service_country(discharge_uk: Optional[int], lang: str) -> str:
         return "Nouvelle-Zélande"
 
 
-def map_wwi_events(events: list[Event]) -> list[Event]:
-    return [Event(event["date"], event["event"]) for event in events]
+def map_wwi_events(events: list[Event], lang: str) -> list[Event]:
+    return [
+        Event(get_full_date(event["date"], lang), event["event"]) for event in events
+    ]
 
 
 def map_medals(medals: list[Medal]) -> list[Medal]:

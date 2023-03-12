@@ -10,7 +10,7 @@ from ....models.helpers.date_helpers import (
     format_date_to_month,
     format_date_to_year,
     format_birth_and_death_date,
-    get_date,
+    get_optional_date,
 )
 
 year = "1988"
@@ -122,17 +122,21 @@ class TestGetBirthDate:
 class TestGetDate:
     class TestGetDateIf:
         def test_lang_is_en(self):
-            assert get_date(date, "en") == Date("1988", "4{}May".format(no_break_space))
+            assert get_optional_date(date, "en") == Date(
+                "1988", "4{}May".format(no_break_space)
+            )
 
         def test_lang_is_fr(self):
-            assert get_date(date, "fr") == Date("1988", "4{}mai".format(no_break_space))
+            assert get_optional_date(date, "fr") == Date(
+                "1988", "4{}mai".format(no_break_space)
+            )
 
     class TestDoNotGetDateIf:
         def test_date_is_none_and_lang_is_en(self):
-            assert get_date(None, "en") is None
+            assert get_optional_date(None, "en") is None
 
         def test_date_is_none_and_lang_is_fr(self):
-            assert get_date(None, "fr") is None
+            assert get_optional_date(None, "fr") is None
 
 
 class TestConvertMonth:
