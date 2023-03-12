@@ -40,7 +40,7 @@ export function ProfileOverview({
   const isTransferred = (transferredData: TransferredTo | null) => {
     if (transferredData) {
       return ` After serving in the war underground in the north of France,
-      he was transferred to the ${militaryYears.endOfService.transferred?.unit},
+      he was transferred to the ${militaryYears.endOfService.transferred?.unit}
       on ${militaryYears.endOfService.transferred?.date.dayMonth} ${militaryYears.endOfService.transferred?.date.year}.`;
     }
     return null;
