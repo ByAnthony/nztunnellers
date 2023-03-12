@@ -191,11 +191,13 @@ class TestGetDeathWar:
             DeathPlace("Battlefield", "Arras", "France"),
             DeathCause("Killed in Action", "In the performance of his duty"),
             Cemetery("Cemetery Name", "Auckland", "New Zealand", "Gr. Ref"),
+            69,
         ) == Death(
             Date("1918", "09-12"),
             DeathPlace("Battlefield", "Arras", "France"),
             DeathCause("Killed in Action", "In the performance of his duty"),
             Cemetery("Cemetery Name", "Auckland", "New Zealand", "Gr. Ref"),
+            69,
         )
 
     def test_if_death_is_not_death_war(self):
@@ -206,6 +208,7 @@ class TestGetDeathWar:
                 DeathPlace("Battlefield", "Arras", "France"),
                 DeathCause("Killed in Action", "In the performance of his duty"),
                 Cemetery("Cemetery Name", "Auckland", "New Zealand", "Gr. Ref"),
+                69,
             )
             is None
         )
