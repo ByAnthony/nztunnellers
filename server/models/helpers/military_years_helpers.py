@@ -181,15 +181,34 @@ def map_wwi_events(
 
     if tunneller_result["transport_uk_ref"] == "S.S. Ruapehu 18 December 1915":
         training_at_falmouth_event = Event(
-            Date("1916", "3 February"),
-            "Marched in to the Company Training Camp, Falmouth",
+            Date("1916", "3\N{NO-BREAK SPACE}February"),
+            ["Marched in to the Company Training Camp, Falmouth"],
         )
         result.append(training_at_falmouth_event)
 
     for event in events:
-        mapped_event: Event = Event(get_full_date(event["date"], lang), event["event"])
+        mapped_event: Event = Event(
+            get_full_date(event["date"], lang), [event["event"]]
+        )
         result.append(mapped_event)
-    return result
+
+    grouped_events: list[Event] = []
+
+    for event in result:
+        year = event["date"]["year"]
+        dayMonth = event["date"]["day_month"]
+        event_desc = event["event"][0]
+        for grp_event in grouped_events:
+            if (
+                grp_event["date"]["year"] == year
+                and grp_event["date"]["day_month"] == dayMonth
+            ):
+                grp_event["event"].append(event_desc)
+                break
+        else:
+            grouped_events.append(Event(Date(year, dayMonth), [event_desc]))
+
+    return grouped_events
 
 
 def map_medals(medals: list[Medal]) -> list[Medal]:
