@@ -124,9 +124,3 @@ def calculate_age_at_death_with_full_date(
 def calculate_age_at_death_with_years(birthdate_year: str, deathdate_year: str) -> int:
     age_at_death = int(deathdate_year) - int(birthdate_year)
     return age_at_death
-
-
-def stringify_year(year: Optional[int]) -> Optional[str]:
-    if year is not None:
-        return str(year)
-    return None

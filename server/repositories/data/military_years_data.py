@@ -6,7 +6,6 @@ from ...models.helpers.translator_helpers import translate_town
 from ...models.helpers.date_helpers import (
     format_birth_and_death_date,
     get_optional_date,
-    stringify_year,
 )
 from ...models.helpers.military_years_helpers import (
     get_age_at_death,
@@ -80,7 +79,7 @@ def death_war(tunneller_result: Tunneller, lang: str) -> Optional[Death]:
     return get_death_war(
         tunneller_result["death_type"],
         format_birth_and_death_date(
-            stringify_year(tunneller_result["death_year"]),
+            tunneller_result["death_year"],
             tunneller_result["death_date"],
             lang,
         ),
@@ -100,7 +99,7 @@ def death_war(tunneller_result: Tunneller, lang: str) -> Optional[Death]:
             tunneller_result["grave"],
         ),
         get_age_at_death(
-            stringify_year(tunneller_result["death_year"]),
+            tunneller_result["death_year"],
             tunneller_result["death_date"],
             tunneller_result["birth_year"],
             tunneller_result["birth_date"],

@@ -12,7 +12,6 @@ from ....models.helpers.date_helpers import (
     format_date_to_year,
     format_birth_and_death_date,
     get_optional_date,
-    stringify_year,
 )
 
 year = "1988"
@@ -195,11 +194,3 @@ class TestCalculateAgeAtDeathWithFullDate:
 class TestCalculateAgeAtDeathWithYears:
     def calculate_age_at_death_with_years(self):
         assert calculate_age_at_death_with_years("1876", "1962") == 86
-
-
-class TestStringifyYear:
-    def stringify_year_if_year_is_not_none(self):
-        assert stringify_year(1926) == "1926"
-
-    def does_not_stringify_year_if_year_is_none(self):
-        assert stringify_year(None) is None

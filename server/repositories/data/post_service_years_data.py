@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from ...models.helpers.date_helpers import format_birth_and_death_date, stringify_year
+from ...models.helpers.date_helpers import format_birth_and_death_date
 from ...models.helpers.military_years_helpers import (
     get_age_at_death,
     get_cemetery,
@@ -17,7 +17,7 @@ def post_service_years(tunneller_result: Tunneller, lang: str) -> PostServiceYea
         get_death(
             tunneller_result["death_type"],
             format_birth_and_death_date(
-                stringify_year(tunneller_result["death_year"]),
+                tunneller_result["death_year"],
                 tunneller_result["death_date"],
                 lang,
             ),
@@ -37,7 +37,7 @@ def post_service_years(tunneller_result: Tunneller, lang: str) -> PostServiceYea
                 tunneller_result["grave"],
             ),
             get_age_at_death(
-                stringify_year(tunneller_result["death_year"]),
+                tunneller_result["death_year"],
                 tunneller_result["death_date"],
                 tunneller_result["birth_year"],
                 tunneller_result["birth_date"],
