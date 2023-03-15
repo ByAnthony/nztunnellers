@@ -79,7 +79,7 @@ def get_optional_date(date: Optional[str], lang: str) -> Optional[Date]:
     return None
 
 
-def convert_month_in_year(month: Optional[str], lang: str) -> Optional[str]:
+def convert_month_in_duration(month: Optional[str], lang: str) -> Optional[str]:
     if month is not None:
         mois = "mois"
         month_col = {"en": "month", "fr": mois}
