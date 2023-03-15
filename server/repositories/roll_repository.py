@@ -3,7 +3,6 @@ from dataclasses import asdict
 from typing import Any
 
 
-from ..models.helpers.date_helpers import format_full_date_to_year
 from ..repositories.queries.roll_query import roll_query
 
 from ..db.run_sql import run_sql
@@ -24,14 +23,8 @@ def select_all(mysql: MySQL) -> dict[list[dict[Roll, Any]], Any]:
             Roll(
                 row["id"],
                 Name(row["forename"], row["surname"]),
-                format_full_date_to_year(
-                    row["birth_year"],
-                    row["birth_date"],
-                ),
-                format_full_date_to_year(
-                    row["death_year"],
-                    row["death_date"],
-                ),
+                row["birth_year"],
+                row["death_year"],
             )
         )
         if character in alphabet:
