@@ -90,10 +90,8 @@ def get_transferred_to(
 ) -> Optional[Transferred]:
     formatted_date = get_optional_date(date, lang)
     formatted_unit = translate_superscript(unit, lang)
-
     if formatted_date is not None and formatted_unit is not None:
         return Transferred(formatted_date, formatted_unit)
-
     return None
 
 
@@ -178,22 +176,18 @@ def map_wwi_events(
     events: list[Event], tunneller_result: Tunneller, lang: str
 ) -> list[Event]:
     result: list[Event] = []
-
     if tunneller_result["transport_uk_ref"] == "S.S. Ruapehu 18 December 1915":
         training_at_falmouth_event = Event(
             Date("1916", "3\N{NO-BREAK SPACE}February"),
             ["Marched in to the Company Training Camp, Falmouth"],
         )
         result.append(training_at_falmouth_event)
-
     for event in events:
         mapped_event: Event = Event(
             get_full_date(event["date"], lang), [event["event"]]
         )
         result.append(mapped_event)
-
     grouped_events: list[Event] = []
-
     for event in result:
         year = event["date"]["year"]
         dayMonth = event["date"]["day_month"]
@@ -207,7 +201,6 @@ def map_wwi_events(
                 break
         else:
             grouped_events.append(Event(Date(year, dayMonth), [event_desc]))
-
     return grouped_events
 
 

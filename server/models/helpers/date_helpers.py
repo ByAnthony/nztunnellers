@@ -66,6 +66,8 @@ def format_birth_and_death_date(
 ) -> Optional[Date]:
     if year is None and date is None:
         return None
+    if year is None and date is not None:
+        return None
     return Date(year, format_date_to_day_and_month(date, lang))
 
 
@@ -75,7 +77,7 @@ def get_full_date(date: str, lang: str) -> Date:
 
 def get_optional_date(date: Optional[str], lang: str) -> Optional[Date]:
     if date is not None:
-        return Date(format_date_to_year(date), format_date_to_day_and_month(date, lang))
+        return get_full_date(date, lang)
     return None
 
 

@@ -89,14 +89,10 @@ class TestFormatDateToDayMonthAndYear:
 
 class TestGetBirthDate:
     def test_if_year_is_none_and_lang_is_en(self):
-        assert format_birth_and_death_date(None, date, "en") == Date(
-            "1988", "4{}May".format(no_break_space)
-        )
+        assert format_birth_and_death_date(None, date, "en") is None
 
     def test_if_year_is_none_and_lang_is_fr(self):
-        assert format_birth_and_death_date(None, date, "fr") == Date(
-            "1988", "4{}mai".format(no_break_space)
-        )
+        assert format_birth_and_death_date(None, date, "fr") is None
 
     def test_if_year_is_not_none_and_lang_is_en(self):
         assert format_birth_and_death_date(year, None, "en") == Date("1988", None)
