@@ -3,7 +3,6 @@ from ....models.date import Date
 from ....models.helpers.date_helpers import (
     convert_immigration_year,
     convert_month_year,
-    format_full_date_to_year,
     format_date_to_day,
     format_date_to_day_and_month,
     format_date_to_day_month_and_year,
@@ -16,19 +15,6 @@ from ....models.helpers.date_helpers import (
 year = "1988"
 date = "1988-05-04"
 no_break_space = "\N{NO-BREAK SPACE}"
-
-
-class TestFormatDateBirth:
-    class TestFormatDateBirthIf:
-        def test_full_date_exist(self):
-            assert format_full_date_to_year(None, "1988-05-04") == "1988"
-
-        def test_only_year_exist(self):
-            assert format_full_date_to_year("1988", None) == "1988"
-
-    class TestDoNotFormatDateBirthIf:
-        def test_date_does_not_exist(self):
-            assert format_full_date_to_year(None, None) is None
 
 
 class TestFormatDateToYear:
