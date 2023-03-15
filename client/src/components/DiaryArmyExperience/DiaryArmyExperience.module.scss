@@ -10,7 +10,7 @@
   font-size: 1.25rem;
   color: index.$secondary-color;
 
-  @include index.button-link;
+  @include index.featured-button-link;
 
   @include index.desktop {
     padding: 40px 40px 35px 40px;

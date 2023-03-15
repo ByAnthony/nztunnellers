@@ -31,7 +31,7 @@ $desktop-large: 96rem;
 
 @mixin component-setup {
   margin: 0 auto;
-  width: 85%;
+  width: 75%;
 
   @include tablet {
     width: 65%;
@@ -137,7 +137,23 @@ a {
   }
 }
 
-@mixin button-link {
+@mixin primary-button-link {
+  border: 1px solid $primary-light-color;
+  border-radius: $border-radius;
+  background-color: $primary-dark-color;
+  transition: border-bottom 0.9s ease-in-out, border-bottom 0.9s ease-in-out,
+    border 0.9s ease-in-out, border 0.9s ease-in-out,
+    background-color 0.9s ease-in-out, background-color 0.9s ease-in-out;
+  cursor: pointer;
+
+  &:hover {
+    border: 1px solid $secondary-color;
+    border-bottom: 1px solid $secondary-color;
+    background-color: $primary-light-color;
+  }
+}
+
+@mixin featured-button-link {
   border: 1px solid $primary-medium-color;
   border-radius: $border-radius;
   background-color: $primary-light-color;

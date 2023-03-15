@@ -7,7 +7,7 @@
   align-items: center;
   padding: 25px 25px 22px 25px;
 
-  @include index.button-link;
+  @include index.primary-button-link;
 
   @include index.desktop {
     padding: 30px 30px 27px 30px;
