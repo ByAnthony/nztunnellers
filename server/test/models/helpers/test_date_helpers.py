@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 from ....models.date import Date
 from ....models.helpers.date_helpers import (
+    calculate_age_at_death_with_full_date,
+    calculate_age_at_death_with_years,
     convert_immigration_duration_to_arrival_year,
     convert_month_in_duration,
     format_date_to_day,
@@ -179,3 +181,16 @@ class TestConvertImmigrationYear:
             assert (
                 convert_immigration_duration_to_arrival_year(None, "1916-09-29") is None
             )
+
+
+class TestCalculateAgeAtDeathWithFullDate:
+    def test_calculate_age_at_death_with_full_date_with_year_minus_one(self):
+        assert calculate_age_at_death_with_full_date("1876-07-14", "1962-06-06") == 85
+
+    def test_calculate_age_at_death_with_full_date(self):
+        assert calculate_age_at_death_with_full_date("1876-07-14", "1962-08-06") == 86
+
+
+class TestCalculateAgeAtDeathWithYears:
+    def calculate_age_at_death_with_years(self):
+        assert calculate_age_at_death_with_years("1876", "1962") == 86

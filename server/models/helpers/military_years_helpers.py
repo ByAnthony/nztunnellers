@@ -6,7 +6,6 @@ from ...models.tunneller import Tunneller
 from .date_helpers import (
     calculate_age_at_death_with_full_date,
     calculate_age_at_death_with_years,
-    format_date_to_year,
     get_optional_date,
     get_full_date,
 )
@@ -140,18 +139,34 @@ def get_age_at_death(
     birth_year: Optional[str],
     birth_date: Optional[str],
 ) -> Optional[int]:
-    if death_date is not None and birth_date is not None:
+    if (
+        death_date is not None
+        and death_year is not None
+        and birth_date is not None
+        and birth_year is not None
+    ):
         return calculate_age_at_death_with_full_date(birth_date, death_date)
-    if death_year is not None and birth_year is not None:
+    if (
+        death_year is not None
+        and death_date is None
+        and birth_year is not None
+        and birth_date is None
+    ):
         return calculate_age_at_death_with_years(birth_year, death_year)
-    if birth_year is not None and death_date is not None:
-        death_year = format_date_to_year(death_date)
-        if death_year is not None:
-            return calculate_age_at_death_with_years(birth_year, death_year)
-    if death_year is not None and birth_date is not None:
-        birth_year = format_date_to_year(birth_date)
-        if birth_year is not None:
-            return calculate_age_at_death_with_years(birth_year, death_year)
+    if (
+        birth_year is not None
+        and birth_date is None
+        and death_year is not None
+        and death_date is not None
+    ):
+        return calculate_age_at_death_with_years(birth_year, death_year)
+    if (
+        death_year is not None
+        and death_date is None
+        and birth_year is not None
+        and birth_date is not None
+    ):
+        return calculate_age_at_death_with_years(birth_year, death_year)
     return None
 
 

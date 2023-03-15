@@ -38,11 +38,11 @@ $desktop-large: 96rem;
   }
 
   @include desktop {
-    width: 80%;
+    width: 950px;
   }
 
   @include desktop-large {
-    width: 60%;
+    width: 1150px;
   }
 }
 

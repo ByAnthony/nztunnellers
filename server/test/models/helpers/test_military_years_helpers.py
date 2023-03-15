@@ -9,6 +9,7 @@ from ....models.military_years import (
     TransferredToTunnellers,
 )
 from ....models.helpers.military_years_helpers import (
+    get_age_at_death,
     get_boolean,
     get_cemetery,
     get_death_circumstances,
@@ -262,6 +263,23 @@ class TestGetCemetery:
 
     def test_if_cemetery_name_does_not_exit(self):
         assert get_cemetery(None, "Auckland", "New Zealand", "Gr. Ref") is None
+
+
+class TestGetAgeAtDeath:
+    def test_get_age_at_death_if_death_date_and_birth_date_are_not_none(self):
+        assert get_age_at_death("1962", "1962-06-06", "1876", "1876-07-14") == 85
+
+    def test_get_age_at_death_if_death_date_and_birth_date_are_none(self):
+        assert get_age_at_death("1962", None, "1876", None) == 86
+
+    def test_get_age_at_death_if_birth_date_is_none(self):
+        assert get_age_at_death("1962", "1962-06-06", "1876", None) == 86
+
+    def test_get_age_at_death_if_death_date_is_none(self):
+        assert get_age_at_death("1962", None, "1876", "1876-07-14") == 86
+
+    def test_get_age_at_death_if_data_is_none(self):
+        assert get_age_at_death(None, None, None, None) is None
 
 
 british_war_medal = Medal("British War Medal", "United Kingdom", "For bravery")
