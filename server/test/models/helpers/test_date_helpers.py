@@ -2,7 +2,7 @@
 from ....models.date import Date
 from ....models.helpers.date_helpers import (
     convert_immigration_year,
-    convert_month_year,
+    convert_month_in_year,
     format_date_to_day,
     format_date_to_day_and_month,
     format_date_to_day_month_and_year,
@@ -128,29 +128,37 @@ class TestGetDate:
 class TestConvertMonth:
     class TestConvertMonthIf:
         def test_month_is_equal_to_1_and_lang_en(self):
-            assert convert_month_year("1", "en") == "1{}month".format(no_break_space)
+            assert convert_month_in_year("1", "en") == "1{}month".format(no_break_space)
 
         def test_month_is_equal_to_1_and_lang_fr(self):
-            assert convert_month_year("1", "fr") == "1{}mois".format(no_break_space)
+            assert convert_month_in_year("1", "fr") == "1{}mois".format(no_break_space)
 
         def test_month_is_less_than_24_months_and_lang_en(self):
-            assert convert_month_year("15", "en") == "15{}months".format(no_break_space)
+            assert convert_month_in_year("15", "en") == "15{}months".format(
+                no_break_space
+            )
 
         def test_month_is_less_than_24_months_and_lang_fr(self):
-            assert convert_month_year("15", "fr") == "15{}mois".format(no_break_space)
+            assert convert_month_in_year("15", "fr") == "15{}mois".format(
+                no_break_space
+            )
 
         def test_month_is_more_than_24_months_and_lang_en(self):
-            assert convert_month_year("24", "en") == "2{}years".format(no_break_space)
+            assert convert_month_in_year("24", "en") == "2{}years".format(
+                no_break_space
+            )
 
         def test_month_is_more_than_24_months_and_lang_fr(self):
-            assert convert_month_year("250", "fr") == "20{}ans".format(no_break_space)
+            assert convert_month_in_year("250", "fr") == "20{}ans".format(
+                no_break_space
+            )
 
     class TestDoNotConvertMonthIf:
         def test_month_is_none_and_lang_en(self):
-            assert convert_month_year(None, "en") is None
+            assert convert_month_in_year(None, "en") is None
 
         def test_month_is_none_and_lang_fr(self):
-            assert convert_month_year(None, "fr") is None
+            assert convert_month_in_year(None, "fr") is None
 
 
 class TestConvertImmigrationYear:

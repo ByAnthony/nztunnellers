@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from ....models.pre_war_years import ArmyExperience
-from ....models.helpers.date_helpers import convert_month_year
+from ....models.helpers.date_helpers import convert_month_in_year
 from ....models.helpers.pre_war_years_helpers import map_army_experience
 
 
@@ -39,13 +39,13 @@ class TestMapArmyExperience:
                 "Garrison Artillery Volunteers",
                 country_col["en"],
                 None,
-                convert_month_year("12", "en"),
+                convert_month_in_year("12", "en"),
             ),
             ArmyExperience(
                 None,
                 None,
                 conflict_col["en"],
-                convert_month_year("250", "en"),
+                convert_month_in_year("250", "en"),
             ),
         ]
 
@@ -55,7 +55,7 @@ class TestMapArmyExperience:
                 "National Reserve",
                 country_col["fr"],
                 conflict_col["fr"],
-                convert_month_year("50", "fr"),
+                convert_month_in_year("50", "fr"),
             )
         ]
 
