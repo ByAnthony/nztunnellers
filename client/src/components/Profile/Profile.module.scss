@@ -8,6 +8,11 @@
     gap: 25px;
     grid-template-columns: 40% auto;
   }
+  @include index.desktop-large {
+    display: grid;
+    gap: 25px;
+    grid-template-columns: 40% auto;
+  }
 }
 
 .sticky-card {
@@ -16,10 +21,21 @@
     top: 150px;
     height: 60vh;
   }
+  @include index.desktop-large {
+    position: sticky;
+    top: 150px;
+    height: 60vh;
+  }
 }
 
 .summary {
   @include index.desktop {
+    margin-right: 50px;
+    padding: 30px 50px 5px 50px;
+    border: 1px solid index.$primary-light-color;
+    border-radius: index.$border-radius;
+  }
+  @include index.desktop-large {
     margin-right: 50px;
     padding: 30px 50px 5px 50px;
     border: 1px solid index.$primary-light-color;
