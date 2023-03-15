@@ -26,7 +26,6 @@ def get_awmm(reference: str) -> str:
 def get_nominal_roll(
     volume: Optional[str], roll: Optional[str], page: str, lang: str
 ) -> NominalRoll:
-
     no_break_space = "\N{NO-BREAK SPACE}"
     title_1919 = {
         "en": "Nominal Rolls of New Zealand Expeditionary Force",
@@ -37,7 +36,6 @@ def get_nominal_roll(
         "fr": "Liste nominative du corps expéditionnaire néo-zélandais, 1915. Compagnie de tunneliers",
     }
     roll_number_col = {"en": "Roll No.", "fr": "Liste n\N{DEGREE SIGN}"}
-
     if volume and roll is not None:
         return NominalRoll(
             title_1919[lang],

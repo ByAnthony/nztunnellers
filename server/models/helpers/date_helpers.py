@@ -38,18 +38,14 @@ def format_date_to_day_and_month(date: Optional[str], lang: str) -> Optional[str
         "11": {"en": "November", "fr": "novembre"},
         "12": {"en": "December", "fr": "décembre"},
     }
-
     if date is not None:
         month = format_date_to_month(date)
         day = format_date_to_day(date)
-
         if month is not None and day is not None:
             strip_month = month.lstrip("0")
             strip_day = day.lstrip("0")
             no_break_space = "\N{NO-BREAK SPACE}"
-
             return "{}{}{}".format(strip_day, no_break_space, months[strip_month][lang])
-
     return None
 
 
@@ -88,7 +84,6 @@ def convert_month_in_duration(month: Optional[str], lang: str) -> Optional[str]:
         months_col = {"en": "months", "fr": mois}
         years_col = {"en": "years", "fr": "ans"}
         no_break_space = "\N{NO-BREAK SPACE}"
-
         if int(month) == 1:
             return "{}{}{}".format(month, no_break_space, month_col[lang])
         elif int(month) > int(1) and int(month) < int(24):
@@ -99,7 +94,7 @@ def convert_month_in_duration(month: Optional[str], lang: str) -> Optional[str]:
     return None
 
 
-def convert_immigration_year(
+def convert_immigration_duration_to_arrival_year(
     month: Optional[str], enlistment_date: Optional[str]
 ) -> Optional[str]:
     if month is not None:

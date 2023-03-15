@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from ....models.date import Date
 from ....models.helpers.date_helpers import (
-    convert_immigration_year,
+    convert_immigration_duration_to_arrival_year,
     convert_month_in_duration,
     format_date_to_day,
     format_date_to_day_and_month,
@@ -164,10 +164,18 @@ class TestConvertMonth:
 class TestConvertImmigrationYear:
     class TestConvertImmigrationYearIf:
         def test_residence_is_less_than_12_months_returns_enlistment_year(self):
-            assert convert_immigration_year("5", "1916-09-29") == "1916"
+            assert (
+                convert_immigration_duration_to_arrival_year("5", "1916-09-29")
+                == "1916"
+            )
 
         def test_residence_is_greater_than_12_months_returns_immigration_year(self):
-            assert convert_immigration_year("144", "1916-09-29") == "1904"
+            assert (
+                convert_immigration_duration_to_arrival_year("144", "1916-09-29")
+                == "1904"
+            )
 
         def test_residence_is_null_returns_null(self):
-            assert convert_immigration_year(None, "1916-09-29") is None
+            assert (
+                convert_immigration_duration_to_arrival_year(None, "1916-09-29") is None
+            )

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from typing import Optional
 
-from .date_helpers import convert_immigration_year
+from .date_helpers import convert_immigration_duration_to_arrival_year
 from ..origins import Parent
 
 
@@ -15,5 +15,7 @@ def get_nz_resident(
     in_nz_length: Optional[str], enlistment_date: Optional[str]
 ) -> Optional[str]:
     if in_nz_length is not None:
-        return convert_immigration_year(in_nz_length, enlistment_date)
+        return convert_immigration_duration_to_arrival_year(
+            in_nz_length, enlistment_date
+        )
     return None
