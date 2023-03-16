@@ -196,7 +196,7 @@ def map_wwi_events(
             Date("1916", "3\N{NO-BREAK SPACE}February"),
             ["Marched in to the Company Training Camp, Falmouth"],
         )
-        result.append(training_at_falmouth_event)
+        result.insert(0, training_at_falmouth_event)
     for event in events:
         mapped_event: Event = Event(
             get_full_date(event["date"], lang), [event["event"]]
