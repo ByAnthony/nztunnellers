@@ -4,6 +4,11 @@
   margin-top: index.$profile-margin-top;
   padding-bottom: 50px;
   border-bottom: index.$profile-border-bottom;
+
+  @include index.desktop {
+    margin-top: 0;
+    font-size: 1.25rem;
+  }
 }
 
 .description p {

@@ -11,7 +11,8 @@ export function DiaryArmyExperience({ armyExperience }: Props) {
     const displayExperience = () => militaryExperience.map((experience) => {
       const displayConflict = experience.conflict !== null ? experience.conflict : null;
       const displayDuration = experience.duration !== null ? experience.duration : null;
-      const displayCountry = experience.country !== null ? experience.country : null;
+      const isUk = (country: string) => (country === 'United Kingdom' ? `the ${country}` : country);
+      const displayCountry = experience.country !== null ? isUk(experience.country) : null;
 
       const displayDurationAndCountry = () => {
         if (experience.duration !== null && experience.country !== null) {
