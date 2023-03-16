@@ -13,8 +13,7 @@
   border-bottom: index.$profile-border-bottom;
 }
 
-$padding-card-tablet: 30px 30px 27px 30px;
-$padding-card-desktop: 40px 40px 35px 40px;
+$padding-card: 30px 30px 27px 30px;
 
 .fullwidth-main-card {
   max-width: 100%;
@@ -26,7 +25,7 @@ $padding-card-desktop: 40px 40px 35px 40px;
   border-radius: index.$border-radius;
 
   @include index.desktop {
-    padding: $padding-card-desktop;
+    padding: $padding-card;
     font-size: 1.5rem;
   }
 }
@@ -40,7 +39,7 @@ $padding-card-desktop: 40px 40px 35px 40px;
   border-radius: index.$border-radius;
 
   @include index.desktop {
-    padding: $padding-card-desktop;
+    padding: $padding-card;
     font-size: 1.5rem;
   }
 }
@@ -70,7 +69,7 @@ $padding-card-desktop: 40px 40px 35px 40px;
   border-radius: index.$border-radius;
 
   @include index.desktop {
-    padding: $padding-card-desktop;
+    padding: $padding-card;
     font-size: 1.5rem;
   }
 }
@@ -88,7 +87,7 @@ $padding-card-desktop: 40px 40px 35px 40px;
   }
 
   @include index.desktop {
-    padding: $padding-card-desktop;
+    padding: $padding-card;
     font-size: 1.25rem;
   }
 }

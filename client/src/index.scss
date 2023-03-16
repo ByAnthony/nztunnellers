@@ -42,7 +42,7 @@ $desktop-large: 96rem;
   }
 
   @include desktop-large {
-    width: 1050px;
+    width: 1000px;
   }
 }
 
@@ -170,7 +170,7 @@ a {
 }
 
 .arrow {
-  margin: 5px 0 0 20px;
+  margin: 5px 0 0 25px;
   font-size: 2rem;
   font-weight: 200;
   color: $secondary-color;
