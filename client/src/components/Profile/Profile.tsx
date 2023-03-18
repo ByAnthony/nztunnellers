@@ -40,6 +40,7 @@ export function Profile() {
               militaryYears={data.militaryYears}
             />
             <ProfileDiary
+              tunnellerId={data.id}
               origins={data.origins}
               preWarYears={data.preWarYears}
               militaryYears={data.militaryYears}

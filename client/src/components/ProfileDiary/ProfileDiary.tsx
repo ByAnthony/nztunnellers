@@ -13,6 +13,7 @@ import { DiaryWork } from '../DiaryWork/DiaryWork';
 import STYLES from './ProfileDiary.module.scss';
 
 type Props = {
+  tunnellerId: number,
   origins: Origins,
   preWarYears: PreWayYears,
   militaryYears: MilitaryYears,
@@ -20,6 +21,7 @@ type Props = {
 }
 
 export function ProfileDiary({
+  tunnellerId,
   origins,
   preWarYears,
   militaryYears,
@@ -34,7 +36,7 @@ export function ProfileDiary({
       <DiaryHometown residence={preWarYears.residence} />
       <DiaryWork employment={preWarYears.employment} />
       <DiaryLife maritalStatus={preWarYears.maritalStatus} wife={preWarYears.wife} />
-      <DiaryArmyExperience armyExperience={preWarYears.armyExperience} />
+      <DiaryArmyExperience tunnellerId={tunnellerId} armyExperience={preWarYears.armyExperience} />
       <DiaryDied
         warDeath={militaryYears.endOfService.deathWar}
         afterWarDeath={postWarYears.death}

@@ -11,6 +11,7 @@ export function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/roll" element={<Roll />} />
         <Route path="/roll/:id" element={<Profile />} />
+        <Route path="/roll/:id/wwi-timeline" />
         {/* <Route component={ErrorPage}/> */}
       </Routes>
     </BrowserRouter>

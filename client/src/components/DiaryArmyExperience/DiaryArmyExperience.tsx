@@ -1,12 +1,14 @@
+import { Link } from 'react-router-dom';
 import { ArmyExperience } from '../../types/tunneller';
 import STYLES from '../ProfileDiary/ProfileDiary.module.scss';
 import STYLES_WWI from './DiaryArmyExperience.module.scss';
 
 type Props = {
-    armyExperience: ArmyExperience[],
+  tunnellerId: number,
+  armyExperience: ArmyExperience[],
 }
 
-export function DiaryArmyExperience({ armyExperience }: Props) {
+export function DiaryArmyExperience({ tunnellerId, armyExperience }: Props) {
   const displayArmyExperience = (militaryExperience: ArmyExperience[] | []) => {
     const displayExperience = () => militaryExperience.map((experience) => {
       const displayConflict = experience.conflict !== null ? experience.conflict : null;
@@ -74,13 +76,13 @@ export function DiaryArmyExperience({ armyExperience }: Props) {
         <span>Army Experience</span>
       </div>
       { displayArmyExperience(armyExperience) }
-      <div className={STYLES_WWI['war-service']}>
+      <Link to={`/roll/${tunnellerId}/wwi-timeline`} key={tunnellerId} className={STYLES_WWI['war-service']}>
         <div>
           <p>World War I (1914-1918)</p>
           <span>New Zealand Engineers Tunnelling Company</span>
         </div>
         <div className={STYLES.arrow}>&rarr;</div>
-      </div>
+      </Link>
     </>
   );
 }

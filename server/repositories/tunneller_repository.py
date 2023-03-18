@@ -14,11 +14,11 @@ from ..repositories.data.military_years_data import military_years
 from ..repositories.data.post_service_years_data import post_service_years
 from ..repositories.queries.army_experience_query import army_experience_query
 from ..repositories.queries.book_authors_query import book_authors_query
+from ..repositories.queries.front_events_query import front_events_query
 from ..repositories.queries.london_gazette_query import london_gazette_query
 from ..repositories.queries.medals_query import medals_query
 from ..repositories.queries.nz_archives_query import nz_archives_query
 from ..repositories.queries.tunneller_query import tunneller_query
-from ..repositories.queries.wwi_events_query import wwi_events_query
 from ..models.image import ImageBookAuthors
 from ..models.military_years import Event, Medal
 from ..models.pre_war_years import ArmyExperience
@@ -37,8 +37,8 @@ def show(id: int, lang: str, mysql: MySQL) -> Optional[Tunneller]:
         army_experience_sql, mysql, values
     )
 
-    wwi_events_sql = wwi_events_query()
-    wwi_events_result: list[Event] = run_sql(wwi_events_sql, mysql, values)
+    front_events_sql = front_events_query()
+    front_events_result: list[Event] = run_sql(front_events_sql, mysql, values)
 
     medals_sql = medals_query(lang)
     medals_result: list[Medal] = run_sql(medals_sql, mysql, values)
@@ -68,7 +68,7 @@ def show(id: int, lang: str, mysql: MySQL) -> Optional[Tunneller]:
                 army_experience_result, tunneller_result, lang
             ),
             "military_years": military_years(
-                tunneller_result, wwi_events_result, medals_result, lang
+                tunneller_result, front_events_result, medals_result, lang
             ),
             "post_service_years": post_service_years(tunneller_result, lang),
             "sources": sources(
