@@ -12,13 +12,13 @@
 }
 
 .description p {
-  font-size: 1.15rem;
+  font-size: 1.1rem;
 
   @include index.tablet {
-    font-size: 1.2rem;
+    font-size: 1.15rem;
   }
 
   @include index.desktop {
-    font-size: 1.25rem;
+    font-size: 1.2rem;
   }
 }

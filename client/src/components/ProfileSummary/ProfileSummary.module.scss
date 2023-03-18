@@ -6,26 +6,26 @@
   border-bottom: index.$profile-border-bottom;
 
   @include index.desktop {
+    margin-top: 25px;
     border-bottom: none;
   }
 }
 
 .overview-group {
-  margin: 10px 0;
-  padding: 10px 0;
+  padding: 12px 0;
 }
 
 .overview-title {
   margin: 0;
-  font-size: 1.15rem;
+  font-size: 1.1rem;
   font-weight: 400;
 
   @include index.tablet {
-    font-size: 1.2rem;
+    font-size: 1.15rem;
   }
 
   @include index.desktop {
-    font-size: 1.25rem;
+    font-size: 1.2rem;
   }
 }
 
