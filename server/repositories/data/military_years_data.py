@@ -24,7 +24,7 @@ from ...models.helpers.military_years_helpers import (
     get_transport_nz,
     get_transport_reference,
     map_medals,
-    map_wwi_events,
+    map_front_events,
 )
 from ...models.military_years import (
     Demobilization,
@@ -148,7 +148,7 @@ def military_years(
             get_optional_date(tunneller_result["transport_uk_end"], lang),
             tunneller_result["transport_uk_destination"],
         ),
-        map_wwi_events(wwi_events_result, tunneller_result, lang),
+        map_front_events(wwi_events_result, tunneller_result, lang),
         end_of_service(tunneller_result, lang),
         map_medals(medals_result),
     )

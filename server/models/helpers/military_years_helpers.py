@@ -187,7 +187,7 @@ def get_end_of_service_country(discharge_uk: Optional[int], lang: str) -> str:
         return "Nouvelle-Zélande"
 
 
-def map_wwi_events(
+def map_front_events(
     events: list[Event], tunneller_result: Tunneller, lang: str
 ) -> list[Event]:
     result: list[Event] = []

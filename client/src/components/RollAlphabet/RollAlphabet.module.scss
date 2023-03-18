@@ -17,7 +17,7 @@
 
   @include index.desktop {
     margin: 75px 0;
-    width: 90px;
+    width: 75px;
   }
 }
 
@@ -34,8 +34,7 @@
   }
 
   @include index.desktop {
-    padding: 12px 0 5px 0;
-    font-size: 4rem;
+    font-size: 3rem;
   }
 }
 
