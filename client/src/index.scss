@@ -57,10 +57,6 @@ body {
   line-height: normal;
   background-color: $primary-dark-color;
 
-  @include tablet {
-    margin: 100px 0;
-  }
-
   @include desktop {
     margin: 100px 0;
   }
