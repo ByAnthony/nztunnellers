@@ -9,7 +9,6 @@
 
 $mobile: 32rem;
 $desktop: 64rem;
-$desktop-large: 96rem;
 
 @mixin tablet {
   @media screen and (min-width: $mobile) and (max-width: $desktop) {
@@ -19,12 +18,6 @@ $desktop-large: 96rem;
 
 @mixin desktop {
   @media screen and (min-width: $desktop) {
-    @content;
-  }
-}
-
-@mixin desktop-large {
-  @media screen and (min-width: $desktop-large) {
     @content;
   }
 }
@@ -39,10 +32,6 @@ $desktop-large: 96rem;
 
   @include desktop {
     width: 950px;
-  }
-
-  @include desktop-large {
-    width: 1000px;
   }
 }
 
@@ -73,7 +62,7 @@ body {
   }
 
   @include desktop {
-    margin: 150px 0;
+    margin: 100px 0;
   }
 }
 
