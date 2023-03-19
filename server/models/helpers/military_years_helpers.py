@@ -191,17 +191,20 @@ def map_front_events(
     events: list[Event], tunneller_result: Tunneller, lang: str
 ) -> list[Event]:
     result: list[Event] = []
+
     if tunneller_result["transport_uk_ref"] == "S.S. Ruapehu 18 December 1915":
         training_at_falmouth_event = Event(
             Date("1916", "3\N{NO-BREAK SPACE}February"),
             ["Marched in to the Company Training Camp, Falmouth"],
         )
         result.insert(0, training_at_falmouth_event)
+
     for event in events:
         mapped_event: Event = Event(
             get_full_date(event["date"], lang), [event["event"]]
         )
         result.append(mapped_event)
+
     grouped_events: list[Event] = []
     for event in result:
         year = event["date"]["year"]

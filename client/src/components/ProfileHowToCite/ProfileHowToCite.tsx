@@ -29,7 +29,7 @@ export function ProfileHowToCite({ id, summary }: Props) {
         {' '}
         (2009), Accessed:&nbsp;
         {today.toLocaleDateString()}
-        . URL:&nbsp;https://www.nztunnellers.com/roll/
+        . URL:&nbsp;www.nztunnellers.com/roll/
         {id}
         .
       </p>
