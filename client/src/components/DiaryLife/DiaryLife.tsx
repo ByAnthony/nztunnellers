@@ -1,11 +1,11 @@
 import STYLES from '../ProfileDiary/ProfileDiary.module.scss';
 
-type Props = {
+type props = {
     maritalStatus: string | null,
     wife: string | null,
 }
 
-export function DiaryLife({ maritalStatus, wife }: Props) {
+export function DiaryLife({ maritalStatus, wife }: props) {
   const displayLife = (status: string | null, wifeName: string | null) => {
     if (maritalStatus !== null && wifeName !== null) {
       return (

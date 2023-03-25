@@ -3,13 +3,13 @@ import type {
 } from '../../types/tunneller';
 import STYLES from './ProfileSources.module.scss';
 
-type Props = {
+type props = {
     sources: Sources,
 }
 
 type RecordWithIbid<T> = T & { ibid: string };
 
-export function ProfileSources({ sources }: Props) {
+export function ProfileSources({ sources }: props) {
   const getAwmm = (awmmCenotaph: string) => (
     <p>
       Auckland War Memorial Museum Tāmaki Paenga Hira:

@@ -1,14 +1,14 @@
 import type { Summary } from '../../types/tunneller';
 import STYLES from './ProfileHowToCite.module.scss';
 
-type Props = {
+type props = {
     id: number,
     summary: Summary,
 }
 
 const today = new Date();
 
-export function ProfileHowToCite({ id, summary }: Props) {
+export function ProfileHowToCite({ id, summary }: props) {
   const displayBirthDeathDates = (birth: string, death: string | null) => (death ? `${birth}-${death}` : `${birth}-†?`);
   return (
     <div className={STYLES.howtocite}>

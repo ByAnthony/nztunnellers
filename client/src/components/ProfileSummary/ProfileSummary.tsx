@@ -1,13 +1,13 @@
 import type { EmbarkationUnit, Enlistment, Summary } from '../../types/tunneller';
 import STYLES from './ProfileSummary.module.scss';
 
-type Props = {
+type props = {
     summary: Summary,
     embarkationUnit: EmbarkationUnit,
     enlistment: Enlistment,
 }
 
-export function ProfileSummary({ summary, embarkationUnit, enlistment }: Props) {
+export function ProfileSummary({ summary, embarkationUnit, enlistment }: props) {
   const displayBirthDeathDates = (
     birth: string,
     death: string | null,

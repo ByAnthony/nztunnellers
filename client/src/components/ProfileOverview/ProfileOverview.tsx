@@ -4,7 +4,7 @@ import {
 import { Name } from '../../types/roll';
 import STYLES from './ProfileOverview.module.scss';
 
-type Props = {
+type props = {
     id: number,
     name: Name,
     militaryYears: MilitaryYears,
@@ -14,7 +14,7 @@ export function ProfileOverview({
   id,
   name,
   militaryYears,
-}: Props) {
+}: props) {
   const forename = name.forename.split(' ');
   const firstName = forename[0];
 

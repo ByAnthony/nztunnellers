@@ -1,10 +1,10 @@
 import STYLES from '../ProfileDiary/ProfileDiary.module.scss';
 
-type Props = {
+type props = {
   residence: string | null,
 }
 
-export function DiaryHometown({ residence }: Props) {
+export function DiaryHometown({ residence }: props) {
   const displayHometown = (town: string | null) => (
     town
       ? (

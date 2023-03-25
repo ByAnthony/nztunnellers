@@ -3,12 +3,12 @@ import { ArmyExperience } from '../../types/tunneller';
 import STYLES from '../ProfileDiary/ProfileDiary.module.scss';
 import STYLES_WWI from './DiaryArmyExperience.module.scss';
 
-type Props = {
+type props = {
   tunnellerId: number,
   armyExperience: ArmyExperience[],
 }
 
-export function DiaryArmyExperience({ tunnellerId, armyExperience }: Props) {
+export function DiaryArmyExperience({ tunnellerId, armyExperience }: props) {
   const displayArmyExperience = (militaryExperience: ArmyExperience[] | []) => {
     const displayExperience = () => militaryExperience.map((experience) => {
       const displayConflict = experience.conflict !== null ? experience.conflict : null;

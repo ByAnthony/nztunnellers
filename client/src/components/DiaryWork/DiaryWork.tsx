@@ -3,11 +3,11 @@ import {
 } from '../../types/tunneller';
 import STYLES from '../ProfileDiary/ProfileDiary.module.scss';
 
-    type Props = {
+    type props = {
         employment: Employment;
     }
 
-export function DiaryWork({ employment }: Props) {
+export function DiaryWork({ employment }: props) {
   const displayEmployment = (work: Employment) => {
     if (work.occupation !== null && work.employer !== null) {
       return (

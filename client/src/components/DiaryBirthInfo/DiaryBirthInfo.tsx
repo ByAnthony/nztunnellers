@@ -1,11 +1,11 @@
 import { Birth, Date } from '../../types/tunneller';
 import STYLES from '../ProfileDiary/ProfileDiary.module.scss';
 
-type Props = {
+type props = {
     birth: Birth,
 }
 
-export function DiaryBirth({ birth }: Props) {
+export function DiaryBirth({ birth }: props) {
   const displayBirthCountry = (country: string | null) => (
     country !== null ? (
       <p>
