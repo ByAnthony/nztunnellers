@@ -59,11 +59,10 @@
 
   @include index.tablet {
     margin-top: 20px;
-    font-size: 1.125rem;
   }
 
   @include index.desktop {
     margin-top: 25px;
-    font-size: 1.25rem;
+    font-size: 1.125rem;
   }
 }
