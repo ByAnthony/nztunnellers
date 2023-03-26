@@ -1,5 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { useGetTunnellerByIdQuery } from '../../redux/slices/rollSlice';
+import { Menu } from '../Menu/Menu';
 import { ProfileHowToCite } from '../ProfileHowToCite/ProfileHowToCite';
 import { ProfileOverview } from '../ProfileOverview/ProfileOverview';
 import { ProfileDiary } from '../ProfileDiary/ProfileDiary';
@@ -21,6 +22,7 @@ export function Profile() {
           <p>An error occured</p>
         </div>
         )}
+        <Menu />
         { isLoading }
         { isSuccess && (
         <div className={STYLES['profile-container']}>

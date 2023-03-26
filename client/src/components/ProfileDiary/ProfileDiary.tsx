@@ -29,7 +29,7 @@ export function ProfileDiary({
 }: props) {
   return (
     <div className={STYLES.diary}>
-      <h2>Diary</h2>
+      <h2>About</h2>
       <DiaryBirth birth={origins.birth} />
       <DiaryParents parents={origins.parents} />
       <DiaryArrivedInNz inNzLength={origins.inNzLength} />

@@ -11,7 +11,7 @@ export function ProfileSummary({ summary, embarkationUnit, enlistment }: props) 
   const displayBirthDeathDates = (
     birth: string,
     death: string | null,
-  ) => (death ? `${birth}-${death}` : `${birth}-†?`);
+  ) => (death ? `${birth} - ${death}` : `${birth} - †?`);
 
   const displayUnit = (
     unit: string,
@@ -39,13 +39,13 @@ export function ProfileSummary({ summary, embarkationUnit, enlistment }: props) 
           <tbody>
             <tr>
               <th>Unit</th>
-              <th>Rank</th>
               <th>Serial</th>
+              <th>Rank</th>
             </tr>
             <tr>
-              <td><p>{ displayUnit(embarkationUnit.detachment, embarkationUnit.section) }</p></td>
-              <td><p>{enlistment.rank}</p></td>
-              <td><p>{enlistment.serial}</p></td>
+              <td>{ displayUnit(embarkationUnit.detachment, embarkationUnit.section) }</td>
+              <td>{enlistment.serial}</td>
+              <td>{enlistment.rank}</td>
             </tr>
           </tbody>
         </table>

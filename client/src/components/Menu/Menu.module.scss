@@ -1,0 +1,53 @@
+@use 'src/index.scss';
+
+.menu {
+  display: flex;
+  align-items: center;
+  padding: 20px 20px 75px 20px;
+
+  @include index.component-setup;
+}
+
+.search-form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 20px;
+  height: 50px;
+  width: 100%;
+  border: 1px solid index.$primary-light-color;
+  border-radius: index.$border-radius;
+  background-color: index.$primary-medium-color;
+}
+
+form {
+  width: 100%;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  margin: 0 10px;
+}
+
+input {
+  box-sizing: border-box;
+  width: 100%;
+  height: 50px;
+  padding: 0 15px;
+  font-family: index.$main-font;
+  font-weight: 300;
+  font-size: 0.9rem;
+  color: index.$text-color;
+  border: none;
+  background-color: index.$primary-medium-color;
+}
+
+input:focus {
+  outline: none;
+  background-color: index.$primary-light-color;
+}
+
+::placeholder {
+  color: index.$placeholder-color;
+}

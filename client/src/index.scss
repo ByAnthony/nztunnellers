@@ -24,7 +24,7 @@ $desktop: 64rem;
 
 @mixin component-setup {
   margin: 0 auto;
-  width: 75%;
+  width: 80%;
 
   @include tablet {
     width: 65%;
@@ -42,14 +42,14 @@ $primary-medium-color: rgb(29, 31, 32);
 $primary-light-color: rgb(44, 46, 47);
 $secondary-color: rgb(153, 131, 100);
 $text-color: rgb(159, 154, 143);
+$placeholder-color: rgb(109, 104, 103);
 
 $border-radius: 5px;
 
 body {
   max-width: 100%;
-  margin: 75px 0;
   font-family: $main-font;
-  font-stretch: 85%;
+  font-stretch: 86%;
   color: $text-color;
   letter-spacing: 1px;
   line-height: normal;
@@ -75,6 +75,7 @@ h1 {
 
 h2 {
   font-size: 1.25rem;
+  font-weight: 600;
 
   @include tablet {
     font-size: 1.5rem;

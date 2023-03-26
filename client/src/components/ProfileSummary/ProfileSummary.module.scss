@@ -10,7 +10,7 @@
 }
 
 .dates {
-  margin: 15px 0;
+  margin-top: 50px;
   font-size: 1.25rem;
   font-weight: 300;
   letter-spacing: 2px;
@@ -39,22 +39,10 @@ table {
   border-collapse: separate !important;
   border-spacing: 0;
   width: 100%;
-}
-
-th,
-td {
-  min-width: fit-content;
-  padding: 15px 18px 12px 18px;
-  white-space: nowrap;
-  text-align: left;
-}
-
-th {
-  font-size: 0.9rem;
-  font-weight: 600;
+  font-size: 1rem;
+  font-weight: 300;
   color: index.$text-color;
   line-height: 1.5;
-  font-stretch: 80%;
 
   @include index.tablet {
     font-size: 1rem;
@@ -63,6 +51,18 @@ th {
   @include index.desktop {
     font-size: 1rem;
   }
+}
+
+th,
+td {
+  min-width: fit-content;
+  padding: 10px 20px 8px 20px;
+  white-space: nowrap;
+  text-align: left;
+}
+
+th {
+  font-weight: 600;
 }
 
 tr:first-child th:first-child {
