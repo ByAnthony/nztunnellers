@@ -1,9 +1,33 @@
 @use 'src/index.scss';
 
+.header {
+  text-align: center;
+  margin: 0;
+}
+
+.surname {
+  display: block;
+}
+
+.dates {
+  margin: 15px 0;
+  font-size: 1.25rem;
+  font-weight: 300;
+  letter-spacing: 2px;
+
+  @include index.tablet {
+    font-size: 1.5rem;
+  }
+
+  @include index.desktop {
+    font-size: 1.75rem;
+  }
+}
+
 .overview {
-  margin-top: index.$profile-margin-top;
+  overflow-x: scroll;
+  margin-top: 75px;
   padding-bottom: 25px;
-  border-bottom: index.$profile-border-bottom;
 
   @include index.desktop {
     margin-top: 25px;
@@ -11,47 +35,67 @@
   }
 }
 
-.overview-group {
-  padding: 12px 0;
+table {
+  border-collapse: separate !important;
+  border-spacing: 0;
+  width: 100%;
 }
 
-.overview-title {
-  margin: 0;
-  font-size: 1.1rem;
-  font-weight: 400;
+th,
+td {
+  min-width: fit-content;
+  padding: 15px 18px 12px 18px;
+  white-space: nowrap;
+  text-align: left;
+}
+
+th {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: index.$text-color;
+  line-height: 1.5;
+  font-stretch: 80%;
 
   @include index.tablet {
-    font-size: 1.15rem;
+    font-size: 1rem;
   }
 
   @include index.desktop {
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
 }
 
-.surname {
-  margin: 0;
+tr:first-child th:first-child {
+  border-top-left-radius: index.$border-radius;
+  border: 1px solid index.$primary-light-color;
 }
 
-.forename {
-  display: block;
-  margin: 0;
-  font-weight: 300;
+tr:first-child th:last-child {
+  border-top-right-radius: index.$border-radius;
+  border: 1px solid index.$primary-light-color;
 }
 
-.dates {
-  margin: 15px 0;
-  font-size: 1.1rem;
-  font-weight: 300;
-  letter-spacing: 2px;
+tr:first-child th:nth-child(2) {
+  border-top: 1px solid index.$primary-light-color;
+  border-bottom: 1px solid index.$primary-light-color;
+}
 
-  @include index.tablet {
-    font-size: 1.2rem;
-  }
+tr:last-child td:nth-child(2) {
+  border-bottom: 1px solid index.$primary-light-color;
+}
 
-  @include index.desktop {
-    font-size: 1.3rem;
-  }
+tr:last-child td:first-child {
+  border-bottom-left-radius: index.$border-radius;
+  border-left: 1px solid index.$primary-light-color;
+  border-right: 1px solid index.$primary-light-color;
+  border-bottom: 1px solid index.$primary-light-color;
+}
+
+tr:last-child td:last-child {
+  border-bottom-right-radius: index.$border-radius;
+  border-left: 1px solid index.$primary-light-color;
+  border-right: 1px solid index.$primary-light-color;
+  border-bottom: 1px solid index.$primary-light-color;
 }
 
 p {

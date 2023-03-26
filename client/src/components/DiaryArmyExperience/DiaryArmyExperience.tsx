@@ -79,7 +79,7 @@ export function DiaryArmyExperience({ tunnellerId, armyExperience }: props) {
       <Link to={`/roll/${tunnellerId}/wwi-timeline`} key={tunnellerId} className={STYLES_WWI['war-service']}>
         <div>
           <p>World War I (1914-1918)</p>
-          <span>New Zealand Engineers Tunnelling Company</span>
+          <span>New Zealand Tunnellers</span>
         </div>
         <div className={STYLES.arrow}>&rarr;</div>
       </Link>

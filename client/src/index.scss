@@ -7,6 +7,20 @@
   font-stretch: 75% 125%;
 }
 
+@font-face {
+  font-family: 'Newsreader';
+  src: url('./fonts/Newsreader/Newsreader.woff2')
+      format('woff2 supports variations'),
+    url('./fonts/Newsreader/Newsreader.woff2') format('woff2-variations');
+  font-weight: 200 800;
+  font-stretch: 75% 125%;
+}
+
+@font-face {
+  font-family: 'SpecialElite';
+  src: url('./fonts/Special_Elite/SpecialElite-Regular.ttf') format('truetype');
+}
+
 $mobile: 32rem;
 $desktop: 64rem;
 
@@ -36,8 +50,7 @@ $desktop: 64rem;
 }
 
 $main-font: 'Mona Sans';
-$typewriter-font: 'SpecialElite';
-$handwriting-font: 'NothingYouCouldDo';
+$article-font: 'Newsreader';
 
 $primary-dark-color: rgb(24, 26, 27);
 $primary-medium-color: rgb(29, 31, 32);
@@ -63,21 +76,20 @@ body {
 }
 
 h1 {
-  font-size: 1.75rem;
+  font-size: 2.25rem;
   font-weight: 600;
 
   @include tablet {
-    font-size: 2rem;
+    font-size: 2.75rem;
   }
 
   @include desktop {
-    font-size: 2.25rem;
+    font-size: 3.25rem;
   }
 }
 
 h2 {
   font-size: 1.25rem;
-  font-weight: 600;
 
   @include tablet {
     font-size: 1.5rem;

@@ -27,28 +27,28 @@ export function ProfileSummary({ summary, embarkationUnit, enlistment }: props) 
     <>
       <div className={STYLES.header}>
         <h1>
+          <span>{ summary.name.forename }</span>
           <span className={STYLES.surname}>{ summary.name.surname }</span>
-          <span className={STYLES.forename}>{ summary.name.forename }</span>
         </h1>
         <p className={STYLES.dates}>
           { displayBirthDeathDates(summary.birth, summary.death) }
         </p>
       </div>
       <div className={STYLES.overview}>
-        <div className={STYLES['overview-group']}>
-          <p>Unit</p>
-          <p className={STYLES['overview-title']}>
-            { displayUnit(embarkationUnit.detachment, embarkationUnit.section) }
-          </p>
-        </div>
-        <div className={STYLES['overview-group']}>
-          <p>Rank</p>
-          <p className={STYLES['overview-title']}>{enlistment.rank}</p>
-        </div>
-        <div className={STYLES['overview-group']}>
-          <p>Serial</p>
-          <p className={STYLES['overview-title']}>{enlistment.serial}</p>
-        </div>
+        <table>
+          <tbody>
+            <tr>
+              <th>Unit</th>
+              <th>Rank</th>
+              <th>Serial</th>
+            </tr>
+            <tr>
+              <td><p>{ displayUnit(embarkationUnit.detachment, embarkationUnit.section) }</p></td>
+              <td><p>{enlistment.rank}</p></td>
+              <td><p>{enlistment.serial}</p></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </>
   );
