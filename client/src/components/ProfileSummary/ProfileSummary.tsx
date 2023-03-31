@@ -35,20 +35,20 @@ export function ProfileSummary({ summary, embarkationUnit, enlistment }: props) 
         </p>
       </div>
       <div className={STYLES.overview}>
-        <table>
-          <tbody>
-            <tr>
-              <th>Unit</th>
-              <th>Serial</th>
-              <th>Rank</th>
-            </tr>
-            <tr>
-              <td>{ displayUnit(embarkationUnit.detachment, embarkationUnit.section) }</td>
-              <td>{enlistment.serial}</td>
-              <td>{enlistment.rank}</td>
-            </tr>
-          </tbody>
-        </table>
+        <div className={STYLES['fullwidth-main-card']}>
+          <p>Unit</p>
+          <span>{ displayUnit(embarkationUnit.detachment, embarkationUnit.section) }</span>
+        </div>
+        <div className={STYLES['halfwidth-cards-container']}>
+          <div className={STYLES['halfwidth-secondary-card']}>
+            <div className={STYLES['halfwidth-secondary-card-title']}><p>Rank</p></div>
+            <div><span>{ enlistment.rank }</span></div>
+          </div>
+          <div className={STYLES['halfwidth-secondary-card']}>
+            <div className={STYLES['halfwidth-secondary-card-title']}><p>Serial</p></div>
+            <div><span>{ enlistment.serial }</span></div>
+          </div>
+        </div>
       </div>
     </>
   );

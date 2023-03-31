@@ -25,6 +25,7 @@
 
 .alphabet-letter {
   padding: 8px 0 5px 0;
+  width: 30px;
   font-family: index.$main-font;
   font-size: 1rem;
   font-stretch: 85%;
@@ -36,10 +37,12 @@
   @include index.primary-button-link;
 
   @include index.tablet {
+    width: 33px;
     font-size: 1.125rem;
   }
 
   @include index.desktop {
+    width: 33px;
     font-size: 1.125rem;
   }
 }

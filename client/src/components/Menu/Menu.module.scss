@@ -3,7 +3,7 @@
 .menu {
   display: flex;
   align-items: center;
-  padding: 30px 20px 75px 20px;
+  padding: 20px 20px 85px 20px;
 
   @include index.component-setup;
 }
@@ -40,7 +40,8 @@ input {
   font-size: 0.9rem;
   color: index.$text-color;
   border: none;
-  border-radius: index.$border-radius;
+  border-top-left-radius: index.$border-radius;
+  border-bottom-left-radius: index.$border-radius;
   background-color: index.$primary-medium-color;
 }
 

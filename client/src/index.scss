@@ -24,7 +24,7 @@ $desktop: 64rem;
 
 @mixin component-setup {
   margin: 0 auto;
-  width: 80%;
+  width: 90%;
 
   @include tablet {
     width: 65%;
@@ -49,7 +49,7 @@ $border-radius: 5px;
 body {
   max-width: 100%;
   font-family: $main-font;
-  font-stretch: 86%;
+  font-stretch: 85%;
   color: $text-color;
   letter-spacing: 1px;
   line-height: normal;
@@ -74,15 +74,15 @@ h1 {
 }
 
 h2 {
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   font-weight: 600;
 
   @include tablet {
-    font-size: 1.5rem;
+    font-size: 1.75rem;
   }
 
   @include desktop {
-    font-size: 1.75rem;
+    font-size: 2rem;
   }
 }
 
@@ -165,6 +165,82 @@ a {
   @include desktop {
     font-size: 3rem;
   }
+}
+
+$padding-card: 30px 30px 27px 30px;
+
+@mixin fullwidth-main-card {
+  max-width: 100%;
+  margin: 15px 0;
+  padding: 20px;
+  font-size: 1.25rem;
+  background-color: $primary-medium-color;
+  border: 1px solid $primary-light-color;
+  border-radius: $border-radius;
+
+  @include desktop {
+    padding: $padding-card;
+  }
+}
+
+@mixin fullwidth-secondary-card {
+  max-width: 100%;
+  margin: 15px 0;
+  padding: 20px;
+  font-size: 1.25rem;
+  border: 1px solid $primary-light-color;
+  border-radius: $border-radius;
+
+  @include desktop {
+    padding: $padding-card;
+  }
+}
+
+@mixin halfwidth-cards-container {
+  margin: 15px 0;
+  display: flex;
+  gap: 15px;
+}
+
+@mixin halfwidth-card-style {
+  display: flex;
+  flex-flow: column wrap;
+  align-content: flex-start;
+  align-items: flex-start;
+  width: 50%;
+  padding: 20px;
+}
+
+@mixin halfwidth-main-card {
+  justify-content: flex-end;
+  font-size: 1.25rem;
+  background-color: $primary-medium-color;
+  border: 1px solid $primary-light-color;
+  border-radius: $border-radius;
+
+  @include desktop {
+    padding: $padding-card;
+  }
+}
+
+@mixin halfwidth-secondary-card {
+  justify-content: space-between;
+  font-size: 1rem;
+  border: 1px solid $primary-light-color;
+  border-radius: $border-radius;
+
+  @include tablet {
+    font-size: 1.1rem;
+  }
+
+  @include desktop {
+    padding: $padding-card;
+    font-size: 1.1rem;
+  }
+}
+
+@mixin halfwidth-secondary-card-title {
+  padding-bottom: 15px;
 }
 
 $profile-margin-top: 50px;

@@ -2,8 +2,7 @@
 
 .sources {
   margin-top: index.$profile-margin-top;
-  padding-bottom: 25px;
-  border-bottom: index.$profile-border-bottom;
+  padding-bottom: index.$profile-margin-top / 2;
 }
 
 .sources p {

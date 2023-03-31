@@ -2,7 +2,7 @@
 
 .header {
   text-align: center;
-  margin: 0;
+  margin: 0 0 index.$profile-margin-top / 2 0;
 }
 
 .surname {
@@ -26,8 +26,15 @@
 
 .overview {
   overflow-x: scroll;
-  margin-top: 75px;
-  padding-bottom: 25px;
+  width: 100%;
+  margin-top: 1.5 * index.$profile-margin-top;
+  padding-bottom: index.$profile-margin-top / 2;
+  font-family: index.$main-font;
+  font-stretch: 85%;
+  font-weight: 600;
+  color: index.$text-color;
+  text-align: left;
+  letter-spacing: 1px;
 
   @include index.desktop {
     margin-top: 25px;
@@ -35,67 +42,23 @@
   }
 }
 
-table {
-  border-collapse: separate !important;
-  border-spacing: 0;
-  width: 100%;
-  font-size: 1rem;
-  font-weight: 300;
-  color: index.$text-color;
-  line-height: 1.5;
-
-  @include index.tablet {
-    font-size: 1rem;
-  }
-
-  @include index.desktop {
-    font-size: 1rem;
-  }
+.fullwidth-main-card {
+  @include index.fullwidth-main-card;
 }
 
-th,
-td {
-  min-width: fit-content;
-  padding: 10px 20px 8px 20px;
-  white-space: nowrap;
-  text-align: left;
+.halfwidth-cards-container {
+  @include index.halfwidth-cards-container;
 }
 
-th {
-  font-weight: 600;
+.halfwidth-secondary-card {
+  background-color: index.$primary-medium-color;
+
+  @include index.halfwidth-card-style;
+  @include index.halfwidth-secondary-card;
 }
 
-tr:first-child th:first-child {
-  border-top-left-radius: index.$border-radius;
-  border: 1px solid index.$primary-light-color;
-}
-
-tr:first-child th:last-child {
-  border-top-right-radius: index.$border-radius;
-  border: 1px solid index.$primary-light-color;
-}
-
-tr:first-child th:nth-child(2) {
-  border-top: 1px solid index.$primary-light-color;
-  border-bottom: 1px solid index.$primary-light-color;
-}
-
-tr:last-child td:nth-child(2) {
-  border-bottom: 1px solid index.$primary-light-color;
-}
-
-tr:last-child td:first-child {
-  border-bottom-left-radius: index.$border-radius;
-  border-left: 1px solid index.$primary-light-color;
-  border-right: 1px solid index.$primary-light-color;
-  border-bottom: 1px solid index.$primary-light-color;
-}
-
-tr:last-child td:last-child {
-  border-bottom-right-radius: index.$border-radius;
-  border-left: 1px solid index.$primary-light-color;
-  border-right: 1px solid index.$primary-light-color;
-  border-bottom: 1px solid index.$primary-light-color;
+.halfwidth-secondary-card-title {
+  @include index.halfwidth-secondary-card-title;
 }
 
 p {

@@ -3,94 +3,39 @@
 .diary {
   width: 100%;
   margin-top: index.$profile-margin-top;
-  padding-bottom: 40px;
+  padding-bottom: index.$profile-margin-top / 2;
   font-family: index.$main-font;
   font-stretch: 85%;
   font-weight: 600;
   color: index.$text-color;
   text-align: left;
   letter-spacing: 1px;
-  border-bottom: index.$profile-border-bottom;
 }
 
-$padding-card: 30px 30px 27px 30px;
-
 .fullwidth-main-card {
-  max-width: 100%;
-  margin: 15px 0;
-  padding: 20px;
-  font-size: 1.25rem;
-  background-color: index.$primary-medium-color;
-  border: 1px solid index.$primary-light-color;
-  border-radius: index.$border-radius;
-
-  @include index.desktop {
-    padding: $padding-card;
-  }
+  @include index.fullwidth-main-card;
 }
 
 .fullwidth-secondary-card {
-  max-width: 100%;
-  margin: 15px 0;
-  padding: 20px;
-  font-size: 1.25rem;
-  border: 1px solid index.$primary-light-color;
-  border-radius: index.$border-radius;
-
-  @include index.desktop {
-    padding: $padding-card;
-  }
+  @include index.fullwidth-secondary-card;
 }
 
 .halfwidth-cards-container {
-  margin: 15px 0;
-  display: flex;
-  gap: 15px;
-}
-
-@mixin halfwidth-card-style {
-  display: flex;
-  flex-flow: column wrap;
-  align-content: flex-start;
-  align-items: flex-start;
-  width: 50%;
-  padding: 20px;
+  @include index.halfwidth-cards-container;
 }
 
 .halfwidth-main-card {
-  @include halfwidth-card-style;
-
-  justify-content: flex-end;
-  font-size: 1.25rem;
-  background-color: index.$primary-medium-color;
-  border: 1px solid index.$primary-light-color;
-  border-radius: index.$border-radius;
-
-  @include index.desktop {
-    padding: $padding-card;
-  }
+  @include index.halfwidth-card-style;
+  @include index.halfwidth-main-card;
 }
 
 .halfwidth-secondary-card {
-  @include halfwidth-card-style;
-
-  justify-content: space-between;
-  font-size: 1rem;
-  border: 1px solid index.$primary-light-color;
-  border-radius: index.$border-radius;
-
-  @include index.tablet {
-    font-size: 1.1rem;
-  }
-
-  @include index.desktop {
-    padding: $padding-card;
-    font-size: 1.1rem;
-  }
+  @include index.halfwidth-card-style;
+  @include index.halfwidth-secondary-card;
 }
 
 .halfwidth-secondary-card-title {
-  padding-bottom: 15px;
+  @include index.halfwidth-secondary-card-title;
 }
 
 li {
