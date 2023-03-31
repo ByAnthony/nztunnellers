@@ -11,13 +11,17 @@
 }
 
 .description p {
-  font-size: 1.1rem;
+  padding: 10px 0 10px 20px;
+  font-size: 1.25rem;
+  font-weight: 400;
+  font-style: italic;
+  border-left: 3px solid index.$primary-light-color;
 
   @include index.tablet {
-    font-size: 1.15rem;
+    font-size: 1.5rem;
   }
 
   @include index.desktop {
-    font-size: 1.2rem;
+    font-size: 1.75rem;
   }
 }

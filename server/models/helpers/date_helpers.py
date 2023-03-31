@@ -108,19 +108,17 @@ def convert_immigration_duration_to_arrival_year(
     return None
 
 
-def calculate_age_at_death_with_full_date(
-    birthdate_str: str, deathdate_str: str
-) -> int:
-    birthdate = datetime.datetime.strptime(birthdate_str, "%Y-%m-%d")
-    deathdate = datetime.datetime.strptime(deathdate_str, "%Y-%m-%d")
-    age_at_death = deathdate.year - birthdate.year
-    if deathdate.month < birthdate.month or (
-        deathdate.month == birthdate.month and deathdate.day < birthdate.day
+def calculate_age_with_full_date(date_1: str, date_2: str) -> int:
+    first_date = datetime.datetime.strptime(date_1, "%Y-%m-%d")
+    second_date = datetime.datetime.strptime(date_2, "%Y-%m-%d")
+    age = second_date.year - first_date.year
+    if second_date.month < first_date.month or (
+        second_date.month == first_date.month and second_date.day < first_date.day
     ):
-        age_at_death -= 1
-    return age_at_death
+        age -= 1
+    return age
 
 
-def calculate_age_at_death_with_years(birthdate_year: str, deathdate_year: str) -> int:
-    age_at_death = int(deathdate_year) - int(birthdate_year)
-    return age_at_death
+def calculate_age_with_years(date_1: str, date_2: str) -> int:
+    age = int(date_2) - int(date_1)
+    return age

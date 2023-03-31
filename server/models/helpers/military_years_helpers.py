@@ -4,8 +4,8 @@ from typing import Optional
 from ...models.tunneller import Tunneller
 
 from .date_helpers import (
-    calculate_age_at_death_with_full_date,
-    calculate_age_at_death_with_years,
+    calculate_age_with_full_date,
+    calculate_age_with_years,
     get_optional_date,
     get_full_date,
 )
@@ -145,28 +145,28 @@ def get_age_at_death(
         and birth_date is not None
         and birth_year is not None
     ):
-        return calculate_age_at_death_with_full_date(birth_date, death_date)
+        return calculate_age_with_full_date(birth_date, death_date)
     if (
         death_year is not None
         and death_date is None
         and birth_year is not None
         and birth_date is None
     ):
-        return calculate_age_at_death_with_years(birth_year, death_year)
+        return calculate_age_with_years(birth_year, death_year)
     if (
         birth_year is not None
         and birth_date is None
         and death_year is not None
         and death_date is not None
     ):
-        return calculate_age_at_death_with_years(birth_year, death_year)
+        return calculate_age_with_years(birth_year, death_year)
     if (
         death_year is not None
         and death_date is None
         and birth_year is not None
         and birth_date is not None
     ):
-        return calculate_age_at_death_with_years(birth_year, death_year)
+        return calculate_age_with_years(birth_year, death_year)
     return None
 
 
