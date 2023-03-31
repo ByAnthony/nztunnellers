@@ -8,7 +8,7 @@ from ...models.helpers.date_helpers import (
     get_optional_date,
 )
 from ...models.helpers.military_years_helpers import (
-    get_age_at_death,
+    get_age,
     get_boolean,
     get_cemetery,
     get_death_circumstances,
@@ -98,7 +98,7 @@ def death_war(tunneller_result: Tunneller, lang: str) -> Optional[Death]:
             tunneller_result["cemetery_country"],
             tunneller_result["grave"],
         ),
-        get_age_at_death(
+        get_age(
             tunneller_result["death_year"],
             tunneller_result["death_date"],
             tunneller_result["birth_year"],

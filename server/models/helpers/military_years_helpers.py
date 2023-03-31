@@ -133,40 +133,35 @@ def get_cemetery(
     return None
 
 
-def get_age_at_death(
-    death_year: Optional[str],
-    death_date: Optional[str],
-    birth_year: Optional[str],
-    birth_date: Optional[str],
+def get_age(
+    year_1: Optional[str],
+    date_1: Optional[str],
+    year_2: Optional[str],
+    date_2: Optional[str],
 ) -> Optional[int]:
     if (
-        death_date is not None
-        and death_year is not None
-        and birth_date is not None
-        and birth_year is not None
+        date_1 is not None
+        and year_1 is not None
+        and date_2 is not None
+        and year_2 is not None
     ):
-        return calculate_age_with_full_date(birth_date, death_date)
+        return calculate_age_with_full_date(date_2, date_1)
+    if year_1 is not None and date_1 is None and year_2 is not None and date_2 is None:
+        return calculate_age_with_years(year_2, year_1)
     if (
-        death_year is not None
-        and death_date is None
-        and birth_year is not None
-        and birth_date is None
+        year_2 is not None
+        and date_2 is None
+        and year_1 is not None
+        and date_1 is not None
     ):
-        return calculate_age_with_years(birth_year, death_year)
+        return calculate_age_with_years(year_2, year_1)
     if (
-        birth_year is not None
-        and birth_date is None
-        and death_year is not None
-        and death_date is not None
+        year_1 is not None
+        and date_1 is None
+        and year_2 is not None
+        and date_2 is not None
     ):
-        return calculate_age_with_years(birth_year, death_year)
-    if (
-        death_year is not None
-        and death_date is None
-        and birth_year is not None
-        and birth_date is not None
-    ):
-        return calculate_age_with_years(birth_year, death_year)
+        return calculate_age_with_years(year_2, year_1)
     return None
 
 
