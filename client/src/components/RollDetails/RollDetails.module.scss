@@ -13,6 +13,11 @@
     padding: 30px 30px 27px 30px;
     flex: 50%;
   }
+
+  @include index.large-desktop {
+    padding: 30px 30px 27px 30px;
+    flex: 50%;
+  }
 }
 
 .tunneller p {
@@ -33,6 +38,10 @@
   @include index.desktop {
     font-size: 2rem;
   }
+
+  @include index.large-desktop {
+    font-size: 2rem;
+  }
 }
 
 .forename {
@@ -46,6 +55,10 @@
   }
 
   @include index.desktop {
+    font-size: 1.5rem;
+  }
+
+  @include index.large-desktop {
     font-size: 1.5rem;
   }
 }
@@ -62,6 +75,11 @@
   }
 
   @include index.desktop {
+    margin-top: 25px;
+    font-size: 1.125rem;
+  }
+
+  @include index.large-desktop {
     margin-top: 25px;
     font-size: 1.125rem;
   }

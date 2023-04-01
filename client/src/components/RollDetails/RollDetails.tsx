@@ -14,8 +14,8 @@ export function RollDetails({ listOfTunnellers }: Roll) {
         <Link to={`/roll/${tunneller.id}`} key={tunneller.id} className={STYLES['tunneller-link']}>
           <div className={STYLES.tunneller}>
             <div>
-              <p className={STYLES.surname}>{tunneller.name.surname}</p>
               <p className={STYLES.forename}>{tunneller.name.forename}</p>
+              <p className={STYLES.surname}>{tunneller.name.surname}</p>
               <p className={STYLES.dates}>
                 { displayBirthDeathDates(tunneller.birth, tunneller.death) }
               </p>

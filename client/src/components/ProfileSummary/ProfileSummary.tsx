@@ -27,7 +27,7 @@ export function ProfileSummary({ summary, embarkationUnit, enlistment }: props) 
     <>
       <div className={STYLES.header}>
         <h1>
-          <span>{ summary.name.forename }</span>
+          <span className={STYLES.forename}>{ summary.name.forename }</span>
           <span className={STYLES.surname}>{ summary.name.surname }</span>
         </h1>
         <p className={STYLES.dates}>

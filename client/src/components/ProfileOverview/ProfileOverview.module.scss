@@ -1,8 +1,8 @@
 @use 'src/index.scss';
 
 .description {
-  margin-top: index.$profile-margin-top;
-  padding-bottom: index.$profile-margin-top / 2;
+  margin-top: index.$base-margin / 2;
+  padding-bottom: index.$base-margin / 2;
 
   @include index.desktop {
     margin-top: 0;

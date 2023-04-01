@@ -2,11 +2,15 @@
 
 .diary {
   width: 100%;
-  margin-top: index.$profile-margin-top;
-  padding-bottom: index.$profile-margin-top / 2;
+  margin-top: index.$base-margin;
+  padding-bottom: index.$base-margin / 2;
   font-weight: 600;
   color: index.$text-color;
   text-align: left;
+
+  @include index.desktop {
+    margin-top: 0;
+  }
 }
 
 .fullwidth-main-card {

@@ -9,6 +9,7 @@
 
 $mobile: 32rem;
 $desktop: 64rem;
+$large-desktop: 96rem;
 
 @mixin tablet {
   @media screen and (min-width: $mobile) and (max-width: $desktop) {
@@ -17,7 +18,13 @@ $desktop: 64rem;
 }
 
 @mixin desktop {
-  @media screen and (min-width: $desktop) {
+  @media screen and (min-width: $desktop) and (max-width: $large-desktop) {
+    @content;
+  }
+}
+
+@mixin large-desktop {
+  @media screen and (min-width: $large-desktop) {
     @content;
   }
 }
@@ -26,12 +33,8 @@ $desktop: 64rem;
   margin: 0 auto;
   width: 90%;
 
-  @include tablet {
-    width: 65%;
-  }
-
-  @include desktop {
-    width: 950px;
+  @include large-desktop {
+    width: 1500px;
   }
 }
 
@@ -53,10 +56,6 @@ body {
   color: $text-color;
   line-height: normal;
   background-color: $primary-dark-color;
-
-  @include desktop {
-    margin: 100px 0;
-  }
 }
 
 h1 {
@@ -64,11 +63,15 @@ h1 {
   font-weight: 600;
 
   @include tablet {
-    font-size: 2.75rem;
+    font-size: 2.5rem;
   }
 
   @include desktop {
-    font-size: 3.25rem;
+    font-size: 2.75rem;
+  }
+
+  @include large-desktop {
+    font-size: 3rem;
   }
 }
 
@@ -242,5 +245,4 @@ $padding-card: 30px 30px 27px 30px;
   padding-bottom: 15px;
 }
 
-$profile-margin-top: 50px;
-$profile-border-bottom: 1px solid $primary-light-color;
+$base-margin: 50px;

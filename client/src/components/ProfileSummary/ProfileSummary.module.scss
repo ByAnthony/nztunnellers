@@ -2,11 +2,19 @@
 
 .header {
   text-align: center;
-  margin: 0 0 index.$profile-margin-top / 2 0;
+  margin: 0 0 index.$base-margin / 2 0;
+
+  @include index.desktop {
+    text-align: left;
+  }
 }
 
 .surname {
   display: block;
+}
+
+.forename {
+  font-weight: 300;
 }
 
 .dates {
@@ -24,10 +32,8 @@
 }
 
 .overview {
-  overflow-x: scroll;
-  width: 100%;
-  margin-top: 1.5 * index.$profile-margin-top;
-  padding-bottom: index.$profile-margin-top / 2;
+  margin-top: 1.5 * index.$base-margin;
+  padding-bottom: index.$base-margin / 2;
   font-weight: 600;
   color: index.$text-color;
   text-align: left;

@@ -26,21 +26,21 @@ export function Profile() {
         { isLoading }
         { isSuccess && (
         <div className={STYLES['profile-container']}>
-          <div className={STYLES['sticky-card']}>
-            <div className={STYLES.summary}>
+          <div className={STYLES['profile-card']}>
+            <div className={STYLES['profile-summary']}>
               <ProfileSummary
                 summary={data.summary}
                 embarkationUnit={data.militaryYears.embarkationUnit}
                 enlistment={data.militaryYears.enlistment}
               />
+              <ProfileOverview
+                id={data.id}
+                name={data.summary.name}
+                militaryYears={data.militaryYears}
+              />
             </div>
           </div>
           <div>
-            <ProfileOverview
-              id={data.id}
-              name={data.summary.name}
-              militaryYears={data.militaryYears}
-            />
             <ProfileDiary
               tunnellerId={data.id}
               origins={data.origins}

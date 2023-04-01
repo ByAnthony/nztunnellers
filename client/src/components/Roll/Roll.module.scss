@@ -4,21 +4,32 @@
   @include index.component-setup;
 }
 
+.alphabet-h1 {
+  text-align: center;
+}
+
 .alphabet {
   width: 100%;
-  margin: 50px 0;
+  margin: index.$base-margin 0;
   display: grid;
   grid-template-columns: repeat(auto-fill, 30px);
   justify-content: space-between;
   grid-gap: 15px;
 
   @include index.tablet {
-    grid-template-columns: repeat(auto-fill, 33px);
+    margin: 1.5 * index.$base-margin 0;
+    grid-template-columns: repeat(auto-fill, 32.5px);
   }
 
   @include index.desktop {
-    margin: 75px 0;
-    grid-template-columns: repeat(auto-fill, 33px);
+    margin: 2 * index.$base-margin 0;
+    grid-template-columns: repeat(auto-fill, 35px);
+    grid-gap: 25px;
+  }
+
+  @include index.large-desktop {
+    margin: 2 * index.$base-margin 0;
+    grid-template-columns: repeat(auto-fill, 45px);
     grid-gap: 25px;
   }
 }
@@ -37,12 +48,17 @@
   @include index.primary-button-link;
 
   @include index.tablet {
-    width: 33px;
+    width: 32.5px;
     font-size: 1.125rem;
   }
 
   @include index.desktop {
-    width: 33px;
-    font-size: 1.125rem;
+    width: 35px;
+    font-size: 1.25rem;
+  }
+
+  @include index.large-desktop {
+    width: 45px;
+    font-size: 1.625rem;
   }
 }
