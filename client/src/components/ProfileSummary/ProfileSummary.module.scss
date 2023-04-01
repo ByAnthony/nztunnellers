@@ -13,7 +13,6 @@
   margin-top: 50px;
   font-size: 1.25rem;
   font-weight: 300;
-  letter-spacing: 2px;
 
   @include index.tablet {
     font-size: 1.5rem;
@@ -29,12 +28,9 @@
   width: 100%;
   margin-top: 1.5 * index.$profile-margin-top;
   padding-bottom: index.$profile-margin-top / 2;
-  font-family: index.$main-font;
-  font-stretch: 85%;
   font-weight: 600;
   color: index.$text-color;
   text-align: left;
-  letter-spacing: 1px;
 
   @include index.desktop {
     margin-top: 25px;

@@ -14,24 +14,12 @@ export function ProfileHowToCite({ id, summary }: props) {
     <div className={STYLES.howtocite}>
       <h2>How to cite this page</h2>
       <p>
-        Anthony Byledbal, &lsquo;
-        { summary.name.forename }
-        {' '}
-        { summary.name.surname }
-        {' '}
-        (
-        { displayBirthDeathDates(summary.birth, summary.death) }
-        )&rsquo;,
-        {' '}
+        {`Anthony Byledbal, "${summary.name.forename} ${summary.name.surname} `}
+        {`(${displayBirthDeathDates(summary.birth, summary.death)})", `}
         <em>New Zealand Tunnellers Website</em>
-        {', '}
-        {today.getFullYear()}
-        {' '}
-        (2009), Accessed:&nbsp;
-        {today.toLocaleDateString()}
-        . URL:&nbsp;www.nztunnellers.com/roll/
-        {id}
-        .
+        {`, ${today.getFullYear()} (2009), Accessed: `}
+        {`${today.toLocaleDateString('en-NZ', { year: 'numeric', month: 'long', day: 'numeric' })}. `}
+        {`URL: www.nztunnellers.com/roll/${id}.`}
       </p>
     </div>
   );

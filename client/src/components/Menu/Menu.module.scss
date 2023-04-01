@@ -8,6 +8,10 @@
   @include index.component-setup;
 }
 
+.logo {
+  height: 32px;
+}
+
 .search-form {
   display: flex;
   justify-content: space-between;
@@ -24,7 +28,7 @@ form {
   width: 100%;
 }
 
-button {
+.search-form-button {
   background-color: transparent;
   border: none;
   margin: 0 10px;

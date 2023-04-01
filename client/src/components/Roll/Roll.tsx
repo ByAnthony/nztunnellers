@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { RollAlphabet } from '../RollAlphabet/RollAlphabet';
 import STYLES from './Roll.module.scss';
 import { useGetAllTunnellersQuery } from '../../redux/slices/rollSlice';
+import { Menu } from '../Menu/Menu';
 
 export function Roll() {
   const [filterByLetter, setFilterByLetter] = useState('');
@@ -19,6 +20,7 @@ export function Roll() {
             <p>An error occured</p>
           </div>
         )}
+        <Menu />
         { isLoading }
         { isSuccess && (
         <>
