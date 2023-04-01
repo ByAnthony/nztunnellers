@@ -10,22 +10,24 @@
 
 .footer-links-container {
   margin-top: index.$base-margin / 2;
-  display: flex;
+  display: grid;
+  gap: 15px;
+  grid-template-columns: 1fr 1fr;
   justify-content: space-between;
   align-items: flex-start;
   align-content: flex-start;
-  gap: 15px;
+
+  @include index.tablet {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 }
 
 .footer-links {
   flex-grow: 1;
-}
-
-.footer li {
   padding: 10px 0;
 }
 
-.footer li a {
+.footer-links a {
   font-size: 1rem;
   font-weight: 400;
   color: index.$secondary-color;

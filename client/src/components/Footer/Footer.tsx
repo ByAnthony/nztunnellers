@@ -8,29 +8,24 @@ export function Footer() {
       </div>
       <div>
         <div className={STYLES['footer-links-container']}>
-          <div className={STYLES['footer-links']}>
-            <ul>
-              <li>
-                <a href="/history/" aria-label="History">History</a>
-              </li>
-              <li>
-                <a href="/roll/" aria-label="Company Roll">Company Roll</a>
-              </li>
-            </ul>
-
+          <div>
+            <div className={STYLES['footer-links']}>
+              <a href="/history/" aria-label="History">History</a>
+            </div>
+            <div className={STYLES['footer-links']}>
+              <a href="/roll/" aria-label="Company Roll">Company Roll</a>
+            </div>
           </div>
-          <div className={STYLES['footer-links']}>
-            <ul>
-              <li>
-                <a href="/about-us/" aria-label="About Us">About Us</a>
-              </li>
-              <li>
-                <a href="/contact-us/" aria-label="Contact Us">Contact Us</a>
-              </li>
-              <li>
-                <a href="/help-us/" aria-label="Help Us">Help Us</a>
-              </li>
-            </ul>
+          <div>
+            <div className={STYLES['footer-links']}>
+              <a href="/about-us/" aria-label="About Us">About Us</a>
+            </div>
+            <div className={STYLES['footer-links']}>
+              <a href="/contact-us/" aria-label="Contact Us">Contact Us</a>
+            </div>
+            <div className={STYLES['footer-links']}>
+              <a href="/help-us/" aria-label="Help Us">Help Us</a>
+            </div>
           </div>
         </div>
       </div>
