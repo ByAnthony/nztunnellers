@@ -27,16 +27,16 @@
 
 .surname {
   margin: 0;
-  font-size: 1.75rem;
+  font-size: 1.5rem;
   font-weight: 600;
   color: index.$secondary-color;
 
   @include index.tablet {
-    font-size: 1.875rem;
+    font-size: 1.75rem;
   }
 
   @include index.desktop {
-    font-size: 2rem;
+    font-size: 1.875rem;
   }
 
   @include index.large-desktop {
@@ -46,20 +46,20 @@
 
 .forename {
   margin: 0;
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   font-weight: 300;
   color: index.$secondary-color;
 
   @include index.tablet {
-    font-size: 1.375rem;
+    font-size: 1.75rem;
   }
 
   @include index.desktop {
-    font-size: 1.5rem;
+    font-size: 1.875rem;
   }
 
   @include index.large-desktop {
-    font-size: 1.5rem;
+    font-size: 2rem;
   }
 }
 
