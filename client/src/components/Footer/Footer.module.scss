@@ -3,6 +3,7 @@
 .footer {
   margin-top: index.$base-margin;
   padding-bottom: index.$base-margin;
+  letter-spacing: 1px;
 
   @include index.component-setup;
 }
@@ -14,4 +15,18 @@
   align-items: flex-start;
   align-content: flex-start;
   gap: 15px;
+}
+
+.footer-links {
+  flex-grow: 1;
+}
+
+.footer li {
+  padding: 10px 0;
+}
+
+.footer li a {
+  font-size: 1rem;
+  font-weight: 400;
+  color: index.$secondary-color;
 }
