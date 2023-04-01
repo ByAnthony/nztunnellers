@@ -34,7 +34,7 @@ $large-desktop: 96rem;
   width: 90%;
 
   @include large-desktop {
-    width: 1500px;
+    width: 1425px;
   }
 }
 
@@ -80,10 +80,14 @@ h2 {
   font-weight: 600;
 
   @include tablet {
-    font-size: 1.75rem;
+    font-size: 1.625rem;
   }
 
   @include desktop {
+    font-size: 1.75rem;
+  }
+
+  @include large-desktop {
     font-size: 2rem;
   }
 }
@@ -100,6 +104,10 @@ p {
 
   @include desktop {
     font-size: 1rem;
+  }
+
+  @include large-desktop {
+    font-size: 1.15rem;
   }
 }
 
@@ -183,6 +191,10 @@ $padding-card: 30px 30px 27px 30px;
   @include desktop {
     padding: $padding-card;
   }
+
+  @include large-desktop {
+    padding: $padding-card;
+  }
 }
 
 @mixin fullwidth-secondary-card {
@@ -194,6 +206,10 @@ $padding-card: 30px 30px 27px 30px;
   border-radius: $border-radius;
 
   @include desktop {
+    padding: $padding-card;
+  }
+
+  @include large-desktop {
     padding: $padding-card;
   }
 }
@@ -223,6 +239,10 @@ $padding-card: 30px 30px 27px 30px;
   @include desktop {
     padding: $padding-card;
   }
+
+  @include large-desktop {
+    padding: $padding-card;
+  }
 }
 
 @mixin halfwidth-secondary-card {
@@ -238,6 +258,11 @@ $padding-card: 30px 30px 27px 30px;
   @include desktop {
     padding: $padding-card;
     font-size: 1.1rem;
+  }
+
+  @include large-desktop {
+    padding: $padding-card;
+    font-size: 1.15rem;
   }
 }
 

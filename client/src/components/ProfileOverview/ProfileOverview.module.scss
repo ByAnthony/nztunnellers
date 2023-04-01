@@ -1,27 +1,40 @@
 @use 'src/index.scss';
 
 .description {
-  margin-top: index.$base-margin / 2;
-  padding-bottom: index.$base-margin / 2;
+  margin: index.$base-margin / 1.5 0;
+
+  @include index.tablet {
+    margin: index.$base-margin 0;
+  }
 
   @include index.desktop {
-    margin-top: 0;
+    margin: index.$base-margin 0;
+    font-size: 1.25rem;
+  }
+
+  @include index.large-desktop {
+    margin: index.$base-margin 0;
     font-size: 1.25rem;
   }
 }
 
 .description p {
   padding: 10px 0 10px 20px;
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   font-weight: 400;
   font-style: italic;
-  border-left: 3px solid index.$primary-light-color;
+  color: index.$secondary-color;
+  border-left: 3px solid index.$secondary-color;
 
   @include index.tablet {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
   }
 
   @include index.desktop {
-    font-size: 1.75rem;
+    font-size: 1.4rem;
+  }
+
+  @include index.large-desktop {
+    font-size: 1.5rem;
   }
 }

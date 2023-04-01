@@ -16,6 +16,11 @@
     padding: 30px 30px 27px 30px;
     flex: 50%;
   }
+
+  @include index.large-desktop {
+    padding: 30px 30px 27px 30px;
+    flex: 50%;
+  }
 }
 
 .war-service p {

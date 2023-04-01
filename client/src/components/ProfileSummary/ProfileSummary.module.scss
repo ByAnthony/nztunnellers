@@ -2,9 +2,13 @@
 
 .header {
   text-align: center;
-  margin: 0 0 index.$base-margin / 2 0;
+  margin-bottom: index.$base-margin / 2;
 
   @include index.desktop {
+    text-align: left;
+  }
+
+  @include index.large-desktop {
     text-align: left;
   }
 }
@@ -27,7 +31,11 @@
   }
 
   @include index.desktop {
-    font-size: 1.75rem;
+    font-size: 1.5rem;
+  }
+
+  @include index.large-desktop {
+    font-size: 1.625rem;
   }
 }
 
@@ -38,9 +46,8 @@
   color: index.$text-color;
   text-align: left;
 
-  @include index.desktop {
-    margin-top: 25px;
-    border-bottom: none;
+  @include index.tablet {
+    margin-top: 2 * index.$base-margin;
   }
 }
 

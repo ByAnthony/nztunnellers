@@ -2,13 +2,21 @@
 
 .diary {
   width: 100%;
-  margin-top: index.$base-margin;
+  margin-top: 1.5 * index.$base-margin;
   padding-bottom: index.$base-margin / 2;
   font-weight: 600;
   color: index.$text-color;
   text-align: left;
 
+  @include index.tablet {
+    margin-top: 1.5 * index.$base-margin;
+  }
+
   @include index.desktop {
+    margin-top: 0;
+  }
+
+  @include index.large-desktop {
     margin-top: 0;
   }
 }
