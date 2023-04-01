@@ -3,6 +3,7 @@ import { RollAlphabet } from '../RollAlphabet/RollAlphabet';
 import STYLES from './Roll.module.scss';
 import { useGetAllTunnellersQuery } from '../../redux/slices/rollSlice';
 import { Menu } from '../Menu/Menu';
+import { Footer } from '../Footer/Footer';
 
 export function Roll() {
   const [filterByLetter, setFilterByLetter] = useState('');
@@ -34,6 +35,7 @@ export function Roll() {
           <RollAlphabet tunnellers={data} filterByLetter={filterByLetter} />
         </>
         )}
+        <Footer />
       </>
     );
   }

@@ -1,0 +1,17 @@
+@use 'src/index.scss';
+
+.footer {
+  margin-top: index.$base-margin;
+  padding-bottom: index.$base-margin;
+
+  @include index.component-setup;
+}
+
+.footer-links-container {
+  margin-top: index.$base-margin / 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  align-content: flex-start;
+  gap: 15px;
+}

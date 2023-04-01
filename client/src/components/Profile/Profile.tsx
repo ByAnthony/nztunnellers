@@ -7,6 +7,7 @@ import { ProfileDiary } from '../ProfileDiary/ProfileDiary';
 import { ProfileSources } from '../ProfileSources/ProfileSources';
 import { ProfileSummary } from '../ProfileSummary/ProfileSummary';
 import STYLES from './Profile.module.scss';
+import { Footer } from '../Footer/Footer';
 
 export function Profile() {
   const { id } = useParams();
@@ -53,6 +54,7 @@ export function Profile() {
           </div>
         </div>
         )}
+        <Footer />
       </>
     );
   }

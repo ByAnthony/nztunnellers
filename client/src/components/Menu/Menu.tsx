@@ -3,7 +3,7 @@ import STYLES from './Menu.module.scss';
 export function Menu() {
   return (
     <div className={STYLES.menu}>
-      <a href="/" className={STYLES.logo} aria-label="Go back to homepage"><img src="../nzt_logo.png" alt="" height={32} /></a>
+      <a href="/" className={STYLES.logo} aria-label="Go to the Homepage."><img src="../nzt_logo.png" alt="" height={32} /></a>
       <div className={STYLES['search-form']}>
         <form>
           <input type="text" id="search" name="search" placeholder="Search for a tunneller" />
