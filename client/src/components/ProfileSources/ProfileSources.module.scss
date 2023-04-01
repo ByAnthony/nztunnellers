@@ -1,8 +1,7 @@
 @use 'src/index.scss';
 
 .sources {
-  margin-top: index.$base-margin;
-  padding-bottom: index.$base-margin / 2;
+  margin: 2 * index.$base-margin 0;
 }
 
 .sources p {
