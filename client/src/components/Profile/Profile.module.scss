@@ -18,12 +18,12 @@
 
 .profile-summary {
   @include index.desktop {
-    margin-right: index.$large-margin;
+    margin-right: index.$lg-margin;
     text-align: left;
   }
 
   @include index.large-desktop {
-    margin-right: index.$large-margin;
+    margin-right: index.$lg-margin;
     text-align: left;
   }
 }

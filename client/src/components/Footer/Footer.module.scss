@@ -1,14 +1,14 @@
 @use 'src/index.scss';
 
 .footer {
-  padding: index.$large-margin 0 index.$base-margin 0;
+  padding: index.$lg-margin 0 index.$base-margin 0;
   letter-spacing: 1px;
 
   @include index.component-setup;
 }
 
 .footer-links-container {
-  margin-top: index.$medium-margin;
+  margin-top: index.$md-margin;
   display: grid;
   gap: 15px;
   grid-template-columns: 1fr 1fr;

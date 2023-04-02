@@ -1,7 +1,7 @@
 @use 'src/index.scss';
 
 .roll {
-  padding-bottom: index.$extra-large-margin;
+  padding-bottom: index.$xl-margin;
 
   @include index.component-setup;
 }
@@ -14,17 +14,17 @@
   border-radius: index.$border-radius;
 
   @include index.tablet {
-    margin: index.$large-margin auto;
+    margin: index.$lg-margin auto;
     width: 65px;
   }
 
   @include index.desktop {
-    margin: index.$extra-large-margin auto;
+    margin: index.$xl-margin auto;
     width: 75px;
   }
 
   @include index.large-desktop {
-    margin: index.$extra-large-margin auto;
+    margin: index.$xl-margin auto;
     width: 75px;
   }
 }

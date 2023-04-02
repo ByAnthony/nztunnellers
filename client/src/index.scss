@@ -47,10 +47,10 @@ $secondary-color: rgb(153, 131, 100);
 $text-color: rgb(159, 154, 143);
 $placeholder-color: rgb(109, 104, 103);
 
-$medium-margin: 25px;
+$md-margin: 25px;
 $base-margin: 50px;
-$large-margin: 75px;
-$extra-large-margin: 100px;
+$lg-margin: 75px;
+$xl-margin: 100px;
 
 $border-radius: 5px;
 
@@ -81,7 +81,7 @@ h1 {
 }
 
 h2 {
-  margin: $medium-margin 0;
+  margin: $md-margin 0;
   font-size: 1.4rem;
   font-weight: 600;
 
@@ -99,7 +99,7 @@ h2 {
 }
 
 h3 {
-  margin: $medium-margin 0;
+  margin: $md-margin 0;
   font-size: 1.2rem;
   font-weight: 600;
 
