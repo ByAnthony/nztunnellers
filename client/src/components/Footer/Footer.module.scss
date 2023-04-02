@@ -1,21 +1,21 @@
 @use 'src/index.scss';
 
 .footer {
-  padding: index.$lg-margin 0 index.$lg-margin 0;
+  padding: index.$lg-margin 0 index.$md-margin 0;
   letter-spacing: 1px;
 
   @include index.component-setup;
 
   @include index.tablet {
-    padding: index.$lg-margin 0 index.$xl-margin 0;
+    padding: index.$lg-margin 0 index.$lg-margin 0;
   }
 
   @include index.desktop {
-    padding: index.$xl-margin 0 2 * index.$xl-margin 0;
+    padding: index.$xl-margin 0 2 * index.$lg-margin 0;
   }
 
   @include index.large-desktop {
-    padding: index.$xl-margin 0 2 * index.$xl-margin 0;
+    padding: index.$xl-margin 0 2 * index.$lg-margin 0;
   }
 }
 
@@ -100,6 +100,8 @@
 .footer-conference {
   flex-grow: 1;
   padding: index.$md-margin;
+  font-weight: 300;
+  letter-spacing: 0px;
   border: 1px solid index.$primary-light-color;
   border-radius: index.$border-radius;
   background-color: index.$primary-medium-color;
