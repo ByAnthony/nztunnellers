@@ -17,18 +17,18 @@
   grid-gap: 15px;
 
   @include index.tablet {
-    margin: 1.5 * index.$base-margin 0;
+    margin: index.$large-margin 0;
     grid-template-columns: repeat(auto-fill, 32.5px);
   }
 
   @include index.desktop {
-    margin: 2 * index.$base-margin 0;
+    margin: index.$extra-large-margin 0;
     grid-template-columns: repeat(auto-fill, 35px);
     grid-gap: 25px;
   }
 
   @include index.large-desktop {
-    margin: 2 * index.$base-margin 0;
+    margin: index.$extra-large-margin 0;
     grid-template-columns: repeat(auto-fill, 45px);
     grid-gap: 25px;
   }

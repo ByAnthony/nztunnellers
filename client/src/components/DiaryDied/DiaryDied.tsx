@@ -18,26 +18,32 @@ export function DiaryDied({ warDeath, afterWarDeath }: props) {
   ) => {
     if (diedDuringWar !== null && diedAfterWar === null) {
       return (
-        <div className={STYLES['fullwidth-main-card']}>
-          { title(diedDuringWar.ageAtDeath) }
-          <span>
-            { diedDuringWar.date.dayMonth !== null && diedDuringWar.date.year !== null
-              ? `${diedDuringWar.date.dayMonth} ${diedDuringWar.date.year}`
-              : diedDuringWar.date.year }
-          </span>
-        </div>
+        <>
+          <h2>Death</h2>
+          <div className={STYLES['fullwidth-main-card']}>
+            { title(diedDuringWar.ageAtDeath) }
+            <span>
+              { diedDuringWar.date.dayMonth !== null && diedDuringWar.date.year !== null
+                ? `${diedDuringWar.date.dayMonth} ${diedDuringWar.date.year}`
+                : diedDuringWar.date.year }
+            </span>
+          </div>
+        </>
       );
     }
     if (diedDuringWar === null && diedAfterWar !== null) {
       return (
-        <div className={STYLES['fullwidth-main-card']}>
-          { title(diedAfterWar.ageAtDeath) }
-          <span>
-            { diedAfterWar.date.dayMonth !== null && diedAfterWar.date.year !== null
-              ? `${diedAfterWar.date.dayMonth} ${diedAfterWar.date.year}`
-              : diedAfterWar.date.year }
-          </span>
-        </div>
+        <>
+          <h2>Death</h2>
+          <div className={STYLES['fullwidth-main-card']}>
+            { title(diedAfterWar.ageAtDeath) }
+            <span>
+              { diedAfterWar.date.dayMonth !== null && diedAfterWar.date.year !== null
+                ? `${diedAfterWar.date.dayMonth} ${diedAfterWar.date.year}`
+                : diedAfterWar.date.year }
+            </span>
+          </div>
+        </>
       );
     }
     return null;

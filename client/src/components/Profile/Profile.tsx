@@ -2,7 +2,6 @@ import { useParams } from 'react-router-dom';
 import { useGetTunnellerByIdQuery } from '../../redux/slices/rollSlice';
 import { Menu } from '../Menu/Menu';
 import { ProfileHowToCite } from '../ProfileHowToCite/ProfileHowToCite';
-import { ProfileOverview } from '../ProfileOverview/ProfileOverview';
 import { ProfileDiary } from '../ProfileDiary/ProfileDiary';
 import { ProfileSources } from '../ProfileSources/ProfileSources';
 import { ProfileSummary } from '../ProfileSummary/ProfileSummary';
@@ -27,17 +26,12 @@ export function Profile() {
         { isLoading }
         { isSuccess && (
         <div className={STYLES['profile-container']}>
-          <div className={STYLES['profile-card']}>
+          <div>
             <div className={STYLES['profile-summary']}>
               <ProfileSummary
                 summary={data.summary}
                 embarkationUnit={data.militaryYears.embarkationUnit}
                 enlistment={data.militaryYears.enlistment}
-              />
-              <ProfileOverview
-                id={data.id}
-                name={data.summary.name}
-                militaryYears={data.militaryYears}
               />
             </div>
           </div>

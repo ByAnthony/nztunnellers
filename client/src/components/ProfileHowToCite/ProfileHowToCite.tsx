@@ -12,7 +12,7 @@ export function ProfileHowToCite({ id, summary }: props) {
   const displayBirthDeathDates = (birth: string, death: string | null) => (death ? `${birth}-${death}` : `${birth}-†?`);
   return (
     <div className={STYLES.howtocite}>
-      <h2>How to cite this page</h2>
+      <h3>How to cite this page</h3>
       <p>
         {`Anthony Byledbal, "${summary.name.forename} ${summary.name.surname} `}
         {`(${displayBirthDeathDates(summary.birth, summary.death)})", `}

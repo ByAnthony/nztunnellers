@@ -81,7 +81,7 @@ export function ProfileSources({ sources }: props) {
 
   return (
     <div className={STYLES.sources}>
-      <h2>Sources</h2>
+      <h3>Sources</h3>
       { getAwmm(sources.awmmCenotaph) }
       { getNzArchives(sources.nzArchives) }
       { getLondonGazette(sources.londonGazette) }

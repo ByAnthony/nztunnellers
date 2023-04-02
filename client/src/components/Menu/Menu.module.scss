@@ -3,7 +3,7 @@
 .menu {
   display: flex;
   align-items: center;
-  padding: 20px 0 1.5 * index.$base-margin 0;
+  padding: 20px 0 index.$large-margin 0;
 
   @include index.component-setup;
 }

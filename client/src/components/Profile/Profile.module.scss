@@ -16,20 +16,14 @@
   }
 }
 
-.profile-card {
-  @include index.desktop {
-    margin: 0;
-  }
-}
-
 .profile-summary {
   @include index.desktop {
-    margin-right: 1.5 * index.$base-margin;
+    margin-right: index.$large-margin;
     text-align: left;
   }
 
   @include index.large-desktop {
-    margin-right: 1.5 * index.$base-margin;
+    margin-right: index.$large-margin;
     text-align: left;
   }
 }

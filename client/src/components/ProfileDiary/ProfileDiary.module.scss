@@ -2,22 +2,10 @@
 
 .diary {
   width: 100%;
-  margin: 2 * index.$base-margin 0;
+  margin-bottom: index.$medium-margin;
   font-weight: 600;
   color: index.$text-color;
   text-align: left;
-
-  @include index.tablet {
-    margin-top: 1.5 * index.$base-margin;
-  }
-
-  @include index.desktop {
-    margin-top: 0;
-  }
-
-  @include index.large-desktop {
-    margin-top: 0;
-  }
 }
 
 .fullwidth-main-card {

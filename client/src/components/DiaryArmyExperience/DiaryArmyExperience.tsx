@@ -72,9 +72,7 @@ export function DiaryArmyExperience({ tunnellerId, armyExperience }: props) {
 
   return (
     <>
-      <div className={STYLES['fullwidth-main-card']}>
-        <span>Army Experience</span>
-      </div>
+      <h2>Army Experience</h2>
       { displayArmyExperience(armyExperience) }
       <Link to={`/roll/${tunnellerId}/wwi-timeline`} key={tunnellerId} className={STYLES_WWI['war-service']}>
         <div>

@@ -47,6 +47,11 @@ $secondary-color: rgb(153, 131, 100);
 $text-color: rgb(159, 154, 143);
 $placeholder-color: rgb(109, 104, 103);
 
+$medium-margin: 25px;
+$base-margin: 50px;
+$large-margin: 75px;
+$extra-large-margin: 100px;
+
 $border-radius: 5px;
 
 body {
@@ -76,19 +81,38 @@ h1 {
 }
 
 h2 {
-  font-size: 1.5rem;
+  margin: $medium-margin 0;
+  font-size: 1.4rem;
   font-weight: 600;
 
   @include tablet {
-    font-size: 1.625rem;
+    font-size: 1.5rem;
   }
 
   @include desktop {
-    font-size: 1.75rem;
+    font-size: 1.6rem;
   }
 
   @include large-desktop {
-    font-size: 2rem;
+    font-size: 1.7rem;
+  }
+}
+
+h3 {
+  margin: $medium-margin 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+
+  @include tablet {
+    font-size: 1.3rem;
+  }
+
+  @include desktop {
+    font-size: 1.4rem;
+  }
+
+  @include large-desktop {
+    font-size: 1.5rem;
   }
 }
 
@@ -274,5 +298,3 @@ $padding-card: 30px 30px 27px 30px;
 @mixin halfwidth-secondary-card-title {
   padding-bottom: 15px;
 }
-
-$base-margin: 50px;
