@@ -1,7 +1,7 @@
 @use 'src/index.scss';
 
 .roll {
-  padding-bottom: index.$xl-margin;
+  padding-bottom: index.$md-margin;
 
   @include index.component-setup;
 }

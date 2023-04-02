@@ -1,34 +1,106 @@
 @use 'src/index.scss';
 
 .footer {
-  margin-top: index.$lg-margin;
-  padding: index.$base-margin 0;
+  padding: index.$lg-margin 0 index.$lg-margin 0;
   letter-spacing: 1px;
 
   @include index.component-setup;
+
+  @include index.tablet {
+    padding: index.$lg-margin 0 index.$xl-margin 0;
+  }
+
+  @include index.desktop {
+    padding: index.$xl-margin 0 2 * index.$xl-margin 0;
+  }
+
+  @include index.large-desktop {
+    padding: index.$xl-margin 0 2 * index.$xl-margin 0;
+  }
+}
+
+.footer-logo {
+  @include index.desktop {
+    padding: index.$md-margin 0;
+  }
+
+  @include index.large-desktop {
+    padding: index.$md-margin 0;
+  }
 }
 
 .footer-links-container {
   margin-top: index.$md-margin;
-  display: grid;
-  gap: 15px;
-  grid-template-columns: 1fr 1fr;
-  justify-content: space-between;
+  display: flex;
+  flex-wrap: wrap;
+  gap: index.$base-margin;
+  justify-content: flex-start;
   align-items: flex-start;
   align-content: flex-start;
 
-  @include index.tablet {
-    grid-template-columns: 1fr 1fr 1fr;
+  @include index.desktop {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  @include index.large-desktop {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.footer-map {
+  flex-grow: 1;
+
+  @include index.desktop {
+    display: flex;
+    flex-direction: row;
+    gap: index.$xl-margin;
+  }
+
+  @include index.large-desktop {
+    display: flex;
+    flex-direction: row;
+    gap: index.$xl-margin;
+  }
+}
+
+.footer-website {
+  flex-grow: 1;
+
+  @include index.desktop {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: index.$xl-margin;
+  }
+
+  @include index.large-desktop {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: index.$xl-margin;
   }
 }
 
 .footer-links {
   flex-grow: 1;
   padding: 10px 0;
+  white-space: nowrap;
 }
 
 .footer-links a {
   font-size: 0.9rem;
-  font-weight: 400;
-  color: index.$text-color;
+
+  @include index.text-link;
+}
+
+.footer-conference {
+  flex-grow: 1;
+  padding: index.$md-margin;
+  border: 1px solid index.$primary-light-color;
+  border-radius: index.$border-radius;
+  background-color: index.$primary-medium-color;
 }

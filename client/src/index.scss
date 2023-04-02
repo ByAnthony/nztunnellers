@@ -47,6 +47,7 @@ $secondary-color: rgb(153, 131, 100);
 $text-color: rgb(159, 154, 143);
 $placeholder-color: rgb(109, 104, 103);
 
+$sm-margin: 12.5px;
 $md-margin: 25px;
 $base-margin: 50px;
 $lg-margin: 75px;
@@ -56,7 +57,7 @@ $border-radius: 5px;
 
 body {
   margin: 0;
-  width: 100vw;
+  width: 100%;
   font-family: $main-font;
   font-stretch: 90%;
   color: $text-color;
@@ -213,7 +214,7 @@ $padding-card: 30px 30px 27px 30px;
   max-width: 100%;
   margin: 15px 0;
   padding: 20px;
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   background-color: $primary-medium-color;
   border: 1px solid $primary-light-color;
   border-radius: $border-radius;
@@ -261,7 +262,7 @@ $padding-card: 30px 30px 27px 30px;
 
 @mixin halfwidth-main-card {
   justify-content: flex-end;
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   background-color: $primary-medium-color;
   border: 1px solid $primary-light-color;
   border-radius: $border-radius;
