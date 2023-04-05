@@ -29,15 +29,6 @@ $large-desktop: 96rem;
   }
 }
 
-@mixin component-setup {
-  margin: 0 auto;
-  width: 90%;
-
-  @include large-desktop {
-    width: 1425px;
-  }
-}
-
 $main-font: 'Mona Sans';
 
 $primary-dark-color: rgb(24, 26, 27);
@@ -56,13 +47,17 @@ $xl-margin: 100px;
 $border-radius: 5px;
 
 body {
-  margin: 0;
-  width: 100%;
+  margin: 0 auto;
+  width: 90%;
   font-family: $main-font;
   font-stretch: 90%;
   color: $text-color;
   line-height: normal;
   background-color: $primary-dark-color;
+
+  @include large-desktop {
+    width: 1425px;
+  }
 }
 
 h1 {

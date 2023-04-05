@@ -4,8 +4,6 @@
   display: flex;
   align-items: center;
   padding: 20px 0 index.$lg-margin 0;
-
-  @include index.component-setup;
 }
 
 .logo {
