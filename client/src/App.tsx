@@ -12,6 +12,7 @@ export function App() {
         <Route path="/roll" element={<Roll />} />
         <Route path="/roll/:id" element={<Profile />} />
         <Route path="/roll/:id/wwi-timeline" />
+        <Route path="/contact-us" />
         {/* <Route component={ErrorPage}/> */}
       </Routes>
     </BrowserRouter>

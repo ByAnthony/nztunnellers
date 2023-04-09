@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import STYLES from './Footer.module.scss';
 
 export function Footer() {
@@ -22,9 +23,9 @@ export function Footer() {
         </div>
       </div>
       <div className={STYLES.links}>
-        <div className={STYLES['fullwidth-main-card']}>
+        <Link to="/contact-us" className={STYLES['fullwidth-main-card']}>
           <p>Contact Us</p>
-        </div>
+        </Link>
         <button type="button" className={STYLES['scroll-top']} onClick={handleClick} aria-label="Go back to the top of the page.">&uarr;</button>
       </div>
     </div>

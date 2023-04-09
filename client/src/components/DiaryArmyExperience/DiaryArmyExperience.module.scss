@@ -1,6 +1,8 @@
 @use 'src/index.scss';
 
 .war-service {
+  @include index.featured-button-link;
+
   flex: 100%;
   display: flex;
   justify-content: space-between;
@@ -10,7 +12,9 @@
   font-size: 1.25rem;
   color: index.$secondary-color;
 
-  @include index.featured-button-link;
+  p {
+    color: index.$secondary-color;
+  }
 
   @include index.desktop {
     padding: 30px 30px 27px 30px;
@@ -21,8 +25,4 @@
     padding: 30px 30px 27px 30px;
     flex: 50%;
   }
-}
-
-.war-service p {
-  color: index.$secondary-color;
 }
