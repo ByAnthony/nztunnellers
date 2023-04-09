@@ -2,11 +2,14 @@
 
 .footer {
   font-weight: 600;
-  margin: index.$base-margin 15px 15px 15px;
-  padding: 17px 15px 15px 15px;
+  margin: index.$base-margin 15px 15px;
+  padding: 17px 15px;
   border-radius: index.$border-radius;
-  border: 1px dotted index.$primary-light-color;
   background-color: rgb(34, 36, 37);
+
+  @include index.tablet {
+    margin: index.$base-margin 25px 25px;
+  }
 
   .support {
     p {

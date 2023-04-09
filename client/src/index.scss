@@ -31,6 +31,10 @@ $large-desktop: 96rem;
 
 @mixin component-width {
   margin: 0 15px;
+
+  @include tablet {
+    margin: 0 $md-margin;
+  }
 }
 
 $main-font: 'Mona Sans';
