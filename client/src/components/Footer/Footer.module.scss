@@ -1,12 +1,49 @@
 @use 'src/index.scss';
 
-.footer-content {
-  padding-top: index.$lg-margin;
-  padding-bottom: index.$base-margin;
-  text-align: center;
-  letter-spacing: 1px;
-}
+.footer {
+  margin-top: index.$xl-margin;
+  padding-bottom: index.$md-margin;
 
-.footer-logo {
-  padding-bottom: index.$sm-margin;
+  .support {
+    margin: index.$md-margin 0;
+    padding: index.$md-margin 0;
+    font-weight: 200;
+    border-top: 1px solid index.$primary-light-color;
+    border-bottom: 1px solid index.$primary-light-color;
+  }
+
+  .support p {
+    margin: index.$sm-margin 0;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  .support-logos {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .support-logos img {
+    width: 115px;
+  }
+
+  .links {
+    display: flex;
+    justify-content: flex-end;
+
+    .scroll-top {
+      width: fit-content;
+      padding: 6px 15px;
+      font-family: index.$main-font;
+      font-size: 2rem;
+      font-weight: 200;
+      text-align: center;
+      color: index.$secondary-color;
+
+      @include index.featured-button-link;
+    }
+  }
 }

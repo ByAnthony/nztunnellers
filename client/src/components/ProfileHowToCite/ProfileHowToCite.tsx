@@ -1,12 +1,11 @@
 import type { Summary } from '../../types/tunneller';
+import { today } from '../../types/utils';
 import STYLES from './ProfileHowToCite.module.scss';
 
 type props = {
     id: number,
     summary: Summary,
 }
-
-const today = new Date();
 
 export function ProfileHowToCite({ id, summary }: props) {
   const displayBirthDeathDates = (birth: string, death: string | null) => (death ? `${birth}-${death}` : `${birth}-†?`);
