@@ -1,6 +1,8 @@
 @use 'src/index.scss';
 
 .alphabet-container {
+  @include index.component-width;
+
   h1 {
     text-align: center;
   }

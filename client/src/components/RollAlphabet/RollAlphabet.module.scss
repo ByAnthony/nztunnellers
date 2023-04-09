@@ -1,6 +1,8 @@
 @use 'src/index.scss';
 
 .roll {
+  @include index.component-width;
+
   padding-bottom: index.$md-margin;
 
   .letter-container {

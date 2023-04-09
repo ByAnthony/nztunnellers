@@ -2,56 +2,59 @@
 
 .menu {
   display: flex;
+  justify-content: center;
   align-items: center;
   padding: 20px 0 index.$lg-margin 0;
-}
 
-.logo {
-  height: 32px;
-}
+  @include index.component-width;
 
-.search-form {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-left: 20px;
-  height: 50px;
-  width: 100%;
-  border: 1px solid index.$primary-light-color;
-  border-radius: index.$border-radius;
-  background-color: index.$primary-medium-color;
-}
+  .logo {
+    height: 32px;
+  }
 
-form {
-  width: 100%;
-}
+  .search-form {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 20px;
+    height: 50px;
+    width: 100%;
+    border: 1px solid index.$primary-light-color;
+    border-radius: index.$border-radius;
+    background-color: index.$primary-medium-color;
 
-.search-form-button {
-  background-color: transparent;
-  border: none;
-  margin: 0 10px;
-}
+    form {
+      width: 100%;
 
-input {
-  box-sizing: border-box;
-  width: 100%;
-  height: 50px;
-  padding: 0 15px;
-  font-family: index.$main-font;
-  font-weight: 300;
-  font-size: 0.9rem;
-  color: index.$text-color;
-  border: none;
-  border-top-left-radius: index.$border-radius;
-  border-bottom-left-radius: index.$border-radius;
-  background-color: index.$primary-medium-color;
-}
+      input {
+        box-sizing: border-box;
+        width: 100%;
+        height: 50px;
+        padding: 0 15px;
+        font-family: index.$main-font;
+        font-weight: 300;
+        font-size: 0.9rem;
+        color: index.$text-color;
+        border: none;
+        border-top-left-radius: index.$border-radius;
+        border-bottom-left-radius: index.$border-radius;
+        background-color: index.$primary-medium-color;
+      }
 
-input:focus {
-  outline: none;
-  background-color: index.$primary-light-color;
-}
+      input:focus {
+        outline: none;
+        background-color: index.$primary-light-color;
+      }
 
-::placeholder {
-  color: index.$placeholder-color;
+      ::placeholder {
+        color: index.$placeholder-color;
+      }
+    }
+
+    .search-form-button {
+      background-color: transparent;
+      border: none;
+      margin: 0 10px;
+    }
+  }
 }

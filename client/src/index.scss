@@ -29,6 +29,10 @@ $large-desktop: 96rem;
   }
 }
 
+@mixin component-width {
+  margin: 0 15px;
+}
+
 $main-font: 'Mona Sans';
 
 $primary-dark-color: rgb(24, 26, 27);
@@ -48,7 +52,7 @@ $border-radius: 8px;
 
 body {
   margin: 0 auto;
-  width: 90%;
+  width: 100%;
   font-family: $main-font;
   font-stretch: 90%;
   color: $text-color;
@@ -177,7 +181,7 @@ li {
 }
 
 @mixin featured-button-link {
-  border: 1px solid $primary-medium-color;
+  border: 1px solid rgb(64, 66, 67);
   border-radius: $border-radius;
   background-color: $primary-light-color;
   transition: border-bottom 0.9s ease-in-out, border-bottom 0.9s ease-in-out,

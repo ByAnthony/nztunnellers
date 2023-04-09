@@ -1,6 +1,8 @@
 @use 'src/index.scss';
 
 .profile {
+  @include index.component-width;
+
   @include index.desktop {
     display: grid;
     gap: 25px;

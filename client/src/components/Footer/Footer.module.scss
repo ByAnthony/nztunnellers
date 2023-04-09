@@ -2,8 +2,11 @@
 
 .footer {
   font-weight: 600;
-  margin-top: index.$xl-margin;
-  padding-bottom: index.$md-margin;
+  margin: index.$base-margin 15px 15px 15px;
+  padding: 17px 15px 15px 15px;
+  border-radius: index.$border-radius;
+  border: 1px dotted index.$primary-light-color;
+  background-color: rgb(34, 36, 37);
 
   .support {
     p {
@@ -11,16 +14,21 @@
     }
 
     img {
-      width: 115px;
+      width: 105px;
       text-align: center;
     }
 
     .fullwidth-main-card {
       @include index.fullwidth-main-card;
+
+      margin-top: 0;
+      background-color: index.$primary-medium-color;
     }
 
     .halfwidth-cards-container {
       @include index.halfwidth-cards-container;
+
+      background-color: index.$primary-medium-color;
     }
 
     .halfwidth-secondary-card {
