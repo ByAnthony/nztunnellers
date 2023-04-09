@@ -30,8 +30,6 @@
 
     .halfwidth-cards-container {
       @include index.halfwidth-cards-container;
-
-      background-color: index.$primary-medium-color;
     }
 
     .halfwidth-secondary-card {
@@ -40,6 +38,7 @@
 
       justify-content: center;
       align-content: center;
+      background-color: index.$primary-medium-color;
     }
 
     .halfwidth-secondary-card-title {
