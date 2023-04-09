@@ -1,6 +1,6 @@
 @use 'src/index.scss';
 
-.profile-container {
+.profile {
   @include index.desktop {
     display: grid;
     gap: 25px;
@@ -12,16 +12,16 @@
     gap: 25px;
     grid-template-columns: 45% auto;
   }
-}
 
-.profile-summary {
-  @include index.desktop {
-    margin-right: index.$lg-margin;
-    text-align: left;
-  }
+  .summary {
+    @include index.desktop {
+      margin-right: index.$lg-margin;
+      text-align: left;
+    }
 
-  @include index.large-desktop {
-    margin-right: index.$lg-margin;
-    text-align: left;
+    @include index.large-desktop {
+      margin-right: index.$lg-margin;
+      text-align: left;
+    }
   }
 }

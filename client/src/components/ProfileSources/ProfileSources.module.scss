@@ -2,16 +2,12 @@
 
 .sources {
   margin-top: index.$base-margin;
-}
 
-.sources p {
-  margin: 25px 0;
-}
+  p {
+    margin: 25px 0;
+  }
 
-.sources ul {
-  list-style: none;
-}
-
-.sources a {
-  @include index.text-link;
+  a {
+    @include index.text-link;
+  }
 }

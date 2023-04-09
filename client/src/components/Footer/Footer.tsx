@@ -15,7 +15,7 @@ export function Footer() {
         </div>
       </div>
       <div className={STYLES.links}>
-        <button type="button" className={STYLES['scroll-top']} onClick={handleClick}>&uarr;</button>
+        <button type="button" className={STYLES['scroll-top']} onClick={handleClick} aria-label="Go back to the top of the page.">&uarr;</button>
       </div>
     </div>
   );

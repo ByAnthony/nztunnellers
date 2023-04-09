@@ -18,16 +18,16 @@ export function Profile() {
     return (
       <>
         {error && (
-        <div className={STYLES['profile-container']}>
+        <div className={STYLES.profile}>
           <p>An error occured</p>
         </div>
         )}
         <Menu />
         { isLoading }
         { isSuccess && (
-        <div className={STYLES['profile-container']}>
+        <div className={STYLES.profile}>
           <div>
-            <div className={STYLES['profile-summary']}>
+            <div className={STYLES.summary}>
               <ProfileSummary
                 summary={data.summary}
                 embarkationUnit={data.militaryYears.embarkationUnit}
