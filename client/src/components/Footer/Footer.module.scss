@@ -1,45 +1,68 @@
 @use 'src/index.scss';
 
 .footer {
+  font-weight: 600;
   margin-top: index.$xl-margin;
   padding-bottom: index.$md-margin;
 
   .support {
-    margin: index.$md-margin 0;
-    padding: index.$md-margin 0;
-    font-weight: 200;
-    border-top: 1px solid index.$primary-light-color;
-    border-bottom: 1px solid index.$primary-light-color;
-  }
+    p {
+      margin: 0;
+    }
 
-  .support p {
-    margin: index.$sm-margin 0;
-    font-weight: 600;
-    text-align: center;
-  }
+    img {
+      width: 115px;
+      text-align: center;
+    }
 
-  .support-logos {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: space-around;
-    align-items: center;
-  }
+    .fullwidth-main-card {
+      @include index.fullwidth-main-card;
+    }
 
-  .support-logos img {
-    width: 115px;
+    .halfwidth-cards-container {
+      @include index.halfwidth-cards-container;
+    }
+
+    .halfwidth-secondary-card {
+      @include index.halfwidth-card-style;
+      @include index.halfwidth-secondary-card;
+
+      justify-content: center;
+      align-content: center;
+    }
+
+    .halfwidth-secondary-card-title {
+      @include index.halfwidth-secondary-card-title;
+    }
   }
 
   .links {
     display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
     justify-content: flex-end;
+    align-content: center;
+
+    p {
+      font-size: 1rem;
+      font-weight: 600;
+      text-align: center;
+      color: index.$secondary-color;
+    }
+
+    .fullwidth-main-card {
+      @include index.featured-button-link;
+
+      margin: 0 15px 0 0;
+      width: 100%;
+    }
 
     .scroll-top {
       width: fit-content;
-      padding: 6px 15px;
+      padding: 6px 18px;
       font-family: index.$main-font;
       font-size: 2rem;
-      font-weight: 200;
+      font-weight: 300;
       text-align: center;
       color: index.$secondary-color;
 
