@@ -141,6 +141,10 @@ ul {
   padding-inline-start: 0;
 }
 
+li {
+  list-style: none;
+}
+
 @mixin text-link {
   padding-bottom: 4px;
   font-weight: 500;
