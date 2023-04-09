@@ -28,8 +28,8 @@ export function Roll() {
           <div className={STYLES['alphabet-container']}>
             <h1>Company Roll</h1>
             <div className={STYLES.alphabet}>
-              {letters.map((letter) => <button type="button" key={letter} className={STYLES.letter} onClick={() => setFilterByLetter(letter)}>{letter}</button>)}
-              <button type="button" key="All" className={STYLES.letter} onClick={() => setFilterByLetter('')}>All</button>
+              {letters.map((letter) => <button type="button" key={letter} className={STYLES.letter} onClick={() => setFilterByLetter(letter)} aria-label={`Filter names by the letter ${letter}.`}>{letter}</button>)}
+              <button type="button" key="All" className={STYLES.letter} onClick={() => setFilterByLetter('')} aria-label="Remove the names filter.">All</button>
             </div>
           </div>
           <RollAlphabet tunnellers={data} filterByLetter={filterByLetter} />
