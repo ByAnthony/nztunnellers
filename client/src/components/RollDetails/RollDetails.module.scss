@@ -18,69 +18,69 @@
     padding: 30px 30px 27px 30px;
     flex: 50%;
   }
-}
 
-.tunneller p {
-  text-align: left;
-  line-height: normal;
-}
-
-.surname {
-  margin: 0;
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: index.$secondary-color;
-
-  @include index.tablet {
-    font-size: 1.75rem;
+  p {
+    text-align: left;
+    line-height: normal;
   }
 
-  @include index.desktop {
-    font-size: 1.875rem;
+  .surname {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: index.$secondary-color;
+
+    @include index.tablet {
+      font-size: 1.75rem;
+    }
+
+    @include index.desktop {
+      font-size: 1.875rem;
+    }
+
+    @include index.large-desktop {
+      font-size: 2rem;
+    }
   }
 
-  @include index.large-desktop {
-    font-size: 2rem;
-  }
-}
+  .forename {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: index.$secondary-color;
 
-.forename {
-  margin: 0;
-  font-size: 1.5rem;
-  font-weight: 300;
-  color: index.$secondary-color;
+    @include index.tablet {
+      font-size: 1.75rem;
+    }
 
-  @include index.tablet {
-    font-size: 1.75rem;
-  }
+    @include index.desktop {
+      font-size: 1.875rem;
+    }
 
-  @include index.desktop {
-    font-size: 1.875rem;
-  }
-
-  @include index.large-desktop {
-    font-size: 2rem;
-  }
-}
-
-.dates {
-  margin: 15px 0 0 0;
-  font-size: 1rem;
-  font-weight: 200;
-  letter-spacing: 2px;
-  color: index.$secondary-color;
-
-  @include index.tablet {
-    margin-top: 20px;
+    @include index.large-desktop {
+      font-size: 2rem;
+    }
   }
 
-  @include index.desktop {
-    margin-top: 25px;
-    font-size: 1.125rem;
-  }
+  .dates {
+    margin: 15px 0 0 0;
+    font-size: 1rem;
+    font-weight: 200;
+    letter-spacing: 2px;
+    color: index.$secondary-color;
 
-  @include index.large-desktop {
-    margin-top: 25px;
-    font-size: 1.125rem;
+    @include index.tablet {
+      margin-top: 20px;
+    }
+
+    @include index.desktop {
+      margin-top: 25px;
+      font-size: 1.125rem;
+    }
+
+    @include index.large-desktop {
+      margin-top: 25px;
+      font-size: 1.125rem;
+    }
   }
 }

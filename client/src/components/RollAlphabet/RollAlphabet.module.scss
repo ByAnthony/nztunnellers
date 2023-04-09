@@ -2,66 +2,66 @@
 
 .roll {
   padding-bottom: index.$md-margin;
-}
 
-.letter-container {
-  margin: index.$base-margin auto;
-  width: 55px;
-  background-color: index.$primary-medium-color;
-  border: 1px solid index.$primary-light-color;
-  border-radius: index.$border-radius;
+  .letter-container {
+    margin: index.$base-margin auto;
+    width: 55px;
+    background-color: index.$primary-medium-color;
+    border: 1px solid index.$primary-light-color;
+    border-radius: index.$border-radius;
 
-  @include index.tablet {
-    margin: index.$lg-margin auto;
-    width: 65px;
+    @include index.tablet {
+      margin: index.$lg-margin auto;
+      width: 65px;
+    }
+
+    @include index.desktop {
+      margin: index.$xl-margin auto;
+      width: 75px;
+    }
+
+    @include index.large-desktop {
+      margin: index.$xl-margin auto;
+      width: 75px;
+    }
+
+    .title {
+      margin: 0;
+      padding: 10px 0 7px 0;
+      font-size: 2rem;
+      font-weight: 700;
+      color: index.$text-color;
+      text-align: center;
+
+      @include index.tablet {
+        font-size: 2.5rem;
+      }
+
+      @include index.desktop {
+        font-size: 3rem;
+      }
+
+      @include index.large-desktop {
+        font-size: 3rem;
+      }
+    }
   }
 
-  @include index.desktop {
-    margin: index.$xl-margin auto;
-    width: 75px;
-  }
+  .tunnellers-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 
-  @include index.large-desktop {
-    margin: index.$xl-margin auto;
-    width: 75px;
-  }
-}
+    @include index.desktop {
+      display: grid;
+      gap: 25px;
+      grid-template-columns: 1fr 1fr;
+    }
 
-.letter-title {
-  margin: 0;
-  padding: 10px 0 7px 0;
-  font-size: 2rem;
-  font-weight: 700;
-  color: index.$text-color;
-  text-align: center;
-
-  @include index.tablet {
-    font-size: 2.5rem;
-  }
-
-  @include index.desktop {
-    font-size: 3rem;
-  }
-
-  @include index.large-desktop {
-    font-size: 3rem;
-  }
-}
-
-.tunnellers-container {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-
-  @include index.desktop {
-    display: grid;
-    gap: 25px;
-    grid-template-columns: 1fr 1fr;
-  }
-
-  @include index.large-desktop {
-    display: grid;
-    gap: 25px;
-    grid-template-columns: 1fr 1fr 1fr;
+    @include index.large-desktop {
+      display: grid;
+      gap: 25px;
+      grid-template-columns: 1fr 1fr 1fr;
+    }
   }
 }

@@ -16,7 +16,7 @@ export function RollAlphabet({ tunnellers, filterByLetter }: RollWithFilter) {
     .map(([key, listOfTunnellers]) => (
       <div id={`letter-${key}`} key={key}>
         <div className={STYLES['letter-container']}>
-          <h2 className={STYLES['letter-title']} key={key}>{key}</h2>
+          <h2 className={STYLES.title} key={key}>{key}</h2>
         </div>
         <div className={STYLES['tunnellers-container']}>
           <RollDetails listOfTunnellers={listOfTunnellers} />
