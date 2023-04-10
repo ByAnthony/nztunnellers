@@ -4,12 +4,12 @@ from ...models.tunneller import Tunneller
 from ...models.summary import Summary
 
 
-def summary(tunneller_result: Tunneller) -> Summary:
+def summary(tunneller: Tunneller) -> Summary:
     return Summary(
         Name(
-            tunneller_result["forename"],
-            tunneller_result["surname"],
+            tunneller["forename"],
+            tunneller["surname"],
         ),
-        tunneller_result["birth_year"],
-        tunneller_result["death_year"],
+        tunneller["birth_year"],
+        tunneller["death_year"],
     )

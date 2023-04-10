@@ -10,19 +10,19 @@ from ...models.tunneller import Tunneller
 
 
 def sources(
-    nz_archives_result: list[NewZealandArchives],
-    tunneller_result: Tunneller,
-    london_gazette_result: list[LondonGazette],
+    nz_archives: list[NewZealandArchives],
+    tunneller: Tunneller,
+    london_gazette: list[LondonGazette],
     lang: str,
 ) -> Sources:
     return Sources(
-        map_nz_archives(nz_archives_result),
-        get_awmm(tunneller_result["awmm_cenotaph"]),
+        map_nz_archives(nz_archives),
+        get_awmm(tunneller["awmm_cenotaph"]),
         get_nominal_roll(
-            tunneller_result["nominal_roll_volume"],
-            tunneller_result["nominal_roll_number"],
-            tunneller_result["nominal_roll_page"],
+            tunneller["nominal_roll_volume"],
+            tunneller["nominal_roll_number"],
+            tunneller["nominal_roll_page"],
             lang,
         ),
-        map_london_gazette(london_gazette_result, lang),
+        map_london_gazette(london_gazette, lang),
     )

@@ -5,26 +5,26 @@ from ...models.origins import BirthDetails, Origins, Parents
 from ...models.tunneller import Tunneller
 
 
-def origins(tunneller_result: Tunneller, lang: str) -> Origins:
+def origins(tunneller: Tunneller, lang: str) -> Origins:
     return Origins(
         BirthDetails(
             format_birth_and_death_date(
-                tunneller_result["birth_year"], tunneller_result["birth_date"], lang
+                tunneller["birth_year"], tunneller["birth_date"], lang
             ),
-            tunneller_result["birth_country"],
+            tunneller["birth_country"],
         ),
         Parents(
             get_parent(
-                tunneller_result["mother_name"],
-                tunneller_result["mother_origin"],
+                tunneller["mother_name"],
+                tunneller["mother_origin"],
             ),
             get_parent(
-                tunneller_result["father_name"],
-                tunneller_result["father_origin"],
+                tunneller["father_name"],
+                tunneller["father_origin"],
             ),
         ),
         get_nz_resident(
-            tunneller_result["nz_resident_in_month"],
-            tunneller_result["enlistment_date"],
+            tunneller["nz_resident_in_month"],
+            tunneller["enlistment_date"],
         ),
     )

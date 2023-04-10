@@ -12,35 +12,35 @@ from ...models.post_service_years import PostServiceYears
 from ...models.tunneller import Tunneller
 
 
-def post_service_years(tunneller_result: Tunneller, lang: str) -> PostServiceYears:
+def post_service_years(tunneller: Tunneller, lang: str) -> PostServiceYears:
     return PostServiceYears(
         get_death(
-            tunneller_result["death_type"],
+            tunneller["death_type"],
             format_birth_and_death_date(
-                tunneller_result["death_year"],
-                tunneller_result["death_date"],
+                tunneller["death_year"],
+                tunneller["death_date"],
                 lang,
             ),
             get_death_place(
-                tunneller_result["death_location"],
-                translate_town(tunneller_result["death_town"], lang),
-                tunneller_result["death_country"],
+                tunneller["death_location"],
+                translate_town(tunneller["death_town"], lang),
+                tunneller["death_country"],
             ),
             get_death_circumstances(
-                tunneller_result["death_cause"],
-                tunneller_result["death_circumstances"],
+                tunneller["death_cause"],
+                tunneller["death_circumstances"],
             ),
             get_cemetery(
-                tunneller_result["cemetery"],
-                tunneller_result["cemetery_town"],
-                tunneller_result["cemetery_country"],
-                tunneller_result["grave"],
+                tunneller["cemetery"],
+                tunneller["cemetery_town"],
+                tunneller["cemetery_country"],
+                tunneller["grave"],
             ),
             get_age(
-                tunneller_result["death_year"],
-                tunneller_result["death_date"],
-                tunneller_result["birth_year"],
-                tunneller_result["birth_date"],
+                tunneller["death_year"],
+                tunneller["death_date"],
+                tunneller["birth_year"],
+                tunneller["birth_date"],
             ),
         ),
     )
