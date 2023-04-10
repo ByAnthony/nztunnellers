@@ -31,9 +31,9 @@ from ...models.military_years import (
     EmbarkationUnit,
     EndOfService,
     Enlistment,
-    Event,
     Medal,
     MilitaryYears,
+    SingleEvent,
     Transferred,
     Transport,
 )
@@ -133,8 +133,8 @@ def end_of_service(tunneller: Tunneller, lang: str) -> EndOfService:
 
 def military_years(
     tunneller: Tunneller,
-    company_events: list[Event],
-    tunneller_events: list[Event],
+    company_events: list[SingleEvent],
+    tunneller_events: list[SingleEvent],
     medals: list[Medal],
     lang: str,
 ) -> MilitaryYears:

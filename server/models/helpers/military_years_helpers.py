@@ -17,8 +17,10 @@ from .translator_helpers import (
 )
 from ..military_years import (
     Demobilization,
-    Event,
+    EventDetails,
+    Events,
     Medal,
+    SingleEvent,
     Training,
     Transferred,
     TransferredToTunnellers,
@@ -183,15 +185,18 @@ def get_end_of_service_country(discharge_uk: Optional[int], lang: str) -> str:
 
 
 def map_front_events(
-    company_events: list[Event],
-    tunneller_events: list[Event],
-    tunneller_result: Tunneller,
+    company_events: list[SingleEvent],
+    tunneller_events: list[SingleEvent],
+    tunneller: Tunneller,
     lang: str,
-) -> list[Event]:
+) -> list[Events]:
+    def create_event(date: Date, event: str, title: Optional[str]) -> SingleEvent:
+        return SingleEvent(date, EventDetails(event, title))
+
     event_start_date = min(event["date"] for event in tunneller_events)
     event_end_date = max(event["date"] for event in tunneller_events)
 
-    selected_events: list[Event] = []
+    selected_events: list[SingleEvent] = []
     for event in company_events:
         if (
             event["event"] != "Marched in to the Company Training Camp, Falmouth"
@@ -200,39 +205,44 @@ def map_front_events(
             selected_events.append(event)
         if (
             event["event"] == "Marched in to the Company Training Camp, Falmouth"
-            and tunneller_result["transport_uk_ref"] == "S.S. Ruapehu 18 December 1915"
+            and tunneller["transport_uk_ref"] == "S.S. Ruapehu 18 December 1915"
         ):
             selected_events.append(event)
 
-    selected_and_tunneller_events = tuple(selected_events + list(tunneller_events))
-    sorted_events = tuple(
-        sorted(selected_and_tunneller_events, key=lambda item: item["date"])
-    )
-    # print(sorted_events)
+    if tunneller["transport_uk_start"] is not None:
+        vessel_to_england = "{} {}".format(
+            tunneller["transport_uk_ref"], tunneller["transport_uk_vessel"]
+        )
+        selected_events.append(
+            create_event(
+                tunneller["transport_uk_start"],
+                vessel_to_england,
+                "Transfer to England",
+            )
+        )
 
-    result: list[Event] = []
-    for event in sorted_events:
-        mapped_event: Event = Event(
-            get_full_date(event["date"], lang), [event["event"]]
+    selected_and_tunneller_events = sorted(
+        list(selected_events + list(tunneller_events)), key=lambda item: item["date"]
+    )
+
+    result: list[SingleEvent] = []
+    for event in selected_and_tunneller_events:
+        mapped_event = SingleEvent(
+            get_full_date(event["date"], lang),
+            EventDetails(event["event"], event["title"]),
         )
         result.append(mapped_event)
 
-    events_grouped_by_date: list[Event] = []
+    events_grouped_by_date: list[Events] = []
     for event in result:
-        event_year = event["date"]["year"]
-        event_day_month = event["date"]["day_month"]
-        event_desc = event["event"][0]
+        event_date = event["date"]
+        event_description = event["event"]
         for grp_event in events_grouped_by_date:
-            if (
-                grp_event["date"]["year"] == event_year
-                and grp_event["date"]["day_month"] == event_day_month
-            ):
-                grp_event["event"].append(event_desc)
+            if grp_event["date"] == event_date:
+                grp_event["event"].append(event_description)
                 break
         else:
-            events_grouped_by_date.append(
-                Event(Date(event_year, event_day_month), [event_desc])
-            )
+            events_grouped_by_date.append(Events(event_date, [event_description]))
     return events_grouped_by_date
 
 

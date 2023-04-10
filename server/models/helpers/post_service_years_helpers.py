@@ -20,5 +20,5 @@ def get_death(
     if death_type == "After war":
         return DeathAfterService(date, place, cause, cemetery, age_at_death, False)
     if death_type is None and date is not None:
-        return DeathAfterService(date, place, cause, cemetery, age_at_death)
+        return DeathAfterService(date, place, cause, cemetery, age_at_death, None)
     return None

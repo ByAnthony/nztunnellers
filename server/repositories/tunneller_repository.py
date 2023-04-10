@@ -20,7 +20,7 @@ from ..repositories.queries.medals_query import medals_query
 from ..repositories.queries.nz_archives_query import nz_archives_query
 from ..repositories.queries.tunneller_query import tunneller_query
 from ..models.image import ImageBookAuthors
-from ..models.military_years import Event, Medal
+from ..models.military_years import Medal, SingleEvent
 from ..models.pre_war_years import ArmyExperience
 from ..models.sources import LondonGazette, NewZealandArchives
 from ..models.tunneller import Tunneller
@@ -38,10 +38,10 @@ def show(id: int, lang: str, mysql: MySQL) -> Optional[Tunneller]:
     )
 
     company_events_sql = company_events_query()
-    company_events_result: list[Event] = run_sql(company_events_sql, mysql, None)
+    company_events_result: list[SingleEvent] = run_sql(company_events_sql, mysql, None)
 
     front_events_sql = front_events_query()
-    front_events_result: list[Event] = run_sql(front_events_sql, mysql, values)
+    front_events_result: list[SingleEvent] = run_sql(front_events_sql, mysql, values)
 
     medals_sql = medals_query(lang)
     medals_result: list[Medal] = run_sql(medals_sql, mysql, values)

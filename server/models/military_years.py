@@ -23,9 +23,27 @@ class Medal:
 
 
 @dataclass
-class Event:
+class EventDetails:
+    description: str
+    title: Optional[str] = None
+
+    def __getitem__(self, key: str):
+        return getattr(self, key)
+
+
+@dataclass
+class Events:
     date: Date
-    event: list[str]
+    event: list[EventDetails]
+
+    def __getitem__(self, key: str):
+        return getattr(self, key)
+
+
+@dataclass
+class SingleEvent:
+    date: Date
+    event: EventDetails
 
     def __getitem__(self, key: str):
         return getattr(self, key)
@@ -92,6 +110,6 @@ class MilitaryYears:
     enlistment: Enlistment
     embarkation_unit: EmbarkationUnit
     transport_uk: Transport
-    front_events: list[Event]
+    front_events: list[Events]
     end_of_service: EndOfService
     medals: list[Medal]
