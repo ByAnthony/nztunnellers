@@ -183,38 +183,57 @@ def get_end_of_service_country(discharge_uk: Optional[int], lang: str) -> str:
 
 
 def map_front_events(
-    events: list[Event], tunneller_result: Tunneller, lang: str
+    company_events: list[Event],
+    tunneller_events: list[Event],
+    tunneller_result: Tunneller,
+    lang: str,
 ) -> list[Event]:
-    result: list[Event] = []
+    event_start_date = min(event["date"] for event in tunneller_events)
+    event_end_date = max(event["date"] for event in tunneller_events)
 
-    for event in events:
+    selected_events: list[Event] = []
+    for event in company_events:
+        if (
+            event["event"] != "Marched in to the Company Training Camp, Falmouth"
+            and event_start_date <= event["date"] <= event_end_date
+        ):
+            selected_events.append(event)
+        if (
+            event["event"] == "Marched in to the Company Training Camp, Falmouth"
+            and tunneller_result["transport_uk_ref"] == "S.S. Ruapehu 18 December 1915"
+        ):
+            selected_events.append(event)
+
+    selected_and_tunneller_events = tuple(selected_events + list(tunneller_events))
+    sorted_events = tuple(
+        sorted(selected_and_tunneller_events, key=lambda item: item["date"])
+    )
+    # print(sorted_events)
+
+    result: list[Event] = []
+    for event in sorted_events:
         mapped_event: Event = Event(
             get_full_date(event["date"], lang), [event["event"]]
         )
         result.append(mapped_event)
 
-    if tunneller_result["transport_uk_ref"] == "S.S. Ruapehu 18 December 1915":
-        training_at_falmouth_event = Event(
-            Date("1916", "3\N{NO-BREAK SPACE}February"),
-            ["Marched in to the Company Training Camp, Falmouth"],
-        )
-        result.insert(0, training_at_falmouth_event)
-
-    grouped_events: list[Event] = []
+    events_grouped_by_date: list[Event] = []
     for event in result:
-        year = event["date"]["year"]
-        dayMonth = event["date"]["day_month"]
+        event_year = event["date"]["year"]
+        event_day_month = event["date"]["day_month"]
         event_desc = event["event"][0]
-        for grp_event in grouped_events:
+        for grp_event in events_grouped_by_date:
             if (
-                grp_event["date"]["year"] == year
-                and grp_event["date"]["day_month"] == dayMonth
+                grp_event["date"]["year"] == event_year
+                and grp_event["date"]["day_month"] == event_day_month
             ):
                 grp_event["event"].append(event_desc)
                 break
         else:
-            grouped_events.append(Event(Date(year, dayMonth), [event_desc]))
-    return grouped_events
+            events_grouped_by_date.append(
+                Event(Date(event_year, event_day_month), [event_desc])
+            )
+    return events_grouped_by_date
 
 
 def map_medals(medals: list[Medal]) -> list[Medal]:

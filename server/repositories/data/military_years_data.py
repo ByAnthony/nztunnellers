@@ -133,7 +133,8 @@ def end_of_service(tunneller_result: Tunneller, lang: str) -> EndOfService:
 
 def military_years(
     tunneller_result: Tunneller,
-    wwi_events_result: list[Event],
+    company_events: list[Event],
+    tunneller_events: list[Event],
     medals_result: list[Medal],
     lang: str,
 ) -> MilitaryYears:
@@ -148,7 +149,7 @@ def military_years(
             get_optional_date(tunneller_result["transport_uk_end"], lang),
             tunneller_result["transport_uk_destination"],
         ),
-        map_front_events(wwi_events_result, tunneller_result, lang),
+        map_front_events(company_events, tunneller_events, tunneller_result, lang),
         end_of_service(tunneller_result, lang),
         map_medals(medals_result),
     )
