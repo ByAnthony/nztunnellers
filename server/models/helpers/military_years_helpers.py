@@ -17,6 +17,7 @@ from .translator_helpers import (
 )
 from ..military_years import (
     Demobilization,
+    Event,
     EventDetails,
     Events,
     Medal,
@@ -190,9 +191,6 @@ def map_front_events(
     tunneller: Tunneller,
     lang: str,
 ) -> list[Events]:
-    def create_event(date: Date, event: str, title: Optional[str]) -> SingleEvent:
-        return SingleEvent(date, EventDetails(event, title))
-
     event_start_date = min(event["date"] for event in tunneller_events)
     event_end_date = max(event["date"] for event in tunneller_events)
 
@@ -214,35 +212,36 @@ def map_front_events(
             tunneller["transport_uk_ref"], tunneller["transport_uk_vessel"]
         )
         selected_events.append(
-            create_event(
+            SingleEvent(
                 tunneller["transport_uk_start"],
                 vessel_to_england,
                 "Transfer to England",
             )
         )
 
-    selected_and_tunneller_events = sorted(
+    selected_and_tunneller_events: list[SingleEvent] = sorted(
         list(selected_events + list(tunneller_events)), key=lambda item: item["date"]
     )
 
-    result: list[SingleEvent] = []
+    result: list[Event] = []
     for event in selected_and_tunneller_events:
-        mapped_event = SingleEvent(
-            get_full_date(event["date"], lang),
-            EventDetails(event["event"], event["title"]),
+        result.append(
+            Event(
+                get_full_date(event["date"], lang),
+                EventDetails(event["event"], event["title"]),
+            )
         )
-        result.append(mapped_event)
 
     events_grouped_by_date: list[Events] = []
-    for event in result:
-        event_date = event["date"]
-        event_description = event["event"]
+    for event_result in result:
+        event_date: Date = event_result["date"]
+        event_info: EventDetails = event_result["event"]
         for grp_event in events_grouped_by_date:
             if grp_event["date"] == event_date:
-                grp_event["event"].append(event_description)
+                grp_event["event"].append(event_info)
                 break
         else:
-            events_grouped_by_date.append(Events(event_date, [event_description]))
+            events_grouped_by_date.append(Events(event_date, [event_info]))
     return events_grouped_by_date
 
 

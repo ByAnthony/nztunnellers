@@ -41,9 +41,19 @@ class Events:
 
 
 @dataclass
-class SingleEvent:
+class Event:
     date: Date
     event: EventDetails
+
+    def __getitem__(self, key: str):
+        return getattr(self, key)
+
+
+@dataclass
+class SingleEvent:
+    date: Date
+    event: str
+    title: Optional[str]
 
     def __getitem__(self, key: str):
         return getattr(self, key)
