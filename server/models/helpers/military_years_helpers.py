@@ -191,8 +191,21 @@ def map_front_events(
     tunneller: Tunneller,
     lang: str,
 ) -> list[Events]:
-    event_start_date = min(event["date"] for event in tunneller_events)
-    event_end_date = max(event["date"] for event in tunneller_events)
+    main_tunneller_events: list[SingleEvent] = list(tunneller_events)
+    if tunneller["transport_uk_start"] is not None:
+        vessel_to_england = "{} {}".format(
+            tunneller["transport_uk_ref"], tunneller["transport_uk_vessel"]
+        )
+        main_tunneller_events.append(
+            SingleEvent(
+                tunneller["transport_uk_start"],
+                vessel_to_england,
+                "Transfer to England",
+            )
+        )
+
+    event_start_date = min(event["date"] for event in main_tunneller_events)
+    event_end_date = max(event["date"] for event in main_tunneller_events)
 
     selected_events: list[SingleEvent] = []
     for event in company_events:
@@ -207,20 +220,9 @@ def map_front_events(
         ):
             selected_events.append(event)
 
-    if tunneller["transport_uk_start"] is not None:
-        vessel_to_england = "{} {}".format(
-            tunneller["transport_uk_ref"], tunneller["transport_uk_vessel"]
-        )
-        selected_events.append(
-            SingleEvent(
-                tunneller["transport_uk_start"],
-                vessel_to_england,
-                "Transfer to England",
-            )
-        )
-
     selected_and_tunneller_events: list[SingleEvent] = sorted(
-        list(selected_events + list(tunneller_events)), key=lambda item: item["date"]
+        list(selected_events + list(main_tunneller_events)),
+        key=lambda item: item["date"],
     )
 
     result: list[Event] = []
