@@ -84,8 +84,6 @@ def show(id: int, lang: str, mysql: MySQL) -> Optional[Tunneller]:
             "image": images(tunneller_result, book_authors_result, lang),
         }
 
-        tunneller: Tunneller = from_dict(data_class=Tunneller, data=data)
-
-        return tunneller
+        return from_dict(data_class=Tunneller, data=data)
 
     return None
