@@ -1,2 +1,4 @@
+dacite
+flask_mysqldb
 pre-commit
 pytest

@@ -1,4 +1,4 @@
-flask
+dacite
 flask_mysqldb
 gunicorn
 pre-commit
