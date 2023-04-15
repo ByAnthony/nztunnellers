@@ -2,6 +2,10 @@
   "compilerOptions": {
     "target": "es5",
     "lib": ["es6", "dom"],
+    "baseUrl": "src",
+    "paths": {
+      "test-utils": ["./utils/test-utils"]
+    },
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
@@ -15,10 +19,7 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "allowJs": false,
-    "incremental": true,
+    "incremental": true
   },
-  "exclude": [
-    "node_modules",
-    "build"
-  ]
+  "exclude": ["node_modules", "build"]
 }
