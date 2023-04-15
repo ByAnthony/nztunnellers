@@ -113,6 +113,7 @@ class Enlistment:
     district: Optional[str] = None
     alias: Optional[str] = None
     transferred_to_tunnellers: Optional[TransferredToTunnellers] = None
+    age_at_enlistment: Optional[int] = None
 
 
 @dataclass

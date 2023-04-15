@@ -1,8 +1,6 @@
 @use 'src/index.scss';
 
 .war-service {
-  @include index.featured-button-link;
-
   flex: 100%;
   display: flex;
   justify-content: space-between;
@@ -11,6 +9,8 @@
   padding: index.$s-margin;
   font-size: 1.25rem;
   color: index.$secondary-color;
+
+  @include index.featured-button-link;
 
   p {
     color: index.$secondary-color;
