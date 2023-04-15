@@ -1,28 +1,28 @@
 @use 'src/index.scss';
 
 .profile {
-  @include index.component-width;
+  @include index.component-margin;
 
   @include index.desktop {
     display: grid;
-    gap: 25px;
+    gap: index.$m-margin;
     grid-template-columns: 40% auto;
   }
 
   @include index.large-desktop {
     display: grid;
-    gap: 25px;
+    gap: index.$m-margin;
     grid-template-columns: 45% auto;
   }
 
   .summary {
     @include index.desktop {
-      margin-right: index.$lg-margin;
+      margin-right: index.$l-margin;
       text-align: left;
     }
 
     @include index.large-desktop {
-      margin-right: index.$lg-margin;
+      margin-right: index.$l-margin;
       text-align: left;
     }
   }

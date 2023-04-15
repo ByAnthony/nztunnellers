@@ -7,8 +7,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 15px 0;
-  padding: 20px;
+  margin: index.$xs-margin 0;
+  padding: index.$s-margin;
   font-size: 1.25rem;
   color: index.$secondary-color;
 
@@ -17,12 +17,12 @@
   }
 
   @include index.desktop {
-    padding: 30px 30px 27px 30px;
+    padding: index.$padding-card;
     flex: 50%;
   }
 
   @include index.large-desktop {
-    padding: 30px 30px 27px 30px;
+    padding: index.$padding-card;
     flex: 50%;
   }
 }

@@ -29,11 +29,11 @@ $large-desktop: 96rem;
   }
 }
 
-@mixin component-width {
-  margin: 0 15px;
+@mixin component-margin {
+  margin: $s-margin;
 
   @include tablet {
-    margin: 0 $md-margin;
+    margin: $m-margin;
   }
 }
 
@@ -46,10 +46,11 @@ $secondary-color: rgb(153, 131, 100);
 $text-color: rgb(159, 154, 143);
 $placeholder-color: rgb(109, 104, 103);
 
-$sm-margin: 12.5px;
-$md-margin: 25px;
+$xs-margin: 15px;
+$s-margin: 20px;
+$m-margin: 25px;
 $base-margin: 50px;
-$lg-margin: 75px;
+$l-margin: 75px;
 $xl-margin: 100px;
 
 $border-radius: 8px;
@@ -86,7 +87,7 @@ h1 {
 }
 
 h2 {
-  margin: $md-margin 0;
+  margin: $m-margin 0;
   font-size: 1.4rem;
   font-weight: 600;
 
@@ -104,7 +105,7 @@ h2 {
 }
 
 h3 {
-  margin: $md-margin 0;
+  margin: $m-margin 0;
   font-size: 1.2rem;
   font-weight: 600;
 
@@ -201,7 +202,7 @@ li {
 }
 
 .arrow {
-  margin: 5px 0 0 25px;
+  margin: 5px 0 0 $m-margin;
   font-size: 2rem;
   font-weight: 200;
   color: $secondary-color;
@@ -219,8 +220,8 @@ $padding-card: 30px 30px 27px 30px;
 
 @mixin fullwidth-main-card {
   max-width: 100%;
-  margin: 15px 0;
-  padding: 20px;
+  margin: $xs-margin 0;
+  padding: $s-margin;
   font-size: 1.15rem;
   background-color: $primary-medium-color;
   border: 1px solid $primary-light-color;
@@ -237,8 +238,8 @@ $padding-card: 30px 30px 27px 30px;
 
 @mixin fullwidth-secondary-card {
   max-width: 100%;
-  margin: 15px 0;
-  padding: 20px;
+  margin: $xs-margin 0;
+  padding: $s-margin;
   font-size: 1.25rem;
   border: 1px solid $primary-light-color;
   border-radius: $border-radius;
@@ -253,9 +254,9 @@ $padding-card: 30px 30px 27px 30px;
 }
 
 @mixin halfwidth-cards-container {
-  margin: 15px 0;
+  margin: $xs-margin 0;
   display: flex;
-  gap: 15px;
+  gap: $xs-margin;
 }
 
 @mixin halfwidth-card-style {
@@ -264,7 +265,7 @@ $padding-card: 30px 30px 27px 30px;
   align-content: flex-start;
   align-items: flex-start;
   width: 50%;
-  padding: 20px;
+  padding: $s-margin;
 }
 
 @mixin halfwidth-main-card {
@@ -305,5 +306,5 @@ $padding-card: 30px 30px 27px 30px;
 }
 
 @mixin halfwidth-secondary-card-title {
-  padding-bottom: 15px;
+  padding-bottom: $xs-margin;
 }

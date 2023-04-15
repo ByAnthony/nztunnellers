@@ -4,9 +4,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px 0 index.$lg-margin 0;
+  padding: 0 0 index.$l-margin 0;
 
-  @include index.component-width;
+  @include index.component-margin;
 
   .logo {
     height: 32px;
@@ -16,8 +16,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-left: 20px;
-    height: 50px;
+    margin-left: index.$s-margin;
+    height: index.$base-margin;
     width: 100%;
     border: 1px solid index.$primary-light-color;
     border-radius: index.$border-radius;
@@ -29,8 +29,8 @@
       input {
         box-sizing: border-box;
         width: 100%;
-        height: 50px;
-        padding: 0 15px;
+        height: index.$base-margin;
+        padding: 0 index.$xs-margin;
         font-family: index.$main-font;
         font-weight: 300;
         font-size: 0.9rem;

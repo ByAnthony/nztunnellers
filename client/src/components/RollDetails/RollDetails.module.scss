@@ -5,17 +5,17 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 25px 25px 22px 25px;
+  padding: index.$m-margin;
 
   @include index.primary-button-link;
 
   @include index.desktop {
-    padding: 30px 30px 27px 30px;
+    padding: index.$padding-card;
     flex: 50%;
   }
 
   @include index.large-desktop {
-    padding: 30px 30px 27px 30px;
+    padding: index.$padding-card;
     flex: 50%;
   }
 
@@ -63,23 +63,23 @@
   }
 
   .dates {
-    margin: 15px 0 0 0;
+    margin: index.$xs-margin 0 0 0;
     font-size: 1rem;
     font-weight: 200;
     letter-spacing: 2px;
     color: index.$secondary-color;
 
     @include index.tablet {
-      margin-top: 20px;
+      margin-top: index.$s-margin;
     }
 
     @include index.desktop {
-      margin-top: 25px;
+      margin-top: index.$m-margin;
       font-size: 1.125rem;
     }
 
     @include index.large-desktop {
-      margin-top: 25px;
+      margin-top: index.$m-margin;
       font-size: 1.125rem;
     }
   }

@@ -2,7 +2,7 @@
 
 .header {
   text-align: center;
-  margin-bottom: index.$md-margin;
+  margin-bottom: index.$m-margin;
 
   @include index.desktop {
     text-align: left;
@@ -21,7 +21,7 @@
   }
 
   .dates {
-    margin-top: 50px;
+    margin-top: index.$base-margin;
     font-size: 1.25rem;
     font-weight: 300;
 
@@ -40,7 +40,7 @@
 }
 
 .overview {
-  margin-top: index.$lg-margin;
+  margin-top: index.$l-margin;
   font-weight: 600;
   color: index.$text-color;
   text-align: left;

@@ -2,13 +2,13 @@
 
 .footer {
   font-weight: 600;
-  margin: index.$base-margin 15px 15px;
-  padding: 17px 15px;
+  margin: index.$base-margin index.$xs-margin index.$xs-margin;
+  padding: index.$xs-margin;
   border-radius: index.$border-radius;
   background-color: rgb(34, 36, 37);
 
   @include index.tablet {
-    margin: index.$base-margin 25px 25px;
+    margin: index.$base-margin index.$m-margin index.$m-margin;
   }
 
   .support {
@@ -63,7 +63,7 @@
     .fullwidth-main-card {
       @include index.featured-button-link;
 
-      margin: 0 15px 0 0;
+      margin: 0 index.$xs-margin 0 0;
       width: 100%;
     }
 

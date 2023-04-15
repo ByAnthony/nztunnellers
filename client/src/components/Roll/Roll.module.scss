@@ -1,7 +1,7 @@
 @use 'src/index.scss';
 
 .alphabet-container {
-  @include index.component-width;
+  @include index.component-margin;
 
   h1 {
     text-align: center;
@@ -13,23 +13,23 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, 30px);
     justify-content: space-between;
-    grid-gap: 15px;
+    grid-gap: index.$xs-margin;
 
     @include index.tablet {
-      margin: index.$lg-margin 0;
+      margin: index.$l-margin 0;
       grid-template-columns: repeat(auto-fill, 32.5px);
     }
 
     @include index.desktop {
       margin: index.$xl-margin 0;
       grid-template-columns: repeat(auto-fill, 35px);
-      grid-gap: 25px;
+      grid-gap: index.$m-margin;
     }
 
     @include index.large-desktop {
       margin: index.$xl-margin 0;
       grid-template-columns: repeat(auto-fill, 45px);
-      grid-gap: 25px;
+      grid-gap: index.$m-margin;
     }
 
     .letter {

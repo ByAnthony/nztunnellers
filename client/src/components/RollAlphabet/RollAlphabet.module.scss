@@ -1,9 +1,9 @@
 @use 'src/index.scss';
 
 .roll {
-  @include index.component-width;
+  @include index.component-margin;
 
-  padding-bottom: index.$md-margin;
+  padding-bottom: index.$m-margin;
 
   .letter-container {
     margin: index.$base-margin auto;
@@ -13,18 +13,18 @@
     border-radius: index.$border-radius;
 
     @include index.tablet {
-      margin: index.$lg-margin auto;
+      margin: index.$l-margin auto;
       width: 65px;
     }
 
     @include index.desktop {
       margin: index.$xl-margin auto;
-      width: 75px;
+      width: index.$l-margin;
     }
 
     @include index.large-desktop {
       margin: index.$xl-margin auto;
-      width: 75px;
+      width: index.$l-margin;
     }
 
     .title {
@@ -52,17 +52,17 @@
   .tunnellers-container {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: index.$xs-margin;
 
     @include index.desktop {
       display: grid;
-      gap: 25px;
+      gap: index.$m-margin;
       grid-template-columns: 1fr 1fr;
     }
 
     @include index.large-desktop {
       display: grid;
-      gap: 25px;
+      gap: index.$m-margin;
       grid-template-columns: 1fr 1fr 1fr;
     }
   }
