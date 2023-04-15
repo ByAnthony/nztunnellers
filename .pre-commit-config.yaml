@@ -22,7 +22,7 @@ repos:
       - id: mixed-line-ending
       - id: trailing-whitespace
         args: [--markdown-linebreak-ext=md]
-        exclude: .test.tsx
+        exclude: \.test.[jt]sx?$
       - id: end-of-file-fixer
 
   - repo: https://github.com/pre-commit/mirrors-mypy
