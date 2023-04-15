@@ -9,7 +9,7 @@ exports[`renders the component 1`] = `
       How to cite this page
     </h3>
     <p>
-      Anthony Byledbal, "John Doe (1888-1975)",
+      Anthony Byledbal, "John Doe (1888-1975)", 
       <em>
         New Zealand Tunnellers Website
       </em>
