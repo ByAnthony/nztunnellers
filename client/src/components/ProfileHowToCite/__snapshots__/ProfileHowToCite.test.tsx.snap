@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders the component 1`] = `
+<DocumentFragment>
+  <div
+    class="howtocite"
+  >
+    <h3>
+      How to cite this page
+    </h3>
+    <p>
+      Anthony Byledbal, "John Doe (1888-1975)",
+      <em>
+        New Zealand Tunnellers Website
+      </em>
+      , 2023 (2009), Accessed: 15 April 2023. URL: www.nztunnellers.com/roll/26.
+    </p>
+  </div>
+</DocumentFragment>
+`;
