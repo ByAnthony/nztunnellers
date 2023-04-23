@@ -1,20 +1,34 @@
 import './App.scss';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { useLayoutEffect } from 'react';
+import {
+  BrowserRouter, Route, Routes, useLocation,
+} from 'react-router-dom';
 import { HomePage } from './components/HomePage/HomePage';
 import { Profile } from './components/Profile/Profile';
 import { Roll } from './components/Roll/Roll';
+import { Timeline } from './components/Timeline/Timeline';
+
+const Wrapper = ({ children }: any) => {
+  const location = useLocation();
+  useLayoutEffect(() => {
+    document.documentElement.scrollTo(0, 0);
+  }, [location.pathname]);
+  return children;
+};
 
 export function App() {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/roll" element={<Roll />} />
-        <Route path="/roll/:id" element={<Profile />} />
-        <Route path="/roll/:id/wwi-timeline" />
-        <Route path="/contact-us" />
-        {/* <Route component={ErrorPage}/> */}
-      </Routes>
+      <Wrapper>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/roll" element={<Roll />} />
+          <Route path="/roll/:id" element={<Profile />} />
+          <Route path="/roll/:id/wwi-timeline" element={<Timeline />} />
+          <Route path="/contact-us" />
+          {/* <Route component={ErrorPage}/> */}
+        </Routes>
+      </Wrapper>
     </BrowserRouter>
   );
 }

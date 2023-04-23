@@ -35,10 +35,10 @@
     .halfwidth-secondary-card {
       @include index.halfwidth-card-style;
       @include index.halfwidth-secondary-card;
+      @include index.featured-button-link;
 
       justify-content: center;
       align-content: center;
-      background-color: index.$primary-medium-color;
     }
 
     .halfwidth-secondary-card-title {

@@ -1,0 +1,5 @@
+@use 'src/index.scss';
+
+.timeline {
+  @include index.component-margin;
+}

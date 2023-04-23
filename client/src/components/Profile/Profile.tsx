@@ -10,9 +10,10 @@ import { Footer } from '../Footer/Footer';
 
 export function Profile() {
   const { id } = useParams();
+  const tunnellerId = Number(id);
   const {
     data, error, isLoading, isSuccess,
-  } = useGetTunnellerByIdQuery(Number(id!));
+  } = useGetTunnellerByIdQuery(tunnellerId);
 
   if (data) {
     return (
@@ -44,7 +45,7 @@ export function Profile() {
               postWarYears={data.postServiceYears}
             />
             <ProfileSources sources={data.sources} />
-            <ProfileHowToCite id={Number(id)} summary={data.summary} />
+            <ProfileHowToCite id={tunnellerId} summary={data.summary} />
           </div>
         </div>
         )}
