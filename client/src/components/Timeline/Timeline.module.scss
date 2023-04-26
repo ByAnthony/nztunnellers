@@ -1,5 +1,82 @@
 @use 'src/index.scss';
 
 .timeline {
+  margin-bottom: index.$m-margin;
+  font-weight: 600;
+  color: index.$text-color;
+  text-align: left;
+
+  p {
+    margin: 0;
+    font-size: 1rem;
+  }
+
   @include index.component-margin;
+
+  .back {
+    font-size: 1.25rem;
+    font-weight: 300;
+    color: index.$secondary-color;
+  }
+
+  .surname {
+    font-size: 1.75rem;
+    display: block;
+  }
+
+  .forename {
+    font-size: 1.25rem;
+    font-weight: 300;
+  }
+
+  .name {
+    margin: index.$base-margin 0;
+  }
+
+  .date {
+    margin-left: -10px;
+    padding: index.$xs-margin 0;
+    background-color: index.$primary-dark-color;
+
+    .year {
+      font-size: 1.15rem;
+      font-weight: 600;
+    }
+
+    .day-month {
+      font-size: 1.1rem;
+      font-weight: 300;
+    }
+  }
+
+  .main-event {
+    @include index.fullwidth-main-card;
+
+    margin-left: -25px;
+  }
+
+  .event-wrapper {
+    margin: index.$m-margin 0;
+  }
+
+  .event {
+    @include index.fullwidth-secondary-card;
+
+    margin-left: -10px;
+    border-bottom: 1px solid index.$primary-light-color;
+    background-color: index.$primary-dark-color;
+
+    p {
+      font-size: 1rem;
+    }
+
+    span {
+      font-weight: 300;
+    }
+  }
+
+  .line {
+    border-left: 1px solid index.$primary-light-color;
+    margin-left: index.$m-margin;
+  }
 }

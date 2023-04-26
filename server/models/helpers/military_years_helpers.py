@@ -271,9 +271,9 @@ def map_front_events(
             and event_start_date <= event["date"] <= event_end_date
         ):
             selected_events.append(event)
-        if (
-            event["event"] == "Marched in to the Company Training Camp, Falmouth"
-            and tunneller["transport_uk_ref"] == "S.S. Ruapehu 18 December 1915"
+        if event["event"] == "Marched in to the Company Training Camp, Falmouth" and (
+            tunneller["embarkation_unit"] == "Main Body"
+            or tunneller["embarkation_unit"] == "1st Reinforcements"
         ):
             selected_events.append(event)
 
