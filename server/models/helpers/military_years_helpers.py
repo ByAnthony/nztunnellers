@@ -209,8 +209,8 @@ def map_front_events(
         main_tunneller_events.append(
             SingleEvent(
                 tunneller["transferred_to_date"],
-                "Transferred",
                 tunneller["transferred_to_unit"],
+                "Transferred",
             )
         )
 

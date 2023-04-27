@@ -14,23 +14,25 @@
   @include index.component-margin;
 
   .back {
-    font-size: 1.25rem;
-    font-weight: 300;
+    margin: 0 0 index.$m-margin 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
     color: index.$secondary-color;
+
+    .profile {
+      font-size: 1.1rem;
+      font-weight: 500;
+    }
   }
 
   .surname {
-    font-size: 1.75rem;
     display: block;
   }
 
   .forename {
-    font-size: 1.25rem;
     font-weight: 300;
-  }
-
-  .name {
-    margin: index.$base-margin 0;
   }
 
   .date {
@@ -56,7 +58,15 @@
   }
 
   .event-wrapper {
-    margin: index.$m-margin 0;
+    margin: index.$s-margin 0;
+  }
+
+  .event-with-title {
+    @include index.fullwidth-main-card;
+
+    margin-left: -10px;
+    border-bottom: 1px solid index.$primary-light-color;
+    background-color: index.$primary-dark-color;
   }
 
   .event {

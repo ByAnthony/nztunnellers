@@ -1,7 +1,7 @@
 @use 'src/index.scss';
 
 .header {
-  text-align: center;
+  text-align: left;
   margin-bottom: index.$m-margin;
 
   @include index.desktop {
@@ -21,7 +21,7 @@
   }
 
   .dates {
-    margin-top: index.$base-margin;
+    margin-top: index.$s-margin;
     font-size: 1.25rem;
     font-weight: 300;
 
@@ -40,7 +40,7 @@
 }
 
 .overview {
-  margin-top: index.$l-margin;
+  margin-top: index.$s-margin;
   font-weight: 600;
   color: index.$text-color;
   text-align: left;

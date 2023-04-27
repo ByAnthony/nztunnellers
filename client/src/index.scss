@@ -70,7 +70,7 @@ body {
 }
 
 h1 {
-  font-size: 2.25rem;
+  font-size: 2rem;
   font-weight: 600;
 
   @include tablet {
@@ -201,7 +201,22 @@ li {
   }
 }
 
-.arrow {
+.arrow-left {
+  margin: 5px $s-margin 0 0;
+  font-size: 2rem;
+  font-weight: 200;
+  color: $secondary-color;
+
+  @include tablet {
+    font-size: 2.5rem;
+  }
+
+  @include desktop {
+    font-size: 3rem;
+  }
+}
+
+.arrow-right {
   margin: 5px 0 0 $m-margin;
   font-size: 2rem;
   font-weight: 200;

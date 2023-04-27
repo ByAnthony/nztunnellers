@@ -4,12 +4,12 @@
   @include index.component-margin;
 
   h1 {
-    text-align: center;
+    text-align: left;
   }
 
   .alphabet {
     width: 100%;
-    margin: index.$base-margin 0;
+    margin: index.$s-margin 0;
     display: grid;
     grid-template-columns: repeat(auto-fill, 30px);
     justify-content: space-between;
