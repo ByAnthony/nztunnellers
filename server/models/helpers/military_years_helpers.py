@@ -193,72 +193,67 @@ def map_front_events(
 ) -> list[Events]:
     main_tunneller_events: list[SingleEvent] = list(tunneller_events)
 
+    def add_event(date: Date, description: str, title: str):
+        return main_tunneller_events.append(
+            SingleEvent(
+                date,
+                description,
+                title,
+            )
+        )
+
     if tunneller["transport_uk_start"] is not None:
         vessel = "{} {}".format(
             tunneller["transport_uk_ref"], tunneller["transport_uk_vessel"]
         )
-        main_tunneller_events.append(
-            SingleEvent(
-                tunneller["transport_uk_start"],
-                vessel,
-                "Transfer to England",
-            )
+        add_event(
+            tunneller["transport_uk_start"],
+            vessel,
+            "Transfer to England",
         )
 
     if tunneller["transferred_to_date"] is not None:
-        main_tunneller_events.append(
-            SingleEvent(
-                tunneller["transferred_to_date"],
-                tunneller["transferred_to_unit"],
-                "Transferred",
-            )
+        add_event(
+            tunneller["transferred_to_date"],
+            tunneller["transferred_to_unit"],
+            "Transferred",
         )
 
     if tunneller["transport_nz_start"] is not None:
         vessel = "{} {}".format(
             tunneller["transport_nz_ref"], tunneller["transport_nz_vessel"]
         )
-        main_tunneller_events.append(
-            SingleEvent(
-                tunneller["transport_nz_start"],
-                vessel,
-                "Transfer to New Zealand",
-            )
+        add_event(
+            tunneller["transport_nz_start"],
+            vessel,
+            "Transfer to New Zealand",
         )
 
     if tunneller["demobilization_date"] is not None:
-        if tunneller["discharge_uk"] is False and tunneller["has_deserted"] is False:
-            main_tunneller_events.append(
-                SingleEvent(
-                    tunneller["demobilization_date"],
-                    "End of Service",
-                    "Demobilization",
-                )
+        if tunneller["discharge_uk"] == 1:
+            add_event(
+                tunneller["demobilization_date"],
+                "End of Service in the United Kingdom",
+                "Demobilization",
             )
-        if tunneller["discharge_uk"] is True and tunneller["has_deserted"] is False:
-            main_tunneller_events.append(
-                SingleEvent(
-                    tunneller["demobilization_date"],
-                    "End of Service in the United Kingdom",
-                    "Demobilization",
-                )
+        elif tunneller["has_deserted"] == 1:
+            add_event(
+                tunneller["demobilization_date"],
+                "End of Service as deserter",
+                "Demobilization",
             )
-        if tunneller["has_deserted"] is True:
-            main_tunneller_events.append(
-                SingleEvent(
-                    tunneller["demobilization_date"],
-                    "End of Service as deserter",
-                    "Demobilization",
-                )
+        else:
+            add_event(
+                tunneller["demobilization_date"],
+                "Demobilization",
+                "End of Service",
             )
 
     if tunneller["death_type"] == "War":
-        main_tunneller_events.append(
-            SingleEvent(
-                tunneller["death_date"],
-                tunneller["death_circumstances"],
-                tunneller["death_cause"],
-            )
+        add_event(
+            tunneller["death_date"],
+            tunneller["death_circumstances"],
+            tunneller["death_cause"],
         )
 
     event_start_date = min(event["date"] for event in main_tunneller_events)

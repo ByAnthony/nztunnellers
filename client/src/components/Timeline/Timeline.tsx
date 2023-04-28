@@ -23,8 +23,8 @@ export function Timeline() {
         </div>
         <div className={STYLES['event-wrapper']}>
           <div className={STYLES['event-with-title']}>
-            <p>Posted to the Tunnellers</p>
-            <span>{`From ${data.militaryYears.enlistment.transferredToTunnellers.postedFrom}`}</span>
+            <p>Posted</p>
+            <span>{data.militaryYears.embarkationUnit.detachment}</span>
           </div>
         </div>
       </>
@@ -38,8 +38,8 @@ export function Timeline() {
         </div>
         <div className={STYLES['event-wrapper']}>
           <div className={STYLES['event-with-title']}>
-            <p>{`Enlistment in ${data.militaryYears.embarkationUnit.detachment}`}</p>
-            <span>{`${data.militaryYears.enlistment.district} Military District`}</span>
+            <p>Enlisted</p>
+            <span>{data.militaryYears.embarkationUnit.detachment}</span>
           </div>
         </div>
       </>
@@ -53,7 +53,7 @@ export function Timeline() {
         </div>
         <div className={STYLES['event-wrapper']}>
           <div className={STYLES['event-with-title']}>
-            <p>Training Camp</p>
+            <p>Trained</p>
             <span>{`${data.militaryYears.embarkationUnit.training.location}`}</span>
           </div>
         </div>
