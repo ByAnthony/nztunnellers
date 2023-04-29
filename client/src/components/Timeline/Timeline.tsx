@@ -14,6 +14,7 @@ export function Timeline() {
   if (data) {
     const { name } = data.summary;
     const { frontEvents } = data.militaryYears;
+    const disease = data.militaryYears.endOfService.deathWar?.cause?.circumstances;
 
     const timeline = frontEvents.map((event: Events) => (
       <div key={frontEvents.indexOf(event)}>
@@ -34,11 +35,32 @@ export function Timeline() {
                 </div>
               );
             }
-            if (title && (title === 'Enlisted' || title === 'Trained' || title === 'Posted')) {
+            if (title && (title === 'Trained' || title === 'Posted')) {
               return (
                 <div key={event.event.indexOf(eventDetails)} className={STYLES['tunneller-event-with-title']}>
                   <p>{title}</p>
                   <span>{eventDetails.description}</span>
+                </div>
+              );
+            }
+            if (title && (title === 'Enlisted' || title === 'Died of disease' || title === 'Died of accident')) {
+              return (
+                <div key={event.event.indexOf(eventDetails)} className={STYLES['main-event']}>
+                  <span>{title}</span>
+                  {title === 'Died of disease' && disease
+                    ? (
+                      <span className={STYLES.disease}>{disease}</span>
+                    )
+                    : null}
+                  <p>{eventDetails.description}</p>
+                </div>
+              );
+            }
+            if (title && (title === 'Buried' || title === 'Grave reference')) {
+              return (
+                <div key={event.event.indexOf(eventDetails)} className={STYLES['tunneller-event-with-title']}>
+                  <span>{title}</span>
+                  <p>{eventDetails.description}</p>
                 </div>
               );
             }

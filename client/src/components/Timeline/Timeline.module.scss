@@ -56,6 +56,13 @@
     @include index.fullwidth-main-card;
 
     margin-left: -25px;
+
+    .disease {
+      display: block;
+      padding-bottom: index.$xs-margin;
+      font-size: 1rem;
+      font-weight: 300;
+    }
   }
 
   .company-event {

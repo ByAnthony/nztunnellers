@@ -193,7 +193,7 @@ def map_front_events(
 ) -> list[Events]:
     main_tunneller_events: list[SingleEvent] = list(tunneller_events)
 
-    def add_event(date: Date, description: str, title: str):
+    def add_event(date: Date, description: str, title: Optional[str]):
         return main_tunneller_events.append(
             SingleEvent(
                 date,
@@ -250,10 +250,35 @@ def map_front_events(
             )
 
     if tunneller["death_type"] == "War":
+
+        # def death_location(location: Optional[str], town: Optional[str], country: Optional[str]) -> str:
+        #     if location is not None and town is not None and country is not None:
+        #         return "{}, {} ({})".format(location, town, country)
+        #     if location is not None and town is None and country is not None:
+        #         return "{} ({})".format(location, country)
+        #     return ""
+
+        if tunneller["death_cause"] == "Died of disease":
+            add_event(
+                tunneller["death_date"],
+                "{}, {}".format(tunneller["death_location"], tunneller["death_town"]),
+                tunneller["death_cause"],
+            )
+        if tunneller["death_cause"] == "Died of accident":
+            add_event(
+                tunneller["death_date"],
+                "{}".format(tunneller["death_location"]),
+                tunneller["death_cause"],
+            )
         add_event(
             tunneller["death_date"],
-            tunneller["death_circumstances"],
-            tunneller["death_cause"],
+            "{}, {}".format(tunneller["cemetery"], tunneller["cemetery_town"]),
+            "Buried",
+        )
+        add_event(
+            tunneller["death_date"],
+            tunneller["grave"],
+            "Grave reference",
         )
 
     event_start_date = min(event["date"] for event in main_tunneller_events)
