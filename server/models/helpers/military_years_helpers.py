@@ -272,8 +272,56 @@ def map_front_events(
         ):
             selected_events.append(event)
 
+    if tunneller["enlistment_date"] is not None:
+        if tunneller["enlistment_date"] < tunneller["training_start"]:
+            add_event(
+                tunneller["enlistment_date"],
+                tunneller["embarkation_unit"],
+                "Enlisted",
+            )
+            add_event(
+                tunneller["training_start"],
+                tunneller["training_location"],
+                "Trained",
+            )
+        else:
+            add_event(
+                tunneller["enlistment_date"],
+                tunneller["embarkation_unit"],
+                "Enlisted",
+            )
+            add_event(
+                tunneller["enlistment_date"],
+                tunneller["training_location"],
+                "Trained",
+            )
+
+    if tunneller["posted_date"] is not None:
+        if tunneller["posted_date"] < tunneller["training_start"]:
+            add_event(
+                tunneller["posted_date"],
+                tunneller["embarkation_unit"],
+                "Posted",
+            )
+            add_event(
+                tunneller["training_start"],
+                tunneller["training_location"],
+                "Trained",
+            )
+        else:
+            add_event(
+                tunneller["posted_date"],
+                tunneller["embarkation_unit"],
+                "Posted",
+            )
+            add_event(
+                tunneller["posted_date"],
+                tunneller["training_location"],
+                "Trained",
+            )
+
     selected_and_tunneller_events: list[SingleEvent] = sorted(
-        list(selected_events + list(main_tunneller_events)),
+        list(selected_events + main_tunneller_events),
         key=lambda item: item["date"],
     )
 

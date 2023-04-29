@@ -15,51 +15,6 @@ export function Timeline() {
     const { name } = data.summary;
     const { frontEvents } = data.militaryYears;
 
-    const posted = data.militaryYears.enlistment.transferredToTunnellers ? (
-      <>
-        <div className={STYLES.date}>
-          <div className={STYLES.year}>{`${data.militaryYears.enlistment.transferredToTunnellers.date.year}`}</div>
-          <div className={STYLES['day-month']}>{`${data.militaryYears.enlistment.transferredToTunnellers.date.dayMonth}`}</div>
-        </div>
-        <div className={STYLES['event-wrapper']}>
-          <div className={STYLES['event-with-title']}>
-            <p>Posted</p>
-            <span>{data.militaryYears.embarkationUnit.detachment}</span>
-          </div>
-        </div>
-      </>
-    ) : null;
-
-    const enlistment = data.militaryYears.enlistment.date ? (
-      <>
-        <div className={STYLES.date}>
-          <div className={STYLES.year}>{`${data.militaryYears.enlistment.date.year}`}</div>
-          <div className={STYLES['day-month']}>{`${data.militaryYears.enlistment.date.dayMonth}`}</div>
-        </div>
-        <div className={STYLES['event-wrapper']}>
-          <div className={STYLES['event-with-title']}>
-            <p>Enlisted</p>
-            <span>{data.militaryYears.embarkationUnit.detachment}</span>
-          </div>
-        </div>
-      </>
-    ) : null;
-
-    const training = data.militaryYears.embarkationUnit.training.date ? (
-      <>
-        <div className={STYLES.date}>
-          <div className={STYLES.year}>{`${data.militaryYears.embarkationUnit.training.date.year}`}</div>
-          <div className={STYLES['day-month']}>{`${data.militaryYears.embarkationUnit.training.date.dayMonth}`}</div>
-        </div>
-        <div className={STYLES['event-wrapper']}>
-          <div className={STYLES['event-with-title']}>
-            <p>Trained</p>
-            <span>{`${data.militaryYears.embarkationUnit.training.location}`}</span>
-          </div>
-        </div>
-      </>
-    ) : null;
-
     const timeline = frontEvents.map((event: Events) => (
       <div key={frontEvents.indexOf(event)}>
         <div className={STYLES.date}>
@@ -69,14 +24,6 @@ export function Timeline() {
         <div className={STYLES['event-wrapper']}>
           {event.event.map((eventDetails: EventDetails) => {
             const { title } = eventDetails;
-            if (title && title !== 'The Company') {
-              return (
-                <div key={event.event.indexOf(eventDetails)} className={STYLES['main-event']}>
-                  <p>{title}</p>
-                  <span>{eventDetails.description}</span>
-                </div>
-              );
-            }
             if (title && title === 'The Company') {
               return (
                 <div key={event.event.indexOf(eventDetails)} className={STYLES['main-event']}>
@@ -84,9 +31,25 @@ export function Timeline() {
                 </div>
               );
             }
+            if (title && (title === 'Enlisted' || title === 'Trained' || title === 'Posted')) {
+              return (
+                <div key={event.event.indexOf(eventDetails)} className={STYLES['event-with-title']}>
+                  <p>{title}</p>
+                  <span>{eventDetails.description}</span>
+                </div>
+              );
+            }
+            if (!title) {
+              return (
+                <div key={event.event.indexOf(eventDetails)} className={STYLES.event}>
+                  <p>{eventDetails.description}</p>
+                </div>
+              );
+            }
             return (
-              <div key={event.event.indexOf(eventDetails)} className={STYLES.event}>
-                <p>{eventDetails.description}</p>
+              <div key={event.event.indexOf(eventDetails)} className={STYLES['main-event']}>
+                <p>{title}</p>
+                <span>{eventDetails.description}</span>
               </div>
             );
           })}
@@ -113,9 +76,6 @@ export function Timeline() {
           <h1>Timeline</h1>
           <div>
             <div className={STYLES.line}>
-              {enlistment}
-              {posted}
-              {training}
               {timeline}
             </div>
           </div>
