@@ -27,7 +27,7 @@ export function Timeline() {
             if (title && title === 'The Company') {
               return (
                 <div key={event.event.indexOf(eventDetails)}>
-                  <div className={STYLES['main-event-img']}>
+                  <div className={STYLES['company-event']}>
                     <img src={`/images/roll/${eventDetails.image}`} alt="" />
                     <p>{eventDetails.description}</p>
                   </div>
@@ -36,7 +36,7 @@ export function Timeline() {
             }
             if (title && (title === 'Enlisted' || title === 'Trained' || title === 'Posted')) {
               return (
-                <div key={event.event.indexOf(eventDetails)} className={STYLES['event-with-title']}>
+                <div key={event.event.indexOf(eventDetails)} className={STYLES['tunneller-event-with-title']}>
                   <p>{title}</p>
                   <span>{eventDetails.description}</span>
                 </div>
@@ -44,7 +44,7 @@ export function Timeline() {
             }
             if (!title) {
               return (
-                <div key={event.event.indexOf(eventDetails)} className={STYLES.event}>
+                <div key={event.event.indexOf(eventDetails)} className={STYLES['tunneller-event']}>
                   <p>{eventDetails.description}</p>
                 </div>
               );

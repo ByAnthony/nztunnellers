@@ -27,12 +27,9 @@
     }
   }
 
-  .surname {
-    display: block;
-  }
-
-  .forename {
-    font-weight: 300;
+  .line {
+    border-left: 1px solid index.$primary-light-color;
+    margin-left: index.$m-margin;
   }
 
   .date {
@@ -51,13 +48,17 @@
     }
   }
 
+  .event-wrapper {
+    margin: index.$s-margin 0;
+  }
+
   .main-event {
     @include index.fullwidth-main-card;
 
     margin-left: -25px;
   }
 
-  .main-event-img {
+  .company-event {
     margin-left: -25px;
     border-radius: index.$border-radius;
     border: 1px solid index.$primary-light-color;
@@ -77,11 +78,7 @@
     }
   }
 
-  .event-wrapper {
-    margin: index.$s-margin 0;
-  }
-
-  .event-with-title {
+  .tunneller-event-with-title {
     @include index.fullwidth-main-card;
 
     margin-left: -10px;
@@ -89,7 +86,7 @@
     background-color: index.$primary-dark-color;
   }
 
-  .event {
+  .tunneller-event {
     @include index.fullwidth-secondary-card;
 
     margin-left: -10px;
@@ -103,10 +100,5 @@
     span {
       font-weight: 300;
     }
-  }
-
-  .line {
-    border-left: 1px solid index.$primary-light-color;
-    margin-left: index.$m-margin;
   }
 }
