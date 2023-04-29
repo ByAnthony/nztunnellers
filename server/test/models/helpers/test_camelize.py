@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from ....models.helpers.camelize import underscore_to_camel
+from ....models.helpers.camelize_helpers import underscore_to_camel
 
 
 class TestUnderscoreToCamel:

@@ -4,7 +4,7 @@ import os
 
 from flask_cors import CORS
 
-from .models.helpers.camelize import underscore_to_camel
+from .models.helpers.camelize_helpers import underscore_to_camel
 from .repositories import roll_repository
 from .repositories import tunneller_repository
 from flask import Flask, request
