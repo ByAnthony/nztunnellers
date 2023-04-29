@@ -57,6 +57,26 @@
     margin-left: -25px;
   }
 
+  .main-event-img {
+    margin-left: -25px;
+    border-radius: index.$border-radius;
+    border: 1px solid index.$primary-light-color;
+    background-color: index.$primary-medium-color;
+
+    p {
+      padding: index.$s-margin;
+    }
+
+    img {
+      max-width: calc(100% - 1px);
+      width: 100%;
+      border: 1px solid index.$primary-light-color;
+      border-top-right-radius: index.$border-radius;
+      border-top-left-radius: index.$border-radius;
+      filter: grayscale(100%);
+    }
+  }
+
   .event-wrapper {
     margin: index.$s-margin 0;
   }

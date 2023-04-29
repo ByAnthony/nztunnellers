@@ -26,6 +26,7 @@ class Medal:
 class EventDetails:
     description: str
     title: Optional[str] = None
+    image: Optional[str] = None
 
     def __getitem__(self, key: str):
         return getattr(self, key)
@@ -54,6 +55,7 @@ class SingleEvent:
     date: Date
     event: str
     title: Optional[str]
+    image: Optional[str] = None
 
     def __getitem__(self, key: str):
         return getattr(self, key)

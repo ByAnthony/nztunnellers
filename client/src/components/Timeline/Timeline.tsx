@@ -26,8 +26,11 @@ export function Timeline() {
             const { title } = eventDetails;
             if (title && title === 'The Company') {
               return (
-                <div key={event.event.indexOf(eventDetails)} className={STYLES['main-event']}>
-                  <p>{eventDetails.description}</p>
+                <div key={event.event.indexOf(eventDetails)}>
+                  <div className={STYLES['main-event-img']}>
+                    <img src={`/images/roll/${eventDetails.image}`} alt="" />
+                    <p>{eventDetails.description}</p>
+                  </div>
                 </div>
               );
             }

@@ -325,12 +325,13 @@ def map_front_events(
         key=lambda item: item["date"],
     )
 
+    print(selected_and_tunneller_events)
     result: list[Event] = []
     for event in selected_and_tunneller_events:
         result.append(
             Event(
                 get_full_date(event["date"], lang),
-                EventDetails(event["event"], event["title"]),
+                EventDetails(event["event"], event["title"], event["image"]),
             )
         )
 

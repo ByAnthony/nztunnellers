@@ -4,6 +4,7 @@ def front_events_query():
         DATE_FORMAT(event_join.event_date, '%%Y-%%m-%%d') AS date
         , event_join.event_en AS event
         , event_join.event_title AS title
+        , event_join.event_img AS image
 
         FROM event_join
 
@@ -15,6 +16,7 @@ def company_events_query():
         DATE_FORMAT(company_events.company_events_date, '%Y-%m-%d') AS date
         , company_events.company_events_event AS event
         , company_events.company_events_title AS title
+        , company_events.company_events_img AS image
 
         FROM company_events
 
