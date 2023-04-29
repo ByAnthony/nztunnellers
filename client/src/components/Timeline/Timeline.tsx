@@ -14,7 +14,20 @@ export function Timeline() {
   if (data) {
     const { name } = data.summary;
     const { frontEvents } = data.militaryYears;
-    const disease = data.militaryYears.endOfService.deathWar?.cause?.circumstances;
+
+    const place = () => {
+      const location = data.militaryYears.endOfService.deathWar?.place?.location;
+      const town = data.militaryYears.endOfService.deathWar?.place?.town;
+      if (location && town) {
+        return `${location}, ${town}`;
+      }
+      if (location && !town) {
+        return location;
+      }
+      return null;
+    };
+
+    const circumstances = data.militaryYears.endOfService.deathWar?.cause?.circumstances;
 
     const timeline = frontEvents.map((event: Events) => (
       <div key={frontEvents.indexOf(event)}>
@@ -43,16 +56,21 @@ export function Timeline() {
                 </div>
               );
             }
-            if (title && (title === 'Enlisted' || title === 'Died of disease' || title === 'Died of accident')) {
+            if (title && (title === 'Enlisted' || title === 'Killed in action' || title === 'Died of wounds' || title === 'Died of disease' || title === 'Died of accident')) {
               return (
                 <div key={event.event.indexOf(eventDetails)} className={STYLES['main-event']}>
                   <span>{title}</span>
-                  {title === 'Died of disease' && disease
+                  {title === 'Killed in action' || title === 'Died of wounds'
                     ? (
-                      <span className={STYLES.disease}>{disease}</span>
+                      <span className={STYLES.place}>{place()}</span>
                     )
                     : null}
-                  <p>{eventDetails.description}</p>
+                  {title === 'Died of disease' && circumstances
+                    ? (
+                      <span className={STYLES.circumstances}>{` (${circumstances})`}</span>
+                    )
+                    : null}
+                  {eventDetails.description ? <p>{eventDetails.description}</p> : null}
                 </div>
               );
             }

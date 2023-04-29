@@ -84,7 +84,7 @@ export type Transport = {
 }
 
 export type EventDetails = {
-    description: string,
+    description: string | null,
     title: string | null,
     image: string | null,
 }

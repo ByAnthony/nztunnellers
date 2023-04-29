@@ -57,9 +57,13 @@
 
     margin-left: -25px;
 
-    .disease {
+    .circumstances {
+      font-size: 1rem;
+      font-weight: 300;
+    }
+
+    .place {
       display: block;
-      padding-bottom: index.$xs-margin;
       font-size: 1rem;
       font-weight: 300;
     }

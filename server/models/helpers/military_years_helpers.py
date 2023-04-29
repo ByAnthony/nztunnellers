@@ -193,7 +193,7 @@ def map_front_events(
 ) -> list[Events]:
     main_tunneller_events: list[SingleEvent] = list(tunneller_events)
 
-    def add_event(date: Date, description: str, title: Optional[str]):
+    def add_event(date: Date, description: Optional[str], title: Optional[str]):
         return main_tunneller_events.append(
             SingleEvent(
                 date,
@@ -250,14 +250,18 @@ def map_front_events(
             )
 
     if tunneller["death_type"] == "War":
-
-        # def death_location(location: Optional[str], town: Optional[str], country: Optional[str]) -> str:
-        #     if location is not None and town is not None and country is not None:
-        #         return "{}, {} ({})".format(location, town, country)
-        #     if location is not None and town is None and country is not None:
-        #         return "{} ({})".format(location, country)
-        #     return ""
-
+        if tunneller["death_cause"] == "Killed in action":
+            add_event(
+                tunneller["death_date"],
+                tunneller["death_circumstances"],
+                tunneller["death_cause"],
+            )
+        if tunneller["death_cause"] == "Died of wounds":
+            add_event(
+                tunneller["death_date"],
+                tunneller["death_circumstances"],
+                tunneller["death_cause"],
+            )
         if tunneller["death_cause"] == "Died of disease":
             add_event(
                 tunneller["death_date"],
@@ -350,7 +354,6 @@ def map_front_events(
         key=lambda item: item["date"],
     )
 
-    print(selected_and_tunneller_events)
     result: list[Event] = []
     for event in selected_and_tunneller_events:
         result.append(

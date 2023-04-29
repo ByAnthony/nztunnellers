@@ -24,7 +24,7 @@ class Medal:
 
 @dataclass
 class EventDetails:
-    description: str
+    description: Optional[str] = None
     title: Optional[str] = None
     image: Optional[str] = None
 
@@ -53,8 +53,8 @@ class Event:
 @dataclass
 class SingleEvent:
     date: Date
-    event: str
-    title: Optional[str]
+    event: Optional[str] = None
+    title: Optional[str] = None
     image: Optional[str] = None
 
     def __getitem__(self, key: str):
