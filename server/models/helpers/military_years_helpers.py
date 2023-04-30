@@ -249,42 +249,6 @@ def map_front_events(
                 "End of Service",
             )
 
-    if tunneller["death_type"] == "War":
-        if tunneller["death_cause"] == "Killed in action":
-            add_event(
-                tunneller["death_date"],
-                tunneller["death_circumstances"],
-                tunneller["death_cause"],
-            )
-        if tunneller["death_cause"] == "Died of wounds":
-            add_event(
-                tunneller["death_date"],
-                tunneller["death_circumstances"],
-                tunneller["death_cause"],
-            )
-        if tunneller["death_cause"] == "Died of disease":
-            add_event(
-                tunneller["death_date"],
-                "{}, {}".format(tunneller["death_location"], tunneller["death_town"]),
-                tunneller["death_cause"],
-            )
-        if tunneller["death_cause"] == "Died of accident":
-            add_event(
-                tunneller["death_date"],
-                "{}".format(tunneller["death_location"]),
-                tunneller["death_cause"],
-            )
-        add_event(
-            tunneller["death_date"],
-            "{}, {}".format(tunneller["cemetery"], tunneller["cemetery_town"]),
-            "Buried",
-        )
-        add_event(
-            tunneller["death_date"],
-            tunneller["grave"],
-            "Grave reference",
-        )
-
     event_start_date = min(event["date"] for event in main_tunneller_events)
     event_end_date = max(event["date"] for event in main_tunneller_events)
 
@@ -347,6 +311,50 @@ def map_front_events(
                 tunneller["posted_date"],
                 tunneller["training_location"],
                 "Trained",
+            )
+
+    if tunneller["death_type"] == "War":
+        if tunneller["death_cause"] == "Killed in action":
+            add_event(
+                tunneller["death_date"],
+                tunneller["death_circumstances"],
+                tunneller["death_cause"],
+            )
+        if tunneller["death_cause"] == "Died of wounds":
+            add_event(
+                tunneller["death_date"],
+                tunneller["death_circumstances"],
+                tunneller["death_cause"],
+            )
+        if tunneller["death_cause"] == "Died of disease":
+            add_event(
+                tunneller["death_date"],
+                "{}, {}".format(tunneller["death_location"], tunneller["death_town"]),
+                tunneller["death_cause"],
+            )
+        if tunneller["death_cause"] == "Died of accident":
+            add_event(
+                tunneller["death_date"],
+                "{}".format(tunneller["death_location"]),
+                tunneller["death_cause"],
+            )
+        add_event(
+            tunneller["death_date"],
+            "{}, {}".format(tunneller["cemetery"], tunneller["cemetery_town"]),
+            "Buried",
+        )
+        add_event(
+            tunneller["death_date"],
+            tunneller["grave"],
+            "Grave reference",
+        )
+
+    if tunneller["death_type"] == "War injuries":
+        if tunneller["death_cause"] == "Died of disease":
+            add_event(
+                tunneller["death_date"],
+                tunneller["death_circumstances"],
+                tunneller["death_cause"],
             )
 
     selected_and_tunneller_events: list[SingleEvent] = sorted(

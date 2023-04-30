@@ -27,7 +27,8 @@ export function Timeline() {
       return null;
     };
 
-    const circumstances = data.militaryYears.endOfService.deathWar?.cause?.circumstances;
+    const disease = data.militaryYears.endOfService.deathWar?.cause?.circumstances;
+    const warInjuries = data.postServiceYears.death?.cause?.circumstances;
 
     const timeline = frontEvents.map((event: Events) => (
       <div key={frontEvents.indexOf(event)}>
@@ -68,27 +69,37 @@ export function Timeline() {
               return (
                 <div key={event.event.indexOf(eventDetails)} className={STYLES['main-event']}>
                   <span>{title}</span>
-                  {title === 'Died of disease' && circumstances
+                  {title === 'Died of disease' && disease
                     ? (
-                      <span className={STYLES.circumstances}>{` (${circumstances})`}</span>
+                      <span className={STYLES.info}>{` (${disease})`}</span>
                     )
                     : null}
-                  {eventDetails.description && (title === 'Killed in action')
+                  {title === 'Died of disease' && warInjuries
+                    ? (
+                      <span className={STYLES['info-block']}>{warInjuries}</span>
+                    )
+                    : null}
+                  {title === 'Killed in action' && (eventDetails.description && place())
                     ? (
                       <>
                         <p>{eventDetails.description}</p>
-                        <span className={STYLES['place-with-description']}>{place()}</span>
+                        <span className={STYLES['info-block-with-description']}>{place()}</span>
                       </>
                     )
                     : null}
-                  {!eventDetails.description && (title === 'Killed in action')
+                  {title === 'Killed in action' && (!eventDetails.description && place())
                     ? (
-                      <span className={STYLES.place}>{place()}</span>
+                      <span className={STYLES['info-block']}>{place()}</span>
+                    )
+                    : null}
+                  {title === 'Killed in action' && (eventDetails.description && !place())
+                    ? (
+                      <p>{eventDetails.description}</p>
                     )
                     : null}
                   {title === 'Died of wounds'
                     ? (
-                      <span className={STYLES.place}>{place()}</span>
+                      <span className={STYLES['info-block']}>{place()}</span>
                     )
                     : null}
                 </div>
