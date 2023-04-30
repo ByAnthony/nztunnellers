@@ -69,9 +69,19 @@ export function Timeline() {
               return (
                 <div key={event.event.indexOf(eventDetails)} className={STYLES['main-event']}>
                   <span>{title}</span>
-                  {title === 'Died of disease' && disease
+                  {title === 'Died of disease' && (disease && place())
+                    ? (
+                      <>
+                        <span className={STYLES.info}>{` (${disease})`}</span>
+                        <span className={STYLES['info-block']}>{place()}</span>
+                      </>
+
+                    )
+                    : null}
+                  {title === 'Died of disease' && (disease && !place())
                     ? (
                       <span className={STYLES.info}>{` (${disease})`}</span>
+
                     )
                     : null}
                   {title === 'Died of disease' && warInjuries
