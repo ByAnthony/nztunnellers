@@ -56,21 +56,41 @@ export function Timeline() {
                 </div>
               );
             }
-            if (title && (title === 'Enlisted' || title === 'Killed in action' || title === 'Died of wounds' || title === 'Died of disease' || title === 'Died of accident')) {
+            if (title && title === 'Enlisted') {
               return (
                 <div key={event.event.indexOf(eventDetails)} className={STYLES['main-event']}>
                   <span>{title}</span>
-                  {title === 'Killed in action' || title === 'Died of wounds'
-                    ? (
-                      <span className={STYLES.place}>{place()}</span>
-                    )
-                    : null}
+                  <p>{eventDetails.description}</p>
+                </div>
+              );
+            }
+            if (title && (title === 'Killed in action' || title === 'Died of wounds' || title === 'Died of disease' || title === 'Died of accident')) {
+              return (
+                <div key={event.event.indexOf(eventDetails)} className={STYLES['main-event']}>
+                  <span>{title}</span>
                   {title === 'Died of disease' && circumstances
                     ? (
                       <span className={STYLES.circumstances}>{` (${circumstances})`}</span>
                     )
                     : null}
-                  {eventDetails.description ? <p>{eventDetails.description}</p> : null}
+                  {eventDetails.description && (title === 'Killed in action')
+                    ? (
+                      <>
+                        <p>{eventDetails.description}</p>
+                        <span className={STYLES['place-with-description']}>{place()}</span>
+                      </>
+                    )
+                    : null}
+                  {!eventDetails.description && (title === 'Killed in action')
+                    ? (
+                      <span className={STYLES.place}>{place()}</span>
+                    )
+                    : null}
+                  {title === 'Died of wounds'
+                    ? (
+                      <span className={STYLES.place}>{place()}</span>
+                    )
+                    : null}
                 </div>
               );
             }
