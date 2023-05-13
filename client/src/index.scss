@@ -8,7 +8,7 @@
 }
 
 $mobile: 32rem;
-$desktop: 64rem;
+$desktop: 50rem;
 $large-desktop: 96rem;
 
 @mixin tablet {
@@ -29,14 +29,6 @@ $large-desktop: 96rem;
   }
 }
 
-@mixin component-margin {
-  margin: $s-margin;
-
-  @include tablet {
-    margin: $m-margin;
-  }
-}
-
 $main-font: 'Mona Sans';
 
 $primary-dark-color: rgb(24, 26, 27);
@@ -52,8 +44,26 @@ $m-margin: 25px;
 $base-margin: 50px;
 $l-margin: 75px;
 $xl-margin: 100px;
+$xxl-margin: 150px;
+$xxxl-margin: 200px;
 
 $border-radius: 8px;
+
+@mixin component-margin {
+  margin: $s-margin;
+
+  @include tablet {
+    margin: $m-margin;
+  }
+
+  @include desktop {
+    margin: $base-margin;
+  }
+
+  @include large-desktop {
+    margin: $base-margin;
+  }
+}
 
 body {
   margin: 0 auto;
@@ -70,19 +80,24 @@ body {
 }
 
 h1 {
-  font-size: 2rem;
-  font-weight: 600;
+  font-size: 5rem;
+  font-stretch: 75%;
+  font-weight: 800;
+  line-height: 4rem;
 
   @include tablet {
-    font-size: 2.5rem;
+    font-size: 7.5rem;
+    line-height: 6rem;
   }
 
   @include desktop {
-    font-size: 2.75rem;
+    font-size: 10rem;
+    line-height: 8rem;
   }
 
   @include large-desktop {
-    font-size: 3rem;
+    font-size: 12rem;
+    line-height: 10rem;
   }
 }
 

@@ -60,8 +60,8 @@ export function Timeline() {
             if (title && title === 'Enlisted') {
               return (
                 <div key={event.event.indexOf(eventDetails)} className={STYLES['main-event']}>
-                  <span>{title}</span>
-                  <p>{eventDetails.description}</p>
+                  <p>{title}</p>
+                  <span>{eventDetails.description}</span>
                 </div>
               );
             }
@@ -118,8 +118,8 @@ export function Timeline() {
             if (title && (title === 'Buried' || title === 'Grave reference')) {
               return (
                 <div key={event.event.indexOf(eventDetails)} className={STYLES['tunneller-event-with-title']}>
-                  <span>{title}</span>
-                  <p>{eventDetails.description}</p>
+                  <p>{title}</p>
+                  <span>{eventDetails.description}</span>
                 </div>
               );
             }

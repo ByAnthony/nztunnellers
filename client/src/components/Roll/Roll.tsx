@@ -24,16 +24,16 @@ export function Roll() {
         <Menu />
         { isLoading }
         { isSuccess && (
-        <>
-          <div className={STYLES['alphabet-container']}>
-            <h1>Company Roll</h1>
+        <div className={STYLES['alphabet-container']}>
+          <h1>The Tunnellers</h1>
+          <div className={STYLES['roll-container']}>
             <div className={STYLES.alphabet}>
               {letters.map((letter) => <button type="button" key={letter} className={STYLES.letter} onClick={() => setFilterByLetter(letter)} aria-label={`Filter names by the letter ${letter}.`}>{letter}</button>)}
               <button type="button" key="All" className={STYLES.letter} onClick={() => setFilterByLetter('')} aria-label="Remove the names filter.">All</button>
             </div>
+            <RollAlphabet tunnellers={data} filterByLetter={filterByLetter} />
           </div>
-          <RollAlphabet tunnellers={data} filterByLetter={filterByLetter} />
-        </>
+        </div>
         )}
         <Footer />
       </>

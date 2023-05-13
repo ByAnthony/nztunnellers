@@ -7,9 +7,23 @@
     text-align: left;
   }
 
+  .roll-container {
+    display: block;
+
+    @include index.desktop {
+      display: flex;
+      gap: index.$l-margin;
+    }
+
+    @include index.large-desktop {
+      display: flex;
+      gap: index.$xxl-margin;
+    }
+  }
+
   .alphabet {
+    margin: index.$base-margin 0;
     width: 100%;
-    margin: index.$s-margin 0;
     display: grid;
     grid-template-columns: repeat(auto-fill, 30px);
     justify-content: space-between;
@@ -21,15 +35,25 @@
     }
 
     @include index.desktop {
-      margin: index.$xl-margin 0;
-      grid-template-columns: repeat(auto-fill, 35px);
-      grid-gap: index.$m-margin;
+      margin: 0;
+      width: 60%;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: index.$xs-margin;
+      justify-content: flex-start;
+      align-content: flex-start;
     }
 
     @include index.large-desktop {
-      margin: index.$xl-margin 0;
-      grid-template-columns: repeat(auto-fill, 45px);
-      grid-gap: index.$m-margin;
+      margin: 0;
+      width: 40%;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: index.$xs-margin;
+      justify-content: flex-start;
+      align-content: flex-start;
     }
 
     .letter {
@@ -46,13 +70,13 @@
       @include index.primary-button-link;
 
       @include index.tablet {
-        width: 32.5px;
-        font-size: 1.125rem;
+        width: 35px;
+        font-size: 1.25rem;
       }
 
       @include index.desktop {
-        width: 35px;
-        font-size: 1.25rem;
+        width: 45px;
+        font-size: 1.5rem;
       }
 
       @include index.large-desktop {
@@ -60,5 +84,16 @@
         font-size: 1.625rem;
       }
     }
+  }
+
+  @include index.tablet {
+  }
+
+  @include index.desktop {
+    margin-top: index.$xxxl-margin;
+  }
+
+  @include index.large-desktop {
+    margin-top: index.$xxxl-margin;
   }
 }
