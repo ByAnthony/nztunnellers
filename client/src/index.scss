@@ -83,11 +83,11 @@ h1 {
   font-size: 5rem;
   font-stretch: 75%;
   font-weight: 800;
-  line-height: 4rem;
+  line-height: 4.5rem;
 
   @include tablet {
     font-size: 7.5rem;
-    line-height: 6rem;
+    line-height: 6.5rem;
   }
 
   @include desktop {
