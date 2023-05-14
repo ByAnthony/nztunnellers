@@ -25,7 +25,10 @@ export function Roll() {
         { isLoading }
         { isSuccess && (
         <div className={STYLES['alphabet-container']}>
-          <h1>The Tunnellers</h1>
+          <h1>
+            <span className={STYLES['title-the']}>The</span>
+            Tunnellers
+          </h1>
           <div className={STYLES['roll-container']}>
             <div className={STYLES.alphabet}>
               {letters.map((letter) => <button type="button" key={letter} className={STYLES.letter} onClick={() => setFilterByLetter(letter)} aria-label={`Filter names by the letter ${letter}.`}>{letter}</button>)}
