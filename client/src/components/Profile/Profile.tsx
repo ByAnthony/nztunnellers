@@ -26,28 +26,35 @@ export function Profile() {
         <Menu />
         { isLoading }
         { isSuccess && (
-        <div className={STYLES.profile}>
-          <div>
-            <div className={STYLES.summary}>
-              <ProfileSummary
-                summary={data.summary}
-                embarkationUnit={data.militaryYears.embarkationUnit}
-                enlistment={data.militaryYears.enlistment}
+        <>
+          <div className={STYLES.link}>
+            <a href="/tunnellers">The Tunnellers</a>
+            <span>/</span>
+            {`${data.summary.name.forename} ${data.summary.name.surname}`}
+          </div>
+          <div className={STYLES.profile}>
+            <div>
+              <div className={STYLES.summary}>
+                <ProfileSummary
+                  summary={data.summary}
+                  embarkationUnit={data.militaryYears.embarkationUnit}
+                  enlistment={data.militaryYears.enlistment}
+                />
+              </div>
+            </div>
+            <div>
+              <ProfileDiary
+                tunnellerId={data.id}
+                origins={data.origins}
+                preWarYears={data.preWarYears}
+                militaryYears={data.militaryYears}
+                postWarYears={data.postServiceYears}
               />
+              <ProfileSources sources={data.sources} />
+              <ProfileHowToCite id={tunnellerId} summary={data.summary} />
             </div>
           </div>
-          <div>
-            <ProfileDiary
-              tunnellerId={data.id}
-              origins={data.origins}
-              preWarYears={data.preWarYears}
-              militaryYears={data.militaryYears}
-              postWarYears={data.postServiceYears}
-            />
-            <ProfileSources sources={data.sources} />
-            <ProfileHowToCite id={tunnellerId} summary={data.summary} />
-          </div>
-        </div>
+        </>
         )}
         <Footer />
       </>

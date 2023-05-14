@@ -1,8 +1,9 @@
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { EventDetails, Events } from '../../types/tunneller';
 import { useGetTunnellerByIdQuery } from '../../redux/slices/rollSlice';
 import STYLES from './Timeline.module.scss';
 import { Footer } from '../Footer/Footer';
+import { Menu } from '../Menu/Menu';
 
 export function Timeline() {
   const { id } = useParams();
@@ -149,15 +150,20 @@ export function Timeline() {
         </div>
         )}
         { isLoading }
+        <Menu />
         { isSuccess && (
         <div className={STYLES.timeline}>
-          <Link to={`/tunnellers/${tunnellerId}`} key={tunnellerId} aria-label={`Back to ${name.forename} ${name.surname} profile.`}>
-            <div className={STYLES.back}>
-              <div className={STYLES['arrow-left']}>&larr;</div>
-              <div className={STYLES.profile}>{`${name.forename} ${name.surname}`}</div>
-            </div>
-          </Link>
-          <h1>Timeline</h1>
+          <div className={STYLES.link}>
+            <a href="/tunnellers">The Tunnellers</a>
+            <span>/</span>
+            <a href={`/tunnellers/${tunnellerId}`}>{`${name.forename} ${name.surname}`}</a>
+            <span>/</span>
+            WWI Timeline
+          </div>
+          <h1>
+            <span className={STYLES['title-the']}>WWI</span>
+            Timeline
+          </h1>
           <div>
             <div className={STYLES.line}>
               {timeline}

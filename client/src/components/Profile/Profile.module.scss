@@ -1,5 +1,21 @@
 @use 'src/index.scss';
 
+.link {
+  @include index.component-margin;
+
+  margin-top: index.$base-margin;
+  font-size: 1rem;
+  line-height: 1.75rem;
+
+  a {
+    @include index.text-link;
+  }
+
+  span {
+    padding: 0 5px;
+  }
+}
+
 .profile {
   @include index.component-margin;
 

@@ -11,19 +11,40 @@
     font-size: 1rem;
   }
 
+  .title-the {
+    display: block;
+    font-size: 1.1rem;
+    line-height: 0.8rem;
+
+    @include index.tablet {
+      font-size: 2.2rem;
+      line-height: 1.5rem;
+    }
+
+    @include index.desktop {
+      font-size: 3rem;
+      line-height: 2.8rem;
+    }
+
+    @include index.large-desktop {
+      font-size: 3.5rem;
+      line-height: 2.8rem;
+    }
+  }
+
   @include index.component-margin;
 
-  .back {
-    margin: 0 0 index.$m-margin 0;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-    color: index.$text-color;
+  .link {
+    margin-top: index.$base-margin;
+    font-size: 1rem;
+    line-height: 1.75rem;
 
-    .profile {
-      font-size: 1.1rem;
-      font-weight: 500;
+    a {
+      @include index.text-link;
+    }
+
+    span {
+      padding: 0 5px;
     }
   }
 
