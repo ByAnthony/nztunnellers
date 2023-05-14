@@ -48,14 +48,10 @@
 }
 
 .overview {
-  margin-top: index.$s-margin;
+  margin-top: index.$m-margin;
   font-weight: 600;
   color: index.$text-color;
   text-align: left;
-
-  @include index.tablet {
-    margin-top: index.$xl-margin;
-  }
 
   p {
     margin: 0;

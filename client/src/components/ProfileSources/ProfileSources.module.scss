@@ -6,6 +6,10 @@
   p {
     margin: index.$m-margin 0;
     line-height: 1.25rem;
+
+    @include index.tablet {
+      line-height: 1.5rem;
+    }
   }
 
   a {
