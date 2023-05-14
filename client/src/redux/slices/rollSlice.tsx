@@ -10,11 +10,11 @@ export const tunnellersApi = createApi({
   endpoints: (builder) => ({
     getAllTunnellers: builder.query<Record<string, Array<Details>>, void>({
       query: () => ({
-        url: 'roll/',
+        url: 'tunnellers/',
       }),
     }),
     getTunnellerById: builder.query<Profile, number>({
-      query: (id: number) => `roll/${id}`,
+      query: (id: number) => `tunnellers/${id}`,
     }),
   }),
 });

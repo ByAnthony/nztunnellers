@@ -33,14 +33,14 @@ app.config["MYSQL_CURSORCLASS"] = "DictCursor"
 mysql = MySQL(app)
 
 
-@app.route("/roll/", methods=["GET"])
+@app.route("/tunnellers/", methods=["GET"])
 def roll():
     tunnellers = roll_repository.select_all(mysql)
     roll = json.dumps(tunnellers, cls=JSONEncoder, indent=4)
     return roll
 
 
-@app.route("/roll/<id>", methods=["GET"])
+@app.route("/tunnellers/<id>", methods=["GET"])
 def tunneller(id: int):
     lang = request.args.get("lang", "en")
     if lang not in ["en", "fr"]:

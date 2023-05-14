@@ -151,7 +151,7 @@ export function Timeline() {
         { isLoading }
         { isSuccess && (
         <div className={STYLES.timeline}>
-          <Link to={`/roll/${tunnellerId}`} key={tunnellerId} aria-label={`Back to ${name.forename} ${name.surname} profile.`}>
+          <Link to={`/tunnellers/${tunnellerId}`} key={tunnellerId} aria-label={`Back to ${name.forename} ${name.surname} profile.`}>
             <div className={STYLES.back}>
               <div className={STYLES['arrow-left']}>&larr;</div>
               <div className={STYLES.profile}>{`${name.forename} ${name.surname}`}</div>

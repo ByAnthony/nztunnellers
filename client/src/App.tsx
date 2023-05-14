@@ -22,9 +22,9 @@ export function App() {
       <Wrapper>
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/roll" element={<Roll />} />
-          <Route path="/roll/:id" element={<Profile />} />
-          <Route path="/roll/:id/wwi-timeline" element={<Timeline />} />
+          <Route path="/tunnellers" element={<Roll />} />
+          <Route path="/tunnellers/:id" element={<Profile />} />
+          <Route path="/tunnellers/:id/wwi-timeline" element={<Timeline />} />
           <Route path="/contact-us" />
           {/* <Route component={ErrorPage}/> */}
         </Routes>

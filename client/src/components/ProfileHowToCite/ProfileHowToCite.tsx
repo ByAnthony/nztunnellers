@@ -22,7 +22,7 @@ export function ProfileHowToCite({ id, summary }: props) {
           month: 'long',
           day: 'numeric',
         })}. `}
-        {`URL: www.nztunnellers.com/roll/${id}.`}
+        {`URL: www.nztunnellers.com/tunnellers/${id}.`}
       </p>
     </div>
   );

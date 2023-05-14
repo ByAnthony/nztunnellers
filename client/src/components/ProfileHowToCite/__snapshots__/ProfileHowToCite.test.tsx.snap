@@ -9,11 +9,11 @@ exports[`renders the component 1`] = `
       How to cite this page
     </h3>
     <p>
-      Anthony Byledbal, "John Doe (1888-1975)", 
+      Anthony Byledbal, "John Doe (1888-1975)",
       <em>
         New Zealand Tunnellers Website
       </em>
-      , 2023 (2009), Accessed: 15 April 2023. URL: www.nztunnellers.com/roll/26.
+      , 2023 (2009), Accessed: 14 May 2023. URL: www.nztunnellers.com/tunnellers/26.
     </p>
   </div>
 </DocumentFragment>
