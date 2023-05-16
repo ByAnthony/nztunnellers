@@ -15,6 +15,11 @@ export function Profile() {
     data, error, isLoading, isSuccess,
   } = useGetTunnellerByIdQuery(tunnellerId);
 
+  const displayBirthDeathDates = (
+    birth: string,
+    death: string | null,
+  ) => (death ? `${birth} - ${death}` : `${birth} - †?`);
+
   if (data) {
     return (
       <>
@@ -27,16 +32,24 @@ export function Profile() {
         { isLoading }
         { isSuccess && (
         <>
-          <div className={STYLES.link}>
-            <a href="/tunnellers">The Tunnellers</a>
-            <span>/</span>
-            {`${data.summary.name.forename} ${data.summary.name.surname}`}
+          <div className={STYLES.header}>
+            <div className={STYLES.link}>
+              <a href="/tunnellers">The Tunnellers</a>
+              <span>/</span>
+              {`${data.summary.name.forename} ${data.summary.name.surname}`}
+            </div>
+            <h1>
+              <span className={STYLES.forename}>{ data.summary.name.forename }</span>
+              <span className={STYLES.surname}>{ data.summary.name.surname }</span>
+            </h1>
+            <p className={STYLES.dates}>
+              { displayBirthDeathDates(data.summary.birth, data.summary.death) }
+            </p>
           </div>
           <div className={STYLES.profile}>
             <div>
               <div className={STYLES.summary}>
                 <ProfileSummary
-                  summary={data.summary}
                   embarkationUnit={data.militaryYears.embarkationUnit}
                   enlistment={data.militaryYears.enlistment}
                 />

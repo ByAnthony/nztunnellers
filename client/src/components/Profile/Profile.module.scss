@@ -1,22 +1,84 @@
 @use 'src/index.scss';
 
-.link {
+.header {
+  margin-top: index.$base-margin;
+  text-align: left;
+
   @include index.component-margin;
 
-  margin-top: index.$base-margin;
-  font-size: 1rem;
-  line-height: 1.75rem;
-
-  a {
-    @include index.text-link;
-  }
-
-  span {
-    padding: 0 5px;
-  }
-
   @include index.tablet {
-    margin-top: index.$base-margin;
+    text-align: left;
+  }
+
+  @include index.desktop {
+    text-align: left;
+  }
+
+  @include index.large-desktop {
+    text-align: left;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    font-weight: 300;
+    font-stretch: 90%;
+    line-height: normal;
+
+    @include index.tablet {
+      font-size: 3rem;
+    }
+
+    @include index.desktop {
+      font-size: 3.5rem;
+    }
+
+    @include index.large-desktop {
+      font-size: 4rem;
+    }
+  }
+
+  .link {
+    font-size: 1rem;
+    line-height: 1.75rem;
+
+    a {
+      @include index.text-link;
+    }
+
+    span {
+      padding: 0 5px;
+    }
+
+    @include index.tablet {
+      margin-top: index.$base-margin;
+    }
+  }
+
+  .forename {
+    line-height: normal;
+  }
+
+  .surname {
+    display: block;
+    font-weight: 600;
+  }
+
+  .dates {
+    margin-top: index.$s-margin;
+    font-size: 1.25rem;
+    font-weight: 300;
+
+    @include index.tablet {
+      font-size: 1.35rem;
+    }
+
+    @include index.desktop {
+      font-size: 1.5rem;
+    }
+
+    @include index.large-desktop {
+      font-size: 1.625rem;
+    }
   }
 }
 
@@ -25,24 +87,22 @@
 
   @include index.desktop {
     display: grid;
-    gap: index.$m-margin;
+    gap: index.$l-margin;
     grid-template-columns: 40% auto;
   }
 
   @include index.large-desktop {
     display: grid;
-    gap: index.$m-margin;
-    grid-template-columns: 45% auto;
+    gap: index.$xl-margin;
+    grid-template-columns: 30% auto;
   }
 
   .summary {
     @include index.desktop {
-      margin-right: index.$l-margin;
       text-align: left;
     }
 
     @include index.large-desktop {
-      margin-right: index.$l-margin;
       text-align: left;
     }
   }

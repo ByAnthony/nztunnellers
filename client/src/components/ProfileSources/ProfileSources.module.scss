@@ -10,6 +10,14 @@
     @include index.tablet {
       line-height: 1.5rem;
     }
+
+    @include index.desktop {
+      line-height: 1.6rem;
+    }
+
+    @include index.large-desktop {
+      line-height: 1.75rem;
+    }
   }
 
   a {

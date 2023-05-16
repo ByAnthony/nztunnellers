@@ -1,11 +1,24 @@
 @use 'src/index.scss';
 
 .menu {
+  margin-top: index.$s-margin;
   display: flex;
   justify-content: center;
   align-items: center;
 
   @include index.component-margin;
+
+  @include index.tablet {
+    margin-top: index.$m-margin;
+  }
+
+  @include index.desktop {
+    margin-top: index.$base-margin;
+  }
+
+  @include index.large-desktop {
+    margin-top: index.$base-margin;
+  }
 
   .logo img {
     height: 35px;
