@@ -119,7 +119,7 @@ h2 {
   }
 
   @include large-desktop {
-    font-size: 1.7rem;
+    font-size: 2rem;
   }
 }
 
@@ -151,11 +151,11 @@ p {
   }
 
   @include desktop {
-    font-size: 1rem;
+    font-size: 1.1rem;
   }
 
   @include large-desktop {
-    font-size: 1.15rem;
+    font-size: 1.25rem;
   }
 }
 
@@ -294,7 +294,7 @@ $padding-card: 30px 30px 27px 30px;
 
   @include large-desktop {
     padding: $padding-card;
-    font-size: 1.5rem;
+    font-size: 1.95rem;
   }
 }
 
@@ -348,7 +348,7 @@ $padding-card: 30px 30px 27px 30px;
 
   @include large-desktop {
     padding: $padding-card;
-    font-size: 1.25rem;
+    font-size: 1.35rem;
   }
 }
 

@@ -6,6 +6,8 @@
   color: index.$text-color;
   text-align: left;
 
+  @include index.component-margin;
+
   p {
     margin: 0;
     font-size: 1rem;
@@ -22,17 +24,15 @@
     }
 
     @include index.desktop {
-      font-size: 3rem;
-      line-height: 2.8rem;
+      font-size: 2.3rem;
+      line-height: 2.5rem;
     }
 
     @include index.large-desktop {
-      font-size: 3.5rem;
-      line-height: 2.8rem;
+      font-size: 2.7rem;
+      line-height: 2.7rem;
     }
   }
-
-  @include index.component-margin;
 
   .link {
     margin-top: index.$base-margin;
@@ -51,6 +51,14 @@
   .line {
     border-left: 1px solid index.$primary-light-color;
     margin-left: index.$m-margin;
+
+    @include index.desktop {
+      margin: 0 index.$xxl-margin;
+    }
+
+    @include index.large-desktop {
+      margin: 0 300px;
+    }
   }
 
   .date {
