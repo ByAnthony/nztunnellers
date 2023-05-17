@@ -70,11 +70,13 @@
     margin-left: index.$m-margin;
 
     @include index.desktop {
-      margin: 0 index.$xxl-margin;
+      margin-left: 175px;
+      margin-right: index.$xxl-margin;
     }
 
     @include index.large-desktop {
-      margin: 0 300px;
+      margin-left: 325px;
+      margin-right: 300px;
     }
   }
 
