@@ -11,6 +11,10 @@
   p {
     margin: 0;
     font-size: 1rem;
+
+    @include index.desktop {
+      font-size: 1.1rem;
+    }
   }
 
   .title-the {
@@ -69,11 +73,19 @@
     .year {
       font-size: 1.15rem;
       font-weight: 600;
+
+      @include index.desktop {
+        font-size: 1.25rem;
+      }
     }
 
     .day-month {
       font-size: 1.1rem;
       font-weight: 300;
+
+      @include index.desktop {
+        font-size: 1.2rem;
+      }
     }
   }
 
@@ -89,12 +101,20 @@
     .info {
       font-size: 1rem;
       font-weight: 300;
+
+      @include index.desktop {
+        font-size: 1.1rem;
+      }
     }
 
     .info-block {
       display: block;
       font-size: 1rem;
       font-weight: 300;
+
+      @include index.desktop {
+        font-size: 1.1rem;
+      }
     }
 
     .info-block-with-description {
@@ -102,6 +122,10 @@
       padding-top: index.$xs-margin;
       font-size: 1rem;
       font-weight: 300;
+
+      @include index.desktop {
+        font-size: 1.1rem;
+      }
     }
   }
 
@@ -113,6 +137,12 @@
 
     p {
       padding: index.$s-margin;
+      line-height: 1.4rem;
+
+      @include index.desktop {
+        font-size: 1.1rem;
+        line-height: 1.5rem;
+      }
     }
 
     img {
@@ -142,6 +172,10 @@
 
     p {
       font-size: 1rem;
+
+      @include index.desktop {
+        font-size: 1.1rem;
+      }
     }
 
     span {
