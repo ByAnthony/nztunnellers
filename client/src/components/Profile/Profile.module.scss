@@ -94,15 +94,13 @@
   @include index.component-margin;
 
   @include index.desktop {
-    display: grid;
+    display: flex;
     gap: index.$l-margin;
-    grid-template-columns: 40% auto;
   }
 
   @include index.large-desktop {
-    display: grid;
-    gap: index.$xl-margin;
-    grid-template-columns: 30% auto;
+    display: flex;
+    gap: index.$l-margin;
   }
 
   .summary {
@@ -111,6 +109,7 @@
     }
 
     @include index.large-desktop {
+      width: 500px;
       text-align: left;
     }
   }
