@@ -47,6 +47,15 @@
     font-size: 1rem;
     line-height: 1.75rem;
 
+    @include index.desktop {
+      margin-top: index.$l-margin;
+    }
+
+    @include index.large-desktop {
+      margin-top: index.$xl-margin;
+      font-size: 1.25rem;
+    }
+
     a {
       @include index.text-link;
     }
