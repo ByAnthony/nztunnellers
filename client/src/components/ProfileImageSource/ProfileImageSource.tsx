@@ -12,7 +12,7 @@ export function ProfileImageSource({ source }: props) {
       return (
         <>
           {title}
-          <p>{`${imageSource.archives.reference}, ${imageSource.archives.location}.`}</p>
+          <p>{`${imageSource.archives.location}, ${imageSource.archives.reference}.`}</p>
         </>
       );
     }
@@ -35,7 +35,7 @@ export function ProfileImageSource({ source }: props) {
       return (
         <>
           {title}
-          <p>{`${imageSource?.family}.`}</p>
+          <p>{`Courtesy of ${imageSource?.family}.`}</p>
         </>
       );
     }
