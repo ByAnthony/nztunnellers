@@ -3,6 +3,7 @@ import { useGetTunnellerByIdQuery } from '../../redux/slices/rollSlice';
 import { Menu } from '../Menu/Menu';
 import { ProfileHowToCite } from '../ProfileHowToCite/ProfileHowToCite';
 import { ProfileDiary } from '../ProfileDiary/ProfileDiary';
+import { ProfileImageSource } from '../ProfileImageSource/ProfileImageSource';
 import { ProfileSources } from '../ProfileSources/ProfileSources';
 import { ProfileSummary } from '../ProfileSummary/ProfileSummary';
 import STYLES from './Profile.module.scss';
@@ -65,6 +66,7 @@ export function Profile() {
                 postWarYears={data.postServiceYears}
               />
               <ProfileSources sources={data.sources} />
+              <ProfileImageSource source={data.image?.source} />
               <ProfileHowToCite id={tunnellerId} summary={data.summary} />
             </div>
           </div>
