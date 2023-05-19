@@ -8,6 +8,7 @@ import { DiaryBirth } from '../DiaryBirthInfo/DiaryBirthInfo';
 import { DiaryDied } from '../DiaryDied/DiaryDied';
 import { DiaryHometown } from '../DiaryHometown/DiaryHometown';
 import { DiaryLife } from '../DiaryLife/DiaryLife';
+import { DiaryMedal } from '../DiaryMedal/DiaryMedal';
 import { DiaryParents } from '../DiaryParents/DiaryParents';
 import { DiaryWork } from '../DiaryWork/DiaryWork';
 import STYLES from './ProfileDiary.module.scss';
@@ -37,6 +38,7 @@ export function ProfileDiary({
       <DiaryWork employment={preWarYears.employment} />
       <DiaryLife maritalStatus={preWarYears.maritalStatus} wife={preWarYears.wife} />
       <DiaryArmyExperience tunnellerId={tunnellerId} armyExperience={preWarYears.armyExperience} />
+      <DiaryMedal medals={militaryYears.medals} />
       <DiaryDied
         warDeath={militaryYears.endOfService.deathWar}
         afterWarDeath={postWarYears.death}

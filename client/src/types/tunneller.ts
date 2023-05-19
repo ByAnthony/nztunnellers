@@ -141,6 +141,7 @@ export type EndOfService = {
 export type Medal = {
     name: string,
     country: string,
+    image: string,
     citation: string | null,
 }
 

@@ -11,6 +11,7 @@ def medals_query(lang: str) -> str:
         {medal_name_col[lang]} AS name
         , {country_col[lang]} AS country
         , {medal_citation_col[lang]} AS citation
+        , medal_image AS image
 
         FROM medal
 

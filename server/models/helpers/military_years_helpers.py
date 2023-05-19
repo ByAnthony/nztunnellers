@@ -386,5 +386,6 @@ def map_front_events(
 
 def map_medals(medals: list[Medal]) -> list[Medal]:
     return [
-        Medal(medal["name"], medal["country"], medal["citation"]) for medal in medals
+        Medal(medal["name"], medal["country"], medal["image"], medal["citation"])
+        for medal in medals
     ]

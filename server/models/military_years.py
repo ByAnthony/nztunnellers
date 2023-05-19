@@ -16,6 +16,7 @@ class Transferred:
 class Medal:
     name: str
     country: str
+    image: str
     citation: Optional[str] = None
 
     def __getitem__(self, key: str):

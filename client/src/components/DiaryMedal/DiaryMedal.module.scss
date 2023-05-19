@@ -1,0 +1,43 @@
+@use 'src/index.scss';
+
+.other-medal {
+  font-size: 1rem;
+
+  @include index.fullwidth-main-card;
+
+  border-bottom: 1px solid index.$primary-light-color;
+  background-color: index.$primary-dark-color;
+
+  @include index.tablet {
+    font-size: 1.1rem;
+  }
+
+  @include index.desktop {
+    font-size: 1.15rem;
+  }
+
+  @include index.large-desktop {
+    font-size: 1.35rem;
+  }
+
+  p {
+    margin-bottom: index.$xs-margin;
+  }
+}
+
+.citation {
+  margin-top: 5px;
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.6rem;
+
+  @include index.desktop {
+    font-size: 1.1rem;
+    line-height: 1.6rem;
+  }
+
+  @include index.large-desktop {
+    font-size: 1.25rem;
+    line-height: 2rem;
+  }
+}
