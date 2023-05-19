@@ -1,82 +1,122 @@
 @use 'src/index.scss';
 
 .footer {
-  font-weight: 600;
-  margin: index.$base-margin index.$xs-margin index.$xs-margin;
-  padding: index.$xs-margin;
-  border-radius: index.$border-radius;
-  background-color: rgb(34, 36, 37);
+  margin-top: index.$l-margin;
+  margin-bottom: index.$m-margin;
+  border-top: 1px solid index.$primary-light-color;
+
+  @include index.component-margin;
 
   @include index.tablet {
-    margin: index.$base-margin index.$m-margin index.$m-margin;
+    margin-bottom: index.$m-margin;
+  }
+
+  @include index.desktop {
+    margin-bottom: index.$base-margin;
+  }
+
+  @include index.large-desktop {
+    margin-bottom: index.$base-margin;
+  }
+
+  p {
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-align: center;
   }
 
   .support {
-    p {
-      margin: 0;
-    }
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    border-bottom: 1px solid index.$primary-light-color;
 
     img {
-      width: 80px;
+      margin: index.$base-margin 0;
+      width: 90px;
       text-align: center;
-    }
 
-    .fullwidth-main-card {
-      @include index.fullwidth-main-card;
+      @include index.tablet {
+        width: 125px;
+      }
 
-      margin-top: 0;
-      background-color: index.$primary-medium-color;
-    }
+      @include index.desktop {
+        width: 125px;
+      }
 
-    .halfwidth-cards-container {
-      @include index.halfwidth-cards-container;
-    }
-
-    .halfwidth-secondary-card {
-      @include index.halfwidth-card-style;
-      @include index.halfwidth-secondary-card;
-      @include index.featured-button-link;
-
-      justify-content: center;
-      align-content: center;
-    }
-
-    .halfwidth-secondary-card-title {
-      @include index.halfwidth-secondary-card-title;
+      @include index.large-desktop {
+        width: 150px;
+      }
     }
   }
 
-  .links {
+  .map {
+    margin-top: index.$base-margin;
     display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: flex-end;
-    align-content: center;
+    justify-content: space-between;
+    align-items: flex-end;
 
-    p {
-      font-size: 1.1rem;
-      font-weight: 600;
-      text-align: center;
-      color: index.$secondary-color;
+    @include index.tablet {
+      align-items: center;
     }
 
-    .fullwidth-main-card {
-      @include index.featured-button-link;
-
-      margin: 0 index.$xs-margin 0 0;
-      width: 100%;
+    @include index.desktop {
+      align-items: center;
     }
 
-    .scroll-top {
+    @include index.large-desktop {
+      align-items: center;
+    }
+
+    a {
+      padding-bottom: 4px;
+      font-weight: 500;
+      color: index.$text-color;
+      transition: color 0.9s ease-in-out, color 0.9s ease-in-out,
+        border-bottom 0.9s ease-in-out, border-bottom 0.9s ease-in-out;
+
+      &:hover {
+        padding-bottom: 4px;
+        color: index.$secondary-color;
+      }
+    }
+
+    .link {
       width: fit-content;
-      padding: 6px 22px;
-      font-family: index.$main-font;
-      font-size: 2rem;
-      font-weight: 300;
-      text-align: center;
-      color: index.$secondary-color;
+      display: flex;
+      flex-direction: column;
+      gap: index.$xs-margin;
 
-      @include index.featured-button-link;
+      @include index.tablet {
+        flex-direction: row;
+        gap: index.$base-margin;
+      }
+
+      @include index.desktop {
+        flex-direction: row;
+        gap: index.$l-margin;
+      }
+
+      @include index.large-desktop {
+        flex-direction: row;
+        gap: index.$xl-margin;
+      }
     }
+  }
+
+  button {
+    padding: 8px 20px 6px 20px;
+    font-family: index.$main-font;
+    font-size: 2.5rem;
+    font-weight: 200;
+    text-align: center;
+    color: index.$secondary-color;
+    border: 1px solid rgb(64, 66, 67);
+    border-radius: index.$border-radius;
+    background-color: index.$primary-light-color;
+    transition: border-bottom 0.9s ease-in-out, border-bottom 0.9s ease-in-out,
+      border 0.9s ease-in-out, border 0.9s ease-in-out,
+      background-color 0.9s ease-in-out, background-color 0.9s ease-in-out;
+    cursor: pointer;
   }
 }

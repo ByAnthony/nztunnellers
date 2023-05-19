@@ -35,7 +35,7 @@ export function Profile() {
         <>
           <div className={STYLES.header}>
             <div className={STYLES.link}>
-              <a href="/tunnellers">The Tunnellers</a>
+              <a href="/tunnellers">Tunnellers</a>
               <span>/</span>
               {`${data.summary.name.forename} ${data.summary.name.surname}`}
             </div>

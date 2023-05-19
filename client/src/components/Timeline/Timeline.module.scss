@@ -1,12 +1,24 @@
 @use 'src/index.scss';
 
 .timeline {
-  margin-bottom: index.$m-margin;
+  margin-bottom: index.$l-margin;
   font-weight: 600;
   color: index.$text-color;
   text-align: left;
 
   @include index.component-margin;
+
+  @include index.tablet {
+    margin-bottom: index.$xl-margin;
+  }
+
+  @include index.desktop {
+    margin-bottom: index.$xl-margin;
+  }
+
+  @include index.large-desktop {
+    margin-bottom: index.$xl-margin;
+  }
 
   p {
     margin: 0;

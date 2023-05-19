@@ -154,7 +154,7 @@ export function Timeline() {
         { isSuccess && (
         <div className={STYLES.timeline}>
           <div className={STYLES.link}>
-            <a href="/tunnellers">The Tunnellers</a>
+            <a href="/tunnellers">Tunnellers</a>
             <span>/</span>
             <a href={`/tunnellers/${tunnellerId}`}>{`${name.forename} ${name.surname}`}</a>
             <span>/</span>
