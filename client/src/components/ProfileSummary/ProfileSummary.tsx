@@ -9,12 +9,11 @@ type props = {
 
 export function ProfileSummary({ embarkationUnit, enlistment, image }: props) {
   const displayImage = (imageUrl: string | undefined) => (
-    imageUrl
-      ? (
-        <div className={STYLES['image-card']}>
-          <img src={`/images/roll/tunnellers/${image?.url}`} alt="" />
-        </div>
-      ) : null);
+    imageUrl ? (
+      <div className={STYLES['image-card']}>
+        <img src={`/images/roll/tunnellers/${image?.url}`} alt="" />
+      </div>
+    ) : null);
 
   const displayUnit = (
     unit: string,
