@@ -1,12 +1,21 @@
-import type { EmbarkationUnit, Enlistment } from '../../types/tunneller';
+import type { EmbarkationUnit, Enlistment, Image } from '../../types/tunneller';
 import STYLES from './ProfileSummary.module.scss';
 
 type props = {
     embarkationUnit: EmbarkationUnit,
     enlistment: Enlistment,
+    image: Image | null,
 }
 
-export function ProfileSummary({ embarkationUnit, enlistment }: props) {
+export function ProfileSummary({ embarkationUnit, enlistment, image }: props) {
+  const displayImage = (imageUrl: string | undefined) => (
+    imageUrl
+      ? (
+        <div className={STYLES['image-card']}>
+          <img src={`/images/roll/tunnellers/${image?.url}`} alt="" />
+        </div>
+      ) : null);
+
   const displayUnit = (
     unit: string,
     section: string | null,
@@ -35,6 +44,7 @@ export function ProfileSummary({ embarkationUnit, enlistment }: props) {
 
   return (
     <div className={STYLES.overview}>
+      { displayImage(image?.url) }
       { displayUnit(embarkationUnit.detachment, embarkationUnit.section) }
       <div className={STYLES['halfwidth-cards-container']}>
         <div className={STYLES['halfwidth-secondary-card']}>

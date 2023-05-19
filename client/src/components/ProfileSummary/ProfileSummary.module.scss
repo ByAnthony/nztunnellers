@@ -28,4 +28,14 @@
   .halfwidth-secondary-card-title {
     @include index.halfwidth-secondary-card-title;
   }
+
+  .image-card {
+    line-height: 0;
+
+    img {
+      width: 100%;
+      border-radius: index.$border-radius;
+      border: 1px solid index.$primary-light-color;
+    }
+  }
 }

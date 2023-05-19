@@ -52,6 +52,7 @@ export function Profile() {
                 <ProfileSummary
                   embarkationUnit={data.militaryYears.embarkationUnit}
                   enlistment={data.militaryYears.enlistment}
+                  image={data.image}
                 />
               </div>
             </div>
