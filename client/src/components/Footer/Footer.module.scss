@@ -1,7 +1,7 @@
 @use 'src/index.scss';
 
 .footer {
-  margin-top: index.$l-margin;
+  margin-top: index.$base-margin;
   margin-bottom: index.$m-margin;
   border-top: 1px solid index.$primary-light-color;
 
@@ -25,67 +25,35 @@
     text-align: center;
   }
 
-  .support {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    border-bottom: 1px solid index.$primary-light-color;
-
-    img {
-      margin: index.$base-margin 0;
-      width: 90px;
-      text-align: center;
-
-      @include index.tablet {
-        width: 125px;
-      }
-
-      @include index.desktop {
-        width: 125px;
-      }
-
-      @include index.large-desktop {
-        width: 150px;
-      }
-    }
-  }
-
   .map {
     margin-top: index.$base-margin;
+    margin-bottom: index.$base-margin;
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
 
     @include index.tablet {
+      margin-top: index.$m-margin;
+      margin-bottom: index.$m-margin;
       align-items: center;
     }
 
     @include index.desktop {
+      margin-top: index.$base-margin;
+      margin-bottom: index.$base-margin;
       align-items: center;
     }
 
     @include index.large-desktop {
+      margin-top: index.$base-margin;
+      margin-bottom: index.$base-margin;
       align-items: center;
     }
 
-    a {
-      padding-bottom: 4px;
-      font-weight: 500;
-      color: index.$text-color;
-      transition: color 0.9s ease-in-out, color 0.9s ease-in-out,
-        border-bottom 0.9s ease-in-out, border-bottom 0.9s ease-in-out;
-
-      &:hover {
-        padding-bottom: 4px;
-        color: index.$secondary-color;
-      }
-    }
-
-    .link {
-      width: fit-content;
-      display: flex;
+    .links {
+      display: inline-flex;
       flex-direction: column;
-      gap: index.$xs-margin;
+      gap: index.$s-margin;
 
       @include index.tablet {
         flex-direction: row;
@@ -100,6 +68,30 @@
       @include index.large-desktop {
         flex-direction: row;
         gap: index.$xl-margin;
+      }
+    }
+
+    .link a {
+      padding-bottom: 4px;
+      font-size: 1rem;
+      font-weight: 500;
+      color: index.$text-color;
+      border-bottom: 1px solid index.$secondary-color;
+      transition: color 0.9s ease-in-out, color 0.9s ease-in-out,
+        border-bottom 0.9s ease-in-out, border-bottom 0.9s ease-in-out;
+
+      @include index.desktop {
+        font-size: 1.1rem;
+      }
+
+      @include index.large-desktop {
+        font-size: 1.1rem;
+      }
+
+      &:hover {
+        padding-bottom: 4px;
+        border-bottom: 1px solid index.$secondary-color;
+        color: index.$secondary-color;
       }
     }
   }
@@ -118,5 +110,42 @@
       border 0.9s ease-in-out, border 0.9s ease-in-out,
       background-color 0.9s ease-in-out, background-color 0.9s ease-in-out;
     cursor: pointer;
+  }
+
+  .support {
+    padding-top: index.$m-margin;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    border-top: 1px solid index.$primary-light-color;
+
+    @include index.tablet {
+      padding-top: index.$m-margin;
+    }
+
+    @include index.desktop {
+      padding-top: index.$base-margin;
+    }
+
+    @include index.large-desktop {
+      padding-top: index.$base-margin;
+    }
+
+    img {
+      width: 100px;
+      text-align: center;
+
+      @include index.tablet {
+        width: 125px;
+      }
+
+      @include index.desktop {
+        width: 125px;
+      }
+
+      @include index.large-desktop {
+        width: 150px;
+      }
+    }
   }
 }
