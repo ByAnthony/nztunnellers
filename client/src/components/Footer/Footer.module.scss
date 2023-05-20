@@ -3,7 +3,6 @@
 .footer {
   margin-top: index.$base-margin;
   margin-bottom: index.$m-margin;
-  border-top: 1px solid index.$primary-light-color;
 
   @include index.component-margin;
 
@@ -26,27 +25,29 @@
   }
 
   .map {
-    margin-top: index.$base-margin;
-    margin-bottom: index.$base-margin;
+    padding-top: index.$m-margin;
+    padding-bottom: index.$m-margin;
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
+    border-top: 1px solid index.$primary-light-color;
+    border-bottom: 1px solid index.$primary-light-color;
 
     @include index.tablet {
-      margin-top: index.$m-margin;
-      margin-bottom: index.$m-margin;
+      padding-top: index.$m-margin;
+      padding-bottom: index.$m-margin;
       align-items: center;
     }
 
     @include index.desktop {
-      margin-top: index.$base-margin;
-      margin-bottom: index.$base-margin;
+      padding-top: index.$base-margin;
+      padding-bottom: index.$base-margin;
       align-items: center;
     }
 
     @include index.large-desktop {
-      margin-top: index.$base-margin;
-      margin-bottom: index.$base-margin;
+      padding-top: index.$base-margin;
+      padding-bottom: index.$base-margin;
       align-items: center;
     }
 
@@ -117,18 +118,23 @@
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    border-top: 1px solid index.$primary-light-color;
 
     @include index.tablet {
       padding-top: index.$m-margin;
+      justify-content: center;
+      gap: index.$l-margin;
     }
 
     @include index.desktop {
       padding-top: index.$base-margin;
+      justify-content: center;
+      gap: index.$xl-margin;
     }
 
     @include index.large-desktop {
       padding-top: index.$base-margin;
+      justify-content: center;
+      gap: index.$xxl-margin;
     }
 
     img {
