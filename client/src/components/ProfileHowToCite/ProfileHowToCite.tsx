@@ -1,23 +1,23 @@
 import type { Summary } from '../../types/tunneller';
-import { today } from '../../utils/utils';
 import STYLES from './ProfileHowToCite.module.scss';
 
 type props = {
   id: number;
   summary: Summary;
+  date: Date;
 };
 
-export function ProfileHowToCite({ id, summary }: props) {
+export function ProfileHowToCite({ id, summary, date }: props) {
   const displayBirthDeathDates = (birth: string, death: string | null) => (death ? `${birth}-${death}` : `${birth}-†?`);
   return (
     <div className={STYLES.howtocite}>
       <h3>How to cite this page</h3>
-      <p>
+      <p data-testid="howtocite">
         {`Anthony Byledbal, "${summary.name.forename} ${summary.name.surname} `}
         {`(${displayBirthDeathDates(summary.birth, summary.death)})", `}
         <em>New Zealand Tunnellers Website</em>
-        {`, ${today.getFullYear()} (2009), Accessed: `}
-        {`${today.toLocaleDateString('en-NZ', {
+        {`, ${date.getFullYear()} (2009), Accessed: `}
+        {`${date.toLocaleDateString('en-NZ', {
           year: 'numeric',
           month: 'long',
           day: 'numeric',

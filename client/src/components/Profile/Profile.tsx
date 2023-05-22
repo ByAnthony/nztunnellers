@@ -8,6 +8,7 @@ import { ProfileSources } from '../ProfileSources/ProfileSources';
 import { ProfileSummary } from '../ProfileSummary/ProfileSummary';
 import STYLES from './Profile.module.scss';
 import { Footer } from '../Footer/Footer';
+import { today } from '../../utils/utils';
 
 export function Profile() {
   const { id } = useParams();
@@ -67,7 +68,7 @@ export function Profile() {
               />
               <ProfileSources sources={data.sources} />
               <ProfileImageSource source={data.image?.source} />
-              <ProfileHowToCite id={tunnellerId} summary={data.summary} />
+              <ProfileHowToCite id={tunnellerId} summary={data.summary} date={today} />
             </div>
           </div>
         </>
