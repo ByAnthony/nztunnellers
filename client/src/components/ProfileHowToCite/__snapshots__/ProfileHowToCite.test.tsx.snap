@@ -11,7 +11,7 @@ exports[`renders the component correctly 1`] = `
     <p
       data-testid="howtocite"
     >
-      Anthony Byledbal, "John Doe (1888-1975)",
+      Anthony Byledbal, "John Doe (1888-1975)", 
       <em>
         New Zealand Tunnellers Website
       </em>

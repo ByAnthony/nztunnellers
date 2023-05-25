@@ -11,7 +11,7 @@ type RecordWithIbid<T> = T & { ibid: string };
 
 export function ProfileSources({ sources }: props) {
   const getAwmm = (awmmCenotaph: string) => (
-    <p>
+    <p data-testid="awmm">
       Auckland War Memorial Museum Tāmaki Paenga Hira:
       {' '}
       <a href={awmmCenotaph}>Online Cenotaph He Toa Taumata Rau</a>
@@ -31,7 +31,7 @@ export function ProfileSources({ sources }: props) {
     if (londonGazette.length !== 0) {
       const LondonGazetteList = [...addIbid([londonGazette[0]], 0, 'London Gazette, '), ...addIbid(londonGazette, 1, 'Ibid., ')];
       return LondonGazetteList.map((gazette) => (
-        <p key={gazette.page}>
+        <p key={gazette.page} data-testid="london-gazette">
           <em>{gazette.ibid}</em>
           {gazette.date}
           {', '}
@@ -48,7 +48,7 @@ export function ProfileSources({ sources }: props) {
     const nzArchivesList = [...addIbid([nzArchives[0]], 0, 'New Zealand Archives Te Rua Mahara o te Kāwanatanga, '), ...addIbid(nzArchives, 1, 'Ibid., ')];
     const italicIbid = (ibid: string) => (ibid === 'Ibid., ' ? <em>{ibid}</em> : ibid);
     return nzArchivesList.map((archives) => (
-      <p key={archives.reference}>
+      <p key={archives.reference} data-testid="nz-archives">
         {italicIbid(archives.ibid)}
         {archives.reference}
         {', '}
@@ -64,7 +64,7 @@ export function ProfileSources({ sources }: props) {
     const reference = `, ${nominalRoll.publisher}, ${nominalRoll.town}, ${nominalRoll.date}, ${nominalRoll.page}.`;
     if (nominalRoll.volume && nominalRoll.roll) {
       return (
-        <p>
+        <p data-testid="nominal-roll">
           <em>{title}</em>
           {volumeRoll}
           {reference}
@@ -72,7 +72,7 @@ export function ProfileSources({ sources }: props) {
       );
     }
     return (
-      <p>
+      <p data-testid="nominal-roll">
         <em>{title}</em>
         {reference}
       </p>

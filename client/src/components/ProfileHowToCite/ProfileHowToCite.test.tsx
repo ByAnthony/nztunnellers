@@ -1,11 +1,11 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
-import { testId } from '../../utils/mocks/mockTunneller';
-import { testSummary } from '../../utils/mocks/mockSummary';
+import { mockId } from '../../utils/mocks/mockProfile';
+import { mockSummary } from '../../utils/mocks/mockSummary';
 import { ProfileHowToCite } from './ProfileHowToCite';
 
 const mockToday = new Date('2023-05-04');
-const component = <ProfileHowToCite id={testId} summary={testSummary} date={mockToday} />;
+const component = <ProfileHowToCite id={mockId} summary={mockSummary()} date={mockToday} />;
 
 test('renders the component correctly', () => {
   const { asFragment } = render(component);
@@ -13,16 +13,23 @@ test('renders the component correctly', () => {
   expect(asFragment()).toMatchSnapshot();
 });
 
-test('renders the title correctly', () => {
-  render(component);
-
-  expect(screen.getByText('How to cite this page')).toBeVisible();
-});
-
-test('renders the name and birth/death dates correctly', () => {
+test('renders birth and death dates when known', () => {
   render(component);
 
   expect(screen.getByTestId('howtocite')).toHaveTextContent('"John Doe (1888-1975)"');
+});
+
+test('renders only birth date when death date unknown', () => {
+  const componentWithoutDeathDate = (
+    <ProfileHowToCite
+      id={mockId}
+      summary={mockSummary({ death: null })}
+      date={mockToday}
+    />
+  );
+  render(componentWithoutDeathDate);
+
+  expect(screen.getByTestId('howtocite')).toHaveTextContent('"John Doe (1888-†?)"');
 });
 
 test('renders the url with correct id', () => {
