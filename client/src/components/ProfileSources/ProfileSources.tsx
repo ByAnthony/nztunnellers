@@ -10,6 +10,14 @@ type props = {
 type RecordWithIbid<T> = T & { ibid: string };
 
 export function ProfileSources({ sources }: props) {
+  function addIbid<T extends Record<string, string>>(
+    array: T[],
+    index: number,
+    ibid: string,
+  ): RecordWithIbid<T>[] {
+    return array.slice(index).map((obj) => ({ ...obj, ibid }));
+  }
+
   const getAwmm = (awmmCenotaph: string) => (
     <p data-testid="awmm">
       Auckland War Memorial Museum Tāmaki Paenga Hira:
@@ -18,14 +26,6 @@ export function ProfileSources({ sources }: props) {
       .
     </p>
   );
-
-  function addIbid<T extends Record<string, string>>(
-    array: T[],
-    index: number,
-    ibid: string,
-  ): RecordWithIbid<T>[] {
-    return array.slice(index).map((obj) => ({ ...obj, ibid }));
-  }
 
   const getLondonGazette = (londonGazette: LondonGazette[]) => {
     if (londonGazette.length !== 0) {

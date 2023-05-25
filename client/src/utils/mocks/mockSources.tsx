@@ -4,7 +4,7 @@ import {
 
 const mockNzArchives: NzArchives[] = [{
   reference: 'AABK 18805 W5530 39/0022386',
-  url: 'https://www.mockurl.co.nz/online-cenotaph/B2874930',
+  url: 'https://www.mockurl.co.nz/nzarchives/B2874930',
 }];
 
 const mockAwmmCenotaph: string = 'https://www.mockurl.co.nz/online-cenotaph/B2874930';

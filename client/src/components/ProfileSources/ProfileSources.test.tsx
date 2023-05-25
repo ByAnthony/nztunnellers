@@ -26,13 +26,57 @@ test('renders NZ Archives information', () => {
   expect(screen.getByTestId('nz-archives'))
     .toHaveTextContent('New Zealand Archives Te Rua Mahara o te Kāwanatanga, AABK 18805 W5530 39/0022386, Military Personnel File');
   expect(screen.getByRole('link', { name: 'Military Personnel File' }))
-    .toHaveAttribute('href', 'https://www.mockurl.co.nz/online-cenotaph/B2874930');
+    .toHaveAttribute('href', 'https://www.mockurl.co.nz/nzarchives/B2874930');
+});
+
+test('renders NZ Archives information list', () => {
+  const componentWithExtraInformation = (
+    <ProfileSources sources={mockSources({
+      nzArchives: [
+        {
+          reference: 'AABK 18805 W5530 39/0022386',
+          url: 'https://www.mockurl.co.nz/nzarchives/B2874930',
+        },
+        {
+          reference: 'AABK 18805 W5530 39/002286',
+          url: 'https://www.mockurl.co.nz/nzarchives/B284930',
+        },
+      ],
+    })}
+    />
+  );
+
+  render(componentWithExtraInformation);
+
+  expect(screen.getByText('Ibid.,')).toBeTruthy();
 });
 
 test('renders London Gazette information', () => {
   render(component);
 
   expect(screen.getByTestId('london-gazette')).toHaveTextContent('London Gazette, 23 May 1917, p. 1675.');
+});
+
+test('renders London Gazette information list', () => {
+  const componentWithExtraInformation = (
+    <ProfileSources sources={mockSources({
+      londonGazette: [
+        {
+          page: '1675',
+          date: '23 May 1917',
+        },
+        {
+          page: '457',
+          date: '27 September 1919',
+        },
+      ],
+    })}
+    />
+  );
+
+  render(componentWithExtraInformation);
+
+  expect(screen.getByText('Ibid.,')).toBeTruthy();
 });
 
 test('renders Nominal Roll information', () => {
@@ -43,7 +87,7 @@ test('renders Nominal Roll information', () => {
 });
 
 test('renders Nominal Roll with volume and roll information', () => {
-  const componentWithNominalRoll = (
+  const componentWithExtraInformation = (
     <ProfileSources sources={mockSources({
       nominalRoll: {
         title: 'Nominal Rolls of New Zealand Expeditionary Force',
@@ -58,7 +102,7 @@ test('renders Nominal Roll with volume and roll information', () => {
     />
   );
 
-  render(componentWithNominalRoll);
+  render(componentWithExtraInformation);
 
   expect(screen.getByTestId('nominal-roll'))
     .toHaveTextContent('Nominal Rolls of New Zealand Expeditionary Force, Volume III, No.55, Government Printer, Wellington, 1916, 37.');
