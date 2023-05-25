@@ -14,15 +14,19 @@ test('renders the component correctly', () => {
 test('renders Auckland War Memorial Museum information', () => {
   render(component);
 
-  expect(screen.getByTestId('awmm')).toHaveTextContent('Auckland War Memorial Museum Tāmaki Paenga Hira: Online Cenotaph He Toa Taumata Rau.');
-  expect(screen.getByRole('link', { name: 'Online Cenotaph He Toa Taumata Rau' })).toHaveAttribute('href', 'https://www.mockurl.co.nz/online-cenotaph/B2874930');
+  expect(screen.getByTestId('awmm'))
+    .toHaveTextContent('Auckland War Memorial Museum Tāmaki Paenga Hira: Online Cenotaph He Toa Taumata Rau.');
+  expect(screen.getByRole('link', { name: 'Online Cenotaph He Toa Taumata Rau' }))
+    .toHaveAttribute('href', 'https://www.mockurl.co.nz/online-cenotaph/B2874930');
 });
 
 test('renders NZ Archives information', () => {
   render(component);
 
-  expect(screen.getByTestId('nz-archives')).toHaveTextContent('New Zealand Archives Te Rua Mahara o te Kāwanatanga, AABK 18805 W5530 39/0022386, Military Personnel File');
-  expect(screen.getByRole('link', { name: 'Military Personnel File' })).toHaveAttribute('href', 'https://www.mockurl.co.nz/online-cenotaph/B2874930');
+  expect(screen.getByTestId('nz-archives'))
+    .toHaveTextContent('New Zealand Archives Te Rua Mahara o te Kāwanatanga, AABK 18805 W5530 39/0022386, Military Personnel File');
+  expect(screen.getByRole('link', { name: 'Military Personnel File' }))
+    .toHaveAttribute('href', 'https://www.mockurl.co.nz/online-cenotaph/B2874930');
 });
 
 test('renders London Gazette information', () => {
@@ -56,5 +60,6 @@ test('renders Nominal Roll with volume and roll information', () => {
 
   render(componentWithNominalRoll);
 
-  expect(screen.getByTestId('nominal-roll')).toHaveTextContent('Nominal Rolls of New Zealand Expeditionary Force, Volume III, No.55, Government Printer, Wellington, 1916, 37.');
+  expect(screen.getByTestId('nominal-roll'))
+    .toHaveTextContent('Nominal Rolls of New Zealand Expeditionary Force, Volume III, No.55, Government Printer, Wellington, 1916, 37.');
 });
