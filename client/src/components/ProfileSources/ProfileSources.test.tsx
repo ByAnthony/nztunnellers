@@ -34,7 +34,8 @@ test('renders London Gazette information', () => {
 test('renders Nominal Roll information', () => {
   render(component);
 
-  expect(screen.getByTestId('nominal-roll')).toHaveTextContent('Nominal Roll of New Zealand Expeditionary Force, 1915. New Zealand Engineers Tunnelling Company, Government Printer, Wellington, 1916, 37.');
+  expect(screen.getByTestId('nominal-roll'))
+    .toHaveTextContent('Nominal Roll of New Zealand Expeditionary Force, 1915. New Zealand Engineers Tunnelling Company, Government Printer, Wellington, 1916, 37.');
 });
 
 test('renders Nominal Roll with volume and roll information', () => {
