@@ -10,7 +10,7 @@ const mockNzArchives: NzArchives[] = [{
 const mockAwmmCenotaph: string = 'https://www.mockurl.co.nz/online-cenotaph/B2874930';
 
 const mockNominalRoll: NominalRoll = {
-  title: 'Nominal Roll of New Zealand Expeditionary Force',
+  title: 'Nominal Roll of New Zealand Expeditionary Force, 1915. New Zealand Engineers Tunnelling Company',
   town: 'Wellington',
   publisher: 'Government Printer',
   date: '1916',

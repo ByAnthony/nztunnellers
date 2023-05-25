@@ -42,7 +42,7 @@ exports[`renders the component correctly 1`] = `
       data-testid="nominal-roll"
     >
       <em>
-        Nominal Roll of New Zealand Expeditionary Force
+        Nominal Roll of New Zealand Expeditionary Force, 1915. New Zealand Engineers Tunnelling Company
       </em>
       , Government Printer, Wellington, 1916, 37.
     </p>
