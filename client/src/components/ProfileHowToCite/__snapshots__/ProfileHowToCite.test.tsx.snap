@@ -8,9 +8,7 @@ exports[`renders the component correctly 1`] = `
     <h3>
       How to cite this page
     </h3>
-    <p
-      data-testid="howtocite"
-    >
+    <p>
       Anthony Byledbal, "John Doe (1888-1975)", 
       <em>
         New Zealand Tunnellers Website

@@ -12,7 +12,7 @@ export function ProfileHowToCite({ id, summary, date }: props) {
   return (
     <div className={STYLES.howtocite}>
       <h3>How to cite this page</h3>
-      <p data-testid="howtocite">
+      <p>
         {`Anthony Byledbal, "${summary.name.forename} ${summary.name.surname} `}
         {`(${displayBirthDeathDates(summary.birth, summary.death)})", `}
         <em>New Zealand Tunnellers Website</em>
