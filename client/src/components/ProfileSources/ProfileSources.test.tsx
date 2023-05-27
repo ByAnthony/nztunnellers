@@ -12,109 +12,131 @@ test('renders the component correctly', () => {
   expect(asFragment()).toMatchSnapshot();
 });
 
-test('renders Auckland War Memorial Museum information', () => {
-  render(component);
+describe('Auckland War Memorial Museum', () => {
+  test('renders Auckland War Memorial Museum information', () => {
+    render(component);
 
-  const element = findElementWithText('Auckland War Memorial Museum Tāmaki Paenga Hira');
+    const element = findElementWithText('Auckland War Memorial Museum Tāmaki Paenga Hira');
 
-  expect(element).toBeInTheDocument();
-  expect(screen.getByRole('link', { name: 'Online Cenotaph He Toa Taumata Rau' }))
-    .toHaveAttribute('href', 'https://www.mockurl.co.nz/online-cenotaph/B2874930');
+    expect(element).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: 'Online Cenotaph He Toa Taumata Rau' }))
+      .toHaveAttribute('href', 'https://www.mockurl.co.nz/online-cenotaph/B2874930');
+  });
 });
 
-test('renders NZ Archives information', () => {
-  render(component);
+describe('NZ Archives', () => {
+  test('renders NZ Archives information', () => {
+    render(component);
 
-  const element = findElementWithText('New Zealand Archives Te Rua Mahara o te Kāwanatanga, AABK 18805 W5530 39/0022386, ');
+    const element = findElementWithText('New Zealand Archives Te Rua Mahara o te Kāwanatanga, AABK 18805 W5530 39/0022386, ');
 
-  expect(element).toBeInTheDocument();
-  expect(screen.getByRole('link', { name: 'Military Personnel File' }))
-    .toHaveAttribute('href', 'https://www.mockurl.co.nz/nzarchives/B2874930');
+    expect(element).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: 'Military Personnel File' }))
+      .toHaveAttribute('href', 'https://www.mockurl.co.nz/nzarchives/B2874930');
+  });
+
+  test('renders NZ Archives information list', () => {
+    const componentWithExtraInformation = (
+      <ProfileSources sources={mockSources({
+        nzArchives: [
+          {
+            reference: 'AABK 18805 W5530 39/0022386',
+            url: 'https://www.mockurl.co.nz/nzarchives/B2874930',
+          },
+          {
+            reference: 'AABK 18805 W5530 39/002286',
+            url: 'https://www.mockurl.co.nz/nzarchives/B284930',
+          },
+        ],
+      })}
+      />
+    );
+
+    render(componentWithExtraInformation);
+
+    expect(screen.getByText('Ibid.,')).toBeTruthy();
+  });
 });
 
-test('renders NZ Archives information list', () => {
-  const componentWithExtraInformation = (
-    <ProfileSources sources={mockSources({
-      nzArchives: [
-        {
-          reference: 'AABK 18805 W5530 39/0022386',
-          url: 'https://www.mockurl.co.nz/nzarchives/B2874930',
+describe('London Gazette', () => {
+  test('renders London Gazette information', () => {
+    render(component);
+
+    const title = findElementWithText('London Gazette');
+    const extraInfo = findElementWithText('23 May 1917, p. 1675.');
+
+    expect(title).toBeInTheDocument();
+    expect(extraInfo).toBeInTheDocument();
+  });
+
+  test('renders London Gazette information list', () => {
+    const componentWithExtraInformation = (
+      <ProfileSources sources={mockSources({
+        londonGazette: [
+          {
+            page: '1675',
+            date: '23 May 1917',
+          },
+          {
+            page: '457',
+            date: '27 September 1919',
+          },
+        ],
+      })}
+      />
+    );
+
+    render(componentWithExtraInformation);
+
+    expect(screen.getByText('Ibid.,')).toBeTruthy();
+  });
+
+  test('does not render London Gazette information if empty', () => {
+    const componentWithoutLondonGazette = (
+      <ProfileSources sources={mockSources({
+        londonGazette: [],
+      })}
+      />
+    );
+    render(componentWithoutLondonGazette);
+
+    expect(screen.queryByText('London Gazette')).not.toBeInTheDocument();
+  });
+});
+
+describe('Nominal Roll', () => {
+  test('renders Nominal Roll book', () => {
+    render(component);
+
+    const title = findElementWithText('Nominal Roll of New Zealand Expeditionary Force, 1915. New Zealand Engineers Tunnelling Company');
+    const extraInfo = findElementWithText(', Government Printer, Wellington, 1916, 37.');
+
+    expect(title).toBeInTheDocument();
+    expect(extraInfo).toBeInTheDocument();
+  });
+
+  test('renders Nominal Roll book with volume and roll', () => {
+    const componentWithExtraInformation = (
+      <ProfileSources sources={mockSources({
+        nominalRoll: {
+          title: 'Nominal Rolls of New Zealand Expeditionary Force',
+          town: 'Wellington',
+          publisher: 'Government Printer',
+          date: '1916',
+          page: '37',
+          volume: 'Volume III',
+          roll: 'No.55',
         },
-        {
-          reference: 'AABK 18805 W5530 39/002286',
-          url: 'https://www.mockurl.co.nz/nzarchives/B284930',
-        },
-      ],
-    })}
-    />
-  );
+      })}
+      />
+    );
 
-  render(componentWithExtraInformation);
+    render(componentWithExtraInformation);
 
-  expect(screen.getByText('Ibid.,')).toBeTruthy();
-});
+    const title = findElementWithText('Nominal Rolls of New Zealand Expeditionary Forc');
+    const extraInfo = findElementWithText(', Volume III, No.55, Government Printer, Wellington, 1916, 37.');
 
-test('renders London Gazette information', () => {
-  render(component);
-
-  const element = findElementWithText('23 May 1917, p. 1675.');
-
-  expect(element).toBeInTheDocument();
-});
-
-test('renders London Gazette information list', () => {
-  const componentWithExtraInformation = (
-    <ProfileSources sources={mockSources({
-      londonGazette: [
-        {
-          page: '1675',
-          date: '23 May 1917',
-        },
-        {
-          page: '457',
-          date: '27 September 1919',
-        },
-      ],
-    })}
-    />
-  );
-
-  render(componentWithExtraInformation);
-
-  expect(screen.getByText('Ibid.,')).toBeTruthy();
-});
-
-test('renders Nominal Roll information', () => {
-  render(component);
-
-  const title = findElementWithText('Nominal Roll of New Zealand Expeditionary Force, 1915. New Zealand Engineers Tunnelling Company');
-  const extraInfo = findElementWithText(', Government Printer, Wellington, 1916, 37.');
-
-  expect(title).toBeInTheDocument();
-  expect(extraInfo).toBeInTheDocument();
-});
-
-test('renders Nominal Roll with volume and roll information', () => {
-  const componentWithExtraInformation = (
-    <ProfileSources sources={mockSources({
-      nominalRoll: {
-        title: 'Nominal Rolls of New Zealand Expeditionary Force',
-        town: 'Wellington',
-        publisher: 'Government Printer',
-        date: '1916',
-        page: '37',
-        volume: 'Volume III',
-        roll: 'No.55',
-      },
-    })}
-    />
-  );
-
-  render(componentWithExtraInformation);
-
-  const title = findElementWithText('Nominal Rolls of New Zealand Expeditionary Forc');
-  const extraInfo = findElementWithText(', Volume III, No.55, Government Printer, Wellington, 1916, 37.');
-
-  expect(title).toBeInTheDocument();
-  expect(extraInfo).toBeInTheDocument();
+    expect(title).toBeInTheDocument();
+    expect(extraInfo).toBeInTheDocument();
+  });
 });
