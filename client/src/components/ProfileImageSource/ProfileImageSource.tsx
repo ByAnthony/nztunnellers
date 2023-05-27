@@ -69,9 +69,7 @@ export function ProfileImageSource({ source }: props) {
           <p>
             {displayAuthors(imageSource?.book.authors)}
             <em>{imageSource?.book.title}</em>
-            {`, ${imageSource?.book.town}, ${imageSource?.book.publisher}, ${imageSource.book.year}`}
-            {displayPage(imageSource?.book.page)}
-            .
+            {`, ${imageSource?.book.town}, ${imageSource?.book.publisher}, ${imageSource.book.year}${displayPage(imageSource?.book.page)}.`}
           </p>
         </>
       );

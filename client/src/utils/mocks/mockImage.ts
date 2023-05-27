@@ -28,11 +28,12 @@ export const mockImageBook = (overrides: Partial<ImageBook>
     },
   ],
   year: '1925',
-  page: '89',
+  page: 'p. 89',
   ...overrides,
 });
 
-const mockSource = (overrides: Partial<ImageSource> | undefined = undefined): ImageSource => ({
+export const mockImageSource = (overrides: Partial<ImageSource>
+    | undefined = undefined): ImageSource => ({
   aucklandLibraries: null,
   archives: null,
   family: null,
@@ -41,8 +42,8 @@ const mockSource = (overrides: Partial<ImageSource> | undefined = undefined): Im
   ...overrides,
 });
 
-export const mockImages = (overrides: Partial<Image> | undefined = undefined): Image => ({
-  url: '',
-  source: mockSource(),
+export const mockImage = (overrides: Partial<Image> | undefined = undefined): Image => ({
+  url: '1/1234.jpg',
+  source: mockImageSource(),
   ...overrides,
 });
