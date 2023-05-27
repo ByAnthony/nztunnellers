@@ -8,10 +8,8 @@ exports[`renders the component correctly 1`] = `
     <h3>
       Sources
     </h3>
-    <p
-      data-testid="awmm"
-    >
-      Auckland War Memorial Museum Tāmaki Paenga Hira: 
+    <p>
+      Auckland War Memorial Museum Tāmaki Paenga Hira:
       <a
         href="https://www.mockurl.co.nz/online-cenotaph/B2874930"
       >
@@ -19,10 +17,8 @@ exports[`renders the component correctly 1`] = `
       </a>
       .
     </p>
-    <p
-      data-testid="nz-archives"
-    >
-      New Zealand Archives Te Rua Mahara o te Kāwanatanga, AABK 18805 W5530 39/0022386, 
+    <p>
+      New Zealand Archives Te Rua Mahara o te Kāwanatanga, AABK 18805 W5530 39/0022386,
       <a
         href="https://www.mockurl.co.nz/nzarchives/B2874930"
       >
@@ -30,17 +26,13 @@ exports[`renders the component correctly 1`] = `
       </a>
       .
     </p>
-    <p
-      data-testid="london-gazette"
-    >
+    <p>
       <em>
-        London Gazette, 
+        London Gazette,
       </em>
-      23 May 1917, p. 1675.
+      23 May 1917, p. 1675.
     </p>
-    <p
-      data-testid="nominal-roll"
-    >
+    <p>
       <em>
         Nominal Roll of New Zealand Expeditionary Force, 1915. New Zealand Engineers Tunnelling Company
       </em>

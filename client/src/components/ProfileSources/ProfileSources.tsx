@@ -19,9 +19,8 @@ export function ProfileSources({ sources }: props) {
   }
 
   const getAwmm = (awmmCenotaph: string) => (
-    <p data-testid="awmm">
-      Auckland War Memorial Museum Tāmaki Paenga Hira:
-      {' '}
+    <p>
+      {'Auckland War Memorial Museum Tāmaki Paenga Hira: '}
       <a href={awmmCenotaph}>Online Cenotaph He Toa Taumata Rau</a>
       .
     </p>
@@ -31,12 +30,9 @@ export function ProfileSources({ sources }: props) {
     if (londonGazette.length !== 0) {
       const LondonGazetteList = [...addIbid([londonGazette[0]], 0, 'London Gazette, '), ...addIbid(londonGazette, 1, 'Ibid., ')];
       return LondonGazetteList.map((gazette) => (
-        <p key={gazette.page} data-testid="london-gazette">
+        <p key={gazette.page}>
           <em>{gazette.ibid}</em>
-          {gazette.date}
-          {', '}
-          p.&nbsp;
-          {gazette.page}
+          {`${gazette.date}, p. ${gazette.page}`}
           .
         </p>
       ));
@@ -48,10 +44,9 @@ export function ProfileSources({ sources }: props) {
     const nzArchivesList = [...addIbid([nzArchives[0]], 0, 'New Zealand Archives Te Rua Mahara o te Kāwanatanga, '), ...addIbid(nzArchives, 1, 'Ibid., ')];
     const italicIbid = (ibid: string) => (ibid === 'Ibid., ' ? <em>{ibid}</em> : ibid);
     return nzArchivesList.map((archives) => (
-      <p key={archives.reference} data-testid="nz-archives">
+      <p key={archives.reference}>
         {italicIbid(archives.ibid)}
-        {archives.reference}
-        {', '}
+        {`${archives.reference}, `}
         <a href={archives.url}>Military Personnel File</a>
         .
       </p>
@@ -64,15 +59,14 @@ export function ProfileSources({ sources }: props) {
     const reference = `, ${nominalRoll.publisher}, ${nominalRoll.town}, ${nominalRoll.date}, ${nominalRoll.page}.`;
     if (nominalRoll.volume && nominalRoll.roll) {
       return (
-        <p data-testid="nominal-roll">
+        <p>
           <em>{title}</em>
-          {volumeRoll}
-          {reference}
+          {`${volumeRoll}${reference}`}
         </p>
       );
     }
     return (
-      <p data-testid="nominal-roll">
+      <p>
         <em>{title}</em>
         {reference}
       </p>

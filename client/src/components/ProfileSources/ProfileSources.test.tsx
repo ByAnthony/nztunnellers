@@ -87,8 +87,11 @@ test('renders London Gazette information list', () => {
 test('renders Nominal Roll information', () => {
   render(component);
 
-  expect(screen.getByTestId('nominal-roll'))
-    .toHaveTextContent('Nominal Roll of New Zealand Expeditionary Force, 1915. New Zealand Engineers Tunnelling Company, Government Printer, Wellington, 1916, 37.');
+  const title = findElementWithText('Nominal Roll of New Zealand Expeditionary Force, 1915. New Zealand Engineers Tunnelling Company');
+  const extraInfo = findElementWithText(', Government Printer, Wellington, 1916, 37.');
+
+  expect(title).toBeInTheDocument();
+  expect(extraInfo).toBeInTheDocument();
 });
 
 test('renders Nominal Roll with volume and roll information', () => {
@@ -109,6 +112,9 @@ test('renders Nominal Roll with volume and roll information', () => {
 
   render(componentWithExtraInformation);
 
-  expect(screen.getByTestId('nominal-roll'))
-    .toHaveTextContent('Nominal Rolls of New Zealand Expeditionary Force, Volume III, No.55, Government Printer, Wellington, 1916, 37.');
+  const title = findElementWithText('Nominal Rolls of New Zealand Expeditionary Forc');
+  const extraInfo = findElementWithText(', Volume III, No.55, Government Printer, Wellington, 1916, 37.');
+
+  expect(title).toBeInTheDocument();
+  expect(extraInfo).toBeInTheDocument();
 });
