@@ -9,7 +9,7 @@ exports[`renders the component correctly 1`] = `
       Sources
     </h3>
     <p>
-      Auckland War Memorial Museum Tāmaki Paenga Hira:
+      Auckland War Memorial Museum Tāmaki Paenga Hira: 
       <a
         href="https://www.mockurl.co.nz/online-cenotaph/B2874930"
       >
@@ -18,7 +18,7 @@ exports[`renders the component correctly 1`] = `
       .
     </p>
     <p>
-      New Zealand Archives Te Rua Mahara o te Kāwanatanga, AABK 18805 W5530 39/0022386,
+      New Zealand Archives Te Rua Mahara o te Kāwanatanga, AABK 18805 W5530 39/0022386, 
       <a
         href="https://www.mockurl.co.nz/nzarchives/B2874930"
       >
@@ -28,7 +28,7 @@ exports[`renders the component correctly 1`] = `
     </p>
     <p>
       <em>
-        London Gazette,
+        London Gazette, 
       </em>
       23 May 1917, p. 1675.
     </p>
