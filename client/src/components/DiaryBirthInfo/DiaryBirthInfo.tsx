@@ -36,8 +36,6 @@ export function DiaryBirth({ birth }: props) {
   };
 
   return (
-    <>
-      { displayBirthInfo(birth.country, birth.date) }
-    </>
+    displayBirthInfo(birth.country, birth.date)
   );
 }
