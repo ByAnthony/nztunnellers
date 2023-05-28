@@ -13,8 +13,6 @@ export function DiaryArrivedInNz({ inNzLength }: props) {
   );
 
   return (
-    <div>
-      { inNzLength ? displayImmigrationYear(inNzLength) : null }
-    </div>
+    inNzLength ? displayImmigrationYear(inNzLength) : null
   );
 }
