@@ -22,8 +22,6 @@ export function DiaryHometown({ residence }: props) {
   );
 
   return (
-    <>
-      { displayHometown(residence) }
-    </>
+    displayHometown(residence)
   );
 }
