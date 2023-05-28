@@ -16,7 +16,7 @@ export type Parents = {
 }
 
 export type Birth = {
-    date: Date,
+    date: Date | null,
     country: string | null,
 }
 

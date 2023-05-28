@@ -6,3 +6,19 @@ export const nonNullish = (data: any) => {
   }
   return false;
 };
+
+export const displayBirthDeathDates = (
+  birth: string | null,
+  death: string | null,
+) => {
+  if (birth !== null && death !== null) {
+    return `${birth} - ${death}`;
+  }
+  if (birth !== null && death === null) {
+    return `${birth} - †?`;
+  }
+  if (birth === null && death !== null) {
+    return `? - ${death}`;
+  }
+  return '? - †?';
+};

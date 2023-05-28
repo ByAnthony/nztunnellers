@@ -6,6 +6,6 @@ export type Name = {
 export type Details = {
     id: number;
     name: Name;
-    birth: string | undefined;
-    death: string | undefined;
+    birth: string | null;
+    death: string | null;
 }

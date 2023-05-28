@@ -8,7 +8,7 @@ import { ProfileSources } from '../ProfileSources/ProfileSources';
 import { ProfileSummary } from '../ProfileSummary/ProfileSummary';
 import STYLES from './Profile.module.scss';
 import { Footer } from '../Footer/Footer';
-import { today } from '../../utils/utils';
+import { displayBirthDeathDates, today } from '../../utils/utils';
 
 export function Profile() {
   const { id } = useParams();
@@ -16,11 +16,6 @@ export function Profile() {
   const {
     data, error, isLoading, isSuccess,
   } = useGetTunnellerByIdQuery(tunnellerId);
-
-  const displayBirthDeathDates = (
-    birth: string,
-    death: string | null,
-  ) => (death ? `${birth} - ${death}` : `${birth} - †?`);
 
   if (data) {
     return (
