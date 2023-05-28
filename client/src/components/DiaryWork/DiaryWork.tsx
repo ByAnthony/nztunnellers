@@ -3,9 +3,9 @@ import {
 } from '../../types/tunneller';
 import STYLES from '../ProfileDiary/ProfileDiary.module.scss';
 
-    type props = {
-        employment: Employment;
-    }
+type props = {
+  employment: Employment;
+}
 
 export function DiaryWork({ employment }: props) {
   const displayEmployment = (work: Employment) => {
@@ -48,8 +48,6 @@ export function DiaryWork({ employment }: props) {
   };
 
   return (
-    <>
-      { displayEmployment(employment) }
-    </>
+    displayEmployment(employment)
   );
 }
