@@ -53,8 +53,6 @@ export function DiaryParents({ parents }: props) {
   };
 
   return (
-    <>
-      { displayParents(parents) }
-    </>
+    displayParents(parents)
   );
 }
