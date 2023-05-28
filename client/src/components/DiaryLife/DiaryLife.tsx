@@ -46,8 +46,6 @@ export function DiaryLife({ maritalStatus, wife }: props) {
   };
 
   return (
-    <>
-      { displayLife(maritalStatus, wife) }
-    </>
+    displayLife(maritalStatus, wife)
   );
 }
