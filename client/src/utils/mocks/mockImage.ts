@@ -16,8 +16,7 @@ export const mockImageNewspaper: ImageNewspaper = {
   date: '12 July 1898',
 };
 
-export const mockImageBook = (overrides: Partial<ImageBook>
-    | undefined = undefined): ImageBook => ({
+export const mockImageBook: ImageBook = {
   title: 'My Mock Title',
   town: 'Bethune',
   publisher: 'Publisher and Co.',
@@ -29,21 +28,17 @@ export const mockImageBook = (overrides: Partial<ImageBook>
   ],
   year: '1925',
   page: 'p. 89',
-  ...overrides,
-});
+};
 
-export const mockImageSource = (overrides: Partial<ImageSource>
-    | undefined = undefined): ImageSource => ({
+export const mockImageSource: ImageSource = {
   aucklandLibraries: null,
   archives: null,
   family: null,
   newspaper: null,
   book: null,
-  ...overrides,
-});
+};
 
-export const mockImage = (overrides: Partial<Image> | undefined = undefined): Image => ({
+export const mockImage: Image = {
   url: '1/1234.jpg',
-  source: mockImageSource(),
-  ...overrides,
-});
+  source: mockImageSource,
+};

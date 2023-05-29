@@ -5,7 +5,7 @@ export const mockArmyExperience = (overrides: Partial<ArmyExperience>
   unit: 'NZ Infantry',
   country: 'New Zealand',
   conflict: null,
-  duration: null,
+  duration: '12 months',
   ...overrides,
 });
 

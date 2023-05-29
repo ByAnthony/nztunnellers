@@ -14,9 +14,10 @@ import { findElementWithText } from '../../utils/test-utils';
 describe('Snapshot', () => {
   test('renders the component correctly with the Auckland Library information', () => {
     const component = (
-      <ProfileImageSource source={mockImageSource({
+      <ProfileImageSource source={{
+        ...mockImageSource,
         aucklandLibraries: mockImageAucklandLibraries,
-      })}
+      }}
       />
     );
     const { asFragment } = render(component);
@@ -26,9 +27,10 @@ describe('Snapshot', () => {
 
   test('renders the component correctly with the Archives information', () => {
     const component = (
-      <ProfileImageSource source={mockImageSource({
+      <ProfileImageSource source={{
+        ...mockImageSource,
         archives: mockImageArchives,
-      })}
+      }}
       />
     );
     const { asFragment } = render(component);
@@ -38,9 +40,10 @@ describe('Snapshot', () => {
 
   test('renders the component correctly with the family information', () => {
     const component = (
-      <ProfileImageSource source={mockImageSource({
+      <ProfileImageSource source={{
+        ...mockImageSource,
         family: mockImageFamily,
-      })}
+      }}
       />
     );
     const { asFragment } = render(component);
@@ -50,9 +53,10 @@ describe('Snapshot', () => {
 
   test('renders the component correctly with the newspaper information', () => {
     const component = (
-      <ProfileImageSource source={mockImageSource({
+      <ProfileImageSource source={{
+        ...mockImageSource,
         newspaper: mockImageNewspaper,
-      })}
+      }}
       />
     );
     const { asFragment } = render(component);
@@ -62,9 +66,10 @@ describe('Snapshot', () => {
 
   test('renders the component correctly with the book information', () => {
     const component = (
-      <ProfileImageSource source={mockImageSource({
-        book: mockImageBook(),
-      })}
+      <ProfileImageSource source={{
+        ...mockImageSource,
+        book: mockImageBook,
+      }}
       />
     );
     const { asFragment } = render(component);
@@ -76,9 +81,10 @@ describe('Snapshot', () => {
 describe('Auckland Library', () => {
   test('renders Auckland Library information correctly', () => {
     const component = (
-      <ProfileImageSource source={mockImageSource({
+      <ProfileImageSource source={{
+        ...mockImageSource,
         aucklandLibraries: mockImageAucklandLibraries,
-      })}
+      }}
       />
     );
     render(component);
@@ -98,9 +104,10 @@ describe('Auckland Library', () => {
 describe('Archives', () => {
   test('renders archives information correctly', () => {
     const component = (
-      <ProfileImageSource source={mockImageSource({
+      <ProfileImageSource source={{
+        ...mockImageSource,
         archives: mockImageArchives,
-      })}
+      }}
       />
     );
     render(component);
@@ -118,9 +125,10 @@ describe('Archives', () => {
 describe('Family', () => {
   test('renders family information correctly', () => {
     const component = (
-      <ProfileImageSource source={mockImageSource({
+      <ProfileImageSource source={{
+        ...mockImageSource,
         family: mockImageFamily,
-      })}
+      }}
       />
     );
     render(component);
@@ -138,9 +146,10 @@ describe('Family', () => {
 describe('Newspaper', () => {
   test('renders newspaper information correctly', () => {
     const component = (
-      <ProfileImageSource source={mockImageSource({
+      <ProfileImageSource source={{
+        ...mockImageSource,
         newspaper: mockImageNewspaper,
-      })}
+      }}
       />
     );
     render(component);
@@ -160,9 +169,10 @@ describe('Newspaper', () => {
 describe('Book', () => {
   test('renders book information correctly', () => {
     const component = (
-      <ProfileImageSource source={mockImageSource({
-        book: mockImageBook(),
-      })}
+      <ProfileImageSource source={{
+        ...mockImageSource,
+        book: mockImageBook,
+      }}
       />
     );
     render(component);
@@ -182,8 +192,10 @@ describe('Book', () => {
 
   test('renders authors correctly', () => {
     const component = (
-      <ProfileImageSource source={mockImageSource({
-        book: mockImageBook({
+      <ProfileImageSource source={{
+        ...mockImageSource,
+        book: {
+          ...mockImageBook,
           authors: [{
             forename: 'Jane',
             surname: 'Doe',
@@ -192,8 +204,8 @@ describe('Book', () => {
             forename: 'John',
             surname: 'Doe',
           }],
-        }),
-      })}
+        },
+      }}
       />
     );
     render(component);
@@ -205,11 +217,13 @@ describe('Book', () => {
 
   test('does not render page when unknown', () => {
     const component = (
-      <ProfileImageSource source={mockImageSource({
-        book: mockImageBook({
+      <ProfileImageSource source={{
+        ...mockImageSource,
+        book: {
+          ...mockImageBook,
           page: null,
-        }),
-      })}
+        },
+      }}
       />
     );
     render(component);

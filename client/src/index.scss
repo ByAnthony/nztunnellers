@@ -283,18 +283,18 @@ $padding-card: 30px 30px 27px 30px;
   max-width: 100%;
   margin: $xs-margin 0;
   padding: $s-margin;
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   border: 1px solid $primary-light-color;
   border-radius: $border-radius;
 
   @include desktop {
     padding: $padding-card;
-    font-size: 1.35rem;
+    font-size: 1.25rem;
   }
 
   @include large-desktop {
     padding: $padding-card;
-    font-size: 1.95rem;
+    font-size: 1.5rem;
   }
 }
 
