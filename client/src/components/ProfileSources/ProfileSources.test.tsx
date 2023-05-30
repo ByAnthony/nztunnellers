@@ -4,7 +4,7 @@ import { mockSources } from '../../utils/mocks/mockSources';
 import { ProfileSources } from './ProfileSources';
 import { findElementWithText } from '../../utils/test-utils';
 
-const component = <ProfileSources sources={mockSources()} />;
+const component = <ProfileSources sources={mockSources} />;
 
 test('renders the component correctly', () => {
   const { asFragment } = render(component);
@@ -37,7 +37,8 @@ describe('NZ Archives', () => {
 
   test('renders NZ Archives information list', () => {
     const componentWithExtraInformation = (
-      <ProfileSources sources={mockSources({
+      <ProfileSources sources={{
+        ...mockSources,
         nzArchives: [
           {
             reference: 'AABK 18805 W5530 39/0022386',
@@ -48,7 +49,7 @@ describe('NZ Archives', () => {
             url: 'https://www.mockurl.co.nz/nzarchives/B284930',
           },
         ],
-      })}
+      }}
       />
     );
 
@@ -71,7 +72,8 @@ describe('London Gazette', () => {
 
   test('renders London Gazette information list', () => {
     const componentWithExtraInformation = (
-      <ProfileSources sources={mockSources({
+      <ProfileSources sources={{
+        ...mockSources,
         londonGazette: [
           {
             page: '1675',
@@ -82,7 +84,7 @@ describe('London Gazette', () => {
             date: '27 September 1919',
           },
         ],
-      })}
+      }}
       />
     );
 
@@ -93,9 +95,10 @@ describe('London Gazette', () => {
 
   test('does not render London Gazette information if empty', () => {
     const componentWithoutLondonGazette = (
-      <ProfileSources sources={mockSources({
+      <ProfileSources sources={{
+        ...mockSources,
         londonGazette: [],
-      })}
+      }}
       />
     );
     render(componentWithoutLondonGazette);
@@ -117,7 +120,8 @@ describe('Nominal Roll', () => {
 
   test('renders Nominal Roll book with volume and roll', () => {
     const componentWithExtraInformation = (
-      <ProfileSources sources={mockSources({
+      <ProfileSources sources={{
+        ...mockSources,
         nominalRoll: {
           title: 'Nominal Rolls of New Zealand Expeditionary Force',
           town: 'Wellington',
@@ -127,7 +131,7 @@ describe('Nominal Roll', () => {
           volume: 'Volume III',
           roll: 'No.55',
         },
-      })}
+      }}
       />
     );
 

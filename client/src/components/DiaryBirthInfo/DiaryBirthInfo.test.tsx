@@ -5,7 +5,7 @@ import { DiaryBirth } from './DiaryBirthInfo';
 import { findElementWithText } from '../../utils/test-utils';
 
 const component = (
-  <DiaryBirth birth={mockBirth()} />
+  <DiaryBirth birth={mockBirth} />
 );
 
 test('renders the component correctly', () => {
@@ -26,9 +26,10 @@ test('renders birth date and country when known', () => {
 
 test('renders birth date when known but not birth country when unknown', () => {
   const componentWithoutBirthCountry = (
-    <DiaryBirth birth={mockBirth({
+    <DiaryBirth birth={{
+      ...mockBirth,
       country: null,
-    })}
+    }}
     />
   );
 
@@ -43,9 +44,10 @@ test('renders birth date when known but not birth country when unknown', () => {
 
 test('renders birth country when known but not birth date when unknown', () => {
   const componentWithoutBirthDate = (
-    <DiaryBirth birth={mockBirth({
+    <DiaryBirth birth={{
+      ...mockBirth,
       date: null,
-    })}
+    }}
     />
   );
 
@@ -59,10 +61,11 @@ test('renders birth country when known but not birth date when unknown', () => {
 
 test('does not render the component when birth date and country are unknown', () => {
   const { container } = render(
-    <DiaryBirth birth={mockBirth({
+    <DiaryBirth birth={{
+      ...mockBirth,
       date: null,
       country: null,
-    })}
+    }}
     />,
   );
 

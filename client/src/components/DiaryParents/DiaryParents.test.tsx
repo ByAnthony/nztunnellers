@@ -4,7 +4,7 @@ import { DiaryParents } from './DiaryParents';
 import { mockParents } from '../../utils/mocks/mockOrigins';
 
 const component = (
-  <DiaryParents parents={mockParents()} />
+  <DiaryParents parents={mockParents} />
 );
 
 test('renders the component correctly', () => {
@@ -24,7 +24,7 @@ test('renders parents when known', () => {
 });
 
 test('renders only mother when father unknown', () => {
-  const componentWithMotherOnly = (<DiaryParents parents={mockParents({ father: null })} />);
+  const componentWithMotherOnly = (<DiaryParents parents={{ ...mockParents, father: null }} />);
 
   render(componentWithMotherOnly);
 
@@ -37,7 +37,7 @@ test('renders only mother when father unknown', () => {
 });
 
 test('renders only father when father unknown', () => {
-  const componentWithMotherOnly = (<DiaryParents parents={mockParents({ mother: null })} />);
+  const componentWithMotherOnly = (<DiaryParents parents={{ ...mockParents, mother: null }} />);
 
   render(componentWithMotherOnly);
 
@@ -51,10 +51,11 @@ test('renders only father when father unknown', () => {
 
 test('does not render the component when parents are unknown', () => {
   const { container } = render(
-    <DiaryParents parents={mockParents({
+    <DiaryParents parents={{
+      ...mockParents,
       mother: null,
       father: null,
-    })}
+    }}
     />,
   );
 

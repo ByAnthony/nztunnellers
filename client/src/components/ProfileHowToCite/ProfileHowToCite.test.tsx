@@ -6,7 +6,7 @@ import { ProfileHowToCite } from './ProfileHowToCite';
 import { findElementWithText } from '../../utils/test-utils';
 
 const mockToday = new Date('2023-05-04');
-const component = <ProfileHowToCite id={mockId} summary={mockSummary()} date={mockToday} />;
+const component = <ProfileHowToCite id={mockId} summary={mockSummary} date={mockToday} />;
 
 test('renders the component correctly', () => {
   const { asFragment } = render(component);
@@ -37,7 +37,7 @@ describe('Dates', () => {
     const componentWithoutDeathDate = (
       <ProfileHowToCite
         id={mockId}
-        summary={mockSummary({ death: null })}
+        summary={{ ...mockSummary, death: null }}
         date={mockToday}
       />
     );

@@ -1,11 +1,11 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 import { mockId } from '../../utils/mocks/mockProfile';
-import { mockArmyExperience } from '../../utils/mocks/mockPreWarYears';
+import { mockArmyExperience, mockArmyExperienceList } from '../../utils/mocks/mockPreWarYears';
 import { DiaryArmyExperience } from './DiaryArmyExperience';
 
 const component = (
-  <DiaryArmyExperience tunnellerId={mockId} armyExperience={[mockArmyExperience()]} />
+  <DiaryArmyExperience tunnellerId={mockId} armyExperience={mockArmyExperienceList} />
 );
 
 test('renders the component correctly', () => {
@@ -25,9 +25,12 @@ test('renders army experience when duration unknown', () => {
   const componentWithoutDuration = (
     <DiaryArmyExperience
       tunnellerId={mockId}
-      armyExperience={[mockArmyExperience({
-        duration: null,
-      })]}
+      armyExperience={[
+        {
+          ...mockArmyExperience,
+          duration: null,
+        },
+      ]}
     />
   );
 
@@ -41,9 +44,12 @@ test('renders army experience when country unknown', () => {
   const componentWithoutDuration = (
     <DiaryArmyExperience
       tunnellerId={mockId}
-      armyExperience={[mockArmyExperience({
-        country: null,
-      })]}
+      armyExperience={[
+        {
+          ...mockArmyExperience,
+          country: null,
+        },
+      ]}
     />
   );
 
@@ -57,10 +63,13 @@ test('renders army experience when country and duration unknown', () => {
   const componentWithoutDuration = (
     <DiaryArmyExperience
       tunnellerId={mockId}
-      armyExperience={[mockArmyExperience({
-        duration: null,
-        country: null,
-      })]}
+      armyExperience={[
+        {
+          ...mockArmyExperience,
+          country: null,
+          duration: null,
+        },
+      ]}
     />
   );
 

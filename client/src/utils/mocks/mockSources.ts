@@ -24,10 +24,9 @@ const mockLondonGazette: LondonGazette[] = [{
   date: '23 May 1917',
 }];
 
-export const mockSources = (overrides: Partial<Sources> | undefined = undefined): Sources => ({
+export const mockSources: Sources = {
   nzArchives: mockNzArchives,
   awmmCenotaph: mockAwmmCenotaph,
   nominalRoll: mockNominalRoll,
   londonGazette: mockLondonGazette,
-  ...overrides,
-});
+};

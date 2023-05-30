@@ -1,6 +1,6 @@
 import { Summary } from '../../types/tunneller';
 
-export const mockSummary = (overrides: Partial<Summary> | undefined = undefined): Summary => ({
+export const mockSummary: Summary = {
   serial: '1/2345',
   name: {
     forename: 'John',
@@ -8,5 +8,4 @@ export const mockSummary = (overrides: Partial<Summary> | undefined = undefined)
   },
   birth: '1888',
   death: '1975',
-  ...overrides,
-});
+};

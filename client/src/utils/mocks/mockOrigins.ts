@@ -1,15 +1,14 @@
 import { Birth, Origins, Parents } from '../../types/tunneller';
 
-export const mockBirth = (overrides: Partial<Birth> | undefined = undefined): Birth => ({
+export const mockBirth: Birth = {
   date: {
     year: '1886',
     dayMonth: '18 December',
   },
   country: 'New Zealand',
-  ...overrides,
-});
+};
 
-export const mockParents = (overrides: Partial<Parents> | undefined = undefined): Parents => ({
+export const mockParents: Parents = {
   mother: {
     name: 'Jane Doe',
     origin: 'New Zealand',
@@ -18,13 +17,10 @@ export const mockParents = (overrides: Partial<Parents> | undefined = undefined)
     name: 'John Doe',
     origin: 'Scotland',
   },
-  ...overrides,
-});
+};
 
-export const mockOrigins = (overrides: Partial<Origins>
-    | undefined = undefined): Origins => ({
-  birth: mockBirth(),
-  parents: mockParents(),
+export const mockOrigins: Origins = {
+  birth: mockBirth,
+  parents: mockParents,
   inNzLength: null,
-  ...overrides,
-});
+};

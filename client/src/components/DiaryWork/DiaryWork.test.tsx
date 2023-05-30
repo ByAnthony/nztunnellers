@@ -4,7 +4,7 @@ import { DiaryWork } from './DiaryWork';
 import { mockEmployment } from '../../utils/mocks/mockPreWarYears';
 
 const component = (
-  <DiaryWork employment={mockEmployment()} />
+  <DiaryWork employment={mockEmployment} />
 );
 
 test('renders the component correctly', () => {
@@ -25,9 +25,10 @@ test('renders employment when known', () => {
 
 test('renders only occupation when employer unknown', () => {
   const componentWithOccupationOnly = (
-    <DiaryWork employment={mockEmployment({
+    <DiaryWork employment={{
+      ...mockEmployment,
       employer: null,
-    })}
+    }}
     />
   );
 
@@ -42,10 +43,11 @@ test('renders only occupation when employer unknown', () => {
 
 test('does not render employment when unknown', () => {
   const { container } = render(
-    <DiaryWork employment={mockEmployment({
+    <DiaryWork employment={{
+      ...mockEmployment,
       occupation: null,
       employer: null,
-    })}
+    }}
     />,
   );
 
