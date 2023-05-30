@@ -17,7 +17,7 @@ export const mockEmployment: Employment = {
 };
 
 export const mockPreWarYears: PreWayYears = {
-  armyExperience: mockArmyExperience,
+  armyExperience: mockArmyExperienceList,
   employment: mockEmployment,
   residence: null,
   maritalStatus: null,
