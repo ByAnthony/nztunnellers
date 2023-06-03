@@ -5,23 +5,17 @@ type props = {
 }
 
 export function DiaryHometown({ residence }: props) {
-  const displayHometown = (town: string | null) => (
-    town
-      ? (
-        <div className={STYLES['halfwidth-cards-container']}>
-          <div className={STYLES['halfwidth-main-card']}>
-            <span>Live</span>
-          </div>
-          <div className={STYLES['halfwidth-secondary-card']}>
-            <div className={STYLES['halfwidth-secondary-card-title']}><p>Hometown</p></div>
-            <div><span>{ town }</span></div>
-          </div>
+  return residence
+    ? (
+      <div className={STYLES['halfwidth-cards-container']}>
+        <div className={STYLES['halfwidth-main-card']}>
+          <span>Live</span>
         </div>
-      )
-      : null
-  );
-
-  return (
-    displayHometown(residence)
-  );
+        <div className={STYLES['halfwidth-secondary-card']}>
+          <div className={STYLES['halfwidth-secondary-card-title']}><p>Hometown</p></div>
+          <div><span>{ residence }</span></div>
+        </div>
+      </div>
+    )
+    : null;
 }

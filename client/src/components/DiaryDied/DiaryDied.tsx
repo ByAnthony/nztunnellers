@@ -11,47 +11,35 @@ export function DiaryDied({ warDeath, afterWarDeath }: props) {
     ageAtDeath
       ? <p>{`Died at the age of ${ageAtDeath}`}</p>
       : <p>Died</p>);
-
-  const displayDeathInfo = (
-    diedDuringWar: Death | null,
-    diedAfterWar: PostWarDeath | null,
-  ) => {
-    if (diedDuringWar !== null && diedAfterWar === null) {
-      return (
-        <>
-          <h2>Death</h2>
-          <div className={STYLES['fullwidth-main-card']}>
-            { title(diedDuringWar.ageAtDeath) }
-            <span>
-              { diedDuringWar.date.dayMonth !== null && diedDuringWar.date.year !== null
-                ? `${diedDuringWar.date.dayMonth} ${diedDuringWar.date.year}`
-                : diedDuringWar.date.year }
-            </span>
-          </div>
-        </>
-      );
-    }
-    if (diedDuringWar === null && diedAfterWar !== null) {
-      return (
-        <>
-          <h2>Death</h2>
-          <div className={STYLES['fullwidth-main-card']}>
-            { title(diedAfterWar.ageAtDeath) }
-            <span>
-              { diedAfterWar.date.dayMonth !== null && diedAfterWar.date.year !== null
-                ? `${diedAfterWar.date.dayMonth} ${diedAfterWar.date.year}`
-                : diedAfterWar.date.year }
-            </span>
-          </div>
-        </>
-      );
-    }
-    return null;
-  };
-
-  return (
-    <>
-      { displayDeathInfo(warDeath, afterWarDeath) }
-    </>
-  );
+  if (warDeath !== null && afterWarDeath === null) {
+    return (
+      <>
+        <h2>Death</h2>
+        <div className={STYLES['fullwidth-main-card']}>
+          { title(warDeath.ageAtDeath) }
+          <span>
+            { warDeath.date.dayMonth !== null && warDeath.date.year !== null
+              ? `${warDeath.date.dayMonth} ${warDeath.date.year}`
+              : warDeath.date.year }
+          </span>
+        </div>
+      </>
+    );
+  }
+  if (warDeath === null && afterWarDeath !== null) {
+    return (
+      <>
+        <h2>Death</h2>
+        <div className={STYLES['fullwidth-main-card']}>
+          { title(afterWarDeath.ageAtDeath) }
+          <span>
+            { afterWarDeath.date.dayMonth !== null && afterWarDeath.date.year !== null
+              ? `${afterWarDeath.date.dayMonth} ${afterWarDeath.date.year}`
+              : afterWarDeath.date.year }
+          </span>
+        </div>
+      </>
+    );
+  }
+  return null;
 }

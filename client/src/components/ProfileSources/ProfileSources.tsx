@@ -9,77 +9,87 @@ type props = {
 
 type RecordWithIbid<T> = T & { ibid: string };
 
-export function ProfileSources({ sources }: props) {
-  function addIbid<T extends Record<string, string>>(
-    array: T[],
-    index: number,
-    ibid: string,
-  ): RecordWithIbid<T>[] {
-    return array.slice(index).map((obj) => ({ ...obj, ibid }));
-  }
+function addIbid<T extends Record<string, string>>(
+  array: T[],
+  index: number,
+  ibid: string,
+): RecordWithIbid<T>[] {
+  return array.slice(index).map((obj) => ({ ...obj, ibid }));
+}
 
-  const getAwmm = (awmmCenotaph: string) => (
+function AwmmSource({ awmmCenotaph }: {awmmCenotaph: string}) {
+  return (
     <p>
       {'Auckland War Memorial Museum Tāmaki Paenga Hira: '}
       <a href={awmmCenotaph}>Online Cenotaph He Toa Taumata Rau</a>
       .
     </p>
   );
+}
 
-  const getLondonGazette = (londonGazette: LondonGazette[]) => {
-    if (londonGazette.length !== 0) {
-      const LondonGazetteList = [...addIbid([londonGazette[0]], 0, 'London Gazette, '), ...addIbid(londonGazette, 1, 'Ibid., ')];
-      return LondonGazetteList.map((gazette) => (
-        <p key={gazette.page}>
-          <em>{gazette.ibid}</em>
-          {`${gazette.date}, p. ${gazette.page}`}
+function NzArchivesSource({ nzArchives }: {nzArchives: NzArchives[]}) {
+  const nzArchivesList = [...addIbid([nzArchives[0]], 0, 'New Zealand Archives Te Rua Mahara o te Kāwanatanga, '), ...addIbid(nzArchives, 1, 'Ibid., ')];
+  const italicIbid = (ibid: string) => (ibid === 'Ibid., ' ? <em>{ibid}</em> : ibid);
+  return (
+    <>
+      {nzArchivesList.map((archives) => (
+        <p key={archives.reference}>
+          {italicIbid(archives.ibid)}
+          {`${archives.reference}, `}
+          <a href={archives.url}>Military Personnel File</a>
           .
         </p>
-      ));
-    }
-    return null;
-  };
+      ))}
+    </>
+  );
+}
 
-  const getNzArchives = (nzArchives: NzArchives[]) => {
-    const nzArchivesList = [...addIbid([nzArchives[0]], 0, 'New Zealand Archives Te Rua Mahara o te Kāwanatanga, '), ...addIbid(nzArchives, 1, 'Ibid., ')];
-    const italicIbid = (ibid: string) => (ibid === 'Ibid., ' ? <em>{ibid}</em> : ibid);
-    return nzArchivesList.map((archives) => (
-      <p key={archives.reference}>
-        {italicIbid(archives.ibid)}
-        {`${archives.reference}, `}
-        <a href={archives.url}>Military Personnel File</a>
-        .
-      </p>
-    ));
-  };
+function LondonGazetteSource({ londonGazette }: {londonGazette: LondonGazette[]}) {
+  if (londonGazette.length !== 0) {
+    const LondonGazetteList = [...addIbid([londonGazette[0]], 0, 'London Gazette, '), ...addIbid(londonGazette, 1, 'Ibid., ')];
+    return (
+      <>
+        {LondonGazetteList.map((gazette) => (
+          <p key={gazette.page}>
+            <em>{gazette.ibid}</em>
+            {`${gazette.date}, p. ${gazette.page}`}
+            .
+          </p>
+        ))}
+      </>
+    );
+  }
+  return null;
+}
 
-  const getNominalRoll = (nominalRoll: NominalRoll) => {
-    const title = `${nominalRoll.title}`;
-    const volumeRoll = `, ${nominalRoll.volume}, ${nominalRoll.roll}`;
-    const reference = `, ${nominalRoll.publisher}, ${nominalRoll.town}, ${nominalRoll.date}, ${nominalRoll.page}.`;
-    if (nominalRoll.volume && nominalRoll.roll) {
-      return (
-        <p>
-          <em>{title}</em>
-          {`${volumeRoll}${reference}`}
-        </p>
-      );
-    }
+function NominalRollSource({ nominalRoll }: {nominalRoll: NominalRoll}) {
+  const title = `${nominalRoll.title}`;
+  const volumeRoll = `, ${nominalRoll.volume}, ${nominalRoll.roll}`;
+  const reference = `, ${nominalRoll.publisher}, ${nominalRoll.town}, ${nominalRoll.date}, ${nominalRoll.page}.`;
+  if (nominalRoll.volume && nominalRoll.roll) {
     return (
       <p>
         <em>{title}</em>
-        {reference}
+        {`${volumeRoll}${reference}`}
       </p>
     );
-  };
+  }
+  return (
+    <p>
+      <em>{title}</em>
+      {reference}
+    </p>
+  );
+}
 
+export function ProfileSources({ sources }: props) {
   return (
     <div className={STYLES.sources}>
       <h3>Sources</h3>
-      { getAwmm(sources.awmmCenotaph) }
-      { getNzArchives(sources.nzArchives) }
-      { getLondonGazette(sources.londonGazette) }
-      { getNominalRoll(sources.nominalRoll) }
+      <AwmmSource awmmCenotaph={sources.awmmCenotaph} />
+      <NzArchivesSource nzArchives={sources.nzArchives} />
+      <LondonGazetteSource londonGazette={sources.londonGazette} />
+      <NominalRollSource nominalRoll={sources.nominalRoll} />
     </div>
   );
 }

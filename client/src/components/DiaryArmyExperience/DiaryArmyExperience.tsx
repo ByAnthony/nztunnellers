@@ -15,13 +15,13 @@ export function DiaryArmyExperience({ tunnellerId, armyExperience }: props) {
 
       const displayDurationAndCountry = () => {
         if (experience.duration !== null && experience.country !== null) {
-          return <p>{`${experience.duration} in ${experience.country}`}</p>;
+          return <p>{`${experience.duration} in ${isUk(experience.country)}`}</p>;
         }
         if (experience.duration !== null && experience.country === null) {
           return <p>{experience.duration}</p>;
         }
         if (experience.duration === null && experience.country !== null) {
-          return <p>{isUk(experience.country)}</p>;
+          return <p>{experience.country}</p>;
         }
         return null;
       };
