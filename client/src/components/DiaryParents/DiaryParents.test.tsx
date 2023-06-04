@@ -24,9 +24,9 @@ test('renders parents when known', () => {
 });
 
 test('renders only mother when father unknown', () => {
-  const componentWithMotherOnly = (<DiaryParents parents={{ ...mockParents, father: null }} />);
+  const mockComponent = (<DiaryParents parents={{ ...mockParents, father: null }} />);
 
-  render(componentWithMotherOnly);
+  render(mockComponent);
 
   expect(screen.queryByText('Parents')).not.toBeInTheDocument();
   expect(screen.getByText('Parent')).toBeInTheDocument();
@@ -37,9 +37,9 @@ test('renders only mother when father unknown', () => {
 });
 
 test('renders only father when father unknown', () => {
-  const componentWithMotherOnly = (<DiaryParents parents={{ ...mockParents, mother: null }} />);
+  const mockComponent = (<DiaryParents parents={{ ...mockParents, mother: null }} />);
 
-  render(componentWithMotherOnly);
+  render(mockComponent);
 
   expect(screen.queryByText('Parents')).not.toBeInTheDocument();
   expect(screen.getByText('Parent')).toBeInTheDocument();

@@ -24,7 +24,7 @@ test('renders employment when known', () => {
 });
 
 test('renders only occupation when employer unknown', () => {
-  const componentWithOccupationOnly = (
+  const mockComponent = (
     <DiaryWork employment={{
       ...mockEmployment,
       employer: null,
@@ -32,7 +32,7 @@ test('renders only occupation when employer unknown', () => {
     />
   );
 
-  render(componentWithOccupationOnly);
+  render(mockComponent);
 
   expect(screen.getByText('Work')).toBeInTheDocument();
   expect(screen.getByText('Occupation')).toBeInTheDocument();

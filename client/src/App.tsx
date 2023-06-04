@@ -1,4 +1,3 @@
-import './App.scss';
 import { useLayoutEffect } from 'react';
 import {
   BrowserRouter, Route, Routes, useLocation,

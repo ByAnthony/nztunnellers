@@ -1,12 +1,5 @@
 export const today = new Date();
 
-export const nonNullish = (data: any) => {
-  if (data !== null) {
-    return true;
-  }
-  return false;
-};
-
 export const displayBirthDeathDates = (
   birth: string | null,
   death: string | null,

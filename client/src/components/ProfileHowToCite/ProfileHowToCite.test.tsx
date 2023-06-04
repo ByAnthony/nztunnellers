@@ -34,14 +34,14 @@ describe('Dates', () => {
   });
 
   test('renders only birth date when death date unknown', () => {
-    const componentWithoutDeathDate = (
+    const mockComponent = (
       <ProfileHowToCite
         id={mockId}
         summary={{ ...mockSummary, death: null }}
         date={mockToday}
       />
     );
-    render(componentWithoutDeathDate);
+    render(mockComponent);
 
     const element = findElementWithText('"John Doe (1888-†?)"');
 

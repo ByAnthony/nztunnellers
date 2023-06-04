@@ -36,7 +36,7 @@ describe('NZ Archives', () => {
   });
 
   test('renders NZ Archives information list', () => {
-    const componentWithExtraInformation = (
+    const mockComponent = (
       <ProfileSources sources={{
         ...mockSources,
         nzArchives: [
@@ -53,7 +53,7 @@ describe('NZ Archives', () => {
       />
     );
 
-    render(componentWithExtraInformation);
+    render(mockComponent);
 
     expect(screen.getByText('Ibid.,')).toBeTruthy();
   });
@@ -71,7 +71,7 @@ describe('London Gazette', () => {
   });
 
   test('renders London Gazette information list', () => {
-    const componentWithExtraInformation = (
+    const mockComponent = (
       <ProfileSources sources={{
         ...mockSources,
         londonGazette: [
@@ -88,20 +88,20 @@ describe('London Gazette', () => {
       />
     );
 
-    render(componentWithExtraInformation);
+    render(mockComponent);
 
     expect(screen.getByText('Ibid.,')).toBeTruthy();
   });
 
   test('does not render London Gazette information if empty', () => {
-    const componentWithoutLondonGazette = (
+    const mockComponent = (
       <ProfileSources sources={{
         ...mockSources,
         londonGazette: [],
       }}
       />
     );
-    render(componentWithoutLondonGazette);
+    render(mockComponent);
 
     expect(screen.queryByText('London Gazette')).not.toBeInTheDocument();
   });
@@ -119,7 +119,7 @@ describe('Nominal Roll', () => {
   });
 
   test('renders Nominal Roll book with volume and roll', () => {
-    const componentWithExtraInformation = (
+    const mockComponent = (
       <ProfileSources sources={{
         ...mockSources,
         nominalRoll: {
@@ -135,7 +135,7 @@ describe('Nominal Roll', () => {
       />
     );
 
-    render(componentWithExtraInformation);
+    render(mockComponent);
 
     const title = findElementWithText('Nominal Rolls of New Zealand Expeditionary Forc');
     const extraInfo = findElementWithText(', Volume III, No.55, Government Printer, Wellington, 1916, 37.');

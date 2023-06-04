@@ -25,7 +25,7 @@ test('renders birth date and country when known', () => {
 });
 
 test('renders birth date when known but not birth country when unknown', () => {
-  const componentWithoutBirthCountry = (
+  const mockComponent = (
     <DiaryBirth birth={{
       ...mockBirth,
       country: null,
@@ -33,7 +33,7 @@ test('renders birth date when known but not birth country when unknown', () => {
     />
   );
 
-  render(componentWithoutBirthCountry);
+  render(mockComponent);
 
   const birthTitle = findElementWithText('Born');
   const birthDate = findElementWithText('18 December 1886');
@@ -43,7 +43,7 @@ test('renders birth date when known but not birth country when unknown', () => {
 });
 
 test('renders birth country when known but not birth date when unknown', () => {
-  const componentWithoutBirthDate = (
+  const mockComponent = (
     <DiaryBirth birth={{
       ...mockBirth,
       date: null,
@@ -51,7 +51,7 @@ test('renders birth country when known but not birth date when unknown', () => {
     />
   );
 
-  render(componentWithoutBirthDate);
+  render(mockComponent);
 
   const birthCountry = findElementWithText('Born in New Zealand');
 

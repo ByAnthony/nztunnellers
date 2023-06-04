@@ -12,11 +12,8 @@ function ArmyExperienceList({ militaryExperience }: {militaryExperience: ArmyExp
     return (
       <>
         {militaryExperience.map((experience) => {
-          const displayConflict = experience.conflict !== null
-            ? <p>{experience.conflict}</p> : null;
-          const isUk = (country: string) => (country === 'United Kingdom' ? `the ${country}` : country);
-
           const displayDurationAndCountry = () => {
+            const isUk = (country: string) => (country === 'United Kingdom' ? `the ${country}` : country);
             if (experience.duration !== null && experience.country !== null) {
               return <p>{`${experience.duration} in ${isUk(experience.country)}`}</p>;
             }
@@ -57,7 +54,7 @@ function ArmyExperienceList({ militaryExperience }: {militaryExperience: ArmyExp
           if (experience.unit !== 'Other' && experience.conflict !== null) {
             return (
               <li className={STYLES['fullwidth-secondary-card']} key={experience.unit}>
-                { displayConflict }
+                <p>{experience.conflict}</p>
                 <span>{ experience.unit }</span>
               </li>
             );

@@ -24,11 +24,11 @@ test('renders life when known', () => {
 
 describe.each(['Single', 'Widower', 'Separated'])('renders marital status if', (maritalStatus) => {
   test(`${maritalStatus}`, () => {
-    const componentWithOtherMaritalStatus = (
+    const mockComponent = (
       <DiaryLife maritalStatus={maritalStatus} wife={null} />
     );
 
-    render(componentWithOtherMaritalStatus);
+    render(mockComponent);
 
     expect(screen.getByText('Life')).toBeInTheDocument();
     expect(screen.getByText('Marital Status')).toBeInTheDocument();
