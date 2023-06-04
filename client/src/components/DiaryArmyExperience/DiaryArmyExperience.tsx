@@ -23,7 +23,7 @@ function ArmyExperienceList({ militaryExperience }: {militaryExperience: ArmyExp
             if (experience.duration === null && experience.country !== null) {
               return <p>{experience.country}</p>;
             }
-            return null;
+            return '';
           };
 
           if (experience.unit !== 'Other' && experience.conflict === null) {
