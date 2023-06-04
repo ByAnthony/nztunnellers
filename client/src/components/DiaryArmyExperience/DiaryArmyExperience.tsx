@@ -12,21 +12,20 @@ function ArmyExperienceList({ militaryExperience }: {militaryExperience: ArmyExp
     return (
       <>
         {militaryExperience.map((experience) => {
-          const displayDurationAndCountry = () => {
-            const isUk = (country: string) => (country === 'United Kingdom' ? `the ${country}` : country);
-            if (experience.duration !== null && experience.country !== null) {
-              return <p>{`${experience.duration} in ${isUk(experience.country)}`}</p>;
-            }
-            if (experience.duration !== null && experience.country === null) {
-              return <p>{experience.duration}</p>;
-            }
-            if (experience.duration === null && experience.country !== null) {
-              return <p>{experience.country}</p>;
-            }
-            return null;
-          };
-
           if (experience.unit !== 'Other' && experience.conflict === null) {
+            const displayDurationAndCountry = () => {
+              const isUk = (country: string) => (country === 'United Kingdom' ? `the ${country}` : country);
+              if (experience.duration !== null && experience.country !== null) {
+                return <p>{`${experience.duration} in ${isUk(experience.country)}`}</p>;
+              }
+              if (experience.duration !== null && experience.country === null) {
+                return <p>{experience.duration}</p>;
+              }
+              if (experience.duration === null && experience.country !== null) {
+                return <p>{experience.country}</p>;
+              }
+              return null;
+            };
             return (
               <li className={STYLES['fullwidth-secondary-card']} key={experience.unit}>
                 <span>{ experience.unit }</span>
@@ -59,7 +58,6 @@ function ArmyExperienceList({ militaryExperience }: {militaryExperience: ArmyExp
               </li>
             );
           }
-
           return null;
         })}
       </>
