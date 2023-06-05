@@ -5,9 +5,7 @@ import { mockDeath } from '../../utils/mocks/mockMilitaryYears';
 import { DiaryDied } from './DiaryDied';
 
 describe('Death War', () => {
-  const component = (
-    <DiaryDied warDeath={mockDeath} afterWarDeath={null} />
-  );
+  const component = (<DiaryDied warDeath={mockDeath} afterWarDeath={null} />);
 
   test('renders the component correctly', () => {
     const { asFragment } = render(component);
@@ -35,9 +33,7 @@ describe('Death War', () => {
 });
 
 describe('Post War Death', () => {
-  const component = (
-    <DiaryDied warDeath={null} afterWarDeath={mockAfterWarDeath} />
-  );
+  const component = (<DiaryDied warDeath={null} afterWarDeath={mockAfterWarDeath} />);
 
   test('renders the component correctly', () => {
     const { asFragment } = render(component);

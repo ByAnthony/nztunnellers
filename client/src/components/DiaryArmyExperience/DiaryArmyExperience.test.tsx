@@ -5,7 +5,10 @@ import { mockArmyExperience, mockArmyExperienceList } from '../../utils/mocks/mo
 import { DiaryArmyExperience } from './DiaryArmyExperience';
 
 const component = (
-  <DiaryArmyExperience tunnellerId={mockId} armyExperience={mockArmyExperienceList} />
+  <DiaryArmyExperience
+    tunnellerId={mockId}
+    armyExperience={mockArmyExperienceList}
+  />
 );
 
 test('renders the component correctly', () => {
