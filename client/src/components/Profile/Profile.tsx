@@ -44,7 +44,7 @@ export function Profile() {
             </p>
           </div>
           <div className={STYLES.profile}>
-            <div className={STYLES['profile-flex-summary']}>
+            <div className={STYLES['flex-summary']}>
               <div className={STYLES.summary}>
                 <ProfileSummary
                   embarkationUnit={data.militaryYears.embarkationUnit}
@@ -53,7 +53,7 @@ export function Profile() {
                 />
               </div>
             </div>
-            <div className={STYLES['profile-flex-diary']}>
+            <div className={STYLES['flex-diary']}>
               <ProfileDiary
                 tunnellerId={data.id}
                 origins={data.origins}

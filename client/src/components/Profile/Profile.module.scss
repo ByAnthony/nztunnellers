@@ -103,6 +103,26 @@
     gap: index.$l-margin;
   }
 
+  .flex-summary {
+    @include index.desktop {
+      width: 40%;
+    }
+
+    @include index.large-desktop {
+      width: 40%;
+    }
+  }
+
+  .flex-diary {
+    @include index.desktop {
+      width: 60%;
+    }
+
+    @include index.large-desktop {
+      width: 60%;
+    }
+  }
+
   .summary {
     @include index.desktop {
       flex-grow: 1;
@@ -113,25 +133,5 @@
       width: 500px;
       text-align: left;
     }
-  }
-}
-
-.profile-flex-summary {
-  @include index.desktop {
-    width: 40%;
-  }
-
-  @include index.large-desktop {
-    width: 40%;
-  }
-}
-
-.profile-flex-diary {
-  @include index.desktop {
-    width: 60%;
-  }
-
-  @include index.large-desktop {
-    width: 60%;
   }
 }
