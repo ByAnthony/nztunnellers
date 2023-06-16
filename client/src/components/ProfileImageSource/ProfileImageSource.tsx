@@ -2,23 +2,23 @@ import { ImageSource, ImageBookAuthor } from '../../types/tunneller';
 import STYLES from './ProfileImageSource.module.scss';
 
 type props = {
-    source: ImageSource | undefined,
+  source: ImageSource | undefined,
 }
 
 function SourceImage({ imageSource }: {imageSource: ImageSource | undefined}) {
   const title = <h3>Photograph</h3>;
   if (imageSource?.archives) {
     return (
-      <>
+      <div className={STYLES.sources}>
         {title}
         <p>{`${imageSource.archives.location}, ${imageSource.archives.reference}.`}</p>
-      </>
+      </div>
     );
   }
   if (imageSource?.aucklandLibraries) {
     const displayReference = (url: string) => url.slice(url.indexOf('=') + 1, url.indexOf('&'));
     return (
-      <>
+      <div className={STYLES.sources}>
         {title}
         <p>
           Auckland Libraries Ngā Pātaka Kōrero o Tāmaki Makaurau,
@@ -27,26 +27,26 @@ function SourceImage({ imageSource }: {imageSource: ImageSource | undefined}) {
           <a href={`${imageSource.aucklandLibraries}`}>{displayReference(imageSource.aucklandLibraries)}</a>
           .
         </p>
-      </>
+      </div>
     );
   }
   if (imageSource?.family) {
     return (
-      <>
+      <div className={STYLES.sources}>
         {title}
         <p>{`Courtesy of ${imageSource?.family}.`}</p>
-      </>
+      </div>
     );
   }
   if (imageSource?.newspaper) {
     return (
-      <>
+      <div className={STYLES.sources}>
         {title}
         <p>
           <em>{imageSource?.newspaper.name}</em>
           {`, ${imageSource?.newspaper.date}.`}
         </p>
-      </>
+      </div>
     );
   }
   if (imageSource?.book) {
@@ -63,14 +63,14 @@ function SourceImage({ imageSource }: {imageSource: ImageSource | undefined}) {
       return '';
     };
     return (
-      <>
+      <div className={STYLES.sources}>
         {title}
         <p>
           {displayAuthors(imageSource?.book.authors)}
           <em>{imageSource?.book.title}</em>
           {`, ${imageSource?.book.town}, ${imageSource?.book.publisher}, ${imageSource.book.year}${displayPage(imageSource?.book.page)}.`}
         </p>
-      </>
+      </div>
     );
   }
   return null;
@@ -78,8 +78,6 @@ function SourceImage({ imageSource }: {imageSource: ImageSource | undefined}) {
 
 export function ProfileImageSource({ source }: props) {
   return (
-    <div className={STYLES.sources}>
-      <SourceImage imageSource={source} />
-    </div>
+    <SourceImage imageSource={source} />
   );
 }

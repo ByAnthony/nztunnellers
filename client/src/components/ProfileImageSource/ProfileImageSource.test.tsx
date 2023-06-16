@@ -231,3 +231,11 @@ describe('Book', () => {
     expect(screen.queryByText('p. 89')).not.toBeInTheDocument();
   });
 });
+
+test('does not render component when unknown', () => {
+  const { container } = render(
+    <ProfileImageSource source={undefined} />,
+  );
+
+  expect(container).toBeEmptyDOMElement();
+});
