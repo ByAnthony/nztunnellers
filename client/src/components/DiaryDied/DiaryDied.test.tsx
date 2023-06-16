@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 import { mockAfterWarDeath } from '../../utils/mocks/mockPostServiceYears';
-import { mockDeath } from '../../utils/mocks/mockMilitaryYears';
+import { mockDeath, mockDate } from '../../utils/mocks/mockMilitaryYears';
 import { DiaryDied } from './DiaryDied';
 
 describe('Death War', () => {
@@ -30,6 +30,26 @@ describe('Death War', () => {
     expect(screen.queryByText('Died at the age of 89')).not.toBeInTheDocument();
     expect(screen.getByText('13 October 1926')).toBeInTheDocument();
   });
+
+  test('renders year when day and month unknown', () => {
+    const mockComponent = (
+      <DiaryDied
+        warDeath={
+          {
+            ...mockDeath,
+            date: { ...mockDate, dayMonth: null },
+            ageAtDeath: null,
+          }
+        }
+        afterWarDeath={null}
+      />
+    );
+
+    render(mockComponent);
+
+    expect(screen.queryByText('Died at the age of 89')).not.toBeInTheDocument();
+    expect(screen.getByText('1926')).toBeInTheDocument();
+  });
 });
 
 describe('Post War Death', () => {
@@ -50,13 +70,33 @@ describe('Post War Death', () => {
 
   test('renders date when age unknown', () => {
     const mockComponent = (
-      <DiaryDied warDeath={{ ...mockDeath, ageAtDeath: null }} afterWarDeath={null} />
+      <DiaryDied warDeath={null} afterWarDeath={{ ...mockAfterWarDeath, ageAtDeath: null }} />
     );
 
     render(mockComponent);
 
     expect(screen.queryByText('Died at the age of 89')).not.toBeInTheDocument();
     expect(screen.getByText('13 October 1926')).toBeInTheDocument();
+  });
+
+  test('renders year when day and month unknown', () => {
+    const mockComponent = (
+      <DiaryDied
+        warDeath={null}
+        afterWarDeath={
+          {
+            ...mockAfterWarDeath,
+            date: { ...mockDate, dayMonth: null },
+            ageAtDeath: null,
+          }
+        }
+      />
+    );
+
+    render(mockComponent);
+
+    expect(screen.queryByText('Died at the age of 89')).not.toBeInTheDocument();
+    expect(screen.getByText('1926')).toBeInTheDocument();
   });
 });
 

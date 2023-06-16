@@ -21,7 +21,7 @@ export const mockMedals: Medal[] = [
   mockBritishWarMedal,
 ];
 
-const mockDate: Date = {
+export const mockDate: Date = {
   year: '1926',
   dayMonth: '13 October',
 };
