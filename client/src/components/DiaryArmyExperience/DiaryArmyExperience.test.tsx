@@ -191,6 +191,5 @@ test('does not render army experience when unknown', () => {
     <DiaryArmyExperience tunnellerId={mockId} armyExperience={[]} />,
   );
 
-  expect(screen.queryByText('NZ Infantry')).not.toBeInTheDocument();
-  expect(screen.queryByText('12 months in New Zealand')).not.toBeInTheDocument();
+  expect(screen.queryByRole('list')).not.toBeInTheDocument();
 });

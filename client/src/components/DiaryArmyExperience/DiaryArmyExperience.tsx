@@ -7,29 +7,31 @@ type props = {
   armyExperience: ArmyExperience[],
 }
 
-function ArmyExperienceList({ militaryExperience }: {militaryExperience: ArmyExperience[] | []}) {
+export function ArmyExperienceList({ militaryExperience }:
+  {militaryExperience: ArmyExperience[] | []}) {
   if (militaryExperience.length > 0) {
     return (
       <>
         {militaryExperience.map((experience) => {
-          if (experience.unit !== 'Other' && experience.conflict === null) {
-            const displayDurationAndCountry = () => {
-              const isUk = (country: string) => (country === 'United Kingdom' ? `the ${country}` : country);
-              if (experience.duration !== null && experience.country !== null) {
-                return <p>{`${experience.duration} in ${isUk(experience.country)}`}</p>;
-              }
-              if (experience.duration !== null && experience.country === null) {
-                return <p>{experience.duration}</p>;
-              }
-              if (experience.duration === null && experience.country !== null) {
-                return <p>{experience.country}</p>;
-              }
-              return null;
-            };
+          const displayDurationAndCountry = () => {
+            const isUk = (country: string) => (country === 'United Kingdom' ? `the ${country}` : country);
+            if (experience.duration !== null && experience.country !== null) {
+              return <p>{`${experience.duration} in ${isUk(experience.country)}`}</p>;
+            }
+            if (experience.duration !== null && experience.country === null) {
+              return <p>{experience.duration}</p>;
+            }
+            if (experience.duration === null && experience.country !== null) {
+              return <p>{experience.country}</p>;
+            }
+            return null;
+          };
+
+          if (experience.unit !== 'Other' && experience.conflict !== null) {
             return (
               <li className={STYLES['fullwidth-secondary-card']} key={experience.unit}>
+                <p>{experience.conflict}</p>
                 <span>{ experience.unit }</span>
-                { displayDurationAndCountry() }
               </li>
             );
           }
@@ -49,16 +51,12 @@ function ArmyExperienceList({ militaryExperience }: {militaryExperience: ArmyExp
               </li>
             );
           }
-
-          if (experience.unit !== 'Other' && experience.conflict !== null) {
-            return (
-              <li className={STYLES['fullwidth-secondary-card']} key={experience.unit}>
-                <p>{experience.conflict}</p>
-                <span>{ experience.unit }</span>
-              </li>
-            );
-          }
-          return null;
+          return (
+            <li className={STYLES['fullwidth-secondary-card']} key={experience.unit}>
+              <span>{ experience.unit }</span>
+              { displayDurationAndCountry() }
+            </li>
+          );
         })}
       </>
     );
