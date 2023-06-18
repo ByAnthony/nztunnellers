@@ -13,15 +13,15 @@ exports[`renders the component correctly 1`] = `
       >
         <p>
           <img
-            alt=""
-            src="/images/roll/medals/victory-medal.png"
+            alt="British War Medal ribbon"
+            src="/images/roll/medals/british-war-medal.png"
             width="40"
           />
         </p>
       </div>
       <div>
         <span>
-          Victory Medal
+          British War Medal
         </span>
       </div>
     </div>
@@ -33,15 +33,15 @@ exports[`renders the component correctly 1`] = `
       >
         <p>
           <img
-            alt=""
-            src="/images/roll/medals/british-war-medal.png"
+            alt="Victory Medal ribbon"
+            src="/images/roll/medals/victory-medal.png"
             width="40"
           />
         </p>
       </div>
       <div>
         <span>
-          British War Medal
+          Victory Medal
         </span>
       </div>
     </div>

@@ -2,13 +2,6 @@ import {
   Date, DeathPlace, Death, DeathCause, Cemetery, Medal,
 } from '../../types/tunneller';
 
-const mockVictoryMedal: Medal = {
-  name: 'Victory Medal',
-  country: 'United Kingdom',
-  image: 'victory-medal.png',
-  citation: null,
-};
-
 export const mockBritishWarMedal: Medal = {
   name: 'British War Medal',
   country: 'United Kingdom',
@@ -16,9 +9,16 @@ export const mockBritishWarMedal: Medal = {
   citation: null,
 };
 
+export const mockVictoryMedal: Medal = {
+  name: 'Victory Medal',
+  country: 'United Kingdom',
+  image: 'victory-medal.png',
+  citation: null,
+};
+
 export const mockMedals: Medal[] = [
-  mockVictoryMedal,
   mockBritishWarMedal,
+  mockVictoryMedal,
 ];
 
 export const mockDate: Date = {
