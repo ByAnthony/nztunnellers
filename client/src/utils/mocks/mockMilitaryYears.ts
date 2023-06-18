@@ -64,7 +64,7 @@ export const mockDeath: Death = {
   ageAtDeath: 89,
 };
 
-const mockEnlistment: Enlistment = {
+export const mockEnlistment: Enlistment = {
   serial: '1/1000',
   rank: 'Sapper',
   date: mockDate,
@@ -79,10 +79,10 @@ const mockTraining: Training = {
   locationType: 'Military Camp',
 };
 
-const mockEmbarkationUnit: EmbarkationUnit = {
-  detachment: 'Main Boday',
+export const mockEmbarkationUnit: EmbarkationUnit = {
+  detachment: 'Main Body',
   training: mockTraining,
-  section: 'Section No2',
+  section: 'Section No.2',
   attachedCorps: null,
 };
 

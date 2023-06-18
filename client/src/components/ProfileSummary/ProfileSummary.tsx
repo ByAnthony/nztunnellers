@@ -1,16 +1,19 @@
-import type { EmbarkationUnit, Enlistment, Image } from '../../types/tunneller';
+import type {
+  EmbarkationUnit, Enlistment, Image, Summary,
+} from '../../types/tunneller';
 import STYLES from './ProfileSummary.module.scss';
 
 type props = {
+    summary: Summary
     embarkationUnit: EmbarkationUnit,
     enlistment: Enlistment,
     image: Image | null,
 }
 
-function RenderImage({ imageUrl }: {imageUrl: string | undefined}) {
+function RenderImage({ imageUrl, tunneller }: {imageUrl: string | undefined, tunneller: Summary}) {
   return imageUrl ? (
     <div className={STYLES['image-card']}>
-      <img src={`/images/roll/tunnellers/${imageUrl}`} alt="" />
+      <img src={`/images/roll/tunnellers/${imageUrl}`} alt={`Portrait of ${tunneller.name.forename} ${tunneller.name.surname}`} />
     </div>
   ) : null;
 }
@@ -40,10 +43,12 @@ function RenderUnit({ unit, section }:
   );
 }
 
-export function ProfileSummary({ embarkationUnit, enlistment, image }: props) {
+export function ProfileSummary({
+  summary, embarkationUnit, enlistment, image,
+}: props) {
   return (
     <div className={STYLES.overview}>
-      <RenderImage imageUrl={image?.url} />
+      <RenderImage imageUrl={image?.url} tunneller={summary} />
       <RenderUnit unit={embarkationUnit.detachment} section={embarkationUnit.section} />
       <div className={STYLES['halfwidth-cards-container']}>
         <div className={STYLES['halfwidth-secondary-card']}>

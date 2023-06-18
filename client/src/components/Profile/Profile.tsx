@@ -47,6 +47,7 @@ export function Profile() {
             <div className={STYLES['flex-summary']}>
               <div className={STYLES.summary}>
                 <ProfileSummary
+                  summary={data.summary}
                   embarkationUnit={data.militaryYears.embarkationUnit}
                   enlistment={data.militaryYears.enlistment}
                   image={data.image}
