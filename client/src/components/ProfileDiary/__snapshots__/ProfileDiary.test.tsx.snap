@@ -1,0 +1,194 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders the component correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="diary"
+  >
+    <h2>
+      About
+    </h2>
+    <div
+      class="fullwidth-main-card"
+    >
+      <p>
+        Born in New Zealand
+      </p>
+      <span>
+        18 December 1886
+      </span>
+    </div>
+    <div
+      class="fullwidth-main-card"
+    >
+      Parents
+    </div>
+    <div
+      class="halfwidth-cards-container"
+    >
+      <div
+        class="halfwidth-secondary-card"
+      >
+        <div
+          class="halfwidth-secondary-card-title"
+        >
+          <p>
+            Mother
+          </p>
+        </div>
+        <div>
+          <span>
+            Jane Doe
+          </span>
+        </div>
+      </div>
+      <div
+        class="halfwidth-secondary-card"
+      >
+        <div
+          class="halfwidth-secondary-card-title"
+        >
+          <p>
+            Father
+          </p>
+        </div>
+        <div>
+          <span>
+            John Doe
+          </span>
+        </div>
+      </div>
+    </div>
+    <div
+      class="fullwidth-main-card"
+    >
+      Work
+    </div>
+    <div
+      class="halfwidth-cards-container"
+    >
+      <div
+        class="halfwidth-secondary-card"
+      >
+        <div
+          class="halfwidth-secondary-card-title"
+        >
+          <p>
+            Occupation
+          </p>
+        </div>
+        <div>
+          <span>
+            Goldminer
+          </span>
+        </div>
+      </div>
+      <div
+        class="halfwidth-secondary-card"
+      >
+        <div
+          class="halfwidth-secondary-card-title"
+        >
+          <p>
+            Employer
+          </p>
+        </div>
+        <div>
+          <span>
+            Goldmining Company
+          </span>
+        </div>
+      </div>
+    </div>
+    <h2>
+      Army Experience
+    </h2>
+    <li
+      class="fullwidth-secondary-card"
+    >
+      <span>
+        NZ Infantry
+      </span>
+      <p>
+        12 months in New Zealand
+      </p>
+    </li>
+    <a
+      aria-label="Open the World War I timeline."
+      class="war-service"
+      href="/tunnellers/26/wwi-timeline"
+    >
+      <div>
+        <p>
+          World War I (1914-1918)
+        </p>
+        <span>
+          New Zealand Tunnellers
+        </span>
+      </div>
+      <div
+        class="arrow-right"
+      >
+        →
+      </div>
+    </a>
+    <div
+      class="halfwidth-cards-container"
+    >
+      <div
+        class="halfwidth-secondary-card"
+      >
+        <div
+          class="halfwidth-secondary-card-title"
+        >
+          <p>
+            <img
+              alt="British War Medal ribbon"
+              src="/images/roll/medals/british-war-medal.png"
+              width="40"
+            />
+          </p>
+        </div>
+        <div>
+          <span>
+            British War Medal
+          </span>
+        </div>
+      </div>
+      <div
+        class="halfwidth-secondary-card"
+      >
+        <div
+          class="halfwidth-secondary-card-title"
+        >
+          <p>
+            <img
+              alt="Victory Medal ribbon"
+              src="/images/roll/medals/victory-medal.png"
+              width="40"
+            />
+          </p>
+        </div>
+        <div>
+          <span>
+            Victory Medal
+          </span>
+        </div>
+      </div>
+    </div>
+    <h2>
+      Death
+    </h2>
+    <div
+      class="fullwidth-main-card"
+    >
+      <p>
+        Died at the age of 89
+      </p>
+      <span>
+        13 October 1926
+      </span>
+    </div>
+  </div>
+</DocumentFragment>
+`;

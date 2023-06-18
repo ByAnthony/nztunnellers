@@ -1,5 +1,17 @@
 import {
-  Date, DeathPlace, Death, DeathCause, Cemetery, Medal,
+  Date,
+  DeathPlace,
+  Death,
+  DeathCause,
+  Cemetery,
+  Medal,
+  MilitaryYears,
+  Enlistment,
+  EmbarkationUnit,
+  Training,
+  Transport,
+  EndOfService,
+  Demobilization,
 } from '../../types/tunneller';
 
 export const mockBritishWarMedal: Medal = {
@@ -50,4 +62,57 @@ export const mockDeath: Death = {
   cause: mockCause,
   cemetery: mockCemetery,
   ageAtDeath: 89,
+};
+
+const mockEnlistment: Enlistment = {
+  serial: '1/1000',
+  rank: 'Sapper',
+  date: mockDate,
+  district: 'Canterbury',
+  alias: null,
+  transferredToTunnellers: null,
+};
+
+const mockTraining: Training = {
+  date: mockDate,
+  location: 'Auckland',
+  locationType: 'Military Camp',
+};
+
+const mockEmbarkationUnit: EmbarkationUnit = {
+  detachment: 'Main Boday',
+  training: mockTraining,
+  section: 'Section No2',
+  attachedCorps: null,
+};
+
+const mockTransport: Transport = {
+  reference: 'HMNZT 56',
+  vessel: 'Beata',
+  departureDate: mockDate,
+  departurePort: 'Auckland',
+  arrivalDate: mockDate,
+  arrivalPort: 'Plymouth',
+};
+
+const mockDemobilization: Demobilization = {
+  date: mockDate,
+  country: 'New Zealand',
+};
+
+const mockEndOfService: EndOfService = {
+  deserter: false,
+  transferred: null,
+  deathWar: null,
+  transportNz: mockTransport,
+  demobilization: mockDemobilization,
+};
+
+export const mockMilitaryYears: MilitaryYears = {
+  enlistment: mockEnlistment,
+  embarkationUnit: mockEmbarkationUnit,
+  transportUk: mockTransport,
+  frontEvents: [],
+  endOfService: mockEndOfService,
+  medals: mockMedals,
 };

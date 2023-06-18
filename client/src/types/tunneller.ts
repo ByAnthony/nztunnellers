@@ -77,7 +77,7 @@ export type EmbarkationUnit = {
 export type Transport = {
     reference: string | null,
     vessel: string,
-    departureDate: Date
+    departureDate: Date,
     departurePort: string | null,
     arrivalDate: Date | null,
     arrivalPort: string | null,
