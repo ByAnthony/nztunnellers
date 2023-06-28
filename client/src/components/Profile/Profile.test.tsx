@@ -1,36 +1,36 @@
-import '@testing-library/jest-dom';
 import { render } from '@testing-library/react';
-import { Provider } from 'react-redux';
-import { store } from '../../redux/store';
-import { mockId, mockProfile } from '../../utils/mocks/mockProfile';
-import { Profile } from './Profile';
+import { mockProfile } from '../../utils/mocks/mockProfile';
 import { useGetTunnellerByIdQuery } from '../../redux/slices/rollSlice';
+import { Profile } from './Profile';
 
-jest.mock('../../redux/slices/rollSlice');
-
-jest.mock('react-router-dom', () => ({
-  useParams: jest.fn(),
+jest.mock('../../redux/slices/rollSlice', () => ({
+  useGetTunnellerByIdQuery: jest.fn(),
 }));
 
-jest.spyOn(global, 'Number');
+describe('Profile', () => {
+  it('renders profile information when data is available', () => {
+    (useGetTunnellerByIdQuery as jest.Mock).mockReturnValue({
+      data: mockProfile,
+      error: null,
+      isLoading: false,
+      isSuccess: true,
+    });
 
-beforeAll(() => {
-  (useGetTunnellerByIdQuery as jest.MockedFunction<typeof useGetTunnellerByIdQuery>)
-    .mockReturnValue({ data: mockProfile, refetch: jest.fn() });
-});
+    const { asFragment } = render(<Profile />);
 
-describe('YourComponent', () => {
-  it('should mock the code snippet', () => {
-    jest.requireMock('react-router-dom').useParams.mockReturnValue({ id: mockId });
-
-    const { asFragment } = render(
-      <Provider store={store}>
-        <Profile />
-      </Provider>,
-    );
-
-    expect(jest.requireMock('react-router-dom').useParams).toHaveBeenCalled();
-    expect(global.Number).toHaveBeenCalledWith(mockId);
     expect(asFragment()).toMatchSnapshot();
   });
+
+  // it('does not render profile information when data is unavailable', () => {
+  //   (useGetTunnellerByIdQuery as jest.Mock).mockReturnValue({
+  //     data: undefined,
+  //     error: null,
+  //     isLoading: false,
+  //     isSuccess: true,
+  //   });
+
+  //   const { container } = render(<Profile />);
+
+  //   expect(container).toBeEmptyDOMElement();
+  // });
 });

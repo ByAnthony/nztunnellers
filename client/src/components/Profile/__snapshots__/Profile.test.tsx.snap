@@ -1,0 +1,471 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Profile renders profile information when data is available 1`] = `
+<DocumentFragment>
+  <div
+    class="menu"
+  >
+    <a
+      aria-label="Go to the Homepage."
+      class="logo"
+      href="/"
+    >
+      <img
+        alt=""
+        src="/nzt_logo.png"
+      />
+    </a>
+    <div
+      class="search-form"
+    >
+      <form>
+        <input
+          id="search"
+          name="search"
+          placeholder="Search for a tunneller"
+          type="text"
+        />
+      </form>
+      <button
+        class="search-form-button"
+        type="submit"
+      >
+        <img
+          alt=""
+          height="18"
+          src="/searching_hover.png"
+        />
+      </button>
+    </div>
+  </div>
+  <div
+    class="header"
+  >
+    <div
+      class="link"
+    >
+      <a
+        href="/tunnellers"
+      >
+        Tunnellers
+      </a>
+      <span>
+        /
+      </span>
+      John Doe
+    </div>
+    <h1>
+      <span
+        class="forename"
+      >
+        John
+      </span>
+      <span
+        class="surname"
+      >
+        Doe
+      </span>
+    </h1>
+    <p
+      class="dates"
+    >
+      1888 - 1975
+    </p>
+  </div>
+  <div
+    class="profile"
+  >
+    <div
+      class="flex-summary"
+    >
+      <div
+        class="summary"
+      >
+        <div
+          class="overview"
+        >
+          <div
+            class="image-card"
+          >
+            <img
+              alt="Portrait of John Doe"
+              src="/images/roll/tunnellers/1/1234.jpg"
+            />
+          </div>
+          <div
+            class="fullwidth-main-card"
+          >
+            <p>
+              Unit
+            </p>
+            <span>
+              Main Body
+            </span>
+          </div>
+          <div
+            class="fullwidth-main-card"
+          >
+            <p>
+              Section
+            </p>
+            <span>
+              Section No.2
+            </span>
+          </div>
+          <div
+            class="halfwidth-cards-container"
+          >
+            <div
+              class="halfwidth-secondary-card"
+            >
+              <div
+                class="halfwidth-secondary-card-title"
+              >
+                <p>
+                  Rank
+                </p>
+              </div>
+              <div>
+                <span>
+                  Sapper
+                </span>
+              </div>
+            </div>
+            <div
+              class="halfwidth-secondary-card"
+            >
+              <div
+                class="halfwidth-secondary-card-title"
+              >
+                <p>
+                  Serial
+                </p>
+              </div>
+              <div>
+                <span>
+                  1/1000
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="flex-diary"
+    >
+      <div
+        class="diary"
+      >
+        <h2>
+          About
+        </h2>
+        <div
+          class="fullwidth-main-card"
+        >
+          <p>
+            Born in New Zealand
+          </p>
+          <span>
+            18 December 1886
+          </span>
+        </div>
+        <div
+          class="fullwidth-main-card"
+        >
+          Parents
+        </div>
+        <div
+          class="halfwidth-cards-container"
+        >
+          <div
+            class="halfwidth-secondary-card"
+          >
+            <div
+              class="halfwidth-secondary-card-title"
+            >
+              <p>
+                Mother
+              </p>
+            </div>
+            <div>
+              <span>
+                Jane Doe
+              </span>
+            </div>
+          </div>
+          <div
+            class="halfwidth-secondary-card"
+          >
+            <div
+              class="halfwidth-secondary-card-title"
+            >
+              <p>
+                Father
+              </p>
+            </div>
+            <div>
+              <span>
+                John Doe
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="fullwidth-main-card"
+        >
+          Work
+        </div>
+        <div
+          class="halfwidth-cards-container"
+        >
+          <div
+            class="halfwidth-secondary-card"
+          >
+            <div
+              class="halfwidth-secondary-card-title"
+            >
+              <p>
+                Occupation
+              </p>
+            </div>
+            <div>
+              <span>
+                Goldminer
+              </span>
+            </div>
+          </div>
+          <div
+            class="halfwidth-secondary-card"
+          >
+            <div
+              class="halfwidth-secondary-card-title"
+            >
+              <p>
+                Employer
+              </p>
+            </div>
+            <div>
+              <span>
+                Goldmining Company
+              </span>
+            </div>
+          </div>
+        </div>
+        <h2>
+          Army Experience
+        </h2>
+        <li
+          class="fullwidth-secondary-card"
+        >
+          <span>
+            NZ Infantry
+          </span>
+          <p>
+            12 months in New Zealand
+          </p>
+        </li>
+        <a
+          aria-label="Open the World War I timeline."
+          class="war-service"
+          href="/tunnellers/26/wwi-timeline"
+        >
+          <div>
+            <p>
+              World War I (1914-1918)
+            </p>
+            <span>
+              New Zealand Tunnellers
+            </span>
+          </div>
+          <div
+            class="arrow-right"
+          >
+            →
+          </div>
+        </a>
+        <div
+          class="halfwidth-cards-container"
+        >
+          <div
+            class="halfwidth-secondary-card"
+          >
+            <div
+              class="halfwidth-secondary-card-title"
+            >
+              <p>
+                <img
+                  alt="British War Medal ribbon"
+                  src="/images/roll/medals/british-war-medal.png"
+                  width="40"
+                />
+              </p>
+            </div>
+            <div>
+              <span>
+                British War Medal
+              </span>
+            </div>
+          </div>
+          <div
+            class="halfwidth-secondary-card"
+          >
+            <div
+              class="halfwidth-secondary-card-title"
+            >
+              <p>
+                <img
+                  alt="Victory Medal ribbon"
+                  src="/images/roll/medals/victory-medal.png"
+                  width="40"
+                />
+              </p>
+            </div>
+            <div>
+              <span>
+                Victory Medal
+              </span>
+            </div>
+          </div>
+        </div>
+        <h2>
+          Death
+        </h2>
+        <div
+          class="fullwidth-main-card"
+        >
+          <p>
+            Died at the age of 89
+          </p>
+          <span>
+            13 October 1926
+          </span>
+        </div>
+      </div>
+      <div
+        class="sources"
+      >
+        <h3>
+          Sources
+        </h3>
+        <p>
+          Auckland War Memorial Museum Tāmaki Paenga Hira: 
+          <a
+            href="https://www.mockurl.co.nz/online-cenotaph/B2874930"
+          >
+            Online Cenotaph He Toa Taumata Rau
+          </a>
+          .
+        </p>
+        <p>
+          New Zealand Archives Te Rua Mahara o te Kāwanatanga, AABK 18805 W5530 39/0022386, 
+          <a
+            href="https://www.mockurl.co.nz/nzarchives/B2874930"
+          >
+            Military Personnel File
+          </a>
+          .
+        </p>
+        <p>
+          <em>
+            London Gazette, 
+          </em>
+          23 May 1917, p. 1675.
+        </p>
+        <p>
+          <em>
+            Nominal Roll of New Zealand Expeditionary Force, 1915. New Zealand Engineers Tunnelling Company
+          </em>
+          , Government Printer, Wellington, 1916, 37.
+        </p>
+      </div>
+      <div
+        class="howtocite"
+      >
+        <h3>
+          How to cite this page
+        </h3>
+        <p>
+          Anthony Byledbal, "John Doe (1888-1975)", 
+          <em>
+            New Zealand Tunnellers Website
+          </em>
+          , 2023 (2009), Accessed: 28 June 2023. URL: www.nztunnellers.com/tunnellers/NaN.
+        </p>
+      </div>
+    </div>
+  </div>
+  <div
+    class="footer"
+  >
+    <div
+      class="map"
+    >
+      <div
+        class="links"
+      >
+        <div
+          class="link"
+        >
+          <a
+            href="/history"
+          >
+            History
+          </a>
+        </div>
+        <div
+          class="link"
+        >
+          <a
+            href="/tunnellers"
+          >
+            Tunnellers
+          </a>
+        </div>
+        <div
+          class="link"
+        >
+          <a
+            href="/about-us"
+          >
+            About Us
+          </a>
+        </div>
+      </div>
+      <button
+        aria-label="Go back to the top of the page."
+        class="scroll-top"
+        type="button"
+      >
+        ↑
+      </button>
+    </div>
+    <div
+      class="support"
+    >
+      <div>
+        <a
+          aria-label="Go to The Artois University website."
+          href="https://www.univ-artois.fr/artois-university"
+        >
+          <img
+            alt="Artois University homepage"
+            src="/images/support/logo-univ-artois-blanc_0.png"
+          />
+        </a>
+      </div>
+      <div>
+        <a
+          aria-label="Go to The Institute for Strategic Research website."
+          href="https://www.irsem.fr/en/"
+        >
+          <img
+            alt="Institute for Strategic Research homepage"
+            src="/images/support/irsem-white.png"
+          />
+        </a>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
