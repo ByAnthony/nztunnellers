@@ -3,19 +3,6 @@ import userEvent from '@testing-library/user-event';
 import { ReactElement } from 'react';
 import { BrowserRouter, MemoryRouter } from 'react-router-dom';
 
-const renderWithRouter = (ui: ReactElement, { route = '/' } = {}) => {
-  window.history.pushState({}, 'Test page', route);
-  const user = userEvent.setup();
-
-  return {
-    user,
-    ...render(ui, { wrapper: BrowserRouter }),
-  };
-};
-
-export * from '@testing-library/react';
-export { renderWithRouter as render };
-
 export const findElementWithText = (text: string) => {
   const elements = screen.getAllByText((content) => content.includes(text));
 
@@ -35,3 +22,16 @@ export const renderWithMemoryRouter = (ui: ReactElement, { route = '/' } = {}) =
     ...render(ui, { wrapper: MemoryRouter }),
   };
 };
+
+const renderWithRouter = (ui: ReactElement, { route = '/' } = {}) => {
+  window.history.pushState({}, 'Test page', route);
+  const user = userEvent.setup();
+
+  return {
+    user,
+    ...render(ui, { wrapper: BrowserRouter }),
+  };
+};
+
+export * from '@testing-library/react';
+export { renderWithRouter as render };
