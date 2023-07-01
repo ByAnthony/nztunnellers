@@ -1,27 +1,19 @@
 import '@testing-library/jest-dom';
-import { render, screen } from '@testing-library/react';
-import { MemoryRouter } from 'react-router-dom';
+import { screen } from '@testing-library/react';
+import { renderWithMemoryRouter } from '../../utils/test-utils';
 import { mockRoll } from '../../utils/mocks/mockRoll';
 import { RollAlphabet } from './RollAlphabet';
 
-const component = (
-  <MemoryRouter>
-    <RollAlphabet tunnellers={mockRoll} filterByLetter="" />
-  </MemoryRouter>
-);
+const component = <RollAlphabet tunnellers={mockRoll} filterByLetter="" />;
 
 test('renders the component correctly', () => {
-  const { asFragment } = render(component);
+  const { asFragment } = renderWithMemoryRouter(component);
 
   expect(asFragment()).toMatchSnapshot();
 });
 
 test('should filter by name', () => {
-  render(
-    <MemoryRouter>
-      <RollAlphabet tunnellers={mockRoll} filterByLetter="D" />
-    </MemoryRouter>,
-  );
+  renderWithMemoryRouter(<RollAlphabet tunnellers={mockRoll} filterByLetter="D" />);
 
   expect(screen.getByLabelText('Letter D')).toBeInTheDocument();
   expect(screen.queryByLabelText('Letter L')).not.toBeInTheDocument();

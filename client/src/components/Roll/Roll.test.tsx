@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom/extend-expect';
 import { fireEvent, render, screen } from '@testing-library/react';
-import { MemoryRouter } from 'react-router-dom';
+import { renderWithMemoryRouter } from '../../utils/test-utils';
 import { mockRoll } from '../../utils/mocks/mockRoll';
 import { useGetAllTunnellersQuery } from '../../redux/slices/rollSlice';
 import { Roll } from './Roll';
@@ -9,11 +9,7 @@ jest.mock('../../redux/slices/rollSlice', () => ({
   useGetAllTunnellersQuery: jest.fn(),
 }));
 
-const component = (
-  <MemoryRouter>
-    <Roll />
-  </MemoryRouter>
-);
+const component = <Roll />;
 
 test('renders roll when data is available', () => {
   (useGetAllTunnellersQuery as jest.Mock).mockReturnValue({
@@ -23,7 +19,7 @@ test('renders roll when data is available', () => {
     isSuccess: true,
   });
 
-  const { asFragment } = render(component);
+  const { asFragment } = renderWithMemoryRouter(component);
 
   expect(asFragment()).toMatchSnapshot();
 
@@ -76,7 +72,7 @@ describe('Filter', () => {
       isSuccess: true,
     });
 
-    render(component);
+    renderWithMemoryRouter(component);
 
     const buttonD = screen.getByLabelText('Filter names by the letter D');
     fireEvent.click(buttonD);
@@ -105,7 +101,7 @@ describe('Filter', () => {
       isSuccess: true,
     });
 
-    render(component);
+    renderWithMemoryRouter(component);
 
     const buttonD = screen.getByLabelText('Filter names by the letter D');
     const buttonAll = screen.getByLabelText('Remove the filter by name');
@@ -132,7 +128,7 @@ test('does not render roll when data is undefined', () => {
     isSuccess: true,
   });
 
-  const { container } = render(<Roll />);
+  const { container } = render(component);
 
   expect(container).toBeEmptyDOMElement();
 });

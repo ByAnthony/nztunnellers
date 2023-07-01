@@ -1,0 +1,127 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders the component correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="menu"
+  >
+    <a
+      aria-label="Go to the Homepage"
+      class="logo"
+      href="/"
+    >
+      <img
+        alt=""
+        src="/nzt_logo.png"
+      />
+    </a>
+    <div
+      class="search-form"
+    >
+      <form>
+        <input
+          id="search"
+          name="search"
+          placeholder="Search for a tunneller"
+          type="text"
+        />
+      </form>
+      <button
+        class="search-form-button"
+        type="submit"
+      >
+        <img
+          alt=""
+          height="18"
+          src="/searching_hover.png"
+        />
+      </button>
+    </div>
+  </div>
+  <a
+    aria-label="Open the World War I timeline"
+    href="/roll"
+  >
+    <div>
+      <p>
+        World War I (1914-1918)
+      </p>
+      <span>
+        New Zealand Tunnellers
+      </span>
+    </div>
+  </a>
+  <div
+    class="footer"
+  >
+    <div
+      class="map"
+    >
+      <div
+        class="links"
+      >
+        <div
+          class="link"
+        >
+          <a
+            href="/history"
+          >
+            History
+          </a>
+        </div>
+        <div
+          class="link"
+        >
+          <a
+            href="/tunnellers"
+          >
+            Tunnellers
+          </a>
+        </div>
+        <div
+          class="link"
+        >
+          <a
+            href="/about-us"
+          >
+            About Us
+          </a>
+        </div>
+      </div>
+      <button
+        aria-label="Go back to the top of the page"
+        class="scroll-top"
+        type="button"
+      >
+        ↑
+      </button>
+    </div>
+    <div
+      class="support"
+    >
+      <div>
+        <a
+          aria-label="Go to The Artois University website"
+          href="https://www.univ-artois.fr/artois-university"
+        >
+          <img
+            alt="Artois University homepage"
+            src="/images/support/logo-univ-artois-blanc_0.png"
+          />
+        </a>
+      </div>
+      <div>
+        <a
+          aria-label="Go to The Institute for Strategic Research website"
+          href="https://www.irsem.fr/en/"
+        >
+          <img
+            alt="Institute for Strategic Research homepage"
+            src="/images/support/irsem-white.png"
+          />
+        </a>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
