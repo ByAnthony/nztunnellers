@@ -1,5 +1,3 @@
-export const today = new Date();
-
 export const displayBirthDeathDates = (
   birth: string | null,
   death: string | null,

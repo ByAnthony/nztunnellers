@@ -8,7 +8,8 @@ import { ProfileSources } from '../ProfileSources/ProfileSources';
 import { ProfileSummary } from '../ProfileSummary/ProfileSummary';
 import STYLES from './Profile.module.scss';
 import { Footer } from '../Footer/Footer';
-import { displayBirthDeathDates, today } from '../../utils/utils';
+import { displayBirthDeathDates } from '../../utils/utils';
+import { today } from '../../utils/date-utils';
 
 export function Profile() {
   const { id } = useParams();
@@ -64,7 +65,7 @@ export function Profile() {
               />
               <ProfileSources sources={data.sources} />
               <ProfileImageSource source={data.image?.source} />
-              <ProfileHowToCite id={tunnellerId} summary={data.summary} date={today} />
+              <ProfileHowToCite id={data.id} summary={data.summary} date={today} />
             </div>
           </div>
         </>

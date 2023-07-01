@@ -7,7 +7,7 @@ import { mockPreWarYears } from './mockPreWarYears';
 import { mockSources } from './mockSources';
 import { mockSummary } from './mockSummary';
 
-export const mockId = 26;
+export const mockId: number = 26;
 
 export const mockProfile: Profile = {
   id: mockId,
