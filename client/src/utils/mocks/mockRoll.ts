@@ -27,6 +27,15 @@ export const mockDetails = {
   death: '1952',
 };
 
+export const mockDetailsList = [
+  mockDetails,
+  {
+    ...mockDetails,
+    id: 1,
+    name: alexanderDriscott,
+  },
+];
+
 export const mockRoll = {
   D: [
     mockDetails,

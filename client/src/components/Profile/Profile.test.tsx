@@ -12,30 +12,28 @@ jest.mock('../../utils/date-utils', () => ({
   today: new Date('2023-05-04'),
 }));
 
-describe('Profile', () => {
-  test('renders profile when data is available', () => {
-    (useGetTunnellerByIdQuery as jest.Mock).mockReturnValue({
-      data: mockProfile,
-      error: null,
-      isLoading: false,
-      isSuccess: true,
-    });
-
-    const { asFragment } = render(<Profile />);
-
-    expect(asFragment()).toMatchSnapshot();
+test('renders profile when data is available', () => {
+  (useGetTunnellerByIdQuery as jest.Mock).mockReturnValue({
+    data: mockProfile,
+    error: null,
+    isLoading: false,
+    isSuccess: true,
   });
 
-  test('does not render profile when data is undefined', () => {
-    (useGetTunnellerByIdQuery as jest.Mock).mockReturnValue({
-      data: undefined,
-      error: null,
-      isLoading: false,
-      isSuccess: true,
-    });
+  const { asFragment } = render(<Profile />);
 
-    const { container } = render(<Profile />);
+  expect(asFragment()).toMatchSnapshot();
+});
 
-    expect(container).toBeEmptyDOMElement();
+test('does not render profile when data is undefined', () => {
+  (useGetTunnellerByIdQuery as jest.Mock).mockReturnValue({
+    data: undefined,
+    error: null,
+    isLoading: false,
+    isSuccess: true,
   });
+
+  const { container } = render(<Profile />);
+
+  expect(container).toBeEmptyDOMElement();
 });

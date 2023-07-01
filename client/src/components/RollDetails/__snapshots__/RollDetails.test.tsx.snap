@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders the component correctly 1`] = `
+<DocumentFragment>
+  <a
+    class="tunneller-link"
+    href="/tunnellers/26"
+  >
+    <div
+      class="tunneller"
+    >
+      <div>
+        <p
+          class="forename"
+        >
+          John
+        </p>
+        <p
+          class="surname"
+        >
+          Doe
+        </p>
+        <p
+          class="dates"
+        >
+          1886 - 1952
+        </p>
+      </div>
+      <div
+        class="arrow-right"
+      >
+        →
+      </div>
+    </div>
+  </a>
+  <a
+    class="tunneller-link"
+    href="/tunnellers/1"
+  >
+    <div
+      class="tunneller"
+    >
+      <div>
+        <p
+          class="forename"
+        >
+          Alexander
+        </p>
+        <p
+          class="surname"
+        >
+          Driscott
+        </p>
+        <p
+          class="dates"
+        >
+          1886 - 1952
+        </p>
+      </div>
+      <div
+        class="arrow-right"
+      >
+        →
+      </div>
+    </div>
+  </a>
+</DocumentFragment>
+`;

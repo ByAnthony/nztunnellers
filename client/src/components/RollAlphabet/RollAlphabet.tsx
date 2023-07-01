@@ -3,7 +3,7 @@ import { RollDetails } from '../RollDetails/RollDetails';
 import STYLES from './RollAlphabet.module.scss';
 
 type RollWithFilter = {
-    tunnellers: Record<string, Details[]> | never[];
+    tunnellers: Record<string, Details[]>;
     filterByLetter: string;
 };
 
