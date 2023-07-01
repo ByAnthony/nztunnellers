@@ -27,9 +27,9 @@ test('renders roll when data is available', () => {
 
   expect(asFragment()).toMatchSnapshot();
 
-  const buttonD = screen.getByLabelText('Filter names by the letter D.');
-  const buttonL = screen.getByLabelText('Filter names by the letter L.');
-  const buttonR = screen.getByLabelText('Filter names by the letter R.');
+  const buttonD = screen.getByLabelText('Filter names by the letter D');
+  const buttonL = screen.getByLabelText('Filter names by the letter L');
+  const buttonR = screen.getByLabelText('Filter names by the letter R');
   expect(buttonD).toBeInTheDocument();
   expect(buttonD).toHaveTextContent('D');
   expect(buttonL).toBeInTheDocument();
@@ -37,7 +37,7 @@ test('renders roll when data is available', () => {
   expect(buttonR).toBeInTheDocument();
   expect(buttonR).toHaveTextContent('R');
 
-  const buttonAll = screen.getByLabelText('Remove the filter by name.');
+  const buttonAll = screen.getByLabelText('Remove the filter by name');
   expect(buttonAll).toBeInTheDocument();
   expect(buttonAll).toHaveTextContent('All');
 
@@ -78,7 +78,7 @@ describe('Filter', () => {
 
     render(component);
 
-    const buttonD = screen.getByLabelText('Filter names by the letter D.');
+    const buttonD = screen.getByLabelText('Filter names by the letter D');
     fireEvent.click(buttonD);
     expect(screen.getByLabelText('Letter D')).toBeInTheDocument();
     expect(screen.queryByLabelText('Letter L')).not.toBeInTheDocument();
@@ -107,8 +107,8 @@ describe('Filter', () => {
 
     render(component);
 
-    const buttonD = screen.getByLabelText('Filter names by the letter D.');
-    const buttonAll = screen.getByLabelText('Remove the filter by name.');
+    const buttonD = screen.getByLabelText('Filter names by the letter D');
+    const buttonAll = screen.getByLabelText('Remove the filter by name');
 
     fireEvent.click(buttonD);
 

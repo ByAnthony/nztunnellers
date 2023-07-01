@@ -6,7 +6,7 @@ exports[`renders profile when data is available 1`] = `
     class="menu"
   >
     <a
-      aria-label="Go to the Homepage."
+      aria-label="Go to the Homepage"
       class="logo"
       href="/"
     >
@@ -266,7 +266,7 @@ exports[`renders profile when data is available 1`] = `
           </p>
         </li>
         <a
-          aria-label="Open the World War I timeline."
+          aria-label="Open the World War I timeline"
           class="war-service"
           href="/tunnellers/26/wwi-timeline"
         >
@@ -433,7 +433,7 @@ exports[`renders profile when data is available 1`] = `
         </div>
       </div>
       <button
-        aria-label="Go back to the top of the page."
+        aria-label="Go back to the top of the page"
         class="scroll-top"
         type="button"
       >
@@ -445,7 +445,7 @@ exports[`renders profile when data is available 1`] = `
     >
       <div>
         <a
-          aria-label="Go to The Artois University website."
+          aria-label="Go to The Artois University website"
           href="https://www.univ-artois.fr/artois-university"
         >
           <img
@@ -456,7 +456,7 @@ exports[`renders profile when data is available 1`] = `
       </div>
       <div>
         <a
-          aria-label="Go to The Institute for Strategic Research website."
+          aria-label="Go to The Institute for Strategic Research website"
           href="https://www.irsem.fr/en/"
         >
           <img

@@ -6,7 +6,7 @@ exports[`renders roll when data is available 1`] = `
     class="menu"
   >
     <a
-      aria-label="Go to the Homepage."
+      aria-label="Go to the Homepage"
       class="logo"
       href="/"
     >
@@ -56,28 +56,28 @@ exports[`renders roll when data is available 1`] = `
         class="alphabet"
       >
         <button
-          aria-label="Filter names by the letter D."
+          aria-label="Filter names by the letter D"
           class="letter"
           type="button"
         >
           D
         </button>
         <button
-          aria-label="Filter names by the letter L."
+          aria-label="Filter names by the letter L"
           class="letter"
           type="button"
         >
           L
         </button>
         <button
-          aria-label="Filter names by the letter R."
+          aria-label="Filter names by the letter R"
           class="letter"
           type="button"
         >
           R
         </button>
         <button
-          aria-label="Remove the filter by name."
+          aria-label="Remove the filter by name"
           class="letter"
           type="button"
         >
@@ -306,7 +306,7 @@ exports[`renders roll when data is available 1`] = `
         </div>
       </div>
       <button
-        aria-label="Go back to the top of the page."
+        aria-label="Go back to the top of the page"
         class="scroll-top"
         type="button"
       >
@@ -318,7 +318,7 @@ exports[`renders roll when data is available 1`] = `
     >
       <div>
         <a
-          aria-label="Go to The Artois University website."
+          aria-label="Go to The Artois University website"
           href="https://www.univ-artois.fr/artois-university"
         >
           <img
@@ -329,7 +329,7 @@ exports[`renders roll when data is available 1`] = `
       </div>
       <div>
         <a
-          aria-label="Go to The Institute for Strategic Research website."
+          aria-label="Go to The Institute for Strategic Research website"
           href="https://www.irsem.fr/en/"
         >
           <img

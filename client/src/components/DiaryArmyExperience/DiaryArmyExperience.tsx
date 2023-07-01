@@ -69,7 +69,7 @@ export function DiaryArmyExperience({ tunnellerId, armyExperience }: props) {
     <>
       <h2>Army Experience</h2>
       <ArmyExperienceList militaryExperience={armyExperience} />
-      <a href={`/tunnellers/${tunnellerId}/wwi-timeline`} className={STYLES_WWI['war-service']} aria-label="Open the World War I timeline.">
+      <a href={`/tunnellers/${tunnellerId}/wwi-timeline`} className={STYLES_WWI['war-service']} aria-label="Open the World War I timeline">
         <div>
           <p>World War I (1914-1918)</p>
           <span>New Zealand Tunnellers</span>
