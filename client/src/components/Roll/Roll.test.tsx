@@ -1,5 +1,5 @@
 import '@testing-library/jest-dom/extend-expect';
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { mockRoll } from '../../utils/mocks/mockRoll';
 import { useGetAllTunnellersQuery } from '../../redux/slices/rollSlice';
@@ -9,8 +9,8 @@ jest.mock('../../redux/slices/rollSlice', () => ({
   useGetAllTunnellersQuery: jest.fn(),
 }));
 
-describe('Profile', () => {
-  it('renders profile when data is available', () => {
+describe('Roll', () => {
+  test('renders roll when data is available', () => {
     (useGetAllTunnellersQuery as jest.Mock).mockReturnValue({
       data: mockRoll,
       error: null,
@@ -66,7 +66,40 @@ describe('Profile', () => {
     expect(screen.getByText('Right')).toBeInTheDocument();
   });
 
-  it('does not render profile when data is undefined', () => {
+  test('should filter by name', () => {
+    (useGetAllTunnellersQuery as jest.Mock).mockReturnValue({
+      data: mockRoll,
+      error: null,
+      isLoading: false,
+      isSuccess: true,
+    });
+
+    render(
+      <MemoryRouter>
+        <Roll />
+      </MemoryRouter>,
+    );
+
+    const buttonD = screen.getByLabelText('Filter names by the letter D.');
+    fireEvent.click(buttonD);
+    expect(screen.getByLabelText('Letter D')).toBeInTheDocument();
+    expect(screen.queryByLabelText('Letter L')).not.toBeInTheDocument();
+    expect(screen.queryByLabelText('Letter R')).not.toBeInTheDocument();
+
+    expect(screen.getByText('John')).toBeInTheDocument();
+    expect(screen.getByText('Doe')).toBeInTheDocument();
+
+    expect(screen.getByText('Alexander')).toBeInTheDocument();
+    expect(screen.getByText('Driscott')).toBeInTheDocument();
+
+    expect(screen.queryByText('Robert')).not.toBeInTheDocument();
+    expect(screen.queryByText('Lang')).not.toBeInTheDocument();
+
+    expect(screen.queryByText('William')).not.toBeInTheDocument();
+    expect(screen.queryByText('Right')).not.toBeInTheDocument();
+  });
+
+  test('does not render roll when data is undefined', () => {
     (useGetAllTunnellersQuery as jest.Mock).mockReturnValue({
       data: undefined,
       error: null,

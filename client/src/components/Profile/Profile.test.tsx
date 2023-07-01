@@ -13,7 +13,7 @@ jest.mock('../../utils/date-utils', () => ({
 }));
 
 describe('Profile', () => {
-  it('renders profile when data is available', () => {
+  test('renders profile when data is available', () => {
     (useGetTunnellerByIdQuery as jest.Mock).mockReturnValue({
       data: mockProfile,
       error: null,
@@ -26,7 +26,7 @@ describe('Profile', () => {
     expect(asFragment()).toMatchSnapshot();
   });
 
-  it('does not render profile when data is undefined', () => {
+  test('does not render profile when data is undefined', () => {
     (useGetTunnellerByIdQuery as jest.Mock).mockReturnValue({
       data: undefined,
       error: null,

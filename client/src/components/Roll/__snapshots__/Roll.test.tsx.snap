@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Profile renders profile when data is available 1`] = `
+exports[`Roll renders roll when data is available 1`] = `
 <DocumentFragment>
   <div
     class="menu"
