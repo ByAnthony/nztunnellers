@@ -9,6 +9,12 @@ jest.mock('../../redux/slices/rollSlice', () => ({
   useGetAllTunnellersQuery: jest.fn(),
 }));
 
+const component = (
+  <MemoryRouter>
+    <Roll />
+  </MemoryRouter>
+);
+
 test('renders roll when data is available', () => {
   (useGetAllTunnellersQuery as jest.Mock).mockReturnValue({
     data: mockRoll,
@@ -17,11 +23,7 @@ test('renders roll when data is available', () => {
     isSuccess: true,
   });
 
-  const { asFragment } = render(
-    <MemoryRouter>
-      <Roll />
-    </MemoryRouter>,
-  );
+  const { asFragment } = render(component);
 
   expect(asFragment()).toMatchSnapshot();
 
@@ -65,37 +67,61 @@ test('renders roll when data is available', () => {
   expect(screen.getByText('Right')).toBeInTheDocument();
 });
 
-test('should filter by name', () => {
-  (useGetAllTunnellersQuery as jest.Mock).mockReturnValue({
-    data: mockRoll,
-    error: null,
-    isLoading: false,
-    isSuccess: true,
+describe('Filter', () => {
+  test('should filter by name', () => {
+    (useGetAllTunnellersQuery as jest.Mock).mockReturnValue({
+      data: mockRoll,
+      error: null,
+      isLoading: false,
+      isSuccess: true,
+    });
+
+    render(component);
+
+    const buttonD = screen.getByLabelText('Filter names by the letter D.');
+    fireEvent.click(buttonD);
+    expect(screen.getByLabelText('Letter D')).toBeInTheDocument();
+    expect(screen.queryByLabelText('Letter L')).not.toBeInTheDocument();
+    expect(screen.queryByLabelText('Letter R')).not.toBeInTheDocument();
+
+    expect(screen.getByText('John')).toBeInTheDocument();
+    expect(screen.getByText('Doe')).toBeInTheDocument();
+
+    expect(screen.getByText('Alexander')).toBeInTheDocument();
+    expect(screen.getByText('Driscott')).toBeInTheDocument();
+
+    expect(screen.queryByText('Robert')).not.toBeInTheDocument();
+    expect(screen.queryByText('Lang')).not.toBeInTheDocument();
+
+    expect(screen.queryByText('William')).not.toBeInTheDocument();
+    expect(screen.queryByText('Right')).not.toBeInTheDocument();
   });
 
-  render(
-    <MemoryRouter>
-      <Roll />
-    </MemoryRouter>,
-  );
+  test('should remove filter by name', () => {
+    (useGetAllTunnellersQuery as jest.Mock).mockReturnValue({
+      data: mockRoll,
+      error: null,
+      isLoading: false,
+      isSuccess: true,
+    });
 
-  const buttonD = screen.getByLabelText('Filter names by the letter D.');
-  fireEvent.click(buttonD);
-  expect(screen.getByLabelText('Letter D')).toBeInTheDocument();
-  expect(screen.queryByLabelText('Letter L')).not.toBeInTheDocument();
-  expect(screen.queryByLabelText('Letter R')).not.toBeInTheDocument();
+    render(component);
 
-  expect(screen.getByText('John')).toBeInTheDocument();
-  expect(screen.getByText('Doe')).toBeInTheDocument();
+    const buttonD = screen.getByLabelText('Filter names by the letter D.');
+    const buttonAll = screen.getByLabelText('Remove the filter by name.');
 
-  expect(screen.getByText('Alexander')).toBeInTheDocument();
-  expect(screen.getByText('Driscott')).toBeInTheDocument();
+    fireEvent.click(buttonD);
 
-  expect(screen.queryByText('Robert')).not.toBeInTheDocument();
-  expect(screen.queryByText('Lang')).not.toBeInTheDocument();
+    expect(screen.getByLabelText('Letter D')).toBeInTheDocument();
+    expect(screen.queryByLabelText('Letter L')).not.toBeInTheDocument();
+    expect(screen.queryByLabelText('Letter R')).not.toBeInTheDocument();
 
-  expect(screen.queryByText('William')).not.toBeInTheDocument();
-  expect(screen.queryByText('Right')).not.toBeInTheDocument();
+    fireEvent.click(buttonAll);
+
+    expect(screen.getByLabelText('Letter D')).toBeInTheDocument();
+    expect(screen.getByLabelText('Letter L')).toBeInTheDocument();
+    expect(screen.getByLabelText('Letter R')).toBeInTheDocument();
+  });
 });
 
 test('does not render roll when data is undefined', () => {
