@@ -26,24 +26,32 @@
     font-size: 2.5rem;
     font-weight: 300;
     font-stretch: 90%;
-    line-height: normal;
+    line-height: 2rem;
 
     @include index.tablet {
       font-size: 3rem;
+      line-height: 2rem;
     }
 
     @include index.desktop {
       font-size: 3.5rem;
+      line-height: 2.5rem;
     }
 
     @include index.large-desktop {
       font-size: 5rem;
+      line-height: 4rem;
     }
   }
 
   .link {
     font-size: 1rem;
+    font-weight: 500;
     line-height: 1.75rem;
+
+    @include index.tablet {
+      margin-top: index.$base-margin;
+    }
 
     @include index.large-desktop {
       font-size: 1.25rem;
@@ -55,10 +63,6 @@
 
     span {
       padding: 0 5px;
-    }
-
-    @include index.tablet {
-      margin-top: index.$base-margin;
     }
   }
 

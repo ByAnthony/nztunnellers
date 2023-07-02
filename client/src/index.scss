@@ -240,6 +240,10 @@ li {
   @include desktop {
     font-size: 3rem;
   }
+
+  @include large-desktop {
+    font-size: 3.25rem;
+  }
 }
 
 .arrow-right {
@@ -254,6 +258,10 @@ li {
 
   @include desktop {
     font-size: 3rem;
+  }
+
+  @include large-desktop {
+    font-size: 3.25rem;
   }
 }
 

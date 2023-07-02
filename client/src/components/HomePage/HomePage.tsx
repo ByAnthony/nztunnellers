@@ -1,17 +1,19 @@
-import { Link } from 'react-router-dom';
 import { Footer } from '../Footer/Footer';
 import { Menu } from '../Menu/Menu';
+import STYLES from './HomePage.module.scss';
 
 export function HomePage() {
   return (
     <>
       <Menu />
-      <Link to="/roll" aria-label="Open the World War I timeline">
+      <div className={STYLES.main}>
         <div>
-          <p>World War I (1914-1918)</p>
-          <span>New Zealand Tunnellers</span>
+          History
         </div>
-      </Link>
+        <div>
+          Tunnellers
+        </div>
+      </div>
       <Footer />
     </>
   );
