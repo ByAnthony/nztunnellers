@@ -1,10 +1,9 @@
-import { Footer } from '../Footer/Footer';
 import { Menu } from '../Menu/Menu';
 import STYLES from './HomePage.module.scss';
 
 export function HomePage() {
   return (
-    <>
+    <div className={STYLES.homepage}>
       <Menu />
       <div className={STYLES.main}>
         <div>
@@ -14,7 +13,6 @@ export function HomePage() {
           Tunnellers
         </div>
       </div>
-      <Footer />
-    </>
+    </div>
   );
 }

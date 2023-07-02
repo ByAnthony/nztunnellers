@@ -2,20 +2,20 @@
 
 .footer {
   margin-top: index.$base-margin;
-  margin-bottom: index.$m-margin;
+  padding-bottom: index.$base-margin;
 
   @include index.component-margin;
 
   @include index.tablet {
-    margin-bottom: index.$m-margin;
+    padding-bottom: index.$m-margin;
   }
 
   @include index.desktop {
-    margin-bottom: index.$base-margin;
+    padding-bottom: index.$base-margin;
   }
 
   @include index.large-desktop {
-    margin-bottom: index.$base-margin;
+    padding-bottom: index.$base-margin;
   }
 
   p {

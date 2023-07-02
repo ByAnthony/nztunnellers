@@ -83,25 +83,29 @@ body {
   }
 }
 
+#root {
+  height: 100%;
+}
+
 h1 {
-  font-size: 5rem;
-  font-stretch: 75%;
-  font-weight: 800;
-  line-height: 4.5rem;
+  font-size: 2.5rem;
+  font-weight: 600;
+  font-stretch: 90%;
+  line-height: 2rem;
 
   @include tablet {
-    font-size: 7.5rem;
-    line-height: 6.5rem;
+    font-size: 3rem;
+    line-height: 2rem;
   }
 
   @include desktop {
-    font-size: 10rem;
-    line-height: 8rem;
+    font-size: 3.5rem;
+    line-height: 2.5rem;
   }
 
   @include large-desktop {
-    font-size: 12rem;
-    line-height: 10rem;
+    font-size: 5rem;
+    line-height: 4rem;
   }
 }
 

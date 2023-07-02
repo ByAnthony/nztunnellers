@@ -9,21 +9,20 @@
 
   .sub-title {
     display: block;
-    font-size: 1.5rem;
     font-weight: 300;
-    font-stretch: 90%;
     line-height: normal;
+    margin-top: 105px;
 
     @include index.tablet {
-      font-size: 2rem;
+      margin-top: 110px;
     }
 
     @include index.desktop {
-      font-size: 3rem;
+      margin-top: 0;
     }
 
     @include index.large-desktop {
-      font-size: 4rem;
+      margin-top: 0;
     }
   }
 
@@ -32,11 +31,13 @@
 
     @include index.desktop {
       display: flex;
+      margin-top: index.$l-margin;
       gap: index.$l-margin;
     }
 
     @include index.large-desktop {
       display: flex;
+      margin-top: index.$xl-margin;
       gap: index.$xxl-margin;
     }
   }
@@ -110,10 +111,10 @@
   }
 
   @include index.desktop {
-    margin-top: index.$xxxl-margin;
+    margin-top: 140px;
   }
 
   @include index.large-desktop {
-    margin-top: index.$xxxl-margin;
+    margin-top: 180px;
   }
 }

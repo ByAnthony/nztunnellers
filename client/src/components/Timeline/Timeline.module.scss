@@ -35,22 +35,8 @@
 
   .sub-title {
     display: block;
-    font-size: 1.5rem;
     font-weight: 300;
-    font-stretch: 90%;
     line-height: normal;
-
-    @include index.tablet {
-      font-size: 2rem;
-    }
-
-    @include index.desktop {
-      font-size: 3rem;
-    }
-
-    @include index.large-desktop {
-      font-size: 4rem;
-    }
   }
 
   .link {

@@ -26,7 +26,7 @@ export function Roll() {
         { isSuccess && (
         <div className={STYLES['alphabet-container']}>
           <h1>
-            <span className={STYLES['sub-title']}>The Enlisted</span>
+            <span className={STYLES['sub-title']}>The New Zealand</span>
             Tunnellers
           </h1>
           <div className={STYLES['roll-container']}>

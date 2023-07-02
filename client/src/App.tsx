@@ -21,6 +21,8 @@ export function App() {
       <Wrapper>
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/history" />
+          <Route path="/history/call-to-pick-and-shovel" />
           <Route path="/tunnellers" element={<Roll />} />
           <Route path="/tunnellers/:id" element={<Profile />} />
           <Route path="/tunnellers/:id/wwi-timeline" element={<Timeline />} />
