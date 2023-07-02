@@ -82,13 +82,13 @@
     margin-left: index.$m-margin;
 
     @include index.desktop {
-      margin-left: 175px;
-      margin-right: index.$xxl-margin;
+      margin: 0 auto;
+      width: 50%;
     }
 
     @include index.large-desktop {
-      margin-left: 325px;
-      margin-right: 300px;
+      margin: 0 auto;
+      width: 50%;
     }
   }
 
