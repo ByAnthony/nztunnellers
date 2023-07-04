@@ -34,7 +34,6 @@ export function Profile() {
             <div className={STYLES.link}>
               <a href="/tunnellers">Tunnellers</a>
               <span>/</span>
-              {`${data.summary.name.forename} ${data.summary.name.surname}`}
             </div>
             <h1>
               <span className={STYLES.forename}>{ data.summary.name.forename }</span>

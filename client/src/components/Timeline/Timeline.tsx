@@ -158,7 +158,6 @@ export function Timeline() {
             <span>/</span>
             <a href={`/tunnellers/${tunnellerId}`}>{`${name.forename} ${name.surname}`}</a>
             <span>/</span>
-            World War I Timeline
           </div>
           <h1>
             <span className={STYLES['sub-title']}>World War I</span>

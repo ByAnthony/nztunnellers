@@ -1,0 +1,96 @@
+@use 'src/index.scss';
+
+.container {
+  @include index.component-margin;
+
+  p {
+    margin: index.$m-margin 0;
+  }
+
+  img {
+    border-radius: index.$border-radius;
+  }
+
+  .image-container {
+    margin: index.$base-margin 0;
+    height: 60vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .image {
+    object-fit: cover;
+    object-position: center;
+    width: 100%;
+    height: 100%;
+  }
+
+  .link {
+    margin-top: index.$base-margin;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.75rem;
+
+    @include index.desktop {
+      margin-top: index.$l-margin;
+    }
+
+    @include index.large-desktop {
+      margin-top: index.$xl-margin;
+      font-size: 1.25rem;
+    }
+
+    a {
+      @include index.text-link;
+    }
+
+    span {
+      padding: 0 5px;
+    }
+  }
+
+  .sub-title {
+    display: block;
+    font-weight: 300;
+    line-height: normal;
+  }
+}
+
+.italic {
+  font-style: italic;
+}
+
+.article {
+  margin-bottom: index.$base-margin;
+
+  .paragraph {
+    margin: 0 auto;
+
+    p {
+      font-size: 1.15rem;
+      font-weight: 300;
+      line-height: 1.8rem;
+    }
+
+    a {
+      font-size: 0.9rem;
+      vertical-align: super;
+      line-height: 80%;
+      color: index.$secondary-color;
+    }
+  }
+}
+
+.notes {
+  p {
+    font-size: 0.9rem;
+    font-weight: 300;
+    line-height: 1.25rem;
+  }
+
+  a {
+    color: index.$secondary-color;
+  }
+}
