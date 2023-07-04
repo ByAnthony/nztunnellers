@@ -18,44 +18,67 @@
     display: flex;
     justify-content: center;
     align-items: center;
-  }
 
-  .image {
-    object-fit: cover;
-    object-position: center;
-    width: 100%;
-    height: 100%;
-  }
-
-  .link {
-    margin-top: index.$base-margin;
-    font-size: 1rem;
-    font-weight: 500;
-    line-height: 1.75rem;
-
-    @include index.desktop {
-      margin-top: index.$l-margin;
-    }
-
-    @include index.large-desktop {
-      margin-top: index.$xl-margin;
-      font-size: 1.25rem;
-    }
-
-    a {
-      @include index.text-link;
-    }
-
-    span {
-      padding: 0 5px;
+    .image {
+      object-fit: cover;
+      object-position: center;
+      width: 100%;
+      height: 100%;
     }
   }
 
-  .sub-title {
-    display: block;
-    font-weight: 300;
-    line-height: normal;
+  .image-legend {
+    margin-bottom: index.$base-margin;
+    text-align: center;
+
+    .title {
+      margin-top: -20px;
+      margin-bottom: 10px;
+      font-weight: 600;
+      color: index.$secondary-color;
+      text-transform: uppercase;
+    }
+
+    .captions {
+      margin-bottom: 5px;
+      font-size: 0.9rem;
+    }
+
+    .reference {
+      font-size: 0.9rem;
+      font-style: italic;
+    }
   }
+}
+
+.link {
+  margin-top: index.$base-margin;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.75rem;
+
+  @include index.desktop {
+    margin-top: index.$l-margin;
+  }
+
+  @include index.large-desktop {
+    margin-top: index.$xl-margin;
+    font-size: 1.25rem;
+  }
+
+  a {
+    @include index.text-link;
+  }
+
+  span {
+    padding: 0 5px;
+  }
+}
+
+.sub-title {
+  display: block;
+  font-weight: 300;
+  line-height: normal;
 }
 
 .italic {

@@ -16,10 +16,15 @@ export function CallToPickAndShovel() {
           <span className={STYLES['sub-title']}>Call To</span>
           Pick & Shovel
         </h1>
+        <div className={STYLES['image-container']}>
+          <img
+            className={STYLES.image}
+            src="/images/history/original.jpg"
+            alt="A group of miners standing
+              outside the entrance of a goldmine gallery"
+          />
+        </div>
         <div className={STYLES.article}>
-          <div className={STYLES['image-container']}>
-            <img className={STYLES.image} src="/images/history/original.jpg" alt="" />
-          </div>
           <div className={STYLES.paragraph}>
             <h2>Miners Wanted</h2>
             <p>
@@ -91,7 +96,17 @@ export function CallToPickAndShovel() {
             </p>
           </div>
           <div className={STYLES['image-container']}>
-            <img className={STYLES.image} src="/images/history/35_R00158_mm.jpg" alt="" />
+            <img
+              className={STYLES.image}
+              src="/images/history/35_R00158_mm.jpg"
+              alt="Two children standing
+                on the racetrack of the Avondale Jockey Club in Auckland"
+            />
+          </div>
+          <div className={STYLES['image-legend']}>
+            <div className={STYLES.title}>The Avondale Racecourse</div>
+            <div className={STYLES.captions}>Photographed by Frederick George Radcliffe</div>
+            <div className={STYLES.reference}>35-R158, Auckland City Libraries</div>
           </div>
           <div className={STYLES.paragraph}>
             <h2>Training On A Racecourse</h2>
