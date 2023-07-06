@@ -6,7 +6,7 @@ install-dev: install
 
 test-server:
 	python3 -m coverage run -m pytest ./server
-	python3 -m coverage report
+	python3 -m coverage report -m
 
 dev:
 	DEV=true python -m server.run
