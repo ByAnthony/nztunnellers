@@ -5,7 +5,8 @@ install-dev: install
 	pip install -r requirements-dev.txt
 
 test-server:
-	pytest -vv ./server
+	python3 -m coverage run -m pytest ./server
+	python3 -m coverage report
 
 dev:
 	DEV=true python -m server.run
