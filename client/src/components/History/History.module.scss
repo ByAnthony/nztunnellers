@@ -3,12 +3,54 @@
 .container {
   @include index.component-margin;
 
+  h1 {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
   p {
     margin: index.$m-margin 0;
   }
 
   img {
     border-radius: index.$border-radius;
+  }
+
+  .chapter-title {
+    margin: 26.8px 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+
+    @include index.tablet {
+      margin: 32.16px 0;
+    }
+
+    @include index.desktop {
+      margin: 37.52px 0;
+    }
+
+    @include index.large-desktop {
+      margin: 53.6px 0;
+    }
+  }
+
+  .chapter-number {
+    font-size: 2.5rem;
+    font-weight: 600;
+
+    @include index.tablet {
+      font-size: 3rem;
+    }
+
+    @include index.desktop {
+      font-size: 3.5rem;
+    }
+
+    @include index.large-desktop {
+      font-size: 5rem;
+    }
   }
 
   .image-container {
@@ -25,6 +67,11 @@
       width: 100%;
       height: 100%;
     }
+
+    @include index.large-desktop {
+      margin: index.$xl-margin 0;
+      height: 50vh;
+    }
   }
 
   .image-legend {
@@ -34,19 +81,62 @@
     .title {
       margin-top: -20px;
       margin-bottom: 10px;
+      font-size: 1.15rem;
       font-weight: 600;
       color: index.$secondary-color;
-      text-transform: uppercase;
+
+      @include index.tablet {
+        font-size: 1.25rem;
+      }
+
+      @include index.desktop {
+        margin-bottom: 12.5px;
+        font-size: 1.35rem;
+      }
+
+      @include index.large-desktop {
+        margin-bottom: index.$s-margin;
+        font-size: 1.5rem;
+      }
     }
 
     .captions {
       margin-bottom: 5px;
       font-size: 0.9rem;
+      font-style: italic;
+
+      @include index.tablet {
+        font-size: 1rem;
+      }
+
+      @include index.desktop {
+        font-size: 1rem;
+      }
+
+      @include index.large-desktop {
+        font-size: 1.2rem;
+      }
     }
 
     .reference {
       font-size: 0.9rem;
       font-style: italic;
+
+      @include index.tablet {
+        font-size: 1rem;
+      }
+
+      @include index.desktop {
+        font-size: 1rem;
+      }
+
+      @include index.large-desktop {
+        font-size: 1.2rem;
+      }
+    }
+
+    @include index.large-desktop {
+      margin-bottom: index.$xl-margin;
     }
   }
 }
@@ -95,6 +185,11 @@
       font-size: 1.15rem;
       font-weight: 300;
       line-height: 1.8rem;
+
+      @include index.large-desktop {
+        font-size: 1.5rem;
+        line-height: 2.5rem;
+      }
     }
 
     a {
@@ -102,6 +197,11 @@
       vertical-align: super;
       line-height: 80%;
       color: index.$secondary-color;
+    }
+
+    @include index.large-desktop {
+      margin: 0 auto;
+      width: 65%;
     }
   }
 }
@@ -111,9 +211,20 @@
     font-size: 0.9rem;
     font-weight: 300;
     line-height: 1.25rem;
+
+    @include index.large-desktop {
+      font-size: 1.25rem;
+      line-height: 2rem;
+    }
   }
 
   a {
     color: index.$secondary-color;
+  }
+
+  @include index.large-desktop {
+    margin: 0 auto;
+    padding: index.$base-margin 0;
+    width: 65%;
   }
 }

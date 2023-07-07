@@ -12,10 +12,13 @@ export function CallToPickAndShovel() {
           <a href="/history">History</a>
           <span>/</span>
         </div>
-        <h1>
-          <span className={STYLES['sub-title']}>Call To</span>
-          Pick & Shovel
-        </h1>
+        <div className={STYLES['chapter-title']}>
+          <h1>
+            <span className={STYLES['sub-title']}>Call To</span>
+            Pick & Shovel
+          </h1>
+          <div className={STYLES['chapter-number']}>1</div>
+        </div>
         <div className={STYLES['image-container']}>
           <img
             className={STYLES.image}
