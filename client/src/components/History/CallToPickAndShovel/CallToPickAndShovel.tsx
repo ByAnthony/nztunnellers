@@ -1,4 +1,5 @@
 /* eslint-disable max-len */
+import { today } from '../../../utils/date-utils';
 import { Footer } from '../../Footer/Footer';
 import { Menu } from '../../Menu/Menu';
 import STYLES from '../History.module.scss';
@@ -165,14 +166,14 @@ export function CallToPickAndShovel() {
           <h3>Notes</h3>
           <p>
             <a href="#reference_1" id="footnote_1">1. </a>
-            Anthony BYLEDBAL,
-            <span className={STYLES.italic}> Les Taupes de la Grande Guerre. Combats et combattants souterrains</span>
+            Anthony Byledbal,
+            <em> Les Taupes de la Grande Guerre. Combats et combattants souterrains</em>
             , Arras, Artois Presses Université, 2015, p.&nbsp;15-16.
           </p>
           <p>
             <a href="#reference_2" id="footnote_2">2. </a>
-            Tony BRIDGLAND and Anne MORGAN,
-            <span className={STYLES.italic}> Tunnel-Master and Arsonist of the Great War. The Norton-Griffiths Story</span>
+            Tony Bridgland and Anne Morgan,
+            <em> Tunnel-Master and Arsonist of the Great War. The Norton-Griffiths Story</em>
             , Barnsley, Leo Cooper, 2003, p.&nbsp;115-124.
           </p>
           <p>
@@ -188,77 +189,77 @@ export function CallToPickAndShovel() {
           </p>
           <p>
             <a href="#reference_4" id="footnote_4">4. </a>
-            <span className={STYLES.italic}>Evening Post</span>
+            <em>Evening Post</em>
             , 29&nbsp;September 1915, p.&nbsp;7, &ldquo;Recruiting slow. More men wanted.&rdquo;
           </p>
           <p>
             <a href="#reference_5" id="footnote_5">5. </a>
-            Christopher PUGSLEY,
-            <span className={STYLES.italic}>
+            Christopher Pugsley,
+            <em>
               {' '}
               On the Fringe of Hell, New Zealanders and Military Discipline in
               the First World War
-            </span>
+            </em>
             , Auckland, Hodder &amp; Stoughton, 1991, p.&nbsp;214.
           </p>
           <p>
             <a href="#reference_6" id="footnote_6">6. </a>
-            Anthony BYLEDBAL,
-            <span className={STYLES.italic}>
+            Anthony Byledbal,
+            <em>
               {' '}
               Les Soldats fantômes de la Grande Guerre souterraine, 1915-1919.
               De l&apos;Immigrant p&#0257;keh&#0257; au vétéran oublié : les hommes de la New Zealand Engineers
               Tunnelling Company
-            </span>
+            </em>
             , Doctoral thesis, under the supervision of Sophie-Anne Leterrier (University of Artois) and in
             collaboration with Nathalie Philippe (University of Waikato), University of Artois, 2012, p.&nbsp;97-100.
           </p>
           <p>
             <a href="#reference_7" id="footnote_7">7. </a>
-            <span className={STYLES.italic}> Evening Post</span>
+            <em> Evening Post</em>
             , 20&nbsp;September 1915, p.&nbsp;8.
           </p>
           <p>
             <a href="#reference_8" id="footnote_8">8. </a>
-            Anthony BYLEDBAL,
-            <span className={STYLES.italic}> Les Soldats fantômes de la Grande Guerre souterraine...</span>
+            Anthony Byledbal,
+            <em> Les Soldats fantômes de la Grande Guerre souterraine...</em>
             ,
-            <span className={STYLES.italic}> op. cit.</span>
+            <em> op. cit.</em>
             , p.&nbsp;123.
           </p>
           <p>
             <a href="#reference_9" id="footnote_9">9. </a>
-            <span className={STYLES.italic}>Ibid.</span>
+            <em>Ibid.</em>
             , p.&nbsp;125.
           </p>
           <p>
             <a href="#reference_10" id="footnote_10">10. </a>
-            <span className={STYLES.italic}>Grey River Argus</span>
+            <em>Grey River Argus</em>
             , 10&nbsp;December 1915, p.&nbsp;2.
           </p>
           <p>
             <a href="#reference_11" id="footnote_11">11. </a>
-            <span className={STYLES.italic}>Evening Post</span>
+            <em>Evening Post</em>
             , 21&nbsp;September 1915, p.&nbsp;2, &ldquo;The whole of the buildings and grounds have been placed
             at the disposal of the local military authorities by the Avondale Jockey Club&rdquo;.
           </p>
           <p>
             <a href="#reference_12" id="footnote_12">12. </a>
-            Anthony BYLEDBAL,
-            <span className={STYLES.italic}>Les Soldats fantômes de la Grande Guerre souterraine...</span>
+            Anthony Byledbal,
+            <em> Les Soldats fantômes de la Grande Guerre souterraine...</em>
             ,
-            <span className={STYLES.italic}> op. cit.</span>
+            <em> op. cit.</em>
             , p.&nbsp;229-234.
           </p>
           <p>
             <a href="#reference_13" id="footnote_13">13. </a>
-            James Campbell NEILL,
-            <span className={STYLES.italic}> The New Zealand Tunnelling Company, 1915-1919</span>
+            James Campbell Neill,
+            <em> The New Zealand Tunnelling Company, 1915-1919</em>
             , Auckland, Whitcombe & Tombs, 1922, p.&nbsp;4.
           </p>
           <p>
             <a href="#reference_14" id="footnote_14">14. </a>
-            <span className={STYLES.italic}>Ibid.</span>
+            <em>Ibid.</em>
             , p.&nbsp;8.
           </p>
           <p>
@@ -268,11 +269,31 @@ export function CallToPickAndShovel() {
           </p>
           <p>
             <a href="#reference_16" id="footnote_16">16. </a>
-            Anthony BYLEDBAL,
-            <span className={STYLES.italic}> Les Soldats fantômes de la Grande Guerre souterraine...</span>
+            Anthony Byledbal,
+            <em> Les Soldats fantômes de la Grande Guerre souterraine...</em>
             ,
-            <span className={STYLES.italic}> op. cit.</span>
+            <em> op. cit.</em>
             , p.&nbsp;197.
+          </p>
+        </div>
+        <div className={STYLES.notes}>
+          <h3>How to cite this page</h3>
+          <p>
+            Anthony Byledbal, &ldquo;Call To Pick & Shovel&rdquo;,
+            {' '}
+            <em>New Zealand Tunnellers Website</em>
+            ,
+            {' '}
+            {`${today.getFullYear()}`}
+            {' '}
+            (2009),
+            Accessed:
+            {' '}
+            {`${today.toLocaleDateString('en-NZ', {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric',
+            })}. `}
           </p>
         </div>
       </div>

@@ -176,8 +176,6 @@
 }
 
 .article {
-  margin-bottom: index.$base-margin;
-
   .paragraph {
     margin: 0 auto;
 
@@ -185,6 +183,11 @@
       font-size: 1.15rem;
       font-weight: 300;
       line-height: 1.8rem;
+
+      @include index.desktop {
+        font-size: 1.25rem;
+        line-height: 2.1rem;
+      }
 
       @include index.large-desktop {
         font-size: 1.5rem;
@@ -199,6 +202,13 @@
       color: index.$secondary-color;
     }
 
+    @include index.desktop {
+      @media screen and (min-width: 62rem) and (max-width: 106rem) {
+        margin: 0 auto;
+        width: 65%;
+      }
+    }
+
     @include index.large-desktop {
       margin: 0 auto;
       width: 65%;
@@ -207,10 +217,17 @@
 }
 
 .notes {
+  margin: index.$base-margin 0;
+
   p {
     font-size: 0.9rem;
     font-weight: 300;
     line-height: 1.25rem;
+
+    @include index.desktop {
+      font-size: 1.1rem;
+      line-height: 1.6rem;
+    }
 
     @include index.large-desktop {
       font-size: 1.25rem;
@@ -222,9 +239,17 @@
     color: index.$secondary-color;
   }
 
+  @include index.desktop {
+    @media screen and (min-width: 62rem) and (max-width: 106rem) {
+      margin: 0 auto;
+      padding: index.$xs-margin 0;
+      width: 65%;
+    }
+  }
+
   @include index.large-desktop {
     margin: 0 auto;
-    padding: index.$base-margin 0;
+    padding: index.$m-margin 0;
     width: 65%;
   }
 }

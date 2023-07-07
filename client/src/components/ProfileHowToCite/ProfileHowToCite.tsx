@@ -13,9 +13,11 @@ export function ProfileHowToCite({ id, summary, date }: props) {
     <div className={STYLES.howtocite}>
       <h3>How to cite this page</h3>
       <p>
-        {`Anthony Byledbal, "${summary.name.forename} ${summary.name.surname} `}
-        {`(${displayBirthDeathDates(summary.birth, summary.death)})", `}
-        <em>New Zealand Tunnellers Website</em>
+        Anthony Byledbal, &ldquo;
+        {`${summary.name.forename} ${summary.name.surname} `}
+        {`(${displayBirthDeathDates(summary.birth, summary.death)})`}
+        &ldquo;,
+        <em> New Zealand Tunnellers Website</em>
         {`, ${date.getFullYear()} (2009), Accessed: `}
         {`${date.toLocaleDateString('en-NZ', {
           year: 'numeric',
