@@ -2,7 +2,7 @@ import { useLayoutEffect } from 'react';
 import {
   BrowserRouter, Route, Routes, useLocation,
 } from 'react-router-dom';
-import { CallToPickAndShovel } from './components/History/CallToPickAndShovel/CallToPickAndShovel';
+import { CallToPickAndShovel } from './components/History/CallToPickAndShovel';
 import { HomePage } from './components/HomePage/HomePage';
 import { Profile } from './components/Profile/Profile';
 import { Roll } from './components/Roll/Roll';

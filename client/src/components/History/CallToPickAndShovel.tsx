@@ -1,8 +1,8 @@
 /* eslint-disable max-len */
-import { today } from '../../../utils/date-utils';
-import { Footer } from '../../Footer/Footer';
-import { Menu } from '../../Menu/Menu';
-import STYLES from '../History.module.scss';
+import { today } from '../../utils/date-utils';
+import { Footer } from '../Footer/Footer';
+import { Menu } from '../Menu/Menu';
+import STYLES from './History.module.scss';
 
 export function CallToPickAndShovel() {
   return (
