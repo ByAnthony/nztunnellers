@@ -3,123 +3,52 @@
 exports[`renders the component correctly 1`] = `
 <DocumentFragment>
   <div
-    class="menu"
+    class="homepage"
   >
-    <a
-      aria-label="Go to the Homepage"
-      class="logo"
-      href="/"
-    >
-      <img
-        alt=""
-        src="/nzt_logo.png"
-      />
-    </a>
     <div
-      class="search-form"
+      class="menu"
     >
-      <form>
-        <input
-          id="search"
-          name="search"
-          placeholder="Search for a tunneller"
-          type="text"
-        />
-      </form>
-      <button
-        class="search-form-button"
-        type="submit"
+      <a
+        aria-label="Go to the Homepage"
+        class="logo"
+        href="/"
       >
         <img
           alt=""
-          height="18"
-          src="/searching_hover.png"
+          src="/nzt_logo.png"
         />
-      </button>
-    </div>
-  </div>
-  <a
-    aria-label="Open the World War I timeline"
-    href="/roll"
-  >
-    <div>
-      <p>
-        World War I (1914-1918)
-      </p>
-      <span>
-        New Zealand Tunnellers
-      </span>
-    </div>
-  </a>
-  <div
-    class="footer"
-  >
-    <div
-      class="map"
-    >
+      </a>
       <div
-        class="links"
+        class="search-form"
       >
-        <div
-          class="link"
+        <form>
+          <input
+            id="search"
+            name="search"
+            placeholder="Search for a tunneller"
+            type="text"
+          />
+        </form>
+        <button
+          class="search-form-button"
+          type="submit"
         >
-          <a
-            href="/history"
-          >
-            History
-          </a>
-        </div>
-        <div
-          class="link"
-        >
-          <a
-            href="/tunnellers"
-          >
-            Tunnellers
-          </a>
-        </div>
-        <div
-          class="link"
-        >
-          <a
-            href="/about-us"
-          >
-            About Us
-          </a>
-        </div>
+          <img
+            alt=""
+            height="18"
+            src="/searching_hover.png"
+          />
+        </button>
       </div>
-      <button
-        aria-label="Go back to the top of the page"
-        class="scroll-top"
-        type="button"
-      >
-        ↑
-      </button>
     </div>
     <div
-      class="support"
+      class="main"
     >
       <div>
-        <a
-          aria-label="Go to The Artois University website"
-          href="https://www.univ-artois.fr/artois-university"
-        >
-          <img
-            alt="Artois University homepage"
-            src="/images/support/logo-univ-artois-blanc_0.png"
-          />
-        </a>
+        History
       </div>
       <div>
-        <a
-          aria-label="Go to The Institute for Strategic Research website"
-          href="https://www.irsem.fr/en/"
-        >
-          <img
-            alt="Institute for Strategic Research homepage"
-            src="/images/support/irsem-white.png"
-          />
-        </a>
+        Tunnellers
       </div>
     </div>
   </div>

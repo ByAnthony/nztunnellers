@@ -23,6 +23,16 @@
     justify-content: space-between;
     align-items: start;
 
+    .sub-title {
+      font-weight: 300;
+      line-height: normal;
+    }
+
+    .title {
+      padding-top: 8px;
+      display: block;
+    }
+
     @include index.tablet {
       margin: 32.16px 0;
     }
@@ -163,16 +173,6 @@
   span {
     padding: 0 5px;
   }
-}
-
-.sub-title {
-  font-weight: 300;
-  line-height: normal;
-}
-
-.title {
-  padding-top: 8px;
-  display: block;
 }
 
 .article {

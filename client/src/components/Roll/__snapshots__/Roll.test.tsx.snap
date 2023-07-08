@@ -43,11 +43,15 @@ exports[`renders roll when data is available 1`] = `
   >
     <h1>
       <span
-        class="title-the"
+        class="sub-title"
       >
-        The
+        The New Zealand
       </span>
-      Tunnellers
+      <span
+        class="title"
+      >
+        Tunnellers
+      </span>
     </h1>
     <div
       class="roll-container"

@@ -18,7 +18,7 @@ describe('Name', () => {
   test('renders name correctly', () => {
     render(component);
 
-    const element = findElementWithText('"John Doe (1888-1975)"');
+    const element = findElementWithText('“John Doe (1888-1975)“');
 
     expect(element).toBeInTheDocument();
   });
@@ -28,7 +28,7 @@ describe('Dates', () => {
   test('renders birth and death dates when known', () => {
     render(component);
 
-    const element = findElementWithText('"John Doe (1888-1975)"');
+    const element = findElementWithText('“John Doe (1888-1975)“');
 
     expect(element).toBeInTheDocument();
   });
@@ -43,7 +43,7 @@ describe('Dates', () => {
     );
     render(mockComponent);
 
-    const element = findElementWithText('"John Doe (1888-†?)"');
+    const element = findElementWithText('“John Doe (1888-†?)“');
 
     expect(element).toBeInTheDocument();
   });
