@@ -162,6 +162,15 @@ export function CallToPickAndShovel() {
             </p>
           </div>
         </div>
+        <div className={STYLES['button-chapter-container']}>
+          <a href="/history/journey-to-war" className={STYLES['button-chapter']} aria-label="Go to Chapter 2: Journey To War">
+            <div>
+              <p>Chapter 2</p>
+              <span>Journey To War</span>
+            </div>
+            <div className={STYLES.arrow}>&rarr;</div>
+          </a>
+        </div>
         <div className={STYLES.notes}>
           <h3>Notes</h3>
           <p>

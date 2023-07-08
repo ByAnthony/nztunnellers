@@ -278,7 +278,7 @@ exports[`renders profile when data is available 1`] = `
             </span>
           </div>
           <div
-            class="arrow-right"
+            class="arrow"
           >
             →
           </div>

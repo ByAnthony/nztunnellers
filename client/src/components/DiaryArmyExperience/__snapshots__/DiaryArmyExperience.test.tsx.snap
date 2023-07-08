@@ -29,7 +29,7 @@ exports[`renders the component correctly 1`] = `
       </span>
     </div>
     <div
-      class="arrow-right"
+      class="arrow"
     >
       →
     </div>

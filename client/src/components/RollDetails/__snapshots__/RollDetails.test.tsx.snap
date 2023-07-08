@@ -27,7 +27,7 @@ exports[`renders the component correctly 1`] = `
         </p>
       </div>
       <div
-        class="arrow-right"
+        class="arrow"
       >
         →
       </div>
@@ -58,7 +58,7 @@ exports[`renders the component correctly 1`] = `
         </p>
       </div>
       <div
-        class="arrow-right"
+        class="arrow"
       >
         →
       </div>

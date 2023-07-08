@@ -231,27 +231,8 @@ li {
   }
 }
 
-.arrow-left {
-  margin: 5px $s-margin 0 0;
-  font-size: 2rem;
-  font-weight: 200;
-  color: $text-color;
-
-  @include tablet {
-    font-size: 2.5rem;
-  }
-
-  @include desktop {
-    font-size: 3rem;
-  }
-
-  @include large-desktop {
-    font-size: 3.25rem;
-  }
-}
-
-.arrow-right {
-  margin: 5px 0 0 $m-margin;
+.arrow {
+  margin-top: 5px;
   font-size: 2rem;
   font-weight: 200;
   color: $secondary-color;
