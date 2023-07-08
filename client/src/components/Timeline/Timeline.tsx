@@ -161,7 +161,7 @@ export function Timeline() {
           </div>
           <h1>
             <span className={STYLES['sub-title']}>World War I</span>
-            Timeline
+            <span className={STYLES.title}>Timeline</span>
           </h1>
           <div>
             <div className={STYLES.line}>

@@ -27,7 +27,7 @@ export function Roll() {
         <div className={STYLES['alphabet-container']}>
           <h1>
             <span className={STYLES['sub-title']}>The New Zealand</span>
-            Tunnellers
+            <span className={STYLES.title}>Tunnellers</span>
           </h1>
           <div className={STYLES['roll-container']}>
             <div className={STYLES.alphabet}>

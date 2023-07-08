@@ -9,9 +9,9 @@
 
   .sub-title {
     display: block;
+    margin-top: 105px;
     font-weight: 300;
     line-height: normal;
-    margin-top: 105px;
 
     @include index.tablet {
       margin-top: 110px;
@@ -24,6 +24,11 @@
     @include index.large-desktop {
       margin-top: 0;
     }
+  }
+
+  .title {
+    padding-top: 8px;
+    display: block;
   }
 
   .roll-container {

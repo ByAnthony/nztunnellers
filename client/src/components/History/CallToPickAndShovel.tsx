@@ -16,7 +16,7 @@ export function CallToPickAndShovel() {
         <div className={STYLES['chapter-title']}>
           <h1>
             <span className={STYLES['sub-title']}>Call To</span>
-            Pick & Shovel
+            <span className={STYLES.title}>Pick & Shovel</span>
           </h1>
           <div className={STYLES['chapter-number']}>1</div>
         </div>
