@@ -10,7 +10,7 @@ from ..repositories.queries.article_query import (
     image_query,
 )
 
-from ..db.run_sql import run_sql_string
+from ..db.run_sql import run_sql
 from flask_mysqldb import MySQL
 
 
@@ -34,13 +34,13 @@ def map_images(images: list[Image]) -> list[Image]:
 def show(id: str, mysql: MySQL) -> Optional[Article]:
     article_sql = article_query()
     values = [id]
-    article_result: Article = run_sql_string(article_sql, mysql, values)[0]
+    article_result: Article = run_sql(article_sql, mysql, values)[0]
 
     section_sql = section_query()
-    section_result: list[Section] = run_sql_string(section_sql, mysql, values)
+    section_result: list[Section] = run_sql(section_sql, mysql, values)
 
     image_sql = image_query()
-    image_result: list[Image] = run_sql_string(image_sql, mysql, values)
+    image_result: list[Image] = run_sql(image_sql, mysql, values)
 
     if article_result:
 
