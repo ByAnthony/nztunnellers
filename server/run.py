@@ -4,7 +4,9 @@ import os
 
 from flask_cors import CORS
 
+
 from .models.helpers.camelize_helpers import underscore_to_camel
+from .repositories import article_repository
 from .repositories import roll_repository
 from .repositories import tunneller_repository
 from flask import Flask, request
@@ -52,5 +54,13 @@ def tunneller(id: int):
     return camelized_profile_for_ts
 
 
+@app.route("/history/<id>", methods=["GET"])
+def article(id: str):
+    article = article_repository.show(id, mysql)
+    data = json.dumps(article, cls=JSONEncoder, indent=4)
+
+    return data
+
+
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
