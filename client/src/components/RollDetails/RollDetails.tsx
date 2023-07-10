@@ -3,11 +3,11 @@ import { Details } from '../../types/roll';
 import STYLES from './RollDetails.module.scss';
 import { displayBirthDeathDates } from '../../utils/utils';
 
-type Roll = {
-    listOfTunnellers: Details[];
+type Props = {
+  listOfTunnellers: Details[];
 }
 
-export function RollDetails({ listOfTunnellers }: Roll) {
+export function RollDetails({ listOfTunnellers }: Props) {
   return (
     <>
       {listOfTunnellers.map((tunneller: Details) => (

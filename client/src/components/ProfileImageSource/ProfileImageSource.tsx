@@ -1,8 +1,8 @@
 import { ImageSource, ImageBookAuthor } from '../../types/tunneller';
 import STYLES from './ProfileImageSource.module.scss';
 
-type props = {
-  source: ImageSource | undefined,
+type Props = {
+  source: ImageSource | undefined;
 }
 
 function SourceImage({ imageSource }: {imageSource: ImageSource | undefined}) {
@@ -76,7 +76,7 @@ function SourceImage({ imageSource }: {imageSource: ImageSource | undefined}) {
   return null;
 }
 
-export function ProfileImageSource({ source }: props) {
+export function ProfileImageSource({ source }: Props) {
   return (
     <SourceImage imageSource={source} />
   );

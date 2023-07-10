@@ -1,12 +1,12 @@
 import { Death, PostWarDeath } from '../../types/tunneller';
 import STYLES from '../ProfileDiary/ProfileDiary.module.scss';
 
-type props = {
-  warDeath: Death | null,
-  afterWarDeath: PostWarDeath | null,
+type Props = {
+  warDeath: Death | null;
+  afterWarDeath: PostWarDeath | null;
 }
 
-export function DiaryDied({ warDeath, afterWarDeath }: props) {
+export function DiaryDied({ warDeath, afterWarDeath }: Props) {
   const title = (ageAtDeath: number | null) => (
     ageAtDeath
       ? <p>{`Died at the age of ${ageAtDeath}`}</p>

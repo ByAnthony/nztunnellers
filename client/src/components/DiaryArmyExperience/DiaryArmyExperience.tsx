@@ -2,9 +2,9 @@ import { ArmyExperience } from '../../types/tunneller';
 import STYLES from '../ProfileDiary/ProfileDiary.module.scss';
 import STYLES_WWI from './DiaryArmyExperience.module.scss';
 
-type props = {
-  tunnellerId: number,
-  armyExperience: ArmyExperience[],
+type Props = {
+  tunnellerId: number;
+  armyExperience: ArmyExperience[];
 }
 
 export function ArmyExperienceList({ militaryExperience }:
@@ -64,7 +64,7 @@ export function ArmyExperienceList({ militaryExperience }:
   return null;
 }
 
-export function DiaryArmyExperience({ tunnellerId, armyExperience }: props) {
+export function DiaryArmyExperience({ tunnellerId, armyExperience }: Props) {
   return (
     <>
       <h2>Army Experience</h2>

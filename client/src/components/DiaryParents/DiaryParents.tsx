@@ -3,11 +3,11 @@ import {
 } from '../../types/tunneller';
 import STYLES from '../ProfileDiary/ProfileDiary.module.scss';
 
-  type props = {
+  type Props = {
     parents: Parents;
   }
 
-export function DiaryParents({ parents }: props) {
+export function DiaryParents({ parents }: Props) {
   if (parents.mother !== null && parents.father !== null) {
     return (
       <>

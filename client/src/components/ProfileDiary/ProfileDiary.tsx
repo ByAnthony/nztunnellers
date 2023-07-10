@@ -13,12 +13,12 @@ import { DiaryParents } from '../DiaryParents/DiaryParents';
 import { DiaryWork } from '../DiaryWork/DiaryWork';
 import STYLES from './ProfileDiary.module.scss';
 
-type props = {
-  tunnellerId: number,
-  origins: Origins,
-  preWarYears: PreWayYears,
-  militaryYears: MilitaryYears,
-  postWarYears: PostServiceYears,
+type Props = {
+  tunnellerId: number;
+  origins: Origins;
+  preWarYears: PreWayYears;
+  militaryYears: MilitaryYears;
+  postWarYears: PostServiceYears;
 }
 
 export function ProfileDiary({
@@ -27,7 +27,7 @@ export function ProfileDiary({
   preWarYears,
   militaryYears,
   postWarYears,
-}: props) {
+}: Props) {
   return (
     <div className={STYLES.diary}>
       <h2>About</h2>

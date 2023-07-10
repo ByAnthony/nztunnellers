@@ -1,10 +1,10 @@
 import STYLES from '../ProfileDiary/ProfileDiary.module.scss';
 
-type props = {
-  residence: string | null,
+type Props = {
+  residence: string | null;
 }
 
-export function DiaryHometown({ residence }: props) {
+export function DiaryHometown({ residence }: Props) {
   return residence
     ? (
       <div className={STYLES['halfwidth-cards-container']}>

@@ -1,11 +1,11 @@
 import { Birth } from '../../types/tunneller';
 import STYLES from '../ProfileDiary/ProfileDiary.module.scss';
 
-type props = {
-    birth: Birth,
+type Props = {
+    birth: Birth;
 }
 
-export function DiaryBirth({ birth }: props) {
+export function DiaryBirth({ birth }: Props) {
   if (birth.date !== null && birth.country !== null) {
     return (
       <div className={STYLES['fullwidth-main-card']}>

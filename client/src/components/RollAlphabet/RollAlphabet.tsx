@@ -2,12 +2,12 @@ import { Details } from '../../types/roll';
 import { RollDetails } from '../RollDetails/RollDetails';
 import STYLES from './RollAlphabet.module.scss';
 
-type RollWithFilter = {
+type Props = {
     tunnellers: Record<string, Details[]>;
     filterByLetter: string;
 };
 
-export function RollAlphabet({ tunnellers, filterByLetter }: RollWithFilter) {
+export function RollAlphabet({ tunnellers, filterByLetter }: Props) {
   const tunnellersList = Object.entries(tunnellers);
 
   const isFilteredByLetter = (letter: string) => (letter === '' ? tunnellersList : tunnellersList.filter((key) => key.includes(letter)));

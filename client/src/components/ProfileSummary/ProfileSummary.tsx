@@ -3,11 +3,11 @@ import type {
 } from '../../types/tunneller';
 import STYLES from './ProfileSummary.module.scss';
 
-type props = {
-    summary: Summary
-    embarkationUnit: EmbarkationUnit,
-    enlistment: Enlistment,
-    image: Image | null,
+type Props = {
+  summary: Summary;
+  embarkationUnit: EmbarkationUnit;
+  enlistment: Enlistment;
+  image: Image | null;
 }
 
 function RenderImage({ imageUrl, tunneller }: {imageUrl: string | undefined, tunneller: Summary}) {
@@ -45,7 +45,7 @@ function RenderUnit({ unit, section }:
 
 export function ProfileSummary({
   summary, embarkationUnit, enlistment, image,
-}: props) {
+}: Props) {
   return (
     <div className={STYLES.overview}>
       <RenderImage imageUrl={image?.url} tunneller={summary} />

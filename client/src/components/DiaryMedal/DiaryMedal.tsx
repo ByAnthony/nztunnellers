@@ -2,8 +2,8 @@ import { Medal } from '../../types/tunneller';
 import STYLES from '../ProfileDiary/ProfileDiary.module.scss';
 import OTHER_MEDALS_STYLES from './DiaryMedal.module.scss';
 
-type props = {
-    medals: Medal[] | [],
+type Props = {
+    medals: Medal[] | [];
 }
 
 function BritishWarAndVictoryMedals({ medalsList }: {medalsList: Medal[] | []}) {
@@ -42,7 +42,7 @@ function OtherMedals({ medalsList }: {medalsList: Medal[] | []}) {
   );
 }
 
-export function DiaryMedal({ medals }: props) {
+export function DiaryMedal({ medals }: Props) {
   return (
     <>
       <BritishWarAndVictoryMedals medalsList={medals} />

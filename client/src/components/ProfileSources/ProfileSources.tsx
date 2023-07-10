@@ -3,8 +3,8 @@ import type {
 } from '../../types/tunneller';
 import STYLES from './ProfileSources.module.scss';
 
-type props = {
-    sources: Sources,
+type Props = {
+  sources: Sources;
 }
 
 type RecordWithIbid<T> = T & { ibid: string };
@@ -82,7 +82,7 @@ function NominalRollSource({ nominalRoll }: {nominalRoll: NominalRoll}) {
   );
 }
 
-export function ProfileSources({ sources }: props) {
+export function ProfileSources({ sources }: Props) {
   return (
     <div className={STYLES.sources}>
       <h3>Sources</h3>
