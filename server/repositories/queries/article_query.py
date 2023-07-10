@@ -2,6 +2,7 @@
 def article_query() -> str:
     return """SELECT
         article.string_id AS id
+        , article.id AS chapter
         , article.title AS title
         , article.notes AS notes
 
@@ -33,3 +34,13 @@ def image_query() -> str:
         JOIN article_image_join ON article_image_join.image_id=article_image.id
 
         WHERE article_image_join.article_id=%s"""
+
+
+def next_query() -> str:
+    return """SELECT
+        article.string_id AS id
+        , article.id AS chapter
+        , article.title AS title
+
+        FROM article
+    """

@@ -25,11 +25,23 @@ class Image:
 
 
 @dataclass
+class Next:
+    url: str
+    chapter: int
+    title: str
+
+    def __getitem__(self, key: str):
+        return getattr(self, key)
+
+
+@dataclass
 class Article:
     id: str
+    chapter: int
     title: str
     section: list[Section]
     image: list[Image]
+    next: Next
     notes: str
 
     def __getitem__(self, key: str):

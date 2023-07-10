@@ -50,7 +50,6 @@ def tunneller(id: int):
     tunneller = tunneller_repository.show(id, lang, mysql)
     profile = json.dumps(tunneller, cls=JSONEncoder, indent=4)
     camelized_profile_for_ts: str = underscore_to_camel(profile)
-
     return camelized_profile_for_ts
 
 
@@ -58,7 +57,6 @@ def tunneller(id: int):
 def article(id: str):
     article = article_repository.show(id, mysql)
     data = json.dumps(article, cls=JSONEncoder, indent=4)
-
     return data
 
 

@@ -2,12 +2,15 @@
 from typing import Optional
 from dacite import from_dict
 
+from ..models.helpers.article_helpers import getNextChapter
+
 
 from ..models.article import Article, Section, Image
 from ..repositories.queries.article_query import (
     article_query,
     section_query,
     image_query,
+    next_query,
 )
 
 from ..db.run_sql import run_sql
@@ -39,6 +42,9 @@ def show(id: str, mysql: MySQL) -> Optional[Article]:
     section_sql = section_query()
     section_result: list[Section] = run_sql(section_sql, mysql, values)
 
+    next_sql = next_query()
+    next_result: list[Article] = run_sql(next_sql, mysql, None)
+
     image_sql = image_query()
     image_result: list[Image] = run_sql(image_sql, mysql, values)
 
@@ -46,9 +52,11 @@ def show(id: str, mysql: MySQL) -> Optional[Article]:
 
         data = {
             "id": article_result["id"],
+            "chapter": article_result["chapter"],
             "title": article_result["title"],
             "section": map_sections(section_result),
             "image": map_images(image_result),
+            "next": getNextChapter(article_result["chapter"], next_result),
             "notes": article_result["notes"],
         }
 
