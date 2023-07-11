@@ -1,4 +1,4 @@
-import STYLES from '../History.module.scss';
+import STYLES from '../Notes/Notes.module.scss';
 
 type Props = {
   title: string;

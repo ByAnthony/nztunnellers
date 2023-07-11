@@ -1,5 +1,5 @@
-import { Next } from '../../../types/article';
-import STYLES from '../History.module.scss';
+import { Next } from '../../../../types/article';
+import STYLES from './NextChapterButton.module.scss';
 
 type Props = {
     next: Next | null;

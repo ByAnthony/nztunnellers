@@ -1,0 +1,61 @@
+@use 'src/index.scss';
+
+.button-chapter-container {
+  padding: 5px 0 0 0;
+
+  @include index.tablet {
+    padding: index.$m-margin 0 index.$xs-margin 0;
+  }
+
+  @include index.desktop {
+    padding: index.$m-margin 0 index.$s-margin 0;
+
+    @media screen and (min-width: 62rem) and (max-width: 106rem) {
+      margin: 0 auto;
+      padding: index.$m-margin 0;
+      width: 65%;
+    }
+  }
+
+  @include index.large-desktop {
+    margin: 0 auto;
+    padding: index.$base-margin 0;
+    width: 65%;
+  }
+}
+
+.button-chapter {
+  flex: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: index.$xs-margin 0;
+  padding: index.$s-margin;
+  font-size: 1.25rem;
+  color: index.$secondary-color;
+
+  @include index.featured-button-link;
+
+  p {
+    margin: 0 0;
+    color: index.$secondary-color;
+  }
+
+  span {
+    font-weight: 600;
+  }
+
+  .chapter-title-left {
+    text-align: end;
+  }
+
+  @include index.desktop {
+    padding: index.$padding-card;
+    flex: 50%;
+  }
+
+  @include index.large-desktop {
+    padding: index.$padding-card;
+    flex: 50%;
+  }
+}

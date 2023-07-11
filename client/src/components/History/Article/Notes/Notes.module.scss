@@ -1,0 +1,39 @@
+@use 'src/index.scss';
+
+.notes {
+  margin: index.$base-margin 0;
+
+  p {
+    font-size: 0.9rem;
+    font-weight: 300;
+    line-height: 1.25rem;
+
+    @include index.desktop {
+      font-size: 1.1rem;
+      line-height: 1.6rem;
+    }
+
+    @include index.large-desktop {
+      font-size: 1.25rem;
+      line-height: 2rem;
+    }
+  }
+
+  a {
+    color: index.$secondary-color;
+  }
+
+  @include index.desktop {
+    @media screen and (min-width: 62rem) and (max-width: 106rem) {
+      margin: 0 auto;
+      padding: index.$xs-margin 0;
+      width: 65%;
+    }
+  }
+
+  @include index.large-desktop {
+    margin: 0 auto;
+    padding: index.$m-margin 0;
+    width: 65%;
+  }
+}

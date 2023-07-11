@@ -1,5 +1,5 @@
-import STYLES from '../History.module.scss';
-import { formatText } from './Paragraph';
+import STYLES from './Notes.module.scss';
+import { formatText } from '../Paragraph/Paragraph';
 
 type Props = {
     notes: string;
