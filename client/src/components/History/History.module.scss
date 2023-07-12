@@ -12,10 +12,6 @@
     margin: index.$m-margin 0;
   }
 
-  img {
-    border-radius: index.$border-radius;
-  }
-
   .link {
     margin-top: index.$base-margin;
     font-size: 1rem;
@@ -71,16 +67,6 @@
 
   @include index.primary-button-link;
 
-  @include index.desktop {
-    padding: index.$padding-card;
-    flex: 50%;
-  }
-
-  @include index.large-desktop {
-    padding: index.$padding-card;
-    flex: 50%;
-  }
-
   p {
     text-align: left;
   }
@@ -126,12 +112,12 @@
     }
 
     @include index.desktop {
-      padding: 10px;
+      padding: index.$padding-card;
       font-size: 1.8rem;
     }
 
     @include index.large-desktop {
-      padding: index.$xs-margin;
+      padding: index.$base-margin;
       font-size: 2rem;
     }
   }
