@@ -2,7 +2,7 @@ import { Next } from '../../../../types/article';
 import STYLES from './NextChapterButton.module.scss';
 
 type Props = {
-    next: Next | null;
+    next: Next | undefined;
 };
 
 export function NextChapterButton({ next }: Props) {

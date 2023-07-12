@@ -23,6 +23,6 @@ export type Article = {
     title: string,
     section: Section[],
     image: Image[],
-    next: Next,
+    next?: Next,
     notes: string,
 }

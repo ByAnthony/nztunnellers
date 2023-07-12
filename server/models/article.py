@@ -41,7 +41,7 @@ class Article:
     title: str
     section: list[Section]
     image: list[Image]
-    next: Next
+    next: Optional[Next]
     notes: str
 
     def __getitem__(self, key: str):
