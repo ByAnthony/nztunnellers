@@ -37,9 +37,9 @@ mysql = MySQL(app)
 
 @app.route("/tunnellers/", methods=["GET"])
 def roll():
-    tunnellers = roll_repository.select_all(mysql)
-    roll = json.dumps(tunnellers, cls=JSONEncoder, indent=4)
-    return roll
+    get_tunnellers = roll_repository.select_all(mysql)
+    tunnellers = json.dumps(get_tunnellers, cls=JSONEncoder, indent=4)
+    return tunnellers
 
 
 @app.route("/tunnellers/<id>", methods=["GET"])
@@ -47,17 +47,24 @@ def tunneller(id: int):
     lang = request.args.get("lang", "en")
     if lang not in ["en", "fr"]:
         return "Language not supported", 400
-    tunneller = tunneller_repository.show(id, lang, mysql)
-    profile = json.dumps(tunneller, cls=JSONEncoder, indent=4)
-    camelized_profile_for_ts: str = underscore_to_camel(profile)
-    return camelized_profile_for_ts
+    get_tunneller = tunneller_repository.show(id, lang, mysql)
+    tunneller = json.dumps(get_tunneller, cls=JSONEncoder, indent=4)
+    camelized_data_for_ts: str = underscore_to_camel(tunneller)
+    return camelized_data_for_ts
+
+
+@app.route("/history/", methods=["GET"])
+def article_list():
+    get_articles = article_repository.select_all(mysql)
+    article = json.dumps(get_articles, cls=JSONEncoder, indent=4)
+    return article
 
 
 @app.route("/history/<id>", methods=["GET"])
 def article(id: str):
-    article = article_repository.show(id, mysql)
-    data = json.dumps(article, cls=JSONEncoder, indent=4)
-    return data
+    get_article = article_repository.show(id, mysql)
+    article = json.dumps(get_article, cls=JSONEncoder, indent=4)
+    return article
 
 
 if __name__ == "__main__":

@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { Article } from '../../types/article';
+import { Article, Next } from '../../types/article';
 import { Details } from '../../types/roll';
 import { Profile } from '../../types/tunneller';
 
@@ -9,6 +9,11 @@ export const tunnellersApi = createApi({
     baseUrl: 'http://localhost:5000/',
   }),
   endpoints: (builder) => ({
+    getAllHistoryArticleLink: builder.query<Array<Next>, void>({
+      query: () => ({
+        url: 'history/',
+      }),
+    }),
     getHistoryArticleById: builder.query<Article, string>({
       query: (id: string) => `history/${id}`,
     }),
@@ -24,6 +29,7 @@ export const tunnellersApi = createApi({
 });
 
 export const {
+  useGetAllHistoryArticleLinkQuery,
   useGetHistoryArticleByIdQuery,
   useGetAllTunnellersQuery,
   useGetTunnellerByIdQuery,

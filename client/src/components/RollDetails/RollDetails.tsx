@@ -11,7 +11,7 @@ export function RollDetails({ listOfTunnellers }: Props) {
   return (
     <>
       {listOfTunnellers.map((tunneller: Details) => (
-        <Link to={`/tunnellers/${tunneller.id}`} key={tunneller.id} className={STYLES['tunneller-link']}>
+        <Link to={`/tunnellers/${tunneller.id}`} key={tunneller.id}>
           <div className={STYLES.tunneller}>
             <div>
               <p className={STYLES.forename}>{tunneller.name.forename}</p>

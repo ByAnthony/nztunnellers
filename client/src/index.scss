@@ -72,7 +72,7 @@ $border-radius: 8px;
 body {
   margin: 0 auto;
   width: 100%;
-  font-family: $main-font;
+  font-family: $main-font, Helvetica, sans-serif;
   font-stretch: 90%;
   color: $text-color;
   line-height: normal;
@@ -81,10 +81,6 @@ body {
   @include large-desktop {
     width: 1425px;
   }
-}
-
-#root {
-  height: 100%;
 }
 
 h1 {

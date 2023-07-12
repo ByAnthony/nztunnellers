@@ -36,7 +36,7 @@ export function Article() {
           <Title title={data.title} chapter={data.chapter} />
           <TopImage image={data.image[0]} />
           <Content imageList={data.image.slice(1)} sectionList={data.section} />
-          <NextChapterButton next={data.next} />
+          <NextChapterButton chapter={data.next} />
           <Notes notes={data.notes} />
           <HowToCite title={data.title} today={today} />
         </div>

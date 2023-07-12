@@ -36,7 +36,7 @@ def image_query() -> str:
         WHERE article_image_join.article_id=%s"""
 
 
-def next_query() -> str:
+def articles_query() -> str:
     return """SELECT
         article.string_id AS id
         , article.id AS chapter

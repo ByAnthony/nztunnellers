@@ -5,12 +5,12 @@ from dacite import from_dict
 from ..models.helpers.article_helpers import getNextChapter
 
 
-from ..models.article import Article, Section, Image
+from ..models.article import Article, Next, Section, Image
 from ..repositories.queries.article_query import (
     article_query,
+    articles_query,
     section_query,
     image_query,
-    next_query,
 )
 
 from ..db.run_sql import run_sql
@@ -34,6 +34,17 @@ def map_images(images: list[Image]) -> list[Image]:
     ]
 
 
+def select_all(mysql: MySQL) -> list[Next]:
+    articles: list[Next] = []
+    articles_sql = articles_query()
+    results: list[Next] = run_sql(articles_sql, mysql, None)
+
+    for row in results:
+        article = Next(row["id"], row["chapter"], row["title"])
+        articles.append(article)
+    return articles
+
+
 def show(id: str, mysql: MySQL) -> Optional[Article]:
     article_sql = article_query()
     values = [id]
@@ -42,7 +53,7 @@ def show(id: str, mysql: MySQL) -> Optional[Article]:
     section_sql = section_query()
     section_result: list[Section] = run_sql(section_sql, mysql, values)
 
-    next_sql = next_query()
+    next_sql = articles_query()
     next_result: list[Article] = run_sql(next_sql, mysql, None)
 
     image_sql = image_query()

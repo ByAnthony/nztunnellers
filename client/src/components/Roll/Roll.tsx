@@ -17,14 +17,14 @@ export function Roll() {
     return (
       <>
         {error && (
-          <div className={STYLES['alphabet-container']}>
+          <div className={STYLES.container}>
             <p>An error occured</p>
           </div>
         )}
         <Menu />
         { isLoading }
         { isSuccess && (
-        <div className={STYLES['alphabet-container']}>
+        <div className={STYLES.container}>
           <h1>
             <span className={STYLES['sub-title']}>The New Zealand</span>
             <span className={STYLES.title}>Tunnellers</span>
