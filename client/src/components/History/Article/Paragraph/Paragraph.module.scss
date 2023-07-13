@@ -29,12 +29,12 @@
   @include index.desktop {
     @media screen and (min-width: 62rem) and (max-width: 106rem) {
       margin: 0 auto;
-      width: index.$width;
+      width: index.$inner-width;
     }
   }
 
   @include index.large-desktop {
     margin: 0 auto;
-    width: index.$width;
+    width: index.$inner-width;
   }
 }

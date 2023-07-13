@@ -13,14 +13,14 @@
     @media screen and (min-width: 62rem) and (max-width: 106rem) {
       margin: 0 auto;
       padding: index.$m-margin 0;
-      width: 65%;
+      width: index.$inner-width;
     }
   }
 
   @include index.large-desktop {
     margin: 0 auto;
     padding: index.$base-margin 0;
-    width: 65%;
+    width: index.$inner-width;
   }
 }
 
@@ -51,11 +51,9 @@
 
   @include index.desktop {
     padding: index.$padding-card;
-    flex: 50%;
   }
 
   @include index.large-desktop {
     padding: index.$padding-card;
-    flex: 50%;
   }
 }
