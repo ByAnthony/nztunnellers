@@ -282,15 +282,17 @@ class TestGetAgeAtDeath:
         assert get_age(None, None, None, None) is None
 
 
-british_war_medal = Medal("British War Medal", "United Kingdom", "For bravery")
-victory_medal = Medal("Victory Medal", "United Kingdom", None)
+british_war_medal = Medal(
+    "British War Medal", "United Kingdom", "url.jpg", "For bravery"
+)
+victory_medal = Medal("Victory Medal", "United Kingdom", "url.jpg", None)
 
 
 class TestMapMedals:
     def test_if_medals_exist(self):
         assert map_medals([british_war_medal, victory_medal]) == [
-            Medal("British War Medal", "United Kingdom", "For bravery"),
-            Medal("Victory Medal", "United Kingdom", None),
+            Medal("British War Medal", "United Kingdom", "url.jpg", "For bravery"),
+            Medal("Victory Medal", "United Kingdom", "url.jpg", None),
         ]
 
     def test_if_empty_list(self):
