@@ -13,4 +13,5 @@ test-server:
 	python3 -m coverage report -m
 
 dev:
+	. server/venv/bin/activate
 	DEV=true python -m server.run
