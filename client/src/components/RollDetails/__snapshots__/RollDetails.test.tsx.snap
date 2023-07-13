@@ -3,7 +3,6 @@
 exports[`renders the component correctly 1`] = `
 <DocumentFragment>
   <a
-    class="tunneller-link"
     href="/tunnellers/26"
   >
     <div
@@ -34,7 +33,6 @@ exports[`renders the component correctly 1`] = `
     </div>
   </a>
   <a
-    class="tunneller-link"
     href="/tunnellers/1"
   >
     <div

@@ -19,11 +19,15 @@
     line-height: 1.75rem;
 
     @include index.desktop {
-      margin-top: index.$l-margin;
+      margin: 0 auto;
+      padding-top: index.$l-margin;
+      width: index.$width;
     }
 
     @include index.large-desktop {
-      margin-top: index.$xl-margin;
+      margin: 0 auto;
+      padding-top: index.$xl-margin;
+      width: index.$width;
       font-size: 1.25rem;
     }
 

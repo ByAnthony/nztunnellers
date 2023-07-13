@@ -22,7 +22,6 @@ exports[`renders the component correctly 1`] = `
         class="tunnellers-container"
       >
         <a
-          class="tunneller-link"
           href="/tunnellers/26"
         >
           <div
@@ -53,7 +52,6 @@ exports[`renders the component correctly 1`] = `
           </div>
         </a>
         <a
-          class="tunneller-link"
           href="/tunnellers/1"
         >
           <div
@@ -102,7 +100,6 @@ exports[`renders the component correctly 1`] = `
         class="tunnellers-container"
       >
         <a
-          class="tunneller-link"
           href="/tunnellers/2"
         >
           <div
@@ -151,7 +148,6 @@ exports[`renders the component correctly 1`] = `
         class="tunnellers-container"
       >
         <a
-          class="tunneller-link"
           href="/tunnellers/3"
         >
           <div

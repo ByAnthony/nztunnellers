@@ -39,7 +39,7 @@ exports[`renders roll when data is available 1`] = `
     </div>
   </div>
   <div
-    class="alphabet-container"
+    class="container"
   >
     <h1>
       <span
@@ -108,7 +108,6 @@ exports[`renders roll when data is available 1`] = `
             class="tunnellers-container"
           >
             <a
-              class="tunneller-link"
               href="/tunnellers/26"
             >
               <div
@@ -139,7 +138,6 @@ exports[`renders roll when data is available 1`] = `
               </div>
             </a>
             <a
-              class="tunneller-link"
               href="/tunnellers/1"
             >
               <div
@@ -188,7 +186,6 @@ exports[`renders roll when data is available 1`] = `
             class="tunnellers-container"
           >
             <a
-              class="tunneller-link"
               href="/tunnellers/2"
             >
               <div
@@ -237,7 +234,6 @@ exports[`renders roll when data is available 1`] = `
             class="tunnellers-container"
           >
             <a
-              class="tunneller-link"
               href="/tunnellers/3"
             >
               <div

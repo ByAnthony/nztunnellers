@@ -22,11 +22,15 @@
   }
 
   @include index.desktop {
-    margin: 37.52px 0;
+    margin: 0 auto;
+    padding: 37.52px 0;
+    width: index.$width;
   }
 
   @include index.large-desktop {
-    margin: 53.6px 0;
+    margin: 0 auto;
+    padding: 53.6px 0;
+    width: index.$width;
   }
 }
 

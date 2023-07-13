@@ -11,6 +11,8 @@ $mobile: 32rem;
 $desktop: 50rem;
 $large-desktop: 106rem;
 
+$width: 901px;
+
 @mixin tablet {
   @media screen and (min-width: $mobile) and (max-width: $desktop) {
     @content;
