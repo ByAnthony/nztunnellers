@@ -14,8 +14,11 @@ from flask_mysqldb import MySQL
 from .models.tunneller import JSONEncoder
 
 app = Flask(__name__)
-Cors = CORS(app)
-CORS(app, resources={r"/": {"origins": ""}}, CORS_SUPPORTS_CREDENTIALS=True)
+CORS(
+    app,
+    resources={r"/*": {"origins": ["http://localhost:3000"]}},
+    CORS_SUPPORTS_CREDENTIALS=True,
+)
 app.config["CORS_HEADERS"] = "Content-Type"
 
 
