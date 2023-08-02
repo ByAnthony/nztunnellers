@@ -15,18 +15,10 @@
   @include index.desktop {
     font-size: 1.15rem;
   }
-
-  @include index.large-desktop {
-    font-size: 1.35rem;
-  }
-
-  p {
-    margin-bottom: index.$xs-margin;
-  }
 }
 
 .citation {
-  margin-top: 5px;
+  margin-top: index.$xxs-margin;
   font-size: 1rem;
   font-weight: 300;
   line-height: 1.6rem;
@@ -34,10 +26,5 @@
   @include index.desktop {
     font-size: 1.1rem;
     line-height: 1.6rem;
-  }
-
-  @include index.large-desktop {
-    font-size: 1.25rem;
-    line-height: 2rem;
   }
 }

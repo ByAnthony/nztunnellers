@@ -29,10 +29,12 @@ export function Article() {
         { isLoading }
         { isSuccess && (
         <div className={STYLES.container}>
-          <div className={STYLES.link}>
-            <a href="/history">History</a>
+          <div className={STYLES.header}>
+            <div className={STYLES.link}>
+              <a href="/history">History</a>
+            </div>
+            <Title title={data.title} chapter={data.chapter} />
           </div>
-          <Title title={data.title} chapter={data.chapter} />
           <TopImage image={data.image[0]} />
           <Content imageList={data.image.slice(1)} sectionList={data.section} />
           <NextChapterButton chapter={data.next} />

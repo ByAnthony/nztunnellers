@@ -16,12 +16,12 @@ export function DiaryParents({ parents }: Props) {
         </div>
         <div className={STYLES['halfwidth-cards-container']}>
           <div className={STYLES['halfwidth-secondary-card']}>
-            <div className={STYLES['halfwidth-secondary-card-title']}><p>Mother</p></div>
-            <div><span>{ parents.mother.name }</span></div>
+            <p>Mother</p>
+            <span>{ parents.mother.name }</span>
           </div>
           <div className={STYLES['halfwidth-secondary-card']}>
-            <div className={STYLES['halfwidth-secondary-card-title']}><p>Father</p></div>
-            <div><span>{ parents.father.name }</span></div>
+            <p>Father</p>
+            <span>{ parents.father.name }</span>
           </div>
         </div>
       </>
@@ -36,8 +36,8 @@ export function DiaryParents({ parents }: Props) {
         <span>Parent</span>
       </div>
       <div className={STYLES['halfwidth-secondary-card']}>
-        <div className={STYLES['halfwidth-secondary-card-title']}><p>{ isMotherOrFather }</p></div>
-        <div><span>{ parent.name }</span></div>
+        <p>{ isMotherOrFather }</p>
+        <span>{ parent.name }</span>
       </div>
     </div>
   );

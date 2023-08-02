@@ -13,6 +13,7 @@
   @include index.featured-button-link;
 
   p {
+    padding-bottom: index.$xxs-margin;
     color: index.$secondary-color;
   }
 

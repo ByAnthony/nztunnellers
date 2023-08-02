@@ -14,11 +14,6 @@
     flex: 50%;
   }
 
-  @include index.large-desktop {
-    padding: index.$padding-card;
-    flex: 50%;
-  }
-
   p {
     text-align: left;
   }
@@ -36,10 +31,6 @@
     @include index.desktop {
       font-size: 1.8rem;
     }
-
-    @include index.large-desktop {
-      font-size: 2rem;
-    }
   }
 
   .forename {
@@ -55,10 +46,6 @@
     @include index.desktop {
       font-size: 1.8rem;
     }
-
-    @include index.large-desktop {
-      font-size: 2rem;
-    }
   }
 
   .dates {
@@ -73,11 +60,6 @@
     }
 
     @include index.desktop {
-      margin-top: index.$m-margin;
-      font-size: 1.125rem;
-    }
-
-    @include index.large-desktop {
       margin-top: index.$m-margin;
       font-size: 1.125rem;
     }

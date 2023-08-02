@@ -52,12 +52,12 @@ export function ProfileSummary({
       <RenderUnit unit={embarkationUnit.detachment} section={embarkationUnit.section} />
       <div className={STYLES['halfwidth-cards-container']}>
         <div className={STYLES['halfwidth-secondary-card']}>
-          <div className={STYLES['halfwidth-secondary-card-title']}><p>Rank</p></div>
-          <div><span>{ enlistment.rank }</span></div>
+          <p>Rank</p>
+          <span>{ enlistment.rank }</span>
         </div>
         <div className={STYLES['halfwidth-secondary-card']}>
-          <div className={STYLES['halfwidth-secondary-card-title']}><p>Serial</p></div>
-          <div><span>{ enlistment.serial }</span></div>
+          <p>Serial</p>
+          <span>{ enlistment.serial }</span>
         </div>
       </div>
     </div>

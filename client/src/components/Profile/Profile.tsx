@@ -34,11 +34,13 @@ export function Profile() {
             <div className={STYLES.link}>
               <a href="/tunnellers">Tunnellers</a>
             </div>
-            <h1>
-              <span className={STYLES.forename}>{ data.summary.name.forename }</span>
-              <span className={STYLES.surname}>{ data.summary.name.surname }</span>
-            </h1>
-            <p className={STYLES.dates}>
+            <div className={STYLES['main-title']}>
+              <h1>
+                <span className={STYLES['title-line-1']}>{ data.summary.name.forename }</span>
+                <span className={STYLES['title-line-2']}>{ data.summary.name.surname }</span>
+              </h1>
+            </div>
+            <p className={STYLES['title-line-3']}>
               { displayBirthDeathDates(data.summary.birth, data.summary.death) }
             </p>
           </div>

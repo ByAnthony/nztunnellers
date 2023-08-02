@@ -14,8 +14,8 @@ function BritishWarAndVictoryMedals({ medalsList }: {medalsList: Medal[] | []}) 
       <div className={STYLES['halfwidth-cards-container']}>
         {filteredMedals.map((medal) => (
           <div key={filteredMedals.indexOf(medal)} className={STYLES['halfwidth-secondary-card']}>
-            <div className={STYLES['halfwidth-secondary-card-title']}><p><img src={`/images/roll/medals/${medal.image}`} alt={`${medal.name} ribbon`} width={40} /></p></div>
-            <div><span>{ medal.name }</span></div>
+            <p><img src={`/images/roll/medals/${medal.image}`} alt={`${medal.name} ribbon`} width={40} /></p>
+            <span>{ medal.name }</span>
           </div>
         ))}
       </div>
@@ -32,8 +32,8 @@ function OtherMedals({ medalsList }: {medalsList: Medal[] | []}) {
         const displayCountry = (medal.country !== 'United Kingdom') ? `(${medal.country})` : '';
         return (
           <div key={filteredMedals.indexOf(medal)} className={OTHER_MEDALS_STYLES['other-medal']}>
-            <div><p><img src={`/images/roll/medals/${medal.image}`} alt={`${medal.name} ribbon`} width={40} /></p></div>
-            <div><span>{`${medal.name} ${displayCountry}`}</span></div>
+            <p><img src={`/images/roll/medals/${medal.image}`} alt={`${medal.name} ribbon`} width={40} /></p>
+            <span>{`${medal.name} ${displayCountry}`}</span>
             <div className={OTHER_MEDALS_STYLES.citation}><span>{`${medal.citation}.`}</span></div>
           </div>
         );

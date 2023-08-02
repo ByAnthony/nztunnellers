@@ -21,10 +21,12 @@ export function History() {
         { isLoading }
         { isSuccess && (
         <div className={STYLES_TITLE.container}>
-          <h1>
-            <span className={STYLES_TITLE['sub-title']}>The Company</span>
-            <span className={STYLES_TITLE.title}>History</span>
-          </h1>
+          <div className={STYLES['main-title']}>
+            <h1>
+              <span className={STYLES['title-line-1']}>The Company</span>
+              <span className={STYLES['title-line-2']}>History</span>
+            </h1>
+          </div>
           <div className={STYLES.links}>
             {data.map((chapter) => (
               <div className={STYLES['link-container']}>

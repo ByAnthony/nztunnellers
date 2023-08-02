@@ -16,20 +16,12 @@
     margin-bottom: index.$xl-margin;
   }
 
-  @include index.large-desktop {
-    margin-bottom: index.$xl-margin;
-  }
-
   p {
     margin: 0;
     font-size: 1rem;
 
     @include index.desktop {
       font-size: 1.1rem;
-    }
-
-    @include index.large-desktop {
-      font-size: 1.25rem;
     }
   }
 
@@ -43,28 +35,8 @@
     display: block;
   }
 
-  .link {
-    margin-top: index.$base-margin;
-    font-size: 1rem;
-    font-weight: 500;
-    line-height: 1.75rem;
-
-    @include index.desktop {
-      margin-top: index.$l-margin;
-    }
-
-    @include index.large-desktop {
-      margin-top: index.$xl-margin;
-      font-size: 1.25rem;
-    }
-
-    a {
-      @include index.text-link;
-    }
-
-    span {
-      padding: 0 5px;
-    }
+  .events {
+    margin-left: 22.5px;
   }
 
   .line {
@@ -73,12 +45,7 @@
 
     @include index.desktop {
       margin: 0 auto;
-      width: 50%;
-    }
-
-    @include index.large-desktop {
-      margin: 0 auto;
-      width: 50%;
+      width: 54.59375rem;
     }
   }
 
@@ -94,10 +61,6 @@
       @include index.desktop {
         font-size: 1.25rem;
       }
-
-      @include index.large-desktop {
-        font-size: 1.6rem;
-      }
     }
 
     .day-month {
@@ -106,10 +69,6 @@
 
       @include index.desktop {
         font-size: 1.2rem;
-      }
-
-      @include index.large-desktop {
-        font-size: 1.4rem;
       }
     }
   }
@@ -122,10 +81,6 @@
     }
 
     @include index.desktop {
-      margin: index.$base-margin 0;
-    }
-
-    @include index.large-desktop {
       margin: index.$base-margin 0;
     }
   }
@@ -141,10 +96,6 @@
 
       @include index.desktop {
         font-size: 1.1rem;
-      }
-
-      @include index.large-desktop {
-        font-size: 1.3rem;
       }
     }
 
@@ -171,10 +122,6 @@
       @include index.desktop {
         font-size: 1.1rem;
       }
-
-      @include index.large-desktop {
-        font-size: 1.3rem;
-      }
     }
   }
 
@@ -191,11 +138,6 @@
       @include index.desktop {
         font-size: 1.1rem;
         line-height: 1.5rem;
-      }
-
-      @include index.large-desktop {
-        font-size: 1.3rem;
-        line-height: 1.8rem;
       }
     }
 
@@ -229,10 +171,6 @@
 
       @include index.desktop {
         font-size: 1.1rem;
-      }
-
-      @include index.large-desktop {
-        font-size: 1.3rem;
       }
     }
 

@@ -17,10 +17,6 @@
       width: index.$l-margin;
     }
 
-    @include index.large-desktop {
-      width: index.$l-margin;
-    }
-
     .title {
       margin: 0;
       padding: 10px 0 7px 0;
@@ -36,10 +32,6 @@
       @include index.desktop {
         font-size: 3rem;
       }
-
-      @include index.large-desktop {
-        font-size: 3rem;
-      }
     }
   }
 
@@ -51,10 +43,6 @@
   }
 
   @include index.desktop {
-    width: 100%;
-  }
-
-  @include index.large-desktop {
     width: 100%;
   }
 }

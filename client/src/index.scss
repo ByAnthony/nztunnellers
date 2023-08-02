@@ -8,10 +8,10 @@
 }
 
 $mobile: 32rem;
-$desktop: 50rem;
-$large-desktop: 106rem;
+$desktop: 57rem;
+$large-desktop: 206rem;
 
-$inner-width: 901px;
+$inner-width: 56rem;
 
 @mixin tablet {
   @media screen and (min-width: $mobile) and (max-width: $desktop) {
@@ -40,6 +40,8 @@ $secondary-color: rgb(153, 131, 100);
 $text-color: rgb(159, 154, 143);
 $placeholder-color: rgb(109, 104, 103);
 
+$xxxs-margin: 5px;
+$xxs-margin: 10px;
 $xs-margin: 15px;
 $s-margin: 20px;
 $m-margin: 25px;
@@ -155,10 +157,6 @@ p {
   @include desktop {
     font-size: 1.1rem;
   }
-
-  @include large-desktop {
-    font-size: 1.25rem;
-  }
 }
 
 a {
@@ -174,6 +172,68 @@ li {
   list-style: none;
 }
 
+.header {
+  margin-top: $base-margin;
+  text-align: left;
+
+  @include component-margin;
+
+  @include desktop {
+    margin: 0 auto;
+    margin-top: $l-margin;
+    margin-bottom: $l-margin;
+    width: $inner-width;
+  }
+
+  .dates {
+    margin-top: $s-margin;
+    font-size: 1.25rem;
+    font-weight: 300;
+
+    @include tablet {
+      font-size: 1.35rem;
+    }
+
+    @include desktop {
+      font-size: 2rem;
+    }
+  }
+}
+
+.main-title {
+  margin: 0 auto;
+  width: $inner-width;
+
+  @include desktop {
+    margin-top: $l-margin;
+    margin-bottom: $l-margin;
+  }
+}
+
+.title-line-1 {
+  font-weight: 300;
+  line-height: normal;
+}
+
+.title-line-2 {
+  display: block;
+  padding-top: 8px;
+}
+
+.title-line-3 {
+  margin-top: $s-margin;
+  font-size: 1.25rem;
+  font-weight: 500;
+
+  @include tablet {
+    font-size: 1.35rem;
+  }
+
+  @include desktop {
+    font-size: 2rem;
+  }
+}
+
 @mixin text-link {
   padding-bottom: 4px;
   font-weight: 500;
@@ -186,6 +246,28 @@ li {
     padding-bottom: 4px;
     border-bottom: 1px solid $secondary-color;
     color: $secondary-color;
+  }
+}
+
+.link {
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.75rem;
+
+  @include tablet {
+    margin-top: $base-margin;
+  }
+
+  @include desktop {
+    font-size: 1.2rem;
+  }
+
+  a {
+    @include text-link;
+  }
+
+  span {
+    padding: 0 5px;
   }
 }
 
@@ -259,6 +341,10 @@ $padding-card: 30px 30px 27px 30px;
   border: 1px solid $primary-light-color;
   border-radius: $border-radius;
 
+  p {
+    padding-bottom: $xxs-margin;
+  }
+
   @include desktop {
     padding: $padding-card;
     font-size: 1.25rem;
@@ -328,6 +414,10 @@ $padding-card: 30px 30px 27px 30px;
   border: 1px solid $primary-light-color;
   border-radius: $border-radius;
 
+  p {
+    padding-bottom: $xxs-margin;
+  }
+
   @include tablet {
     font-size: 1.1rem;
   }
@@ -341,8 +431,4 @@ $padding-card: 30px 30px 27px 30px;
     padding: $padding-card;
     font-size: 1.35rem;
   }
-}
-
-@mixin halfwidth-secondary-card-title {
-  padding-bottom: $xs-margin;
 }

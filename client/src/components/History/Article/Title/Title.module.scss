@@ -25,10 +25,6 @@
     margin: 0 auto;
     width: index.$inner-width;
   }
-
-  @include index.large-desktop {
-    margin: 53.6px 0;
-  }
 }
 
 .chapter-number {
@@ -41,9 +37,5 @@
 
   @include index.desktop {
     font-size: 3.5rem;
-  }
-
-  @include index.large-desktop {
-    font-size: 5rem;
   }
 }

@@ -3,10 +3,6 @@
 .container {
   @include index.component-margin;
 
-  h1 {
-    text-align: left;
-  }
-
   .sub-title {
     display: block;
     margin-top: 105px;
@@ -18,10 +14,6 @@
     }
 
     @include index.desktop {
-      margin-top: 0;
-    }
-
-    @include index.large-desktop {
       margin-top: 0;
     }
   }
@@ -36,14 +28,10 @@
 
     @include index.desktop {
       display: flex;
+      margin: 0 auto;
       margin-top: index.$l-margin;
+      width: index.$inner-width;
       gap: index.$l-margin;
-    }
-
-    @include index.large-desktop {
-      display: flex;
-      margin-top: index.$xl-margin;
-      gap: index.$xxl-margin;
     }
   }
 
@@ -61,19 +49,11 @@
     }
 
     @include index.desktop {
+      position: -webkit-sticky;
+      position: sticky;
+      top: 0;
       margin: 0;
       width: 60%;
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      gap: index.$xs-margin;
-      justify-content: flex-start;
-      align-content: flex-start;
-    }
-
-    @include index.large-desktop {
-      margin: 0;
-      width: 40%;
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
@@ -104,11 +84,6 @@
         width: 45px;
         font-size: 1.5rem;
       }
-
-      @include index.large-desktop {
-        width: 45px;
-        font-size: 1.625rem;
-      }
     }
   }
 
@@ -117,9 +92,5 @@
 
   @include index.desktop {
     margin-top: 140px;
-  }
-
-  @include index.large-desktop {
-    margin-top: 180px;
   }
 }

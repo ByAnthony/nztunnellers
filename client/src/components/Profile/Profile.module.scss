@@ -1,80 +1,5 @@
 @use 'src/index.scss';
 
-.header {
-  margin-top: index.$base-margin;
-  text-align: left;
-
-  @include index.component-margin;
-
-  @include index.tablet {
-    text-align: left;
-  }
-
-  @include index.desktop {
-    margin: 0 auto;
-    margin-top: index.$l-margin;
-    margin-bottom: index.$xl-margin;
-    width: index.$inner-width;
-  }
-
-  @include index.large-desktop {
-    margin: 0 auto;
-    margin-top: index.$l-margin;
-    margin-bottom: index.$xl-margin;
-    width: index.$inner-width;
-  }
-
-  .link {
-    font-size: 1rem;
-    font-weight: 500;
-    line-height: 1.75rem;
-
-    @include index.tablet {
-      margin-top: index.$base-margin;
-    }
-
-    @include index.large-desktop {
-      font-size: 1.25rem;
-    }
-
-    a {
-      @include index.text-link;
-    }
-
-    span {
-      padding: 0 5px;
-    }
-  }
-
-  .forename {
-    font-weight: 300;
-    line-height: normal;
-  }
-
-  .surname {
-    padding-top: 8px;
-    display: block;
-  }
-
-  .dates {
-    margin-top: index.$s-margin;
-    font-size: 1.25rem;
-    font-weight: 300;
-
-    @include index.tablet {
-      font-size: 1.35rem;
-    }
-
-    @include index.desktop {
-      font-size: 2rem;
-    }
-
-    @include index.large-desktop {
-      font-size: 2rem;
-    }
-  }
-}
-
 .profile {
   @include index.component-margin;
 
@@ -85,19 +10,8 @@
     gap: index.$l-margin;
   }
 
-  @include index.large-desktop {
-    margin: 0 auto;
-    width: index.$inner-width;
-    display: flex;
-    gap: index.$l-margin;
-  }
-
   .flex-summary {
     @include index.desktop {
-      width: 40%;
-    }
-
-    @include index.large-desktop {
       width: 40%;
     }
   }
@@ -106,20 +20,11 @@
     @include index.desktop {
       width: 60%;
     }
-
-    @include index.large-desktop {
-      width: 60%;
-    }
   }
 
   .summary {
     @include index.desktop {
       flex-grow: 1;
-      text-align: left;
-    }
-
-    @include index.large-desktop {
-      width: 500px;
       text-align: left;
     }
   }
