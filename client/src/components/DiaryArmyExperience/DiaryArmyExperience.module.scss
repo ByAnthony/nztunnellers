@@ -21,9 +21,4 @@
     padding: index.$padding-card;
     flex: 50%;
   }
-
-  @include index.large-desktop {
-    padding: index.$padding-card;
-    flex: 50%;
-  }
 }

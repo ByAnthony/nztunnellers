@@ -16,12 +16,6 @@
       width: index.$inner-width;
     }
   }
-
-  @include index.large-desktop {
-    margin: 0 auto;
-    padding: index.$base-margin 0;
-    width: index.$inner-width;
-  }
 }
 
 .button-chapter {
@@ -50,10 +44,6 @@
   }
 
   @include index.desktop {
-    padding: index.$padding-card;
-  }
-
-  @include index.large-desktop {
     padding: index.$padding-card;
   }
 }

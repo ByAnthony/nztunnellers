@@ -14,10 +14,6 @@
     @include index.desktop {
       line-height: 1.6rem;
     }
-
-    @include index.large-desktop {
-      line-height: 2rem;
-    }
   }
 
   a {

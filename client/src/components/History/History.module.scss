@@ -28,11 +28,6 @@
     padding: index.$l-margin 0;
     width: index.$inner-width;
   }
-
-  @include index.large-desktop {
-    padding: index.$xl-margin 0;
-    width: 65%;
-  }
 }
 
 .link-container {
@@ -68,10 +63,6 @@
       @include index.desktop {
         font-size: 1.3rem;
       }
-
-      @include index.large-desktop {
-        font-size: 1.5rem;
-      }
     }
 
     span {
@@ -90,11 +81,6 @@
     @include index.desktop {
       padding: index.$padding-card;
       font-size: 1.8rem;
-    }
-
-    @include index.large-desktop {
-      padding: index.$base-margin;
-      font-size: 2rem;
     }
   }
 }

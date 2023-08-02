@@ -16,10 +16,6 @@
     margin-top: index.$base-margin;
   }
 
-  @include index.large-desktop {
-    margin-top: index.$base-margin;
-  }
-
   .logo img {
     height: 35px;
   }
@@ -40,10 +36,6 @@
     }
 
     @include index.desktop {
-      margin-left: index.$m-margin;
-    }
-
-    @include index.large-desktop {
       margin-left: index.$m-margin;
     }
 

@@ -9,7 +9,6 @@
 
 $mobile: 32rem;
 $desktop: 57rem;
-$large-desktop: 206rem;
 
 $inner-width: 56rem;
 
@@ -20,13 +19,7 @@ $inner-width: 56rem;
 }
 
 @mixin desktop {
-  @media screen and (min-width: $desktop) and (max-width: $large-desktop) {
-    @content;
-  }
-}
-
-@mixin large-desktop {
-  @media screen and (min-width: $large-desktop) {
+  @media screen and (min-width: $desktop) {
     @content;
   }
 }
@@ -66,11 +59,6 @@ $border-radius: 8px;
     margin-left: $base-margin;
     margin-right: $base-margin;
   }
-
-  @include large-desktop {
-    margin-left: $base-margin;
-    margin-right: $base-margin;
-  }
 }
 
 body {
@@ -81,10 +69,6 @@ body {
   color: $text-color;
   line-height: normal;
   background-color: $primary-dark-color;
-
-  @include large-desktop {
-    width: 1425px;
-  }
 }
 
 h1 {
@@ -102,11 +86,6 @@ h1 {
     font-size: 5rem;
     line-height: 4rem;
   }
-
-  @include large-desktop {
-    font-size: 5rem;
-    line-height: 4rem;
-  }
 }
 
 h2 {
@@ -121,10 +100,6 @@ h2 {
   @include desktop {
     font-size: 1.6rem;
   }
-
-  @include large-desktop {
-    font-size: 2rem;
-  }
 }
 
 h3 {
@@ -138,10 +113,6 @@ h3 {
 
   @include desktop {
     font-size: 1.4rem;
-  }
-
-  @include large-desktop {
-    font-size: 1.5rem;
   }
 }
 
@@ -300,10 +271,6 @@ li {
     font-size: 1.35rem;
   }
 
-  @include large-desktop {
-    font-size: 1.5rem;
-  }
-
   &:hover {
     border: 1px solid $secondary-color;
     border-bottom: 1px solid $secondary-color;
@@ -323,10 +290,6 @@ li {
 
   @include desktop {
     font-size: 3rem;
-  }
-
-  @include large-desktop {
-    font-size: 3.25rem;
   }
 }
 
@@ -349,11 +312,6 @@ $padding-card: 30px 30px 27px 30px;
     padding: $padding-card;
     font-size: 1.25rem;
   }
-
-  @include large-desktop {
-    padding: $padding-card;
-    font-size: 1.5rem;
-  }
 }
 
 @mixin fullwidth-secondary-card {
@@ -367,11 +325,6 @@ $padding-card: 30px 30px 27px 30px;
   @include desktop {
     padding: $padding-card;
     font-size: 1.25rem;
-  }
-
-  @include large-desktop {
-    padding: $padding-card;
-    font-size: 1.5rem;
   }
 }
 
@@ -401,11 +354,6 @@ $padding-card: 30px 30px 27px 30px;
     padding: $padding-card;
     font-size: 1.25rem;
   }
-
-  @include large-desktop {
-    padding: $padding-card;
-    font-size: 1.5rem;
-  }
 }
 
 @mixin halfwidth-secondary-card {
@@ -425,10 +373,5 @@ $padding-card: 30px 30px 27px 30px;
   @include desktop {
     padding: $padding-card;
     font-size: 1.15rem;
-  }
-
-  @include large-desktop {
-    padding: $padding-card;
-    font-size: 1.35rem;
   }
 }

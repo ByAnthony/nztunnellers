@@ -14,11 +14,6 @@
     border-radius: index.$border-radius;
     border: 1px solid index.$primary-light-color;
   }
-
-  @include index.large-desktop {
-    margin: index.$xl-margin 0;
-    height: 675px;
-  }
 }
 
 .image-legend {
@@ -40,11 +35,6 @@
       margin-bottom: 12.5px;
       font-size: 1.35rem;
     }
-
-    @include index.large-desktop {
-      margin-bottom: index.$s-margin;
-      font-size: 1.5rem;
-    }
   }
 
   .captions {
@@ -59,10 +49,6 @@
     @include index.desktop {
       font-size: 1rem;
     }
-
-    @include index.large-desktop {
-      font-size: 1.2rem;
-    }
   }
 
   .reference {
@@ -76,13 +62,5 @@
     @include index.desktop {
       font-size: 1rem;
     }
-
-    @include index.large-desktop {
-      font-size: 1.2rem;
-    }
-  }
-
-  @include index.large-desktop {
-    margin-bottom: index.$xl-margin;
   }
 }

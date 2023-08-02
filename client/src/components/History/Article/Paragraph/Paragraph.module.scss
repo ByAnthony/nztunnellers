@@ -12,11 +12,6 @@
       font-size: 1.4rem;
       line-height: 2.4rem;
     }
-
-    @include index.large-desktop {
-      font-size: 1.5rem;
-      line-height: 2.5rem;
-    }
   }
 
   a {
@@ -31,10 +26,5 @@
       margin: 0 auto;
       width: index.$inner-width;
     }
-  }
-
-  @include index.large-desktop {
-    margin: 0 auto;
-    width: index.$inner-width;
   }
 }
