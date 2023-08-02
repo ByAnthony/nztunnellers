@@ -31,7 +31,6 @@ export function Article() {
         <div className={STYLES.container}>
           <div className={STYLES.link}>
             <a href="/history">History</a>
-            <span>/</span>
           </div>
           <Title title={data.title} chapter={data.chapter} />
           <TopImage image={data.image[0]} />

@@ -11,15 +11,17 @@
   }
 
   @include index.desktop {
+    margin: 0 auto;
     margin-top: index.$l-margin;
-    margin-bottom: index.$base-margin;
-    text-align: left;
+    margin-bottom: index.$xl-margin;
+    width: index.$inner-width;
   }
 
   @include index.large-desktop {
-    margin-top: index.$xl-margin;
-    margin-bottom: index.$l-margin;
-    text-align: left;
+    margin: 0 auto;
+    margin-top: index.$l-margin;
+    margin-bottom: index.$xl-margin;
+    width: index.$inner-width;
   }
 
   .link {
@@ -64,7 +66,7 @@
     }
 
     @include index.desktop {
-      font-size: 1.65rem;
+      font-size: 2rem;
     }
 
     @include index.large-desktop {
@@ -77,11 +79,15 @@
   @include index.component-margin;
 
   @include index.desktop {
+    margin: 0 auto;
+    width: index.$inner-width;
     display: flex;
     gap: index.$l-margin;
   }
 
   @include index.large-desktop {
+    margin: 0 auto;
+    width: index.$inner-width;
     display: flex;
     gap: index.$l-margin;
   }

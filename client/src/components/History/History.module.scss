@@ -19,7 +19,10 @@
     line-height: 1.75rem;
 
     @include index.desktop {
+      margin: 0 auto;
       margin-top: index.$l-margin;
+      margin-bottom: 53.6px;
+      width: index.$inner-width;
     }
 
     @include index.large-desktop {
@@ -50,7 +53,7 @@
 
   @include index.desktop {
     padding: index.$l-margin 0;
-    width: 65%;
+    width: index.$inner-width;
   }
 
   @include index.large-desktop {

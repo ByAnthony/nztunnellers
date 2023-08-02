@@ -22,7 +22,8 @@
   }
 
   @include index.desktop {
-    margin: 37.52px 0;
+    margin: 0 auto;
+    width: index.$inner-width;
   }
 
   @include index.large-desktop {

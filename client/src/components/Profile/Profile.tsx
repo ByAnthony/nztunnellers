@@ -33,7 +33,6 @@ export function Profile() {
           <div className={STYLES.header}>
             <div className={STYLES.link}>
               <a href="/tunnellers">Tunnellers</a>
-              <span>/</span>
             </div>
             <h1>
               <span className={STYLES.forename}>{ data.summary.name.forename }</span>
