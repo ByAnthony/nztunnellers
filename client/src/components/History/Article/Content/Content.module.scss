@@ -2,20 +2,33 @@
 
 .image-container {
   display: flex;
-  margin: index.$xl-margin 0;
+  margin: index.$base-margin 0;
   justify-content: center;
   align-items: center;
+
+  @include index.tablet {
+    margin: index.$l-margin 0;
+  }
+
+  @include index.desktop {
+    margin: index.$xl-margin 0;
+  }
 }
 
 .image {
   object-fit: cover;
   object-position: center;
-  height: 575px;
+  height: 460px;
   width: 100%;
   border-radius: index.$border-radius;
   border: 1px solid index.$primary-light-color;
 
+  @include index.tablet {
+    height: 515px;
+  }
+
   @include index.desktop {
+    height: 575px;
     width: index.$inner-width;
   }
 }
@@ -25,16 +38,18 @@
   text-align: center;
 
   .title {
-    margin-top: -50px;
+    margin-top: -15px;
     font-size: 1.15rem;
     font-weight: 600;
     color: index.$secondary-color;
 
     @include index.tablet {
+      margin-top: -30px;
       font-size: 1.25rem;
     }
 
     @include index.desktop {
+      margin-top: -50px;
       margin-bottom: 12.5px;
       font-size: 1.5rem;
     }
@@ -55,6 +70,7 @@
   }
 
   .reference {
+    margin-bottom: index.$l-margin;
     font-size: 0.9rem;
     font-style: italic;
 

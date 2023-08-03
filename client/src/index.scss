@@ -149,6 +149,10 @@ li {
 
   @include component-margin;
 
+  @include tablet {
+    margin-top: $l-margin;
+  }
+
   @include desktop {
     margin: 0 auto;
     margin-top: $l-margin;
@@ -172,10 +176,15 @@ li {
 }
 
 .main-title {
+  margin: $m-margin 0;
+
+  @include tablet {
+    margin: $base-margin 0;
+  }
+
   @include desktop {
     margin: 0 auto;
-    margin-top: $l-margin;
-    margin-bottom: $l-margin;
+    margin: $l-margin 0;
     width: $inner-width;
   }
 }
