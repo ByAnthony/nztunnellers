@@ -19,10 +19,8 @@
   }
 
   @include index.desktop {
-    @media screen and (min-width: 62rem) and (max-width: 106rem) {
-      margin: 0 auto;
-      padding: index.$xs-margin 0;
-      width: index.$inner-width;
-    }
+    margin: 0 auto;
+    padding: index.$xs-margin 0;
+    width: 42rem;
   }
 }

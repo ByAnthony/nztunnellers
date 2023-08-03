@@ -28,21 +28,27 @@ export function History() {
             </h1>
           </div>
           <div className={STYLES.links}>
-            {data.map((chapter) => (
-              <div className={STYLES['link-container']}>
-                <a
-                  href={`/history/${chapter.url}`}
-                  className={STYLES['link-button']}
-                  aria-label={`Go to Chapter ${chapter.chapter}: ${chapter.title.replace('\\', ' ')}`}
-                >
-                  <div>
-                    <p>{`Chapter ${chapter.chapter}`}</p>
-                    <span>{chapter.title.replace('\\', ' ')}</span>
-                  </div>
-                  <div className={STYLES.arrow}>&rarr;</div>
-                </a>
-              </div>
-            ))}
+            {data.map((chapter) => {
+              const [titleLine1, titleLine2] = chapter.title.split('\\');
+
+              return (
+                <div className={STYLES['link-container']}>
+                  <a
+                    href={`/history/${chapter.url}`}
+                    className={STYLES['link-button']}
+                    aria-label={`Go to Chapter ${chapter.chapter}: ${chapter.title.replace('\\', ' ')}`}
+                  >
+                    <div>
+                      <p>{`Chapter ${chapter.chapter}`}</p>
+                    </div>
+                    <div>
+                      <span className={STYLES['title-line-1']}>{titleLine1}</span>
+                      <span className={STYLES['title-line-2']}>{titleLine2}</span>
+                    </div>
+                  </a>
+                </div>
+              );
+            })}
           </div>
         </div>
         )}

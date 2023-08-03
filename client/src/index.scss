@@ -98,7 +98,7 @@ h2 {
   }
 
   @include desktop {
-    font-size: 1.6rem;
+    font-size: 1.8rem;
   }
 }
 
@@ -112,7 +112,7 @@ h3 {
   }
 
   @include desktop {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
   }
 }
 
@@ -189,6 +189,7 @@ li {
 .title-line-2 {
   display: block;
   padding-top: 8px;
+  font-weight: 600;
 }
 
 .title-line-3 {
