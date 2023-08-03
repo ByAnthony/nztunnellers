@@ -172,12 +172,11 @@ li {
 }
 
 .main-title {
-  margin: 0 auto;
-  width: $inner-width;
-
   @include desktop {
+    margin: 0 auto;
     margin-top: $l-margin;
     margin-bottom: $l-margin;
+    width: $inner-width;
   }
 }
 

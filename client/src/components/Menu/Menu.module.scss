@@ -13,7 +13,9 @@
   }
 
   @include index.desktop {
-    margin-top: index.$base-margin;
+    margin: 0 auto;
+    padding: index.$base-margin;
+    max-width: 80rem;
   }
 
   .logo img {

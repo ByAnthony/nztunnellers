@@ -10,10 +10,14 @@
 .image {
   object-fit: cover;
   object-position: center;
-  width: index.$inner-width;
   height: 575px;
+  width: 100%;
   border-radius: index.$border-radius;
   border: 1px solid index.$primary-light-color;
+
+  @include index.desktop {
+    width: index.$inner-width;
+  }
 }
 
 .image-legend {
@@ -53,7 +57,6 @@
   .reference {
     font-size: 0.9rem;
     font-style: italic;
-    margin-bottom: index.$l-margin;
 
     @include index.tablet {
       font-size: 1rem;
@@ -61,6 +64,7 @@
 
     @include index.desktop {
       font-size: 1.15rem;
+      margin-bottom: index.$xl-margin;
     }
   }
 }

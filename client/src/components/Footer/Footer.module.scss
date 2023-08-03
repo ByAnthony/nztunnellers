@@ -1,17 +1,15 @@
 @use 'src/index.scss';
 
 .footer {
-  margin-top: index.$base-margin;
+  margin-top: index.$l-margin;
   padding-bottom: index.$base-margin;
 
   @include index.component-margin;
 
-  @include index.tablet {
-    padding-bottom: index.$m-margin;
-  }
-
   @include index.desktop {
-    padding-bottom: index.$base-margin;
+    margin: 0 auto;
+    padding: index.$base-margin;
+    max-width: 80rem;
   }
 
   p {
@@ -22,12 +20,11 @@
 
   .map {
     padding-top: index.$m-margin;
-    padding-bottom: index.$m-margin;
+    padding-bottom: index.$base-margin;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-top: 1px solid index.$primary-light-color;
-    border-bottom: 1px solid index.$primary-light-color;
+    border-bottom: 1px dashed index.$primary-light-color;
 
     @include index.tablet {
       padding-top: index.$m-margin;
@@ -36,7 +33,6 @@
 
     @include index.desktop {
       padding-top: index.$base-margin;
-      padding-bottom: index.$base-margin;
     }
 
     .links {
@@ -55,7 +51,7 @@
       }
     }
 
-    .link a {
+    .map-link a {
       padding-bottom: 4px;
       font-size: 1rem;
       font-weight: 500;
@@ -93,13 +89,12 @@
   }
 
   .support {
-    padding-top: index.$m-margin;
+    padding-top: index.$base-margin;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
 
     @include index.tablet {
-      padding-top: index.$m-margin;
       justify-content: center;
       gap: index.$l-margin;
     }
