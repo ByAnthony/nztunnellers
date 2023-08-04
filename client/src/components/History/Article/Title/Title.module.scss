@@ -23,7 +23,7 @@
 
   @include index.desktop {
     margin: 0 auto;
-    width: index.$inner-width;
+    max-width: index.$inner-width;
   }
 }
 

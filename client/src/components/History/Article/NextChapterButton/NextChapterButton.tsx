@@ -15,7 +15,7 @@ export function NextChapterButton({ chapter }: Props) {
           aria-label={`Go to Chapter ${chapter.chapter}: ${chapter.title.replace('\\', ' ')}`}
         >
           <div>
-            <p>{`Chapter ${chapter.chapter}`}</p>
+            <p className={STYLES.chapter}>{`Chapter ${chapter.chapter}`}</p>
             <span>{chapter.title.replace('\\', ' ')}</span>
           </div>
           <div className={STYLES.arrow}>&rarr;</div>

@@ -14,7 +14,7 @@
     }
 
     @include index.desktop {
-      width: index.$l-margin;
+      max-width: index.$l-margin;
     }
 
     .title {

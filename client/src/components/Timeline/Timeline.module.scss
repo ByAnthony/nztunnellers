@@ -45,21 +45,22 @@
 
     @include index.desktop {
       margin: 0 auto;
-      width: 40rem;
+      width: 38rem;
     }
   }
 
   .date {
-    margin-left: -10px;
+    margin-left: -25px;
     padding: index.$xs-margin 0;
     background-color: index.$primary-dark-color;
 
     .year {
       font-size: 1.15rem;
       font-weight: 600;
+      color: index.$placeholder-color;
 
       @include index.desktop {
-        font-size: 1.25rem;
+        font-size: 1.8rem;
       }
     }
 
@@ -68,7 +69,7 @@
       font-weight: 300;
 
       @include index.desktop {
-        font-size: 1.2rem;
+        font-size: 1.4rem;
       }
     }
   }
@@ -88,7 +89,7 @@
   .main-event {
     @include index.fullwidth-main-card;
 
-    margin-left: -25px;
+    margin-left: -50px;
 
     .info {
       font-size: 1rem;
@@ -122,7 +123,7 @@
   }
 
   .company-event {
-    margin-left: -25px;
+    margin-left: -50px;
     border-radius: index.$border-radius;
     border: 1px solid index.$primary-light-color;
     background-color: index.$primary-medium-color;
@@ -132,8 +133,8 @@
       line-height: 1.4rem;
 
       @include index.desktop {
-        font-size: 1.1rem;
-        line-height: 1.5rem;
+        font-size: 1.25rem;
+        line-height: 1.75rem;
       }
     }
 
@@ -150,7 +151,7 @@
   .tunneller-event-with-title {
     @include index.fullwidth-main-card;
 
-    margin-left: -10px;
+    margin-left: -25px;
     border-bottom: 1px solid index.$primary-light-color;
     background-color: index.$primary-dark-color;
   }
@@ -158,7 +159,7 @@
   .tunneller-event {
     @include index.fullwidth-secondary-card;
 
-    margin-left: -10px;
+    margin-left: -25px;
     border-bottom: 1px solid index.$primary-light-color;
     background-color: index.$primary-dark-color;
 
@@ -166,7 +167,7 @@
       font-size: 1rem;
 
       @include index.desktop {
-        font-size: 1.1rem;
+        font-size: 1.25rem;
       }
     }
 

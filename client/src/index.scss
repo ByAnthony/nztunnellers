@@ -157,7 +157,7 @@ li {
     margin: 0 auto;
     margin-top: $l-margin;
     margin-bottom: $l-margin;
-    width: $inner-width;
+    max-width: $inner-width;
   }
 
   .dates {
@@ -185,7 +185,7 @@ li {
   @include desktop {
     margin: 0 auto;
     margin: $l-margin 0;
-    width: $inner-width;
+    max-width: $inner-width;
   }
 }
 
