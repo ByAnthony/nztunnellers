@@ -11,7 +11,7 @@ export const tunnellersApi = createApi({
   endpoints: (builder) => ({
     getAllHistoryArticleLink: builder.query<Array<Next>, void>({
       query: () => ({
-        url: 'history/',
+        url: '/',
       }),
     }),
     getHistoryArticleById: builder.query<Article, string>({

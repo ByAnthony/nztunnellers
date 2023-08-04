@@ -12,16 +12,16 @@ exports[`renders the component correctly 1`] = `
         class="links"
       >
         <div
-          class="link"
+          class="map-link"
         >
           <a
-            href="/history"
+            href="/#history"
           >
             History
           </a>
         </div>
         <div
-          class="link"
+          class="map-link"
         >
           <a
             href="/tunnellers"
@@ -30,7 +30,7 @@ exports[`renders the component correctly 1`] = `
           </a>
         </div>
         <div
-          class="link"
+          class="map-link"
         >
           <a
             href="/about-us"

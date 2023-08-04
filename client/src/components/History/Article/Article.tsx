@@ -4,7 +4,7 @@ import { Menu } from '../../Menu/Menu';
 import { Title } from './Title/Title';
 import { today } from '../../../utils/date-utils';
 import { useGetHistoryArticleByIdQuery } from '../../../redux/slices/rollSlice';
-import STYLES from '../History.module.scss';
+import STYLES from './Article.module.scss';
 import { HowToCite } from './HowToCite/HowToCite';
 import { Notes } from './Notes/Notes';
 import { NextChapterButton } from './NextChapterButton/NextChapterButton';
@@ -31,7 +31,7 @@ export function Article() {
         <div className={STYLES.container}>
           <div className={STYLES.header}>
             <div className={STYLES.link}>
-              <a href="/history">History</a>
+              <a href="/#history">History</a>
             </div>
             <Title title={data.title} chapter={data.chapter} />
           </div>

@@ -31,34 +31,22 @@ exports[`renders the component correctly 1`] = `
       <div
         class="halfwidth-secondary-card"
       >
-        <div
-          class="halfwidth-secondary-card-title"
-        >
-          <p>
-            Rank
-          </p>
-        </div>
-        <div>
-          <span>
-            Sapper
-          </span>
-        </div>
+        <p>
+          Rank
+        </p>
+        <span>
+          Sapper
+        </span>
       </div>
       <div
         class="halfwidth-secondary-card"
       >
-        <div
-          class="halfwidth-secondary-card-title"
-        >
-          <p>
-            Serial
-          </p>
-        </div>
-        <div>
-          <span>
-            1/1000
-          </span>
-        </div>
+        <p>
+          Serial
+        </p>
+        <span>
+          1/1000
+        </span>
       </div>
     </div>
   </div>

@@ -13,34 +13,22 @@ exports[`renders the component correctly 1`] = `
     <div
       class="halfwidth-secondary-card"
     >
-      <div
-        class="halfwidth-secondary-card-title"
-      >
-        <p>
-          Mother
-        </p>
-      </div>
-      <div>
-        <span>
-          Jane Doe
-        </span>
-      </div>
+      <p>
+        Mother
+      </p>
+      <span>
+        Jane Doe
+      </span>
     </div>
     <div
       class="halfwidth-secondary-card"
     >
-      <div
-        class="halfwidth-secondary-card-title"
-      >
-        <p>
-          Father
-        </p>
-      </div>
-      <div>
-        <span>
-          John Doe
-        </span>
-      </div>
+      <p>
+        Father
+      </p>
+      <span>
+        John Doe
+      </span>
     </div>
   </div>
 </DocumentFragment>

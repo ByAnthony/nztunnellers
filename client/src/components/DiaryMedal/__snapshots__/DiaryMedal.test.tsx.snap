@@ -8,42 +8,30 @@ exports[`renders the component correctly 1`] = `
     <div
       class="halfwidth-secondary-card"
     >
-      <div
-        class="halfwidth-secondary-card-title"
-      >
-        <p>
-          <img
-            alt="British War Medal ribbon"
-            src="/images/roll/medals/british-war-medal.png"
-            width="40"
-          />
-        </p>
-      </div>
-      <div>
-        <span>
-          British War Medal
-        </span>
-      </div>
+      <p>
+        <img
+          alt="British War Medal ribbon"
+          src="/images/roll/medals/british-war-medal.png"
+          width="40"
+        />
+      </p>
+      <span>
+        British War Medal
+      </span>
     </div>
     <div
       class="halfwidth-secondary-card"
     >
-      <div
-        class="halfwidth-secondary-card-title"
-      >
-        <p>
-          <img
-            alt="Victory Medal ribbon"
-            src="/images/roll/medals/victory-medal.png"
-            width="40"
-          />
-        </p>
-      </div>
-      <div>
-        <span>
-          Victory Medal
-        </span>
-      </div>
+      <p>
+        <img
+          alt="Victory Medal ribbon"
+          src="/images/roll/medals/victory-medal.png"
+          width="40"
+        />
+      </p>
+      <span>
+        Victory Medal
+      </span>
     </div>
   </div>
 </DocumentFragment>
