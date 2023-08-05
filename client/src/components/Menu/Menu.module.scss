@@ -1,7 +1,9 @@
 @use 'src/index.scss';
 
 .menu {
-  margin-top: index.$s-margin;
+  position: -webkit-sticky;
+  position: sticky;
+  top: index.$s-margin;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -9,37 +11,44 @@
   @include index.component-margin;
 
   @include index.tablet {
-    margin-top: index.$m-margin;
+    top: index.$m-margin;
   }
 
   @include index.desktop {
     margin: 0 auto;
-    padding: index.$base-margin;
+    top: index.$base-margin;
     max-width: 80rem;
   }
 
-  .logo img {
-    height: 35px;
+  .logo {
+    display: flex;
+    padding: 0 10px;
+    align-items: center;
+    height: index.$base-margin;
+    border: 1px solid index.$primary-light-color;
+    border-radius: index.$border-radius;
+    background-color: index.$primary-medium-color;
+
+    img {
+      height: 30px;
+    }
+
+    &:hover {
+      border: 1px solid index.$secondary-color;
+      background-color: index.$primary-medium-color;
+    }
   }
 
   .search-form {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-left: index.$s-margin;
+    margin-left: index.$xs-margin;
     height: index.$base-margin;
     width: 100%;
     border: 1px solid index.$primary-light-color;
     border-radius: index.$border-radius;
     background-color: index.$primary-medium-color;
-
-    @include index.tablet {
-      margin-left: index.$s-margin;
-    }
-
-    @include index.desktop {
-      margin-left: index.$m-margin;
-    }
 
     form {
       width: 100%;
@@ -57,6 +66,14 @@
         border-top-left-radius: index.$border-radius;
         border-bottom-left-radius: index.$border-radius;
         background-color: index.$primary-medium-color;
+
+        @include index.tablet {
+          font-size: 1rem;
+        }
+
+        @include index.desktop {
+          font-size: 1.1rem;
+        }
       }
 
       input:focus {

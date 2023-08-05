@@ -145,10 +145,12 @@ li {
 
 .header {
   margin-top: $base-margin;
+  margin-bottom: $base-margin;
   text-align: left;
 
   @include tablet {
     margin-top: $l-margin;
+    margin-bottom: $l-margin;
   }
 
   @include desktop {

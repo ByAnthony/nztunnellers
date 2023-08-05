@@ -3,6 +3,8 @@
 .container {
   @include index.component-margin;
 
+  margin-top: index.$l-margin;
+
   h1 {
     margin-top: 0;
     margin-bottom: 0;
@@ -10,6 +12,14 @@
 
   p {
     margin: index.$m-margin 0;
+  }
+
+  @include index.tablet {
+    margin-top: index.$xl-margin;
+  }
+
+  @include index.desktop {
+    margin-top: index.$xxl-margin;
   }
 }
 

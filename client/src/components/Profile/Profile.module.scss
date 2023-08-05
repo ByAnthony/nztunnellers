@@ -2,6 +2,16 @@
 
 .container {
   @include index.component-margin;
+
+  margin-top: index.$l-margin;
+
+  @include index.tablet {
+    margin-top: index.$xl-margin;
+  }
+
+  @include index.desktop {
+    margin-top: index.$xxl-margin;
+  }
 }
 
 .profile {

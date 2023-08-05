@@ -1,1 +1,83 @@
 @use 'src/index.scss';
+
+.homepage {
+  @include index.component-margin;
+
+  .main {
+    @include index.desktop {
+      margin: 0 auto;
+      max-width: index.$inner-width;
+    }
+  }
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: index.$xs-margin;
+
+  @include index.tablet {
+    padding: index.$base-margin 0;
+  }
+
+  @include index.desktop {
+    margin: 0 auto;
+    padding: index.$m-margin 0;
+    width: 42rem;
+  }
+}
+
+.link-container {
+  flex: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @include index.primary-button-link;
+
+  p {
+    text-align: left;
+  }
+
+  .link-button {
+    flex: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: index.$m-margin;
+    font-size: 1.5rem;
+    color: index.$secondary-color;
+
+    p {
+      margin: 0 0 5px 0;
+      font-size: 1.1rem;
+      color: index.$secondary-color;
+
+      @include index.desktop {
+        font-size: 1.2rem;
+      }
+
+      @include index.desktop {
+        font-size: 1.3rem;
+      }
+    }
+
+    span {
+      font-weight: 600;
+    }
+
+    .chapter-title-left {
+      text-align: end;
+    }
+
+    @include index.tablet {
+      padding: index.$m-margin;
+      font-size: 1.75rem;
+    }
+
+    @include index.desktop {
+      padding: index.$padding-card;
+      font-size: 1.8rem;
+    }
+  }
+}

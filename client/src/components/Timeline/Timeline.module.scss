@@ -1,6 +1,7 @@
 @use 'src/index.scss';
 
 .timeline {
+  margin-top: index.$l-margin;
   margin-bottom: index.$l-margin;
   font-weight: 600;
   color: index.$text-color;
@@ -9,10 +10,12 @@
   @include index.component-margin;
 
   @include index.tablet {
+    margin-top: index.$xl-margin;
     margin-bottom: index.$xl-margin;
   }
 
   @include index.desktop {
+    margin-top: index.$xxl-margin;
     margin-bottom: index.$xl-margin;
   }
 
