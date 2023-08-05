@@ -4,17 +4,17 @@
   padding-bottom: index.$m-margin;
 
   .letter-container {
-    width: 55px;
+    width: 52px;
     background-color: index.$primary-medium-color;
     border: 1px solid index.$primary-light-color;
     border-radius: index.$border-radius;
 
     @include index.tablet {
-      width: 65px;
+      width: 62px;
     }
 
     @include index.desktop {
-      max-width: index.$l-margin;
+      width: 72px;
     }
 
     .title {
