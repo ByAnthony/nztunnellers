@@ -1,8 +1,31 @@
+import { useEffect, useState } from 'react';
 import STYLES from './Menu.module.scss';
 
 export function Menu() {
+  const [prevScrollPos, setPrevScrollPos] = useState(0);
+  const [menuVisible, setMenuVisible] = useState(true);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollPos = window.scrollY;
+
+      if (prevScrollPos > currentScrollPos) {
+        setMenuVisible(true);
+      } else {
+        setMenuVisible(false);
+      }
+
+      setPrevScrollPos(currentScrollPos);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [prevScrollPos]);
+
   return (
-    <div className={STYLES.menu}>
+    <div className={`${STYLES.menu} ${menuVisible ? '' : STYLES.hidden}`}>
       <a href="/" className={STYLES.logo} aria-label="Go to the Homepage"><img src="/nzt_logo.png" alt="" /></a>
       <div className={STYLES['search-form']}>
         <form>
