@@ -86,6 +86,11 @@
       border 0.9s ease-in-out, border 0.9s ease-in-out,
       background-color 0.9s ease-in-out, background-color 0.9s ease-in-out;
     cursor: pointer;
+
+    &:hover {
+      border: 1px solid index.$secondary-color;
+      background-color: index.$primary-medium-color;
+    }
   }
 
   .support {

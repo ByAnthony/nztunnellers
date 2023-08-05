@@ -16,13 +16,13 @@ export function ArmyExperienceList({ militaryExperience }:
           const displayDurationAndCountry = () => {
             const isUk = (country: string) => (country === 'United Kingdom' ? `the ${country}` : country);
             if (experience.duration !== null && experience.country !== null) {
-              return <p>{`${experience.duration} in ${isUk(experience.country)}`}</p>;
+              return <p className={STYLES_WWI['line-margin']}>{`${experience.duration} in ${isUk(experience.country)}`}</p>;
             }
             if (experience.duration !== null && experience.country === null) {
-              return <p>{experience.duration}</p>;
+              return <p className={STYLES_WWI['line-margin']}>{experience.duration}</p>;
             }
             if (experience.duration === null && experience.country !== null) {
-              return <p>{experience.country}</p>;
+              return <p className={STYLES_WWI['line-margin']}>{experience.country}</p>;
             }
             return null;
           };
@@ -31,7 +31,9 @@ export function ArmyExperienceList({ militaryExperience }:
             return (
               <li className={STYLES['fullwidth-secondary-card']} key={experience.unit}>
                 <p>{experience.conflict}</p>
-                <span>{ experience.unit }</span>
+                <div className={STYLES_WWI['line-margin']}>
+                  <span>{ experience.unit }</span>
+                </div>
               </li>
             );
           }
@@ -47,7 +49,7 @@ export function ArmyExperienceList({ militaryExperience }:
             return (
               <li className={STYLES['fullwidth-secondary-card']} key={experience.unit}>
                 <span>{experience.conflict}</span>
-                <p>{experience.duration}</p>
+                <p className={STYLES_WWI['line-margin']}>{experience.duration}</p>
               </li>
             );
           }

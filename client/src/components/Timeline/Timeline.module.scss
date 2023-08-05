@@ -64,6 +64,11 @@
     }
   }
 
+  .line-margin {
+    padding-top: index.$xxs-margin;
+    padding-bottom: 0;
+  }
+
   .event-wrapper {
     margin: index.$s-margin 0;
 
@@ -92,6 +97,8 @@
 
     .info-block {
       display: block;
+      padding-top: index.$xxs-margin;
+      padding-bottom: 0;
       font-size: 1rem;
       font-weight: 300;
 

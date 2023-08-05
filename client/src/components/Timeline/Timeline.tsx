@@ -93,7 +93,7 @@ export function Timeline() {
                   {title === 'Killed in action' && (eventDetails.description && place())
                     ? (
                       <>
-                        <p>{eventDetails.description}</p>
+                        <p className={STYLES['line-margin']}>{eventDetails.description}</p>
                         <span className={STYLES['info-block-with-description']}>{place()}</span>
                       </>
                     )

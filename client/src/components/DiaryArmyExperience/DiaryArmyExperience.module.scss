@@ -1,5 +1,9 @@
 @use 'src/index.scss';
 
+.line-margin {
+  padding-top: index.$xxs-margin;
+}
+
 .war-service {
   flex: 100%;
   display: flex;
