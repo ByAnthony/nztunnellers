@@ -27,7 +27,10 @@
     height: index.$base-margin;
     border: 1px solid index.$primary-light-color;
     border-radius: index.$border-radius;
-    background-color: index.$primary-medium-color;
+    background-color: index.$primary-dark-color;
+    transition: border-bottom 0.9s ease-in-out, border-bottom 0.9s ease-in-out,
+      border 0.9s ease-in-out, border 0.9s ease-in-out,
+      background-color 0.9s ease-in-out, background-color 0.9s ease-in-out;
 
     img {
       height: 30px;
@@ -35,7 +38,7 @@
 
     &:hover {
       border: 1px solid index.$secondary-color;
-      background-color: index.$primary-medium-color;
+      background-color: index.$primary-light-color;
     }
   }
 

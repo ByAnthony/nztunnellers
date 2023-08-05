@@ -24,7 +24,6 @@
   height: 460px;
   width: 100%;
   border-radius: index.$border-radius;
-  border: 1px solid index.$primary-light-color;
 
   @include index.tablet {
     height: 515px;
