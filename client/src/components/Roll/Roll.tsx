@@ -25,11 +25,13 @@ export function Roll() {
         { isLoading }
         { isSuccess && (
         <div className={STYLES.container}>
-          <div className={STYLES['main-title']}>
-            <h1>
-              <span className={STYLES['sub-title']}>The New Zealand</span>
-              <span className={STYLES.title}>Tunnellers</span>
-            </h1>
+          <div className={STYLES.header}>
+            <div className={STYLES['main-title']}>
+              <h1>
+                <span className={STYLES['title-line-1']}>The New Zealand</span>
+                <span className={STYLES['title-line-2']}>Tunnellers</span>
+              </h1>
+            </div>
           </div>
           <div className={STYLES['roll-container']}>
             <div className={STYLES.alphabet}>

@@ -8,7 +8,7 @@
 }
 
 $mobile: 32rem;
-$desktop: 57rem;
+$desktop: 56rem;
 
 $inner-width: 56rem;
 
@@ -146,8 +146,6 @@ li {
 .header {
   margin-top: $base-margin;
   text-align: left;
-
-  @include component-margin;
 
   @include tablet {
     margin-top: $l-margin;

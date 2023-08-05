@@ -1,5 +1,9 @@
 @use 'src/index.scss';
 
+.container {
+  @include index.component-margin;
+}
+
 .profile {
   @include index.component-margin;
 

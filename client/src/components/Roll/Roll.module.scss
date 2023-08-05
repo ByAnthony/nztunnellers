@@ -3,25 +3,7 @@
 .container {
   @include index.component-margin;
 
-  .sub-title {
-    display: block;
-    margin-top: 105px;
-    font-weight: 300;
-    line-height: normal;
-
-    @include index.tablet {
-      margin-top: 110px;
-    }
-
-    @include index.desktop {
-      margin-top: 0;
-    }
-  }
-
-  .title {
-    padding-top: 8px;
-    display: block;
-  }
+  margin-top: 105px;
 
   .roll-container {
     display: block;
@@ -29,7 +11,7 @@
     @include index.desktop {
       display: flex;
       margin: 0 auto;
-      margin-top: index.$l-margin;
+      margin-top: index.$xxl-margin;
       max-width: index.$inner-width;
       gap: index.$l-margin;
     }
@@ -88,9 +70,10 @@
   }
 
   @include index.tablet {
+    margin-top: 154px;
   }
 
   @include index.desktop {
-    margin-top: 140px;
+    margin-top: 178px;
   }
 }
