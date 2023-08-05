@@ -1,6 +1,7 @@
 @use 'src/index.scss';
 
 .menu {
+  transition: opacity 0.5s ease;
   position: -webkit-sticky;
   position: sticky;
   top: index.$s-margin;
@@ -98,5 +99,6 @@
 }
 
 .hidden {
+  transition: opacity 0.5s ease;
   opacity: 0;
 }
