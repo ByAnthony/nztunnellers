@@ -8,9 +8,9 @@
   @include index.component-margin;
 
   @include index.desktop {
+    display: flex;
     margin: 0 auto;
     max-width: index.$inner-width;
-    display: flex;
     gap: index.$l-margin;
   }
 
@@ -20,16 +20,16 @@
     }
   }
 
-  .flex-diary {
-    @include index.desktop {
-      width: 60%;
-    }
-  }
-
   .summary {
     @include index.desktop {
       flex-grow: 1;
       text-align: left;
+    }
+  }
+
+  .flex-diary {
+    @include index.desktop {
+      width: 60%;
     }
   }
 }
