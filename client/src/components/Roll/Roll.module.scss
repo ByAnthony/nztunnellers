@@ -9,11 +9,11 @@
     display: block;
 
     @include index.desktop {
-      display: flex;
+      // display: flex;
       margin: 0 auto;
       margin-top: index.$xxl-margin;
       max-width: index.$inner-width;
-      gap: index.$l-margin;
+      // gap: index.$l-margin;
     }
   }
 
@@ -33,9 +33,9 @@
     @include index.desktop {
       position: -webkit-sticky;
       position: sticky;
-      top: 0;
+      top: index.$xxl-margin;
       margin: 0;
-      width: 60%;
+      width: 300px;
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
