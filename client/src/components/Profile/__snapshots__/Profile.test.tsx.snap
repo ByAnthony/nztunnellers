@@ -3,7 +3,7 @@
 exports[`renders profile when data is available 1`] = `
 <DocumentFragment>
   <div
-    class="menu"
+    class="menu "
   >
     <a
       aria-label="Go to the Homepage"
@@ -22,7 +22,7 @@ exports[`renders profile when data is available 1`] = `
         <input
           id="search"
           name="search"
-          placeholder="Search for a tunneller"
+          placeholder="Search for a Tunneller"
           type="text"
         />
       </form>
@@ -39,38 +39,42 @@ exports[`renders profile when data is available 1`] = `
     </div>
   </div>
   <div
-    class="header"
+    class="container"
   >
     <div
-      class="link"
+      class="header"
     >
-      <a
-        href="/tunnellers"
+      <div
+        class="link"
       >
-        Tunnellers
-      </a>
-    </div>
-    <div
-      class="main-title"
-    >
-      <h1>
-        <span
-          class="title-line-1"
+        <a
+          href="/tunnellers"
         >
-          John
-        </span>
-        <span
-          class="title-line-2"
-        >
-          Doe
-        </span>
-      </h1>
+          Tunnellers
+        </a>
+      </div>
+      <div
+        class="main-title"
+      >
+        <h1>
+          <span
+            class="title-line-1"
+          >
+            John
+          </span>
+          <span
+            class="title-line-2"
+          >
+            Doe
+          </span>
+        </h1>
+      </div>
+      <p
+        class="title-line-3"
+      >
+        1888 - 1975
+      </p>
     </div>
-    <p
-      class="title-line-3"
-    >
-      1888 - 1975
-    </p>
   </div>
   <div
     class="profile"
@@ -237,7 +241,9 @@ exports[`renders profile when data is available 1`] = `
           <span>
             NZ Infantry
           </span>
-          <p>
+          <p
+            class="line-margin"
+          >
             12 months in New Zealand
           </p>
         </li>

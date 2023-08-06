@@ -29,7 +29,7 @@ export function Menu() {
       <a href="/" className={STYLES.logo} aria-label="Go to the Homepage"><img src="/nzt_logo.png" alt="" /></a>
       <div className={STYLES['search-form']}>
         <form>
-          <input type="text" id="search" name="search" placeholder="Search for a tunneller" />
+          <input type="text" id="search" name="search" placeholder="Search for a Tunneller" />
         </form>
         <button type="submit" className={STYLES['search-form-button']}>
           <img src="/searching_hover.png" alt="" height={18} />

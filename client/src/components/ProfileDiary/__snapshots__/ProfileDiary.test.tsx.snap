@@ -97,7 +97,9 @@ exports[`renders the component correctly 1`] = `
       <span>
         NZ Infantry
       </span>
-      <p>
+      <p
+        class="line-margin"
+      >
         12 months in New Zealand
       </p>
     </li>

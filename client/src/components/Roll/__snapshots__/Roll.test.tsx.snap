@@ -3,7 +3,7 @@
 exports[`renders roll when data is available 1`] = `
 <DocumentFragment>
   <div
-    class="menu"
+    class="menu "
   >
     <a
       aria-label="Go to the Homepage"
@@ -22,7 +22,7 @@ exports[`renders roll when data is available 1`] = `
         <input
           id="search"
           name="search"
-          placeholder="Search for a tunneller"
+          placeholder="Search for a Tunneller"
           type="text"
         />
       </form>
@@ -42,20 +42,24 @@ exports[`renders roll when data is available 1`] = `
     class="container"
   >
     <div
-      class="main-title"
+      class="header"
     >
-      <h1>
-        <span
-          class="sub-title"
-        >
-          The New Zealand
-        </span>
-        <span
-          class="title"
-        >
-          Tunnellers
-        </span>
-      </h1>
+      <div
+        class="main-title"
+      >
+        <h1>
+          <span
+            class="title-line-1"
+          >
+            The New Zealand
+          </span>
+          <span
+            class="title-line-2"
+          >
+            Tunnellers
+          </span>
+        </h1>
+      </div>
     </div>
     <div
       class="roll-container"
