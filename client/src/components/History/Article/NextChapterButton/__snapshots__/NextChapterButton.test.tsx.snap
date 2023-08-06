@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders the component correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="button-chapter-container"
+  >
+    <a
+      aria-label="Go to Chapter 3: Next Chapter"
+      class="button-chapter"
+      href="/history/my-path-to-next-chapter/"
+    >
+      <div>
+        <p
+          class="chapter"
+        >
+          Chapter 3
+        </p>
+        <span>
+          Next Chapter
+        </span>
+      </div>
+      <div
+        class="arrow"
+      >
+        →
+      </div>
+    </a>
+  </div>
+</DocumentFragment>
+`;
