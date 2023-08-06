@@ -4,8 +4,8 @@ import { mockId } from '../../utils/mocks/mockProfile';
 import { mockSummary } from '../../utils/mocks/mockSummary';
 import { ProfileHowToCite } from './ProfileHowToCite';
 import { findElementWithText } from '../../utils/test-utils';
+import { mockToday } from '../../utils/mocks/mockToday';
 
-const mockToday = new Date('2023-05-04');
 const component = <ProfileHowToCite id={mockId} summary={mockSummary} date={mockToday} />;
 
 test('renders the component correctly', () => {
