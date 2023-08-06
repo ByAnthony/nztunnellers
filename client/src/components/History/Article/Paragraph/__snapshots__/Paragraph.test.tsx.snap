@@ -40,19 +40,6 @@ exports[`renders the component correctly 1`] = `
         (6 July 2023)
       </span>
     </p>
-    <p>
-      <span />
-      <span />
-      <a
-        href="#reference_1"
-        id="footnote_1"
-      >
-        1.
-      </a>
-      <span>
-         Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-      </span>
-    </p>
   </div>
 </DocumentFragment>
 `;
