@@ -1,15 +1,15 @@
-export const displayBirthDeathDates = (
+export function displayBirthDeathDates(
   birth: string | null,
   death: string | null,
-) => {
+) {
   if (birth !== null && death !== null) {
-    return `${birth} - ${death}`;
+    return `${birth}-${death}`;
   }
   if (birth !== null && death === null) {
-    return `${birth} - †?`;
+    return `${birth}-†?`;
   }
   if (birth === null && death !== null) {
-    return `? - ${death}`;
+    return `?-${death}`;
   }
-  return '? - †?';
-};
+  return '?-†?';
+}

@@ -135,7 +135,7 @@ exports[`renders roll when data is available 1`] = `
                   <p
                     class="dates"
                   >
-                    1886 - 1952
+                    1886-1952
                   </p>
                 </div>
                 <div
@@ -165,7 +165,7 @@ exports[`renders roll when data is available 1`] = `
                   <p
                     class="dates"
                   >
-                    1886 - 1952
+                    1886-1952
                   </p>
                 </div>
                 <div
@@ -213,7 +213,7 @@ exports[`renders roll when data is available 1`] = `
                   <p
                     class="dates"
                   >
-                    1886 - 1952
+                    1886-1952
                   </p>
                 </div>
                 <div
@@ -261,7 +261,7 @@ exports[`renders roll when data is available 1`] = `
                   <p
                     class="dates"
                   >
-                    1886 - 1952
+                    1886-1952
                   </p>
                 </div>
                 <div

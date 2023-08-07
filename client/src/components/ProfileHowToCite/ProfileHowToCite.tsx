@@ -1,3 +1,4 @@
+import { displayBirthDeathDates } from '../../utils/utils';
 import type { Summary } from '../../types/tunneller';
 import STYLES from './ProfileHowToCite.module.scss';
 
@@ -8,7 +9,6 @@ type Props = {
 };
 
 export function ProfileHowToCite({ id, summary, date }: Props) {
-  const displayBirthDeathDates = (birth: string, death: string | null) => (death ? `${birth}-${death}` : `${birth}-†?`);
   return (
     <div className={STYLES.howtocite}>
       <h3>How to cite this page</h3>
