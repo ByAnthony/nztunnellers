@@ -1,5 +1,5 @@
+import { formatText } from '../../../../utils/text-utils';
 import STYLES from './Notes.module.scss';
-import { formatText } from '../Paragraph/Paragraph';
 
 type Props = {
     notes: string;
