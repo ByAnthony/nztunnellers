@@ -23,13 +23,11 @@ export const formatText = (text: string) => {
             </a>
           );
         }
-        if (url.includes('reference')) {
-          return (
-            <a key={segmentKey} href={url} id={`footnote_${label.slice(0, -1)}`}>
-              {label}
-            </a>
-          );
-        }
+        return (
+          <a key={segmentKey} href={url} id={`footnote_${label.slice(0, -1)}`}>
+            {label}
+          </a>
+        );
       }
       return <span key={segmentKey}>{segment}</span>;
     });
