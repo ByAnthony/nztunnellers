@@ -29,7 +29,7 @@ exports[`renders the component correctly 1`] = `
         href="#footnote_1"
         id="reference_1"
       >
-        [1.]
+        [1]
       </a>
       <span>
         . Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
