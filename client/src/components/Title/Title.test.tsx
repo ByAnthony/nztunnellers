@@ -5,20 +5,22 @@ import { mockChapter, mockTitle } from '../../utils/mocks/mockArticle';
 
 import { Title } from './Title';
 
-const component = (
-  <Title title={mockTitle} subTitle={mockChapter} />
-);
+describe('Article Title', () => {
+  const component = (
+    <Title title={mockTitle} subTitle={mockChapter} />
+  );
 
-test('renders the component correctly', () => {
-  const { asFragment } = render(component);
+  test('renders the component correctly', () => {
+    const { asFragment } = render(component);
 
-  expect(asFragment()).toMatchSnapshot();
-});
+    expect(asFragment()).toMatchSnapshot();
+  });
 
-test('renders title correctly', () => {
-  render(component);
+  test('renders title correctly', () => {
+    render(component);
 
-  expect(screen.getByText(/My Awesome/)).toBeInTheDocument();
-  expect(screen.getByText(/Article Title/)).toBeInTheDocument();
-  expect(screen.getByText(/Chapter 1/)).toBeInTheDocument();
+    expect(screen.getByText(/My Awesome/)).toBeInTheDocument();
+    expect(screen.getByText(/Article Title/)).toBeInTheDocument();
+    expect(screen.getByText(/Chapter 1/)).toBeInTheDocument();
+  });
 });

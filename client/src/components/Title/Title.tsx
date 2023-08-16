@@ -7,19 +7,19 @@ type TwoLineTitleProps = {
 }
 
 type SubTitleProps = {
-  subTitle: number | string;
+  subTitle: number | string | undefined;
 }
 
 type Props = {
   title?: string;
   name?: Name;
-  subTitle: number | string;
+  subTitle?: number | string;
 }
 
 function TwoLineTitle({ title, name }: TwoLineTitleProps) {
   const isTitle = (string: string) => {
-    const [titleLine1, titleLine2] = string.split('\\');
-    return [titleLine1, titleLine2];
+    const split = string.split('\\');
+    return split;
   };
 
   return (
@@ -31,7 +31,10 @@ function TwoLineTitle({ title, name }: TwoLineTitleProps) {
 }
 
 function SubTitle({ subTitle }: SubTitleProps) {
-  return <p className={STYLES['title-line-3']}>{ typeof subTitle === 'string' ? subTitle : `Chapter ${subTitle}`}</p>;
+  if (subTitle) {
+    return <p className={STYLES['title-line-3']}>{ typeof subTitle === 'string' ? subTitle : `Chapter ${subTitle}`}</p>;
+  }
+  return null;
 }
 
 export function Title({ title, name, subTitle }: Props) {
@@ -48,4 +51,5 @@ export function Title({ title, name, subTitle }: Props) {
 Title.defaultProps = {
   title: null,
   name: null,
+  subTitle: null,
 };

@@ -4,6 +4,7 @@ import { useGetAllTunnellersQuery } from '../../redux/slices/rollSlice';
 import { Footer } from '../Footer/Footer';
 import { Menu } from '../Menu/Menu';
 import { RollAlphabet } from '../RollAlphabet/RollAlphabet';
+import { Title } from '../Title/Title';
 
 import STYLES from './Roll.module.scss';
 
@@ -28,12 +29,7 @@ export function Roll() {
         { isSuccess && (
         <div className={STYLES.container}>
           <div className={STYLES.header}>
-            <div className={STYLES['main-title']}>
-              <h1>
-                <span className={STYLES['title-line-1']}>The New Zealand</span>
-                <span className={STYLES['title-line-2']}>Tunnellers</span>
-              </h1>
-            </div>
+            <Title title={'The New Zealand\\Tunnellers'} />
           </div>
           <div className={STYLES['roll-container']}>
             <div className={STYLES.alphabet}>
