@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
-import { mockImage } from '../../../../utils/mocks/mockArticle';
+import { mockImage } from '../../../utils/mocks/mockArticle';
 import { TopImage } from './TopImage';
 
 const component = (

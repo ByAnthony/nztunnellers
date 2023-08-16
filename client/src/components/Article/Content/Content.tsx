@@ -1,4 +1,4 @@
-import { Image, Section } from '../../../../types/article';
+import { Image, Section } from '../../../types/article';
 import { Paragraph } from '../Paragraph/Paragraph';
 import STYLES from './Content.module.scss';
 

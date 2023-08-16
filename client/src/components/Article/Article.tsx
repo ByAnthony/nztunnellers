@@ -1,15 +1,18 @@
 import { useParams } from 'react-router-dom';
-import { Footer } from '../../Footer/Footer';
-import { Menu } from '../../Menu/Menu';
-import { Title } from './Title/Title';
-import { today } from '../../../utils/date-utils';
-import { useGetHistoryArticleByIdQuery } from '../../../redux/slices/rollSlice';
-import STYLES from './Article.module.scss';
-import { HowToCite } from '../../HowToCite/HowToCite';
-import { Notes } from './Notes/Notes';
-import { NextChapterButton } from './NextChapterButton/NextChapterButton';
-import { TopImage } from './TopImage/TopImage';
+import { useGetHistoryArticleByIdQuery } from '../../redux/slices/rollSlice';
+
+import { today } from '../../utils/date-utils';
+
 import { Content } from './Content/Content';
+import { Footer } from '../Footer/Footer';
+import { HowToCite } from '../HowToCite/HowToCite';
+import { Menu } from '../Menu/Menu';
+import { NextChapterButton } from './NextChapterButton/NextChapterButton';
+import { Notes } from './Notes/Notes';
+import { Title } from './Title/Title';
+import { TopImage } from './TopImage/TopImage';
+
+import STYLES from './Article.module.scss';
 
 export function Article() {
   const { id } = useParams();

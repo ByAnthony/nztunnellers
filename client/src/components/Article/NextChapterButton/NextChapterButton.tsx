@@ -1,4 +1,4 @@
-import { Next } from '../../../../types/article';
+import { Next } from '../../../types/article';
 import STYLES from './NextChapterButton.module.scss';
 
 type Props = {

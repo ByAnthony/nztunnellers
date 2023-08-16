@@ -1,5 +1,5 @@
-import { formatText } from '../../../../utils/text-utils';
-import { Section } from '../../../../types/article';
+import { formatText } from '../../../utils/text-utils';
+import { Section } from '../../../types/article';
 import STYLES from './Paragraph.module.scss';
 
 type Props = {
