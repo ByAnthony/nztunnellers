@@ -11,6 +11,7 @@ import { ProfileDiary } from '../ProfileDiary/ProfileDiary';
 import { ProfileImageSource } from '../ProfileImageSource/ProfileImageSource';
 import { ProfileSources } from '../ProfileSources/ProfileSources';
 import { ProfileSummary } from '../ProfileSummary/ProfileSummary';
+import { Title } from '../Title/Title';
 
 import STYLES from './Profile.module.scss';
 
@@ -38,15 +39,10 @@ export function Profile() {
               <div className={STYLES.link}>
                 <a href="/tunnellers">Tunnellers</a>
               </div>
-              <div className={STYLES['main-title']}>
-                <h1>
-                  <span className={STYLES['title-line-1']}>{ data.summary.name.forename }</span>
-                  <span className={STYLES['title-line-2']}>{ data.summary.name.surname }</span>
-                </h1>
-              </div>
-              <p className={STYLES['title-line-3']}>
-                { displayBirthDeathDates(data.summary.birth, data.summary.death) }
-              </p>
+              <Title
+                name={data.summary.name}
+                subTitle={displayBirthDeathDates(data.summary.birth, data.summary.death)}
+              />
             </div>
           </div>
           <div className={STYLES.profile}>

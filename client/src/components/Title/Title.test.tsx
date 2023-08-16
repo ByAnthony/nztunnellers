@@ -1,12 +1,12 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 
-import { mockChapter, mockTitle } from '../../../utils/mocks/mockArticle';
+import { mockChapter, mockTitle } from '../../utils/mocks/mockArticle';
 
 import { Title } from './Title';
 
 const component = (
-  <Title title={mockTitle} chapter={mockChapter} />
+  <Title title={mockTitle} subTitle={mockChapter} />
 );
 
 test('renders the component correctly', () => {

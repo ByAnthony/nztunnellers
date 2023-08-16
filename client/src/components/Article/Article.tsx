@@ -9,7 +9,7 @@ import { HowToCite } from '../HowToCite/HowToCite';
 import { Menu } from '../Menu/Menu';
 import { NextChapterButton } from './NextChapterButton/NextChapterButton';
 import { Notes } from './Notes/Notes';
-import { Title } from './Title/Title';
+import { Title } from '../Title/Title';
 import { TopImage } from './TopImage/TopImage';
 
 import STYLES from './Article.module.scss';
@@ -36,7 +36,7 @@ export function Article() {
             <div className={STYLES.link}>
               <a href="/#history">History</a>
             </div>
-            <Title title={data.title} chapter={data.chapter} />
+            <Title title={data.title} subTitle={data.chapter} />
           </div>
           <TopImage image={data.image[0]} />
           <Content imageList={data.image.slice(1)} sectionList={data.section} />

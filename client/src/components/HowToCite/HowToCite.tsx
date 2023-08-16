@@ -9,6 +9,18 @@ type HowToCiteUrlProps = {
   title: string | undefined;
 };
 
+type HowToCiteTitleProps = {
+  tunneller: Summary | undefined;
+  title: string | undefined;
+};
+
+type Props = {
+  id?: number;
+  summary?: Summary;
+  title?: string;
+  today: Date;
+};
+
 function HowToCiteUrl({ id, title }: HowToCiteUrlProps) {
   if (id) {
     return <span>{`URL: www.nztunnellers.com/tunnellers/${id}.`}</span>;
@@ -16,11 +28,6 @@ function HowToCiteUrl({ id, title }: HowToCiteUrlProps) {
   const articleTitle = title?.replace('\\', '-').replace(' ', '-').toLowerCase();
   return <span>{`URL: www.nztunnellers.com/history/${articleTitle}.`}</span>;
 }
-
-type HowToCiteTitleProps = {
-  tunneller: Summary | undefined;
-  title: string | undefined;
-};
 
 function HowToCiteTitle({ tunneller, title }: HowToCiteTitleProps) {
   if (tunneller) {
@@ -34,13 +41,6 @@ function HowToCiteTitle({ tunneller, title }: HowToCiteTitleProps) {
   const articleTitle = title?.replace('\\', ' ');
   return <span>{articleTitle}</span>;
 }
-
-type Props = {
-  id?: number;
-  summary?: Summary;
-  title?: string;
-  today: Date;
-};
 
 export function HowToCite({
   id, summary, title, today,
