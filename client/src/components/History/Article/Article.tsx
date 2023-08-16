@@ -5,7 +5,7 @@ import { Title } from './Title/Title';
 import { today } from '../../../utils/date-utils';
 import { useGetHistoryArticleByIdQuery } from '../../../redux/slices/rollSlice';
 import STYLES from './Article.module.scss';
-import { HowToCite } from './HowToCite/HowToCite';
+import { HowToCite } from '../../HowToCite/HowToCite';
 import { Notes } from './Notes/Notes';
 import { NextChapterButton } from './NextChapterButton/NextChapterButton';
 import { TopImage } from './TopImage/TopImage';

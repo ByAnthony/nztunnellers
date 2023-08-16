@@ -1,7 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { useGetTunnellerByIdQuery } from '../../redux/slices/rollSlice';
 import { Menu } from '../Menu/Menu';
-import { ProfileHowToCite } from '../ProfileHowToCite/ProfileHowToCite';
 import { ProfileDiary } from '../ProfileDiary/ProfileDiary';
 import { ProfileImageSource } from '../ProfileImageSource/ProfileImageSource';
 import { ProfileSources } from '../ProfileSources/ProfileSources';
@@ -10,6 +9,7 @@ import STYLES from './Profile.module.scss';
 import { Footer } from '../Footer/Footer';
 import { displayBirthDeathDates } from '../../utils/utils';
 import { today } from '../../utils/date-utils';
+import { HowToCite } from '../HowToCite/HowToCite';
 
 export function Profile() {
   const { id } = useParams();
@@ -67,7 +67,7 @@ export function Profile() {
               />
               <ProfileSources sources={data.sources} />
               <ProfileImageSource source={data.image?.source} />
-              <ProfileHowToCite id={data.id} summary={data.summary} date={today} />
+              <HowToCite id={data.id} summary={data.summary} today={today} />
             </div>
           </div>
         </>

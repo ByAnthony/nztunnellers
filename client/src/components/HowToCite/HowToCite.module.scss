@@ -15,4 +15,10 @@
       line-height: 1.6rem;
     }
   }
+
+  @include index.desktop {
+    margin: 0 auto;
+    padding: index.$xs-margin 0;
+    max-width: 42rem;
+  }
 }
