@@ -1,5 +1,6 @@
 import { Details } from '../../types/roll';
 import { RollDetails } from '../RollDetails/RollDetails';
+
 import STYLES from './RollAlphabet.module.scss';
 
 type Props = {

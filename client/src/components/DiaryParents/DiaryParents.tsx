@@ -1,6 +1,7 @@
 import {
   Parent, Parents,
 } from '../../types/tunneller';
+
 import STYLES from '../ProfileDiary/ProfileDiary.module.scss';
 
   type Props = {

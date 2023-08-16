@@ -1,7 +1,9 @@
 import '@testing-library/jest-dom/extend-expect';
 import { render } from '@testing-library/react';
-import { mockProfile } from '../../utils/mocks/mockProfile';
 import { useGetTunnellerByIdQuery } from '../../redux/slices/rollSlice';
+
+import { mockProfile } from '../../utils/mocks/mockProfile';
+
 import { Profile } from './Profile';
 
 jest.mock('../../redux/slices/rollSlice', () => ({

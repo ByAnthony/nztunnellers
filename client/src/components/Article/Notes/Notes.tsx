@@ -1,4 +1,5 @@
 import { formatText } from '../../../utils/text-utils';
+
 import STYLES from './Notes.module.scss';
 
 type Props = {

@@ -1,6 +1,8 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
+
 import { mockBritishWarMedal, mockMedals, mockVictoryMedal } from '../../utils/mocks/mockMilitaryYears';
+
 import { DiaryMedal } from './DiaryMedal';
 
 const component = (<DiaryMedal medals={mockMedals} />);

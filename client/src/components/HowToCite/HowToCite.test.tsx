@@ -1,11 +1,13 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
-import { mockTitle } from '../../utils/mocks/mockArticle';
+
+import { findElementWithText } from '../../utils/test-utils';
 import { mockId } from '../../utils/mocks/mockProfile';
 import { mockSummary } from '../../utils/mocks/mockSummary';
-import { HowToCite } from './HowToCite';
-import { findElementWithText } from '../../utils/test-utils';
+import { mockTitle } from '../../utils/mocks/mockArticle';
 import { mockToday } from '../../utils/mocks/mockToday';
+
+import { HowToCite } from './HowToCite';
 
 describe('HowToCite for Profile', () => {
   const component = <HowToCite id={mockId} summary={mockSummary} today={mockToday} />;

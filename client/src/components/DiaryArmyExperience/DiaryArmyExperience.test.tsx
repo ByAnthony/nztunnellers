@@ -1,7 +1,9 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
+
 import { mockId } from '../../utils/mocks/mockProfile';
 import { mockArmyExperience, mockArmyExperienceList } from '../../utils/mocks/mockPreWarYears';
+
 import { DiaryArmyExperience } from './DiaryArmyExperience';
 
 const component = (

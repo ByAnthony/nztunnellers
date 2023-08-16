@@ -1,8 +1,10 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
-import { mockSources } from '../../utils/mocks/mockSources';
-import { ProfileSources } from './ProfileSources';
+
 import { findElementWithText } from '../../utils/test-utils';
+import { mockSources } from '../../utils/mocks/mockSources';
+
+import { ProfileSources } from './ProfileSources';
 
 const component = <ProfileSources sources={mockSources} />;
 

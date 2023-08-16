@@ -1,6 +1,8 @@
 import { useGetAllHistoryArticleLinkQuery } from '../../redux/slices/rollSlice';
+
 import { Footer } from '../Footer/Footer';
 import { Menu } from '../Menu/Menu';
+
 import STYLES from './HomePage.module.scss';
 
 export function HomePage() {

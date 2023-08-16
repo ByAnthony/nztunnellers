@@ -1,4 +1,5 @@
 import { Medal } from '../../types/tunneller';
+
 import STYLES from '../ProfileDiary/ProfileDiary.module.scss';
 import OTHER_MEDALS_STYLES from './DiaryMedal.module.scss';
 

@@ -1,8 +1,10 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
-import { mockBirth } from '../../utils/mocks/mockOrigins';
-import { DiaryBirth } from './DiaryBirthInfo';
+
 import { findElementWithText } from '../../utils/test-utils';
+import { mockBirth } from '../../utils/mocks/mockOrigins';
+
+import { DiaryBirth } from './DiaryBirthInfo';
 
 const component = (
   <DiaryBirth birth={mockBirth} />

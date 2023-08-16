@@ -1,7 +1,9 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
+
 import { mockAfterWarDeath } from '../../utils/mocks/mockPostServiceYears';
 import { mockDeath, mockDate } from '../../utils/mocks/mockMilitaryYears';
+
 import { DiaryDied } from './DiaryDied';
 
 describe('Death War', () => {

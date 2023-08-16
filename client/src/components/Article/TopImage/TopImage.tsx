@@ -1,4 +1,5 @@
 import { Image } from '../../../types/article';
+
 import STYLES from '../Content/Content.module.scss';
 
 type Props = {

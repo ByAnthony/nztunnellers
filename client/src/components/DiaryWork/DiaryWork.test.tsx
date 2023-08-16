@@ -1,7 +1,9 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
-import { DiaryWork } from './DiaryWork';
+
 import { mockEmployment } from '../../utils/mocks/mockPreWarYears';
+
+import { DiaryWork } from './DiaryWork';
 
 const component = (
   <DiaryWork employment={mockEmployment} />

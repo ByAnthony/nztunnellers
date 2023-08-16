@@ -1,4 +1,5 @@
 import { ArmyExperience } from '../../types/tunneller';
+
 import STYLES from '../ProfileDiary/ProfileDiary.module.scss';
 import STYLES_WWI from './DiaryArmyExperience.module.scss';
 

@@ -1,6 +1,8 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
+
 import { mockNextButton } from '../../../utils/mocks/mockArticle';
+
 import { NextChapterButton } from './NextChapterButton';
 
 const component = (

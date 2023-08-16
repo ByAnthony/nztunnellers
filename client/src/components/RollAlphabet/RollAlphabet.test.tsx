@@ -1,7 +1,9 @@
 import '@testing-library/jest-dom';
 import { screen } from '@testing-library/react';
-import { renderWithMemoryRouter } from '../../utils/test-utils';
+
 import { mockRoll } from '../../utils/mocks/mockRoll';
+import { renderWithMemoryRouter } from '../../utils/test-utils';
+
 import { RollAlphabet } from './RollAlphabet';
 
 const component = <RollAlphabet tunnellers={mockRoll} filterByLetter="" />;

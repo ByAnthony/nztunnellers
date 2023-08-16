@@ -1,9 +1,11 @@
 import { useParams } from 'react-router-dom';
-import { EventDetails, Events } from '../../types/tunneller';
 import { useGetTunnellerByIdQuery } from '../../redux/slices/rollSlice';
-import STYLES from './Timeline.module.scss';
+
+import { EventDetails, Events } from '../../types/tunneller';
 import { Footer } from '../Footer/Footer';
 import { Menu } from '../Menu/Menu';
+
+import STYLES from './Timeline.module.scss';
 
 export function Timeline() {
   const { id } = useParams();

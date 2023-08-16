@@ -1,5 +1,7 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
+
+import { findElementWithText } from '../../utils/test-utils';
 import {
   mockImageArchives,
   mockImageAucklandLibraries,
@@ -8,8 +10,8 @@ import {
   mockImageNewspaper,
   mockImageSource,
 } from '../../utils/mocks/mockImage';
+
 import { ProfileImageSource } from './ProfileImageSource';
-import { findElementWithText } from '../../utils/test-utils';
 
 describe('Snapshot', () => {
   test('renders the component correctly with the Auckland Library information', () => {

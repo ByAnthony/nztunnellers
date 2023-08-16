@@ -2,6 +2,7 @@ import {
   MilitaryYears,
   Origins, PostServiceYears, PreWayYears,
 } from '../../types/tunneller';
+
 import { DiaryArmyExperience } from '../DiaryArmyExperience/DiaryArmyExperience';
 import { DiaryArrivedInNz } from '../DiaryArrivedInNz/DiaryArrivedInNz';
 import { DiaryBirth } from '../DiaryBirthInfo/DiaryBirthInfo';
@@ -11,6 +12,7 @@ import { DiaryLife } from '../DiaryLife/DiaryLife';
 import { DiaryMedal } from '../DiaryMedal/DiaryMedal';
 import { DiaryParents } from '../DiaryParents/DiaryParents';
 import { DiaryWork } from '../DiaryWork/DiaryWork';
+
 import STYLES from './ProfileDiary.module.scss';
 
 type Props = {

@@ -1,5 +1,7 @@
 import { displayBirthDeathDates } from '../../utils/utils';
+
 import type { Summary } from '../../types/tunneller';
+
 import STYLES from './HowToCite.module.scss';
 
 type HowToCiteUrlProps = {

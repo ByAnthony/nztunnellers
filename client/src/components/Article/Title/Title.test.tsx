@@ -1,6 +1,8 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
+
 import { mockChapter, mockTitle } from '../../../utils/mocks/mockArticle';
+
 import { Title } from './Title';
 
 const component = (

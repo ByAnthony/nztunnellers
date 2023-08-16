@@ -2,6 +2,7 @@ import { useLayoutEffect } from 'react';
 import {
   BrowserRouter, Route, Routes, useLocation,
 } from 'react-router-dom';
+
 import { Article } from './components/Article/Article';
 import { HomePage } from './components/HomePage/HomePage';
 import { Profile } from './components/Profile/Profile';

@@ -1,7 +1,9 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
-import { DiaryParents } from './DiaryParents';
+
 import { mockParents } from '../../utils/mocks/mockOrigins';
+
+import { DiaryParents } from './DiaryParents';
 
 const component = (
   <DiaryParents parents={mockParents} />

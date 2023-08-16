@@ -1,6 +1,7 @@
 import type {
   EmbarkationUnit, Enlistment, Image, Summary,
 } from '../../types/tunneller';
+
 import STYLES from './ProfileSummary.module.scss';
 
 type Props = {

@@ -1,6 +1,8 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
+
 import { mockNotes } from '../../../utils/mocks/mockArticle';
+
 import { Notes } from './Notes';
 
 const component = (

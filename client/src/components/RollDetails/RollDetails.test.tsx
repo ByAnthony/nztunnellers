@@ -1,7 +1,9 @@
 import '@testing-library/jest-dom';
 import { screen } from '@testing-library/react';
-import { renderWithMemoryRouter } from '../../utils/test-utils';
+
 import { mockDetailsList } from '../../utils/mocks/mockRoll';
+import { renderWithMemoryRouter } from '../../utils/test-utils';
+
 import { RollDetails } from './RollDetails';
 
 const component = <RollDetails listOfTunnellers={mockDetailsList} />;

@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom';
-import { Details } from '../../types/roll';
-import STYLES from './RollDetails.module.scss';
 import { displayBirthDeathDates } from '../../utils/utils';
+
+import { Details } from '../../types/roll';
+
+import STYLES from './RollDetails.module.scss';
 
 type Props = {
   listOfTunnellers: Details[];

@@ -1,7 +1,9 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
+
 import { mockEmbarkationUnit, mockEnlistment } from '../../utils/mocks/mockMilitaryYears';
 import { mockSummary } from '../../utils/mocks/mockSummary';
+
 import { ProfileSummary } from './ProfileSummary';
 
 const component = (

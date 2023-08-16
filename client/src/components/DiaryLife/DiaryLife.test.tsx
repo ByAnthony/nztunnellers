@@ -1,5 +1,6 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
+
 import { DiaryLife } from './DiaryLife';
 
 const component = (

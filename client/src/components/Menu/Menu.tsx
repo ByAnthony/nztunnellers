@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+
 import STYLES from './Menu.module.scss';
 
 export function Menu() {

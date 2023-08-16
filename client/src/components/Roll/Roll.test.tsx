@@ -1,8 +1,11 @@
 import '@testing-library/jest-dom/extend-expect';
 import { fireEvent, render, screen } from '@testing-library/react';
+
+import { useGetAllTunnellersQuery } from '../../redux/slices/rollSlice';
+
 import { renderWithMemoryRouter } from '../../utils/test-utils';
 import { mockRoll } from '../../utils/mocks/mockRoll';
-import { useGetAllTunnellersQuery } from '../../redux/slices/rollSlice';
+
 import { Roll } from './Roll';
 
 jest.mock('../../redux/slices/rollSlice', () => ({
