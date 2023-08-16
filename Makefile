@@ -8,6 +8,9 @@ freeze:
 	pip freeze > requirements-dev.txt
 	pip freeze > requirements.txt
 
+test-client:
+	cd ./client/ && npm run test
+
 test-server:
 	python3 -m coverage run -m pytest ./server
 	python3 -m coverage report -m
