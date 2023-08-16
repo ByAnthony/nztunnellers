@@ -30,6 +30,10 @@
 
   .events {
     margin-left: 0px;
+
+    @include index.desktop {
+      margin-top: index.$xxl-margin;
+    }
   }
 
   .line {
