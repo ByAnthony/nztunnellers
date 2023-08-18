@@ -23,6 +23,7 @@ export function Profile() {
   } = useGetTunnellerByIdQuery(tunnellerId);
 
   if (data) {
+    const dates = displayBirthDeathDates(data.summary.birth, data.summary.death);
     return (
       <>
         {error && (
@@ -41,7 +42,7 @@ export function Profile() {
               </div>
               <Title
                 name={data.summary.name}
-                subTitle={displayBirthDeathDates(data.summary.birth, data.summary.death)}
+                subTitle={dates}
               />
             </div>
           </div>

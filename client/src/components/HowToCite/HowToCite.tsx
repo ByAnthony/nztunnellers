@@ -25,7 +25,7 @@ function HowToCiteUrl({ id, title }: HowToCiteUrlProps) {
   if (id) {
     return <span>{`URL: www.nztunnellers.com/tunnellers/${id}.`}</span>;
   }
-  const articleTitle = title?.replace('\\', '-').replace(' ', '-').toLowerCase();
+  const articleTitle = title?.replace(/\s+|\\/g, '-').toLowerCase();
   return <span>{`URL: www.nztunnellers.com/history/${articleTitle}.`}</span>;
 }
 
