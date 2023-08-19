@@ -19,7 +19,7 @@ exports[`HowToCite for Article renders the component correctly 1`] = `
       </em>
       , 2023 (2009), Accessed: 4 May 2023. 
       <span>
-        URL: www.nztunnellers.com/history/my-awesome-article title.
+        URL: www.nztunnellers.com/history/my-awesome-article-title.
       </span>
     </p>
   </div>

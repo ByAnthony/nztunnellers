@@ -1,12 +1,12 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 
-import { mockImage } from '../../../utils/mocks/mockArticle';
+import { mockTopImage } from '../../../utils/mocks/mockArticle';
 
 import { TopImage } from './TopImage';
 
 const component = (
-  <TopImage image={mockImage} />
+  <TopImage image={mockTopImage} />
 );
 
 test('renders the component correctly', () => {

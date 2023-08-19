@@ -4,9 +4,16 @@ export const mockTitle: string = 'My Awesome\\Article Title';
 
 export const mockChapter: number = 1;
 
-export const mockImage: Image = {
+export const mockTopImage: Image = {
   file: 'img-123.png',
   alt: 'Accessible alt text',
+};
+
+export const mockArticleImage: Image = {
+  ...mockTopImage,
+  title: 'An Amazing Photo',
+  photographer: 'The French Photographer Doisneau',
+  reference: 'Where the photo is preserved',
 };
 
 export const mockSection: Section = {
