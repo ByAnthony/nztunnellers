@@ -2,7 +2,7 @@ import '@testing-library/jest-dom';
 import { screen } from '@testing-library/react';
 
 import { mockDetailsList } from '../../utils/mocks/mockRoll';
-import { renderWithMemoryRouter } from '../../utils/test-utils';
+import { renderWithMemoryRouter } from '../../utils/test';
 
 import { RollDetails } from './RollDetails';
 

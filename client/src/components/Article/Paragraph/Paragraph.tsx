@@ -1,4 +1,4 @@
-import { formatText } from '../../../utils/text-utils';
+import { formatText } from '../../../utils/text';
 
 import { Section } from '../../../types/article';
 

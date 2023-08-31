@@ -1,4 +1,4 @@
-import { displayBirthDeathDates } from '../../utils/utils';
+import { displayBiographyDates } from '../../utils/displayBiographyDates';
 
 import type { Summary } from '../../types/tunneller';
 
@@ -34,7 +34,7 @@ function HowToCiteTitle({ tunneller, title }: HowToCiteTitleProps) {
     return (
       <>
         {`${tunneller.name.forename} ${tunneller.name.surname} `}
-        {`(${displayBirthDeathDates(tunneller.birth, tunneller.death)})`}
+        {`(${displayBiographyDates(tunneller.birth, tunneller.death)})`}
       </>
     );
   }

@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 
-import { findElementWithText } from '../../utils/test-utils';
+import { findElementWithText } from '../../utils/test';
 import {
   mockImageArchives,
   mockImageAucklandLibraries,

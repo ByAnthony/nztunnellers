@@ -1,8 +1,8 @@
 import { useParams } from 'react-router-dom';
 import { useGetTunnellerByIdQuery } from '../../redux/slices/rollSlice';
 
-import { displayBirthDeathDates } from '../../utils/utils';
-import { today } from '../../utils/date-utils';
+import { displayBiographyDates } from '../../utils/displayBiographyDates';
+import { today } from '../../utils/date';
 
 import { Footer } from '../Footer/Footer';
 import { HowToCite } from '../HowToCite/HowToCite';
@@ -23,7 +23,7 @@ export function Profile() {
   } = useGetTunnellerByIdQuery(tunnellerId);
 
   if (data) {
-    const dates = displayBirthDeathDates(data.summary.birth, data.summary.death);
+    const dates = displayBiographyDates(data.summary.birth, data.summary.death);
     return (
       <>
         {error && (

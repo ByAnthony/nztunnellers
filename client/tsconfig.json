@@ -4,7 +4,7 @@
     "lib": ["es6", "dom"],
     "baseUrl": "src",
     "paths": {
-      "test-utils": ["./utils/test-utils"]
+      "test": ["./utils/test"]
     },
     "skipLibCheck": true,
     "esModuleInterop": true,

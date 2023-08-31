@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 
-import { findElementWithText } from '../../utils/test-utils';
+import { findElementWithText } from '../../utils/test';
 import { mockId } from '../../utils/mocks/mockProfile';
 import { mockSummary } from '../../utils/mocks/mockSummary';
 import { mockTitle } from '../../utils/mocks/mockArticle';

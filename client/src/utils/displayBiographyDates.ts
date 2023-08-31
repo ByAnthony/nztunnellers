@@ -1,4 +1,4 @@
-export function displayBirthDeathDates(
+export function displayBiographyDates(
   birth: string | null,
   death: string | null,
 ) {

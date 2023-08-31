@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { displayBirthDeathDates } from '../../utils/utils';
+import { displayBiographyDates } from '../../utils/displayBiographyDates';
 
 import { Details } from '../../types/roll';
 
@@ -19,7 +19,7 @@ export function RollDetails({ listOfTunnellers }: Props) {
               <p className={STYLES.forename}>{tunneller.name.forename}</p>
               <p className={STYLES.surname}>{tunneller.name.surname}</p>
               <p className={STYLES.dates}>
-                { displayBirthDeathDates(tunneller.birth, tunneller.death) }
+                { displayBiographyDates(tunneller.birth, tunneller.death) }
               </p>
             </div>
             <div className={STYLES.arrow}>&rarr;</div>

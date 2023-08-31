@@ -3,7 +3,7 @@ import { fireEvent, render, screen } from '@testing-library/react';
 
 import { useGetAllTunnellersQuery } from '../../redux/slices/rollSlice';
 
-import { renderWithMemoryRouter } from '../../utils/test-utils';
+import { renderWithMemoryRouter } from '../../utils/test';
 import { mockRoll } from '../../utils/mocks/mockRoll';
 
 import { Roll } from './Roll';

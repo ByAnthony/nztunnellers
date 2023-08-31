@@ -10,7 +10,7 @@ jest.mock('../../redux/slices/rollSlice', () => ({
   useGetHistoryArticleByIdQuery: jest.fn(),
 }));
 
-jest.mock('../../utils/date-utils', () => ({
+jest.mock('../../utils/date', () => ({
   today: new Date('2023-05-04'),
 }));
 
