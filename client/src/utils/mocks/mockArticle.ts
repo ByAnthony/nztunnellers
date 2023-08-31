@@ -1,4 +1,6 @@
-import { Image, Next, Section } from '../../types/article';
+import {
+  Article, Image, Next, Section,
+} from '../../types/article';
 
 export const mockTitle: string = 'My Awesome\\Article Title';
 
@@ -28,3 +30,13 @@ export const mockNextButton: Next = {
 };
 
 export const mockNotes: string = '[1.](#reference_1) Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\\n\\n[2.](#reference_2) Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
+
+export const mockArticle: Article = {
+  id: 'my-awesome-article',
+  chapter: mockChapter,
+  title: mockTitle,
+  section: [mockSection, mockSection],
+  image: [mockTopImage, mockArticleImage],
+  next: mockNextButton,
+  notes: mockNotes,
+};
