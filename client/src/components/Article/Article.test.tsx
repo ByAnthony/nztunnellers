@@ -35,7 +35,7 @@ test('does not render profile when data is undefined', () => {
     isSuccess: true,
   });
 
-  const { container } = render(<Article />);
+  const { container } = render(<Article key="0" />);
 
   expect(container).toBeEmptyDOMElement();
 });

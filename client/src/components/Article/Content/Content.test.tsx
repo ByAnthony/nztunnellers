@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 
-import { mockArticleImage, mockSection } from '../../../utils/mocks/mockArticle';
+import { mockArticleImage, mockSectionOne } from '../../../utils/mocks/mockArticle';
 
 import { Content } from './Content';
 
@@ -9,7 +9,7 @@ describe('HowToCite for Article', () => {
   const component = (
     <Content
       imageList={[mockArticleImage]}
-      sectionList={[mockSection]}
+      sectionList={[mockSectionOne]}
     />
   );
 
@@ -33,7 +33,7 @@ describe('HowToCite for Article', () => {
   test('does not render component when no image list', () => {
     const { container } = render(<Content
       imageList={undefined}
-      sectionList={[mockSection]}
+      sectionList={[mockSectionOne]}
     />);
 
     expect(container).toBeEmptyDOMElement();
