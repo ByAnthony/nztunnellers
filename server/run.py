@@ -2,15 +2,15 @@
 import json
 import os
 
+from flask import Flask, request
 from flask_cors import CORS
+from flask_mysqldb import MySQL
 
 
 from .models.helpers.camelize_helpers import underscore_to_camel
 from .repositories import article_repository
 from .repositories import roll_repository
 from .repositories import tunneller_repository
-from flask import Flask, request
-from flask_mysqldb import MySQL
 from .models.tunneller import JSONEncoder
 
 app = Flask(__name__)
