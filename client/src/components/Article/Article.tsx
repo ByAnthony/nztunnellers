@@ -1,7 +1,6 @@
 import { useParams } from 'react-router-dom';
-import { useGetHistoryArticleByIdQuery } from '../../redux/slices/rollSlice';
 
-// import { invariant } from '../../utils/invariant';
+import { useGetHistoryArticleByIdQuery } from '../../redux/slices/historySlice';
 import { today } from '../../utils/date';
 
 import { Content } from './Content/Content';

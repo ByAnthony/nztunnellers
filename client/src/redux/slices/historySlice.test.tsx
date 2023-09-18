@@ -2,10 +2,9 @@ import { ReactNode } from 'react';
 import { renderHook, waitFor } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import fetchMock from 'jest-fetch-mock';
-import { mockRoll } from '../../utils/mocks/mockRoll';
-import { mockProfile } from '../../utils/mocks/mockProfile';
+import { mockArticle } from '../../utils/mocks/mockArticle';
 import { store } from '../store';
-import { useGetAllTunnellersQuery, useGetTunnellerByIdQuery } from './rollSlice';
+import { useGetAllHistoryArticleLinkQuery, useGetHistoryArticleByIdQuery } from './historySlice';
 
 function Wrapper({ children }: { children: ReactNode }) {
   return (
@@ -15,20 +14,24 @@ function Wrapper({ children }: { children: ReactNode }) {
   );
 }
 
-describe('useGetAllTunnellersQuery', () => {
-  const endpointName = 'getAllTunnellers';
-  const data = mockRoll;
+describe('useGetAllHistoryArticleLinkQuery', () => {
+  const endpointName = 'getAllHistoryArticleLink';
+  const data = [
+    { url: 'test-article-1', title: 'test-article-1', chapter: 1 },
+    { url: 'test-article-2', title: 'test-article-2', chapter: 2 },
+    { url: 'test-article-3', title: 'test-article-3', chapter: 3 },
+  ];
 
   beforeEach(() => {
     fetchMock.resetMocks();
-    fetchMock.mockOnceIf('http://localhost:5000/tunnellers/', () => Promise.resolve({
+    fetchMock.mockOnceIf('http://localhost:5000/history/', () => Promise.resolve({
       status: 200,
       body: JSON.stringify({ data }),
     }));
   });
 
   it('renders hook', async () => {
-    const { result } = renderHook(() => useGetAllTunnellersQuery(), {
+    const { result } = renderHook(() => useGetAllHistoryArticleLinkQuery(), {
       wrapper: Wrapper,
     });
 
@@ -57,21 +60,21 @@ describe('useGetAllTunnellersQuery', () => {
   });
 });
 
-describe('useGetTunnellerByIdQuery', () => {
-  const endpointName = 'getTunnellerById';
-  const tunneller = 1;
-  const data = mockProfile;
+describe('useGetHistoryArticleByIdQuery', () => {
+  const endpointName = 'getHistoryArticleById';
+  const article = 'test-article';
+  const data = mockArticle;
 
   beforeEach(() => {
     fetchMock.resetMocks();
-    fetchMock.mockOnceIf(`http://localhost:5000/tunnellers/${tunneller}`, () => Promise.resolve({
+    fetchMock.mockOnceIf(`http://localhost:5000/history/${article}`, () => Promise.resolve({
       status: 200,
       body: JSON.stringify({ data }),
     }));
   });
 
   it('renders hook', async () => {
-    const { result } = renderHook(() => useGetTunnellerByIdQuery(tunneller), {
+    const { result } = renderHook(() => useGetHistoryArticleByIdQuery(article), {
       wrapper: Wrapper,
     });
 
