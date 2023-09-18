@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useGetHistoryArticleByIdQuery } from '../../redux/slices/rollSlice';
 
+// import { invariant } from '../../utils/invariant';
 import { today } from '../../utils/date';
 
 import { Content } from './Content/Content';
@@ -15,11 +16,11 @@ import { TopImage } from './TopImage/TopImage';
 import STYLES from './Article.module.scss';
 
 export function Article() {
-  const { id } = useParams();
+  const { id = '' } = useParams();
 
   const {
     data, error, isLoading, isSuccess,
-  } = useGetHistoryArticleByIdQuery(id!);
+  } = useGetHistoryArticleByIdQuery(id);
 
   if (data) {
     return (
