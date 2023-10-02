@@ -83,15 +83,15 @@ export type Transport = {
     arrivalPort: string | null,
 }
 
-export type EventDetails = {
+export type EventDetail = {
     description: string | null,
     title: string | null,
     image: string | null,
 }
 
-export type Events = {
+export type Event = {
     date: Date,
-    event: EventDetails[],
+    event: EventDetail[],
 }
 
 export type TransferredTo = {
@@ -149,7 +149,7 @@ export type MilitaryYears = {
     enlistment: Enlistment,
     embarkationUnit: EmbarkationUnit,
     transportUk: Transport,
-    frontEvents: Events[],
+    frontEvents: Event[],
     endOfService: EndOfService,
     medals: Medal[] | [],
 }
