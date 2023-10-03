@@ -7,10 +7,10 @@ import { today } from '../../utils/date';
 import { Footer } from '../Footer/Footer';
 import { HowToCite } from '../HowToCite/HowToCite';
 import { Menu } from '../Menu/Menu';
-import { ProfileDiary } from '../ProfileDiary/ProfileDiary';
-import { ProfileImageSource } from '../ProfileImageSource/ProfileImageSource';
-import { ProfileSources } from '../ProfileSources/ProfileSources';
-import { ProfileSummary } from '../ProfileSummary/ProfileSummary';
+import { ProfileDiary } from './ProfileDiary/ProfileDiary';
+import { ProfileImageSource } from './ProfileImageSource/ProfileImageSource';
+import { ProfileSources } from './ProfileSources/ProfileSources';
+import { ProfileSummary } from './ProfileSummary/ProfileSummary';
 import { Title } from '../Title/Title';
 
 import STYLES from './Profile.module.scss';

@@ -7,8 +7,8 @@ import { Content } from './Content/Content';
 import { Footer } from '../Footer/Footer';
 import { HowToCite } from '../HowToCite/HowToCite';
 import { Menu } from '../Menu/Menu';
-import { NextChapterButton } from './NextChapterButton/NextChapterButton';
-import { Notes } from './Notes/Notes';
+import { ArticleNextChapterButton } from './ArticleNextChapterButton/ArticleNextChapterButton';
+import { ArticleNotes } from './ArticleNotes/ArticleNotes';
 import { Title } from '../Title/Title';
 import { TopImage } from './TopImage/TopImage';
 
@@ -41,8 +41,8 @@ export function Article() {
           </div>
           <TopImage image={data.image[0]} />
           <Content imageList={data.image.slice(1)} sectionList={data.section} />
-          <NextChapterButton chapter={data.next} />
-          <Notes notes={data.notes} />
+          <ArticleNextChapterButton chapter={data.next} />
+          <ArticleNotes notes={data.notes} />
           <HowToCite title={data.title} today={today} />
         </div>
         )}
