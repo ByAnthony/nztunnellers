@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
-import { displayBiographyDates } from '../../utils/displayBiographyDates';
+import { displayBiographyDates } from '../../../utils/displayBiographyDates';
 
-import { Details } from '../../types/roll';
+import { Details } from '../../../types/roll';
 
 import STYLES from './RollDetails.module.scss';
 

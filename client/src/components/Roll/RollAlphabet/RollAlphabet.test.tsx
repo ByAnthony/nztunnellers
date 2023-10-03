@@ -1,8 +1,8 @@
 import '@testing-library/jest-dom';
 import { screen } from '@testing-library/react';
 
-import { mockRoll } from '../../utils/mocks/mockRoll';
-import { renderWithMemoryRouter } from '../../utils/test';
+import { mockRoll } from '../../../utils/mocks/mockRoll';
+import { renderWithMemoryRouter } from '../../../utils/test';
 
 import { RollAlphabet } from './RollAlphabet';
 

@@ -3,7 +3,7 @@ import { useGetAllTunnellersQuery } from '../../redux/slices/rollSlice';
 
 import { Footer } from '../Footer/Footer';
 import { Menu } from '../Menu/Menu';
-import { RollAlphabet } from '../RollAlphabet/RollAlphabet';
+import { RollAlphabet } from './RollAlphabet/RollAlphabet';
 import { Title } from '../Title/Title';
 
 import STYLES from './Roll.module.scss';

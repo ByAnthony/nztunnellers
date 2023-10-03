@@ -26,6 +26,7 @@ export function TimelineEvent({
             </div>
           );
         }
+
         if (title && (title === 'Trained' || title === 'Posted')) {
           return (
             <div key={event.indexOf(eventDetail)} className={STYLES['tunneller-event-with-title']}>
@@ -34,6 +35,7 @@ export function TimelineEvent({
             </div>
           );
         }
+
         if (title && title === 'Enlisted') {
           return (
             <div key={event.indexOf(eventDetail)} className={STYLES['main-event']}>
@@ -42,6 +44,7 @@ export function TimelineEvent({
             </div>
           );
         }
+
         if (title && (title === 'Killed in action' || title === 'Died of wounds' || title === 'Died of disease' || title === 'Died of accident')) {
           return (
             <div key={event.indexOf(eventDetail)} className={STYLES['main-event']}>
@@ -92,6 +95,7 @@ export function TimelineEvent({
             </div>
           );
         }
+
         if (title && (title === 'Buried' || title === 'Grave reference')) {
           return (
             <div key={event.indexOf(eventDetail)} className={STYLES['tunneller-event-with-title']}>
@@ -100,6 +104,7 @@ export function TimelineEvent({
             </div>
           );
         }
+
         if (!title) {
           return (
             <div key={event.indexOf(eventDetail)} className={STYLES['tunneller-event']}>
@@ -107,6 +112,7 @@ export function TimelineEvent({
             </div>
           );
         }
+
         return (
           <div key={event.indexOf(eventDetail)} className={STYLES['main-event']}>
             <p>{title}</p>
