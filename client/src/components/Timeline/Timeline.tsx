@@ -1,4 +1,6 @@
 import { useParams } from 'react-router-dom';
+import { HowToCite } from '../HowToCite/HowToCite';
+import { today } from '../../utils/date';
 import { useGetTunnellerByIdQuery } from '../../redux/slices/rollSlice';
 
 import { Footer } from '../Footer/Footer';
@@ -28,26 +30,32 @@ export function Timeline() {
         { isLoading }
         <Menu />
         { isSuccess && (
-        <div className={STYLES.timeline}>
-          <div className={STYLES.header}>
-            <div className={STYLES.link}>
-              <a href="/tunnellers">Tunnellers</a>
-              <span>/</span>
-              <a href={`/tunnellers/${tunnellerId}`}>{`${name.forename} ${name.surname}`}</a>
+          <>
+            <div className={STYLES.timeline}>
+              <div className={STYLES.header}>
+                <div className={STYLES.link}>
+                  <a href="/tunnellers">Tunnellers</a>
+                  <span>/</span>
+                  <a href={`/tunnellers/${tunnellerId}`}>{`${name.forename} ${name.surname}`}</a>
+                </div>
+                <div className={STYLES['main-title']}>
+                  <h1>
+                    <span className={STYLES['title-line-1']}>World War I</span>
+                    <span className={STYLES['title-line-2']}>Timeline</span>
+                  </h1>
+                </div>
+              </div>
+              <div className={STYLES.events}>
+                <div className={STYLES.line}>
+                  <TimelineEvents
+                    militaryYears={militaryYears}
+                    postServiceYears={postServiceYears}
+                  />
+                </div>
+              </div>
             </div>
-            <div className={STYLES['main-title']}>
-              <h1>
-                <span className={STYLES['title-line-1']}>World War I</span>
-                <span className={STYLES['title-line-2']}>Timeline</span>
-              </h1>
-            </div>
-          </div>
-          <div className={STYLES.events}>
-            <div className={STYLES.line}>
-              <TimelineEvents militaryYears={militaryYears} postServiceYears={postServiceYears} />
-            </div>
-          </div>
-        </div>
+            <HowToCite id={tunnellerId} summary={data.summary} today={today} timeline />
+          </>
         )}
         <Footer />
       </>

@@ -73,13 +73,26 @@ describe('HowToCite for Article', () => {
     const { asFragment } = render(component);
 
     expect(asFragment()).toMatchSnapshot();
-  });
-
-  test('renders next chapter button correctly', () => {
-    render(component);
-
     expect(screen.getByText(/How to cite this page/)).toBeInTheDocument();
     expect(screen.getByText(/My Awesome Article Title/)).toBeInTheDocument();
     expect(screen.getByText(/4 May 2023/)).toBeInTheDocument();
+    expect(screen.getByText(/www.nztunnellers.com\/history\/my-awesome-article-title./)).toBeInTheDocument();
+  });
+});
+
+describe('HowToCite for Timeline', () => {
+  const component = (
+    <HowToCite id={mockId} summary={mockSummary} today={mockToday} timeline />
+  );
+
+  test('renders the component correctly', () => {
+    const { asFragment } = render(component);
+
+    expect(asFragment()).toMatchSnapshot();
+    expect(screen.getByText(/How to cite this page/)).toBeInTheDocument();
+    expect(screen.getByText(/World War I Timeline of/)).toBeInTheDocument();
+    expect(screen.getByText(/John Doe/)).toBeInTheDocument();
+    expect(screen.getByText(/4 May 2023/)).toBeInTheDocument();
+    expect(screen.getByText(/www.nztunnellers.com\/tunnellers\/26\/wwi-timeline./)).toBeInTheDocument();
   });
 });
