@@ -112,7 +112,7 @@ export const mockMilitaryYears: MilitaryYears = {
   enlistment: mockEnlistment,
   embarkationUnit: mockEmbarkationUnit,
   transportUk: mockTransport,
-  frontEvents: [],
+  frontEvents: {},
   endOfService: mockEndOfService,
   medals: mockMedals,
 };

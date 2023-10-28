@@ -190,7 +190,7 @@ def map_front_events(
     tunneller_events: list[SingleEvent],
     tunneller: Tunneller,
     lang: str,
-) -> list[Events]:
+) -> dict[str, list[Events]]:
     main_tunneller_events: list[SingleEvent] = list(tunneller_events)
 
     def add_event(date: Date, description: Optional[str], title: Optional[str]):
@@ -381,7 +381,21 @@ def map_front_events(
                 break
         else:
             events_grouped_by_date.append(Events(event_date, [event_info]))
-    return events_grouped_by_date
+
+    events_grouped_by_year: dict[str, list[Events]] = dict()
+    for events in events_grouped_by_date:
+        year = events["date"]["year"]
+        events = Events(
+            events["date"],
+            events["event"],
+        )
+        if year in events_grouped_by_year:
+            events_grouped_by_year[year].append(events)
+        else:
+            events_grouped_by_year[year] = list()
+            events_grouped_by_year[year].append(events)
+
+    return events_grouped_by_year
 
 
 def map_medals(medals: list[Medal]) -> list[Medal]:

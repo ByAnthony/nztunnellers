@@ -149,7 +149,7 @@ export type MilitaryYears = {
     enlistment: Enlistment,
     embarkationUnit: EmbarkationUnit,
     transportUk: Transport,
-    frontEvents: Event[],
+    frontEvents: Record<string, Event[]>,
     endOfService: EndOfService,
     medals: Medal[] | [],
 }
