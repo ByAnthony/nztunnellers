@@ -4,14 +4,7 @@
   margin: index.$base-margin 0;
 
   p {
-    font-size: 0.9rem;
-    font-weight: 200;
-    line-height: 1.25rem;
-
-    @include index.desktop {
-      font-size: 1.1rem;
-      line-height: 1.9rem;
-    }
+    @include index.notes-paragraph
   }
 
   a {

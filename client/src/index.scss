@@ -345,3 +345,16 @@ $padding-card: 30px 30px 27px 30px;
     font-size: 1.15rem;
   }
 }
+
+@mixin notes-paragraph {
+  margin: $m-margin 0;
+  line-height: 1.25rem;
+
+  @include tablet {
+    line-height: 1.5rem;
+  }
+
+  @include desktop {
+    line-height: 1.9rem;
+  }
+}
