@@ -59,6 +59,7 @@ git clone git@github.com:ByAnthony/nztunnellers.git
 #### Server side
 
 ```zsh
+// From repository root
 cd server
 python3 -m venv venv
 source venv/bin/activate
@@ -68,6 +69,7 @@ pip install -r requirements-dev.txt
 #### Client side
 
 ```zsh
+// From repository root
 cd client
 npm install
 ```
@@ -77,6 +79,7 @@ npm install
 #### Pre-commit
 
 ```zsh
+// From repository root
 pre-commit install
 ```
 
