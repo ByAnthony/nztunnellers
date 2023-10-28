@@ -32,7 +32,7 @@ function TwoLineTitle({ title, name }: TwoLineTitleProps) {
 
 function SubTitle({ subTitle }: SubTitleProps) {
   if (subTitle) {
-    return <p className={STYLES['title-line-3']}>{ typeof subTitle === 'string' ? subTitle : `Chapter ${subTitle}`}</p>;
+    return <h2 className={STYLES['title-line-3']}>{ typeof subTitle === 'string' ? subTitle : `Chapter ${subTitle}`}</h2>;
   }
   return null;
 }

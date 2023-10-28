@@ -1,4 +1,5 @@
 import { useParams } from 'react-router-dom';
+import { Title } from '../Title/Title';
 import { HowToCite } from '../HowToCite/HowToCite';
 import { today } from '../../utils/date';
 import { useGetTunnellerByIdQuery } from '../../redux/slices/rollSlice';
@@ -39,10 +40,7 @@ export function Timeline() {
                   <a href={`/tunnellers/${tunnellerId}`}>{`${name.forename} ${name.surname}`}</a>
                 </div>
                 <div className={STYLES['main-title']}>
-                  <h1>
-                    <span className={STYLES['title-line-1']}>World War I</span>
-                    <span className={STYLES['title-line-2']}>Timeline</span>
-                  </h1>
+                  <Title title={'World War I\\Timeline'} />
                 </div>
               </div>
               <div className={STYLES.events}>

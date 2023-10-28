@@ -18,10 +18,10 @@ exports[`Article Title renders the component correctly 1`] = `
       </span>
     </h1>
   </div>
-  <p
+  <h2
     class="title-line-3"
   >
     Chapter 1
-  </p>
+  </h2>
 </DocumentFragment>
 `;

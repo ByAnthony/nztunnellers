@@ -64,18 +64,22 @@ exports[`renders profile when data is available 1`] = `
       <div
         class="main-title"
       >
-        <h1>
-          <span
-            class="title-line-1"
-          >
-            World War I
-          </span>
-          <span
-            class="title-line-2"
-          >
-            Timeline
-          </span>
-        </h1>
+        <div
+          class="main-title"
+        >
+          <h1>
+            <span
+              class="title-line-1"
+            >
+              World War I
+            </span>
+            <span
+              class="title-line-2"
+            >
+              Timeline
+            </span>
+          </h1>
+        </div>
       </div>
     </div>
     <div

@@ -69,11 +69,11 @@ exports[`renders profile when data is available 1`] = `
           </span>
         </h1>
       </div>
-      <p
+      <h2
         class="title-line-3"
       >
         1888-1975
-      </p>
+      </h2>
     </div>
   </div>
   <div

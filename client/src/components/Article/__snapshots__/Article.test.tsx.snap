@@ -69,11 +69,11 @@ exports[`renders profile when data is available 1`] = `
           </span>
         </h1>
       </div>
-      <p
+      <h2
         class="title-line-3"
       >
         Chapter 1
-      </p>
+      </h2>
     </div>
     <div
       class="image-container"
