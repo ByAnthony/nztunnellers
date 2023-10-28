@@ -21,7 +21,7 @@
   .surname {
     margin: 0;
     font-size: 1.5rem;
-    font-weight: 600;
+    font-weight: 500;
     color: index.$secondary-color;
 
     @include index.tablet {
@@ -36,7 +36,7 @@
   .forename {
     margin: 0;
     font-size: 1.5rem;
-    font-weight: 300;
+    font-weight: 200;
     color: index.$secondary-color;
 
     @include index.tablet {

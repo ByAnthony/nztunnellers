@@ -42,7 +42,7 @@
   .title {
     margin-top: -15px;
     font-size: 1.15rem;
-    font-weight: 600;
+    font-weight: 500;
     color: index.$secondary-color;
 
     @include index.tablet {
@@ -60,6 +60,7 @@
   .captions {
     margin-bottom: 5px;
     font-size: 0.9rem;
+    font-weight: 200;
     font-style: italic;
 
     @include index.tablet {
@@ -74,6 +75,7 @@
   .reference {
     margin-bottom: index.$l-margin;
     font-size: 0.9rem;
+    font-weight: 200;
     font-style: italic;
 
     @include index.tablet {

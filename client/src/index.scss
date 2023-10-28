@@ -65,7 +65,8 @@ body {
   margin: 0 auto;
   width: 100%;
   font-family: $main-font, Helvetica, sans-serif;
-  font-stretch: 90%;
+  font-stretch: 95%;
+  font-weight: 200;
   color: $text-color;
   line-height: normal;
   background-color: $primary-dark-color;
@@ -73,9 +74,9 @@ body {
 
 h1 {
   font-size: 2.5rem;
-  font-weight: 600;
-  font-stretch: 90%;
+  font-weight: 500;
   line-height: 2rem;
+  text-align: center;
 
   @include tablet {
     font-size: 3rem;
@@ -91,7 +92,7 @@ h1 {
 h2 {
   margin: $m-margin 0;
   font-size: 1.4rem;
-  font-weight: 600;
+  font-weight: 500;
 
   @include tablet {
     font-size: 1.5rem;
@@ -105,7 +106,7 @@ h2 {
 h3 {
   margin: $m-margin 0;
   font-size: 1.2rem;
-  font-weight: 600;
+  font-weight: 500;
 
   @include tablet {
     font-size: 1.3rem;
@@ -118,7 +119,7 @@ h3 {
 
 p {
   font-size: 0.9rem;
-  font-weight: 300;
+  font-weight: 200;
   color: $text-color;
 
   @include tablet {
@@ -163,7 +164,7 @@ li {
   .dates {
     margin-top: $s-margin;
     font-size: 1.25rem;
-    font-weight: 300;
+    font-weight: 200;
 
     @include tablet {
       font-size: 1.35rem;
@@ -190,20 +191,21 @@ li {
 }
 
 .title-line-1 {
-  font-weight: 300;
+  font-weight: 200;
   line-height: normal;
 }
 
 .title-line-2 {
   display: block;
   padding-top: 8px;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .title-line-3 {
   margin-top: $s-margin;
   font-size: 1.25rem;
   font-weight: 500;
+  text-align: center;
 
   @include tablet {
     font-size: 1.35rem;
@@ -233,6 +235,7 @@ li {
   font-size: 1rem;
   font-weight: 500;
   line-height: 1.75rem;
+  text-align: center;
 
   @include tablet {
     margin-top: $base-margin;

@@ -3,7 +3,7 @@
 .timeline {
   margin-top: index.$l-margin;
   margin-bottom: index.$l-margin;
-  font-weight: 600;
+  font-weight: 500;
   color: index.$text-color;
   text-align: left;
 
@@ -53,7 +53,7 @@
 
     .year {
       font-size: 1.4rem;
-      font-weight: 600;
+      font-weight: 500;
       color: index.$placeholder-color;
 
       @include index.desktop {
@@ -63,7 +63,7 @@
 
     .day-month {
       font-size: 1.15rem;
-      font-weight: 300;
+      font-weight: 200;
 
       @include index.desktop {
         font-size: 1.4rem;
@@ -95,7 +95,7 @@
 
     .info {
       font-size: 1rem;
-      font-weight: 300;
+      font-weight: 200;
 
       @include index.desktop {
         font-size: 1.1rem;
@@ -107,7 +107,7 @@
       padding-top: index.$xxs-margin;
       padding-bottom: 0;
       font-size: 1rem;
-      font-weight: 300;
+      font-weight: 200;
 
       @include index.desktop {
         font-size: 1.1rem;
@@ -118,7 +118,7 @@
       display: block;
       padding-top: index.$xs-margin;
       font-size: 1rem;
-      font-weight: 300;
+      font-weight: 200;
 
       @include index.desktop {
         font-size: 1.1rem;
@@ -176,7 +176,7 @@
     }
 
     span {
-      font-weight: 300;
+      font-weight: 200;
     }
   }
 }

@@ -5,12 +5,12 @@
 
   p {
     font-size: 1.15rem;
-    font-weight: 300;
+    font-weight: 200;
     line-height: 1.8rem;
 
     @include index.desktop {
-      font-size: 1.4rem;
-      line-height: 2.4rem;
+      font-size: 1.25rem;
+      line-height: 2.25rem;
     }
   }
 
