@@ -15,6 +15,9 @@ test-server:
 	python3 -m coverage run -m pytest ./server
 	python3 -m coverage report -m
 
-dev:
+run-client:
+	cd ./client && npm start
+
+run-server:
 	. server/venv/bin/activate
 	DEV=true python -m server.run
