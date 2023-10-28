@@ -21,6 +21,3 @@ run-client:
 run-server:
 	. server/venv/bin/activate
 	DEV=true python -m server.run
-
-cli:
-	cd ./client
