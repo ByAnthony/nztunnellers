@@ -58,6 +58,7 @@
     form {
       width: 100%;
 
+
       input {
         box-sizing: border-box;
         width: 100%;
@@ -71,6 +72,9 @@
         border-top-left-radius: index.$border-radius;
         border-bottom-left-radius: index.$border-radius;
         background-color: index.$primary-medium-color;
+        transition: border-bottom 0.9s ease-in-out, border-bottom 0.9s ease-in-out,
+          border 0.9s ease-in-out, border 0.9s ease-in-out,
+          background-color 0.9s ease-in-out, background-color 0.9s ease-in-out;
       }
 
       input:focus {
