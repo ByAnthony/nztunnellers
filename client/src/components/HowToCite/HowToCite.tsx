@@ -31,7 +31,7 @@ function HowToCiteUrl({ id, title, timeline }: HowToCiteUrlProps) {
   if (id && timeline) {
     return <span>{`URL: www.nztunnellers.com/tunnellers/${id}/wwi-timeline.`}</span>;
   }
-  const articleTitle = title?.replace(/\s+|\\/g, '-').toLowerCase();
+  const articleTitle = title?.replace(/\s+|\\/g, '-').replace(/&/g, 'and').toLowerCase();
   return <span>{`URL: www.nztunnellers.com/history/${articleTitle}.`}</span>;
 }
 
