@@ -36,7 +36,7 @@ export function TimelineEvents({ militaryYears, postServiceYears }: Props) {
         <div key={key}>
           <h2 className={STYLES['year-title']} key={key} aria-label={`Year ${key}`}>{key}</h2>
           {events.map((event: Event) => (
-            <>
+            <div key={events.indexOf(event)}>
               <div className={STYLES.date}>
                 <div className={STYLES.year}>{`${event.date.year}`}</div>
                 <div className={STYLES['day-month']}>{`${event.date.dayMonth}`}</div>
@@ -49,7 +49,7 @@ export function TimelineEvents({ militaryYears, postServiceYears }: Props) {
                   warInjuries={warInjuries}
                 />
               </div>
-            </>
+            </div>
           ))}
         </div>
       ))}
