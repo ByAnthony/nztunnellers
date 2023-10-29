@@ -13,39 +13,38 @@ type Props = {
 };
 
 type HowToCiteUrlProps = {
-  id: number | undefined;
-  title: string | undefined;
-  timeline: boolean | undefined;
+  id?: number;
+  title?: string;
+  timeline?: boolean;
 };
 
 type HowToCiteTitleProps = {
-  tunneller: Summary | undefined;
-  title: string | undefined;
-  timeline: boolean | undefined;
+  tunneller?: Summary;
+  title?: string;
+  timeline?: boolean;
 };
 
-export function HowToCiteUrl({ id, title, timeline = false }: HowToCiteUrlProps) {
-  if (id) {
-    if (!timeline) {
-      return <span>{`URL: www.nztunnellers.com/tunnellers/${id}.`}</span>;
-    }
+function HowToCiteUrl({ id, title, timeline }: HowToCiteUrlProps) {
+  if (id && !timeline) {
+    return <span>{`URL: www.nztunnellers.com/tunnellers/${id}.`}</span>;
+  }
+  if (id && timeline) {
     return <span>{`URL: www.nztunnellers.com/tunnellers/${id}/wwi-timeline.`}</span>;
   }
-
   const articleTitle = title?.replace(/\s+|\\/g, '-').toLowerCase();
   return <span>{`URL: www.nztunnellers.com/history/${articleTitle}.`}</span>;
 }
 
-export function HowToCiteTitle({ tunneller, title, timeline = false }: HowToCiteTitleProps) {
-  if (tunneller) {
-    if (!timeline) {
-      return (
-        <>
-          {`${tunneller.name.forename} ${tunneller.name.surname} `}
-          {`(${displayBiographyDates(tunneller.birth, tunneller.death)})`}
-        </>
-      );
-    }
+function HowToCiteTitle({ tunneller, title, timeline }: HowToCiteTitleProps) {
+  if (tunneller && !timeline) {
+    return (
+      <>
+        {`${tunneller.name.forename} ${tunneller.name.surname} `}
+        {`(${displayBiographyDates(tunneller.birth, tunneller.death)})`}
+      </>
+    );
+  }
+  if (tunneller && timeline) {
     return (
       <>
         World War I Timeline of
@@ -53,7 +52,6 @@ export function HowToCiteTitle({ tunneller, title, timeline = false }: HowToCite
       </>
     );
   }
-
   const articleTitle = title?.replace('\\', ' ');
   return <span>{articleTitle}</span>;
 }
@@ -84,6 +82,18 @@ export function HowToCite({
 HowToCite.defaultProps = {
   id: null,
   summary: null,
+  title: null,
+  timeline: false,
+};
+
+HowToCiteUrl.defaultProps = {
+  id: null,
+  title: null,
+  timeline: false,
+};
+
+HowToCiteTitle.defaultProps = {
+  tunneller: null,
   title: null,
   timeline: false,
 };
