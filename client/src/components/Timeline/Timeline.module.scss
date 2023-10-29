@@ -49,13 +49,13 @@
   .year-title {
     margin-left: -25px;
     padding: index.$s-margin 0;
-    font-size: 2.4rem;
+    font-size: 2.2rem;
     font-weight: 700;
     color: index.$text-color;
     background-color: index.$primary-dark-color;
 
     @include index.desktop {
-      font-size: 3.75rem;
+      font-size: 3rem;
     }
   }
 
