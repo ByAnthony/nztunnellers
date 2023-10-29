@@ -52,3 +52,8 @@ repos:
       - id: eslint
         files: \.[jt]sx?$ # *.js, *.jsx, *.ts and *.tsx
         types: [file]
+
+  - repo: https://github.com/pre-commit/mirrors-scss-lint
+    rev: ''  # Use the sha / tag you want to point at
+    hooks:
+    -   id: scss-lint
