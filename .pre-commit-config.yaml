@@ -22,7 +22,7 @@ repos:
       - id: mixed-line-ending
       - id: trailing-whitespace
         args: [--markdown-linebreak-ext=md]
-        # exclude: \.test.[jt]sx.snap?$
+        exclude: \.test.[jt]sx.snap?$
       - id: end-of-file-fixer
 
   - repo: https://github.com/pre-commit/mirrors-mypy
@@ -41,19 +41,9 @@ repos:
       - id: flake8
         args: [--max-line-length=120]
 
-  - repo: https://github.com/asottile/reorder-python-imports
-    rev: v3.12.0
-    hooks:
-    -   id: reorder-python-imports
-
   - repo: https://github.com/pre-commit/mirrors-eslint
     rev: v8.38.0
     hooks:
       - id: eslint
         files: \.[jt]sx?$ # *.js, *.jsx, *.ts and *.tsx
         types: [file]
-
-  - repo: https://github.com/pre-commit/mirrors-scss-lint
-    rev: v0.60.0
-    hooks:
-    -   id: scss-lint
