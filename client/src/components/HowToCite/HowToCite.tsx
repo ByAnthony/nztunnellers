@@ -24,7 +24,7 @@ type HowToCiteTitleProps = {
   timeline: boolean | undefined;
 };
 
-function HowToCiteUrl({ id, title, timeline = false }: HowToCiteUrlProps) {
+export function HowToCiteUrl({ id, title, timeline = false }: HowToCiteUrlProps) {
   if (id) {
     if (!timeline) {
       return <span>{`URL: www.nztunnellers.com/tunnellers/${id}.`}</span>;
@@ -36,7 +36,7 @@ function HowToCiteUrl({ id, title, timeline = false }: HowToCiteUrlProps) {
   return <span>{`URL: www.nztunnellers.com/history/${articleTitle}.`}</span>;
 }
 
-function HowToCiteTitle({ tunneller, title, timeline = false }: HowToCiteTitleProps) {
+export function HowToCiteTitle({ tunneller, title, timeline = false }: HowToCiteTitleProps) {
   if (tunneller) {
     if (!timeline) {
       return (
