@@ -18,9 +18,6 @@ export function Timeline() {
   } = useGetTunnellerByIdQuery(tunnellerId);
 
   if (data) {
-    const { name } = data.summary;
-    const { militaryYears, postServiceYears } = data;
-
     return (
       <>
         {error && (
@@ -37,7 +34,7 @@ export function Timeline() {
                 <div className={STYLES.link}>
                   <a href="/tunnellers">Tunnellers</a>
                   <span>/</span>
-                  <a href={`/tunnellers/${tunnellerId}`}>{`${name.forename} ${name.surname}`}</a>
+                  <a href={`/tunnellers/${tunnellerId}`}>{`${data.summary.name.forename} ${data.summary.name.surname}`}</a>
                 </div>
                 <div className={STYLES['main-title']}>
                   <Title title={'World War I\\Timeline'} />
@@ -46,8 +43,8 @@ export function Timeline() {
               <div className={STYLES.events}>
                 <div className={STYLES.line}>
                   <TimelineEvents
-                    militaryYears={militaryYears}
-                    postServiceYears={postServiceYears}
+                    militaryYears={data.militaryYears}
+                    postServiceYears={data.postServiceYears}
                   />
                 </div>
               </div>

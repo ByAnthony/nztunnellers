@@ -135,3 +135,17 @@ test('does not render roll when data is undefined', () => {
 
   expect(container).toBeEmptyDOMElement();
 });
+
+test('should render error page when error', () => {
+  (useGetAllTunnellersQuery as jest.Mock).mockReturnValue({
+    data: {},
+    error: true,
+    isLoading: false,
+    isSuccess: false,
+  });
+
+  render(component);
+  const error = screen.getByText('An error occured');
+
+  expect(error).toBeInTheDocument();
+});

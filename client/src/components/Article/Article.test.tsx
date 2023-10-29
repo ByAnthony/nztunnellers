@@ -1,5 +1,5 @@
 import '@testing-library/jest-dom/extend-expect';
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 
 import { useGetHistoryArticleByIdQuery } from '../../redux/slices/historySlice';
 import { mockArticle } from '../../utils/mocks/mockArticle';
@@ -38,4 +38,18 @@ test('does not render profile when data is undefined', () => {
   const { container } = render(<Article />);
 
   expect(container).toBeEmptyDOMElement();
+});
+
+test('should render error page when error', () => {
+  (useGetHistoryArticleByIdQuery as jest.Mock).mockReturnValue({
+    data: {},
+    error: true,
+    isLoading: false,
+    isSuccess: false,
+  });
+
+  render(<Article />);
+  const error = screen.getByText('An error occured');
+
+  expect(error).toBeInTheDocument();
 });
