@@ -13,6 +13,7 @@ import {
   EndOfService,
   Demobilization,
 } from '../../types/tunneller';
+import { mockFrontEvents } from './mockFrontEvents';
 
 export const mockBritishWarMedal: Medal = {
   name: 'British War Medal',
@@ -112,7 +113,7 @@ export const mockMilitaryYears: MilitaryYears = {
   enlistment: mockEnlistment,
   embarkationUnit: mockEmbarkationUnit,
   transportUk: mockTransport,
-  frontEvents: {},
+  frontEvents: mockFrontEvents,
   endOfService: mockEndOfService,
   medals: mockMedals,
 };

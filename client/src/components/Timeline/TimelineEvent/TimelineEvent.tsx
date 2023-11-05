@@ -17,8 +17,19 @@ export function TimelineEvent({
       {event.map((eventDetail: EventDetail) => {
         const { title } = eventDetail;
 
-        if (eventDetail.title) {
-          if (title === 'The Company') {
+        const isTitleCompany = title === 'The Company';
+        const isTitleEnlisted = title === 'Enlisted';
+        const isTitlePosted = title === 'Posted';
+        const isTitleTrained = title === 'Trained';
+        const isTitleKilledInAction = title === 'Killed in action';
+        const isTitleDiedOfWounds = title === 'Died of wounds';
+        const isTitleDiedOfDisease = title === 'Died of disease';
+        const isTitleDiedOfAccident = title === 'Died of accident';
+        const isTitleBuried = title === 'Buried';
+        const isTitleGraveReference = title === 'Grave reference';
+
+        if (title) {
+          if (isTitleCompany) {
             return (
               <div key={event.indexOf(eventDetail)}>
                 <div className={STYLES['company-event']}>
@@ -29,7 +40,7 @@ export function TimelineEvent({
             );
           }
 
-          if (title === 'Enlisted' || title === 'Posted') {
+          if (isTitleEnlisted || isTitlePosted) {
             return (
               <div key={event.indexOf(eventDetail)} className={STYLES['main-event']}>
                 <p>{title}</p>
@@ -38,7 +49,7 @@ export function TimelineEvent({
             );
           }
 
-          if (title === 'Trained') {
+          if (isTitleTrained) {
             return (
               <div key={event.indexOf(eventDetail)} className={STYLES['tunneller-event-with-title']}>
                 <p>{title}</p>
@@ -47,45 +58,50 @@ export function TimelineEvent({
             );
           }
 
-          if (title === 'Killed in action' || title === 'Died of wounds' || title === 'Died of disease' || title === 'Died of accident') {
+          if (
+            isTitleKilledInAction
+            || isTitleDiedOfWounds
+            || isTitleDiedOfDisease
+            || isTitleDiedOfAccident
+          ) {
             return (
               <div key={event.indexOf(eventDetail)} className={STYLES['main-event']}>
                 <span>{title}</span>
-                {title === 'Died of disease' && disease && place()
+                {isTitleDiedOfDisease && disease && place()
                   && (
                     <>
                       <span className={STYLES.info}>{` (${disease})`}</span>
                       <span className={STYLES['info-block']}>{place()}</span>
                     </>
                   )}
-                {title === 'Died of disease' && disease && !place()
+                {isTitleDiedOfDisease && disease && !place()
                   && (
                     <span className={STYLES.info}>{` (${disease})`}</span>
                   )}
-                {title === 'Died of disease' && warInjuries
+                {isTitleDiedOfDisease && warInjuries
                   && (
                     <span className={STYLES['info-block']}>{warInjuries}</span>
                   )}
-                {title === 'Killed in action' && eventDetail.description && place()
+                {isTitleKilledInAction && eventDetail.description && place()
                   && (
                     <>
                       <p className={STYLES['line-margin']}>{eventDetail.description}</p>
                       <span className={STYLES['info-block-with-description']}>{place()}</span>
                     </>
                   )}
-                {title === 'Killed in action' && !eventDetail.description && place()
+                {isTitleKilledInAction && !eventDetail.description && place()
                   && (
                     <span className={STYLES['info-block']}>{place()}</span>
                   )}
-                {title === 'Killed in action' && eventDetail.description && !place()
+                {isTitleKilledInAction && eventDetail.description && !place()
                   && (
                     <p>{eventDetail.description}</p>
                   )}
-                {title === 'Died of wounds'
+                {isTitleDiedOfWounds
                   && (
                     <span className={STYLES['info-block']}>{place()}</span>
                   )}
-                {title === 'Died of accident'
+                {isTitleDiedOfAccident
                   && (
                     <span className={STYLES['info-block-with-description']}>{eventDetail.description}</span>
                   )}
@@ -93,7 +109,7 @@ export function TimelineEvent({
             );
           }
 
-          if (title === 'Buried' || title === 'Grave reference') {
+          if (isTitleBuried || isTitleGraveReference) {
             return (
               <div key={event.indexOf(eventDetail)} className={STYLES['tunneller-event-with-title']}>
                 <p>{title}</p>
