@@ -17,7 +17,7 @@ export function TimelineEvent({
       {event.map((eventDetail: EventDetail) => {
         const { title } = eventDetail;
 
-        if (title) {
+        if (eventDetail.title) {
           if (title === 'The Company') {
             return (
               <div key={event.indexOf(eventDetail)}>
@@ -29,18 +29,18 @@ export function TimelineEvent({
             );
           }
 
-          if (title === 'Trained' || title === 'Posted') {
+          if (title === 'Enlisted' || title === 'Posted') {
             return (
-              <div key={event.indexOf(eventDetail)} className={STYLES['tunneller-event-with-title']}>
+              <div key={event.indexOf(eventDetail)} className={STYLES['main-event']}>
                 <p>{title}</p>
                 <span>{eventDetail.description}</span>
               </div>
             );
           }
 
-          if (title === 'Enlisted') {
+          if (title === 'Trained') {
             return (
-              <div key={event.indexOf(eventDetail)} className={STYLES['main-event']}>
+              <div key={event.indexOf(eventDetail)} className={STYLES['tunneller-event-with-title']}>
                 <p>{title}</p>
                 <span>{eventDetail.description}</span>
               </div>
@@ -51,49 +51,44 @@ export function TimelineEvent({
             return (
               <div key={event.indexOf(eventDetail)} className={STYLES['main-event']}>
                 <span>{title}</span>
-                {title === 'Died of disease' && (disease && place())
-                  ? (
+                {title === 'Died of disease' && disease && place()
+                  && (
                     <>
                       <span className={STYLES.info}>{` (${disease})`}</span>
                       <span className={STYLES['info-block']}>{place()}</span>
                     </>
-
-                  )
-                  : null}
-                {title === 'Died of disease' && (disease && !place())
-                  ? (
+                  )}
+                {title === 'Died of disease' && disease && !place()
+                  && (
                     <span className={STYLES.info}>{` (${disease})`}</span>
-
-                  )
-                  : null}
+                  )}
                 {title === 'Died of disease' && warInjuries
-                  ? (
+                  && (
                     <span className={STYLES['info-block']}>{warInjuries}</span>
-                  )
-                  : null}
-                {title === 'Killed in action' && (eventDetail.description && place())
-                  ? (
+                  )}
+                {title === 'Killed in action' && eventDetail.description && place()
+                  && (
                     <>
                       <p className={STYLES['line-margin']}>{eventDetail.description}</p>
                       <span className={STYLES['info-block-with-description']}>{place()}</span>
                     </>
-                  )
-                  : null}
-                {title === 'Killed in action' && (!eventDetail.description && place())
-                  ? (
+                  )}
+                {title === 'Killed in action' && !eventDetail.description && place()
+                  && (
                     <span className={STYLES['info-block']}>{place()}</span>
-                  )
-                  : null}
-                {title === 'Killed in action' && (eventDetail.description && !place())
-                  ? (
+                  )}
+                {title === 'Killed in action' && eventDetail.description && !place()
+                  && (
                     <p>{eventDetail.description}</p>
-                  )
-                  : null}
+                  )}
                 {title === 'Died of wounds'
-                  ? (
+                  && (
                     <span className={STYLES['info-block']}>{place()}</span>
-                  )
-                  : null}
+                  )}
+                {title === 'Died of accident'
+                  && (
+                    <span className={STYLES['info-block-with-description']}>{eventDetail.description}</span>
+                  )}
               </div>
             );
           }
@@ -115,15 +110,11 @@ export function TimelineEvent({
           );
         }
 
-        if (!title) {
-          return (
-            <div key={event.indexOf(eventDetail)} className={STYLES['tunneller-event']}>
-              <p>{eventDetail.description}</p>
-            </div>
-          );
-        }
-
-        return null;
+        return (
+          <div key={event.indexOf(eventDetail)} className={STYLES['tunneller-event']}>
+            <p>{eventDetail.description}</p>
+          </div>
+        );
       })}
     </>
   );
