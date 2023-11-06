@@ -3,27 +3,27 @@ import { useEffect, useState } from 'react';
 import STYLES from './Menu.module.scss';
 
 export function Menu() {
-  const [prevScrollPos, setPrevScrollPos] = useState(0);
+  const [prevScrollPosition, setPrevScrollPosition] = useState(0);
   const [menuVisible, setMenuVisible] = useState(true);
 
   useEffect(() => {
     const handleScroll = () => {
-      const currentScrollPos = window.scrollY;
+      const currentScrollPosition = window.scrollY;
 
-      if (prevScrollPos > currentScrollPos) {
+      if (prevScrollPosition > currentScrollPosition) {
         setMenuVisible(true);
       } else {
         setMenuVisible(false);
       }
 
-      setPrevScrollPos(currentScrollPos);
+      setPrevScrollPosition(currentScrollPosition);
     };
 
     window.addEventListener('scroll', handleScroll);
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [prevScrollPos]);
+  }, [prevScrollPosition]);
 
   return (
     <div className={`${STYLES.menu} ${menuVisible ? '' : STYLES.hidden}`}>
