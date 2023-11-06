@@ -72,11 +72,6 @@ export const mockFrontEvents: Record<string, Event[]> = {
       event: [mockEventEnlisted],
     },
     {
-      date: mockDate('1915', '30 January'),
-      event: [mockEventPosted],
-    },
-
-    {
       date: mockDate('1915', '14 February'),
       event: [mockEventTrained],
     },
@@ -87,20 +82,12 @@ export const mockFrontEvents: Record<string, Event[]> = {
   ],
   1916: [
     {
-      date: mockDate('1916', '23 June'),
-      event: [mockEventDescription, mockEventDescription],
-    },
-    {
-      date: mockDate('1916', '27 September'),
-      event: [mockEventCompany],
-    },
-    {
       date: mockDate('1916', '19 November'),
       event: [mockEventDescription],
     },
     {
       date: mockDate('1916', '12 December'),
-      event: [mockEventCompany, mockEventDescription],
+      event: [mockEventCompany],
     },
   ],
   1917: [
@@ -115,7 +102,7 @@ export const mockFrontEvents: Record<string, Event[]> = {
   ],
   1918: [
     {
-      date: mockDate('1918', '3 March April'),
+      date: mockDate('1918', '3 March'),
       event: [mockEventTitleAndDescription],
     },
     {

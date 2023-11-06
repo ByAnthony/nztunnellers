@@ -2,20 +2,20 @@ import '@testing-library/jest-dom';
 import { screen } from '@testing-library/react';
 
 import { mockRoll } from '../../../utils/mocks/mockRoll';
-import { renderWithMemoryRouter } from '../../../utils/test';
+import { render } from '../../../utils/test';
 
 import { RollAlphabet } from './RollAlphabet';
 
 const component = <RollAlphabet tunnellers={mockRoll} filterByLetter="" />;
 
 test('renders the component correctly', () => {
-  const { asFragment } = renderWithMemoryRouter(component);
+  const { asFragment } = render(component);
 
   expect(asFragment()).toMatchSnapshot();
 });
 
 test('should filter by name', () => {
-  renderWithMemoryRouter(<RollAlphabet tunnellers={mockRoll} filterByLetter="D" />);
+  render(<RollAlphabet tunnellers={mockRoll} filterByLetter="D" />);
 
   expect(screen.getByLabelText('Letter D')).toBeInTheDocument();
   expect(screen.queryByLabelText('Letter L')).not.toBeInTheDocument();

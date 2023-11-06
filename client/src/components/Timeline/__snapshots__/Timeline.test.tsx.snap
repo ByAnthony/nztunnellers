@@ -137,36 +137,6 @@ exports[`renders profile when data is available 1`] = `
               <div
                 class="day-month"
               >
-                30 January
-              </div>
-            </div>
-            <div
-              class="event-wrapper"
-            >
-              <div
-                class="main-event"
-              >
-                <p>
-                  Posted
-                </p>
-                <span>
-                  Reinforcement
-                </span>
-              </div>
-            </div>
-          </div>
-          <div>
-            <div
-              class="date"
-            >
-              <div
-                class="year"
-              >
-                1915
-              </div>
-              <div
-                class="day-month"
-              >
                 14 February
               </div>
             </div>
@@ -235,73 +205,6 @@ exports[`renders profile when data is available 1`] = `
               <div
                 class="day-month"
               >
-                23 June
-              </div>
-            </div>
-            <div
-              class="event-wrapper"
-            >
-              <div
-                class="tunneller-event"
-              >
-                <p>
-                  Something happened that day
-                </p>
-              </div>
-              <div
-                class="tunneller-event"
-              >
-                <p>
-                  Something happened that day
-                </p>
-              </div>
-            </div>
-          </div>
-          <div>
-            <div
-              class="date"
-            >
-              <div
-                class="year"
-              >
-                1916
-              </div>
-              <div
-                class="day-month"
-              >
-                27 September
-              </div>
-            </div>
-            <div
-              class="event-wrapper"
-            >
-              <div>
-                <div
-                  class="company-event"
-                >
-                  <img
-                    alt=""
-                    src="/images/roll/image.jpg"
-                  />
-                  <p>
-                    Something happened that day for the Company
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div>
-            <div
-              class="date"
-            >
-              <div
-                class="year"
-              >
-                1916
-              </div>
-              <div
-                class="day-month"
-              >
                 19 November
               </div>
             </div>
@@ -347,13 +250,6 @@ exports[`renders profile when data is available 1`] = `
                     Something happened that day for the Company
                   </p>
                 </div>
-              </div>
-              <div
-                class="tunneller-event"
-              >
-                <p>
-                  Something happened that day
-                </p>
               </div>
             </div>
           </div>
@@ -455,7 +351,7 @@ exports[`renders profile when data is available 1`] = `
               <div
                 class="day-month"
               >
-                3 March April
+                3 March
               </div>
             </div>
             <div

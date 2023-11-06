@@ -1,9 +1,9 @@
 import '@testing-library/jest-dom/extend-expect';
-import { fireEvent, render, screen } from '@testing-library/react';
+import { fireEvent, screen } from '@testing-library/react';
 
 import { useGetAllTunnellersQuery } from '../../redux/slices/rollSlice';
 
-import { renderWithMemoryRouter } from '../../utils/test';
+import { render } from '../../utils/test';
 import { mockRoll } from '../../utils/mocks/mockRoll';
 
 import { Roll } from './Roll';
@@ -22,7 +22,7 @@ test('renders roll when data is available', () => {
     isSuccess: true,
   });
 
-  const { asFragment } = renderWithMemoryRouter(component);
+  const { asFragment } = render(component);
 
   expect(asFragment()).toMatchSnapshot();
 
@@ -75,7 +75,7 @@ describe('Filter', () => {
       isSuccess: true,
     });
 
-    renderWithMemoryRouter(component);
+    render(component);
 
     const buttonD = screen.getByLabelText('Filter names by the letter D');
     fireEvent.click(buttonD);
@@ -104,7 +104,7 @@ describe('Filter', () => {
       isSuccess: true,
     });
 
-    renderWithMemoryRouter(component);
+    render(component);
 
     const buttonD = screen.getByLabelText('Filter names by the letter D');
     const buttonAll = screen.getByLabelText('Remove the filter by name');

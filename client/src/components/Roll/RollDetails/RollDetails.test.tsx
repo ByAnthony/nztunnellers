@@ -2,20 +2,20 @@ import '@testing-library/jest-dom';
 import { screen } from '@testing-library/react';
 
 import { mockDetailsList } from '../../../utils/mocks/mockRoll';
-import { renderWithMemoryRouter } from '../../../utils/test';
+import { render } from '../../../utils/test';
 
 import { RollDetails } from './RollDetails';
 
 const component = <RollDetails listOfTunnellers={mockDetailsList} />;
 
 test('renders the component correctly', () => {
-  const { asFragment } = renderWithMemoryRouter(component);
+  const { asFragment } = render(component);
 
   expect(asFragment()).toMatchSnapshot();
 });
 
 test('renders details', () => {
-  renderWithMemoryRouter(component);
+  render(component);
 
   expect(screen.getByText('John')).toBeInTheDocument();
   expect(screen.getByText('Doe')).toBeInTheDocument();
