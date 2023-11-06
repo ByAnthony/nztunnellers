@@ -87,7 +87,7 @@ export const mockEmbarkationUnit: EmbarkationUnit = {
   attachedCorps: null,
 };
 
-const mockTransport: Transport = {
+export const mockTransport: Transport = {
   reference: 'HMNZT 56',
   vessel: 'Beata',
   departureDate: mockDate,
