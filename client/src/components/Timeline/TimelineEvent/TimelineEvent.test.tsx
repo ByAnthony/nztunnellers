@@ -1,7 +1,6 @@
 import '@testing-library/jest-dom/extend-expect';
-import { screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 
-import { render } from '../../../utils/test';
 import {
   mockEvent,
   mockEventBuried,

@@ -1,12 +1,11 @@
 import '@testing-library/jest-dom/extend-expect';
-import { screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 
 import { mockFrontEventsWithKilledInAction } from '../../../utils/mocks/mockFrontEvents';
 import {
   mockEmbarkationUnit, mockEnlistment, mockMedals, mockMilitaryYears, mockTransport,
 } from '../../../utils/mocks/mockMilitaryYears';
 import { mockPostServiceYears } from '../../../utils/mocks/mockPostServiceYears';
-import { render } from '../../../utils/test';
 
 import { TimelineEvents } from './TimelineEvents';
 
