@@ -1,9 +1,8 @@
 import '@testing-library/jest-dom/extend-expect';
-import { fireEvent, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 
 import { useGetAllTunnellersQuery } from '../../redux/slices/rollSlice';
 
-import { render } from '../../utils/test';
 import { mockRoll } from '../../utils/mocks/mockRoll';
 
 import { Roll } from './Roll';

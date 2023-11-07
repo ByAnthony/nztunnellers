@@ -21,24 +21,6 @@ export function HomePage() {
         { isLoading }
         { isSuccess && (
         <div className={STYLES.main}>
-          <div className={STYLES.header}>
-            <div className={STYLES['main-title']}>
-              <h1>
-                <span className={STYLES['title-line-1']}>The New Zealand</span>
-                <span className={STYLES['title-line-2']}>Tunnelling Company</span>
-              </h1>
-            </div>
-            <p className={STYLES['title-line-3']}>1915-1919</p>
-          </div>
-          <div className={STYLES.header} id="history">
-            <div className={STYLES['main-title']}>
-              <h1>
-                <span className={STYLES['title-line-1']}>The Company</span>
-                <span className={STYLES['title-line-2']}>History</span>
-              </h1>
-            </div>
-          </div>
-          <div className={STYLES.links}>
             {data.map((chapter) => (
               <div className={STYLES['link-container']} key={data.indexOf(chapter)}>
                 <a
@@ -50,11 +32,9 @@ export function HomePage() {
                     <p>{`Chapter ${chapter.chapter}`}</p>
                     <span>{chapter.title.replace('\\', ' ')}</span>
                   </div>
-                  <div className={STYLES.arrow}>&rarr;</div>
                 </a>
               </div>
             ))}
-          </div>
         </div>
         )}
         <Footer />

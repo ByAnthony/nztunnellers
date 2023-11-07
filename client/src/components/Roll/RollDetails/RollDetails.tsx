@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import { displayBiographyDates } from '../../../utils/displayBiographyDates';
 
 import { Details } from '../../../types/roll';
@@ -13,7 +12,7 @@ export function RollDetails({ listOfTunnellers }: Props) {
   return (
     <>
       {listOfTunnellers.map((tunneller: Details) => (
-        <Link to={`/tunnellers/${tunneller.id}`} key={tunneller.id}>
+        <a href={`/tunnellers/${tunneller.id}`} key={tunneller.id}>
           <div className={STYLES.tunneller}>
             <div>
               <p className={STYLES.forename}>{tunneller.name.forename}</p>
@@ -24,7 +23,7 @@ export function RollDetails({ listOfTunnellers }: Props) {
             </div>
             <div className={STYLES.arrow}>&rarr;</div>
           </div>
-        </Link>
+        </a>
       ))}
     </>
   );
