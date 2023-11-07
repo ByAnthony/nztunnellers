@@ -26,7 +26,7 @@ export function Menu() {
   }, [prevScrollPosition]);
 
   return (
-    <div className={`${STYLES.menu} ${menuVisible ? '' : STYLES.hidden}`}>
+    <div data-testid="menu" className={`${STYLES.menu} ${menuVisible ? '' : STYLES.hidden}`}>
       <a href="/" className={STYLES.logo} aria-label="Go to the Homepage"><img src="/nzt_logo.png" alt="" /></a>
       <div className={STYLES['search-form']}>
         <form>
