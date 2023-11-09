@@ -5,10 +5,11 @@ from dacite import from_dict
 from ..models.helpers.article_helpers import getNextChapter
 
 
-from ..models.article import Article, Next, Section, Image
+from ..models.article import Article, Articles, Section, Image
 from ..repositories.queries.article_query import (
     article_query,
     articles_query,
+    images_query,
     section_query,
     image_query,
 )
@@ -34,20 +35,34 @@ def map_images(images: list[Image]) -> list[Image]:
     ]
 
 
-def select_all(mysql: MySQL) -> list[Next]:
-    articles: list[Next] = []
-    articles_sql = articles_query()
-    results: list[Next] = run_sql(articles_sql, mysql, None)
+def select_all(mysql: MySQL) -> list[Articles]:
+    articles: list[Articles] = []
 
-    for row in results:
-        article = Next(row["id"], row["chapter"], row["title"])
+    articles_sql = articles_query()
+    articles_results: list[Articles] = run_sql(articles_sql, mysql, None)
+
+    images_sql = images_query()
+    image_result: list[Image] = run_sql(images_sql, mysql, None)
+
+    next_sql = articles_query()
+    next_result: list[Article] = run_sql(next_sql, mysql, None)
+
+    for row in articles_results:
+        article = Articles(
+            row["id"],
+            row["chapter"],
+            row["title"],
+            map_images(image_result)[0],
+            getNextChapter(row["chapter"], next_result),
+        )
         articles.append(article)
     return articles
 
 
 def show(id: str, mysql: MySQL) -> Optional[Article]:
-    article_sql = article_query()
     values = [id]
+
+    article_sql = article_query()
     article_result: Article = run_sql(article_sql, mysql, values)[0]
 
     section_sql = section_query()

@@ -35,6 +35,18 @@ class Next:
 
 
 @dataclass
+class Articles:
+    url: str
+    chapter: int
+    title: str
+    image: Image
+    next_url: Optional[Next]
+
+    def __getitem__(self, key: str):
+        return getattr(self, key)
+
+
+@dataclass
 class Article:
     id: str
     chapter: int

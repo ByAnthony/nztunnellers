@@ -22,6 +22,19 @@ def section_query() -> str:
         WHERE article_section_join.article_id=%s"""
 
 
+def images_query() -> str:
+    return """SELECT
+        article_image.file AS file
+        , article_image.title AS title
+        , article_image.photographer AS photographer
+        , article_image.reference AS reference
+        , article_image.alt AS alt
+
+        FROM article_image
+        JOIN article_image_join ON article_image_join.image_id=article_image.id
+    """
+
+
 def image_query() -> str:
     return """SELECT
         article_image.file AS file

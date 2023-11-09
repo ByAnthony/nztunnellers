@@ -17,6 +17,14 @@ export type Next = {
     title: string,
 }
 
+export type Articles = {
+    url: string,
+    chapter: number,
+    title: string,
+    image: Image,
+    nextUrl: Next | null,
+}
+
 export type Article = {
     id: string,
     chapter: number,
