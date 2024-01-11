@@ -52,7 +52,6 @@ def select_all(mysql: MySQL) -> list[ArticleReference]:
 
     next_sql = next_article_query()
     next_result: list[Article] = run_sql(next_sql, mysql, None)
-    print(image_result)
 
     for index, row in enumerate(articles_results):
         article = ArticleReference(
