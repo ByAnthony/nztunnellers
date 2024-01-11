@@ -5,10 +5,10 @@ from dacite import from_dict
 from ..models.helpers.article_helpers import getNextChapter
 
 
-from ..models.article import Article, Articles, Section, Image
+from ..models.article import Article, ArticleReference, File, Section, Image
 from ..repositories.queries.article_query import (
     article_query,
-    articles_query,
+    next_article_query,
     images_query,
     section_query,
     image_query,
@@ -16,6 +16,12 @@ from ..repositories.queries.article_query import (
 
 from ..db.run_sql import run_sql
 from flask_mysqldb import MySQL
+
+
+def get_images(images: list[File], position: int) -> str:
+    if 0 <= position < len(images):
+        return images[position].get("file")  # type: ignore
+    return ""
 
 
 def map_sections(sections: list[Section]) -> list[Section]:
@@ -35,24 +41,25 @@ def map_images(images: list[Image]) -> list[Image]:
     ]
 
 
-def select_all(mysql: MySQL) -> list[Articles]:
-    articles: list[Articles] = []
+def select_all(mysql: MySQL) -> list[ArticleReference]:
+    articles: list[ArticleReference] = []
 
-    articles_sql = articles_query()
-    articles_results: list[Articles] = run_sql(articles_sql, mysql, None)
+    articles_sql = next_article_query()
+    articles_results: list[ArticleReference] = run_sql(articles_sql, mysql, None)
 
     images_sql = images_query()
-    image_result: list[Image] = run_sql(images_sql, mysql, None)
+    image_result: list[File] = run_sql(images_sql, mysql, None)
 
-    next_sql = articles_query()
+    next_sql = next_article_query()
     next_result: list[Article] = run_sql(next_sql, mysql, None)
+    print(image_result)
 
-    for row in articles_results:
-        article = Articles(
+    for index, row in enumerate(articles_results):
+        article = ArticleReference(
             row["id"],
             row["chapter"],
             row["title"],
-            map_images(image_result)[0],
+            get_images(image_result, index),
             getNextChapter(row["chapter"], next_result),
         )
         articles.append(article)
@@ -68,7 +75,7 @@ def show(id: str, mysql: MySQL) -> Optional[Article]:
     section_sql = section_query()
     section_result: list[Section] = run_sql(section_sql, mysql, values)
 
-    next_sql = articles_query()
+    next_sql = next_article_query()
     next_result: list[Article] = run_sql(next_sql, mysql, None)
 
     image_sql = image_query()

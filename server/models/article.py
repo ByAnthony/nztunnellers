@@ -35,11 +35,19 @@ class Next:
 
 
 @dataclass
-class Articles:
+class File:
+    file: str
+
+    def __getitem__(self, key: str):
+        return getattr(self, key)
+
+
+@dataclass
+class ArticleReference:
     url: str
     chapter: int
     title: str
-    image: Image
+    image: str
     next_url: Optional[Next]
 
     def __getitem__(self, key: str):

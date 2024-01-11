@@ -1,9 +1,18 @@
+import { useEffect } from 'react';
 import { useGetAllHistoryArticleLinkQuery } from '../../redux/slices/historySlice';
 import { Menu } from '../Menu/Menu';
 
 import STYLES from './HomePage.module.scss';
 
 export function HomePage() {
+  useEffect(() => {
+    window.addEventListener('scroll', () => {
+      const scrollPosition = window.scrollY;
+      const translateValue = `translateX(${-scrollPosition}px)`;
+      document.getElementById('chapterCards')!.style.transform = translateValue;
+    });
+  });
+
   const {
     data, error, isLoading, isSuccess,
   } = useGetAllHistoryArticleLinkQuery();
@@ -19,32 +28,32 @@ export function HomePage() {
         <Menu />
         { isLoading }
         { isSuccess && (
-        <div className={STYLES.main}>
-            {data.map((article) => {
-              const divStyle = {
-                backgroundImage: `url(../images/history/${article.image.file})`,
-                backgroundSize: 'cover',
-              };
+          <div className={STYLES['homepage-container']}>
+            <h2>History of the Company</h2>
+            <div className={STYLES['chapter-cards']} id="chapterCards">
+              {data.map((article) => {
+                const divStyle = {
+                  backgroundImage: `url(../images/history/${article.image})`,
+                  backgroundSize: 'cover',
+                };
 
-              return (
-                <div className={STYLES['link-container']} key={data.indexOf(article)} style={divStyle}>
-                  <div className={STYLES.test}>
+                return (
+                  <div className={STYLES['chapter-card']} key={data.indexOf(article)} style={divStyle}>
                     <a
                       href={`/history/${article.url}`}
                       className={STYLES['link-button']}
                       aria-label={`Go to Chapter ${article.chapter}: ${article.title.replace('\\', ' ')}`}
                     >
                       <div>
-                        <p>History of the Company</p>
+                        <p>{article.chapter}</p>
                         <span>{article.title.replace('\\', ' ')}</span>
-                        <p>{`Chapter ${article.chapter}`}</p>
                       </div>
                     </a>
                   </div>
-                </div>
-              );
-            })}
-        </div>
+                );
+              })}
+            </div>
+          </div>
         )}
         {/* <Footer /> */}
       </div>

@@ -60,7 +60,8 @@ def tunneller(id: int):
 def article_list():
     get_articles = article_repository.select_all(mysql)
     article = json.dumps(get_articles, cls=JSONEncoder, indent=4)
-    return article
+    camelized_data_for_ts: str = underscore_to_camel(article)
+    return camelized_data_for_ts
 
 
 @app.route("/history/<id>", methods=["GET"])
