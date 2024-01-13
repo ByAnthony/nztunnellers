@@ -1,18 +1,10 @@
-import { useEffect } from 'react';
+import { Footer } from '../Footer/Footer';
 import { useGetAllHistoryArticleLinkQuery } from '../../redux/slices/historySlice';
 import { Menu } from '../Menu/Menu';
 
 import STYLES from './HomePage.module.scss';
 
 export function HomePage() {
-  useEffect(() => {
-    window.addEventListener('scroll', () => {
-      const scrollPosition = window.scrollY;
-      const translateValue = `translateX(${-scrollPosition}px)`;
-      document.getElementById('chapterCards')!.style.transform = translateValue;
-    });
-  });
-
   const {
     data, error, isLoading, isSuccess,
   } = useGetAllHistoryArticleLinkQuery();
@@ -29,33 +21,38 @@ export function HomePage() {
         { isLoading }
         { isSuccess && (
           <div className={STYLES['homepage-container']}>
-            <h2>History of the Company</h2>
-            <div className={STYLES['chapter-cards']} id="chapterCards">
+            <h2 id="history">History of the Company</h2>
+            <div className={STYLES['chapter-cards']}>
               {data.map((article) => {
                 const divStyle = {
                   backgroundImage: `url(../images/history/${article.image})`,
                   backgroundSize: 'cover',
+                  backgroundPosition: 'center center',
                 };
 
                 return (
-                  <div className={STYLES['chapter-card']} key={data.indexOf(article)} style={divStyle}>
-                    <a
-                      href={`/history/${article.url}`}
-                      className={STYLES['link-button']}
-                      aria-label={`Go to Chapter ${article.chapter}: ${article.title.replace('\\', ' ')}`}
-                    >
-                      <div>
-                        <p>{article.chapter}</p>
-                        <span>{article.title.replace('\\', ' ')}</span>
+                  <a
+                    href={`/history/${article.url}`}
+                    className={STYLES['link-button']}
+                    aria-label={`Go to Chapter ${article.chapter}: ${article.title.replace('\\', ' ')}`}
+                  >
+                    <div className={STYLES['chapter-card']} key={data.indexOf(article)} style={divStyle}>
+                      <div className={STYLES['chapter-card-dimmer']}>
+                        <div className={STYLES['chapter-card-content']}>
+                          <div>
+                            <p>{article.title.replace('\\', ' ')}</p>
+                            <span>{`Chapter ${article.chapter}`}</span>
+                          </div>
+                        </div>
                       </div>
-                    </a>
-                  </div>
+                    </div>
+                  </a>
                 );
               })}
             </div>
           </div>
         )}
-        {/* <Footer /> */}
+        <Footer />
       </div>
     );
   }

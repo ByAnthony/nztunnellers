@@ -1,6 +1,7 @@
 @use 'src/index.scss';
 
 .homepage {
+  margin: 0 auto;
 }
 
 .homepage-container {
@@ -15,11 +16,52 @@
   flex-direction: row;
   flex-wrap: nowrap;
   gap: index.$m-margin;
-  overflow: auto;
+  overflow-x: auto;
 }
 
 .chapter-card {
-  width: 500px;
-  height: 200px;
+  width: 300px;
+  height: 300px;
+  border: 1px solid rgb(64, 66, 67);
   border-radius: index.$border-radius;
+  text-align: center;
+  transition: border-bottom 0.9s ease-in-out, border-bottom 0.9s ease-in-out,
+    border 0.9s ease-in-out, border 0.9s ease-in-out,
+    background-color 0.9s ease-in-out, background-color 0.9s ease-in-out;
+
+  &:hover {
+    border: 1px solid index.$secondary-color;
+  }
+}
+
+.chapter-card-dimmer {
+  height: 300px;
+  width: 300px;
+  border-radius: 6.5px;
+  background-color: rgba(44, 46, 47, 0.9);
+  transition: border-bottom 0.9s ease-in-out, border-bottom 0.9s ease-in-out,
+    border 0.9s ease-in-out, border 0.9s ease-in-out,
+    background-color 0.9s ease-in-out, background-color 0.9s ease-in-out;
+
+  &:hover {
+    background-color: rgba(29, 31, 32, 0.85);
+  }
+}
+
+.chapter-card-content {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+
+  div > p {
+    font-weight: 400;
+    color: index.$secondary-color;
+  }
+
+  div > span {
+    font-weight: 400;
+    color: index.$secondary-color;
+  }
 }

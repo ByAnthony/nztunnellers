@@ -9,7 +9,7 @@ export const historyApi = createApi({
   endpoints: (builder) => ({
     getAllHistoryArticleLink: builder.query<Array<Articles>, void>({
       query: () => ({
-        url: 'history/',
+        url: '/',
       }),
     }),
     getHistoryArticleById: builder.query<Article, string>({

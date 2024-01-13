@@ -56,7 +56,7 @@ def tunneller(id: int):
     return camelized_data_for_ts
 
 
-@app.route("/history/", methods=["GET"])
+@app.route("/", methods=["GET"])
 def article_list():
     get_articles = article_repository.select_all(mysql)
     article = json.dumps(get_articles, cls=JSONEncoder, indent=4)
