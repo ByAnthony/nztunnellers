@@ -21,7 +21,13 @@ export function HomePage() {
         { isLoading }
         { isSuccess && (
           <div className={STYLES['homepage-container']}>
-            <h2 id="history">History of the Company</h2>
+            <h2 id="history">
+              <span>
+                History
+                <span>of the</span>
+              </span>
+              Company
+            </h2>
             <div className={STYLES['chapter-cards-wrapper']}>
               <div className={STYLES['chapter-cards']}>
                 {data.map((article) => {
@@ -29,6 +35,10 @@ export function HomePage() {
                     backgroundImage: `url(../images/history/${article.image})`,
                     backgroundSize: 'cover',
                     backgroundPosition: 'center center',
+                  };
+                  const splitTitle = (string: string) => {
+                    const split = string.split('\\');
+                    return split;
                   };
                   return (
                     <a
@@ -40,8 +50,9 @@ export function HomePage() {
                         <div className={STYLES['chapter-card-dimmer']}>
                           <div className={STYLES['chapter-card-content']}>
                             <div>
-                              <p>{article.title.replace('\\', ' ')}</p>
-                              <span>{`Chapter ${article.chapter}`}</span>
+                              <span className={STYLES['title-line-1']}>{ splitTitle(article.title)[0] }</span>
+                              <span className={STYLES['title-line-2']}>{ splitTitle(article.title)[1] }</span>
+                              <span className={STYLES['title-line-3']}>{`Chapter ${article.chapter}`}</span>
                             </div>
                           </div>
                         </div>
