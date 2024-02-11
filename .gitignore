@@ -5,9 +5,12 @@
 **/.pnp
 .pnp.js
 
-# testing
-/coverage
+# cache
+.mypy_cache
 .pytest_cache
+
+# coverage
+/client/coverage
 
 # production
 **/build
@@ -18,12 +21,9 @@
 .env.development.local
 .env.test.local
 .env.production.local
-venv
-.coverage
+**/venv
+/server/.coverage
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 *.pyc
-
-# coverage
-/client/coverage
