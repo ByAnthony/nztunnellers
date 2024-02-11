@@ -24,7 +24,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px dashed index.$primary-light-color;
+    border-bottom: 1px solid index.$primary-light-color;
 
     @include index.tablet {
       padding-top: index.$m-margin;
