@@ -24,7 +24,7 @@ describe('useGetAllHistoryArticleLinkQuery', () => {
 
   beforeEach(() => {
     fetchMock.resetMocks();
-    fetchMock.mockOnceIf('http://localhost:5000/history/', () => Promise.resolve({
+    fetchMock.mockOnceIf('http://localhost:5000/', () => Promise.resolve({
       status: 200,
       body: JSON.stringify({ data }),
     }));
