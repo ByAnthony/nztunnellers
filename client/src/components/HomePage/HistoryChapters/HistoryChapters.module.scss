@@ -1,0 +1,78 @@
+@use 'src/index.scss';
+
+.chapter-cards-wrapper {
+    padding: index.$l-margin 0 index.$base-margin 0;
+    height: 325px;
+    overflow: hidden;
+    border-radius: index.$border-radius;
+    background-color: index.$primary-medium-color;
+  }
+
+  .chapter-cards {
+    margin: 0 auto;
+    padding: 0 index.$l-margin;
+    display: flex;
+    height: 390px;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: index.$m-margin;
+    overflow-x: auto;
+  }
+
+  .chapter-card {
+    height: 300px;
+    width: 350px;
+    border: 1px solid rgb(64, 66, 67);
+    border-radius: index.$border-radius;
+    text-align: center;
+    transition: border-bottom 0.9s ease-in-out, border-bottom 0.9s ease-in-out,
+      border 0.9s ease-in-out, border 0.9s ease-in-out,
+      background-color 0.9s ease-in-out, background-color 0.9s ease-in-out;
+
+    &:hover {
+      border: 1px solid index.$secondary-color;
+    }
+  }
+
+  .chapter-card-dimmer {
+    height: 300px;
+    width: 350px;
+    border-radius: 6.5px;
+    background-color: rgba(44, 46, 47, 0.9);
+    transition: border-bottom 0.9s ease-in-out, border-bottom 0.9s ease-in-out,
+      border 0.9s ease-in-out, border 0.9s ease-in-out,
+      background-color 0.9s ease-in-out, background-color 0.9s ease-in-out;
+
+    &:hover {
+      background-color: rgba(29, 31, 32, 0.85);
+    }
+  }
+
+  .chapter-card-content {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+
+    .title-line-1 {
+      font-size: 1.9rem;
+      font-weight: 200;
+      color: index.$secondary-color;
+    }
+
+    .title-line-2 {
+      display: block;
+      font-size: 1.9rem;
+      font-weight: 500;
+      color: index.$secondary-color;
+    }
+
+    .title-line-3 {
+      display: block;
+      padding-top: index.$m-margin;
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: index.$secondary-color;
+    }
+  }
