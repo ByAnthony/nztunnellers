@@ -28,29 +28,27 @@ export function Timeline() {
         { isLoading }
         <Menu />
         { isSuccess && (
-          <>
-            <div className={STYLES.timeline}>
-              <div className={STYLES.header}>
-                <div className={STYLES.link}>
-                  <a href="/tunnellers">Tunnellers</a>
-                  <span>/</span>
-                  <a href={`/tunnellers/${tunnellerId}`}>{`${data.summary.name.forename} ${data.summary.name.surname}`}</a>
-                </div>
-                <div className={STYLES['main-title']}>
-                  <Title title={'World War I\\Timeline'} />
-                </div>
+          <div className={STYLES.timeline}>
+            <div className={STYLES.header}>
+              <div className={STYLES.link}>
+                <a href="/tunnellers">Tunnellers</a>
+                <span>/</span>
+                <a href={`/tunnellers/${tunnellerId}`}>{`${data.summary.name.forename} ${data.summary.name.surname}`}</a>
               </div>
-              <div className={STYLES.events}>
-                <div className={STYLES.line}>
-                  <TimelineEvents
-                    militaryYears={data.militaryYears}
-                    postServiceYears={data.postServiceYears}
-                  />
-                </div>
+              <div className={STYLES['main-title']}>
+                <Title title={'World War I\\Timeline'} />
+              </div>
+            </div>
+            <div className={STYLES.events}>
+              <div className={STYLES.line}>
+                <TimelineEvents
+                  militaryYears={data.militaryYears}
+                  postServiceYears={data.postServiceYears}
+                />
               </div>
             </div>
             <HowToCite id={tunnellerId} summary={data.summary} today={today} timeline />
-          </>
+          </div>
         )}
         <Footer />
       </>
