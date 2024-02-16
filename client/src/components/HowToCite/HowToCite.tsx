@@ -26,13 +26,61 @@ type HowToCiteTitleProps = {
 
 function HowToCiteUrl({ id, title, timeline }: HowToCiteUrlProps) {
   if (id && !timeline) {
-    return <span>{`URL: www.nztunnellers.com/tunnellers/${id}.`}</span>;
+    return (
+      <span>
+        URL:
+        {' '}
+        www.
+        <wbr />
+        nztunnellers.
+        <wbr />
+        .com/
+        <wbr />
+        tunnellers/
+        <wbr />
+        {id}
+        .
+      </span>
+    );
   }
   if (id && timeline) {
-    return <span>{`URL: www.nztunnellers.com/tunnellers/${id}/wwi-timeline.`}</span>;
+    return (
+      <span>
+        URL:
+        {' '}
+        www.
+        <wbr />
+        nztunnellers
+        <wbr />
+        .com/
+        <wbr />
+        tunnellers/
+        <wbr />
+        {id}
+        /
+        <wbr />
+        wwi-
+        <wbr />
+        timeline.
+      </span>
+    );
   }
   const articleTitle = title?.replace(/\s+|\\/g, '-').replace(/&/g, 'and').toLowerCase();
-  return <span>{`URL: www.nztunnellers.com/history/${articleTitle}.`}</span>;
+  return (
+    <span>
+      URL:
+      {' '}
+      www.
+      <wbr />
+      nztunnellers
+      <wbr />
+      .com/
+      <wbr />
+      history/
+      <wbr />
+      {articleTitle}
+    </span>
+  );
 }
 
 function HowToCiteTitle({ tunneller, title, timeline }: HowToCiteTitleProps) {
