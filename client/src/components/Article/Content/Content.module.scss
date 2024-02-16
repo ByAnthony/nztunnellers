@@ -41,12 +41,14 @@
 
   .title {
     margin-top: -15px;
+    margin-bottom: index.$xxs-margin;
     font-size: 1.15rem;
     font-weight: 500;
     color: index.$secondary-color;
 
     @include index.tablet {
       margin-top: -30px;
+      margin-bottom: 12.5px;
       font-size: 1.25rem;
     }
 
