@@ -29,12 +29,12 @@ export function HistoryChapters({ articles }: Props) {
               return split;
             };
             return (
-              <a
-                href={`/history/${article.url}`}
-                className={STYLES['link-button']}
-                aria-label={`Go to Chapter ${article.chapter}: ${article.title.replace('\\', ' ')}`}
-              >
-                <div className={STYLES['chapter-card']} key={articles.indexOf(article)} style={divStyle}>
+              <div className={STYLES['chapter-card']} key={articles.indexOf(article)} style={divStyle}>
+                <a
+                  href={`/history/${article.url}`}
+                  className={STYLES['link-button']}
+                  aria-label={`Go to Chapter ${article.chapter}: ${article.title.replace('\\', ' ')}`}
+                >
                   <div className={STYLES['chapter-card-dimmer']}>
                     <div className={STYLES['chapter-card-content']}>
                       <div>
@@ -44,8 +44,8 @@ export function HistoryChapters({ articles }: Props) {
                       </div>
                     </div>
                   </div>
-                </div>
-              </a>
+                </a>
+              </div>
             );
           })}
         </div>
