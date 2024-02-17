@@ -9,6 +9,15 @@
   margin-top: index.$xl-margin;
   width: index.$inner-width;
 
+  h1 {
+    margin: index.$xxxl-margin 0;
+    line-height: index.$xl-margin;
+
+    span {
+      font-weight: 200;
+    }
+  }
+
   h2 {
     padding-bottom: index.$base-margin;
     font-size: 5rem;
@@ -29,4 +38,8 @@
       }
     }
   }
+}
+
+.tunnellers-story {
+  margin-top: index.$xxl-margin;
 }

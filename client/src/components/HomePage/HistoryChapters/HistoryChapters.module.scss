@@ -1,5 +1,9 @@
 @use 'src/index.scss';
 
+.history-chapter {
+  margin-top: index.$xxxl-margin;
+}
+
 .chapter-cards-wrapper {
     padding: index.$l-margin 0 index.$base-margin 0;
     height: 325px;

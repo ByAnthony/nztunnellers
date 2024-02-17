@@ -22,7 +22,23 @@ export function HomePage() {
         { isLoading }
         { isSuccess && (
           <div className={STYLES['homepage-container']}>
+            <h1>
+              <span>The </span>
+              Kiwis
+              <span> who </span>
+              fought underground
+              <span> during World War I</span>
+            </h1>
             <HistoryChapters articles={data} />
+            <div className={STYLES['tunnellers-story']}>
+              <h2>
+                <span>
+                  Stories
+                  <span>of the</span>
+                </span>
+                Tunnellers
+              </h2>
+            </div>
           </div>
         )}
         <Footer />

@@ -8,11 +8,11 @@ type Props = {
 
 export function HistoryChapters({ articles }: Props) {
   return (
-    <>
+    <div className={STYLES['history-chapter']}>
       <h2 id="history">
         <span>
           History
-          <span>of the</span>
+          <span>of their</span>
         </span>
         Company
       </h2>
@@ -50,6 +50,6 @@ export function HistoryChapters({ articles }: Props) {
           })}
         </div>
       </div>
-    </>
+    </div>
   );
 }
