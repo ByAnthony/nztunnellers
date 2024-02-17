@@ -32,5 +32,11 @@
       width: 100%;
       border-radius: index.$border-radius;
     }
+
+    @include index.tablet {
+      margin: auto;
+      width: 50%;
+      margin-bottom: index.$xl-margin;
+    }
   }
 }
