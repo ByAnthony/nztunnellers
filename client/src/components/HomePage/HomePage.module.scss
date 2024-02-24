@@ -40,6 +40,59 @@
   }
 }
 
+.data-company {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  p {
+    font-size: 5rem;
+    font-weight: 500;
+    line-height: 0;
+
+    span {
+      color: index.$primary-dark-color;
+      text-shadow: 1px 0 0 index.$text-color,
+        0 1px 0 index.$text-color,
+        -1px 0 0 index.$text-color,
+        0 -1px 0 index.$text-color;
+    }
+  }
+
+  .year-fact {
+    display: inline-block;
+
+    svg {
+      shape-outside: url(#circlePath);
+      float: left;
+      margin-right: 20px;
+
+    }
+
+    .inside-text {
+      font-size: 3.5rem;
+      font-weight: 700;
+      fill: index.$text-color;
+    }
+
+    .established {
+      font-size: 1.1rem;
+      letter-spacing: 2.45px;
+      fill: index.$text-color;
+    }
+
+    .disbanded {
+      font-size: 1.1rem;
+      letter-spacing: 3.1px;
+      fill: index.$text-color;
+    }
+
+    .circle-1919 {
+      margin-left: -145px;
+    }
+  }
+}
+
 .tunnellers-story {
   margin-top: index.$xxl-margin;
 }

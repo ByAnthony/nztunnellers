@@ -12,7 +12,7 @@ export function HistoryChapters({ articles }: Props) {
       <h2 id="history">
         <span>
           History
-          <span>of their</span>
+          <span>of the</span>
         </span>
         Company
       </h2>
