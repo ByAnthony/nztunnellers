@@ -124,6 +124,6 @@ class MilitaryYears:
     enlistment: Enlistment
     embarkation_unit: EmbarkationUnit
     transport_uk: Transport
-    front_events: list[Events]
+    front_events: dict[str, list[Events]]
     end_of_service: EndOfService
     medals: list[Medal]

@@ -59,6 +59,7 @@ export type Enlistment = {
     district: string | null,
     alias: string | null,
     transferredToTunnellers: Transferred | null,
+    ageAtEnlistment: number | null,
 }
 
 export type Training = {

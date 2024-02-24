@@ -34,7 +34,7 @@ export function HomePage() {
                 seven
                 <span> reinforcements</span>
               </p>
-              <div className={STYLES['year-fact']}>
+              <div className={STYLES['important-dates']}>
                 <svg width="300" height="300">
                   <text>
                     <textPath xlinkHref="#circlePath" className={STYLES.established}>
@@ -43,9 +43,9 @@ export function HomePage() {
                     </textPath>
                   </text>
                   <path id="circlePath" d="M 150, 150 m -100, 0 a 100,100 0 1,0 200,0 a 100,100 0 1,0 -200,0" fill="none" />
-                  <text x="150" y="150" textAnchor="middle" alignmentBaseline="middle" className={STYLES['inside-text']}>1915</text>
+                  <text x="150" y="150" textAnchor="middle" alignmentBaseline="middle" className={STYLES['inside-circle-text']}>1915</text>
                 </svg>
-                <svg width="300" height="300" className={STYLES['circle-1919']}>
+                <svg width="300" height="300" className={STYLES['disbanded-circle-container']}>
                   <path id="backgroundCircle" d="M 150, 150 m -115, 0 a 110,110 0 1,0 220,0 a 110,110 0 1,0 -220,0" fill="#181A1B" />
                   <text>
                     <textPath xlinkHref="#circlePath" className={STYLES.disbanded}>
@@ -54,11 +54,17 @@ export function HomePage() {
                     </textPath>
                   </text>
                   <path id="circlePath" d="M 150, 150 m -100, 0 a 100,100 0 1,0 200,0 a 100,100 0 1,0 -200,0" fill="none" />
-                  <text x="150" y="150" textAnchor="middle" alignmentBaseline="middle" className={STYLES['inside-text']}>1919</text>
+                  <text x="150" y="150" textAnchor="middle" alignmentBaseline="middle" className={STYLES['inside-circle-text']}>1919</text>
                 </svg>
               </div>
             </div>
             <HistoryChapters articles={data} />
+            <div className={STYLES['data-tunnellers']}>
+              <p>936 men recruited in New Zealand</p>
+              <p>average age: 32</p>
+              <p>youngest: 16</p>
+              <p>oldest: 58</p>
+            </div>
             <div className={STYLES['tunnellers-story']}>
               <h2>
                 <span>

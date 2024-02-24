@@ -44,9 +44,11 @@ def tunneller_query(lang: str) -> str:
         , residence.town_name AS residence
         , {religion_col[lang]} AS religion
         , DATE_FORMAT(t.enlistment_date, '%%Y-%%m-%%d') AS enlistment_date
+        , t.enlistment_year
         , military_district.military_district_name
         , t.aka
         , DATE_FORMAT(t.posted_date, '%%Y-%%m-%%d') AS posted_date
+        , t.posted_year
         , {posted_from_corps_col[lang]} AS posted_from_corps
         , {rank_col[lang]} AS rank
         , {embarkation_unit_col[lang]} AS embarkation_unit

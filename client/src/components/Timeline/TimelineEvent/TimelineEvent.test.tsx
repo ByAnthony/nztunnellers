@@ -32,9 +32,10 @@ test('should render a timeline', () => {
     place={() => null}
     disease={undefined}
     warInjuries={undefined}
+    ageAtEnlistment={32}
   />);
 
-  expect(screen.getByText('Enlisted')).toBeInTheDocument();
+  expect(screen.getByText('Enlisted at the age of 32')).toBeInTheDocument();
   expect(screen.getByText('Main Body')).toBeInTheDocument();
 
   expect(screen.getByText('Posted')).toBeInTheDocument();
@@ -62,6 +63,7 @@ describe('TimelineEvent with killed in action', () => {
       place={() => 'Baraffles, Rebreuve-Ranchicourt'}
       disease={undefined}
       warInjuries={undefined}
+      ageAtEnlistment={null}
     />);
 
     expect(screen.getByText('Something happened that day')).toBeInTheDocument();
@@ -80,6 +82,7 @@ describe('TimelineEvent with killed in action', () => {
       place={() => null}
       disease={undefined}
       warInjuries={undefined}
+      ageAtEnlistment={null}
     />);
 
     expect(screen.getByText('Something happened that day')).toBeInTheDocument();
@@ -98,6 +101,7 @@ describe('TimelineEvent with killed in action', () => {
       place={() => 'Baraffles, Rebreuve-Ranchicourt'}
       disease={undefined}
       warInjuries={undefined}
+      ageAtEnlistment={null}
     />);
 
     expect(screen.getByText('Something happened that day')).toBeInTheDocument();
@@ -118,6 +122,7 @@ describe('TimelineEvent with died of wounds', () => {
       place={() => 'Baraffles, Rebreuve-Ranchicourt'}
       disease={undefined}
       warInjuries={undefined}
+      ageAtEnlistment={null}
     />);
 
     expect(screen.getByText('Something happened that day')).toBeInTheDocument();
@@ -138,6 +143,7 @@ describe('TimelineEvent with died of disease', () => {
       place={() => 'Baraffles, Rebreuve-Ranchicourt'}
       disease="Pneumonia"
       warInjuries={undefined}
+      ageAtEnlistment={null}
     />);
 
     expect(screen.getByText('Something happened that day')).toBeInTheDocument();
@@ -156,6 +162,7 @@ describe('TimelineEvent with died of disease', () => {
       place={() => null}
       disease="Pneumonia"
       warInjuries={undefined}
+      ageAtEnlistment={null}
     />);
 
     expect(screen.getByText('Something happened that day')).toBeInTheDocument();
@@ -174,6 +181,7 @@ describe('TimelineEvent with died of disease', () => {
       place={() => null}
       disease={undefined}
       warInjuries="Injuries contracted during active service"
+      ageAtEnlistment={null}
     />);
 
     expect(screen.getByText('Something happened that day')).toBeInTheDocument();
@@ -193,6 +201,7 @@ describe('TimelineEvent with died of accident', () => {
       place={() => null}
       disease={undefined}
       warInjuries={undefined}
+      ageAtEnlistment={null}
     />);
 
     expect(screen.getByText('Something happened that day')).toBeInTheDocument();
@@ -214,6 +223,7 @@ describe('TimelineEvent with buried and grave reference', () => {
       place={() => 'Baraffles, Rebreuve-Ranchicourt'}
       disease={undefined}
       warInjuries={undefined}
+      ageAtEnlistment={null}
     />);
 
     expect(screen.getByText('Something happened that day')).toBeInTheDocument();

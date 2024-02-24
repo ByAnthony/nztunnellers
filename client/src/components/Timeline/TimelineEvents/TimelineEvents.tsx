@@ -12,6 +12,7 @@ type Props = {
 
 export function TimelineEvents({ militaryYears, postServiceYears }: Props) {
   const { frontEvents } = militaryYears;
+  const { ageAtEnlistment } = militaryYears.enlistment;
   const frontEventsByYear = Object.entries(frontEvents);
 
   const place = () => {
@@ -47,6 +48,7 @@ export function TimelineEvents({ militaryYears, postServiceYears }: Props) {
                   place={place}
                   disease={disease}
                   warInjuries={warInjuries}
+                  ageAtEnlistment={ageAtEnlistment}
                 />
               </div>
             </div>

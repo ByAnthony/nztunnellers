@@ -59,7 +59,7 @@
     }
   }
 
-  .year-fact {
+  .important-dates {
     display: inline-block;
 
     svg {
@@ -69,7 +69,7 @@
 
     }
 
-    .inside-text {
+    .inside-circle-text {
       font-size: 3.5rem;
       font-weight: 700;
       fill: index.$text-color;
@@ -87,12 +87,23 @@
       fill: index.$text-color;
     }
 
-    .circle-1919 {
-      margin-left: -145px;
+    .disbanded-circle-container {
+      margin-left: -130px;
     }
   }
 }
 
+.data-tunnellers {
+  margin-top: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  p {
+    font-size: 3rem;
+  }
+}
+
 .tunnellers-story {
-  margin-top: index.$xxl-margin;
+  margin-top: index.$xxxl-margin;
 }

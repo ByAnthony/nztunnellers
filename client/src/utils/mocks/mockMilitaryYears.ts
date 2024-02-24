@@ -72,6 +72,7 @@ export const mockEnlistment: Enlistment = {
   district: 'Canterbury',
   alias: null,
   transferredToTunnellers: null,
+  ageAtEnlistment: null,
 };
 
 const mockTraining: Training = {

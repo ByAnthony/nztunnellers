@@ -6,11 +6,12 @@ type Props = {
     event: EventDetail[],
     place: () => string | null,
     disease: string | undefined,
-    warInjuries: string | undefined
+    warInjuries: string | undefined,
+    ageAtEnlistment: number | null
 }
 
 export function TimelineEvent({
-  event, place, disease, warInjuries,
+  event, place, disease, warInjuries, ageAtEnlistment,
 }: Props) {
   return (
     <>
@@ -28,6 +29,13 @@ export function TimelineEvent({
         const isTitleBuried = title === 'Buried';
         const isTitleGraveReference = title === 'Grave reference';
 
+        const titleWithAgeAtEnlistment = (age: number | null) => {
+          if (age !== null) {
+            return `${title} at the age of ${age}`;
+          }
+          return title;
+        };
+
         if (title) {
           if (isTitleCompany) {
             return (
@@ -43,7 +51,7 @@ export function TimelineEvent({
           if (isTitleEnlisted || isTitlePosted) {
             return (
               <div key={event.indexOf(eventDetail)} className={STYLES['main-event']}>
-                <p>{title}</p>
+                <p>{titleWithAgeAtEnlistment(ageAtEnlistment)}</p>
                 <span>{eventDetail.description}</span>
               </div>
             );

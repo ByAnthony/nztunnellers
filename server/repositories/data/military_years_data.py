@@ -5,6 +5,7 @@ from ...models.death import Death
 from ...models.helpers.translator_helpers import translate_town
 from ...models.helpers.date_helpers import (
     format_birth_and_death_date,
+    format_date_to_year,
     get_optional_date,
 )
 from ...models.helpers.military_years_helpers import (
@@ -40,6 +41,26 @@ from ...models.military_years import (
 from ...models.tunneller import Tunneller
 
 
+def get_age_at_enlistment(
+    enlistment_date: str, posted_date: str, tunneller: Tunneller
+) -> Optional[int]:
+    if enlistment_date:
+        return get_age(
+            format_date_to_year(enlistment_date),
+            enlistment_date,
+            tunneller["birth_year"],
+            tunneller["birth_date"],
+        )
+    if posted_date:
+        return get_age(
+            format_date_to_year(posted_date),
+            enlistment_date,
+            tunneller["birth_year"],
+            tunneller["birth_date"],
+        )
+    return None
+
+
 def enlistment(tunneller: Tunneller, lang: str) -> Enlistment:
     return Enlistment(
         tunneller["serial"],
@@ -50,6 +71,11 @@ def enlistment(tunneller: Tunneller, lang: str) -> Enlistment:
         get_transferred_to_tunnellers(
             get_optional_date(tunneller["posted_date"], lang),
             tunneller["posted_from_corps"],
+        ),
+        get_age_at_enlistment(
+            tunneller["enlistment_date"],
+            tunneller["posted_date"],
+            tunneller,
         ),
     )
 
