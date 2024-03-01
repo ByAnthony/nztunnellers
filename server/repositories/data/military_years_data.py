@@ -48,14 +48,14 @@ def get_age_at_enlistment(
         return get_age(
             format_date_to_year(enlistment_date),
             enlistment_date,
-            tunneller["birth_year"],
+            format_date_to_year(tunneller["birth_date"]),
             tunneller["birth_date"],
         )
     if posted_date:
         return get_age(
             format_date_to_year(posted_date),
             enlistment_date,
-            tunneller["birth_year"],
+            format_date_to_year(tunneller["birth_date"]),
             tunneller["birth_date"],
         )
     return None
@@ -105,7 +105,7 @@ def death_war(tunneller: Tunneller, lang: str) -> Optional[Death]:
     return get_death_war(
         tunneller["death_type"],
         format_birth_and_death_date(
-            tunneller["death_year"],
+            format_date_to_year(tunneller["death_date"]),
             tunneller["death_date"],
             lang,
         ),
@@ -125,9 +125,9 @@ def death_war(tunneller: Tunneller, lang: str) -> Optional[Death]:
             tunneller["grave"],
         ),
         get_age(
-            tunneller["death_year"],
+            format_date_to_year(tunneller["death_date"]),
             tunneller["death_date"],
-            tunneller["birth_year"],
+            format_date_to_year(tunneller["birth_date"]),
             tunneller["birth_date"],
         ),
     )

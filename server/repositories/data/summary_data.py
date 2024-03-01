@@ -2,6 +2,9 @@
 from ...models.roll import Name
 from ...models.tunneller import Tunneller
 from ...models.summary import Summary
+from ...models.helpers.date_helpers import (
+    format_date_to_year,
+)
 
 
 def summary(tunneller: Tunneller) -> Summary:
@@ -10,6 +13,6 @@ def summary(tunneller: Tunneller) -> Summary:
             tunneller["forename"],
             tunneller["surname"],
         ),
-        tunneller["birth_year"],
-        tunneller["death_year"],
+        format_date_to_year(tunneller["birth_date"]),
+        format_date_to_year(tunneller["death_date"]),
     )

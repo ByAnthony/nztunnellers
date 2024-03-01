@@ -1,5 +1,8 @@
 # -*- coding: utf-8 -*-
-from ...models.helpers.date_helpers import format_birth_and_death_date
+from ...models.helpers.date_helpers import (
+    format_birth_and_death_date,
+    format_date_to_year,
+)
 from ...models.helpers.origins_helpers import get_nz_resident, get_parent
 from ...models.origins import BirthDetails, Origins, Parents
 from ...models.tunneller import Tunneller
@@ -9,7 +12,7 @@ def origins(tunneller: Tunneller, lang: str) -> Origins:
     return Origins(
         BirthDetails(
             format_birth_and_death_date(
-                tunneller["birth_year"], tunneller["birth_date"], lang
+                format_date_to_year(tunneller["birth_date"]), tunneller["birth_date"], lang
             ),
             tunneller["birth_country"],
         ),

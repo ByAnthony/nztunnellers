@@ -30,7 +30,6 @@ def tunneller_query(lang: str) -> str:
         , t.aka
         , t.serial
         , DATE_FORMAT(t.birth_date, '%%Y-%%m-%%d') AS birth_date
-        , t.birth_year
         , {birth_country_col[lang]} AS birth_country
         , t.mother_name
         , {mother_origin_col[lang]} AS mother_origin
@@ -44,11 +43,9 @@ def tunneller_query(lang: str) -> str:
         , residence.town_name AS residence
         , {religion_col[lang]} AS religion
         , DATE_FORMAT(t.enlistment_date, '%%Y-%%m-%%d') AS enlistment_date
-        , t.enlistment_year
         , military_district.military_district_name
         , t.aka
         , DATE_FORMAT(t.posted_date, '%%Y-%%m-%%d') AS posted_date
-        , t.posted_year
         , {posted_from_corps_col[lang]} AS posted_from_corps
         , {rank_col[lang]} AS rank
         , {embarkation_unit_col[lang]} AS embarkation_unit
@@ -68,7 +65,6 @@ def tunneller_query(lang: str) -> str:
         , {transferred_to_col[lang]} AS transferred_to_unit
         , death_type.death_type_en AS death_type
         , DATE_FORMAT(t.death_date, '%%Y-%%m-%%d') AS death_date
-        , t.death_year
         , {death_location_col[lang]} AS death_location
         , death_town.town_name AS death_town
         , {death_country_col[lang]} AS death_country
