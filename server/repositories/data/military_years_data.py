@@ -22,7 +22,6 @@ from ...models.helpers.military_years_helpers import (
     get_training,
     get_transferred_to,
     get_transferred_to_tunnellers,
-    get_transport_nz,
     get_transport_reference,
     map_medals,
     map_front_events,
@@ -145,7 +144,7 @@ def end_of_service(tunneller: Tunneller, lang: str) -> EndOfService:
         get_boolean(tunneller["has_deserted"]),
         transferred(tunneller, lang),
         death_war(tunneller, lang),
-        get_transport_nz(
+        Transport(
             get_transport_reference(tunneller["transport_nz_ref"], lang),
             tunneller["transport_nz_vessel"],
             get_optional_date(tunneller["transport_nz_start"], lang),

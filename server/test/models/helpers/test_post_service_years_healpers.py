@@ -53,5 +53,22 @@ class TestGetDeathWar:
             False,
         )
 
+    def test_if_death_type_is_none(self):
+        assert get_death(
+            None,
+            Date("1928", "09-12"),
+            DeathPlace(None, "Arras", "France"),
+            DeathCause(None, "Heart attack"),
+            Cemetery("Cemetery Name", "Auckland", "New Zealand", "Gr. Ref"),
+            69,
+        ) == DeathAfterService(
+            Date("1928", "09-12"),
+            DeathPlace(None, "Arras", "France"),
+            DeathCause(None, "Heart attack"),
+            Cemetery("Cemetery Name", "Auckland", "New Zealand", "Gr. Ref"),
+            69,
+            None,
+        )
+
     def test_if_death_data_does_not_exist(self):
         assert get_death(None, None, None, None, None, None) is None

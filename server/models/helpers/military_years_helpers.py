@@ -25,7 +25,6 @@ from ..military_years import (
     Training,
     Transferred,
     TransferredToTunnellers,
-    Transport,
 )
 
 
@@ -59,26 +58,6 @@ def get_section(section: Optional[str], lang: str) -> Optional[str]:
 
 def get_transport_reference(transport_reference: str, lang: str) -> str:
     return translate_transport_ref(transport_reference, lang)
-
-
-def get_transport_nz(
-    transport_reference: str,
-    vessel: str,
-    departure_date: Optional[Date],
-    departure_port: Optional[str],
-    arrival_date: Optional[Date],
-    arrival_port: Optional[str],
-) -> Optional[Transport]:
-    if transport_reference and vessel and departure_date is not None:
-        return Transport(
-            transport_reference,
-            vessel,
-            departure_date,
-            departure_port,
-            arrival_date,
-            arrival_port,
-        )
-    return None
 
 
 def get_boolean(data: Optional[int]) -> bool:

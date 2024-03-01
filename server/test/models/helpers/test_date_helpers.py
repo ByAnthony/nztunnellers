@@ -36,7 +36,7 @@ class TestFormatDateToMonth:
 
     class TestDoNotFormatDateToMonthIf:
         def test_do_not_format_date_to_month_if_date_does_not_exist(self):
-            assert format_date_to_month("1988-05-04") == "05"
+            assert format_date_to_month(None) is None
 
 
 class TestFormatDateToDay:
@@ -90,6 +90,12 @@ class TestFormatDateToDayMonthAndYear:
 
 
 class TestGetBirthDate:
+    def test_if_year_is_none_and_date_is_none_and_lang_is_en(self):
+        assert format_birth_and_death_date(None, None, "en") is None
+
+    def test_if_year_is_none_and_date_is_none_and_lang_is_fr(self):
+        assert format_birth_and_death_date(None, None, "fr") is None
+
     def test_if_year_is_none_and_lang_is_en(self):
         assert format_birth_and_death_date(None, date, "en") is None
 

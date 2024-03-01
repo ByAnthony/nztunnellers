@@ -178,3 +178,8 @@ class TestGetImageSourceBook:
         ) == ImageBook(
             [author_1, author_2], "A Study In Red", "London", "Penguins", "1962", None
         )
+
+    def test_when_no_source_book(self):
+        assert get_image_source_book(
+            [author_1, author_2], None, None, None, None, None
+        ) is None

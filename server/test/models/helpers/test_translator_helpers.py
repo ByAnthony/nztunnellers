@@ -29,11 +29,14 @@ class TestTranslateSuperscript:
                 == "1\N{MODIFIER LETTER SMALL E}\N{MODIFIER LETTER SMALL R}\N{NO-BREAK SPACE}renfort"
             )
 
-        def test_lang_is_fr_and_string_contains_e(self):
+        def test_lang_is_fr_and_string_contains_none(self):
             assert (
                 translate_superscript("2e renfort", "fr")
                 == "2\N{MODIFIER LETTER SMALL E}\N{NO-BREAK SPACE}renfort"
             )
+
+        def test_lang_is_fr_and_string_is_none(self):
+            assert translate_superscript("compagnie", "fr") == "compagnie"
 
     class TestDoNotTranslateIf:
         def test_lang_is_en(self):
