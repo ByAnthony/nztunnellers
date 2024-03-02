@@ -32,7 +32,7 @@ function HowToCiteUrl({ id, title, timeline }: HowToCiteUrlProps) {
         {' '}
         www.
         <wbr />
-        nztunnellers.
+        nztunnellers
         <wbr />
         .com/
         <wbr />
