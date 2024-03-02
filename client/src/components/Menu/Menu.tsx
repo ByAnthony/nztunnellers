@@ -32,7 +32,7 @@ export function Menu() {
         <form>
           <input type="text" id="search" name="search" placeholder="Search for a Tunneller" />
         </form>
-        <button type="submit" className={STYLES['search-form-button']}>
+        <button type="submit" aria-label="Search" className={STYLES['search-form-button']}>
           <img src="/searching_hover.png" alt="" height={18} />
         </button>
       </div>
