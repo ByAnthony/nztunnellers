@@ -19,7 +19,15 @@ exports[`HowToCite for Article renders the component correctly 1`] = `
       </em>
       , 2023 (2009), Accessed: 4 May 2023. 
       <span>
-        URL: www.nztunnellers.com/history/my-awesome-article-title.
+        URL: www.
+        <wbr />
+        nztunnellers
+        <wbr />
+        .com/
+        <wbr />
+        history/
+        <wbr />
+        my-awesome-article-title.
       </span>
     </p>
   </div>
@@ -41,7 +49,15 @@ exports[`HowToCite for Profile renders the component correctly 1`] = `
       </em>
       , 2023 (2009), Accessed: 4 May 2023. 
       <span>
-        URL: www.nztunnellers.com/tunnellers/26.
+        URL: www.
+        <wbr />
+        nztunnellers
+        <wbr />
+        .com/
+        <wbr />
+        tunnellers/
+        <wbr />
+        26.
       </span>
     </p>
   </div>
@@ -63,7 +79,19 @@ exports[`HowToCite for Timeline renders the component correctly 1`] = `
       </em>
       , 2023 (2009), Accessed: 4 May 2023. 
       <span>
-        URL: www.nztunnellers.com/tunnellers/26/wwi-timeline.
+        URL: www.
+        <wbr />
+        nztunnellers
+        <wbr />
+        .com/
+        <wbr />
+        tunnellers/
+        <wbr />
+        26/
+        <wbr />
+        wwi-
+        <wbr />
+        timeline.
       </span>
     </p>
   </div>

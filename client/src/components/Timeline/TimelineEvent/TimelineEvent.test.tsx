@@ -38,7 +38,7 @@ test('should render a timeline', () => {
   expect(screen.getByText('Enlisted at the age of 32')).toBeInTheDocument();
   expect(screen.getByText('Main Body')).toBeInTheDocument();
 
-  expect(screen.getByText('Posted')).toBeInTheDocument();
+  expect(screen.getByText(/Posted/)).toBeInTheDocument();
   expect(screen.getByText('Reinforcement')).toBeInTheDocument();
 
   expect(screen.getByText('Trained')).toBeInTheDocument();

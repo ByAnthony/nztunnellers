@@ -28,6 +28,7 @@ exports[`renders roll when data is available 1`] = `
         />
       </form>
       <button
+        aria-label="Search"
         class="search-form-button"
         type="submit"
       >

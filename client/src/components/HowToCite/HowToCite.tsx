@@ -79,6 +79,7 @@ function HowToCiteUrl({ id, title, timeline }: HowToCiteUrlProps) {
       history/
       <wbr />
       {articleTitle}
+      .
     </span>
   );
 }

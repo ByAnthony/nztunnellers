@@ -28,6 +28,7 @@ exports[`renders profile when data is available 1`] = `
         />
       </form>
       <button
+        aria-label="Search"
         class="search-form-button"
         type="submit"
       >
@@ -363,7 +364,15 @@ exports[`renders profile when data is available 1`] = `
           </em>
           , 2023 (2009), Accessed: 4 May 2023. 
           <span>
-            URL: www.nztunnellers.com/tunnellers/26.
+            URL: www.
+            <wbr />
+            nztunnellers
+            <wbr />
+            .com/
+            <wbr />
+            tunnellers/
+            <wbr />
+            26.
           </span>
         </p>
       </div>
