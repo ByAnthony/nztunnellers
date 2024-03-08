@@ -28,7 +28,7 @@ from ..models.tunneller import Tunneller
 
 def show(id: int, lang: str, mysql: MySQL) -> Optional[Tunneller]:
 
-    tunneller_sql = tunneller_query(lang)
+    tunneller_sql: str = tunneller_query(lang)
     values = [id]
     tunneller_result: Tunneller = run_sql(tunneller_sql, mysql, values)[0]
 
