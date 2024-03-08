@@ -11,7 +11,7 @@ from .models.helpers.camelize_helpers import underscore_to_camel
 from .repositories import article_repository
 from .repositories import roll_repository
 from .repositories import tunneller_repository
-from .models.tunneller import JSONEncoder
+from .models.jsonencoder import JSONEncoder
 
 app = Flask(__name__)
 CORS(

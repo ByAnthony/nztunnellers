@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
-import dataclasses
-import json
 from dataclasses import dataclass
-from typing import Any, Optional
+from typing import Optional
 
 from .summary import Summary
 from .image import Image
@@ -26,10 +24,3 @@ class Tunneller:
 
     def __getitem__(self, key: str):
         return getattr(self, key)
-
-
-class JSONEncoder(json.JSONEncoder):
-    def default(self, o: Any):
-        if dataclasses.is_dataclass(o):
-            return dataclasses.asdict(o)
-        return super().default(o)
