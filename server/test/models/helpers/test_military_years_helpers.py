@@ -1,9 +1,19 @@
 # -*- coding: utf-8 -*-
+# from unittest.mock import Mock
+
+# from ....models.tunneller import Tunneller
+# from ....models.origins import Origins
+# from ....models.post_service_years import PostServiceYears
+# from ....models.pre_war_years import PreWarYear
+# from ....models.sources import Sources
+# from ....models.summary import Summary
 from ....models.death import Cemetery, Death, DeathCause, DeathPlace
 from ....models.date import Date
 from ....models.military_years import (
     Demobilization,
     Medal,
+    # MilitaryYears,
+    # SingleEvent,
     Training,
     Transferred,
     TransferredToTunnellers,
@@ -23,6 +33,7 @@ from ....models.helpers.military_years_helpers import (
     get_transferred_to,
     get_transferred_to_tunnellers,
     get_transport_reference,
+    # map_front_events,
     map_medals,
 )
 
@@ -280,6 +291,44 @@ class TestGetAgeAtDeath:
 
     def test_get_age_if_data_is_none(self):
         assert get_age(None, None, None, None) is None
+
+
+# class TestMapFrontEvents:
+#     def test_map_front_events(self):
+#         mocked_summary = Mock(spec=Summary)
+#         mocked_origins = Mock(spec=Origins)
+#         mocked_pre_war_years = Mock(spec=PreWarYear)
+#         mocked_military_years = Mock(spec=MilitaryYears)
+#         mocked_post_service_years = Mock(spec=PostServiceYears)
+#         mocked_sources = Mock(spec=Sources)
+#         mocked_singleEvent = Mock(spec=SingleEvent)
+
+#         tunneller: Tunneller = Tunneller(
+#                 123,
+#                 mocked_summary,
+#                 mocked_origins,
+#                 mocked_pre_war_years,
+#                 mocked_military_years,
+#                 mocked_post_service_years,
+#                 mocked_sources,
+#                 None,
+#             )
+
+#         company_events: list[SingleEvent] = [
+#                 mocked_singleEvent,
+#                 mocked_singleEvent,
+#                 mocked_singleEvent,
+#                 mocked_singleEvent,
+#             ]
+
+#         tunneller_events: list[SingleEvent] = [
+#                 mocked_singleEvent,
+#                 mocked_singleEvent,
+#                 mocked_singleEvent,
+#                 mocked_singleEvent,
+#             ]
+
+#         assert map_front_events(company_events, tunneller_events, tunneller, "en") == {}
 
 
 british_war_medal = Medal(

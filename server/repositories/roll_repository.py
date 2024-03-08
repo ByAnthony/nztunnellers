@@ -10,10 +10,22 @@ from ..models.helpers.date_helpers import (
 )
 
 
+class TunnellerDB:
+    id: str
+    surname: str
+    forename: str
+    serial: str
+    birth_date: str
+    death_date: str
+
+    def __getitem__(self, key: str):
+        return getattr(self, key)
+
+
 def select_all(mysql: MySQL) -> dict[str, list[Roll]]:
 
     sql: str = roll_query()
-    results: list[Roll] = run_sql(sql, mysql, None)
+    results: list[TunnellerDB] = run_sql(sql, mysql, None)
 
     alphabet: dict[str, list[Roll]] = dict()
 
