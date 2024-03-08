@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from ..repositories.queries.roll_query import roll_query
 
+from ..db.models.TunnellerDt import TunnellerDt
 from ..db.run_sql import run_sql
 from flask_mysqldb import MySQL
 from ..models.roll import Name, Roll
@@ -10,22 +11,10 @@ from ..models.helpers.date_helpers import (
 )
 
 
-class TunnellerDB:
-    id: str
-    surname: str
-    forename: str
-    serial: str
-    birth_date: str
-    death_date: str
-
-    def __getitem__(self, key: str):
-        return getattr(self, key)
-
-
 def select_all(mysql: MySQL) -> dict[str, list[Roll]]:
 
     sql: str = roll_query()
-    results: list[TunnellerDB] = run_sql(sql, mysql, None)
+    results: list[TunnellerDt] = run_sql(sql, mysql, None)
 
     alphabet: dict[str, list[Roll]] = dict()
 
