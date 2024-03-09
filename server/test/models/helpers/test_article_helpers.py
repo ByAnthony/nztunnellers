@@ -44,6 +44,9 @@ class TestGetNextChapter:
         )
         assert get_next_chapter(3, mocked_article_reference_data_list) is None
 
+    def test_get_next_chapter_when_empty_list(self):
+        assert get_next_chapter(0, []) is None
+
 
 class TestMapSections:
     def test_map_sections(self):
