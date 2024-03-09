@@ -26,7 +26,7 @@ class SingleEventData:
 
 
 @dataclass
-class MedalsData:
+class MedalData:
     name: str
     country: str
     citation: Optional[str]
@@ -56,7 +56,7 @@ class LondonGazetteData:
 
 @dataclass
 class BookAuthorsData:
-    book_id: str
+    book_id: int
     forename: str
     surname: str
 

@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from ....db.models.TunnellerData import LondonGazetteData, NewZealandArchivesData
 from ....models.helpers.date_helpers import format_date_to_day_month_and_year
 from ....models.sources import LondonGazette, NewZealandArchives, NominalRoll
 from ....models.helpers.sources_helpers import (
@@ -9,8 +10,8 @@ from ....models.helpers.sources_helpers import (
 )
 
 
-actual_nz_archives_1 = NewZealandArchives("AABK 18805 W5520 1/0006561", "22280535")
-actual_nz_archives_2 = NewZealandArchives("AABK 18805 W5520 1/0006563", "22280537")
+actual_nz_archives_1 = NewZealandArchivesData("AABK 18805 W5520 1/0006561", "22280535")
+actual_nz_archives_2 = NewZealandArchivesData("AABK 18805 W5520 1/0006563", "22280537")
 
 
 expected_ref_1 = NewZealandArchives(
@@ -111,8 +112,8 @@ class TestGetNominalRoll:
 
 
 london_gazette_list = [
-    LondonGazette("13575", "1917-12-28"),
-    LondonGazette("29", "1918-01-01"),
+    LondonGazetteData("13575", "1917-12-28"),
+    LondonGazetteData("29", "1918-01-01"),
 ]
 
 

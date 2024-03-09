@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-
+from ....db.models.TunnellerData import ArmyExperienceData
 from ....models.pre_war_years import ArmyExperience
 from ....models.helpers.date_helpers import convert_month_in_duration
 from ....models.helpers.pre_war_years_helpers import map_army_experience
@@ -9,13 +9,13 @@ country_col = {"en": "New Zealand", "fr": "Nouvelle-Zélande"}
 conflict_col = {"en": "South African War", "fr": "Guerre d'Afrique du Sud"}
 
 experience_en = [
-    ArmyExperience(
+    ArmyExperienceData(
         "Garrison Artillery Volunteers",
         "New Zealand",
         None,
         "12",
     ),
-    ArmyExperience(
+    ArmyExperienceData(
         None,
         None,
         "South African War",
@@ -23,7 +23,7 @@ experience_en = [
     ),
 ]
 experience_fr = [
-    ArmyExperience(
+    ArmyExperienceData(
         "National Reserve",
         "Nouvelle-Zélande",
         "Guerre d'Afrique du Sud",

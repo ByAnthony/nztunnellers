@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from typing import Optional
 
-from ...db.models.TunnellerData import MedalsData, SingleEventData, TunnellerData
+from ...db.models.TunnellerData import MedalData, SingleEventData, TunnellerData
 from ...models.death import Death
 from ...models.helpers.translator_helpers import translate_town
 from ...models.helpers.date_helpers import (
@@ -158,7 +158,7 @@ def military_years(
     tunneller: TunnellerData,
     company_events: list[SingleEventData],
     tunneller_events: list[SingleEventData],
-    medals: list[MedalsData],
+    medals: list[MedalData],
     lang: str,
 ) -> MilitaryYears:
     return MilitaryYears(

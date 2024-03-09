@@ -7,6 +7,7 @@
 # from ....models.pre_war_years import PreWarYear
 # from ....models.sources import Sources
 # from ....models.summary import Summary
+from ....db.models.TunnellerData import MedalData
 from ....models.death import Cemetery, Death, DeathCause, DeathPlace
 from ....models.date import Date
 from ....models.military_years import (
@@ -331,10 +332,10 @@ class TestGetAgeAtDeath:
 #         assert map_front_events(company_events, tunneller_events, tunneller, "en") == {}
 
 
-british_war_medal = Medal(
-    "British War Medal", "United Kingdom", "url.jpg", "For bravery"
+british_war_medal = MedalData(
+    "British War Medal", "United Kingdom", "For bravery", "url.jpg"
 )
-victory_medal = Medal("Victory Medal", "United Kingdom", "url.jpg", None)
+victory_medal = MedalData("Victory Medal", "United Kingdom", None, "url.jpg")
 
 
 class TestMapMedals:

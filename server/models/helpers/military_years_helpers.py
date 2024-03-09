@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from typing import Optional
 
-from ...db.models.TunnellerData import MedalsData, SingleEventData, TunnellerData
+from ...db.models.TunnellerData import MedalData, SingleEventData, TunnellerData
 from .date_helpers import (
     calculate_age_with_full_date,
     calculate_age_with_years,
@@ -369,7 +369,7 @@ def map_front_events(
     return events_grouped_by_year
 
 
-def map_medals(medals: list[MedalsData]) -> list[Medal]:
+def map_medals(medals: list[MedalData]) -> list[Medal]:
     return [
         Medal(medal["name"], medal["country"], medal["image"], medal["citation"])
         for medal in medals

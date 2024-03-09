@@ -10,7 +10,7 @@ from ..db.models.TunnellerData import (
     ArmyExperienceData,
     BookAuthorsData,
     LondonGazetteData,
-    MedalsData,
+    MedalData,
     NewZealandArchivesData,
     SingleEventData,
     TunnellerData,
@@ -55,7 +55,7 @@ def show(id: int, lang: str, mysql: MySQL) -> Optional[Tunneller]:
     )
 
     medals_sql = medals_query(lang)
-    medals_result: list[MedalsData] = run_sql(medals_sql, mysql, values)
+    medals_result: list[MedalData] = run_sql(medals_sql, mysql, values)
 
     nz_archives_sql = nz_archives_query()
     nz_archives_result: list[NewZealandArchivesData] = run_sql(
