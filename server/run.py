@@ -4,7 +4,9 @@ import os
 
 from flask import Flask, request
 from flask_cors import CORS
-from flask_mysqldb import MySQL
+
+# flask_mysqldb does not have stub files
+from flask_mysqldb import MySQL  # type: ignore
 
 
 from .models.helpers.camelize_helpers import underscore_to_camel

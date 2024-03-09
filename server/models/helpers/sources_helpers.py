@@ -1,10 +1,14 @@
 # -*- coding: utf-8 -*-
 from typing import Optional
+
+from ...db.models.TunnellerData import LondonGazetteData, NewZealandArchivesData
 from .date_helpers import format_date_to_day_month_and_year
 from ..sources import LondonGazette, NewZealandArchives, NominalRoll
 
 
-def map_nz_archives(nz_archives: list[NewZealandArchives]) -> list[NewZealandArchives]:
+def map_nz_archives(
+    nz_archives: list[NewZealandArchivesData],
+) -> list[NewZealandArchives]:
     def get_url(online_ref: str) -> str:
         link = (
             "https://collections.archives.govt.nz/web/arena/search#/item/aims-archive/R"
@@ -57,7 +61,7 @@ def get_nominal_roll(
 
 
 def map_london_gazette(
-    london_gazette: list[LondonGazette], lang: str
+    london_gazette: list[LondonGazetteData], lang: str
 ) -> list[LondonGazette]:
     return [
         LondonGazette(

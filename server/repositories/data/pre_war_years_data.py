@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
+from ...db.models.TunnellerData import ArmyExperienceData, TunnellerData
 from ...models.helpers.pre_war_years_helpers import map_army_experience
-from ...models.tunneller import Tunneller
-from ...models.pre_war_years import ArmyExperience, Employment, PreWarYear
+from ...models.pre_war_years import Employment, PreWarYear
 
 
 def pre_war_years(
-    army_experience: list[ArmyExperience], tunneller: Tunneller, lang: str
+    army_experience: list[ArmyExperienceData], tunneller: TunnellerData, lang: str
 ) -> PreWarYear:
     return PreWarYear(
         map_army_experience(army_experience, lang),

@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
+from dataclasses import dataclass
 from typing import Optional
 
 
-class TunnellerDt:
+@dataclass
+class RollData:
     id: str
     surname: str
     forename: str

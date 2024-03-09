@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
+from ...db.models.TunnellerData import TunnellerData
 from ...models.helpers.date_helpers import (
-    format_birth_and_death_date, 
+    format_birth_and_death_date,
     format_date_to_year,
 )
 from ...models.helpers.military_years_helpers import (
@@ -12,10 +13,9 @@ from ...models.helpers.military_years_helpers import (
 from ...models.helpers.post_service_years_helpers import get_death
 from ...models.helpers.translator_helpers import translate_town
 from ...models.post_service_years import PostServiceYears
-from ...models.tunneller import Tunneller
 
 
-def post_service_years(tunneller: Tunneller, lang: str) -> PostServiceYears:
+def post_service_years(tunneller: TunnellerData, lang: str) -> PostServiceYears:
     return PostServiceYears(
         get_death(
             tunneller["death_type"],

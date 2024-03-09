@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from typing import Optional
 
+from ...db.models.TunnellerData import BookAuthorsData
 from .translator_helpers import translate_family
 from ..image import (
     Image,
@@ -73,14 +74,14 @@ def get_image_source_newspaper(
     return None
 
 
-def map_authors(authors: list[ImageBookAuthors]) -> list[ImageBookAuthors]:
+def map_authors(authors: list[BookAuthorsData]) -> list[ImageBookAuthors]:
     return [
         ImageBookAuthors(author["forename"], author["surname"]) for author in authors
     ]
 
 
 def get_image_source_book(
-    authors: list[ImageBookAuthors],
+    authors: list[BookAuthorsData],
     title: Optional[str],
     town: Optional[str],
     publisher: Optional[str],

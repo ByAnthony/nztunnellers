@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
+from ...db.models.TunnellerData import TunnellerData
 from ...models.roll import Name
-from ...models.tunneller import Tunneller
 from ...models.summary import Summary
 from ...models.helpers.date_helpers import (
     format_date_to_year,
 )
 
 
-def summary(tunneller: Tunneller) -> Summary:
+def summary(tunneller: TunnellerData) -> Summary:
     return Summary(
         Name(
             tunneller["forename"],

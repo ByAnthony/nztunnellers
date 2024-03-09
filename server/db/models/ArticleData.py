@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
+from dataclasses import dataclass
 from typing import Optional
 
 
-class ArticleReferenceDt:
+@dataclass
+class ArticleReferenceData:
     id: str
     chapter: int
     title: str
@@ -11,14 +13,16 @@ class ArticleReferenceDt:
         return getattr(self, key)
 
 
-class FileDt:
+@dataclass
+class FileData:
     file: str
 
     def __getitem__(self, key: str):
         return getattr(self, key)
 
 
-class ArticleDt:
+@dataclass
+class ArticleData:
     id: str
     chapter: int
     title: str
@@ -28,7 +32,8 @@ class ArticleDt:
         return getattr(self, key)
 
 
-class SectionDt:
+@dataclass
+class SectionData:
     title: str
     text: str
 
@@ -36,7 +41,8 @@ class SectionDt:
         return getattr(self, key)
 
 
-class ImageDt:
+@dataclass
+class ImageData:
     file: str
     title: Optional[str]
     photographer: Optional[str]

@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
+# flask_mysqldb does not have stub files
+from flask_mysqldb import MySQL  # type: ignore
+
 from ..repositories.queries.roll_query import roll_query
 
-from ..db.models.TunnellerDt import TunnellerDt
+from ..db.models.RollData import RollData
 from ..db.run_sql import run_sql
-from flask_mysqldb import MySQL
 from ..models.roll import Name, Roll
 
 from ..models.helpers.date_helpers import (
@@ -14,7 +16,7 @@ from ..models.helpers.date_helpers import (
 def select_all(mysql: MySQL) -> dict[str, list[Roll]]:
 
     sql: str = roll_query()
-    results: list[TunnellerDt] = run_sql(sql, mysql, None)
+    results: list[RollData] = run_sql(sql, mysql, None)
 
     alphabet: dict[str, list[Roll]] = dict()
 

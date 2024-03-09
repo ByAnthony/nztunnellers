@@ -1,18 +1,22 @@
 # -*- coding: utf-8 -*-
+from ...db.models.TunnellerData import (
+    LondonGazetteData,
+    NewZealandArchivesData,
+    TunnellerData,
+)
 from ...models.helpers.sources_helpers import (
     get_awmm,
     get_nominal_roll,
     map_london_gazette,
     map_nz_archives,
 )
-from ...models.sources import LondonGazette, NewZealandArchives, Sources
-from ...models.tunneller import Tunneller
+from ...models.sources import Sources
 
 
 def sources(
-    nz_archives: list[NewZealandArchives],
-    tunneller: Tunneller,
-    london_gazette: list[LondonGazette],
+    nz_archives: list[NewZealandArchivesData],
+    tunneller: TunnellerData,
+    london_gazette: list[LondonGazetteData],
     lang: str,
 ) -> Sources:
     return Sources(

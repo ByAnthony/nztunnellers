@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 from typing import Optional
+
+from ...db.models.TunnellerData import BookAuthorsData, TunnellerData
 from ...models.helpers.date_helpers import format_date_to_day_month_and_year
 from ...models.helpers.image_helpers import (
     get_image,
@@ -11,12 +13,11 @@ from ...models.helpers.image_helpers import (
     get_image_source_newspaper,
     get_image_url,
 )
-from ...models.image import Image, ImageBookAuthors
-from ...models.tunneller import Tunneller
+from ...models.image import Image
 
 
 def images(
-    tunneller: Tunneller, book_authors: list[ImageBookAuthors], lang: str
+    tunneller: TunnellerData, book_authors: list[BookAuthorsData], lang: str
 ) -> Optional[Image]:
     return get_image(
         get_image_url(tunneller["image"]),

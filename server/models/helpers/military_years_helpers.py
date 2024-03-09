@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 from typing import Optional
 
-from ...models.tunneller import Tunneller
-
+from ...db.models.TunnellerData import MedalsData, SingleEventData, TunnellerData
 from .date_helpers import (
     calculate_age_with_full_date,
     calculate_age_with_years,
@@ -21,7 +20,6 @@ from ..military_years import (
     EventDetails,
     Events,
     Medal,
-    SingleEvent,
     Training,
     Transferred,
     TransferredToTunnellers,
@@ -165,21 +163,15 @@ def get_end_of_service_country(discharge_uk: Optional[int], lang: str) -> str:
 
 
 def map_front_events(
-    company_events: list[SingleEvent],
-    tunneller_events: list[SingleEvent],
-    tunneller: Tunneller,
+    company_events: list[SingleEventData],
+    tunneller_events: list[SingleEventData],
+    tunneller: TunnellerData,
     lang: str,
 ) -> dict[str, list[Events]]:
-    main_tunneller_events: list[SingleEvent] = list(tunneller_events)
+    main_tunneller_events: list[SingleEventData] = list(tunneller_events)
 
-    def add_event(date: Date, description: Optional[str], title: Optional[str]):
-        return main_tunneller_events.append(
-            SingleEvent(
-                date,
-                description,
-                title,
-            )
-        )
+    def add_event(date: str, event: Optional[str], title: Optional[str]):
+        return main_tunneller_events.append(SingleEventData(date, event, title, None))
 
     if tunneller["transport_uk_start"] is not None:
         vessel = "{} {}".format(
@@ -231,7 +223,7 @@ def map_front_events(
     event_start_date = min(event["date"] for event in main_tunneller_events)
     event_end_date = max(event["date"] for event in main_tunneller_events)
 
-    selected_events: list[SingleEvent] = []
+    selected_events: list[SingleEventData] = []
     for event in company_events:
         if (
             event["event"] != "Marched in to the Company Training Camp, Falmouth"
@@ -336,7 +328,7 @@ def map_front_events(
                 tunneller["death_cause"],
             )
 
-    selected_and_tunneller_events: list[SingleEvent] = sorted(
+    selected_and_tunneller_events: list[SingleEventData] = sorted(
         list(selected_events + main_tunneller_events),
         key=lambda item: item["date"],
     )
@@ -377,7 +369,7 @@ def map_front_events(
     return events_grouped_by_year
 
 
-def map_medals(medals: list[Medal]) -> list[Medal]:
+def map_medals(medals: list[MedalsData]) -> list[Medal]:
     return [
         Medal(medal["name"], medal["country"], medal["image"], medal["citation"])
         for medal in medals

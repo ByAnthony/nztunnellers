@@ -1,9 +1,20 @@
 # -*- coding: utf-8 -*-
 from typing import Optional
+
+# flask_mysqldb does not have stub files
+from flask_mysqldb import MySQL  # type: ignore
 from dacite import from_dict
-from flask_mysqldb import MySQL
 
 
+from ..db.models.TunnellerData import (
+    ArmyExperienceData,
+    BookAuthorsData,
+    LondonGazetteData,
+    MedalsData,
+    NewZealandArchivesData,
+    SingleEventData,
+    TunnellerData,
+)
 from ..db.run_sql import run_sql
 from .data.images_data import images
 from .data.origins_data import origins
@@ -19,10 +30,6 @@ from ..repositories.queries.london_gazette_query import london_gazette_query
 from ..repositories.queries.medals_query import medals_query
 from ..repositories.queries.nz_archives_query import nz_archives_query
 from ..repositories.queries.tunneller_query import tunneller_query
-from ..models.image import ImageBookAuthors
-from ..models.military_years import Medal, SingleEvent
-from ..models.pre_war_years import ArmyExperience
-from ..models.sources import LondonGazette, NewZealandArchives
 from ..models.tunneller import Tunneller
 
 
@@ -30,34 +37,38 @@ def show(id: int, lang: str, mysql: MySQL) -> Optional[Tunneller]:
 
     tunneller_sql: str = tunneller_query(lang)
     values = [id]
-    tunneller_result: Tunneller = run_sql(tunneller_sql, mysql, values)[0]
+    tunneller_result: TunnellerData = run_sql(tunneller_sql, mysql, values)[0]
 
     army_experience_sql = army_experience_query(lang)
-    army_experience_result: list[ArmyExperience] = run_sql(
+    army_experience_result: list[ArmyExperienceData] = run_sql(
         army_experience_sql, mysql, values
     )
 
     company_events_sql = company_events_query()
-    company_events_result: list[SingleEvent] = run_sql(company_events_sql, mysql, None)
+    company_events_result: list[SingleEventData] = run_sql(
+        company_events_sql, mysql, None
+    )
 
     front_events_sql = front_events_query()
-    front_events_result: list[SingleEvent] = run_sql(front_events_sql, mysql, values)
+    front_events_result: list[SingleEventData] = run_sql(
+        front_events_sql, mysql, values
+    )
 
     medals_sql = medals_query(lang)
-    medals_result: list[Medal] = run_sql(medals_sql, mysql, values)
+    medals_result: list[MedalsData] = run_sql(medals_sql, mysql, values)
 
     nz_archives_sql = nz_archives_query()
-    nz_archives_result: list[NewZealandArchives] = run_sql(
+    nz_archives_result: list[NewZealandArchivesData] = run_sql(
         nz_archives_sql, mysql, values
     )
 
     london_gazette_sql = london_gazette_query()
-    london_gazette_result: list[LondonGazette] = run_sql(
+    london_gazette_result: list[LondonGazetteData] = run_sql(
         london_gazette_sql, mysql, values
     )
 
     book_authors_sql = book_authors_query()
-    book_authors_result: list[ImageBookAuthors] = run_sql(
+    book_authors_result: list[BookAuthorsData] = run_sql(
         book_authors_sql, mysql, values
     )
 

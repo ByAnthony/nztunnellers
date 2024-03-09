@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from typing import Optional
 
+from ...db.models.TunnellerData import MedalsData, SingleEventData, TunnellerData
 from ...models.death import Death
 from ...models.helpers.translator_helpers import translate_town
 from ...models.helpers.date_helpers import (
@@ -31,17 +32,14 @@ from ...models.military_years import (
     EmbarkationUnit,
     EndOfService,
     Enlistment,
-    Medal,
     MilitaryYears,
-    SingleEvent,
     Transferred,
     Transport,
 )
-from ...models.tunneller import Tunneller
 
 
 def get_age_at_enlistment(
-    enlistment_date: str, posted_date: str, tunneller: Tunneller
+    enlistment_date: str, posted_date: str, tunneller: TunnellerData
 ) -> Optional[int]:
     if enlistment_date:
         return get_age(
@@ -60,7 +58,7 @@ def get_age_at_enlistment(
     return None
 
 
-def enlistment(tunneller: Tunneller, lang: str) -> Enlistment:
+def enlistment(tunneller: TunnellerData, lang: str) -> Enlistment:
     return Enlistment(
         tunneller["serial"],
         tunneller["rank"],
@@ -79,7 +77,7 @@ def enlistment(tunneller: Tunneller, lang: str) -> Enlistment:
     )
 
 
-def embarkation_unit(tunneller: Tunneller, lang: str) -> EmbarkationUnit:
+def embarkation_unit(tunneller: TunnellerData, lang: str) -> EmbarkationUnit:
     return EmbarkationUnit(
         get_detachment(tunneller["embarkation_unit"], lang),
         get_training(
@@ -92,7 +90,7 @@ def embarkation_unit(tunneller: Tunneller, lang: str) -> EmbarkationUnit:
     )
 
 
-def transferred(tunneller: Tunneller, lang: str) -> Optional[Transferred]:
+def transferred(tunneller: TunnellerData, lang: str) -> Optional[Transferred]:
     return get_transferred_to(
         tunneller["transferred_to_date"],
         tunneller["transferred_to_unit"],
@@ -100,7 +98,7 @@ def transferred(tunneller: Tunneller, lang: str) -> Optional[Transferred]:
     )
 
 
-def death_war(tunneller: Tunneller, lang: str) -> Optional[Death]:
+def death_war(tunneller: TunnellerData, lang: str) -> Optional[Death]:
     return get_death_war(
         tunneller["death_type"],
         format_birth_and_death_date(
@@ -132,14 +130,14 @@ def death_war(tunneller: Tunneller, lang: str) -> Optional[Death]:
     )
 
 
-def demobilization(tunneller: Tunneller, lang: str) -> Optional[Demobilization]:
+def demobilization(tunneller: TunnellerData, lang: str) -> Optional[Demobilization]:
     return get_end_of_service(
         get_optional_date(tunneller["demobilization_date"], lang),
         get_end_of_service_country(tunneller["discharge_uk"], lang),
     )
 
 
-def end_of_service(tunneller: Tunneller, lang: str) -> EndOfService:
+def end_of_service(tunneller: TunnellerData, lang: str) -> EndOfService:
     return EndOfService(
         get_boolean(tunneller["has_deserted"]),
         transferred(tunneller, lang),
@@ -157,10 +155,10 @@ def end_of_service(tunneller: Tunneller, lang: str) -> EndOfService:
 
 
 def military_years(
-    tunneller: Tunneller,
-    company_events: list[SingleEvent],
-    tunneller_events: list[SingleEvent],
-    medals: list[Medal],
+    tunneller: TunnellerData,
+    company_events: list[SingleEventData],
+    tunneller_events: list[SingleEventData],
+    medals: list[MedalsData],
     lang: str,
 ) -> MilitaryYears:
     return MilitaryYears(

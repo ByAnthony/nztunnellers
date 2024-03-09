@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
+from ...db.models.TunnellerData import ArmyExperienceData
 from .date_helpers import convert_month_in_duration
 from ..pre_war_years import ArmyExperience
 
 
 def map_army_experience(
-    experiences: list[ArmyExperience], lang: str
+    experiences: list[ArmyExperienceData], lang: str
 ) -> list[ArmyExperience]:
     return [
         ArmyExperience(

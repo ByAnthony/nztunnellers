@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
+# flask_mysqldb does not have stub files
+from flask_mysqldb import MySQL, MySQLdb  # type: ignore
 from typing import Any, Optional
-
-from flask_mysqldb import MySQL, MySQLdb
 
 
 def run_sql(sql: str, mysql: MySQL, values: Optional[list[Any]]) -> list[Any]:
