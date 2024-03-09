@@ -1,8 +1,5 @@
 # -*- coding: utf-8 -*-
-
-
 from typing import Optional
-
 
 from ...db.models.ArticleData import (
     ArticleReferenceData,
