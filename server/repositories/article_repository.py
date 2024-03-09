@@ -15,7 +15,7 @@ from ..db.models.ArticleData import (
 
 from ..models.helpers.article_helpers import (
     get_images,
-    getNextChapter,
+    get_next_chapter,
     map_images,
     map_sections,
 )
@@ -51,7 +51,7 @@ def select_all(mysql: MySQL) -> list[ArticleReference]:
             row["chapter"],
             row["title"],
             get_images(image_result, index),
-            getNextChapter(row["chapter"], next_result),
+            get_next_chapter(row["chapter"], next_result),
         )
         articles.append(article)
     return articles
@@ -80,7 +80,7 @@ def show(id: str, mysql: MySQL) -> Optional[Article]:
             "title": article_result["title"],
             "section": map_sections(section_result),
             "image": map_images(image_result),
-            "next": getNextChapter(article_result["chapter"], next_result),
+            "next": get_next_chapter(article_result["chapter"], next_result),
             "notes": article_result["notes"],
         }
 

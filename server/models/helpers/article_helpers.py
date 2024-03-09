@@ -12,7 +12,7 @@ from ...models.article import Next, Section, Image
 
 def get_images(images: list[FileData], position: int) -> str:
     if 0 <= position < len(images):
-        return images[position].get("file")  # type: ignore
+        return images[position]["file"]
     return ""
 
 
@@ -33,7 +33,7 @@ def map_images(images: list[ImageData]) -> list[Image]:
     ]
 
 
-def getNextChapter(
+def get_next_chapter(
     chapter: int, articles: list[ArticleReferenceData]
 ) -> Optional[Next]:
     for i in range(len(articles)):
