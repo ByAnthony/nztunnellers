@@ -66,7 +66,7 @@ class BookAuthorsData:
 
 @dataclass
 class TunnellerData:
-    id: str
+    id: int
     forename: str
     surname: str
     aka: Optional[str]
@@ -101,7 +101,7 @@ class TunnellerData:
     transport_uk_origin: str
     transport_uk_end: str
     transport_uk_destination: str
-    has_deserted: int
+    has_deserted: Optional[int]
     transferred_to_date: Optional[str]
     transferred_to_unit: Optional[str]
     death_type: Optional[str]
@@ -133,8 +133,8 @@ class TunnellerData:
     book_title: Optional[str]
     book_town: Optional[str]
     book_publisher: Optional[str]
-    book_year: str
-    book_page: int
+    book_year: Optional[str]
+    book_page: Optional[int]
     awmm_cenotaph: Optional[str]
     nominal_roll_volume: Optional[str]
     nominal_roll_number: Optional[str]

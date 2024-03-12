@@ -162,6 +162,15 @@ def get_end_of_service_country(discharge_uk: Optional[int], lang: str) -> str:
         return "Nouvelle-Zélande"
 
 
+def add_event(
+    date: str,
+    event: Optional[str],
+    title: Optional[str],
+    main_tunneller_events: list[SingleEventData],
+):
+    main_tunneller_events.append(SingleEventData(date, event, title, None))
+
+
 def map_front_events(
     company_events: list[SingleEventData],
     tunneller_events: list[SingleEventData],
@@ -169,9 +178,6 @@ def map_front_events(
     lang: str,
 ) -> dict[str, list[Events]]:
     main_tunneller_events: list[SingleEventData] = list(tunneller_events)
-
-    def add_event(date: str, event: Optional[str], title: Optional[str]):
-        return main_tunneller_events.append(SingleEventData(date, event, title, None))
 
     if tunneller["transport_uk_start"] is not None:
         vessel = "{} {}".format(
@@ -181,6 +187,7 @@ def map_front_events(
             tunneller["transport_uk_start"],
             vessel,
             "Transfer to England",
+            main_tunneller_events,
         )
 
     if tunneller["transferred_to_date"] is not None:
@@ -188,6 +195,7 @@ def map_front_events(
             tunneller["transferred_to_date"],
             tunneller["transferred_to_unit"],
             "Transferred",
+            main_tunneller_events,
         )
 
     if tunneller["transport_nz_start"] is not None:
@@ -198,6 +206,7 @@ def map_front_events(
             tunneller["transport_nz_start"],
             vessel,
             "Transfer to New Zealand",
+            main_tunneller_events,
         )
 
     if tunneller["demobilization_date"] is not None:
@@ -206,18 +215,21 @@ def map_front_events(
                 tunneller["demobilization_date"],
                 "End of Service in the United Kingdom",
                 "Demobilization",
+                main_tunneller_events,
             )
         elif tunneller["has_deserted"] == 1:
             add_event(
                 tunneller["demobilization_date"],
                 "End of Service as deserter",
                 "Demobilization",
+                main_tunneller_events,
             )
         else:
             add_event(
                 tunneller["demobilization_date"],
                 "Demobilization",
                 "End of Service",
+                main_tunneller_events,
             )
 
     event_start_date = min(event["date"] for event in main_tunneller_events)
@@ -242,22 +254,26 @@ def map_front_events(
                 tunneller["enlistment_date"],
                 tunneller["embarkation_unit"],
                 "Enlisted",
+                main_tunneller_events,
             )
             add_event(
                 tunneller["training_start"],
                 tunneller["training_location"],
                 "Trained",
+                main_tunneller_events,
             )
         else:
             add_event(
                 tunneller["enlistment_date"],
                 tunneller["embarkation_unit"],
                 "Enlisted",
+                main_tunneller_events,
             )
             add_event(
                 tunneller["enlistment_date"],
                 tunneller["training_location"],
                 "Trained",
+                main_tunneller_events,
             )
 
     if tunneller["posted_date"] is not None:
@@ -266,22 +282,26 @@ def map_front_events(
                 tunneller["posted_date"],
                 tunneller["embarkation_unit"],
                 "Posted",
+                main_tunneller_events,
             )
             add_event(
                 tunneller["training_start"],
                 tunneller["training_location"],
                 "Trained",
+                main_tunneller_events,
             )
         else:
             add_event(
                 tunneller["posted_date"],
                 tunneller["embarkation_unit"],
                 "Posted",
+                main_tunneller_events,
             )
             add_event(
                 tunneller["posted_date"],
                 tunneller["training_location"],
                 "Trained",
+                main_tunneller_events,
             )
 
     if tunneller["death_type"] == "War":
@@ -290,34 +310,40 @@ def map_front_events(
                 tunneller["death_date"],
                 tunneller["death_circumstances"],
                 tunneller["death_cause"],
+                main_tunneller_events,
             )
         if tunneller["death_cause"] == "Died of wounds":
             add_event(
                 tunneller["death_date"],
                 tunneller["death_circumstances"],
                 tunneller["death_cause"],
+                main_tunneller_events,
             )
         if tunneller["death_cause"] == "Died of disease":
             add_event(
                 tunneller["death_date"],
                 "{}, {}".format(tunneller["death_location"], tunneller["death_town"]),
                 tunneller["death_cause"],
+                main_tunneller_events,
             )
         if tunneller["death_cause"] == "Died of accident":
             add_event(
                 tunneller["death_date"],
                 "{}".format(tunneller["death_location"]),
                 tunneller["death_cause"],
+                main_tunneller_events,
             )
         add_event(
             tunneller["death_date"],
             "{}, {}".format(tunneller["cemetery"], tunneller["cemetery_town"]),
             "Buried",
+            main_tunneller_events,
         )
         add_event(
             tunneller["death_date"],
             tunneller["grave"],
             "Grave reference",
+            main_tunneller_events,
         )
 
     if tunneller["death_type"] == "War injuries":
@@ -326,6 +352,7 @@ def map_front_events(
                 tunneller["death_date"],
                 tunneller["death_circumstances"],
                 tunneller["death_cause"],
+                main_tunneller_events,
             )
 
     selected_and_tunneller_events: list[SingleEventData] = sorted(

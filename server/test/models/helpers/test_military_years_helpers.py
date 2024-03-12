@@ -1,20 +1,10 @@
 # -*- coding: utf-8 -*-
-# from unittest.mock import Mock
-
-# from ....models.tunneller import Tunneller
-# from ....models.origins import Origins
-# from ....models.post_service_years import PostServiceYears
-# from ....models.pre_war_years import PreWarYear
-# from ....models.sources import Sources
-# from ....models.summary import Summary
 from ....db.models.TunnellerData import MedalData
 from ....models.death import Cemetery, Death, DeathCause, DeathPlace
 from ....models.date import Date
 from ....models.military_years import (
     Demobilization,
     Medal,
-    # MilitaryYears,
-    # SingleEvent,
     Training,
     Transferred,
     TransferredToTunnellers,
@@ -296,38 +286,131 @@ class TestGetAgeAtDeath:
 
 # class TestMapFrontEvents:
 #     def test_map_front_events(self):
-#         mocked_summary = Mock(spec=Summary)
-#         mocked_origins = Mock(spec=Origins)
-#         mocked_pre_war_years = Mock(spec=PreWarYear)
-#         mocked_military_years = Mock(spec=MilitaryYears)
-#         mocked_post_service_years = Mock(spec=PostServiceYears)
-#         mocked_sources = Mock(spec=Sources)
-#         mocked_singleEvent = Mock(spec=SingleEvent)
+#         mocked_tunneller_singleEvent_1 = SingleEventData(
+#             "2024-03-12",
+#             "Something happened that day",
+#             None,
+#             None,
+#         )
+#         mocked_tunneller_singleEvent_2 = SingleEventData(
+#             "2024-10-24",
+#             "Something happened that day",
+#             None,
+#             None,
+#         )
+#         mocked_tunneller_singleEvent_3 = SingleEventData(
+#             "2025-06-02",
+#             "Something happened that day",
+#             None,
+#             None,
+#         )
 
-#         tunneller: Tunneller = Tunneller(
-#                 123,
-#                 mocked_summary,
-#                 mocked_origins,
-#                 mocked_pre_war_years,
-#                 mocked_military_years,
-#                 mocked_post_service_years,
-#                 mocked_sources,
-#                 None,
-#             )
+#         mocked_company_singleEvent_1 = SingleEventData(
+#             "2024-06-09",
+#             "Something happened that day",
+#             "Battle Launched",
+#             "image_battle.jpg",
+#         )
+#         mocked_company_singleEvent_2 = SingleEventData(
+#             "2024-10-24",
+#             "Something happened that day",
+#             "Enemy Attack",
+#             "image_attack.jpg",
+#         )
+#         mocked_company_singleEvent_3 = SingleEventData(
+#             "2025-02-14",
+#             "Something happened that day",
+#             "Armistice",
+#             "image_armistice.jpg",
+#         )
 
-#         company_events: list[SingleEvent] = [
-#                 mocked_singleEvent,
-#                 mocked_singleEvent,
-#                 mocked_singleEvent,
-#                 mocked_singleEvent,
-#             ]
+#         tunneller = TunnellerData(
+#             1,
+#             "Marcus Claude",
+#             "Abbott",
+#             None,
+#             "37596",
+#             "1889-07-08",
+#             "England",
+#             "Elizabeth Abbott",
+#             "England",
+#             "Edmund Freeman Abbott",
+#             "England",
+#             None,
+#             "Single",
+#             None,
+#             "Quartz-miner",
+#             "Hockstter",
+#             "Ahaura",
+#             "Church of England",
+#             "1916-12-02",
+#             "Canterbury",
+#             None,
+#             None,
+#             "Sapper",
+#             "4th Reinforcements",
+#             None,
+#             None,
+#             "1917-01-04",
+#             "Narrow Neck, Auckland",
+#             "Military Camp",
+#             "HMNZT 76",
+#             "Aparima",
+#             "1917-02-16",
+#             "Wellington",
+#             "1917-05-02",
+#             "Plymouth",
+#             None,
+#             None,
+#             None,
+#             "War",
+#             "1918-03-31",
+#             "Telegraph Hill",
+#             "Arras",
+#             "France",
+#             "Killed in action",
+#             "Dead wounded by shell-fire",
+#             "Faubourg d'Amiens Cemetery",
+#             "Arras",
+#             "France",
+#             "VII C 27",
+#             None,
+#             None,
+#             None,
+#             None,
+#             None,
+#             None,
+#             None,
+#             None,
+#             None,
+#             None,
+#             None,
+#             None,
+#             None,
+#             None,
+#             None,
+#             None,
+#             None,
+#             None,
+#             None,
+#             None,
+#             "C6",
+#             "III",
+#             "55",
+#             "39",
+#         )
 
-#         tunneller_events: list[SingleEvent] = [
-#                 mocked_singleEvent,
-#                 mocked_singleEvent,
-#                 mocked_singleEvent,
-#                 mocked_singleEvent,
-#             ]
+#         company_events: list[SingleEventData] = [
+#             mocked_company_singleEvent_1,
+#             mocked_company_singleEvent_2,
+#             mocked_company_singleEvent_3,
+#         ]
+
+#         tunneller_events: list[SingleEventData] = [
+#             mocked_tunneller_singleEvent_1,
+#             mocked_tunneller_singleEvent_2,
+#             mocked_tunneller_singleEvent_3,
+#         ]
 
 #         assert map_front_events(company_events, tunneller_events, tunneller, "en") == {}
 
