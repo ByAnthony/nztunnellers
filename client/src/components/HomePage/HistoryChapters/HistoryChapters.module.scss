@@ -16,14 +16,15 @@
       height: 8px;
       background: index.$primary-medium-color;
     }
-    
+
     ::-webkit-scrollbar-thumb {
       background: index.$primary-light-color;
       border-radius: 10px;
     }
-    
+
     ::-webkit-scrollbar-track{
       margin: 0 index.$l-margin;
+      border-radius: 10px;
     }
   }
 
