@@ -5,18 +5,33 @@
 }
 
 .chapter-cards-wrapper {
-    padding: index.$l-margin 0 index.$base-margin 0;
-    height: 325px;
+    padding-top: index.$l-margin;
+    height: 375px;
     overflow: hidden;
     border-radius: index.$border-radius;
     background-color: index.$primary-medium-color;
+    color-scheme: dark;
+
+    ::-webkit-scrollbar {
+      height: 8px;
+      background: index.$primary-medium-color;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+      background: index.$primary-light-color;
+      border-radius: 10px;
+    }
+    
+    ::-webkit-scrollbar-track{
+      margin: 0 index.$l-margin;
+    }
   }
 
   .chapter-cards {
     margin: 0 auto;
     padding: 0 index.$l-margin;
     display: flex;
-    height: 395px;
+    height: 342px;
     flex-direction: row;
     flex-wrap: nowrap;
     gap: index.$m-margin;
