@@ -14,9 +14,9 @@ from ...models.sources import Sources
 
 
 def sources(
-    nz_archives: list[NewZealandArchivesData],
+    nz_archives: tuple[NewZealandArchivesData],
     tunneller: TunnellerData,
-    london_gazette: list[LondonGazetteData],
+    london_gazette: tuple[LondonGazetteData],
     lang: str,
 ) -> Sources:
     return Sources(

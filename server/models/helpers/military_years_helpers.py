@@ -163,8 +163,8 @@ def get_end_of_service_country(discharge_uk: Optional[int], lang: str) -> str:
 
 
 def map_front_events(
-    company_events: list[SingleEventData],
-    tunneller_events: list[SingleEventData],
+    company_events: tuple[SingleEventData],
+    tunneller_events: tuple[SingleEventData],
     tunneller: TunnellerData,
     lang: str,
 ) -> dict[str, list[Events]]:
@@ -365,7 +365,7 @@ def map_front_events(
     return events_grouped_by_year
 
 
-def map_medals(medals: list[MedalData]) -> list[Medal]:
+def map_medals(medals: tuple[MedalData]) -> list[Medal]:
     return [
         Medal(medal["name"], medal["country"], medal["image"], medal["citation"])
         for medal in medals

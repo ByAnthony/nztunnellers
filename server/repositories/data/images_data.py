@@ -17,7 +17,7 @@ from ...models.image import Image
 
 
 def images(
-    tunneller: TunnellerData, book_authors: list[BookAuthorsData], lang: str
+    tunneller: TunnellerData, book_authors: tuple[BookAuthorsData], lang: str
 ) -> Optional[Image]:
     return get_image(
         get_image_url(tunneller["image"]),

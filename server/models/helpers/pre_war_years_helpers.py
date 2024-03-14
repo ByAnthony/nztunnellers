@@ -5,7 +5,7 @@ from ..pre_war_years import ArmyExperience
 
 
 def map_army_experience(
-    experiences: list[ArmyExperienceData], lang: str
+    experiences: tuple[ArmyExperienceData], lang: str
 ) -> list[ArmyExperience]:
     return [
         ArmyExperience(

@@ -5,7 +5,7 @@ from ...models.pre_war_years import Employment, PreWarYear
 
 
 def pre_war_years(
-    army_experience: list[ArmyExperienceData], tunneller: TunnellerData, lang: str
+    army_experience: tuple[ArmyExperienceData], tunneller: TunnellerData, lang: str
 ) -> PreWarYear:
     return PreWarYear(
         map_army_experience(army_experience, lang),

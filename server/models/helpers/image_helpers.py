@@ -72,14 +72,14 @@ def get_image_source_newspaper(
     return None
 
 
-def map_authors(authors: list[BookAuthorsData]) -> list[ImageBookAuthors]:
+def map_authors(authors: tuple[BookAuthorsData]) -> list[ImageBookAuthors]:
     return [
         ImageBookAuthors(author["forename"], author["surname"]) for author in authors
     ]
 
 
 def get_image_source_book(
-    authors: list[BookAuthorsData],
+    authors: tuple[BookAuthorsData],
     title: Optional[str],
     town: Optional[str],
     publisher: Optional[str],

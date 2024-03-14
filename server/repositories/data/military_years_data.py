@@ -156,9 +156,9 @@ def end_of_service(tunneller: TunnellerData, lang: str) -> EndOfService:
 
 def military_years(
     tunneller: TunnellerData,
-    company_events: list[SingleEventData],
-    tunneller_events: list[SingleEventData],
-    medals: list[MedalData],
+    company_events: tuple[SingleEventData],
+    tunneller_events: tuple[SingleEventData],
+    medals: tuple[MedalData],
     lang: str,
 ) -> MilitaryYears:
     return MilitaryYears(

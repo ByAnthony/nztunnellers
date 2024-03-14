@@ -37,13 +37,13 @@ def select_all(mysql: MySQL) -> list[ArticleReference]:
     articles: list[ArticleReference] = []
 
     articles_sql: str = next_article_query()
-    articles_results: list[ArticleReferenceData] = run_sql(articles_sql, mysql, None)
+    articles_results: tuple[ArticleReferenceData] = run_sql(articles_sql, mysql, None)
 
     images_sql = images_query()
-    image_result: list[FileData] = run_sql(images_sql, mysql, None)
+    image_result: tuple[FileData] = run_sql(images_sql, mysql, None)
 
     next_sql = next_article_query()
-    next_result: list[ArticleReferenceData] = run_sql(next_sql, mysql, None)
+    next_result: tuple[ArticleReferenceData] = run_sql(next_sql, mysql, None)
 
     for index, row in enumerate(articles_results):
         article = ArticleReference(
@@ -58,19 +58,19 @@ def select_all(mysql: MySQL) -> list[ArticleReference]:
 
 
 def show(id: str, mysql: MySQL) -> Optional[Article]:
-    values = [id]
+    values: list[str] = [id]
 
     article_sql: str = article_query()
     article_result: ArticleData = run_sql(article_sql, mysql, values)[0]
 
     section_sql = section_query()
-    section_result: list[SectionData] = run_sql(section_sql, mysql, values)
+    section_result: tuple[SectionData] = run_sql(section_sql, mysql, values)
 
     next_sql = next_article_query()
-    next_result: list[ArticleReferenceData] = run_sql(next_sql, mysql, None)
+    next_result: tuple[ArticleReferenceData] = run_sql(next_sql, mysql, None)
 
     image_sql = image_query()
-    image_result: list[ImageData] = run_sql(image_sql, mysql, values)
+    image_result: tuple[ImageData] = run_sql(image_sql, mysql, values)
 
     if article_result:
 
