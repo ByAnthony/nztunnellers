@@ -52,14 +52,16 @@ class TestFormatDateToDay:
 class TestFormatDateToDayAndMonth:
     class TestFormatDateToDayAndMonthIf:
         def test_lang_is_en(self):
-            assert format_date_to_day_and_month(
-                "1962-09-27", "en"
-            ) == "27{}September".format(no_break_space)
+            assert (
+                format_date_to_day_and_month("1962-09-27", "en")
+                == f"27{no_break_space}September"
+            )
 
         def test_lang_is_fr(self):
-            assert format_date_to_day_and_month(
-                "1962-06-23", "fr"
-            ) == "23{}juin".format(no_break_space)
+            assert (
+                format_date_to_day_and_month("1962-06-23", "fr")
+                == f"23{no_break_space}juin"
+            )
 
     class TestDoNotFormatDateToDayAndMonthIf:
         def test_lang_is_en(self):
@@ -72,14 +74,16 @@ class TestFormatDateToDayAndMonth:
 class TestFormatDateToDayMonthAndYear:
     class TestFormatDateToDayMonthAndYearIf:
         def test_lang_is_en(self):
-            assert format_date_to_day_month_and_year(
-                "1988-05-04", "en"
-            ) == "4{}May 1988".format(no_break_space)
+            assert (
+                format_date_to_day_month_and_year("1988-05-04", "en")
+                == f"4{no_break_space}May 1988"
+            )
 
         def test_lang_is_fr(self):
-            assert format_date_to_day_month_and_year(
-                "1986-01-26", "fr"
-            ) == "26{}janvier 1986".format(no_break_space)
+            assert (
+                format_date_to_day_month_and_year("1986-01-26", "fr")
+                == f"26{no_break_space}janvier 1986"
+            )
 
     class TestDoNotFormatDateToDayMonthAndYearIf:
         def test_lang_is_en(self):
@@ -113,12 +117,12 @@ class TestGetDate:
     class TestGetDateIf:
         def test_lang_is_en(self):
             assert get_optional_date(date, "en") == Date(
-                "1988", "4{}May".format(no_break_space)
+                "1988", f"4{no_break_space}May"
             )
 
         def test_lang_is_fr(self):
             assert get_optional_date(date, "fr") == Date(
-                "1988", "4{}mai".format(no_break_space)
+                "1988", f"4{no_break_space}mai"
             )
 
     class TestDoNotGetDateIf:
@@ -132,34 +136,22 @@ class TestGetDate:
 class TestConvertMonth:
     class TestConvertMonthIf:
         def test_month_is_equal_to_1_and_lang_en(self):
-            assert convert_month_in_duration("1", "en") == "1{}month".format(
-                no_break_space
-            )
+            assert convert_month_in_duration("1", "en") == f"1{no_break_space}month"
 
         def test_month_is_equal_to_1_and_lang_fr(self):
-            assert convert_month_in_duration("1", "fr") == "1{}mois".format(
-                no_break_space
-            )
+            assert convert_month_in_duration("1", "fr") == f"1{no_break_space}mois"
 
         def test_month_is_less_than_24_months_and_lang_en(self):
-            assert convert_month_in_duration("15", "en") == "15{}months".format(
-                no_break_space
-            )
+            assert convert_month_in_duration("15", "en") == f"15{no_break_space}months"
 
         def test_month_is_less_than_24_months_and_lang_fr(self):
-            assert convert_month_in_duration("15", "fr") == "15{}mois".format(
-                no_break_space
-            )
+            assert convert_month_in_duration("15", "fr") == f"15{no_break_space}mois"
 
         def test_month_is_more_than_24_months_and_lang_en(self):
-            assert convert_month_in_duration("24", "en") == "2{}years".format(
-                no_break_space
-            )
+            assert convert_month_in_duration("24", "en") == f"2{no_break_space}years"
 
         def test_month_is_more_than_24_months_and_lang_fr(self):
-            assert convert_month_in_duration("250", "fr") == "20{}ans".format(
-                no_break_space
-            )
+            assert convert_month_in_duration("250", "fr") == f"20{no_break_space}ans"
 
     class TestDoNotConvertMonthIf:
         def test_month_is_none_and_lang_en(self):

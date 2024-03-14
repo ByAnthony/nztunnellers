@@ -45,15 +45,13 @@ def format_date_to_day_and_month(date: Optional[str], lang: str) -> Optional[str
             strip_month = month.lstrip("0")
             strip_day = day.lstrip("0")
             no_break_space = "\N{NO-BREAK SPACE}"
-            return "{}{}{}".format(strip_day, no_break_space, months[strip_month][lang])
+            return f"{strip_day}{no_break_space}{months[strip_month][lang]}"
     return None
 
 
 def format_date_to_day_month_and_year(date: Optional[str], lang: str) -> Optional[str]:
     if date is not None:
-        return "{} {}".format(
-            format_date_to_day_and_month(date, lang), format_date_to_year(date)
-        )
+        return f"{format_date_to_day_and_month(date, lang)} {format_date_to_year(date)}"
     return None
 
 
@@ -85,12 +83,12 @@ def convert_month_in_duration(month: Optional[str], lang: str) -> Optional[str]:
         years_col = {"en": "years", "fr": "ans"}
         no_break_space = "\N{NO-BREAK SPACE}"
         if int(month) == 1:
-            return "{}{}{}".format(month, no_break_space, month_col[lang])
+            return f"{month}{no_break_space}{month_col[lang]}"
         elif int(month) > int(1) and int(month) < int(24):
-            return "{}{}{}".format(month, no_break_space, months_col[lang])
+            return f"{month}{no_break_space}{months_col[lang]}"
         else:
             result = int(month) // int(12)
-            return "{}{}{}".format(result, no_break_space, years_col[lang])
+            return f"{result}{no_break_space}{years_col[lang]}"
     return None
 
 

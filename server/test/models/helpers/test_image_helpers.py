@@ -27,8 +27,8 @@ author_2 = ImageBookAuthors("Mary", "Shelley")
 
 no_break_space = "\N{NO-BREAK SPACE}"
 
-image_auckland_libraries = "{}{}{}".format(
-    "https://digitalnz.org/records?text=", "fake_reference", "&tab=Images#"
+image_auckland_libraries = (
+    f"{'https://digitalnz.org/records?text='}{'fake_reference'}{'&tab=Images#'}"
 )
 image_archives = ImageArchives("Archives New Zealand", "fake_reference")
 family = "Doe"
@@ -100,8 +100,9 @@ class TestGetImageSource:
 
 class TestGetImageSourceAucklandLibraries:
     def test_if_reference_exists(self):
-        assert get_image_source_auckland_libraries("fake_reference") == "{}{}{}".format(
-            "https://digitalnz.org/records?text=", "fake_reference", "&tab=Images#"
+        assert (
+            get_image_source_auckland_libraries("fake_reference")
+            == "https://digitalnz.org/records?text=fake_reference&tab=Images#"
         )
 
     def test_if_reference_does_not_exist(self):
@@ -172,7 +173,7 @@ class TestGetImageSourceBook:
             "London",
             "Penguins",
             "1962",
-            "p.{}{}".format(no_break_space, "2"),
+            f"p.{no_break_space}{'2'}",
         )
 
     def test_with_no_page(self):

@@ -104,10 +104,10 @@ class TestTranslateTown:
 class TestTranslateFamily:
     class TestTranslateIf:
         def test_family_is_not_none_and_lang_is_en(self):
-            assert translate_family(family, "en") == "{} {}".format(family, "family")
+            assert translate_family(family, "en") == f"{family} {'family'}"
 
         def test_family_is_not_none_and_lang_is_fr(self):
-            assert translate_family(family, "fr") == "{} {}".format("Famille", family)
+            assert translate_family(family, "fr") == f"{'Famille'} {family}"
 
     class TestDoNotTranslateIf:
         def test_family_is_none_and_lang_is_en(self):

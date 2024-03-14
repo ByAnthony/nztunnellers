@@ -13,7 +13,7 @@ def map_nz_archives(
         link = (
             "https://collections.archives.govt.nz/web/arena/search#/item/aims-archive/R"
         )
-        return "{}{}".format(link, online_ref)
+        return f"{link}{online_ref}"
 
     return [
         NewZealandArchives(archives["reference"], get_url(archives["url"]))
@@ -22,9 +22,7 @@ def map_nz_archives(
 
 
 def get_awmm(reference: str) -> str:
-    return "{}{}".format(
-        "https://www.aucklandmuseum.com/war-memorial/online-cenotaph/record/", reference
-    )
+    return f"{'https://www.aucklandmuseum.com/war-memorial/online-cenotaph/record/'}{reference}"
 
 
 def get_nominal_roll(
@@ -46,9 +44,9 @@ def get_nominal_roll(
             "Wellington",
             "Government Printer",
             "1914-1919",
-            "p.{}{}".format(no_break_space, page),
-            "Volume{}{}".format(no_break_space, volume),
-            "{}{}".format(roll_number_col[lang], roll),
+            f"p.{no_break_space}{page}",
+            f"Volume{no_break_space}{volume}",
+            f"{roll_number_col[lang]}{roll}",
         )
     else:
         return NominalRoll(
@@ -56,7 +54,7 @@ def get_nominal_roll(
             "Wellington",
             "Government Printer",
             "1916",
-            "p.{}{}".format(no_break_space, page),
+            f"p.{no_break_space}{page}",
         )
 
 

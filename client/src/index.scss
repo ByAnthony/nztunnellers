@@ -72,20 +72,6 @@ body {
   background-color: $primary-dark-color;
 }
 
-::-webkit-scrollbar {
-  width: 8px;
-  background: $primary-dark-color;
-}
-
-::-webkit-scrollbar-thumb {
-  background: $primary-light-color;
-  border-radius: 10px;
-}
-
-::-webkit-scrollbar-track {
-  background: $primary-dark-color;
-}
-
 h1 {
   font-size: 2.5rem;
   font-weight: 500;

@@ -30,8 +30,8 @@ def translate_superscript(string: Optional[str], lang: str) -> Optional[str]:
                             return pattern
                 return "None"
 
-            replace = "{}{}".format(
-                superscript[find_superscript(patterns, string)], no_break_space
+            replace = (
+                f"{superscript[find_superscript(patterns, string)]}{no_break_space}"
             )
 
             return re.sub(find_pattern(patterns, string), replace, string)
@@ -61,7 +61,7 @@ def translate_town(town: Optional[str], lang: str) -> Optional[str]:
 def translate_family(family: Optional[str], lang: str) -> Optional[str]:
     if family is not None:
         if lang == "en":
-            return "{} {}".format(family, "family")
+            return f"{family} {'family'}"
         if lang == "fr":
-            return "{} {}".format("Famille", family)
+            return f"{'Famille'} {family}"
     return None

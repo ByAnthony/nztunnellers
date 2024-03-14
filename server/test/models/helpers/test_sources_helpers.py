@@ -76,9 +76,9 @@ class TestGetNominalRoll:
             "Wellington",
             "Government Printer",
             "1914-1919",
-            "p.{}{}".format(no_break_space, page),
-            "Volume{}{}".format(no_break_space, volume),
-            "{}{}".format(roll_number_col[en], roll),
+            f"p.{no_break_space}{page}",
+            f"Volume{no_break_space}{volume}",
+            f"{roll_number_col[en]}{roll}",
         )
 
     def test_if_volume_and_roll_are_not_none_and_lang_is_fr(self):
@@ -87,9 +87,9 @@ class TestGetNominalRoll:
             "Wellington",
             "Government Printer",
             "1914-1919",
-            "p.{}{}".format(no_break_space, page),
-            "Volume{}{}".format(no_break_space, volume),
-            "{}{}".format(roll_number_col[fr], roll),
+            f"p.{no_break_space}{page}",
+            f"Volume{no_break_space}{volume}",
+            f"{roll_number_col[fr]}{roll}",
         )
 
     def test_if_volume_and_roll_are_none_and_lang_en(self):
@@ -98,7 +98,7 @@ class TestGetNominalRoll:
             "Wellington",
             "Government Printer",
             "1916",
-            "p.{}{}".format(no_break_space, page),
+            f"p.{no_break_space}{page}",
         )
 
     def test_if_volume_and_roll_are_none_and_lang_fr(self):
@@ -107,7 +107,7 @@ class TestGetNominalRoll:
             "Wellington",
             "Government Printer",
             "1916",
-            "p.{}{}".format(no_break_space, page),
+            f"p.{no_break_space}{page}",
         )
 
 

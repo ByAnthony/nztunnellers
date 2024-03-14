@@ -38,10 +38,8 @@ troop_ship = "Troop Ship"
 class TestGetTraining:
     def test_if_training_exists(self):
         assert get_training(
-            Date("1917", "26{}January".format(no_break_space)), "Wellington", "Camp"
-        ) == Training(
-            Date("1917", "26{}January".format(no_break_space)), "Wellington", "Camp"
-        )
+            Date("1917", f"26{no_break_space}January"), "Wellington", "Camp"
+        ) == Training(Date("1917", f"26{no_break_space}January"), "Wellington", "Camp")
 
     def test_if_training_does_not_exist(self):
         assert get_training(None, "Wellington", "Camp") is None
@@ -50,10 +48,8 @@ class TestGetTraining:
 class TestGetTransferred:
     def test_if_details_exist(self):
         assert get_transferred_to_tunnellers(
-            Date("1918", "4{}May".format(no_break_space)), "Infantry"
-        ) == TransferredToTunnellers(
-            Date("1918", "4{}May".format(no_break_space)), "Infantry"
-        )
+            Date("1918", f"4{no_break_space}May"), "Infantry"
+        ) == TransferredToTunnellers(Date("1918", f"4{no_break_space}May"), "Infantry")
 
     def test_if_details_do_not_exist(self):
         assert get_transferred_to_tunnellers(None, None) is None
@@ -64,16 +60,16 @@ class TestGetDetachment:
         assert get_detachment("1st Reinforcements", "en") == "1st Reinforcements"
 
     def test_if_lang_is_fr_and_er_renfort(self):
-        assert get_detachment(
-            "1er renfort", "fr"
-        ) == "1\N{MODIFIER LETTER SMALL E}\N{MODIFIER LETTER SMALL R}{}renfort".format(
-            no_break_space
+        assert (
+            get_detachment("1er renfort", "fr")
+            == f"1\N{MODIFIER LETTER SMALL E}\N{MODIFIER LETTER SMALL R}{no_break_space}renfort"
         )
 
     def test_if_lang_is_fr_and_e_renfort(self):
-        assert get_detachment(
-            "3e renfort", "fr"
-        ) == "3\N{MODIFIER LETTER SMALL E}{}renfort".format(no_break_space)
+        assert (
+            get_detachment("3e renfort", "fr")
+            == f"3\N{MODIFIER LETTER SMALL E}{no_break_space}renfort"
+        )
 
 
 class TestGetSection:
@@ -82,16 +78,16 @@ class TestGetSection:
             assert get_section("Section No.1", "en") == "Section No.1"
 
         def test_get_section_if_lang_is_fr_and_re_section(self):
-            assert get_section(
-                "1re section", "fr"
-            ) == "1\N{MODIFIER LETTER SMALL R}\N{MODIFIER LETTER SMALL E}{}section".format(
-                no_break_space
+            assert (
+                get_section("1re section", "fr")
+                == f"1\N{MODIFIER LETTER SMALL R}\N{MODIFIER LETTER SMALL E}{no_break_space}section"
             )
 
         def test_get_section_if_lang_is_fr_and_e_section(self):
-            assert get_section(
-                "2e section", "fr"
-            ) == "2\N{MODIFIER LETTER SMALL E}{}section".format(no_break_space)
+            assert (
+                get_section("2e section", "fr")
+                == f"2\N{MODIFIER LETTER SMALL E}{no_break_space}section"
+            )
 
     class TestDoNotGetSectionIf:
         def test_section_is_none_and_lang_is_en(self):
@@ -144,7 +140,7 @@ class TestGetDeserter:
 class TestGetTransferredTo:
     def test_if_data_exists(self):
         assert get_transferred_to("1962-09-27", "NZ Infantry", "en") == Transferred(
-            Date("1962", "27{}September".format(no_break_space)), "NZ Infantry"
+            Date("1962", f"27{no_break_space}September"), "NZ Infantry"
         )
 
     def test_if_data_is_none_and_lang_is_en(self):
@@ -155,7 +151,7 @@ class TestGetTransferredTo:
 
 
 demobilization = Demobilization(
-    Date("1919", "26{}January".format(no_break_space)), "New Zealand"
+    Date("1919", f"26{no_break_space}January"), "New Zealand"
 )
 
 
@@ -163,7 +159,7 @@ class TestGetEndOfService:
     def test_if_data_exists(self):
         assert (
             get_end_of_service(
-                Date("1919", "26{}January".format(no_break_space)), "New Zealand"
+                Date("1919", f"26{no_break_space}January"), "New Zealand"
             )
             == demobilization
         )

@@ -46,9 +46,7 @@ def get_image_source(
 
 def get_image_source_auckland_libraries(reference: Optional[str]) -> Optional[str]:
     if reference is not None:
-        return "{}{}{}".format(
-            "https://digitalnz.org/records?text=", reference, "&tab=Images#"
-        )
+        return f"{'https://digitalnz.org/records?text='}{reference}{'&tab=Images#'}"
     return None
 
 
@@ -91,7 +89,7 @@ def get_image_source_book(
     def get_page(page: Optional[str]) -> Optional[str]:
         if page is not None:
             no_break_space = "\N{NO-BREAK SPACE}"
-            return "p.{}{}".format(no_break_space, page)
+            return f"p.{no_break_space}{page}"
         return None
 
     if (
