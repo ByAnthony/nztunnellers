@@ -11,19 +11,13 @@ from ...models.helpers.date_helpers import (
 )
 from ...models.helpers.military_years_helpers import (
     get_age,
-    get_boolean,
     get_cemetery,
     get_death_circumstances,
     get_death_place,
     get_death_war,
-    get_detachment,
     get_end_of_service,
     get_end_of_service_country,
-    get_section,
-    get_training,
     get_transferred_to,
-    get_transferred_to_tunnellers,
-    get_transport_reference,
     map_medals,
     map_front_events,
 )
@@ -106,65 +100,16 @@ def demobilization(tunneller: TunnellerData, lang: str) -> Optional[Demobilizati
 
 
 def military_years(
+    enlistment: Enlistment,
+    embarkation_unit: EmbarkationUnit,
+    transport: Transport,
+    end_of_service: EndOfService,
     tunneller: TunnellerData,
     company_events: tuple[SingleEventData],
     tunneller_events: tuple[SingleEventData],
     medals: tuple[MedalData],
     lang: str,
 ) -> MilitaryYears:
-
-    enlistment: Enlistment = Enlistment(
-        tunneller["serial"],
-        tunneller["rank"],
-        get_optional_date(tunneller["enlistment_date"], lang),
-        tunneller["military_district_name"],
-        tunneller["aka"],
-        get_transferred_to_tunnellers(
-            get_optional_date(tunneller["posted_date"], lang),
-            tunneller["posted_from_corps"],
-        ),
-        get_age_at_enlistment(
-            tunneller["enlistment_date"],
-            tunneller["posted_date"],
-            tunneller,
-        ),
-    )
-
-    embarkation_unit: EmbarkationUnit = EmbarkationUnit(
-        get_detachment(tunneller["embarkation_unit"], lang),
-        get_training(
-            get_optional_date(tunneller["training_start"], lang),
-            tunneller["training_location"],
-            tunneller["training_location_type"],
-        ),
-        get_section(tunneller["section"], lang),
-        tunneller["attached_corps"],
-    )
-
-    transport: Transport = Transport(
-        get_transport_reference(tunneller["transport_uk_ref"], lang),
-        tunneller["transport_uk_vessel"],
-        get_optional_date(tunneller["transport_uk_start"], lang),
-        tunneller["transport_uk_origin"],
-        get_optional_date(tunneller["transport_uk_end"], lang),
-        tunneller["transport_uk_destination"],
-    )
-
-    end_of_service: EndOfService = EndOfService(
-        get_boolean(tunneller["has_deserted"]),
-        transferred(tunneller, lang),
-        death_war(tunneller, lang),
-        Transport(
-            get_transport_reference(tunneller["transport_nz_ref"], lang),
-            tunneller["transport_nz_vessel"],
-            get_optional_date(tunneller["transport_nz_start"], lang),
-            tunneller["transport_nz_origin"],
-            get_optional_date(tunneller["transport_nz_end"], lang),
-            tunneller["transport_nz_destination"],
-        ),
-        demobilization(tunneller, lang),
-    )
-
     return MilitaryYears(
         enlistment,
         embarkation_unit,
