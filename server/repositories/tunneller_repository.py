@@ -22,7 +22,15 @@ from .data.pre_war_years_data import pre_war_years
 from .data.sources_data import sources
 from .data.summary_data import summary
 from ..models.death import Cemetery, DeathCause, DeathPlace
-from ..models.helpers.date_helpers import format_date_to_year
+from ..models.helpers.date_helpers import (
+    format_date_to_day_month_and_year,
+    format_date_to_year,
+)
+from ..models.helpers.image_helpers import (
+    get_image_source_archives,
+    get_image_source_book,
+    get_image_source_newspaper,
+)
 from ..models.helpers.military_years_helpers import (
     get_age,
     get_cemetery,
@@ -32,6 +40,7 @@ from ..models.helpers.military_years_helpers import (
 from ..models.helpers.origins_helpers import get_nz_resident, get_parent
 from ..models.helpers.sources_helpers import get_nominal_roll
 from ..models.helpers.translator_helpers import translate_town
+from ..models.image import ImageArchives, ImageBook, ImageNewspaper
 from ..models.origins import Parents
 from ..models.pre_war_years import Employment
 from ..models.sources import NominalRoll
@@ -140,6 +149,25 @@ def show(id: int, lang: str, mysql: MySQL) -> Optional[Tunneller]:
             lang,
         )
 
+        image_source_archives: Optional[ImageArchives] = get_image_source_archives(
+            tunneller_result["archives_name"],
+            tunneller_result["archives_ref"],
+        )
+
+        image_source_newspaper: Optional[ImageNewspaper] = get_image_source_newspaper(
+            tunneller_result["newspaper_name"],
+            format_date_to_day_month_and_year(tunneller_result["newspaper_date"], lang),
+        )
+
+        image_source_book: Optional[ImageBook] = get_image_source_book(
+            book_authors_result,
+            tunneller_result["book_title"],
+            tunneller_result["book_town"],
+            tunneller_result["book_publisher"],
+            tunneller_result["book_year"],
+            tunneller_result["book_page"],
+        )
+
         data = {
             "id": tunneller_result["id"],
             "summary": summary(
@@ -187,7 +215,15 @@ def show(id: int, lang: str, mysql: MySQL) -> Optional[Tunneller]:
                 london_gazette_result,
                 lang,
             ),
-            "image": images(tunneller_result, book_authors_result, lang),
+            "image": images(
+                tunneller_result["image"],
+                tunneller_result["image_source_auckland_libraries"],
+                image_source_archives,
+                tunneller_result["family_name"],
+                image_source_newspaper,
+                image_source_book,
+                lang,
+            ),
         }
 
         return from_dict(data_class=Tunneller, data=data)
