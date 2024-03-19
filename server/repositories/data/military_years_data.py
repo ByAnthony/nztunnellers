@@ -58,38 +58,6 @@ def get_age_at_enlistment(
     return None
 
 
-def enlistment(tunneller: TunnellerData, lang: str) -> Enlistment:
-    return Enlistment(
-        tunneller["serial"],
-        tunneller["rank"],
-        get_optional_date(tunneller["enlistment_date"], lang),
-        tunneller["military_district_name"],
-        tunneller["aka"],
-        get_transferred_to_tunnellers(
-            get_optional_date(tunneller["posted_date"], lang),
-            tunneller["posted_from_corps"],
-        ),
-        get_age_at_enlistment(
-            tunneller["enlistment_date"],
-            tunneller["posted_date"],
-            tunneller,
-        ),
-    )
-
-
-def embarkation_unit(tunneller: TunnellerData, lang: str) -> EmbarkationUnit:
-    return EmbarkationUnit(
-        get_detachment(tunneller["embarkation_unit"], lang),
-        get_training(
-            get_optional_date(tunneller["training_start"], lang),
-            tunneller["training_location"],
-            tunneller["training_location_type"],
-        ),
-        get_section(tunneller["section"], lang),
-        tunneller["attached_corps"],
-    )
-
-
 def transferred(tunneller: TunnellerData, lang: str) -> Optional[Transferred]:
     return get_transferred_to(
         tunneller["transferred_to_date"],
@@ -137,8 +105,52 @@ def demobilization(tunneller: TunnellerData, lang: str) -> Optional[Demobilizati
     )
 
 
-def end_of_service(tunneller: TunnellerData, lang: str) -> EndOfService:
-    return EndOfService(
+def military_years(
+    tunneller: TunnellerData,
+    company_events: tuple[SingleEventData],
+    tunneller_events: tuple[SingleEventData],
+    medals: tuple[MedalData],
+    lang: str,
+) -> MilitaryYears:
+
+    enlistment: Enlistment = Enlistment(
+        tunneller["serial"],
+        tunneller["rank"],
+        get_optional_date(tunneller["enlistment_date"], lang),
+        tunneller["military_district_name"],
+        tunneller["aka"],
+        get_transferred_to_tunnellers(
+            get_optional_date(tunneller["posted_date"], lang),
+            tunneller["posted_from_corps"],
+        ),
+        get_age_at_enlistment(
+            tunneller["enlistment_date"],
+            tunneller["posted_date"],
+            tunneller,
+        ),
+    )
+
+    embarkation_unit: EmbarkationUnit = EmbarkationUnit(
+        get_detachment(tunneller["embarkation_unit"], lang),
+        get_training(
+            get_optional_date(tunneller["training_start"], lang),
+            tunneller["training_location"],
+            tunneller["training_location_type"],
+        ),
+        get_section(tunneller["section"], lang),
+        tunneller["attached_corps"],
+    )
+
+    transport: Transport = Transport(
+        get_transport_reference(tunneller["transport_uk_ref"], lang),
+        tunneller["transport_uk_vessel"],
+        get_optional_date(tunneller["transport_uk_start"], lang),
+        tunneller["transport_uk_origin"],
+        get_optional_date(tunneller["transport_uk_end"], lang),
+        tunneller["transport_uk_destination"],
+    )
+
+    end_of_service: EndOfService = EndOfService(
         get_boolean(tunneller["has_deserted"]),
         transferred(tunneller, lang),
         death_war(tunneller, lang),
@@ -153,26 +165,11 @@ def end_of_service(tunneller: TunnellerData, lang: str) -> EndOfService:
         demobilization(tunneller, lang),
     )
 
-
-def military_years(
-    tunneller: TunnellerData,
-    company_events: tuple[SingleEventData],
-    tunneller_events: tuple[SingleEventData],
-    medals: tuple[MedalData],
-    lang: str,
-) -> MilitaryYears:
     return MilitaryYears(
-        enlistment(tunneller, lang),
-        embarkation_unit(tunneller, lang),
-        Transport(
-            get_transport_reference(tunneller["transport_uk_ref"], lang),
-            tunneller["transport_uk_vessel"],
-            get_optional_date(tunneller["transport_uk_start"], lang),
-            tunneller["transport_uk_origin"],
-            get_optional_date(tunneller["transport_uk_end"], lang),
-            tunneller["transport_uk_destination"],
-        ),
+        enlistment,
+        embarkation_unit,
+        transport,
         map_front_events(company_events, tunneller_events, tunneller, lang),
-        end_of_service(tunneller, lang),
+        end_of_service,
         map_medals(medals),
     )
