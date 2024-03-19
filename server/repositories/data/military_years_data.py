@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from typing import Optional
 
-from ...db.models.TunnellerData import MedalData, SingleEventData, TunnellerData
+from ...db.models.TunnellerData import TunnellerData
 from ...models.death import Death
 from ...models.helpers.translator_helpers import translate_town
 from ...models.helpers.date_helpers import (
@@ -18,17 +18,10 @@ from ...models.helpers.military_years_helpers import (
     get_end_of_service,
     get_end_of_service_country,
     get_transferred_to,
-    map_medals,
-    map_front_events,
 )
 from ...models.military_years import (
     Demobilization,
-    EmbarkationUnit,
-    EndOfService,
-    Enlistment,
-    MilitaryYears,
     Transferred,
-    Transport,
 )
 
 
@@ -96,25 +89,4 @@ def demobilization(tunneller: TunnellerData, lang: str) -> Optional[Demobilizati
     return get_end_of_service(
         get_optional_date(tunneller["demobilization_date"], lang),
         get_end_of_service_country(tunneller["discharge_uk"], lang),
-    )
-
-
-def military_years(
-    enlistment: Enlistment,
-    embarkation_unit: EmbarkationUnit,
-    transport: Transport,
-    end_of_service: EndOfService,
-    tunneller: TunnellerData,
-    company_events: tuple[SingleEventData],
-    tunneller_events: tuple[SingleEventData],
-    medals: tuple[MedalData],
-    lang: str,
-) -> MilitaryYears:
-    return MilitaryYears(
-        enlistment,
-        embarkation_unit,
-        transport,
-        map_front_events(company_events, tunneller_events, tunneller, lang),
-        end_of_service,
-        map_medals(medals),
     )

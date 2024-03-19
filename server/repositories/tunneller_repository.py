@@ -43,12 +43,20 @@ from ..models.helpers.military_years_helpers import (
     get_training,
     get_transferred_to_tunnellers,
     get_transport_reference,
+    map_front_events,
+    map_medals,
 )
 from ..models.helpers.origins_helpers import get_nz_resident, get_parent
 from ..models.helpers.sources_helpers import get_nominal_roll
 from ..models.helpers.translator_helpers import translate_town
 from ..models.image import ImageArchives, ImageBook, ImageNewspaper
-from ..models.military_years import EmbarkationUnit, EndOfService, Enlistment, Transport
+from ..models.military_years import (
+    EmbarkationUnit,
+    EndOfService,
+    Enlistment,
+    MilitaryYears,
+    Transport,
+)
 from ..models.origins import Parents
 from ..models.pre_war_years import Employment
 from ..models.sources import NominalRoll
@@ -57,7 +65,6 @@ from ..repositories.data.military_years_data import (
     death_war,
     demobilization,
     get_age_at_enlistment,
-    military_years,
     transferred,
 )
 from ..repositories.data.post_service_years_data import post_service_years
@@ -258,16 +265,15 @@ def show(id: int, lang: str, mysql: MySQL) -> Optional[Tunneller]:
                 tunneller_result["religion"],
                 lang,
             ),
-            "military_years": military_years(
+            "military_years": MilitaryYears(
                 enlistment,
                 embarkation_unit,
                 transport,
+                map_front_events(
+                    company_events_result, front_events_result, tunneller_result, lang
+                ),
                 end_of_service,
-                tunneller_result,
-                company_events_result,
-                front_events_result,
-                medals_result,
-                lang,
+                map_medals(medals_result),
             ),
             "post_service_years": post_service_years(
                 tunneller_result["death_type"],
