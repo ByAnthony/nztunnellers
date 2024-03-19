@@ -1,35 +1,28 @@
 # -*- coding: utf-8 -*-
-from ...db.models.TunnellerData import TunnellerData
+from typing import Optional
 from ...models.helpers.date_helpers import (
     format_birth_and_death_date,
     format_date_to_year,
 )
-from ...models.helpers.origins_helpers import get_nz_resident, get_parent
 from ...models.origins import BirthDetails, Origins, Parents
 
 
-def origins(tunneller: TunnellerData, lang: str) -> Origins:
+def origins(
+    birth_date: str,
+    birth_country: str,
+    parents: Parents,
+    nz_resident: Optional[str],
+    lang: str,
+) -> Origins:
     return Origins(
         BirthDetails(
             format_birth_and_death_date(
-                format_date_to_year(tunneller["birth_date"]),
-                tunneller["birth_date"],
+                format_date_to_year(birth_date),
+                birth_date,
                 lang,
             ),
-            tunneller["birth_country"],
+            birth_country,
         ),
-        Parents(
-            get_parent(
-                tunneller["mother_name"],
-                tunneller["mother_origin"],
-            ),
-            get_parent(
-                tunneller["father_name"],
-                tunneller["father_origin"],
-            ),
-        ),
-        get_nz_resident(
-            tunneller["nz_resident_in_month"],
-            tunneller["enlistment_date"],
-        ),
+        parents,
+        nz_resident,
     )

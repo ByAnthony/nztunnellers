@@ -21,6 +21,10 @@ from .data.origins_data import origins
 from .data.pre_war_years_data import pre_war_years
 from .data.sources_data import sources
 from .data.summary_data import summary
+from ..models.helpers.origins_helpers import get_nz_resident, get_parent
+from ..models.origins import Parents
+from ..models.pre_war_years import Employment
+from ..models.tunneller import Tunneller
 from ..repositories.data.military_years_data import military_years
 from ..repositories.data.post_service_years_data import post_service_years
 from ..repositories.queries.army_experience_query import army_experience_query
@@ -30,7 +34,6 @@ from ..repositories.queries.london_gazette_query import london_gazette_query
 from ..repositories.queries.medals_query import medals_query
 from ..repositories.queries.nz_archives_query import nz_archives_query
 from ..repositories.queries.tunneller_query import tunneller_query
-from ..models.tunneller import Tunneller
 
 
 def show(id: int, lang: str, mysql: MySQL) -> Optional[Tunneller]:
@@ -74,12 +77,49 @@ def show(id: int, lang: str, mysql: MySQL) -> Optional[Tunneller]:
 
     if tunneller_result:
 
+        parents: Parents = Parents(
+            get_parent(
+                tunneller_result["mother_name"],
+                tunneller_result["mother_origin"],
+            ),
+            get_parent(
+                tunneller_result["father_name"],
+                tunneller_result["father_origin"],
+            ),
+        )
+
+        nz_resident: Optional[str] = get_nz_resident(
+            tunneller_result["nz_resident_in_month"],
+            tunneller_result["enlistment_date"],
+        )
+
+        employment: Employment = Employment(
+            tunneller_result["occupation"], tunneller_result["employer"]
+        )
+
         data = {
             "id": tunneller_result["id"],
-            "summary": summary(tunneller_result),
-            "origins": origins(tunneller_result, lang),
+            "summary": summary(
+                tunneller_result["forename"],
+                tunneller_result["surname"],
+                tunneller_result["birth_date"],
+                tunneller_result["death_date"],
+            ),
+            "origins": origins(
+                tunneller_result["birth_date"],
+                tunneller_result["birth_country"],
+                parents,
+                nz_resident,
+                lang,
+            ),
             "pre_war_years": pre_war_years(
-                army_experience_result, tunneller_result, lang
+                army_experience_result,
+                employment,
+                tunneller_result["residence"],
+                tunneller_result["marital_status"],
+                tunneller_result["wife_name"],
+                tunneller_result["religion"],
+                lang,
             ),
             "military_years": military_years(
                 tunneller_result,
