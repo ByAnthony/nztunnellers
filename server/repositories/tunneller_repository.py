@@ -18,7 +18,6 @@ from ..db.models.TunnellerData import (
 from ..db.run_sql import run_sql
 from .data.images_data import images
 from .data.sources_data import sources
-from ..models.death import Cemetery, DeathCause, DeathPlace
 from ..models.helpers.date_helpers import (
     format_date_string_to_date_type,
     format_date_to_day_month_and_year,
@@ -218,29 +217,36 @@ def show(id: int, lang: str, mysql: MySQL) -> Optional[Tunneller]:
             map_medals(medals_result),
         )
 
-        death_place: Optional[DeathPlace] = get_death_place(
-            tunneller_result["death_location"],
-            translate_town(tunneller_result["death_town"], lang),
-            tunneller_result["death_country"],
-        )
-
-        death_circumstances: Optional[DeathCause] = get_death_circumstances(
-            tunneller_result["death_cause"],
-            tunneller_result["death_circumstances"],
-        )
-
-        cemetery: Optional[Cemetery] = get_cemetery(
-            tunneller_result["cemetery"],
-            tunneller_result["cemetery_town"],
-            tunneller_result["cemetery_country"],
-            tunneller_result["grave"],
-        )
-
-        age_at_death: Optional[int] = get_age(
-            format_date_to_year(tunneller_result["death_date"]),
-            tunneller_result["death_date"],
-            format_date_to_year(tunneller_result["birth_date"]),
-            tunneller_result["birth_date"],
+        post_service_years = PostServiceYears(
+            get_death(
+                tunneller_result["death_type"],
+                format_date_string_to_date_type(
+                    format_date_to_year(tunneller_result["death_date"]),
+                    tunneller_result["death_date"],
+                    lang,
+                ),
+                get_death_place(
+                    tunneller_result["death_location"],
+                    translate_town(tunneller_result["death_town"], lang),
+                    tunneller_result["death_country"],
+                ),
+                get_death_circumstances(
+                    tunneller_result["death_cause"],
+                    tunneller_result["death_circumstances"],
+                ),
+                get_cemetery(
+                    tunneller_result["cemetery"],
+                    tunneller_result["cemetery_town"],
+                    tunneller_result["cemetery_country"],
+                    tunneller_result["grave"],
+                ),
+                get_age(
+                    format_date_to_year(tunneller_result["death_date"]),
+                    tunneller_result["death_date"],
+                    format_date_to_year(tunneller_result["birth_date"]),
+                    tunneller_result["birth_date"],
+                ),
+            )
         )
 
         nominal_roll: NominalRoll = get_nominal_roll(
@@ -275,20 +281,7 @@ def show(id: int, lang: str, mysql: MySQL) -> Optional[Tunneller]:
             "origins": origins,
             "pre_war_years": pre_war,
             "military_years": military_years,
-            "post_service_years": PostServiceYears(
-                get_death(
-                    tunneller_result["death_type"],
-                    format_date_string_to_date_type(
-                        format_date_to_year(tunneller_result["death_date"]),
-                        tunneller_result["death_date"],
-                        lang,
-                    ),
-                    death_place,
-                    death_circumstances,
-                    cemetery,
-                    age_at_death,
-                )
-            ),
+            "post_service_years": post_service_years,
             "sources": sources(
                 nz_archives_result,
                 tunneller_result["awmm_cenotaph"],
