@@ -154,60 +154,68 @@ def show(id: int, lang: str, mysql: MySQL) -> Optional[Tunneller]:
             ),
         )
 
-        employment: Employment = Employment(
-            tunneller_result["occupation"], tunneller_result["employer"]
+        pre_war = PreWarYear(
+            map_army_experience(army_experience_result, lang),
+            Employment(tunneller_result["occupation"], tunneller_result["employer"]),
+            tunneller_result["residence"],
+            tunneller_result["marital_status"],
+            tunneller_result["wife_name"],
+            tunneller_result["religion"],
         )
 
-        enlistment: Enlistment = Enlistment(
-            tunneller_result["serial"],
-            tunneller_result["rank"],
-            get_optional_date(tunneller_result["enlistment_date"], lang),
-            tunneller_result["military_district_name"],
-            tunneller_result["aka"],
-            get_transferred_to_tunnellers(
-                get_optional_date(tunneller_result["posted_date"], lang),
-                tunneller_result["posted_from_corps"],
+        military_years = MilitaryYears(
+            Enlistment(
+                tunneller_result["serial"],
+                tunneller_result["rank"],
+                get_optional_date(tunneller_result["enlistment_date"], lang),
+                tunneller_result["military_district_name"],
+                tunneller_result["aka"],
+                get_transferred_to_tunnellers(
+                    get_optional_date(tunneller_result["posted_date"], lang),
+                    tunneller_result["posted_from_corps"],
+                ),
+                get_age_at_enlistment(
+                    tunneller_result["enlistment_date"],
+                    tunneller_result["posted_date"],
+                    tunneller_result,
+                ),
             ),
-            get_age_at_enlistment(
-                tunneller_result["enlistment_date"],
-                tunneller_result["posted_date"],
-                tunneller_result,
+            EmbarkationUnit(
+                get_detachment(tunneller_result["embarkation_unit"], lang),
+                get_training(
+                    get_optional_date(tunneller_result["training_start"], lang),
+                    tunneller_result["training_location"],
+                    tunneller_result["training_location_type"],
+                ),
+                get_section(tunneller_result["section"], lang),
+                tunneller_result["attached_corps"],
             ),
-        )
-
-        embarkation_unit: EmbarkationUnit = EmbarkationUnit(
-            get_detachment(tunneller_result["embarkation_unit"], lang),
-            get_training(
-                get_optional_date(tunneller_result["training_start"], lang),
-                tunneller_result["training_location"],
-                tunneller_result["training_location_type"],
-            ),
-            get_section(tunneller_result["section"], lang),
-            tunneller_result["attached_corps"],
-        )
-
-        transport: Transport = Transport(
-            get_transport_reference(tunneller_result["transport_uk_ref"], lang),
-            tunneller_result["transport_uk_vessel"],
-            get_optional_date(tunneller_result["transport_uk_start"], lang),
-            tunneller_result["transport_uk_origin"],
-            get_optional_date(tunneller_result["transport_uk_end"], lang),
-            tunneller_result["transport_uk_destination"],
-        )
-
-        end_of_service: EndOfService = EndOfService(
-            get_boolean(tunneller_result["has_deserted"]),
-            transferred(tunneller_result, lang),
-            death_war(tunneller_result, lang),
             Transport(
-                get_transport_reference(tunneller_result["transport_nz_ref"], lang),
-                tunneller_result["transport_nz_vessel"],
-                get_optional_date(tunneller_result["transport_nz_start"], lang),
-                tunneller_result["transport_nz_origin"],
-                get_optional_date(tunneller_result["transport_nz_end"], lang),
-                tunneller_result["transport_nz_destination"],
+                get_transport_reference(tunneller_result["transport_uk_ref"], lang),
+                tunneller_result["transport_uk_vessel"],
+                get_optional_date(tunneller_result["transport_uk_start"], lang),
+                tunneller_result["transport_uk_origin"],
+                get_optional_date(tunneller_result["transport_uk_end"], lang),
+                tunneller_result["transport_uk_destination"],
             ),
-            demobilization(tunneller_result, lang),
+            map_front_events(
+                company_events_result, front_events_result, tunneller_result, lang
+            ),
+            EndOfService(
+                get_boolean(tunneller_result["has_deserted"]),
+                transferred(tunneller_result, lang),
+                death_war(tunneller_result, lang),
+                Transport(
+                    get_transport_reference(tunneller_result["transport_nz_ref"], lang),
+                    tunneller_result["transport_nz_vessel"],
+                    get_optional_date(tunneller_result["transport_nz_start"], lang),
+                    tunneller_result["transport_nz_origin"],
+                    get_optional_date(tunneller_result["transport_nz_end"], lang),
+                    tunneller_result["transport_nz_destination"],
+                ),
+                demobilization(tunneller_result, lang),
+            ),
+            map_medals(medals_result),
         )
 
         death_place: Optional[DeathPlace] = get_death_place(
@@ -265,24 +273,8 @@ def show(id: int, lang: str, mysql: MySQL) -> Optional[Tunneller]:
             "id": tunneller_result["id"],
             "summary": summary,
             "origins": origins,
-            "pre_war_years": PreWarYear(
-                map_army_experience(army_experience_result, lang),
-                employment,
-                tunneller_result["residence"],
-                tunneller_result["marital_status"],
-                tunneller_result["wife_name"],
-                tunneller_result["religion"],
-            ),
-            "military_years": MilitaryYears(
-                enlistment,
-                embarkation_unit,
-                transport,
-                map_front_events(
-                    company_events_result, front_events_result, tunneller_result, lang
-                ),
-                end_of_service,
-                map_medals(medals_result),
-            ),
+            "pre_war_years": pre_war,
+            "military_years": military_years,
             "post_service_years": PostServiceYears(
                 get_death(
                     tunneller_result["death_type"],
