@@ -509,7 +509,7 @@ def map_front_events(
     return events_grouped_by_year
 
 
-def map_medals(medals: tuple[MedalData]) -> list[Medal]:
+def map_medals(medals: tuple[MedalData, ...]) -> list[Medal]:
     return [
         Medal(medal["name"], medal["country"], medal["image"], medal["citation"])
         for medal in medals

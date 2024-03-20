@@ -419,10 +419,10 @@ victory_medal = MedalData("Victory Medal", "United Kingdom", None, "url.jpg")
 
 class TestMapMedals:
     def test_if_medals_exist(self):
-        assert map_medals([british_war_medal, victory_medal]) == [
+        assert map_medals((british_war_medal, victory_medal)) == [
             Medal("British War Medal", "United Kingdom", "url.jpg", "For bravery"),
             Medal("Victory Medal", "United Kingdom", "url.jpg", None),
         ]
 
     def test_if_empty_list(self):
-        assert map_medals([]) == []
+        assert map_medals(()) == []

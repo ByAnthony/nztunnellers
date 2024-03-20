@@ -32,6 +32,7 @@ from ..models.helpers.image_helpers import (
     get_image_url,
 )
 from ..models.helpers.military_years_helpers import (
+    get_age_at_enlistment,
     get_age_at_death,
     get_boolean,
     get_cemetery,
@@ -73,9 +74,6 @@ from ..models.roll import Name
 from ..models.sources import Sources
 from ..models.summary import Summary
 from ..models.tunneller import Tunneller
-from ..repositories.data.military_years_data import (
-    get_age_at_enlistment,
-)
 from ..repositories.queries.army_experience_query import army_experience_query
 from ..repositories.queries.book_authors_query import book_authors_query
 from .queries.events_query import company_events_query, front_events_query
