@@ -32,14 +32,18 @@ from ..models.helpers.image_helpers import (
     get_image_url,
 )
 from ..models.helpers.military_years_helpers import (
-    get_age,
+    get_age_at_death,
     get_boolean,
     get_cemetery,
     get_death_circumstances,
     get_death_place,
+    get_death_war,
     get_detachment,
+    get_end_of_service,
+    get_end_of_service_country,
     get_section,
     get_training,
+    get_transferred_to,
     get_transferred_to_tunnellers,
     get_transport_reference,
     map_front_events,
@@ -70,10 +74,7 @@ from ..models.sources import Sources
 from ..models.summary import Summary
 from ..models.tunneller import Tunneller
 from ..repositories.data.military_years_data import (
-    death_war,
-    demobilization,
     get_age_at_enlistment,
-    transferred,
 )
 from ..repositories.queries.army_experience_query import army_experience_query
 from ..repositories.queries.book_authors_query import book_authors_query
@@ -208,8 +209,40 @@ def show(id: int, lang: str, mysql: MySQL) -> Optional[Tunneller]:
             ),
             EndOfService(
                 get_boolean(tunneller_result["has_deserted"]),
-                transferred(tunneller_result, lang),
-                death_war(tunneller_result, lang),
+                get_transferred_to(
+                    tunneller_result["transferred_to_date"],
+                    tunneller_result["transferred_to_unit"],
+                    lang,
+                ),
+                get_death_war(
+                    tunneller_result["death_type"],
+                    format_date_string_to_date_type(
+                        format_date_to_year(tunneller_result["death_date"]),
+                        tunneller_result["death_date"],
+                        lang,
+                    ),
+                    get_death_place(
+                        tunneller_result["death_location"],
+                        translate_town(tunneller_result["death_town"], lang),
+                        tunneller_result["death_country"],
+                    ),
+                    get_death_circumstances(
+                        tunneller_result["death_cause"],
+                        tunneller_result["death_circumstances"],
+                    ),
+                    get_cemetery(
+                        tunneller_result["cemetery"],
+                        tunneller_result["cemetery_town"],
+                        tunneller_result["cemetery_country"],
+                        tunneller_result["grave"],
+                    ),
+                    get_age_at_death(
+                        format_date_to_year(tunneller_result["death_date"]),
+                        tunneller_result["death_date"],
+                        format_date_to_year(tunneller_result["birth_date"]),
+                        tunneller_result["birth_date"],
+                    ),
+                ),
                 Transport(
                     get_transport_reference(tunneller_result["transport_nz_ref"], lang),
                     tunneller_result["transport_nz_vessel"],
@@ -218,7 +251,10 @@ def show(id: int, lang: str, mysql: MySQL) -> Optional[Tunneller]:
                     get_optional_date(tunneller_result["transport_nz_end"], lang),
                     tunneller_result["transport_nz_destination"],
                 ),
-                demobilization(tunneller_result, lang),
+                get_end_of_service(
+                    get_optional_date(tunneller_result["demobilization_date"], lang),
+                    get_end_of_service_country(tunneller_result["discharge_uk"], lang),
+                ),
             ),
             map_medals(medals_result),
         )
@@ -246,7 +282,7 @@ def show(id: int, lang: str, mysql: MySQL) -> Optional[Tunneller]:
                     tunneller_result["cemetery_country"],
                     tunneller_result["grave"],
                 ),
-                get_age(
+                get_age_at_death(
                     format_date_to_year(tunneller_result["death_date"]),
                     tunneller_result["death_date"],
                     format_date_to_year(tunneller_result["birth_date"]),

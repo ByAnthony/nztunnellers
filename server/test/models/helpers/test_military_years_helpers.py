@@ -10,7 +10,7 @@ from ....models.military_years import (
     TransferredToTunnellers,
 )
 from ....models.helpers.military_years_helpers import (
-    get_age,
+    get_age_at_death,
     get_boolean,
     get_cemetery,
     get_death_circumstances,
@@ -265,19 +265,19 @@ class TestGetCemetery:
 
 class TestGetAgeAtDeath:
     def test_get_age_if_death_date_and_birth_date_are_not_none(self):
-        assert get_age("1962", "1962-06-06", "1876", "1876-07-14") == 85
+        assert get_age_at_death("1962", "1962-06-06", "1876", "1876-07-14") == 85
 
     def test_get_age_if_death_date_and_birth_date_are_none(self):
-        assert get_age("1962", None, "1876", None) == 86
+        assert get_age_at_death("1962", None, "1876", None) == 86
 
     def test_get_age_if_birth_date_is_none(self):
-        assert get_age("1962", "1962-06-06", "1876", None) == 86
+        assert get_age_at_death("1962", "1962-06-06", "1876", None) == 86
 
     def test_get_age_if_death_date_is_none(self):
-        assert get_age("1962", None, "1876", "1876-07-14") == 86
+        assert get_age_at_death("1962", None, "1876", "1876-07-14") == 86
 
     def test_get_age_if_data_is_none(self):
-        assert get_age(None, None, None, None) is None
+        assert get_age_at_death(None, None, None, None) is None
 
 
 # class TestMapFrontEvents:
