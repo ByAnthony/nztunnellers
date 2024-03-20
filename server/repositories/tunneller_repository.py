@@ -16,8 +16,6 @@ from ..db.models.TunnellerData import (
     TunnellerData,
 )
 from ..db.run_sql import run_sql
-from .data.images_data import images
-from .data.sources_data import sources
 from ..models.helpers.date_helpers import (
     format_date_string_to_date_type,
     format_date_to_day_month_and_year,
@@ -25,9 +23,13 @@ from ..models.helpers.date_helpers import (
     get_optional_date,
 )
 from ..models.helpers.image_helpers import (
+    get_image,
+    get_image_source,
     get_image_source_archives,
+    get_image_source_auckland_libraries,
     get_image_source_book,
     get_image_source_newspaper,
+    get_image_url,
 )
 from ..models.helpers.military_years_helpers import (
     get_age,
@@ -46,9 +48,13 @@ from ..models.helpers.military_years_helpers import (
 from ..models.helpers.origins_helpers import get_nz_resident, get_parent
 from ..models.helpers.post_service_years_helpers import get_death
 from ..models.helpers.pre_war_years_helpers import map_army_experience
-from ..models.helpers.sources_helpers import get_nominal_roll
+from ..models.helpers.sources_helpers import (
+    get_awmm,
+    get_nominal_roll,
+    map_london_gazette,
+    map_nz_archives,
+)
 from ..models.helpers.translator_helpers import translate_town
-from ..models.image import ImageArchives, ImageBook, ImageNewspaper
 from ..models.military_years import (
     EmbarkationUnit,
     EndOfService,
@@ -60,7 +66,7 @@ from ..models.origins import BirthDetails, Origins, Parents
 from ..models.post_service_years import PostServiceYears
 from ..models.pre_war_years import Employment, PreWarYear
 from ..models.roll import Name
-from ..models.sources import NominalRoll
+from ..models.sources import Sources
 from ..models.summary import Summary
 from ..models.tunneller import Tunneller
 from ..repositories.data.military_years_data import (
@@ -249,30 +255,44 @@ def show(id: int, lang: str, mysql: MySQL) -> Optional[Tunneller]:
             )
         )
 
-        nominal_roll: NominalRoll = get_nominal_roll(
-            tunneller_result["nominal_roll_volume"],
-            tunneller_result["nominal_roll_number"],
-            tunneller_result["nominal_roll_page"],
-            lang,
+        sources = Sources(
+            map_nz_archives(nz_archives_result),
+            get_awmm(tunneller_result["awmm_cenotaph"]),
+            get_nominal_roll(
+                tunneller_result["nominal_roll_volume"],
+                tunneller_result["nominal_roll_number"],
+                tunneller_result["nominal_roll_page"],
+                lang,
+            ),
+            map_london_gazette(london_gazette_result, lang),
         )
 
-        image_source_archives: Optional[ImageArchives] = get_image_source_archives(
-            tunneller_result["archives_name"],
-            tunneller_result["archives_ref"],
-        )
-
-        image_source_newspaper: Optional[ImageNewspaper] = get_image_source_newspaper(
-            tunneller_result["newspaper_name"],
-            format_date_to_day_month_and_year(tunneller_result["newspaper_date"], lang),
-        )
-
-        image_source_book: Optional[ImageBook] = get_image_source_book(
-            book_authors_result,
-            tunneller_result["book_title"],
-            tunneller_result["book_town"],
-            tunneller_result["book_publisher"],
-            tunneller_result["book_year"],
-            tunneller_result["book_page"],
+        image = get_image(
+            get_image_url(tunneller_result["image"]),
+            get_image_source(
+                get_image_source_auckland_libraries(
+                    tunneller_result["image_source_auckland_libraries"]
+                ),
+                get_image_source_archives(
+                    tunneller_result["archives_name"],
+                    tunneller_result["archives_ref"],
+                ),
+                tunneller_result["family_name"],
+                get_image_source_newspaper(
+                    tunneller_result["newspaper_name"],
+                    format_date_to_day_month_and_year(
+                        tunneller_result["newspaper_date"], lang
+                    ),
+                ),
+                get_image_source_book(
+                    book_authors_result,
+                    tunneller_result["book_title"],
+                    tunneller_result["book_town"],
+                    tunneller_result["book_publisher"],
+                    tunneller_result["book_year"],
+                    tunneller_result["book_page"],
+                ),
+            ),
         )
 
         data = {
@@ -282,22 +302,8 @@ def show(id: int, lang: str, mysql: MySQL) -> Optional[Tunneller]:
             "pre_war_years": pre_war,
             "military_years": military_years,
             "post_service_years": post_service_years,
-            "sources": sources(
-                nz_archives_result,
-                tunneller_result["awmm_cenotaph"],
-                nominal_roll,
-                london_gazette_result,
-                lang,
-            ),
-            "image": images(
-                tunneller_result["image"],
-                tunneller_result["image_source_auckland_libraries"],
-                image_source_archives,
-                tunneller_result["family_name"],
-                image_source_newspaper,
-                image_source_book,
-                lang,
-            ),
+            "sources": sources,
+            "image": image,
         }
 
         return from_dict(data_class=Tunneller, data=data)
