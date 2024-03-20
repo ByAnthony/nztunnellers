@@ -16,7 +16,7 @@ from ..models.helpers.date_helpers import (
 def select_all(mysql: MySQL) -> dict[str, list[Roll]]:
 
     sql: str = roll_query()
-    results: tuple[RollData] = run_sql(sql, mysql, None)
+    results: tuple[RollData, ...] = run_sql(sql, mysql, None)
 
     alphabet: dict[str, list[Roll]] = dict()
 

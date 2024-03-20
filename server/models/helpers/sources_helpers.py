@@ -7,7 +7,7 @@ from ..sources import LondonGazette, NewZealandArchives, NominalRoll
 
 
 def map_nz_archives(
-    nz_archives: tuple[NewZealandArchivesData],
+    nz_archives: tuple[NewZealandArchivesData, ...],
 ) -> list[NewZealandArchives]:
     def get_url(online_ref: str) -> str:
         link = (
@@ -59,7 +59,7 @@ def get_nominal_roll(
 
 
 def map_london_gazette(
-    london_gazette: tuple[LondonGazetteData], lang: str
+    london_gazette: tuple[LondonGazetteData, ...], lang: str
 ) -> list[LondonGazette]:
     return [
         LondonGazette(

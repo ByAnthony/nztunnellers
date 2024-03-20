@@ -90,35 +90,35 @@ def show(id: int, lang: str, mysql: MySQL) -> Optional[Tunneller]:
     tunneller_result: TunnellerData = run_sql(tunneller_sql, mysql, values)[0]
 
     army_experience_sql = army_experience_query(lang)
-    army_experience_result: tuple[ArmyExperienceData] = run_sql(
+    army_experience_result: tuple[ArmyExperienceData, ...] = run_sql(
         army_experience_sql, mysql, values
     )
 
     company_events_sql = company_events_query()
-    company_events_result: tuple[SingleEventData] = run_sql(
+    company_events_result: tuple[SingleEventData, ...] = run_sql(
         company_events_sql, mysql, None
     )
 
     front_events_sql = front_events_query()
-    front_events_result: tuple[SingleEventData] = run_sql(
+    front_events_result: tuple[SingleEventData, ...] = run_sql(
         front_events_sql, mysql, values
     )
 
     medals_sql = medals_query(lang)
-    medals_result: tuple[MedalData] = run_sql(medals_sql, mysql, values)
+    medals_result: tuple[MedalData, ...] = run_sql(medals_sql, mysql, values)
 
     nz_archives_sql = nz_archives_query()
-    nz_archives_result: tuple[NewZealandArchivesData] = run_sql(
+    nz_archives_result: tuple[NewZealandArchivesData, ...] = run_sql(
         nz_archives_sql, mysql, values
     )
 
     london_gazette_sql = london_gazette_query()
-    london_gazette_result: tuple[LondonGazetteData] = run_sql(
+    london_gazette_result: tuple[LondonGazetteData, ...] = run_sql(
         london_gazette_sql, mysql, values
     )
 
     book_authors_sql = book_authors_query()
-    book_authors_result: tuple[BookAuthorsData] = run_sql(
+    book_authors_result: tuple[BookAuthorsData, ...] = run_sql(
         book_authors_sql, mysql, values
     )
 

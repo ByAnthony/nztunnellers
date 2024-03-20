@@ -407,7 +407,7 @@ def add_death(tunneller: TunnellerData) -> list[SingleEventData]:
 
 def selected_company_events(
     main_tunneller_events: list[SingleEventData],
-    company_events: tuple[SingleEventData],
+    company_events: tuple[SingleEventData, ...],
     embarkation_unit: str,
 ):
     event_start_date = min(event["date"] for event in main_tunneller_events)
@@ -474,8 +474,8 @@ def grouped_by_year(grouped_events: list[Events]) -> dict[str, list[Events]]:
 
 
 def map_front_events(
-    company_events: tuple[SingleEventData],
-    tunneller_events: tuple[SingleEventData],
+    company_events: tuple[SingleEventData, ...],
+    tunneller_events: tuple[SingleEventData, ...],
     tunneller: TunnellerData,
     lang: str,
 ) -> dict[str, list[Events]]:

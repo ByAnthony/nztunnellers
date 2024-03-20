@@ -10,17 +10,17 @@ from ...db.models.ArticleData import (
 from ...models.article import Next, Section, Image
 
 
-def get_images(images: tuple[FileData], position: int) -> str:
+def get_images(images: tuple[FileData, ...], position: int) -> str:
     if 0 <= position < len(images):
         return images[position]["file"]
     return ""
 
 
-def map_sections(sections: tuple[SectionData]) -> list[Section]:
+def map_sections(sections: tuple[SectionData, ...]) -> list[Section]:
     return [Section(section["title"], section["text"]) for section in sections]
 
 
-def map_images(images: tuple[ImageData]) -> list[Image]:
+def map_images(images: tuple[ImageData, ...]) -> list[Image]:
     return [
         Image(
             image["file"],
@@ -34,7 +34,7 @@ def map_images(images: tuple[ImageData]) -> list[Image]:
 
 
 def get_next_chapter(
-    chapter: int, articles: tuple[ArticleReferenceData]
+    chapter: int, articles: tuple[ArticleReferenceData, ...]
 ) -> Optional[Next]:
     for i in range(len(articles)):
         if articles[i]["chapter"] == chapter:
