@@ -20,7 +20,6 @@ from .data.images_data import images
 from .data.origins_data import origins
 from .data.pre_war_years_data import pre_war_years
 from .data.sources_data import sources
-from .data.summary_data import summary
 from ..models.death import Cemetery, DeathCause, DeathPlace
 from ..models.helpers.date_helpers import (
     format_date_to_day_month_and_year,
@@ -59,7 +58,9 @@ from ..models.military_years import (
 )
 from ..models.origins import Parents
 from ..models.pre_war_years import Employment
+from ..models.roll import Name
 from ..models.sources import NominalRoll
+from ..models.summary import Summary
 from ..models.tunneller import Tunneller
 from ..repositories.data.military_years_data import (
     death_war,
@@ -243,11 +244,13 @@ def show(id: int, lang: str, mysql: MySQL) -> Optional[Tunneller]:
 
         data = {
             "id": tunneller_result["id"],
-            "summary": summary(
-                tunneller_result["forename"],
-                tunneller_result["surname"],
-                tunneller_result["birth_date"],
-                tunneller_result["death_date"],
+            "summary": Summary(
+                Name(
+                    tunneller_result["forename"],
+                    tunneller_result["surname"],
+                ),
+                format_date_to_year(tunneller_result["birth_date"]),
+                format_date_to_year(tunneller_result["death_date"]),
             ),
             "origins": origins(
                 tunneller_result["birth_date"],
