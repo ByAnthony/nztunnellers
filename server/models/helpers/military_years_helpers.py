@@ -1,7 +1,12 @@
 # -*- coding: utf-8 -*-
 from typing import Optional
 
-from ...db.models.TunnellerData import MedalData, SingleEventData, TunnellerData
+from ...db.models.TunnellerData import (
+    MedalData,
+    SingleEventData,
+    Transport,
+    TunnellerData,
+)
 from .date_helpers import (
     calculate_age_with_full_date,
     calculate_age_with_years,
@@ -183,24 +188,26 @@ def get_end_of_service_country(discharge_uk: Optional[int], lang: str) -> str:
         return "Nouvelle-Zélande"
 
 
-def add_transports(tunneller: TunnellerData) -> list[SingleEventData]:
+def add_transports(
+    transport_to_uk: Transport, transport_to_nz: Transport
+) -> list[SingleEventData]:
     transports: list[SingleEventData] = []
 
-    if tunneller["transport_uk_start"] is not None:
+    if transport_to_uk["date"] is not None:
         transports.append(
             SingleEventData(
-                tunneller["transport_uk_start"],
-                f"{tunneller['transport_uk_ref']} {tunneller['transport_uk_vessel']}",
+                transport_to_uk["date"],
+                f"{transport_to_uk['ref']} {transport_to_uk['vessel']}",
                 "Transfer to England",
                 None,
             )
         )
 
-    if tunneller["transport_nz_start"] is not None:
+    if transport_to_nz["date"] is not None:
         transports.append(
             SingleEventData(
-                tunneller["transport_nz_start"],
-                f"{tunneller['transport_nz_ref']} {tunneller['transport_nz_vessel']}",
+                transport_to_nz["date"],
+                f"{transport_to_nz['ref']} {transport_to_nz['vessel']}",
                 "Transfer to New Zealand",
                 None,
             )
@@ -482,7 +489,20 @@ def map_front_events(
     tunneller_events_db: list[SingleEventData] = list(tunneller_events)
 
     tunneller_events_list: list[SingleEventData] = list(
-        tunneller_events_db + add_transports(tunneller) + add_end_of_service(tunneller)
+        tunneller_events_db
+        + add_transports(
+            Transport(
+                tunneller["transport_uk_start"],
+                tunneller["transport_uk_ref"],
+                tunneller["transport_uk_vessel"],
+            ),
+            Transport(
+                tunneller["transport_nz_start"],
+                tunneller["transport_nz_ref"],
+                tunneller["transport_nz_vessel"],
+            ),
+        )
+        + add_end_of_service(tunneller)
     )
 
     company_selected_events: list[SingleEventData] = selected_company_events(
