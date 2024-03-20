@@ -2,7 +2,7 @@
 from typing import Optional
 
 from ...models.helpers.date_helpers import (
-    format_birth_and_death_date,
+    format_date_string_to_date_type,
     format_date_to_year,
 )
 from ...models.death import Cemetery, DeathCause, DeathPlace
@@ -22,7 +22,7 @@ def post_service_years(
     return PostServiceYears(
         get_death(
             death_type,
-            format_birth_and_death_date(
+            format_date_string_to_date_type(
                 format_date_to_year(death_date),
                 death_date,
                 lang,

@@ -5,7 +5,7 @@ from ...db.models.TunnellerData import TunnellerData
 from ...models.death import Death
 from ...models.helpers.translator_helpers import translate_town
 from ...models.helpers.date_helpers import (
-    format_birth_and_death_date,
+    format_date_string_to_date_type,
     format_date_to_year,
     get_optional_date,
 )
@@ -56,7 +56,7 @@ def transferred(tunneller: TunnellerData, lang: str) -> Optional[Transferred]:
 def death_war(tunneller: TunnellerData, lang: str) -> Optional[Death]:
     return get_death_war(
         tunneller["death_type"],
-        format_birth_and_death_date(
+        format_date_string_to_date_type(
             format_date_to_year(tunneller["death_date"]),
             tunneller["death_date"],
             lang,

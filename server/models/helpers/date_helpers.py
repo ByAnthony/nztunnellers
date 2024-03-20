@@ -55,7 +55,7 @@ def format_date_to_day_month_and_year(date: Optional[str], lang: str) -> Optiona
     return None
 
 
-def format_birth_and_death_date(
+def format_date_string_to_date_type(
     year: Optional[str], date: Optional[str], lang: str
 ) -> Optional[Date]:
     if year is None and date is None:

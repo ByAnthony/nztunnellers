@@ -10,7 +10,7 @@ from ....models.helpers.date_helpers import (
     format_date_to_day_month_and_year,
     format_date_to_month,
     format_date_to_year,
-    format_birth_and_death_date,
+    format_date_string_to_date_type,
     get_optional_date,
 )
 
@@ -95,22 +95,22 @@ class TestFormatDateToDayMonthAndYear:
 
 class TestGetBirthDate:
     def test_if_year_is_none_and_date_is_none_and_lang_is_en(self):
-        assert format_birth_and_death_date(None, None, "en") is None
+        assert format_date_string_to_date_type(None, None, "en") is None
 
     def test_if_year_is_none_and_date_is_none_and_lang_is_fr(self):
-        assert format_birth_and_death_date(None, None, "fr") is None
+        assert format_date_string_to_date_type(None, None, "fr") is None
 
     def test_if_year_is_none_and_lang_is_en(self):
-        assert format_birth_and_death_date(None, date, "en") is None
+        assert format_date_string_to_date_type(None, date, "en") is None
 
     def test_if_year_is_none_and_lang_is_fr(self):
-        assert format_birth_and_death_date(None, date, "fr") is None
+        assert format_date_string_to_date_type(None, date, "fr") is None
 
     def test_if_year_is_not_none_and_lang_is_en(self):
-        assert format_birth_and_death_date(year, None, "en") == Date("1988", None)
+        assert format_date_string_to_date_type(year, None, "en") == Date("1988", None)
 
     def test_if_year_is_not_none_and_lang_is_fr(self):
-        assert format_birth_and_death_date(year, None, "fr") == Date("1988", None)
+        assert format_date_string_to_date_type(year, None, "fr") == Date("1988", None)
 
 
 class TestGetDate:

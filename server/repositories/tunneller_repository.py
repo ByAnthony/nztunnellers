@@ -17,11 +17,10 @@ from ..db.models.TunnellerData import (
 )
 from ..db.run_sql import run_sql
 from .data.images_data import images
-from .data.pre_war_years_data import pre_war_years
 from .data.sources_data import sources
 from ..models.death import Cemetery, DeathCause, DeathPlace
 from ..models.helpers.date_helpers import (
-    format_birth_and_death_date,
+    format_date_string_to_date_type,
     format_date_to_day_month_and_year,
     format_date_to_year,
     get_optional_date,
@@ -46,6 +45,7 @@ from ..models.helpers.military_years_helpers import (
     map_medals,
 )
 from ..models.helpers.origins_helpers import get_nz_resident, get_parent
+from ..models.helpers.pre_war_years_helpers import map_army_experience
 from ..models.helpers.sources_helpers import get_nominal_roll
 from ..models.helpers.translator_helpers import translate_town
 from ..models.image import ImageArchives, ImageBook, ImageNewspaper
@@ -57,7 +57,7 @@ from ..models.military_years import (
     Transport,
 )
 from ..models.origins import BirthDetails, Origins, Parents
-from ..models.pre_war_years import Employment
+from ..models.pre_war_years import Employment, PreWarYear
 from ..models.roll import Name
 from ..models.sources import NominalRoll
 from ..models.summary import Summary
@@ -254,7 +254,7 @@ def show(id: int, lang: str, mysql: MySQL) -> Optional[Tunneller]:
             ),
             "origins": Origins(
                 BirthDetails(
-                    format_birth_and_death_date(
+                    format_date_string_to_date_type(
                         format_date_to_year(tunneller_result["birth_date"]),
                         tunneller_result["birth_date"],
                         lang,
@@ -264,14 +264,13 @@ def show(id: int, lang: str, mysql: MySQL) -> Optional[Tunneller]:
                 parents,
                 nz_resident,
             ),
-            "pre_war_years": pre_war_years(
-                army_experience_result,
+            "pre_war_years": PreWarYear(
+                map_army_experience(army_experience_result, lang),
                 employment,
                 tunneller_result["residence"],
                 tunneller_result["marital_status"],
                 tunneller_result["wife_name"],
                 tunneller_result["religion"],
-                lang,
             ),
             "military_years": MilitaryYears(
                 enlistment,
