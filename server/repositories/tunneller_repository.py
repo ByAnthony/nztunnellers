@@ -45,6 +45,7 @@ from ..models.helpers.military_years_helpers import (
     map_medals,
 )
 from ..models.helpers.origins_helpers import get_nz_resident, get_parent
+from ..models.helpers.post_service_years_helpers import get_death
 from ..models.helpers.pre_war_years_helpers import map_army_experience
 from ..models.helpers.sources_helpers import get_nominal_roll
 from ..models.helpers.translator_helpers import translate_town
@@ -57,6 +58,7 @@ from ..models.military_years import (
     Transport,
 )
 from ..models.origins import BirthDetails, Origins, Parents
+from ..models.post_service_years import PostServiceYears
 from ..models.pre_war_years import Employment, PreWarYear
 from ..models.roll import Name
 from ..models.sources import NominalRoll
@@ -68,7 +70,6 @@ from ..repositories.data.military_years_data import (
     get_age_at_enlistment,
     transferred,
 )
-from ..repositories.data.post_service_years_data import post_service_years
 from ..repositories.queries.army_experience_query import army_experience_query
 from ..repositories.queries.book_authors_query import book_authors_query
 from .queries.events_query import company_events_query, front_events_query
@@ -119,20 +120,38 @@ def show(id: int, lang: str, mysql: MySQL) -> Optional[Tunneller]:
 
     if tunneller_result:
 
-        parents: Parents = Parents(
-            get_parent(
-                tunneller_result["mother_name"],
-                tunneller_result["mother_origin"],
+        summary = Summary(
+            Name(
+                tunneller_result["forename"],
+                tunneller_result["surname"],
             ),
-            get_parent(
-                tunneller_result["father_name"],
-                tunneller_result["father_origin"],
-            ),
+            format_date_to_year(tunneller_result["birth_date"]),
+            format_date_to_year(tunneller_result["death_date"]),
         )
 
-        nz_resident: Optional[str] = get_nz_resident(
-            tunneller_result["nz_resident_in_month"],
-            tunneller_result["enlistment_date"],
+        origins = Origins(
+            BirthDetails(
+                format_date_string_to_date_type(
+                    format_date_to_year(tunneller_result["birth_date"]),
+                    tunneller_result["birth_date"],
+                    lang,
+                ),
+                tunneller_result["birth_country"],
+            ),
+            Parents(
+                get_parent(
+                    tunneller_result["mother_name"],
+                    tunneller_result["mother_origin"],
+                ),
+                get_parent(
+                    tunneller_result["father_name"],
+                    tunneller_result["father_origin"],
+                ),
+            ),
+            get_nz_resident(
+                tunneller_result["nz_resident_in_month"],
+                tunneller_result["enlistment_date"],
+            ),
         )
 
         employment: Employment = Employment(
@@ -244,26 +263,8 @@ def show(id: int, lang: str, mysql: MySQL) -> Optional[Tunneller]:
 
         data = {
             "id": tunneller_result["id"],
-            "summary": Summary(
-                Name(
-                    tunneller_result["forename"],
-                    tunneller_result["surname"],
-                ),
-                format_date_to_year(tunneller_result["birth_date"]),
-                format_date_to_year(tunneller_result["death_date"]),
-            ),
-            "origins": Origins(
-                BirthDetails(
-                    format_date_string_to_date_type(
-                        format_date_to_year(tunneller_result["birth_date"]),
-                        tunneller_result["birth_date"],
-                        lang,
-                    ),
-                    tunneller_result["birth_country"],
-                ),
-                parents,
-                nz_resident,
-            ),
+            "summary": summary,
+            "origins": origins,
             "pre_war_years": PreWarYear(
                 map_army_experience(army_experience_result, lang),
                 employment,
@@ -282,14 +283,19 @@ def show(id: int, lang: str, mysql: MySQL) -> Optional[Tunneller]:
                 end_of_service,
                 map_medals(medals_result),
             ),
-            "post_service_years": post_service_years(
-                tunneller_result["death_type"],
-                tunneller_result["death_date"],
-                death_place,
-                death_circumstances,
-                cemetery,
-                age_at_death,
-                lang,
+            "post_service_years": PostServiceYears(
+                get_death(
+                    tunneller_result["death_type"],
+                    format_date_string_to_date_type(
+                        format_date_to_year(tunneller_result["death_date"]),
+                        tunneller_result["death_date"],
+                        lang,
+                    ),
+                    death_place,
+                    death_circumstances,
+                    cemetery,
+                    age_at_death,
+                )
             ),
             "sources": sources(
                 nz_archives_result,
