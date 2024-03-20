@@ -6,9 +6,9 @@ from typing import Any, Optional, Union
 
 def run_sql(
     sql: str, mysql: MySQL, values: Union[Optional[list[int]], Optional[list[str]]]
-) -> tuple[Any]:
+) -> tuple[Any, ...]:
     conn = None
-    results: Union[tuple[int], tuple[str]]
+    results: tuple[Any, ...]
     try:
         cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
         cursor.execute(sql, values)
