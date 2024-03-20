@@ -149,6 +149,7 @@ class Transport:
     date: str
     ref: str
     vessel: str
+    title: str
 
     def __getitem__(self, key: str):
         return getattr(self, key)

@@ -198,7 +198,7 @@ def add_transports(
             SingleEventData(
                 transport_to_uk["date"],
                 f"{transport_to_uk['ref']} {transport_to_uk['vessel']}",
-                "Transfer to England",
+                transport_to_uk["title"],
                 None,
             )
         )
@@ -208,7 +208,7 @@ def add_transports(
             SingleEventData(
                 transport_to_nz["date"],
                 f"{transport_to_nz['ref']} {transport_to_nz['vessel']}",
-                "Transfer to New Zealand",
+                transport_to_nz["title"],
                 None,
             )
         )
@@ -495,11 +495,13 @@ def map_front_events(
                 tunneller["transport_uk_start"],
                 tunneller["transport_uk_ref"],
                 tunneller["transport_uk_vessel"],
+                "Transfer to England",
             ),
             Transport(
                 tunneller["transport_nz_start"],
                 tunneller["transport_nz_ref"],
                 tunneller["transport_nz_vessel"],
+                "Transfer to New Zealand",
             ),
         )
         + add_end_of_service(tunneller)
