@@ -17,11 +17,11 @@ from ..db.models.TunnellerData import (
 )
 from ..db.run_sql import run_sql
 from .data.images_data import images
-from .data.origins_data import origins
 from .data.pre_war_years_data import pre_war_years
 from .data.sources_data import sources
 from ..models.death import Cemetery, DeathCause, DeathPlace
 from ..models.helpers.date_helpers import (
+    format_birth_and_death_date,
     format_date_to_day_month_and_year,
     format_date_to_year,
     get_optional_date,
@@ -56,7 +56,7 @@ from ..models.military_years import (
     MilitaryYears,
     Transport,
 )
-from ..models.origins import Parents
+from ..models.origins import BirthDetails, Origins, Parents
 from ..models.pre_war_years import Employment
 from ..models.roll import Name
 from ..models.sources import NominalRoll
@@ -252,12 +252,17 @@ def show(id: int, lang: str, mysql: MySQL) -> Optional[Tunneller]:
                 format_date_to_year(tunneller_result["birth_date"]),
                 format_date_to_year(tunneller_result["death_date"]),
             ),
-            "origins": origins(
-                tunneller_result["birth_date"],
-                tunneller_result["birth_country"],
+            "origins": Origins(
+                BirthDetails(
+                    format_birth_and_death_date(
+                        format_date_to_year(tunneller_result["birth_date"]),
+                        tunneller_result["birth_date"],
+                        lang,
+                    ),
+                    tunneller_result["birth_country"],
+                ),
                 parents,
                 nz_resident,
-                lang,
             ),
             "pre_war_years": pre_war_years(
                 army_experience_result,
