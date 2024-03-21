@@ -2,10 +2,11 @@
 from dataclasses import dataclass
 from typing import Optional
 
+
 from .summary import Summary
 from .image import Image
-from .military_years import MilitaryYears
 from .origins import Origins
+from .military_years import MilitaryYears
 from .post_service_years import PostServiceYears
 from .pre_war_years import PreWarYear
 from .sources import Sources
