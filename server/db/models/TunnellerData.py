@@ -65,33 +65,12 @@ class BookAuthorsData:
 
 
 @dataclass
-class TunnellerData:
-    id: int
-    forename: str
-    surname: str
-    aka: Optional[str]
-    serial: str
-    birth_date: Optional[str]
-    birth_country: Optional[str]
-    mother_name: Optional[str]
-    mother_origin: Optional[str]
-    father_name: Optional[str]
-    father_origin: Optional[str]
-    nz_resident_in_month: Optional[int]
-    marital_status: Optional[str]
-    wife_name: Optional[str]
-    occupation: Optional[str]
-    employer: Optional[str]
-    residence: Optional[str]
-    religion: Optional[str]
+class MilitaryYearsTunnellerData:
     enlistment_date: Optional[str]
     military_district_name: str
     posted_date: Optional[str]
     posted_from_corps: Optional[str]
-    rank: str
     embarkation_unit: str
-    section: Optional[str]
-    attached_corps: Optional[str]
     training_start: str
     training_location: str
     training_location_type: str
@@ -123,6 +102,30 @@ class TunnellerData:
     transport_nz_destination: Optional[str]
     demobilization_date: Optional[str]
     discharge_uk: Optional[int]
+
+
+@dataclass
+class TunnellerData(MilitaryYearsTunnellerData):
+    id: int
+    forename: str
+    surname: str
+    aka: Optional[str]
+    serial: str
+    birth_date: Optional[str]
+    birth_country: Optional[str]
+    mother_name: Optional[str]
+    mother_origin: Optional[str]
+    father_name: Optional[str]
+    father_origin: Optional[str]
+    nz_resident_in_month: Optional[int]
+    marital_status: Optional[str]
+    wife_name: Optional[str]
+    occupation: Optional[str]
+    employer: Optional[str]
+    residence: Optional[str]
+    religion: Optional[str]
+    rank: str
+    embarkation_unit: str
     image: Optional[str]
     image_source_auckland_libraries: Optional[str]
     archives_name: Optional[str]
