@@ -65,24 +65,42 @@ class BookAuthorsData:
 
 
 @dataclass
-class MilitaryYearsTunnellerData:
-    enlistment_date: Optional[str]
-    military_district_name: str
-    posted_date: Optional[str]
-    posted_from_corps: Optional[str]
-    embarkation_unit: str
+class TrainingAndEmbarkationData:
     training_start: str
     training_location: str
-    training_location_type: str
-    transport_uk_ref: str
-    transport_uk_vessel: str
-    transport_uk_start: str
-    transport_uk_origin: str
-    transport_uk_end: str
-    transport_uk_destination: str
-    has_deserted: Optional[int]
+    embarkation_unit: str
+
+
+@dataclass
+class EnlistmentData(TrainingAndEmbarkationData):
+    enlistment_date: Optional[str]
+
+    def __getitem__(self, key: str):
+        return getattr(self, key)
+
+
+@dataclass
+class PostedData(TrainingAndEmbarkationData):
+    posted_date: Optional[str]
+
+    def __getitem__(self, key: str):
+        return getattr(self, key)
+
+
+@dataclass
+class EndOfServiceData:
     transferred_to_date: Optional[str]
     transferred_to_unit: Optional[str]
+    demobilization_date: Optional[str]
+    discharge_uk: Optional[int]
+    has_deserted: Optional[int]
+
+    def __getitem__(self, key: str):
+        return getattr(self, key)
+
+
+@dataclass
+class DeathData:
     death_type: Optional[str]
     death_date: str
     death_location: Optional[str]
@@ -94,14 +112,30 @@ class MilitaryYearsTunnellerData:
     cemetery_town: Optional[str]
     cemetery_country: Optional[str]
     grave: Optional[str]
+
+    def __getitem__(self, key: str):
+        return getattr(self, key)
+
+
+@dataclass
+class MilitaryYearsTunnellerData(
+    EnlistmentData, PostedData, EndOfServiceData, DeathData
+):
+    military_district_name: str
+    posted_from_corps: Optional[str]
+    training_location_type: str
+    transport_uk_ref: str
+    transport_uk_vessel: str
+    transport_uk_start: str
+    transport_uk_origin: str
+    transport_uk_end: str
+    transport_uk_destination: str
     transport_nz_ref: Optional[str]
     transport_nz_vessel: Optional[str]
     transport_nz_start: Optional[str]
     transport_nz_origin: Optional[str]
     transport_nz_end: Optional[str]
     transport_nz_destination: Optional[str]
-    demobilization_date: Optional[str]
-    discharge_uk: Optional[int]
 
     def __getitem__(self, key: str):
         return getattr(self, key)

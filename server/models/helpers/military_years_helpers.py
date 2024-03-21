@@ -2,8 +2,12 @@
 from typing import Optional
 
 from ...db.models.TunnellerData import (
+    DeathData,
+    EndOfServiceData,
+    EnlistmentData,
     MedalData,
     MilitaryYearsTunnellerData,
+    PostedData,
     SingleEventData,
     Transport,
     TunnellerData,
@@ -217,32 +221,32 @@ def add_transports(
     return transports
 
 
-def add_end_of_service(tunneller: TunnellerData) -> list[SingleEventData]:
+def add_end_of_service(endOfService: EndOfServiceData) -> list[SingleEventData]:
     end_of_service: list[SingleEventData] = []
 
-    if tunneller["transferred_to_date"] is not None:
+    if endOfService["transferred_to_date"] is not None:
         end_of_service.append(
             SingleEventData(
-                tunneller["transferred_to_date"],
-                tunneller["transferred_to_unit"],
+                endOfService["transferred_to_date"],
+                endOfService["transferred_to_unit"],
                 "Transferred",
                 None,
             )
         )
-    if tunneller["demobilization_date"] is not None:
-        if tunneller["discharge_uk"] == 1:
+    if endOfService["demobilization_date"] is not None:
+        if endOfService["discharge_uk"] == 1:
             end_of_service.append(
                 SingleEventData(
-                    tunneller["demobilization_date"],
+                    endOfService["demobilization_date"],
                     "End of Service in the United Kingdom",
                     "Demobilization",
                     None,
                 )
             )
-        elif tunneller["has_deserted"] == 1:
+        elif endOfService["has_deserted"] == 1:
             end_of_service.append(
                 SingleEventData(
-                    tunneller["demobilization_date"],
+                    endOfService["demobilization_date"],
                     "End of Service as deserter",
                     "Demobilization",
                     None,
@@ -251,7 +255,7 @@ def add_end_of_service(tunneller: TunnellerData) -> list[SingleEventData]:
         else:
             end_of_service.append(
                 SingleEventData(
-                    tunneller["demobilization_date"],
+                    endOfService["demobilization_date"],
                     "Demobilization",
                     "End of Service",
                     None,
@@ -261,156 +265,156 @@ def add_end_of_service(tunneller: TunnellerData) -> list[SingleEventData]:
     return end_of_service
 
 
-def add_enlistment(tunneller: TunnellerData) -> list[SingleEventData]:
-    enlistment: list[SingleEventData] = []
+def add_enlistment(enlistment: EnlistmentData) -> list[SingleEventData]:
+    enlistment_event: list[SingleEventData] = []
 
-    if tunneller["enlistment_date"] is not None:
-        if tunneller["enlistment_date"] < tunneller["training_start"]:
-            enlistment.append(
+    if enlistment["enlistment_date"] is not None:
+        if enlistment["enlistment_date"] < enlistment["training_start"]:
+            enlistment_event.append(
                 SingleEventData(
-                    tunneller["enlistment_date"],
-                    tunneller["embarkation_unit"],
+                    enlistment["enlistment_date"],
+                    enlistment["embarkation_unit"],
                     "Enlisted",
                     None,
                 )
             )
-            enlistment.append(
+            enlistment_event.append(
                 SingleEventData(
-                    tunneller["training_start"],
-                    tunneller["training_location"],
+                    enlistment["training_start"],
+                    enlistment["training_location"],
                     "Trained",
                     None,
                 )
             )
         else:
-            enlistment.append(
+            enlistment_event.append(
                 SingleEventData(
-                    tunneller["enlistment_date"],
-                    tunneller["embarkation_unit"],
+                    enlistment["enlistment_date"],
+                    enlistment["embarkation_unit"],
                     "Enlisted",
                     None,
                 )
             )
-            enlistment.append(
+            enlistment_event.append(
                 SingleEventData(
-                    tunneller["enlistment_date"],
-                    tunneller["training_location"],
+                    enlistment["enlistment_date"],
+                    enlistment["training_location"],
                     "Trained",
                     None,
                 )
             )
 
-    return enlistment
+    return enlistment_event
 
 
-def add_posted(tunneller: TunnellerData) -> list[SingleEventData]:
-    posted: list[SingleEventData] = []
+def add_posted(posted: PostedData) -> list[SingleEventData]:
+    posted_event: list[SingleEventData] = []
 
-    if tunneller["posted_date"] is not None:
-        if tunneller["posted_date"] < tunneller["training_start"]:
-            posted.append(
+    if posted["posted_date"] is not None:
+        if posted["posted_date"] < posted["training_start"]:
+            posted_event.append(
                 SingleEventData(
-                    tunneller["posted_date"],
-                    tunneller["embarkation_unit"],
+                    posted["posted_date"],
+                    posted["embarkation_unit"],
                     "Posted",
                     None,
                 )
             )
-            posted.append(
+            posted_event.append(
                 SingleEventData(
-                    tunneller["training_start"],
-                    tunneller["training_location"],
+                    posted["training_start"],
+                    posted["training_location"],
                     "Trained",
                     None,
                 )
             )
         else:
-            posted.append(
+            posted_event.append(
                 SingleEventData(
-                    tunneller["posted_date"],
-                    tunneller["embarkation_unit"],
+                    posted["posted_date"],
+                    posted["embarkation_unit"],
                     "Posted",
                     None,
                 )
             )
-            posted.append(
+            posted_event.append(
                 SingleEventData(
-                    tunneller["posted_date"],
-                    tunneller["training_location"],
+                    posted["posted_date"],
+                    posted["training_location"],
                     "Trained",
                     None,
                 )
             )
 
-    return posted
+    return posted_event
 
 
-def add_death(tunneller: TunnellerData) -> list[SingleEventData]:
-    death: list[SingleEventData] = []
+def add_death(death: DeathData) -> list[SingleEventData]:
+    death_event: list[SingleEventData] = []
 
-    if tunneller["death_type"] == "War":
-        if tunneller["death_cause"] == "Killed in action":
-            death.append(
+    if death["death_type"] == "War":
+        if death["death_cause"] == "Killed in action":
+            death_event.append(
                 SingleEventData(
-                    tunneller["death_date"],
-                    tunneller["death_circumstances"],
-                    tunneller["death_cause"],
+                    death["death_date"],
+                    death["death_circumstances"],
+                    death["death_cause"],
                     None,
                 )
             )
-        if tunneller["death_cause"] == "Died of wounds":
-            death.append(
+        if death["death_cause"] == "Died of wounds":
+            death_event.append(
                 SingleEventData(
-                    tunneller["death_date"],
-                    tunneller["death_circumstances"],
-                    tunneller["death_cause"],
+                    death["death_date"],
+                    death["death_circumstances"],
+                    death["death_cause"],
                     None,
                 )
             )
-        if tunneller["death_cause"] == "Died of disease":
-            death.append(
+        if death["death_cause"] == "Died of disease":
+            death_event.append(
                 SingleEventData(
-                    tunneller["death_date"],
-                    f"{tunneller['death_location']}, {tunneller['death_town']}",
-                    tunneller["death_cause"],
+                    death["death_date"],
+                    f"{death['death_location']}, {death['death_town']}",
+                    death["death_cause"],
                     None,
                 )
             )
-        if tunneller["death_cause"] == "Died of accident":
-            death.append(
+        if death["death_cause"] == "Died of accident":
+            death_event.append(
                 SingleEventData(
-                    tunneller["death_date"],
-                    f"{tunneller['death_location']}",
-                    tunneller["death_cause"],
+                    death["death_date"],
+                    f"{death['death_location']}",
+                    death["death_cause"],
                     None,
                 )
             )
-        death.append(
+        death_event.append(
             SingleEventData(
-                tunneller["death_date"],
-                f"{tunneller['cemetery']}, {tunneller['cemetery_town']}",
+                death["death_date"],
+                f"{death['cemetery']}, {death['cemetery_town']}",
                 "Buried",
                 None,
             )
         )
-        death.append(
+        death_event.append(
             SingleEventData(
-                tunneller["death_date"], tunneller["grave"], "Grave reference", None
+                death["death_date"], death["grave"], "Grave reference", None
             )
         )
 
-    if tunneller["death_type"] == "War injuries":
-        if tunneller["death_cause"] == "Died of disease":
-            death.append(
+    if death["death_type"] == "War injuries":
+        if death["death_cause"] == "Died of disease":
+            death_event.append(
                 SingleEventData(
-                    tunneller["death_date"],
-                    tunneller["death_circumstances"],
-                    tunneller["death_cause"],
+                    death["death_date"],
+                    death["death_circumstances"],
+                    death["death_cause"],
                     None,
                 )
             )
 
-    return death
+    return death_event
 
 
 def selected_company_events(
@@ -505,7 +509,15 @@ def map_front_events(
                 "Transfer to New Zealand",
             ),
         )
-        + add_end_of_service(tunneller)
+        + add_end_of_service(
+            EndOfServiceData(
+                tunneller["transferred_to_date"],
+                tunneller["transferred_to_unit"],
+                tunneller["demobilization_date"],
+                tunneller["discharge_uk"],
+                tunneller["has_deserted"],
+            )
+        )
     )
 
     company_selected_events: list[SingleEventData] = selected_company_events(
@@ -516,9 +528,37 @@ def map_front_events(
         list(
             company_selected_events
             + tunneller_events_list
-            + add_enlistment(tunneller)
-            + add_posted(tunneller)
-            + add_death(tunneller)
+            + add_enlistment(
+                EnlistmentData(
+                    tunneller["training_start"],
+                    tunneller["training_location"],
+                    tunneller["embarkation_unit"],
+                    tunneller["enlistment_date"],
+                )
+            )
+            + add_posted(
+                PostedData(
+                    tunneller["training_start"],
+                    tunneller["training_location"],
+                    tunneller["embarkation_unit"],
+                    tunneller["posted_date"],
+                )
+            )
+            + add_death(
+                DeathData(
+                    tunneller["death_type"],
+                    tunneller["death_date"],
+                    tunneller["death_location"],
+                    tunneller["death_town"],
+                    tunneller["death_country"],
+                    tunneller["death_cause"],
+                    tunneller["death_circumstances"],
+                    tunneller["cemetery"],
+                    tunneller["cemetery_town"],
+                    tunneller["cemetery_country"],
+                    tunneller["grave"],
+                )
+            )
         ),
         key=lambda item: item["date"],
     )
