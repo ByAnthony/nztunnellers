@@ -103,6 +103,9 @@ class MilitaryYearsTunnellerData:
     demobilization_date: Optional[str]
     discharge_uk: Optional[int]
 
+    def __getitem__(self, key: str):
+        return getattr(self, key)
+
 
 @dataclass
 class TunnellerData(MilitaryYearsTunnellerData):

@@ -3,6 +3,7 @@ from typing import Optional
 
 from ...db.models.TunnellerData import (
     MedalData,
+    MilitaryYearsTunnellerData,
     SingleEventData,
     Transport,
     TunnellerData,
@@ -483,7 +484,7 @@ def grouped_by_year(grouped_events: list[Events]) -> dict[str, list[Events]]:
 def map_front_events(
     company_events: tuple[SingleEventData, ...],
     tunneller_events: tuple[SingleEventData, ...],
-    tunneller: TunnellerData,
+    tunneller: MilitaryYearsTunnellerData,
     lang: str,
 ) -> dict[str, list[Events]]:
     tunneller_events_db: list[SingleEventData] = list(tunneller_events)

@@ -11,6 +11,7 @@ from ..db.models.TunnellerData import (
     BookAuthorsData,
     LondonGazetteData,
     MedalData,
+    MilitaryYearsTunnellerData,
     NewZealandArchivesData,
     SingleEventData,
     TunnellerData,
@@ -167,6 +168,45 @@ def show(id: int, lang: str, mysql: MySQL) -> Optional[Tunneller]:
             tunneller_result["religion"],
         )
 
+        tunneller_military_years = MilitaryYearsTunnellerData(
+            tunneller_result["enlistment_date"],
+            tunneller_result["military_district_name"],
+            tunneller_result["posted_date"],
+            tunneller_result["posted_from_corps"],
+            tunneller_result["embarkation_unit"],
+            tunneller_result["training_start"],
+            tunneller_result["training_location"],
+            tunneller_result["training_location_type"],
+            tunneller_result["transport_uk_ref"],
+            tunneller_result["transport_uk_vessel"],
+            tunneller_result["transport_uk_start"],
+            tunneller_result["transport_uk_origin"],
+            tunneller_result["transport_uk_end"],
+            tunneller_result["transport_uk_destination"],
+            tunneller_result["has_deserted"],
+            tunneller_result["transferred_to_date"],
+            tunneller_result["transferred_to_unit"],
+            tunneller_result["death_type"],
+            tunneller_result["death_date"],
+            tunneller_result["death_location"],
+            tunneller_result["death_town"],
+            tunneller_result["death_country"],
+            tunneller_result["death_cause"],
+            tunneller_result["death_circumstances"],
+            tunneller_result["cemetery"],
+            tunneller_result["cemetery_town"],
+            tunneller_result["cemetery_country"],
+            tunneller_result["grave"],
+            tunneller_result["transport_nz_ref"],
+            tunneller_result["transport_nz_vessel"],
+            tunneller_result["transport_nz_start"],
+            tunneller_result["transport_nz_origin"],
+            tunneller_result["transport_nz_end"],
+            tunneller_result["transport_nz_destination"],
+            tunneller_result["demobilization_date"],
+            tunneller_result["discharge_uk"],
+        )
+
         military_years = MilitaryYears(
             Enlistment(
                 tunneller_result["serial"],
@@ -203,7 +243,10 @@ def show(id: int, lang: str, mysql: MySQL) -> Optional[Tunneller]:
                 tunneller_result["transport_uk_destination"],
             ),
             map_front_events(
-                company_events_result, front_events_result, tunneller_result, lang
+                company_events_result,
+                front_events_result,
+                tunneller_military_years,
+                lang,
             ),
             EndOfService(
                 get_boolean(tunneller_result["has_deserted"]),
