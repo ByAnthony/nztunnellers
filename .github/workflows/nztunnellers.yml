@@ -7,9 +7,6 @@ on:
   pull_request:
     branches:
       - main
-    paths-ignore:
-      - '**/*.md'
-      - '**/*.txt'
   workflow_dispatch:
 
 concurrency:
@@ -17,31 +14,20 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-
-  analyze:
-    name: Analyze
+  build-and-tests:
     runs-on: ubuntu-latest
-    permissions:
-      actions: read
-      contents: read
-      security-events: write
-
-    strategy:
-      fail-fast: false
-      matrix:
-        language: [ 'typescript', 'python' ]
-
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
+        - name: Checkout source code
+          uses: actions/checkout@v4.1.2
 
-    - name: Initialize CodeQL
-      uses: github/codeql-action/init@v2
-      with:
-        languages: ${{ matrix.language }}
+        - name: Setup python
+          uses: actions/setup-python@v5
+          with: 
+            python-version: '3.9.7'
 
-    - name: Autobuild
-      uses: github/codeql-action/autobuild@v2
+        - name: Install server
+          run: make install
 
-    - name: Perform CodeQL Analysis
-      uses: github/codeql-action/analyze@v2
+        - name: Run server tests
+          run: make test-server
+

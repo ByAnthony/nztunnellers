@@ -15,6 +15,7 @@ def run_sql(
         results = cursor.fetchall()
         cursor.close()
     except (Exception) as error:
+        results = tuple()
         print(error)
     finally:
         if conn is not None:
