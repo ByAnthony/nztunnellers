@@ -4,6 +4,9 @@ install:
 install-dev: install
 	pip install -r requirements-dev.txt
 
+install-client:
+	cd ./client && npm ci
+
 freeze:
 	pip freeze > requirements-dev.txt
 	pip freeze > requirements.txt

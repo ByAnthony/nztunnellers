@@ -25,9 +25,22 @@ jobs:
           with: 
             python-version: '3.9'
 
+        - name: Setup node
+          uses: actions/setup-node@v4
+          with: 
+            node-version-file: './client/.nvmrc'
+
         - name: Install server
           run: make install
 
         - name: Run server tests
           run: make test-server
+
+        - name: Install client
+          run: make install-client
+
+        - name: Run client tests
+          run: make test-client
+
+        
 
