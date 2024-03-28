@@ -14,6 +14,9 @@ freeze:
 test-client:
 	cd ./client && npm run test
 
+test-client-ci:
+	cd ./client && npm run test:ci
+
 test-server:
 	python3 -m coverage run -m pytest ./server
 	python3 -m coverage report -m --omit="*/__init__.py,server/db/models/*.py,server/models/*.py,*/test_*.py"

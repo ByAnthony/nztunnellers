@@ -40,7 +40,4 @@ jobs:
           run: make install-client
 
         - name: Run client tests
-          run: make test-client
-
-        
-
+          run: make test-client-ci
