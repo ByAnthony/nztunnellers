@@ -14,8 +14,9 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build-and-run-tests:
+  pre-commit:
     runs-on: ubuntu-latest
+    if: github.ref != 'refs/heads/main'
     timeout-minutes: 10
     steps:
         - name: Checkout source code
@@ -38,19 +39,39 @@ jobs:
           run: make install-client
 
         - name: Cache pre-commit
-          if: github.ref != 'refs/heads/main'
           uses: actions/cache@v3.3.3
           with:
             path: ~/.cache/pre-commit
             key: pre-commit-3|${{ env.pythonLocation }}|${{ hashFiles('.pre-commit-config.yaml') }}
 
         - name: Install pre-commit
-          if: github.ref != 'refs/heads/main'
           run: pip3 install pre-commit
 
         - name: Run pre-commit
-          if: github.ref != 'refs/heads/main'
           run: pre-commit run --all-files --show-diff-on-failure --color always
+
+  build-and-run-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+        - name: Checkout source code
+          uses: actions/checkout@v4.1.2
+
+        - name: Setup python
+          uses: actions/setup-python@v5.1.0
+          with:
+            python-version: '3.9'
+
+        - name: Setup node
+          uses: actions/setup-node@v4.0.2
+          with:
+            node-version-file: './client/.nvmrc'
+
+        - name: Install server
+          run: make install
+
+        - name: Install client
+          run: make install-client
 
         - name: Run server tests
           run: make test-server
