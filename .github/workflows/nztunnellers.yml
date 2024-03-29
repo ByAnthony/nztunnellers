@@ -30,8 +30,6 @@ jobs:
           uses: actions/setup-node@v4.0.2
           with:
             node-version-file: './client/.nvmrc'
-            cache: npm
-            cache-dependency-path: client/package-lock.json
 
         - name: Install server
           run: make install
