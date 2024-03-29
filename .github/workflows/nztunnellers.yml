@@ -52,6 +52,7 @@ jobs:
 
   build-and-run-tests:
     runs-on: ubuntu-latest
+    if: needs.pre-commit.result == 'skipped'
     needs: pre-commit
     timeout-minutes: 10
     steps:
