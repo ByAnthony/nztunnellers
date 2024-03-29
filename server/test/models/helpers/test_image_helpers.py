@@ -148,25 +148,25 @@ class TestGetImageSourceNewspaper:
 class TestMapAuthors:
     class TestMapAuthorsIf:
         def test_one_author(self):
-            assert map_authors([author_data_1]) == [
+            assert map_authors((author_data_1,)) == [
                 ImageBookAuthors("Arthur Conan", "Doyle")
             ]
 
         def test_multiple_authors(self):
-            assert map_authors([author_data_1, author_data_2]) == [
+            assert map_authors((author_data_1, author_data_2)) == [
                 ImageBookAuthors("Arthur Conan", "Doyle"),
                 ImageBookAuthors("Mary", "Shelley"),
             ]
 
     class TestDoNotMapAuthorsIf:
         def test_empty_list(self):
-            assert map_authors([]) == []
+            assert map_authors(()) == []
 
 
 class TestGetImageSourceBook:
     def test_with_page(self):
         assert get_image_source_book(
-            [author_data_1], "A Study In Red", "London", "Penguins", "1962", "2"
+            (author_data_1,), "A Study In Red", "London", "Penguins", "1962", "2"
         ) == ImageBook(
             [author_1],
             "A Study In Red",
@@ -178,7 +178,7 @@ class TestGetImageSourceBook:
 
     def test_with_no_page(self):
         assert get_image_source_book(
-            [author_data_1, author_data_2],
+            (author_data_1, author_data_2),
             "A Study In Red",
             "London",
             "Penguins",
@@ -191,7 +191,7 @@ class TestGetImageSourceBook:
     def test_when_no_source_book(self):
         assert (
             get_image_source_book(
-                [author_data_1, author_data_2], None, None, None, None, None
+                (author_data_1, author_data_2), None, None, None, None, None
             )
             is None
         )

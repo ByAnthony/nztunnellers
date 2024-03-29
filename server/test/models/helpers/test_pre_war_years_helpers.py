@@ -8,7 +8,7 @@ from ....models.helpers.pre_war_years_helpers import map_army_experience
 country_col = {"en": "New Zealand", "fr": "Nouvelle-Zélande"}
 conflict_col = {"en": "South African War", "fr": "Guerre d'Afrique du Sud"}
 
-experience_en = [
+experience_en = (
     ArmyExperienceData(
         "Garrison Artillery Volunteers",
         "New Zealand",
@@ -21,15 +21,15 @@ experience_en = [
         "South African War",
         "250",
     ),
-]
-experience_fr = [
+)
+experience_fr = (
     ArmyExperienceData(
         "National Reserve",
         "Nouvelle-Zélande",
         "Guerre d'Afrique du Sud",
         "50",
     ),
-]
+)
 
 
 class TestMapArmyExperience:
@@ -60,7 +60,7 @@ class TestMapArmyExperience:
         ]
 
     def test_if_army_experience_is_empty_list_and_lang_is_en(self):
-        assert map_army_experience([], "en") == []
+        assert map_army_experience((), "en") == []
 
     def test_if_army_experience_is_empty_list_and_lang_is_fr(self):
-        assert map_army_experience([], "fr") == []
+        assert map_army_experience((), "fr") == []

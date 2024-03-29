@@ -27,10 +27,10 @@ expected_ref_2 = NewZealandArchives(
 class TestMapNzArchives:
     class TestMapNzArchivesIf:
         def test_map_nz_archives_if_archives_has_one_record(self):
-            assert map_nz_archives([actual_nz_archives_1]) == [expected_ref_1]
+            assert map_nz_archives((actual_nz_archives_1,)) == [expected_ref_1]
 
         def test_map_nz_archives_if_archives_has_two_records(self):
-            assert map_nz_archives([actual_nz_archives_1, actual_nz_archives_2]) == [
+            assert map_nz_archives((actual_nz_archives_1, actual_nz_archives_2)) == [
                 expected_ref_1,
                 expected_ref_2,
             ]
@@ -38,7 +38,7 @@ class TestMapNzArchives:
 
 class TestDoNotMapNzArchivesIf:
     def test_do_not_map_nz_archives_if_archives_has_no_record(self):
-        assert map_nz_archives([]) == []
+        assert map_nz_archives(()) == []
 
 
 class TestGetAwmm:
@@ -111,16 +111,16 @@ class TestGetNominalRoll:
         )
 
 
-london_gazette_list = [
+london_gazette_tuple = (
     LondonGazetteData("13575", "1917-12-28"),
     LondonGazetteData("29", "1918-01-01"),
-]
+)
 
 
 class TestMapLondonGazette:
     class TestMapLondonGazetteIf:
         def test_london_gazette_is_not_none_and_lang_is_en(self):
-            assert map_london_gazette(london_gazette_list, "en") == [
+            assert map_london_gazette(london_gazette_tuple, "en") == [
                 LondonGazette(
                     "13575", format_date_to_day_month_and_year("1917-12-28", "en")
                 ),
@@ -130,7 +130,7 @@ class TestMapLondonGazette:
             ]
 
         def test_london_gazette_is_not_none_and_lang_is_fr(self):
-            assert map_london_gazette(london_gazette_list, "fr") == [
+            assert map_london_gazette(london_gazette_tuple, "fr") == [
                 LondonGazette(
                     "13575", format_date_to_day_month_and_year("1917-12-28", "fr")
                 ),
@@ -141,7 +141,7 @@ class TestMapLondonGazette:
 
     class TestDoNotMapLondonGazetteIf:
         def test_london_gazette_is_none_and_lang_en(self):
-            assert map_london_gazette([], "en") == []
+            assert map_london_gazette((), "en") == []
 
         def test_london_gazette_is_none_and_lang_fr(self):
-            assert map_london_gazette([], "fr") == []
+            assert map_london_gazette((), "fr") == []
