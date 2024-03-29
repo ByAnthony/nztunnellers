@@ -34,6 +34,9 @@ jobs:
         - name: Install server
           run: make install
 
+        - name: Install client
+          run: make install-client
+
         - name: Install pre-commit
           run: pip3 install pre-commit
 
@@ -43,8 +46,6 @@ jobs:
         - name: Run server tests
           run: make test-server
 
-        - name: Install client
-          run: make install-client
 
         - name: Run client tests
           run: make test-client-ci
