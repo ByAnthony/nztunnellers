@@ -52,6 +52,7 @@ jobs:
 
   build-and-run-tests:
     runs-on: ubuntu-latest
+    needs: pre-commit
     timeout-minutes: 10
     steps:
         - name: Checkout source code
