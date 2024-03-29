@@ -16,7 +16,7 @@ concurrency:
 jobs:
   pre-commit:
     runs-on: ubuntu-latest
-    if: github.ref != 'refs/heads/main'
+    if: ${{ github.event_name == 'push' && contains( github.event.head_commit.message, 'pre-commit') }}
     timeout-minutes: 10
     steps:
         - name: Checkout source code
@@ -52,7 +52,9 @@ jobs:
 
   build-and-run-tests:
     runs-on: ubuntu-latest
-    if: needs.pre-commit.result == 'skipped'
+    if: |
+      always() &&
+      (needs.pre-commit.result == 'success' || needs.pre-commit.result == 'skipped')
     needs: pre-commit
     timeout-minutes: 10
     steps:
