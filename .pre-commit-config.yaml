@@ -24,6 +24,7 @@ repos:
         args: [--markdown-linebreak-ext=md]
         exclude: \.test.[t]sx.snap?$
       - id: end-of-file-fixer
+        exclude: client/package.json
 
   - repo: https://github.com/pre-commit/mirrors-mypy
     rev: v0.982
