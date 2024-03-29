@@ -37,6 +37,12 @@ jobs:
         - name: Install client
           run: make install-client
 
+        - name: Cache pre-commit
+          uses: actions/cache@v4.0.2
+          with:
+            path: ~/.cache/pre-commit
+            key: pre-commit-3|${{ env.pythonLocation }}|${{ hashFiles('.pre-commit-config.yaml') }}
+
         - name: Install pre-commit
           run: pip3 install pre-commit
 
@@ -45,7 +51,6 @@ jobs:
 
         - name: Run server tests
           run: make test-server
-
 
         - name: Run client tests
           run: make test-client-ci
