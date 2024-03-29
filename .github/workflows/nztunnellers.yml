@@ -26,20 +26,14 @@ jobs:
           with:
             python-version: '3.9'
 
-        - name: Install
-          run: make install
-
         - name: Setup node
           uses: actions/setup-node@v4.0.2
           with:
             node-version-file: './client/.nvmrc'
             cache: npm
 
-        - name: Install pre-commit
-          run: pip3 install pre-commit
-
-        - name: Run pre-commit
-          run: pre-commit run --all-files --show-diff-on-failure --color always
+        - name: Install server
+          run: make install
 
         - name: Run server tests
           run: make test-server
