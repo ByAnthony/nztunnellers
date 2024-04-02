@@ -61,6 +61,6 @@ def translate_town(town: Optional[str], lang: str) -> Optional[str]:
 def translate_family(family: Optional[str], lang: str) -> Optional[str]:
     if family is not None:
         if lang == "fr":
-            return f"{'Famille'} {family}"
-        return f"{family} {'family'}"
+            return f"Courtoisie de la {'famille'} {family}"
+        return f"Courtesy of {family} {'family'}"
     return None

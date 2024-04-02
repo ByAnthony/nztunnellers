@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from ....db.models.TunnellerData import MedalData
+from ....db.models.TunnellerData import MedalData, SingleEventData, Transport
 from ....models.death import Cemetery, Death, DeathCause, DeathPlace
 from ....models.date import Date
 from ....models.military_years import (
@@ -10,6 +10,7 @@ from ....models.military_years import (
     TransferredToTunnellers,
 )
 from ....models.helpers.military_years_helpers import (
+    add_transports,
     get_age_at_death,
     get_boolean,
     get_cemetery,
@@ -24,7 +25,6 @@ from ....models.helpers.military_years_helpers import (
     get_transferred_to,
     get_transferred_to_tunnellers,
     get_transport_reference,
-    # map_front_events,
     map_medals,
 )
 
@@ -278,6 +278,16 @@ class TestGetAgeAtDeath:
 
     def test_get_age_if_data_is_none(self):
         assert get_age_at_death(None, None, None, None) is None
+
+
+uk_transport = Transport("1915-12-18", "HMNZT", "Waihi", "Transfer to England")
+nz_transport = Transport("1919-12-18", "HMNZT", "Auckland", "Transfer to New Zealand")
+
+
+class TestAddTransports:
+
+    def test_add_transports(self):
+        assert add_transports(uk_transport, nz_transport) == [SingleEventData("1915-12-18", "HMNZT Waihi", "Transfer to England", None), SingleEventData("1919-12-18", "HMNZT Auckland", "Transfer to New Zealand", None)]
 
 
 british_war_medal = MedalData(

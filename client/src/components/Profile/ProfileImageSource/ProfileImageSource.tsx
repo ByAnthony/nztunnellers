@@ -35,7 +35,7 @@ function SourceImage({ imageSource }: {imageSource: ImageSource | undefined}) {
     return (
       <div className={STYLES.sources}>
         {title}
-        <p>{`Courtesy of ${imageSource?.family}.`}</p>
+        <p>{`${imageSource?.family}.`}</p>
       </div>
     );
   }

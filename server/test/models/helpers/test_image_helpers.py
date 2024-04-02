@@ -122,10 +122,10 @@ class TestGetImageSourceArchives:
 class TestGetImageSourceFamily:
     class TestGetImageSourceFamilyIf:
         def test_family_exists_and_lang_is_en(self):
-            assert get_image_source_family("Doe", "en") == "Doe family"
+            assert get_image_source_family("Doe", "en") == "Courtesy of Doe family"
 
         def test_family_exists_and_lang_is_fr(self):
-            assert get_image_source_family("Doe", "fr") == "Famille Doe"
+            assert get_image_source_family("Doe", "fr") == "Courtoisie de la famille Doe"
 
     class TestDoNotGetImageSourceFamilyIf:
         def test_family_does_not_exist_and_lang_is_en(self):
