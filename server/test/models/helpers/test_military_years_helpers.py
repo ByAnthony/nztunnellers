@@ -285,9 +285,13 @@ nz_transport = Transport("1919-12-18", "HMNZT", "Auckland", "Transfer to New Zea
 
 
 class TestAddTransports:
-
     def test_add_transports(self):
-        assert add_transports(uk_transport, nz_transport) == [SingleEventData("1915-12-18", "HMNZT Waihi", "Transfer to England", None), SingleEventData("1919-12-18", "HMNZT Auckland", "Transfer to New Zealand", None)]
+        assert add_transports(uk_transport, nz_transport) == [
+            SingleEventData("1915-12-18", "HMNZT Waihi", "Transfer to England", None),
+            SingleEventData(
+                "1919-12-18", "HMNZT Auckland", "Transfer to New Zealand", None
+            ),
+        ]
 
 
 british_war_medal = MedalData(
