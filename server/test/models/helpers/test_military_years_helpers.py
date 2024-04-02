@@ -1,5 +1,12 @@
 # -*- coding: utf-8 -*-
-from ....db.models.TunnellerData import MedalData, SingleEventData, Transport
+from ....db.models.TunnellerData import (
+    EndOfServiceData,
+    EnlistmentData,
+    MedalData,
+    PostedData,
+    SingleEventData,
+    Transport,
+)
 from ....models.death import Cemetery, Death, DeathCause, DeathPlace
 from ....models.date import Date
 from ....models.military_years import (
@@ -10,6 +17,9 @@ from ....models.military_years import (
     TransferredToTunnellers,
 )
 from ....models.helpers.military_years_helpers import (
+    add_end_of_service,
+    add_enlistment,
+    add_posted,
     add_transports,
     get_age_at_event,
     get_age_at_enlistment,
@@ -316,6 +326,75 @@ class TestAddTransports:
         assert (
             add_transports(uk_transport_without_data, nz_transport_without_data) == []
         )
+
+
+class TestAddEndOfService:
+    def test_add_end_of_service_if_transfer_date_exists(self):
+        assert add_end_of_service(
+            EndOfServiceData("2024-04-02", "Infantry", None, None, None)
+        ) == [SingleEventData("2024-04-02", "Infantry", "Transferred", None)]
+
+    def test_add_end_of_service_if_demobilization_date_exists(self):
+        assert add_end_of_service(
+            EndOfServiceData(None, None, "2024-04-02", None, None)
+        ) == [SingleEventData("2024-04-02", "Demobilization", "End of Service", None)]
+
+    def test_add_end_of_service_if_demobilization_date_exists_and_discharge_uk(self):
+        assert add_end_of_service(
+            EndOfServiceData(None, None, "2024-04-02", 1, None)
+        ) == [
+            SingleEventData(
+                "2024-04-02",
+                "End of Service in the United Kingdom",
+                "Demobilization",
+                None,
+            )
+        ]
+
+    def test_add_end_of_service_if_demobilization_date_exists_and_has_deserted(self):
+        assert add_end_of_service(
+            EndOfServiceData(None, None, "2024-04-02", None, 1)
+        ) == [
+            SingleEventData(
+                "2024-04-02", "End of Service as deserter", "Demobilization", None
+            )
+        ]
+
+
+class TestAddEnlistment:
+    def test_add_enlistment_if_enlistment_before_training(self):
+        assert add_enlistment(
+            EnlistmentData("2024-04-02", "Auckland", "Main Body", "2024-04-01")
+        ) == [
+            SingleEventData("2024-04-01", "Main Body", "Enlisted", None),
+            SingleEventData("2024-04-02", "Auckland", "Trained", None),
+        ]
+
+    def test_add_enlistment_if_enlistment_after_training(self):
+        assert add_enlistment(
+            EnlistmentData("2024-04-02", "Auckland", "Main Body", "2024-04-03")
+        ) == [
+            SingleEventData("2024-04-03", "Main Body", "Enlisted", None),
+            SingleEventData("2024-04-03", "Auckland", "Trained", None),
+        ]
+
+
+class TestAddPosted:
+    def test_add_posted_if_posted_before_training(self):
+        assert add_posted(
+            PostedData("2024-04-02", "Auckland", "Main Body", "2024-04-01")
+        ) == [
+            SingleEventData("2024-04-01", "Main Body", "Posted", None),
+            SingleEventData("2024-04-02", "Auckland", "Trained", None),
+        ]
+
+    def test_add_enlistment_if_enlistment_after_training(self):
+        assert add_posted(
+            PostedData("2024-04-02", "Auckland", "Main Body", "2024-04-03")
+        ) == [
+            SingleEventData("2024-04-03", "Main Body", "Posted", None),
+            SingleEventData("2024-04-03", "Auckland", "Trained", None),
+        ]
 
 
 british_war_medal = MedalData(
