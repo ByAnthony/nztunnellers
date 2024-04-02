@@ -11,7 +11,8 @@ from ....models.military_years import (
 )
 from ....models.helpers.military_years_helpers import (
     add_transports,
-    get_age_at_death,
+    get_age_at_event,
+    get_age_at_enlistment,
     get_boolean,
     get_cemetery,
     get_death_circumstances,
@@ -53,6 +54,17 @@ class TestGetTransferred:
 
     def test_if_details_do_not_exist(self):
         assert get_transferred_to_tunnellers(None, None) is None
+
+
+class TestGetAgeAtEnlistment:
+    def test_get_age_at_enlistment_if_enlistment_date_exists(self):
+        assert get_age_at_enlistment("1915-07-14", None, "1890-01-26") == 25
+
+    def test_get_age_at_enlistment_if_posted_date_exists(self):
+        assert get_age_at_enlistment(None, "1915-07-14", "1880-01-26") == 35
+
+    def test_get_age_at_enlistment_return_none_if_not_data(self):
+        assert get_age_at_enlistment(None, None, "1880-01-26") is None
 
 
 class TestGetDetachment:
@@ -265,23 +277,25 @@ class TestGetCemetery:
 
 class TestGetAgeAtDeath:
     def test_get_age_if_death_date_and_birth_date_are_not_none(self):
-        assert get_age_at_death("1962", "1962-06-06", "1876", "1876-07-14") == 85
+        assert get_age_at_event("1962", "1962-06-06", "1876", "1876-07-14") == 85
 
     def test_get_age_if_death_date_and_birth_date_are_none(self):
-        assert get_age_at_death("1962", None, "1876", None) == 86
+        assert get_age_at_event("1962", None, "1876", None) == 86
 
     def test_get_age_if_birth_date_is_none(self):
-        assert get_age_at_death("1962", "1962-06-06", "1876", None) == 86
+        assert get_age_at_event("1962", "1962-06-06", "1876", None) == 86
 
     def test_get_age_if_death_date_is_none(self):
-        assert get_age_at_death("1962", None, "1876", "1876-07-14") == 86
+        assert get_age_at_event("1962", None, "1876", "1876-07-14") == 86
 
     def test_get_age_if_data_is_none(self):
-        assert get_age_at_death(None, None, None, None) is None
+        assert get_age_at_event(None, None, None, None) is None
 
 
 uk_transport = Transport("1915-12-18", "HMNZT", "Waihi", "Transfer to England")
+uk_transport_without_data = Transport(None, None, None, "Transfer to England")
 nz_transport = Transport("1919-12-18", "HMNZT", "Auckland", "Transfer to New Zealand")
+nz_transport_without_data = Transport(None, None, None, "Transfer to New Zealand")
 
 
 class TestAddTransports:
@@ -292,6 +306,16 @@ class TestAddTransports:
                 "1919-12-18", "HMNZT Auckland", "Transfer to New Zealand", None
             ),
         ]
+
+    def test_add_transports_if_nz_is_none(self):
+        assert add_transports(uk_transport, nz_transport_without_data) == [
+            SingleEventData("1915-12-18", "HMNZT Waihi", "Transfer to England", None)
+        ]
+
+    def test_add_transports_if_both_are_none(self):
+        assert (
+            add_transports(uk_transport_without_data, nz_transport_without_data) == []
+        )
 
 
 british_war_medal = MedalData(

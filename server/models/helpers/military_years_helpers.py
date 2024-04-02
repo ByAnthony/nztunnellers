@@ -10,7 +10,6 @@ from ...db.models.TunnellerData import (
     PostedData,
     SingleEventData,
     Transport,
-    TunnellerData,
 )
 from .date_helpers import (
     calculate_age_with_full_date,
@@ -86,21 +85,23 @@ def get_transferred_to(
 
 
 def get_age_at_enlistment(
-    enlistment_date: str, posted_date: str, tunneller: TunnellerData
+    enlistment_date: Optional[str],
+    posted_date: Optional[str],
+    birth_date: Optional[str],
 ) -> Optional[int]:
     if enlistment_date:
-        return get_age_at_death(
+        return get_age_at_event(
             format_date_to_year(enlistment_date),
             enlistment_date,
-            format_date_to_year(tunneller["birth_date"]),
-            tunneller["birth_date"],
+            format_date_to_year(birth_date),
+            birth_date,
         )
     if posted_date:
-        return get_age_at_death(
+        return get_age_at_event(
             format_date_to_year(posted_date),
             enlistment_date,
-            format_date_to_year(tunneller["birth_date"]),
-            tunneller["birth_date"],
+            format_date_to_year(birth_date),
+            birth_date,
         )
     return None
 
@@ -144,7 +145,7 @@ def get_cemetery(
     return None
 
 
-def get_age_at_death(
+def get_age_at_event(
     year_1: Optional[str],
     date_1: Optional[str],
     year_2: Optional[str],

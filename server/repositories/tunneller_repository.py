@@ -35,7 +35,7 @@ from ..models.helpers.image_helpers import (
 )
 from ..models.helpers.military_years_helpers import (
     get_age_at_enlistment,
-    get_age_at_death,
+    get_age_at_event,
     get_boolean,
     get_cemetery,
     get_death_circumstances,
@@ -222,7 +222,7 @@ def show(id: int, lang: str, mysql: MySQL) -> Optional[Tunneller]:
                 get_age_at_enlistment(
                     tunneller_result["enlistment_date"],
                     tunneller_result["posted_date"],
-                    tunneller_result,
+                    tunneller_result["birth_date"],
                 ),
             ),
             EmbarkationUnit(
@@ -278,7 +278,7 @@ def show(id: int, lang: str, mysql: MySQL) -> Optional[Tunneller]:
                         tunneller_result["cemetery_country"],
                         tunneller_result["grave"],
                     ),
-                    get_age_at_death(
+                    get_age_at_event(
                         format_date_to_year(tunneller_result["death_date"]),
                         tunneller_result["death_date"],
                         format_date_to_year(tunneller_result["birth_date"]),
@@ -324,7 +324,7 @@ def show(id: int, lang: str, mysql: MySQL) -> Optional[Tunneller]:
                     tunneller_result["cemetery_country"],
                     tunneller_result["grave"],
                 ),
-                get_age_at_death(
+                get_age_at_event(
                     format_date_to_year(tunneller_result["death_date"]),
                     tunneller_result["death_date"],
                     format_date_to_year(tunneller_result["birth_date"]),

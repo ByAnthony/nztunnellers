@@ -186,9 +186,9 @@ class TunnellerData(MilitaryYearsTunnellerData):
 
 @dataclass
 class Transport:
-    date: str
-    ref: str
-    vessel: str
+    date: Optional[str]
+    ref: Optional[str]
+    vessel: Optional[str]
     title: str
 
     def __getitem__(self, key: str):
