@@ -184,13 +184,13 @@ def get_end_of_service(date: Optional[Date], country: str) -> Optional[Demobiliz
 
 def get_end_of_service_country(discharge_uk: Optional[int], lang: str) -> str:
     if get_boolean(discharge_uk) is True:
-        if lang == "en":
-            return "United Kingdom"
-        return "Royaume-Uni"
+        if lang == "fr":
+            return "Royaume-Uni"
+        return "United Kingdom"
     else:
-        if lang == "en":
-            return "New Zealand"
-        return "Nouvelle-Zélande"
+        if lang == "fr":
+            return "Nouvelle-Zélande"
+        return "New Zealand"
 
 
 def add_transports(

@@ -29,6 +29,7 @@ from ..models.helpers.image_helpers import (
     get_image_source_archives,
     get_image_source_auckland_libraries,
     get_image_source_book,
+    get_image_source_family,
     get_image_source_newspaper,
     get_image_url,
 )
@@ -354,7 +355,7 @@ def show(id: int, lang: str, mysql: MySQL) -> Optional[Tunneller]:
                     tunneller_result["archives_name"],
                     tunneller_result["archives_ref"],
                 ),
-                tunneller_result["family_name"],
+                get_image_source_family(tunneller_result["family_name"], lang),
                 get_image_source_newspaper(
                     tunneller_result["newspaper_name"],
                     format_date_to_day_month_and_year(
