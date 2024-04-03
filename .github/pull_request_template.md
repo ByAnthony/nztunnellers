@@ -8,5 +8,5 @@
 ## Checklist
 
 - [ ] PR comments added to highlight areas that may need particular scrutiny or discussion;
-- [ ] Unit and integration tests added or updated, and coverage is maintained or improved (see [`TESTING`](https://github.skyscannertools.net/skyscanner/sonar/blob/master/docs/readmes/testingReadme.md) guide);
+- [ ] Unit and integration tests added or updated, and coverage is maintained or improved;
 - [ ] If appropriate, documentation created or updated.
