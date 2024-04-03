@@ -39,6 +39,7 @@ brew install mysql
 ```
 
 ## Documentation Contents
-  - [Getting Started](./docs/getting-started.md)
-  - [Running Locally](./docs/running-locally.md)
-  - [Contributing](./docs/contributing.md)
+
+- [Getting Started](./docs/getting-started.md)
+- [Running Locally](./docs/running-locally.md)
+- [Contributing](./docs/contributing.md)
