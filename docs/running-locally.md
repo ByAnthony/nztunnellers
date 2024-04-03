@@ -1,4 +1,4 @@
-# Running the Web App
+# Running Locally
 
 From any terminal:
 
