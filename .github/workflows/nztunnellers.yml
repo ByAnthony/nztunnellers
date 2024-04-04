@@ -16,7 +16,7 @@ concurrency:
 jobs:
   static-check:
     runs-on: ubuntu-latest
-    if: ${{ github.ref != 'refs/heads/main' && contains( github.event.head_commit.message, 'pre-commit') }}
+    if: ${{ github.ref != 'refs/heads/main' && contains( github.event.head_commit.message, 'static-check') }}
     timeout-minutes: 10
     steps:
         - name: Checkout source code
@@ -57,7 +57,7 @@ jobs:
     runs-on: ubuntu-latest
     if: |
       always() &&
-      (needs.pre-commit.result == 'success' || needs.pre-commit.result == 'skipped')
+      (needs.static-check.result == 'success' || needs.static-check.result == 'skipped')
     needs: static-check
     timeout-minutes: 10
     steps:
