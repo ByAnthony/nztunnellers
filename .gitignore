@@ -18,6 +18,7 @@
 **/build
 
 # misc
+/client/tsconfig.tsbuildinfo
 .DS_Store
 .env.local
 .env.development.local

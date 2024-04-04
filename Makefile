@@ -9,21 +9,24 @@ freeze:
 	pip freeze > requirements-dev.txt
 	pip freeze > requirements.txt
 
+typecheck:
+	npm run typecheck --prefix client
+
 install-client:
-	cd ./client && npm ci
+	npm ci --prefix client
 
 test-client:
-	cd ./client && npm run test
+	npm run test --prefix client
 
 test-client-ci:
-	cd ./client && npm run test:ci
+	npm run test:ci --prefix client
 
 test-server:
 	python3 -m coverage run -m pytest ./server
 	python3 -m coverage report -m --omit="*/__init__.py,server/db/models/*.py,server/models/*.py,*/test_*.py"
 
 run-client:
-	cd ./client && npm start
+	npm start --prefix client
 
 run-server:
 	. server/venv/bin/activate
