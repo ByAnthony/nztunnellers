@@ -15,7 +15,9 @@ from .repositories import roll_repository
 from .repositories import tunneller_repository
 from .models.jsonencoder import JSONEncoder
 
+
 app = Flask(__name__)
+
 CORS(
     app,
     resources={r"/*": {"origins": ["http://localhost:3000"]}},
