@@ -8,6 +8,7 @@ import { HomePage } from './components/HomePage/HomePage';
 import { Profile } from './components/Profile/Profile';
 import { Roll } from './components/Roll/Roll';
 import { Timeline } from './components/Timeline/Timeline';
+import { AboutUs } from './components/AboutUs/AboutUs';
 
 const Wrapper = ({ children }: any) => {
   const location = useLocation();
@@ -27,6 +28,7 @@ export function App() {
           <Route path="/tunnellers" element={<Roll />} />
           <Route path="/tunnellers/:id" element={<Profile />} />
           <Route path="/tunnellers/:id/wwi-timeline" element={<Timeline />} />
+          <Route path="/about-us" element={<AboutUs />} />
           {/* <Route component={ErrorPage}/> */}
         </Routes>
       </Wrapper>

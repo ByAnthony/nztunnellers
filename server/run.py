@@ -10,6 +10,7 @@ from flask_mysqldb import MySQL  # type: ignore
 
 
 from .models.helpers.camelize_helpers import underscore_to_camel
+from .repositories import about_us_repository
 from .repositories import article_repository
 from .repositories import roll_repository
 from .repositories import tunneller_repository
@@ -73,6 +74,13 @@ def article(id: str):
     get_article = article_repository.show(id, mysql)
     article = json.dumps(get_article, cls=JSONEncoder, indent=4)
     return article
+
+
+@app.route("/about-us", methods=["GET"])
+def about_us():
+    get_about_us = about_us_repository.show(mysql)
+    about_us = json.dumps(get_about_us, cls=JSONEncoder, indent=4)
+    return about_us
 
 
 if __name__ == "__main__":
