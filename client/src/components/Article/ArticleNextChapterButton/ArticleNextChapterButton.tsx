@@ -13,11 +13,11 @@ export function ArticleNextChapterButton({ chapter }: Props) {
         <a
           href={`/history/${chapter.url}`}
           className={STYLES['button-chapter']}
-          aria-label={`Go to Chapter ${chapter.chapter}: ${chapter.title.replace('\\', ' ')}`}
+          aria-label={`Go to Chapter ${chapter.chapter}: ${chapter.title.replace(/\\/g, ' ')}`}
         >
           <div>
             <p className={STYLES.chapter}>{`Chapter ${chapter.chapter}`}</p>
-            <span>{chapter.title.replace('\\', ' ')}</span>
+            <span>{chapter.title.replace(/\\/g, ' ')}</span>
           </div>
           <div className={STYLES.arrow}>&rarr;</div>
         </a>
