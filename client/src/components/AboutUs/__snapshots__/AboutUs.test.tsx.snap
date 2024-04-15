@@ -122,7 +122,16 @@ exports[`renders profile when data is available 1`] = `
         </h2>
         <p>
           <span>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit,sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea 
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit,sed do eiusmod tempor 
+          </span>
+          <span />
+          <a
+            href="http://www.loremipsum.com"
+          >
+            incididunt
+          </a>
+          <span>
+             ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea 
           </span>
           <em>
             commodo consequat
