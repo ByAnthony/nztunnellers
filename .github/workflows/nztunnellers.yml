@@ -92,7 +92,6 @@ jobs:
 
   analyze-code:
     name: Analyze code
-    # if: ${{ github.ref != 'refs/heads/main' }}
     runs-on: ubuntu-latest
     permissions:
       actions: read
