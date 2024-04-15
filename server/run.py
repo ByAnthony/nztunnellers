@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 import json
-import os
 
 from flask import Flask, request
 from flask_cors import CORS
@@ -25,17 +24,10 @@ CORS(
     CORS_SUPPORTS_CREDENTIALS=True,
 )
 app.config["CORS_HEADERS"] = "Content-Type"
-
-
-if os.environ.get("DEV") == "true":
-    app.config["MYSQL_USER"] = "root"
-    app.config["MYSQL_PASSWORD"] = "root"
-else:
-    app.config["MYSQL_USER"] = ""
-    app.config["MYSQL_PASSWORD"] = ""
-
+app.config["MYSQL_USER"] = "accordon"
+app.config["MYSQL_PASSWORD"] = "PyWgDp2KvaMQ5s"
 app.config["MYSQL_HOST"] = "127.0.0.1"
-app.config["MYSQL_DB"] = "nztunnellers_v2"
+app.config["MYSQL_DB"] = "accordon_nztunnellers"
 app.config["MYSQL_PORT"] = 3306
 app.config["MYSQL_CURSORCLASS"] = "DictCursor"
 
