@@ -16,7 +16,7 @@ concurrency:
 jobs:
   static-check:
     runs-on: ubuntu-latest
-    if: ${{ (github.ref != 'refs/heads/main' || github.actor == 'dependabot[bot]') && contains( github.event.head_commit.message, 'static-check') }}
+    if: ${{ github.ref != 'refs/heads/main' }}
     timeout-minutes: 10
     steps:
         - name: Checkout source code
@@ -39,7 +39,7 @@ jobs:
           run: make install-client
 
         - name: Cache pre-commit
-          uses: actions/cache@v3.3.3
+          uses: actions/cache@v4.0.2
           with:
             path: ~/.cache/pre-commit
             key: pre-commit-3|${{ env.pythonLocation }}|${{ hashFiles('.pre-commit-config.yaml') }}
