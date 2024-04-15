@@ -3,7 +3,7 @@
 .container {
   @include index.component-margin;
 
-  margin-top: 105px;
+  margin-top: index.$l-margin;
 
   .roll-container {
     display: block;
@@ -71,10 +71,10 @@
   }
 
   @include index.tablet {
-    margin-top: 178px;
+    margin-top: index.$xl-margin;
   }
 
   @include index.desktop {
-    margin-top: 253px;
+    margin-top: index.$xxl-margin;
   }
 }
