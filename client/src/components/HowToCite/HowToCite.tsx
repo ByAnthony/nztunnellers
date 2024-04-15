@@ -101,7 +101,7 @@ function HowToCiteTitle({ tunneller, title, timeline }: HowToCiteTitleProps) {
       </>
     );
   }
-  const articleTitle = title?.replace('\\', ' ');
+  const articleTitle = title?.replace(/\\/g, ' ');
   return <span>{articleTitle}</span>;
 }
 

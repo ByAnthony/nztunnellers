@@ -33,7 +33,7 @@ export function HistoryChapters({ articles }: Props) {
                 <a
                   href={`/history/${article.url}`}
                   className={STYLES['link-button']}
-                  aria-label={`Go to Chapter ${article.chapter}: ${article.title.replace('\\', ' ')}`}
+                  aria-label={`Go to Chapter ${article.chapter}: ${article.title.replace(/\\/g, ' ')}`}
                 >
                   <div className={STYLES['chapter-card-dimmer']}>
                     <div className={STYLES['chapter-card-content']}>
