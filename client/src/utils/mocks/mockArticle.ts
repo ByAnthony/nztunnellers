@@ -1,3 +1,4 @@
+import { AboutUs } from '../../types/about-us';
 import {
   Article, Image, Next, Section,
 } from '../../types/article';
@@ -44,4 +45,11 @@ export const mockArticle: Article = {
   image: [mockTopImage, mockArticleImage],
   next: mockNextButton,
   notes: mockNotes,
+};
+
+export const mockAboutUs: AboutUs = {
+  id: 'my-awesome-article',
+  title: mockTitle,
+  section: [mockSectionOne, mockSectionTwo],
+  image: [mockTopImage],
 };

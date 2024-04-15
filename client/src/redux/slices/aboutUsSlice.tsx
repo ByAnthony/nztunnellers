@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { Article } from '../../types/article';
+import { AboutUs } from '../../types/about-us';
 
 export const aboutUsApi = createApi({
   reducerPath: 'aboutUsApi',
@@ -7,7 +7,7 @@ export const aboutUsApi = createApi({
     baseUrl: 'http://localhost:5000/',
   }),
   endpoints: (builder) => ({
-    getAboutUs: builder.query<Article, void>({
+    getAboutUs: builder.query<AboutUs, void>({
       query: () => ({
         url: '/about-us',
       }),
