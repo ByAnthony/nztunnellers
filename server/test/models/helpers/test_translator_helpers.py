@@ -107,7 +107,9 @@ class TestTranslateFamily:
             assert translate_family(family, "en") == f"Courtesy of {family} family"
 
         def test_family_is_not_none_and_lang_is_fr(self):
-            assert translate_family(family, "fr") == f"Courtoisie de la famille {family}"
+            assert (
+                translate_family(family, "fr") == f"Courtoisie de la famille {family}"
+            )
 
     class TestDoNotTranslateIf:
         def test_family_is_none_and_lang_is_en(self):
