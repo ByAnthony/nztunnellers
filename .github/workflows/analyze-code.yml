@@ -1,11 +1,11 @@
 name: Analyze-Code
 
 on:
+    schedule:
+        - cron: "0 0 16 * *"
     workflow_run:
         workflows: ['CI']
         branches: [main]
-        types:
-            - completed
 
 jobs:
     analyze:
