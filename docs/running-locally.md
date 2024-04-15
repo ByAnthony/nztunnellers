@@ -16,4 +16,5 @@ You can download our [script](../nztunnellers.py) which will automatically launc
 
 1. Open iterm2;
 2. Click **Scripts** > **Managed** > **Import...**;
-3. Enjoy!
+3. Setup path of the repo on your machine if required
+4. Enjoy!
