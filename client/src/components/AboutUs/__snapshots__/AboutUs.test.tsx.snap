@@ -64,6 +64,45 @@ exports[`renders profile when data is available 1`] = `
       </div>
     </div>
     <div
+      class="paragraph"
+    >
+      <h2>
+        Section Title
+      </h2>
+      <p>
+        <span>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit,sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea 
+        </span>
+        <em>
+          commodo consequat
+        </em>
+        <span />
+        <span>
+          . Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </span>
+      </p>
+      <p>
+        <span>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit,sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat
+        </span>
+        <span />
+        <a
+          href="#footnote_1"
+          id="reference_1"
+        >
+          [1]
+        </a>
+        <span>
+          . Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+        </span>
+      </p>
+      <p>
+        <span>
+          (6 July 2023)
+        </span>
+      </p>
+    </div>
+    <div
       class="image-container"
     >
       <img
@@ -72,96 +111,53 @@ exports[`renders profile when data is available 1`] = `
         src="/images/about-us/img-123.png"
       />
     </div>
-    <div>
-      <div
-        class="paragraph"
-      >
-        <h2>
-          Section Title
-        </h2>
-        <p>
-          <span>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit,sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea 
-          </span>
-          <em>
-            commodo consequat
-          </em>
-          <span />
-          <span>
-            . Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-          </span>
-        </p>
-        <p>
-          <span>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit,sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat
-          </span>
-          <span />
-          <a
-            href="#footnote_1"
-            id="reference_1"
-          >
-            [1]
-          </a>
-          <span>
-            . Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-          </span>
-        </p>
-        <p>
-          <span>
-            (6 July 2023)
-          </span>
-        </p>
-      </div>
-    </div>
-    <div>
-      <div
-        class="paragraph"
-      >
-        <h2>
-          Section Title
-        </h2>
-        <p>
-          <span>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit,sed do eiusmod tempor 
-          </span>
-          <span />
-          <a
-            href="http://www.loremipsum.com"
-          >
-            incididunt
-          </a>
-          <span>
-             ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea 
-          </span>
-          <em>
-            commodo consequat
-          </em>
-          <span />
-          <span>
-            . Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-          </span>
-        </p>
-        <p>
-          <span>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit,sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat
-          </span>
-          <span />
-          <a
-            href="#footnote_1"
-            id="reference_1"
-          >
-            [1]
-          </a>
-          <span>
-            . Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-          </span>
-        </p>
-        <p>
-          <span>
-            (6 July 2023)
-          </span>
-        </p>
-      </div>
+    <div
+      class="paragraph"
+    >
+      <h2>
+        Section Title
+      </h2>
+      <p>
+        <span>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit,sed do eiusmod tempor 
+        </span>
+        <span />
+        <a
+          href="http://www.loremipsum.com"
+        >
+          incididunt
+        </a>
+        <span>
+           ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea 
+        </span>
+        <em>
+          commodo consequat
+        </em>
+        <span />
+        <span>
+          . Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </span>
+      </p>
+      <p>
+        <span>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit,sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat
+        </span>
+        <span />
+        <a
+          href="#footnote_1"
+          id="reference_1"
+        >
+          [1]
+        </a>
+        <span>
+          . Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+        </span>
+      </p>
+      <p>
+        <span>
+          (6 July 2023)
+        </span>
+      </p>
     </div>
   </div>
   <div
