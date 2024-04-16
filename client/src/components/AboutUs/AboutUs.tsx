@@ -1,6 +1,6 @@
-import { Content } from '../Article/Content/Content';
 import { Footer } from '../Footer/Footer';
 import { Menu } from '../Menu/Menu';
+import { Paragraph } from '../Article/Paragraph/Paragraph';
 import { Title } from '../Title/Title';
 
 import STYLES from './AboutUs.module.scss';
@@ -26,6 +26,7 @@ export function AboutUs() {
           <div className={STYLES.header}>
             <Title title={data.title} />
           </div>
+          <Paragraph section={data.section[0]} />
           <div className={STYLES['image-container']}>
             <img
               className={STYLES.image}
@@ -33,7 +34,7 @@ export function AboutUs() {
               alt={data.image[0].alt}
             />
           </div>
-          <Content imageList={data.image.slice(1)} sectionList={data.section} />
+          <Paragraph section={data.section[1]} />
         </div>
         )}
         <Footer />
