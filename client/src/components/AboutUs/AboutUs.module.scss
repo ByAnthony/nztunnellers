@@ -6,6 +6,18 @@
   margin-top: index.$l-margin;
   margin-bottom: 40px;
 
+  .header {
+    margin-bottom: index.$l-margin;
+
+    @include index.tablet {
+      margin-top: index.$xl-margin;
+    }
+
+    @include index.desktop {
+      margin-bottom: 125px;
+    }
+  }
+
   a {
     @include index.text-link;
 
@@ -30,34 +42,36 @@
 }
 
 .image-container {
-    display: flex;
-    margin: index.$base-margin 0;
-    max-width: index.$inner-width;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  margin: index.$base-margin 0;
+  max-width: index.$inner-width;
+  justify-content: center;
+  align-items: center;
 
-    @include index.tablet {
-      margin: index.$l-margin 0;
-    }
-
-    @include index.desktop {
-      margin: 0 auto;
-      margin-top: index.$xl-margin;
-      margin-bottom: index.$xl-margin;
-    }
-
-    .image {
-      object-fit: cover;
-      object-position: center;
-      width: 100%;
-      border-radius: index.$border-radius;
-
-      @include index.tablet {
-        width: 55%;
-      }
-
-      @include index.desktop {
-        width: 50%;
-      }
-    }
+  @include index.tablet {
+    margin: index.$l-margin 0;
   }
+
+  @include index.desktop {
+    margin: 0 auto;
+    margin-top: index.$xl-margin;
+    margin-bottom: index.$xl-margin;
+  }
+}
+
+.image {
+  object-fit: cover;
+  object-position: center;
+  height: 460px;
+  width: 100%;
+  border-radius: index.$border-radius;
+
+  @include index.tablet {
+    height: 515px;
+  }
+
+  @include index.desktop {
+    height: 575px;
+    max-width: index.$inner-width;
+  }
+}
