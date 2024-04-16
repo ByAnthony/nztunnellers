@@ -16,7 +16,7 @@ export function Content({ imageList, sectionList }: Props) {
         {sectionList.map((text, index) => (
           <div key={sectionList.indexOf(text)}>
             <Paragraph section={text} />
-            {imageList.length > 0 && index < imageList.length ? (
+            {index < imageList.length && (
               <>
                 <div className={STYLES['image-container']}>
                   <img
@@ -31,7 +31,7 @@ export function Content({ imageList, sectionList }: Props) {
                   <div className={STYLES.reference}>{imageList[index].reference}</div>
                 </div>
               </>
-            ) : <br /> }
+            )}
           </div>
         ))}
       </>
