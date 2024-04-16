@@ -24,10 +24,10 @@ CORS(
     CORS_SUPPORTS_CREDENTIALS=True,
 )
 app.config["CORS_HEADERS"] = "Content-Type"
-app.config["MYSQL_USER"] = "accordon"
-app.config["MYSQL_PASSWORD"] = "PyWgDp2KvaMQ5s"
+app.config["MYSQL_USER"] = "user"
+app.config["MYSQL_PASSWORD"] = "password"
 app.config["MYSQL_HOST"] = "127.0.0.1"
-app.config["MYSQL_DB"] = "accordon_nztunnellers"
+app.config["MYSQL_DB"] = "db"
 app.config["MYSQL_PORT"] = 3306
 app.config["MYSQL_CURSORCLASS"] = "DictCursor"
 
