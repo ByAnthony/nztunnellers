@@ -62,10 +62,10 @@ def tunneller(id: int):
 
 
 @app.route("/", methods=["GET"])
-def article_list():
-    get_articles = article_repository.select_all(mysql)
-    article = json.dumps(get_articles, cls=JSONEncoder, indent=4)
-    camelized_data_for_ts: str = underscore_to_camel(article)
+def homepage():
+    get_homepage = article_repository.select_all(mysql)
+    homepage = json.dumps(get_homepage, cls=JSONEncoder, indent=4)
+    camelized_data_for_ts: str = underscore_to_camel(homepage)
     return camelized_data_for_ts
 
 

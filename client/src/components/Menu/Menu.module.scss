@@ -53,7 +53,7 @@
     width: 100%;
     border: 1px solid index.$primary-light-color;
     border-radius: index.$border-radius;
-    background-color: index.$primary-medium-color;
+    background-color: index.$primary-dark-color;
 
     form {
       width: 100%;
@@ -71,7 +71,7 @@
         border: none;
         border-top-left-radius: index.$border-radius;
         border-bottom-left-radius: index.$border-radius;
-        background-color: index.$primary-medium-color;
+        background-color: index.$primary-dark-color;
         transition: border-bottom 0.9s ease-in-out, border-bottom 0.9s ease-in-out,
           border 0.9s ease-in-out, border 0.9s ease-in-out,
           background-color 0.9s ease-in-out, background-color 0.9s ease-in-out;
@@ -79,7 +79,7 @@
 
       input:focus {
         outline: none;
-        background-color: index.$primary-light-color;
+        background-color: index.$primary-medium-color;
       }
 
       ::placeholder {

@@ -9,14 +9,10 @@ type Props = {
 export function HistoryChapters({ articles }: Props) {
   return (
     <div className={STYLES['history-chapter']}>
-      <h2 id="history">
-        <span>
-          History
-          <span>of the</span>
-        </span>
-        Company
-      </h2>
       <div className={STYLES['chapter-cards-wrapper']}>
+        <h2 id="history">
+          History of their Company
+        </h2>
         <div className={STYLES['chapter-cards']}>
           {articles.map((article) => {
             const divStyle = {

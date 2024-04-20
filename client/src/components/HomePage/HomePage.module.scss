@@ -8,65 +8,96 @@
   margin: 0 auto;
   margin-top: index.$xl-margin;
   width: index.$inner-width;
+  text-align: center;
 
   h1 {
-    margin: index.$xxxl-margin 0;
-    line-height: index.$xl-margin;
-
-    span {
-      font-weight: 200;
-    }
+    font-size: 3rem;
+    font-weight: 500;
   }
 
   h2 {
-    padding-bottom: index.$base-margin;
-    font-size: 5rem;
-    font-weight: 200;
-    text-align: center;
+    margin: 0 auto;
+    font-size: 2rem;
+    font-weight: 500;
     line-height: normal;
+  }
+
+  .title {
+    margin-top: index.$xxxl-margin;
+    line-height: index.$l-margin;
 
     span {
-      display: block;
-      padding-top: 12px;
-      font-weight: 500;
+      font-size: 1.5rem;
+      font-weight: 300;
+    }
+  }
 
-      span {
-        padding-right: index.$xs-margin;
-        font-size: 1.8rem;
-        font-weight: 200;
-        line-height: 0;
-      }
+  .tunnellers {
+    margin-top: index.$xxl-margin;
+    line-height: index.$l-margin;
+
+    span {
+      margin: 0 auto;
+      font-size: 1.5rem;
+      font-weight: 300;
     }
   }
 }
 
-.data-company {
+.image-container {
   display: flex;
-  flex-direction: column;
+  margin: index.$base-margin 0;
+  max-width: index.$inner-width;
+  justify-content: center;
   align-items: center;
 
-  p {
-    font-size: 5rem;
-    font-weight: 500;
-    line-height: 0;
-
-    span {
-      color: index.$primary-dark-color;
-      text-shadow: 1px 0 0 index.$text-color,
-        0 1px 0 index.$text-color,
-        -1px 0 0 index.$text-color,
-        0 -1px 0 index.$text-color;
-    }
+  @include index.tablet {
+    margin: index.$l-margin 0;
   }
 
-  .important-dates {
-    display: inline-block;
+  @include index.desktop {
+    margin: 0 auto;
+    margin: index.$xxl-margin 0 index.$xl-margin 0;
+  }
+}
 
-    svg {
-      shape-outside: url(#circlePath);
-      float: left;
-      margin-right: 20px;
+.image {
+  object-fit: cover;
+  object-position: center;
+  height: 460px;
+  width: 100%;
+  border-radius: index.$border-radius;
 
+  @include index.tablet {
+    height: 515px;
+  }
+
+  @include index.desktop {
+    height: 575px;
+    max-width: index.$inner-width;
+  }
+}
+
+.enlistment {
+  margin-top: index.$base-margin;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  gap: index.$base-margin;
+}
+
+.total-recruits {
+  svg {
+    shape-outside: url(#circlePath);
+    float: left;
+    margin-right: 20px;
+    transform: rotate(-15deg);
+
+    .circle-path {
+      font-size: 1.1rem;
+      letter-spacing: 2.45px;
+      fill: index.$text-color
     }
 
     .inside-circle-text {
@@ -74,36 +105,276 @@
       font-weight: 700;
       fill: index.$text-color;
     }
-
-    .established {
-      font-size: 1.1rem;
-      letter-spacing: 2.45px;
-      fill: index.$text-color;
-    }
-
-    .disbanded {
-      font-size: 1.1rem;
-      letter-spacing: 3.1px;
-      fill: index.$text-color;
-    }
-
-    .disbanded-circle-container {
-      margin-left: -130px;
-    }
   }
 }
 
-.data-tunnellers {
-  margin-top: 250px;
+.age {
+  margin-top: index.$l-margin;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+}
+
+.age-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  transform: rotate(90deg);
+}
+
+.age-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: index.$xs-margin;
+}
+
+.age-card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   align-items: center;
+  padding: 0 index.$s-margin;
+  border-radius: index.$border-radius;
+  border: 1px solid index.$primary-light-color;
 
   p {
-    font-size: 3rem;
+    font-weight: 700;
+    transform: rotate(-90deg);
   }
 }
 
-.tunnellers-story {
-  margin-top: index.$xxxl-margin;
+#youngest {
+  width: 100px;
+  background-color: index.$primary-medium-color;
+}
+
+#average {
+  width: 125px;
+  background-color: index.$primary-light-color;
+}
+
+#oldest {
+  width: 175px;
+  background-color: index.$primary-medium-color;
+}
+
+.marital-status {
+  margin-top: index.$base-margin;
+}
+
+.marital-status-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.marital-status-card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 index.$s-margin;
+
+  p {
+    font-weight: 700;
+  }
+}
+
+#single {
+  width: 375px;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+  border-left: 1px solid index.$primary-light-color;
+  border-top: 1px solid index.$primary-light-color;
+  border-bottom: 1px solid index.$primary-light-color;
+  background-color: index.$primary-light-color;
+}
+
+#married {
+  width: 125px;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  border-right: 1px solid index.$primary-light-color;
+  border-top: 1px solid index.$primary-light-color;
+  border-bottom: 1px solid index.$primary-light-color;
+  background-color: index.$primary-medium-color;
+}
+
+.professions {
+  margin: 0 auto;
+  margin-top: index.$l-margin;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.professions-title {
+  display: flex;
+  width: 145px;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: index.$xxs-margin index.$base-margin;
+  border-top-left-radius: index.$border-radius;
+  border-bottom-left-radius: index.$border-radius;
+  border-top: 1px solid index.$primary-light-color;
+  border-bottom: 1px solid index.$primary-light-color;
+  border-left: 1px solid index.$primary-light-color;
+  background-color: index.$primary-medium-color;
+
+  p {
+    font-weight: 500;
+  }
+}
+
+.professions-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap:index.$base-margin;
+  padding: index.$xxs-margin index.$base-margin;
+  border-top-right-radius: index.$border-radius;
+  border-bottom-right-radius: index.$border-radius;
+  border-top: 1px solid index.$primary-light-color;
+  border-bottom: 1px solid index.$primary-light-color;
+  border-right: 1px solid index.$primary-light-color;
+
+  .line {
+    margin: 0;
+    margin-top: index.$xxxs-margin;
+    padding-bottom: index.$xxxs-margin;
+    width: index.$m-margin;
+    font-size: 1.75rem;
+    font-weight: 700;
+    border-bottom: 1px solid index.$text-color;
+  }
+
+  .ten {
+    padding-top: index.$xxxs-margin;
+    font-size: 1.75rem;
+    font-weight: 200;
+  }
+}
+
+.circles {
+  margin: 0 auto;
+  margin-top: index.$xxxs-margin;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.circle {
+  margin: index.$xxxs-margin;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid index.$text-color;
+}
+
+.plain-circle {
+  margin: index.$xxxs-margin;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid index.$text-color;
+  background-color: index.$text-color;
+}
+
+.company {
+  margin: 0 auto;
+  width: 700px;
+  margin-top: index.$l-margin;
+  margin-bottom: index.$base-margin;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.company-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.company-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: index.$xs-margin;
+}
+
+.company-card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: index.$border-radius;
+  border: 1px solid index.$primary-light-color;
+
+  p {
+    font-weight: 700;
+  }
+
+  .contingent {
+    display: flex;
+    padding: 0 index.$s-margin;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-top-left-radius: index.$border-radius;
+    border-bottom-left-radius: index.$border-radius;
+  }
+
+  .departure {
+    padding: 0 index.$s-margin;
+  }
+}
+
+#main-body {
+  width: 495px;
+}
+
+#main-body-background {
+  background-color: index.$primary-light-color;
+}
+
+#reinforcements-1 {
+  width: 212px;
+  background-color: index.$primary-medium-color;
+}
+
+#reinforcements-2 {
+  width: 209px;
+  background-color: index.$primary-light-color;
+}
+
+#reinforcements-3 {
+  width: 240px;
+  background-color: index.$primary-medium-color;
+}
+
+#reinforcements-4 {
+  width: 190px;
+  background-color: index.$primary-light-color;
+}
+
+#reinforcements-5 {
+  width: 205px;
+  background-color: index.$primary-medium-color;
+}
+
+#reinforcements-6 {
+  width: 175px;
+  background-color: index.$primary-light-color;
+}
+
+#reinforcements-7 {
+  width: 165px;
+  background-color: index.$primary-medium-color;
 }
