@@ -6,4 +6,14 @@ test('can filter by name', async ({ page }) => {
     await page.getByRole('button', { name: 'Filter names by the letter W' }).click();
     await expect(page.getByRole('heading', { level: 2  })).toHaveText("W");
     await expect(page.getByRole('link', { name: 'Claude Percival Wells 1886-' })).toBeVisible();
+
+    const pElements = await page.locator('a > div > div > p[class*="RollDetails_surname"]').evaluateAll(elements => {
+      return elements.map(element => element.textContent.trim());
+    });
+
+    const letter = 'W';
+
+    const allStartWithLetter = pElements.every(text => text.startsWith(letter));
+
+    console.log(`All p elements start with letter ${letter}: ${allStartWithLetter}`);
   });
