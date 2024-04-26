@@ -1,20 +1,19 @@
 @use 'src/index.scss';
 
 .history-chapter {
-  margin-top: index.$xxl-margin;
+  margin-top: 125px;
 
-  h2 {
-    padding: 0 0 index.$m-margin index.$l-margin;
+  h3 {
+    padding: 0 0 0 index.$l-margin;
     text-align: left;
   }
 }
 
 .chapter-cards-wrapper {
-    padding: index.$base-margin 0 index.$base-margin 0;
-    height: 385px;
+    padding: index.$m-margin 0 index.$base-margin 0;
+    height: 390px;
     overflow: hidden;
     border-radius: index.$border-radius;
-    border: 1px solid index.$primary-light-color;
     background-color: index.$primary-medium-color;
   }
 
@@ -22,7 +21,7 @@
     margin: 0 auto;
     padding: 0 index.$l-margin;
     display: flex;
-    height: 390px;
+    height: 410px;
     flex-direction: row;
     flex-wrap: nowrap;
     gap: index.$m-margin;

@@ -1,9 +1,11 @@
-import { Footer } from '../Footer/Footer';
 import { useGetAllHistoryArticleLinkQuery } from '../../redux/slices/historySlice';
+
+import { Footer } from '../Footer/Footer';
+import { HistoryChapters } from './HistoryChapters/HistoryChapter';
 import { Menu } from '../Menu/Menu';
+import { Title } from '../Title/Title';
 
 import STYLES from './HomePage.module.scss';
-import { HistoryChapters } from './HistoryChapters/HistoryChapter';
 
 export function HomePage() {
   const {
@@ -23,91 +25,104 @@ export function HomePage() {
         { isSuccess && (
           <div className={STYLES['homepage-container']}>
             <div className={STYLES.title}>
-              <span>The Kiwis also dig tunnels</span>
-              <h1>
-                The New Zealanders who fought beneath the no man&apos;s land during World War I
-              </h1>
+              <Title
+                title={'The Kiwis\\Also Dig Tunnels'}
+                subTitle="Fighting underground during World War I"
+              />
             </div>
-            <HistoryChapters articles={data} />
             <div className={STYLES.tunnellers}>
               <h2>
-                A small contingent
-                <br />
-                made up of specific recruits
+                The Tunnellers
               </h2>
-            </div>
-            <div className={STYLES.enlistment}>
-              <div className={STYLES['total-recruits']}>
-                <svg width="300" height="300">
-                  <text>
-                    <textPath xlinkHref="#circlePath" className={STYLES['circle-path']}>
-                      Total number of men recruited &bull;
-                      Total number of men recruited &bull;
-                    </textPath>
-                  </text>
-                  <path id="circlePath" d="M 150, 150 m -100, 0 a 100,100 0 1,0 200,0 a 100,100 0 1,0 -200,0" fill="none" />
-                  <text x="150" y="150" textAnchor="middle" alignmentBaseline="middle" className={STYLES['inside-circle-text']}>936</text>
-                </svg>
-              </div>
-              <div className={STYLES.age}>
-                <h3>Age At Enlistment</h3>
-                <div className={STYLES['age-content-wrapper']}>
-                  <div className={STYLES['age-content']}>
-                    <div className={STYLES['age-card']} id={STYLES.oldest}>
-                      <span>Oldest</span>
-                      <p>58</p>
-                    </div>
-                    <div className={STYLES['age-card']} id={STYLES.average}>
-                      <span>Average</span>
-                      <p>32</p>
-                    </div>
-                    <div className={STYLES['age-card']} id={STYLES.youngest}>
-                      <span>Youngest</span>
-                      <p>16</p>
+              <div className={STYLES.enlistment}>
+                <div className={STYLES['total-recruits']}>
+                  <svg width="300" height="300">
+                    <text>
+                      <textPath xlinkHref="#circlePath" className={STYLES['circle-path']}>
+                        Total number of men recruited &bull;
+                        Total number of men recruited &bull;
+                      </textPath>
+                    </text>
+                    <path id="circlePath" d="M 150, 150 m -100, 0 a 100,100 0 1,0 200,0 a 100,100 0 1,0 -200,0" fill="none" />
+                    <text x="150" y="150" textAnchor="middle" alignmentBaseline="middle" className={STYLES['inside-circle-text']}>936</text>
+                  </svg>
+                </div>
+                <div className={STYLES.age}>
+                  <h3>Age at enlistment</h3>
+                  <div className={STYLES['age-content-wrapper']}>
+                    <div className={STYLES['age-content']}>
+                      <div className={STYLES['age-card']} id={STYLES.oldest}>
+                        <span>Oldest</span>
+                        <p>58</p>
+                      </div>
+                      <div className={STYLES['age-card']} id={STYLES.average}>
+                        <span>Average</span>
+                        <p>32</p>
+                      </div>
+                      <div className={STYLES['age-card']} id={STYLES.youngest}>
+                        <span>Youngest</span>
+                        <p>16</p>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div className={STYLES['marital-status']}>
-              <h3>Marital Status</h3>
-              <div className={STYLES['marital-status-wrapper']}>
-                <div className={STYLES['marital-status-card']} id={STYLES.single}>
-                  <span>Single</span>
-                  <p>75%</p>
-                </div>
-                <div className={STYLES['marital-status-card']} id={STYLES.married}>
-                  <p>25%</p>
-                  <span>Married</span>
+              <div className={STYLES['marital-status']}>
+                <h3>Marital status</h3>
+                <div className={STYLES['marital-status-wrapper']}>
+                  <div className={STYLES['marital-status-card']} id={STYLES.single}>
+                    <span>Single</span>
+                    <p>75%</p>
+                  </div>
+                  <div className={STYLES['marital-status-card']} id={STYLES.married}>
+                    <p>25%</p>
+                    <span>Married</span>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div className={STYLES.professions}>
-              <h3>Professions</h3>
-              <div className={STYLES.wrapper}>
-                <div className={STYLES['professions-title']}>
-                  <p>Miners</p>
-                </div>
-                <div className={STYLES['professions-wrapper']}>
-                  <div>
-                    <p className={STYLES.line}>1</p>
-                    <div className={STYLES.ten}>2</div>
+              <div className={STYLES.professions}>
+                <h3>Professions</h3>
+                <div className={STYLES['professions-content-wrapper']}>
+                  <div className={STYLES['professions-title']}>
+                    <p>Miners</p>
                   </div>
-                  <div className={STYLES['circles-wrapper']}>
-                    <div className={STYLES.circles}>
-                      <div className={STYLES['plain-circle']} />
-                      <div className={STYLES.circle} />
-                      <div className={STYLES['plain-circle']} />
-                      <div className={STYLES.circle} />
-                      <div className={STYLES['plain-circle']} />
+                  <div className={STYLES['professions-content']}>
+                    <div>
+                      <p className={STYLES.line}>1</p>
+                      <div className={STYLES.ten}>2</div>
                     </div>
-                    <div className={STYLES.circles}>
-                      <div className={STYLES.circle} />
-                      <div className={STYLES['plain-circle']} />
-                      <div className={STYLES.circle} />
-                      <div className={STYLES['plain-circle']} />
-                      <div className={STYLES.circle} />
+                    <div className={STYLES['circles-wrapper']}>
+                      <div className={STYLES.circles}>
+                        <div className={STYLES['plain-circle']} />
+                        <div className={STYLES.circle} />
+                        <div className={STYLES['plain-circle']} />
+                        <div className={STYLES.circle} />
+                        <div className={STYLES['plain-circle']} />
+                      </div>
+                      <div className={STYLES.circles}>
+                        <div className={STYLES.circle} />
+                        <div className={STYLES['plain-circle']} />
+                        <div className={STYLES.circle} />
+                        <div className={STYLES['plain-circle']} />
+                        <div className={STYLES.circle} />
+                      </div>
                     </div>
+                  </div>
+                </div>
+                <div className={STYLES['marital-status-wrapper']}>
+                  <div className={STYLES['marital-status-card']} id={STYLES['gold-miners']}>
+                    <span>Gold mining</span>
+                    <p>50%</p>
+                  </div>
+                  <div className={STYLES['marital-status-card']} id={STYLES['coal-miners']}>
+                    <p>50%</p>
+                    <span>Coal mining</span>
+                  </div>
+                </div>
+                <div className={STYLES['marital-status-wrapper']}>
+                  <div className={STYLES['marital-status-card']} id={STYLES['trade-union']}>
+                    <span>Trade unionists</span>
+                    <p>Most likely</p>
                   </div>
                 </div>
               </div>
@@ -119,14 +134,21 @@ export function HomePage() {
                 alt="Some tunnellers in Arras"
               />
             </div>
+
             <div className={STYLES.company}>
-              <h3>Recruits Per Contingent</h3>
+              <h2>The Company</h2>
+              <p className={STYLES.introduction}>
+                The New Zealand tunnellers were gathered in a single military company.
+                Seven reinforcements followed which were originally planned every 6 months.
+                The Main Body and the 1st Reinforcements left New Zealand on the same day,
+                on the 18&nbsp;December 1915.
+              </p>
               <div className={STYLES['company-content-wrapper']}>
                 <div className={STYLES['company-content']}>
                   <div className={STYLES['company-card']} id={STYLES['main-body-background']}>
                     <div className={STYLES.contingent} id={STYLES['main-body']}>
                       <span>Main Body</span>
-                      <p>423</p>
+                      <p>423 recruits</p>
                     </div>
                     <div className={STYLES.departure}>
                       <span>18 December 1915</span>
@@ -198,6 +220,7 @@ export function HomePage() {
                 </div>
               </div>
             </div>
+            <HistoryChapters articles={data} />
           </div>
         )}
         <Footer />

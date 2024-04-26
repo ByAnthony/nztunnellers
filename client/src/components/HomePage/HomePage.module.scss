@@ -1,19 +1,16 @@
 @use 'src/index.scss';
 
 .homepage {
+  @include index.component-margin;
+
   margin: 0 auto;
 }
 
 .homepage-container {
   margin: 0 auto;
-  margin-top: index.$xl-margin;
+  margin-top: index.$xxl-margin;
   width: index.$inner-width;
   text-align: center;
-
-  h1 {
-    font-size: 3rem;
-    font-weight: 500;
-  }
 
   h2 {
     margin: 0 auto;
@@ -23,42 +20,31 @@
   }
 
   .title {
-    margin-top: index.$xxxl-margin;
-    line-height: index.$l-margin;
+    margin-bottom: index.$l-margin;
 
-    span {
-      font-size: 1.5rem;
-      font-weight: 300;
+    @include index.tablet {
+      margin-top: index.$xl-margin;
     }
-  }
 
-  .tunnellers {
-    margin-top: index.$xxl-margin;
-    line-height: index.$l-margin;
-
-    span {
-      margin: 0 auto;
-      font-size: 1.5rem;
-      font-weight: 300;
+    @include index.desktop {
+      margin-bottom: 125px;
     }
   }
 }
 
+.tunnellers {
+  padding-top: index.$l-margin;
+  padding-bottom: index.$xl-margin;
+  border-top-left-radius: index.$border-radius;
+  border-top-right-radius: index.$border-radius;
+  background-color: index.$primary-medium-color;
+}
+
 .image-container {
   display: flex;
-  margin: index.$base-margin 0;
   max-width: index.$inner-width;
   justify-content: center;
   align-items: center;
-
-  @include index.tablet {
-    margin: index.$l-margin 0;
-  }
-
-  @include index.desktop {
-    margin: 0 auto;
-    margin: index.$xxl-margin 0 index.$xl-margin 0;
-  }
 }
 
 .image {
@@ -66,7 +52,8 @@
   object-position: center;
   height: 460px;
   width: 100%;
-  border-radius: index.$border-radius;
+  border-bottom-left-radius: index.$border-radius;
+  border-bottom-right-radius: index.$border-radius;
 
   @include index.tablet {
     height: 515px;
@@ -79,7 +66,7 @@
 }
 
 .enlistment {
-  margin-top: index.$base-margin;
+  margin-top: index.$s-margin;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -146,17 +133,17 @@
 
 #youngest {
   width: 100px;
-  background-color: index.$primary-medium-color;
+  background-color: index.$primary-light-color;
 }
 
 #average {
   width: 125px;
-  background-color: index.$primary-light-color;
+  background-color: index.$primary-dark-color;
 }
 
 #oldest {
   width: 175px;
-  background-color: index.$primary-medium-color;
+  background-color: index.$primary-light-color;
 }
 
 .marital-status {
@@ -183,22 +170,50 @@
 
 #single {
   width: 375px;
-  border-top-left-radius: 8px;
-  border-bottom-left-radius: 8px;
+  border-top-left-radius: index.$border-radius;
+  border-bottom-left-radius: index.$border-radius;
   border-left: 1px solid index.$primary-light-color;
+  border-top: 1px solid index.$primary-light-color;
+  border-bottom: 1px solid index.$primary-light-color;
+  background-color: index.$primary-dark-color;
+}
+
+#married {
+  width: 125px;
+  border-top-right-radius: index.$border-radius;
+  border-bottom-right-radius: index.$border-radius;
+  border-right: 1px solid index.$primary-light-color;
   border-top: 1px solid index.$primary-light-color;
   border-bottom: 1px solid index.$primary-light-color;
   background-color: index.$primary-light-color;
 }
 
-#married {
-  width: 125px;
-  border-top-right-radius: 8px;
-  border-bottom-right-radius: 8px;
+#gold-miners {
+  width: 250px;
+  border-top-left-radius: index.$border-radius;
+  border-bottom-left-radius: index.$border-radius;
+  border-left: 1px solid index.$primary-light-color;
+  border-top: 1px solid index.$primary-light-color;
+  border-bottom: 1px solid index.$primary-light-color;
+  background-color: index.$primary-dark-color;
+}
+
+#coal-miners {
+  width: 250px;
+  border-top-right-radius: index.$border-radius;
+  border-bottom-right-radius: index.$border-radius;
   border-right: 1px solid index.$primary-light-color;
   border-top: 1px solid index.$primary-light-color;
   border-bottom: 1px solid index.$primary-light-color;
-  background-color: index.$primary-medium-color;
+  background-color: index.$primary-light-color;
+}
+
+#trade-union {
+  margin-top: index.$xs-margin;
+  width: 540px;
+  border-radius: index.$border-radius;
+  border: 1px solid index.$primary-light-color;
+  background-color: index.$primary-light-color;
 }
 
 .professions {
@@ -206,8 +221,9 @@
   margin-top: index.$l-margin;
 }
 
-.wrapper {
+.professions-content-wrapper {
   display: flex;
+  margin-bottom: index.$xs-margin;
   flex-direction: row;
   justify-content: center;
 }
@@ -224,14 +240,14 @@
   border-top: 1px solid index.$primary-light-color;
   border-bottom: 1px solid index.$primary-light-color;
   border-left: 1px solid index.$primary-light-color;
-  background-color: index.$primary-medium-color;
+  background-color: index.$primary-light-color;
 
   p {
     font-weight: 500;
   }
 }
 
-.professions-wrapper {
+.professions-content {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -288,15 +304,25 @@
 
 .company {
   margin: 0 auto;
-  width: 700px;
-  margin-top: index.$l-margin;
-  margin-bottom: index.$base-margin;
+  width: 42rem;
+  margin-top: index.$base-margin;
   display: flex;
   flex-direction: column;
   justify-content: center;
+
+  h2 {
+    margin: index.$base-margin 0 index.$m-margin 0;
+  }
+
+  .introduction {
+    font-size: 1.25rem;
+    line-height: 2.25rem;
+    text-align: left;
+  }
 }
 
 .company-content-wrapper {
+  margin-top: index.$m-margin;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -316,6 +342,7 @@
   align-items: center;
   border-radius: index.$border-radius;
   border: 1px solid index.$primary-light-color;
+  background-color: index.$primary-light-color;
 
   p {
     font-weight: 700;
@@ -329,6 +356,7 @@
     align-items: center;
     border-top-left-radius: index.$border-radius;
     border-bottom-left-radius: index.$border-radius;
+    background-color: index.$primary-medium-color;
   }
 
   .departure {
@@ -337,44 +365,37 @@
 }
 
 #main-body {
-  width: 495px;
+  width: 465px;
 }
 
 #main-body-background {
-  background-color: index.$primary-light-color;
+  background-color: index.$primary-medium-color;
 }
 
 #reinforcements-1 {
   width: 212px;
-  background-color: index.$primary-medium-color;
 }
 
 #reinforcements-2 {
   width: 209px;
-  background-color: index.$primary-light-color;
 }
 
 #reinforcements-3 {
   width: 240px;
-  background-color: index.$primary-medium-color;
 }
 
 #reinforcements-4 {
   width: 190px;
-  background-color: index.$primary-light-color;
 }
 
 #reinforcements-5 {
   width: 205px;
-  background-color: index.$primary-medium-color;
 }
 
 #reinforcements-6 {
   width: 175px;
-  background-color: index.$primary-light-color;
 }
 
 #reinforcements-7 {
   width: 165px;
-  background-color: index.$primary-medium-color;
 }

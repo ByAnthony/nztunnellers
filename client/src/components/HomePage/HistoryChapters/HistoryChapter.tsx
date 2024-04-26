@@ -10,9 +10,9 @@ export function HistoryChapters({ articles }: Props) {
   return (
     <div className={STYLES['history-chapter']}>
       <div className={STYLES['chapter-cards-wrapper']}>
-        <h2 id="history">
-          History of their Company
-        </h2>
+        <h3 id="history">
+          History of the Company
+        </h3>
         <div className={STYLES['chapter-cards']}>
           {articles.map((article) => {
             const divStyle = {

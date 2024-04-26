@@ -24,23 +24,14 @@
 
   .logo {
     display: flex;
-    padding: 0 10px;
     align-items: center;
     height: index.$base-margin;
-    border: 1px solid index.$primary-light-color;
-    border-radius: index.$border-radius;
-    background-color: index.$primary-dark-color;
     transition: border-bottom 0.9s ease-in-out, border-bottom 0.9s ease-in-out,
       border 0.9s ease-in-out, border 0.9s ease-in-out,
       background-color 0.9s ease-in-out, background-color 0.9s ease-in-out;
 
     img {
-      height: 28px;
-    }
-
-    &:hover {
-      border: 1px solid index.$secondary-color;
-      background-color: index.$primary-light-color;
+      height: 30px;
     }
   }
 
@@ -53,7 +44,7 @@
     width: 100%;
     border: 1px solid index.$primary-light-color;
     border-radius: index.$border-radius;
-    background-color: index.$primary-dark-color;
+    background-color: index.$primary-medium-color;
 
     form {
       width: 100%;
@@ -65,13 +56,13 @@
         height: index.$base-margin;
         padding: 0 index.$xs-margin;
         font-family: index.$main-font;
-        font-weight: 200;
+        font-weight: 300;
         font-size: 1rem;
         color: index.$text-color;
         border: none;
         border-top-left-radius: index.$border-radius;
         border-bottom-left-radius: index.$border-radius;
-        background-color: index.$primary-dark-color;
+        background-color: index.$primary-medium-color;
         transition: border-bottom 0.9s ease-in-out, border-bottom 0.9s ease-in-out,
           border 0.9s ease-in-out, border 0.9s ease-in-out,
           background-color 0.9s ease-in-out, background-color 0.9s ease-in-out;
@@ -79,7 +70,6 @@
 
       input:focus {
         outline: none;
-        background-color: index.$primary-medium-color;
       }
 
       ::placeholder {
