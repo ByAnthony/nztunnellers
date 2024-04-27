@@ -215,25 +215,10 @@ li {
   }
 }
 
-@mixin primary-button-link {
-  border: 1px solid $primary-light-color;
-  border-radius: $border-radius;
-  background-color: $primary-dark-color;
-  transition: border-bottom 0.9s ease-in-out, border-bottom 0.9s ease-in-out,
-    border 0.9s ease-in-out, border 0.9s ease-in-out,
-    background-color 0.9s ease-in-out, background-color 0.9s ease-in-out;
-  cursor: pointer;
-
-  &:hover {
-    border: 1px solid $secondary-color;
-    background-color: $primary-light-color;
-  }
-}
-
 @mixin featured-button-link {
   border: 1px solid $primary-light-color;
   border-radius: $border-radius;
-  background-color: $primary-light-color;
+  background-color: $primary-medium-color;
   transition: border-bottom 0.9s ease-in-out, border-bottom 0.9s ease-in-out,
     border 0.9s ease-in-out, border 0.9s ease-in-out,
     background-color 0.9s ease-in-out, background-color 0.9s ease-in-out;
@@ -245,7 +230,7 @@ li {
 
   &:hover {
     border: 1px solid $secondary-color;
-    background-color: $primary-medium-color;
+    background-color: $primary-dark-color;
   }
 }
 

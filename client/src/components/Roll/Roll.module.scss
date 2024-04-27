@@ -56,7 +56,7 @@
       text-align: center;
       text-decoration: none;
 
-      @include index.primary-button-link;
+      @include index.featured-button-link;
 
       @include index.tablet {
         width: 35px;
