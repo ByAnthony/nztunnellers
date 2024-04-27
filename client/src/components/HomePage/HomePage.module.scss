@@ -2,32 +2,32 @@
 
 .homepage {
   @include index.component-margin;
-
-  margin: 0 auto;
 }
 
 .homepage-container {
   margin: 0 auto;
-  margin-top: index.$xxl-margin;
   width: index.$inner-width;
-  text-align: center;
+}
 
-  h2 {
-    margin: 0 auto;
-    font-size: 2rem;
-    font-weight: 500;
-    line-height: normal;
-  }
+.intro {
+  height: 93vh;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
 
-  .title {
-    margin-bottom: index.$l-margin;
+  h1 {
+    font-size: 2.5rem;
+    line-height: 2.5rem;
+    text-align: left;
 
     @include index.tablet {
-      margin-top: index.$xl-margin;
+      font-size: 3rem;
+      line-height: 3rem;
     }
 
     @include index.desktop {
-      margin-bottom: 125px;
+      font-size: 3.75rem;
+      line-height: 3.75rem;
     }
   }
 }

@@ -1,22 +1,24 @@
 @use 'src/index.scss';
 
 .history-chapter {
-  h3 {
-    padding-left: index.$xxxs-margin;
-    text-align: left;
-  }
+  margin-top: index.$base-margin;
 }
 
 .chapter-cards-menu {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+
+  h3 {
+    padding-left: index.$xxxs-margin;
+    text-align: left;
+  }
 }
 
 .chapter-cards-nav {
   display: flex;
   flex-direction: row;
-  justify-content: end;
+  justify-content: flex-end;
   align-items: center;
 
   button {
@@ -40,7 +42,7 @@
 }
 
 .chapter-cards-wrapper {
-    height: 480px;
+    height: 485px;
     overflow: hidden;
   }
 

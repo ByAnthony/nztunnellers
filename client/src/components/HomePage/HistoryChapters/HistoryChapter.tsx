@@ -32,8 +32,8 @@ export function HistoryChapters({ articles }: Props) {
             History of the Company
           </h3>
           <div className={STYLES['chapter-cards-nav']}>
-            <button type="button" onClick={scrollLeft} aria-label="Show more chapters">&larr;</button>
-            <button type="button" onClick={scrollRight} aria-label="Show less chapters">&rarr;</button>
+            <button type="button" onClick={scrollLeft} aria-label="Scroll to the left to see next chapters">&larr;</button>
+            <button type="button" onClick={scrollRight} aria-label="Scroll to the right to see previous chapters">&rarr;</button>
           </div>
         </div>
         <div className={STYLES['chapter-cards']} ref={containerRef}>

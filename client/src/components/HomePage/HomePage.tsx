@@ -23,6 +23,15 @@ export function HomePage() {
         { isLoading }
         { isSuccess && (
           <div className={STYLES['homepage-container']}>
+            <div className={STYLES.intro}>
+              <h1>
+                The Kiwis who
+                <br />
+                fought underground
+                <br />
+                during World War I
+              </h1>
+            </div>
             <HistoryChapters articles={data} />
           </div>
         )}
