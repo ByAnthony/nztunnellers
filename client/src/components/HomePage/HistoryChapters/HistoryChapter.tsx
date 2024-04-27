@@ -26,9 +26,9 @@ export function HistoryChapters({ articles }: Props) {
 
   return (
     <div className={STYLES['history-chapter']}>
-      <div className={STYLES['chapter-cards-wrapper']}>
+      <div id="history" className={STYLES['chapter-cards-wrapper']}>
         <div className={STYLES['chapter-cards-menu']}>
-          <h3 id="history">
+          <h3>
             History of the Company
           </h3>
           <div className={STYLES['chapter-cards-nav']}>

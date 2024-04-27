@@ -156,9 +156,7 @@
     }
 
     img {
-      max-width: calc(100% - 1px);
       width: 100%;
-      border: 1px solid index.$primary-light-color;
       border-top-right-radius: index.$border-radius;
       border-top-left-radius: index.$border-radius;
       filter: grayscale(100%);
