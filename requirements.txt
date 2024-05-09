@@ -7,7 +7,7 @@ distlib==0.3.6
 exceptiongroup==1.1.2
 filelock==3.12.2
 Flask==2.3.2
-Flask-Cors==4.0.0
+Flask-Cors==4.0.1
 Flask-MySQLdb==1.0.1
 gunicorn==22.0.0
 identify==2.5.24
