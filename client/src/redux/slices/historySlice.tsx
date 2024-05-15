@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { Article, Articles } from '../../types/article';
+import { Article } from '../../types/article';
 
 export const historyApi = createApi({
   reducerPath: 'historyApi',
@@ -7,11 +7,6 @@ export const historyApi = createApi({
     baseUrl: 'http://localhost:5000/',
   }),
   endpoints: (builder) => ({
-    getAllHistoryArticleLink: builder.query<Array<Articles>, void>({
-      query: () => ({
-        url: '/',
-      }),
-    }),
     getHistoryArticleById: builder.query<Article, string>({
       query: (id: string) => `history/${id}`,
     }),
@@ -19,6 +14,5 @@ export const historyApi = createApi({
 });
 
 export const {
-  useGetAllHistoryArticleLinkQuery,
   useGetHistoryArticleByIdQuery,
 } = historyApi;

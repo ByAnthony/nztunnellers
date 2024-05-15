@@ -12,6 +12,7 @@ from flask_mysqldb import MySQL  # type: ignore
 from .models.helpers.camelize_helpers import underscore_to_camel
 from .repositories import about_us_repository
 from .repositories import article_repository
+from .repositories import homepage_repository
 from .repositories import roll_repository
 from .repositories import tunneller_repository
 from .models.jsonencoder import JSONEncoder
@@ -63,7 +64,7 @@ def tunneller(id: int):
 
 @app.route("/", methods=["GET"])
 def homepage():
-    get_homepage = article_repository.select_all(mysql)
+    get_homepage = homepage_repository.get_homepage(mysql)
     homepage = json.dumps(get_homepage, cls=JSONEncoder, indent=4)
     camelized_data_for_ts: str = underscore_to_camel(homepage)
     return camelized_data_for_ts

@@ -1,4 +1,4 @@
-import { useGetAllHistoryArticleLinkQuery } from '../../redux/slices/historySlice';
+import { useGetHomepageDataQuery } from '../../redux/slices/homepageSlice';
 
 import { Footer } from '../Footer/Footer';
 import { HistoryChapters } from './HistoryChapters/HistoryChapter';
@@ -9,7 +9,7 @@ import STYLES from './HomePage.module.scss';
 export function HomePage() {
   const {
     data, error, isLoading, isSuccess,
-  } = useGetAllHistoryArticleLinkQuery();
+  } = useGetHomepageDataQuery();
 
   if (data) {
     return (
@@ -32,7 +32,7 @@ export function HomePage() {
                 during World War I
               </h1>
             </div>
-            <HistoryChapters articles={data} />
+            <HistoryChapters articles={data.historyChapters} />
           </div>
         )}
         <Footer />
