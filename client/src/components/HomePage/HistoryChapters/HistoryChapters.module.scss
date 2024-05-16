@@ -54,6 +54,7 @@
     flex-wrap: nowrap;
     gap: index.$m-margin;
     overflow-x: auto;
+    scroll-behavior: smooth;
   }
 
   .chapter-card {
