@@ -2,9 +2,7 @@
 
 .menu {
   transition: opacity 0.5s ease;
-  position: -webkit-sticky;
-  position: sticky;
-  top: index.$s-margin;
+  padding-top: index.$base-margin;
   display: flex;
   z-index: 1;
   justify-content: center;

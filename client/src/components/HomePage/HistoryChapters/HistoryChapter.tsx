@@ -12,14 +12,14 @@ export function HistoryChapters({ articles }: Props) {
 
   const scrollLeft = () => {
     if (containerRef.current) {
-      const scrollAmount = containerRef.current.clientWidth / 3;
+      const scrollAmount = 301;
       containerRef.current.scrollLeft -= scrollAmount;
     }
   };
 
   const scrollRight = () => {
     if (containerRef.current) {
-      const scrollAmount = containerRef.current.clientWidth / 3;
+      const scrollAmount = 301;
       containerRef.current.scrollLeft += scrollAmount;
     }
   };
