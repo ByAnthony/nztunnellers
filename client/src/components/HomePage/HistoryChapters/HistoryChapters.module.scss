@@ -30,9 +30,7 @@
     border: 1px solid index.$primary-dark-color;
     border-radius: index.$border-radius;
     background-color: index.$primary-dark-color;
-    transition: border-bottom 0.9s ease-in-out, border-bottom 0.9s ease-in-out,
-      border 0.9s ease-in-out, border 0.9s ease-in-out,
-      background-color 0.9s ease-in-out, background-color 0.9s ease-in-out;
+    transition: color 0.9s ease;
     cursor: pointer;
 
     &:hover {
