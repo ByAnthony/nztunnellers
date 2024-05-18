@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { Articles } from '../../types/article';
+import { Homepage } from '../../types/homepage';
 
 export const homepageApi = createApi({
   reducerPath: 'homepageApi',
@@ -7,7 +7,7 @@ export const homepageApi = createApi({
     baseUrl: 'http://localhost:5000/',
   }),
   endpoints: (builder) => ({
-    getHomepageData: builder.query<Record<string, Array<Articles>>, void>({
+    getHomepageData: builder.query<Homepage, void>({
       query: () => ({
         url: '/',
       }),

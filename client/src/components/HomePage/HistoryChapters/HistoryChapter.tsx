@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { Articles } from '../../../types/article';
 
 import STYLES from './HistoryChapters.module.scss';
@@ -8,6 +8,8 @@ type Props = {
   }
 
 export function HistoryChapters({ articles }: Props) {
+  // eslint-disable-next-line no-unused-vars
+  const [currentIndex, setCurrentIndex] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
 
   const scrollLeft = () => {
@@ -19,8 +21,12 @@ export function HistoryChapters({ articles }: Props) {
 
   const scrollRight = () => {
     if (containerRef.current) {
-      const scrollAmount = containerRef.current.clientWidth / 3;
-      containerRef.current.scrollLeft += scrollAmount;
+      const container = containerRef.current;
+      const cardWidth = container.children[0].clientWidth + 26;
+      container.scrollTo({
+        left: container.scrollLeft + cardWidth,
+      });
+      setCurrentIndex((prevIndex) => Math.min(prevIndex + 1, articles.length - 1));
     }
   };
 

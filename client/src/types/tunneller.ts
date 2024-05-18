@@ -1,5 +1,10 @@
 import { Name } from './roll';
 
+export type TunnellerImage = {
+    id: number,
+    image: string,
+}
+
 export type Date = {
     year: string | null,
     dayMonth: string | null,

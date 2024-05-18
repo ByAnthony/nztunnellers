@@ -3,6 +3,7 @@ import { useGetHomepageDataQuery } from '../../redux/slices/homepageSlice';
 import { Footer } from '../Footer/Footer';
 import { HistoryChapters } from './HistoryChapters/HistoryChapter';
 import { Menu } from '../Menu/Menu';
+import { TunnellersImages } from './TunnellersImages/TunnellersImages';
 
 import STYLES from './HomePage.module.scss';
 
@@ -23,6 +24,7 @@ export function HomePage() {
         { isLoading }
         { isSuccess && (
           <div className={STYLES['homepage-container']}>
+            <TunnellersImages images={data.tunnellers} />
             <div className={STYLES.intro}>
               <h1>
                 The Kiwis who
