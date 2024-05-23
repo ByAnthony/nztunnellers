@@ -53,6 +53,7 @@
     gap: index.$m-margin;
     overflow-x: auto;
     scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
   }
 
   .chapter-card {
@@ -64,6 +65,7 @@
     transition: border-bottom 0.9s ease-in-out, border-bottom 0.9s ease-in-out,
       border 0.9s ease-in-out, border 0.9s ease-in-out,
       background-color 0.9s ease-in-out, background-color 0.9s ease-in-out;
+    scroll-snap-align: start;
 
     &:hover {
       border: 1px solid index.$secondary-color;

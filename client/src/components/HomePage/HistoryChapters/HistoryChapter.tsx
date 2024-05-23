@@ -11,23 +11,38 @@ export function HistoryChapters({ articles }: Props) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const scrollLeft = () => {
+  const scrollClick = (index: number) => {
     if (containerRef.current) {
-      const container = containerRef.current;
-      container.scrollTo({
-        left: container.scrollLeft - (container.clientWidth / 3),
+      containerRef.current.scrollTo({
+        left: index * (containerRef.current.clientWidth / 3),
       });
-      setCurrentIndex((prevIndex) => Math.min(prevIndex - 1));
     }
   };
 
-  const scrollRight = () => {
+  const handleScrollLeft = () => {
     if (containerRef.current) {
-      const container = containerRef.current;
-      container.scrollTo({
-        left: container.scrollLeft + (container.clientWidth / 3),
-      });
-      setCurrentIndex((prevIndex) => Math.min(prevIndex + 1));
+      const previousIndex = currentIndex - 1;
+      scrollClick(previousIndex);
+      setCurrentIndex(previousIndex);
+    }
+  };
+
+  const handleScrollRight = () => {
+    if (containerRef.current) {
+      const nextIndex = currentIndex + 1;
+      scrollClick(nextIndex);
+      setCurrentIndex(nextIndex);
+    }
+  };
+
+  const handleScroll = () => {
+    if (containerRef.current) {
+      const { scrollLeft, clientWidth } = containerRef.current;
+      const cardWidth = clientWidth / 3;
+      const nextIndex = Math.round(scrollLeft / cardWidth);
+      if (currentIndex !== nextIndex) {
+        setCurrentIndex(nextIndex);
+      }
     }
   };
 
@@ -46,11 +61,11 @@ export function HistoryChapters({ articles }: Props) {
             History of the Company
           </h3>
           <div className={STYLES['chapter-cards-nav']}>
-            <button type="button" onClick={scrollLeft} disabled={isFirstCard} style={buttonFirstCard} aria-label="Scroll to the left to see previous chapters">&larr;</button>
-            <button type="button" onClick={scrollRight} disabled={isLastCard} style={buttonLastCard} aria-label="Scroll to the right to see next chapters">&rarr;</button>
+            <button type="button" onClick={handleScrollLeft} disabled={isFirstCard} style={buttonFirstCard} aria-label="Scroll to the left to see previous chapters">&larr;</button>
+            <button type="button" onClick={handleScrollRight} disabled={isLastCard} style={buttonLastCard} aria-label="Scroll to the right to see next chapters">&rarr;</button>
           </div>
         </div>
-        <div className={STYLES['chapter-cards']} ref={containerRef}>
+        <div className={STYLES['chapter-cards']} ref={containerRef} onScroll={handleScroll}>
           {articles.map((article) => {
             const divStyle = {
               backgroundImage: `url(../images/history/${article.image})`,
