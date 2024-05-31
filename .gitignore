@@ -1,10 +1,5 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-# dependencies
-**/node_modules
-**/.pnp
-.pnp.js
-
 # cache
 .mypy_cache
 .pytest_cache
@@ -14,18 +9,26 @@
 /server/.coverage
 .coverage
 
-# production
-**/build
-
-# misc
-/client/tsconfig.tsbuildinfo
-.DS_Store
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-**/venv
+#debug
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# dependencies
+**/node_modules
+**/.pnp
+.pnp.js
+
+#local env files
+.env*.local
+
+# misc
+.DS_Store
+**/venv
 *.pyc
+
+# production
+**/build
+
+# typescript
+/client/tsconfig.tsbuildinfo
